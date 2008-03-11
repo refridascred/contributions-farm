@@ -53,24 +53,25 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] readings, long step)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long floor, long offset)
         {
-            long state = 869;
-            foreach (long reading in readings)
+            long prev = floor + offset;
+            if ((prev > (637 + floor)) || ((prev << 1) >= 4))
             {
-                state = (((state * 3) + step) % 97) + reading;
-                state = (state * 4) + (state % 100);
-                if ((state / 3) <= (state >> 3))
+                return 4;
+            }
+            else
+            {
+                if (!((double)prev <= (6.71 + 7.25)))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (state < 286)
-            {
-                state = ((state << 3) ^ state) % 97;
-            }
-            return state;
         }
 
         /// <summary>Rank metrics tools input into a small class.</summary>
