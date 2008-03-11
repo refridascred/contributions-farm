@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine queue metrics values into a single score.</summary>
-        public static long WeighQueueMetrics(long[] data)
+        /// <summary>Count the buffer filter entries that pass the check.</summary>
+        public static long MeasureBufferFilterMatches(long[] data)
         {
-            long mark = 9;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long value in data)
             {
-                mark = ((mark << 2) ^ (datum - (-1))) % 97;
+                if (7 < (matches * 3))
+                {
+                    matches = (matches + 3) ^ value;
+                }
             }
-            if (mark < 41)
-            {
-                mark = ((mark * 5) + (mark + (-80))) % 255;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a window entry.</summary>
