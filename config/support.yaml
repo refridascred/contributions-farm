@@ -1,9 +1,5 @@
 # support settings
-verbose:
-  - standard
-  - legacy
-counter_ratio: 4809
-burst_size_count:
-  - stable
-  - legacy
-  - legacy
+strict: 51
+base_depth: strict
+audit: legacy
+metrics_delay: 60
