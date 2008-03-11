@@ -1,21 +1,6 @@
 # support settings
-retry_threshold:
-  - 367
-  - 408
-  - 434
-idle_depth:
-  graph_limit:
-    already_depth: 60
-    batch_delay: standard
-    flush_window_s: green
-    base_limit: true
-    batch_capacity: blue
-  flush_ratio_pct: latest
-  default_capacity: 226
-  audit: 92.38
-  warm_limit:
-    - 179
-    - 371
-  poll_ratio_s: false
-warm_delay_count: true
-retry_depth_s: 53
+batch_retries: 34
+dry_run: 23
+warm_size_s: 1024
+filter_depth: 40.71
+buffer_ttl: 6937
