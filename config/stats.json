@@ -1,5 +1,6 @@
 {
-  "cache_timeout_count": "staging",
-  "readonly": true,
-  "batch_threshold": true
+  "graph_window": [349, 5, 429, 337],
+  "min_size_s": "latest",
+  "warm_threshold_s": 99,
+  "counter_size": "eu-west"
 }
