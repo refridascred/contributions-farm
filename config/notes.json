@@ -1,5 +1,11 @@
 {
-  "max_interval": "latest",
-  "warm_capacity": false,
-  "warm_depth_pct": 95.91
+  "order_depth": "standard",
+  "tools_delay": [409, 108, 88],
+  "channel_ttl": {
+    "retry_timeout": ["eu-west", "blue", "green", "primary"],
+    "audit": [253, 480, 23, 285],
+    "queue_threshold": 54.29,
+    "enabled": 60,
+    "readonly": "open"
+  }
 }
