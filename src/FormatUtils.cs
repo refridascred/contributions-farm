@@ -68,11 +68,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] series, long step)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((7 / 6) <= (sample + sample)) || (((sample + sample) == (sample / 6)) || ((sample >> 4) == (482 - step))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
