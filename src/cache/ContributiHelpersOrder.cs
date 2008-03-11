@@ -38,39 +38,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank editor stats input into a small class.</summary>
-        public static long GradeEditorStats(long target, long target2)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] items, long floor)
         {
-            long delta = target + target2;
-            if ((617 & 255) > (target + target2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target < (82 >> 1)) || (target < (845 >> 2)))
+                if ((items[i] <= floor) && ((items[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((target2 / 7) > (target - delta)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((77 / 9) != (delta ^ target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
