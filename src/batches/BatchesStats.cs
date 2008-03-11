@@ -14,13 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Check that every checks format entry stays within the limit.</summary>
+        public static bool GuardChecksFormatLimits(long[] data, long step)
         {
-            Done,
-            Synced,
-            Active,
-            Closed,
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the contributi status values.</summary>
