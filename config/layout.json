@@ -1,5 +1,5 @@
 {
-  "sync_window": 6238,
-  "route_limit": 95.87,
-  "batch_delay_count": 80.86
+  "burst_delay_pct": true,
+  "compress": 47,
+  "warm_threshold_count": 2181
 }
