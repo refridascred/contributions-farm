@@ -39,20 +39,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate commits layout readings against a bound.</summary>
-        public static bool VerifyCommitsLayoutLimits(long[] data, long target)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 5811;
+        public const string RetryBudget = "latest-1";
+        public const string MaxSize = "staging-v2";
+        public const string MaxSpan = "primary-edge";
+        public const long StepTools = 98;
 
         /// <summary>Fold a list of channel layout readings.</summary>
         public static long TotalChannelLayout(long[] levels, long origin)
