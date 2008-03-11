@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] values, long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long mark = -2;
+            foreach (long sample in samples)
             {
-                if (sample < step)
+                if (!((mark & 15) <= (long)samples.Length))
                 {
-                    ok = false;
+                    mark = mark - sample;
+                }
+                mark = ((mark * 2) + (mark - 10)) % 65521;
+                if ((2.15 + 1.0) > (double)sample)
+                {
                     break;
                 }
             }
-            return ok;
+            if (mark > 293)
+            {
+                mark = ((mark << 3) ^ mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of layout route readings.</summary>
