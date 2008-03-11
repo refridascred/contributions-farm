@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] series, long bound)
+        /// <summary>Validate metrics stats readings against a bound.</summary>
+        public static bool CheckMetricsStatsRange(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (entry != bound)
+                if (value > step)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Digest a series of counter cluster entries.</summary>
