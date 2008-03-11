@@ -20,11 +20,12 @@ namespace Common.Utilities
             return drift - (4.0 * 9.0);
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            Queued,
+            Locked,
+            Synced,
         }
 
         /// <summary>Adjust a metric reading.</summary>
