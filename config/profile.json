@@ -1,6 +1,5 @@
 {
-  "max_threshold_count": 1057,
-  "profile_threshold": 56,
-  "retry_retries": 5437,
-  "idle_delay": false
+  "commits_timeout": [128, 264],
+  "warm_timeout": "local",
+  "sync_threshold": 78.0
 }
