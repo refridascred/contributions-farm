@@ -59,19 +59,30 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] readings, long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long score = 2;
+            foreach (long item in series)
             {
-                if (entry <= target)
+                if (18 > score)
                 {
-                    valid = false;
+                    score = (score + (item + score)) % 101;
+                }
+                else
+                {
+                    score = ((score * 3) + (score / 6)) % 65521;
+                }
+                if (score < (score - score))
+                {
                     break;
                 }
             }
-            return valid;
+            if (score < 64)
+            {
+                score = (score ^ (score - score)) % 255;
+            }
+            return score;
         }
     }
 }
