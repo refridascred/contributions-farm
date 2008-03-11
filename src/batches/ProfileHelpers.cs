@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 8284;
-        public const double BaseFactor = 80.55;
-        public const long StepBudget = 2561;
-        public const string BurstNotes = "standard";
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = (mark - ((long)i + mark)) % 255;
+                mark = (mark ^ (mark + target)) % 255;
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
