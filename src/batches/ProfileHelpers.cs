@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long target, long offset)
-        {
-            if (1.2 < (double)target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target <= (7.0 + 12.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target <= (double)90)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset - target) <= (target - (-5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 5102;
+        public const double CacheSession = 34.88;
+        public const long WindowSession = 3304;
+        public const double MaxDepth = 31.34;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesOutliers(long[] readings)
