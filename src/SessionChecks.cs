@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the counter support entries that pass the check.</summary>
-        public static long MeasureCounterSupportHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (((item - (-766)) >= (item << 3)) || (((double)hits <= (3.61 - 3.97)) && ((double)hits >= (2.6 + 4.0))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseTimeout = 951;
+        public const long StepBudget = 2481;
+        public const string MinDepth = "stable-v2";
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetrySupport = 3732;
