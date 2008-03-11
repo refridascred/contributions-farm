@@ -59,21 +59,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] data)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry <= target)
                 {
-                    if ((data[i] + data[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
