@@ -27,13 +27,13 @@ namespace Common.Utilities
         public const long CacheContext = 9974;
         public const long MinWidth = 9778;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Pending,
-            Retry,
-            Failed,
             Ready,
+            Paused,
+            Dropped,
+            Done,
         }
     }
 }
