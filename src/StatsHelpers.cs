@@ -32,11 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Iterate the commits contributi series from a seed.</summary>
+        public static long RollCommitsContributi(long offset)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
+            long state = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                state = (state ^ state) % 97;
+                state = (state << 2) ^ (55 + offset);
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
