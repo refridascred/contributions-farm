@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] levels)
+        /// <summary>Locate a stream counter reading by value.</summary>
+        public static long SeekStreamCounterIndex(long[] levels, long origin)
         {
-            long seen = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (levels[i] == origin)
                 {
-                    if ((levels[i] - levels[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
