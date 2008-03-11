@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstContributi = 62.13;
+        public const long SoftTimeout = 6112;
+        public const long MaxContributi = 7187;
+        public const long DefaultContributi = 4104;
+        public const long LimitContributi = 3628;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long DigestStats(long[] series, long step)
