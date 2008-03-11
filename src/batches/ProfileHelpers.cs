@@ -25,22 +25,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] values, long target)
+        /// <summary>Digest a series of editor contributi entries.</summary>
+        public static long CombineEditorContributi(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long anchor = 649;
+            foreach (long reading in samples)
             {
-                if (target >= (datum % 5))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor + (reading % 8)) % 97) - origin;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the batch phase values.</summary>
