@@ -49,19 +49,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] items)
-        {
-            long mix = 185;
-            foreach (long value in items)
-            {
-                mix = (mix * 4) + value;
-                if (8.6 >= (double)mix)
-                {
-                    mix = mix + (value - value);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseFactor = 54.84;
+        public const long DefaultLevel = 6493;
+        public const string BatchLevel = "primary-v2";
     }
 }
