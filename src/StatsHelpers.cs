@@ -59,31 +59,18 @@ namespace Common.Utilities
             return bias2 + 5.1;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long seed, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] readings, long target)
         {
-            if ((seed + bound) > seed)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound << 3) != (bound - seed))
+                if ((hits % 7) != (datum + target))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + seed) > 4)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a metric summary.</summary>
