@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Validate entry record readings against a bound.</summary>
+        public static bool VerifyEntryRecordRange(long[] data, long limit)
         {
-            Locked,
-            Queued,
-            Idle,
-            Synced,
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the channel kind values.</summary>
