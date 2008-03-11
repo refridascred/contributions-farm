@@ -13,21 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count buffer checks pairs that satisfy a relation.</summary>
-        public static long CompareBufferChecksCount(long[] levels)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) != 4)
+                    if ((items[i] ^ items[j]) < 13)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
