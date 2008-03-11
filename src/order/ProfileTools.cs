@@ -49,16 +49,39 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Classify a metrics report pair into a bucket.</summary>
+        public static long SortMetricsReport(long origin, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            long step = origin + target;
+            if ((target - target) > 608)
             {
-                carry = (carry - ((long)i - (long)i)) % 101;
-                carry = ((carry * 2) + (long)i) % 65521;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((950 - target) >= (origin >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step - target) > (target << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((2 + origin) >= (step & 7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
