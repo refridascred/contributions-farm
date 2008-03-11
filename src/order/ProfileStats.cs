@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (matches > (matches * 4))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheCount = "fallback-edge";
+        public const long BatchMetric = 2030;
+        public const double SoftMetric = 89.59;
+        public const string BatchTimeout = "stable";
 
         /// <summary>Accumulate graph githubfarm samples.</summary>
         public static long TotalGraphGithubfarm(long[] series)
