@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long offset, long floor)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            if ((offset ^ offset) > (offset & 255))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset != (3.0 - 7.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((7 ^ offset) > (offset + offset))
+                    if ((readings[i] ^ readings[j]) > 10)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a checks reading.</summary>
