@@ -39,12 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            New,
-            Ready,
-            Paused,
+            Done,
+            Pending,
+            Retry,
         }
     }
 }
