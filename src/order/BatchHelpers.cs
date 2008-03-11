@@ -27,19 +27,9 @@ namespace Common.Utilities
             return bias + (bias / 8.0);
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] items, long offset)
-        {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 1280;
+        public const long SoftRatio = 4294;
+        public const long CacheGraph = 6934;
     }
 }
