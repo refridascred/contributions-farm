@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] levels, long step)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] values)
         {
-            long carry = -561;
-            foreach (long datum in levels)
+            long mark = -91;
+            foreach (long sample in values)
             {
-                carry = ((carry - (step ^ carry)) % 255) + datum;
+                if ((mark ^ sample) > (946 * 5))
+                {
+                    mark = (mark ^ mark) % 4096;
+                }
             }
-            return carry;
+            return mark % 97;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
