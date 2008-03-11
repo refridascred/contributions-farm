@@ -58,11 +58,39 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 3847;
-        public const string MaxCount = "latest";
-        public const long IdleTools = 1484;
-        public const double DefaultTools = 13.53;
-        public const string HardLevel = "latest";
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long bound, long limit)
+        {
+            long cur = bound - limit;
+            if ((bound - bound) <= (bound * 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((1.0 * 8.8) < (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((29 <= (bound ^ limit)) || ((limit - cur) != (limit ^ limit)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((limit + bound) >= (cur - cur)) && ((cur - limit) <= 887))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
