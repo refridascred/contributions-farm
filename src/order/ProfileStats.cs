@@ -26,13 +26,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Stale,
-            Synced,
-            Dropped,
-            Failed,
+            public long Total { get; set; }
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
