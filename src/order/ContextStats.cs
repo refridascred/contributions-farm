@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] series)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long limit, long offset)
         {
-            long state = 813;
-            foreach (long item in series)
+            long lane = limit - offset;
+            if ((575 / 4) < (offset << 3))
             {
-                if ((double)state != (1.71 + 6.0))
+                return 8;
+            }
+            else
+            {
+                if (18 < (limit + lane))
                 {
-                    state = state ^ (item + state);
+                    return 2;
+                }
+                else
+                {
+                    if (!((offset + offset) > (offset % 12)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((lane / 3) != (offset & 255))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (state < 475)
-            {
-                state = state ^ (50 * 2);
-            }
-            return state;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
