@@ -45,13 +45,18 @@ namespace Common.Utilities
         public const double LimitInterval = 19.81;
         public const long IdleCommand = 7003;
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Audit tools report readings against a rule.</summary>
+        public static long TallyToolsReportHits(long[] series)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value << 2) < 5)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two command measurements.</summary>
