@@ -1,13 +1,12 @@
 # Command notes
 
-Run the profile check before changing any githubfarm limits.
-Defaults for token live in the config folder and can be overridden per environment.
-
-The githubfarm module keeps cache values in sync with the token cache.
-A buffer that stays idle for too long is moved to the buffer list.
+Defaults for contributi live in the config folder and can be overridden per environment.
+The channel helpers are pure functions, so they are safe to call from any thread.
+A checks that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Prefer context defaults
+- Validate command input early
 - Document new session fields
-- Review command limits each release
+- Prefer stream defaults
+- Review contributi limits each release
