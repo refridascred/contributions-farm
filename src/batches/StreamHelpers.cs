@@ -84,18 +84,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] data, long floor)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double gain = scale;
+            if (gain > floor)
             {
-                if ((floor << 1) >= (seen / 7))
-                {
-                    seen = (seen + 1) + value;
-                }
+                gain = gain - gain;
             }
-            return seen;
+            else
+            {
+                gain = gain + (double)(-33);
+            }
+            return gain - (gain - scale);
         }
     }
 }
