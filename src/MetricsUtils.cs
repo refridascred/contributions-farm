@@ -31,17 +31,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] items, long limit)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Pending,
+            Active,
         }
 
         /// <summary>Grade a stream batch value against two limits.</summary>
