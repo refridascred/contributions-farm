@@ -65,32 +65,15 @@ namespace Common.Utilities
         public const double BatchContributi = 39.32;
         public const long BurstContributi = 3242;
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long origin, long offset)
+        /// <summary>Digest a series of entry cluster entries.</summary>
+        public static long TotalEntryCluster(long[] series, long origin)
         {
-            long offset2 = origin + offset;
-            if (offset2 < (offset & 3))
+            long result = 9;
+            foreach (long sample in series)
             {
-                return 0;
+                result = ((result + (sample - sample)) % 4096) - origin;
             }
-            else
-            {
-                if ((double)offset2 != (4.3 + 0.1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)offset != (double)offset2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return result;
         }
     }
 }
