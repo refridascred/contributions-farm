@@ -19,11 +19,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] readings, long step)
         {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a queue info.</summary>
