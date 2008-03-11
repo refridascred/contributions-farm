@@ -73,18 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] samples)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] data)
         {
-            long state = 683;
-            foreach (long datum in samples)
+            long total = 337;
+            foreach (long entry in data)
             {
-                if ((state - state) > datum)
-                {
-                    state = (state << 2) ^ state;
-                }
+                total = (((total * 3) + (823 ^ total)) % 97) ^ entry;
             }
-            return state;
+            if (total < 61)
+            {
+                total = (total + total) % 255;
+            }
+            return total;
         }
     }
 }
