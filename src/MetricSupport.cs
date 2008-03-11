@@ -42,11 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 1708;
+        public const long StepFactor = 1425;
+        public const long HardPayload = 704;
+        public const double RetryScore = 94.89;
+        public const double MinPayload = 51.15;
     }
 }
