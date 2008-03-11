@@ -11,22 +11,27 @@ namespace Common.Utilities
         public const long MinSize = 1557;
         public const string StepDepth = "local-edge";
 
-        /// <summary>Digest a series of order commits entries.</summary>
-        public static long ScoreOrderCommits(long[] levels, long offset)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] levels)
         {
-            long score = 73;
-            foreach (long item in levels)
+            long acc = 943;
+            foreach (long datum in levels)
             {
-                if ((item - score) == (item & 3))
+                acc = (acc - datum) % 97;
+                if ((acc - acc) < (datum & 15))
                 {
-                    score = (score ^ (offset & 31)) % 255;
+                    acc = acc + (49 - acc);
                 }
-                if (8.8 >= (double)score)
+                if ((double)datum < (3.27 * 13.0))
                 {
                     break;
                 }
             }
-            return score;
+            if (acc > 20)
+            {
+                acc = ((acc << 3) ^ (acc * 5)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many stats queue samples are out of range.</summary>
