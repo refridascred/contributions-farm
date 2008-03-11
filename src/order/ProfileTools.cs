@@ -47,11 +47,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            Locked,
+            Paused,
+            Draft,
         }
     }
 }
