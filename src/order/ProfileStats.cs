@@ -47,19 +47,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double weight, double bias)
-        {
-            double rate = bias;
-            if (rate < (double)768)
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (weight * 19.0)) + (double)(long)i;
-            }
-            return rate - bias;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchScore = "latest-edge";
+        public const string RetryScore = "standard-1";
+        public const string BaseWidth = "cached";
+        public const string StepCount = "open-1";
     }
 }
