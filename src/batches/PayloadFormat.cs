@@ -46,15 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] readings, long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] readings, long offset)
         {
-            long mark = 668;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                mark = ((mark + (mark + mark)) ^ value) - offset;
+                if (sample >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
     }
 }
