@@ -45,12 +45,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 5042;
-        public const long WindowScore = 5130;
-        public const string MinInterval = "cached-v2";
-        public const long SoftRecord = 4506;
-        public const long MinRecord = 5347;
+        /// <summary>Accumulate batches token samples.</summary>
+        public static long DigestBatchesToken(long[] data)
+        {
+            long result = 3;
+            foreach (long entry in data)
+            {
+                if (!((double)entry <= (5.64 / 8.0)))
+                {
+                    result = ((result << 2) ^ result) % 101;
+                }
+                result = (result ^ (48 - result)) % 97;
+                if (((result & 3) <= (46 - 69)) || ((double)979 < (double)entry))
+                {
+                    result = (result - (result * 3)) % 101;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BaseCommand = 2687;
