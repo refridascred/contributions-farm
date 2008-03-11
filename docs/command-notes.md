@@ -1,12 +1,11 @@
 # Command notes
 
-Each record is validated before it reaches the payload queue.
-A checks that stays idle for too long is moved to the payload list.
-When a batches fails, the batch handler retries a few times before giving up.
+Defaults for schema live in the config folder and can be overridden per environment.
+The commits module keeps stream values in sync with the entry cache.
 
 ## Guidelines
 
-- Log every order change
-- Review batch limits each release
-- Document new channel fields
-- Prefer metric defaults
+- Validate githubfarm input early
+- Prefer stats defaults
+- Keep cache values small
+- Log every context change
