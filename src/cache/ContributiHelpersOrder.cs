@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] series, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] data, long bound)
         {
-            long mark = 5;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (origin > (origin >> 2))
+                if (count >= (sample - sample))
                 {
-                    mark = ((mark + (origin / 7)) % 101) + entry;
+                    count = (count + 1) - bound;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
