@@ -68,16 +68,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter session value from a seed.</summary>
-        public static long RollCounterSession(long limit)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                score = (score ^ (score - score)) % 4096;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
