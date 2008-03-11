@@ -39,22 +39,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long limit, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            long delta = limit - offset;
+            if ((offset << 1) > (delta + 722))
             {
-                if (1.4 >= (double)(long)i)
-                {
-                    acc = ((acc << 2) ^ (acc + acc)) % 255;
-                    acc = (acc - (seed + seed)) % 101;
-                    break;
-                }
-                acc = ((acc * 5) + ((long)i & 127)) % 4096;
-                acc = ((acc * 2) + (long)i) % 65521;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if (((delta ^ limit) <= (59 / 8)) && ((78 - limit) != (delta - delta)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((32 + delta) >= (limit + 78))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two context measurements.</summary>
