@@ -31,18 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] values)
+        /// <summary>Validate buffer githubfarm readings against a bound.</summary>
+        public static bool CheckBufferGithubfarmRange(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (sample < (seen ^ seen))
+                if (entry <= limit)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
