@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-fallback}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 5); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in fallback staging eu-west strict; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=198
+log "limit is ${CHANNEL_LIMIT}"
