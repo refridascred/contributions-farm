@@ -49,11 +49,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 697;
-        public const string BaseMetrics = "alpha-1";
-        public const long MinMetrics = 2949;
-        public const double LimitMetrics = 94.75;
-        public const long DefaultMetrics = 5804;
+        /// <summary>Derive the next counter session value from a seed.</summary>
+        public static long RollCounterSession(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                score = (score ^ (score - score)) % 4096;
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
