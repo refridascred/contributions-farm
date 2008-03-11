@@ -24,12 +24,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a commits command reading by value.</summary>
-        public static long SeekCommitsCommandIndex(long[] samples, long step)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] == step)
+                if ((values[i] <= step) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
