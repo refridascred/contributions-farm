@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] series, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] items, long seed)
         {
-            long mix = 81;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                mix = (((mix << 2) ^ (floor >> 5)) % 97) ^ sample;
+                if (cell != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mix < 4)
-            {
-                mix = (mix ^ (floor ^ (-42))) % 97;
-            }
-            return mix % 4096;
+            return ok;
         }
 
         /// <summary>Define report limits and defaults.</summary>
