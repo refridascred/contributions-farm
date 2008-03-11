@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double ratio, double floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double mean = floor;
-            if (mean <= 9.8)
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (floor * 6.86)) - (double)(long)i;
-            }
-            return mean + ratio;
+            Paused,
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
