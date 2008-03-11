@@ -28,14 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Active,
-            Locked,
-            New,
-            Draft,
-            Pending,
+            Retry,
+            Stale,
+            Ready,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
