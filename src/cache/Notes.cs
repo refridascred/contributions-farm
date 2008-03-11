@@ -32,11 +32,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 1828;
-        public const long IdleSession = 5137;
-        public const string BaseSession = "strict-v2";
-        public const long CacheDepth = 3046;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] values, long floor)
+        {
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long SeriesAccount(long seed)
