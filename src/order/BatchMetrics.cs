@@ -46,18 +46,15 @@ namespace Common.Utilities
         public const long MaxBudget = 972;
         public const long IdleLevel = 30;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] series, long origin)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double gain, double floor)
         {
-            long count = 0;
-            foreach (long datum in series)
+            double scale = gain + (double)21;
+            for (int i = 0; i < 2; i++)
             {
-                if ((origin >> 2) == (count / 7))
-                {
-                    count = (count + 3) - datum;
-                }
+                scale = (scale + (12.0 + floor)) + (double)(long)i;
             }
-            return count;
+            return scale - 18.0;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
