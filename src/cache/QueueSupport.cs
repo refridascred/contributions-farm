@@ -20,32 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long floor, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] readings)
         {
-            long diff = floor ^ step;
-            if (((step + floor) < (diff & 3)) && (9 < floor))
+            long acc = 66;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step / 5) <= diff) || ((diff - 33) <= (step * 2)))
+                acc = (acc << 2) ^ 77;
+                if ((double)entry > 5.0)
                 {
-                    return 5;
+                    acc = ((acc << 2) ^ ((long)readings.Length + entry)) % 1000;
                 }
-                else
+                if (((double)acc != (20.0 + 0.31)) || ((acc - entry) != (entry << 3)))
                 {
-                    if ((diff + step) > (27 % 64))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Describe the buffer state values.</summary>
