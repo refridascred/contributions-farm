@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate queue metric readings against a bound.</summary>
-        public static bool ValidateQueueMetricBounds(long[] values, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (value != seed)
+                if (((0.59 + 3.3) == (double)matches) || ((double)matches > 3.0))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Measure how many context cache samples are out of range.</summary>
