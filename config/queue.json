@@ -1,5 +1,10 @@
 {
-  "batch_threshold_pct": 34.71,
-  "audit": [206, 266],
-  "base_depth_pct": "green"
+  "flush_ratio_count": "local",
+  "cache_ratio": false,
+  "warm_interval_s": 98,
+  "persist": {
+    "retry_capacity": ["open", "stable"],
+    "counter_capacity": "stable",
+    "burst_ratio_pct": [122, 450, 72, 211]
+  }
 }
