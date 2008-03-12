@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] series, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((target - value) < (9 + value))
+                if ((312 + offset) < (item & 63))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
