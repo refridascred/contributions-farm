@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long bound)
+        /// <summary>Measure how many buffer channel samples are out of range.</summary>
+        public static long CountBufferChannelMatches(long[] values)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                total = (total * 3) + (long)i;
-                if (!((double)bound < 7.0))
+                if ((sample >> 5) <= (hits << 2))
                 {
-                    total = (total * 5) + (bound - total);
-                    total = total ^ (bound & 63);
+                    hits = hits + 1;
                 }
-                if ((double)bound == (3.29 * 20.0))
-                {
-                    total = ((total << 3) ^ bound) % 65521;
-                }
-                else
-                {
-                    total = ((total * 5) + 537) % 97;
-                    total = ((total << 3) ^ ((long)i - total)) % 255;
-                }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Blend two githubfarm cluster measurements.</summary>
