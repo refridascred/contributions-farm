@@ -1,5 +1,17 @@
 {
-  "cache_timeout_count": 100,
-  "warm_retries_ms": true,
-  "cache_window_s": 53.68
+  "base_ratio_s": {
+    "dry_run": false,
+    "poll_ratio": 30,
+    "audit": 4651,
+    "default_depth": false,
+    "burst_retries_pct": {
+      "soft_limit": false,
+      "retry_capacity": ["local", "edge", "staging", "green"],
+      "cache_limit": [87, 421, 204]
+    },
+    "warm_window_count": "eu-west"
+  },
+  "persist": true,
+  "min_interval_s": 4322,
+  "poll_limit": false
 }
