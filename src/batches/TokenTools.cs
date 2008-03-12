@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstTimeout = 3049;
-        public const double CacheRoute = 40.0;
-        public const double HardRoute = 34.58;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
