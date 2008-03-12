@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest edge; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=465
+CHANNEL_LIMIT=264
 log "limit is ${CHANNEL_LIMIT}"
