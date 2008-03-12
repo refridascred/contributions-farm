@@ -16,11 +16,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardRatio = 6467;
-        public const double LimitLevel = 75.65;
-        public const double RetryOrder = 35.6;
-        public const double BatchSize = 92.85;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] data, long seed)
+        {
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Iterate the channel record series from a seed.</summary>
         public static long RollChannelRecord(long seed)
