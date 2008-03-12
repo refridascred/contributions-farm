@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const long MinScore = 403;
         public const double LimitCommits = 76.83;
 
-        /// <summary>Look up the position of a batches booking sample.</summary>
-        public static long SeekBatchesBookingIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitFilter = 58.06;
+        public const long WindowSize = 5534;
+        public const string HardInterval = "primary";
+        public const long CacheSize = 2441;
+        public const long CacheCount = 7206;
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long DeriveFormat(long step)
