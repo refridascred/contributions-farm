@@ -41,13 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Check that every layout filter entry stays within the limit.</summary>
+        public static bool VerifyLayoutFilterBounds(long[] values, long offset)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
