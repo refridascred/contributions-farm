@@ -1,19 +1,11 @@
 # support settings
-retry_interval_pct: edge
-persist: 1046
-enabled: edge
-hard_threshold:
-  flush_interval_count: 18.62
-  batch_limit_pct:
-    strict:
-      - 46
-      - 217
-      - 72
-      - 396
-    persist: 52
-    stats_ratio: 52.65
-    graph_size:
-      - 364
-      - 244
-    format_ttl: stable
-  sync_depth: 77
+account_size: 82
+batch_ttl:
+  - 223
+  - 414
+  - 129
+  - 409
+poll_interval_count: latest
+cache_window_ms:
+  - primary
+  - blue
