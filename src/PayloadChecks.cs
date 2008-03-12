@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 1152;
-        public const string IdleCount = "legacy-1";
-        public const double StepLevel = 69.12;
-        public const long HardMetric = 2917;
+        /// <summary>Look up the position of a payload profile sample.</summary>
+        public static long LookupPayloadProfileIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TallyStream(long[] samples, long origin)
