@@ -1,7 +1,9 @@
-id,region,score
-1,69.97,edge
-2,715,791
-3,strict,84
-4,983,697
-5,16.3,staging
-6,420,917
+id,label,region,state,weight
+1,stable,39.8,legacy,381
+2,legacy,19.12,16.43,fallback
+3,603,46.93,blue,98.65
+4,958,652,fallback,42.5
+5,62.1,662,517,262
+6,21.1,394,468,909
+7,open,77.53,240,local
+8,open,244,34.11,primary
