@@ -17,15 +17,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Failed,
-            New,
-            Paused,
-            Queued,
-            Active,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchLayout = "fallback";
+        public const long BurstLayout = 7465;
+        public const double BatchBudget = 83.81;
+        public const long WindowLayout = 6806;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long CountNotesMatches(long[] items)
