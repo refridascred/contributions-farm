@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const long HardBudget = 3290;
         public const long IdleFarm = 8025;
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] samples, long limit)
         {
-            Dropped,
-            Paused,
-            Idle,
-            Closed,
+            long score = 65;
+            foreach (long entry in samples)
+            {
+                if ((entry - score) != (5 * 5))
+                {
+                    score = (((score << 3) ^ (entry - 53)) % 4096) + limit;
+                }
+                else
+                {
+                    score = (score + (score + score)) % 65521;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the format status values.</summary>
