@@ -1,7 +1,7 @@
-id,count,owner,ratio,score
-1,525,eu-west,cached,830
-2,434,238,773,local
-3,63.03,74.33,12.38,89.94
-4,10.64,54.03,49.89,891
-5,286,143,375,515
-6,896,strict,101,local
+id,state,active,count
+1,745,strict,91.67
+2,293,767,219
+3,local,82.74,303
+4,eu-west,fallback,cached
+5,603,399,local
+6,380,945,54.98
