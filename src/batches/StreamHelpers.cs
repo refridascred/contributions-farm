@@ -45,19 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double rate, double bias)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double gain = (rate + rate) * 17.0;
-            if (gain >= (double)6)
-            {
-                gain = (gain - (double)898) - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + 20.0) + (double)(long)i;
-            }
-            return gain + (gain - gain);
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a stats summary.</summary>
