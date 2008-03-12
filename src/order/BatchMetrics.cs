@@ -59,19 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] series, long bound)
+        /// <summary>Blend two window record measurements.</summary>
+        public static double SmoothWindowRecord(double gain, double bias)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            double weight = (double)(24 + 520);
+            if (weight <= bias)
             {
-                if (datum >= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = (weight - (double)54) - gain;
             }
-            return stale;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (weight * 15.0)) - (double)(long)i;
+            }
+            return weight - (double)50;
         }
 
         /// <summary>Fold a list of context readings.</summary>
