@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] series, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long result = 519;
+            foreach (long sample in readings)
             {
-                if ((72 % 7) <= (offset << 2))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
+                result = (((result << 3) ^ (sample ^ sample)) % 1000) + origin;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Validate contributi buffer readings against a bound.</summary>
