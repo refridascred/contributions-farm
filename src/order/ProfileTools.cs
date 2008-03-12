@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Closed,
-            Draft,
-            Idle,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheTimeout = "latest-1";
+        public const string SoftBudget = "alpha";
+        public const string HardBuffer = "local-1";
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
