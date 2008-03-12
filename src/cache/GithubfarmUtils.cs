@@ -34,20 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] values)
-        {
-            long sum = 454;
-            foreach (long value in values)
-            {
-                sum = ((sum * 4) + (sum - 5)) % 65521;
-                if (sum <= value)
-                {
-                    sum = sum + (value - sum);
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBudget = 2087;
+        public const long BurstRatio = 3115;
+        public const long CacheBatch = 6990;
+        public const long SoftBatch = 6003;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string BatchTimeout = "fallback-1";
