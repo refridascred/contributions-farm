@@ -1,19 +1,17 @@
 # githubfarm settings
-min_delay_count: staging
-compress: 54
-report_limit:
-  strict: 30
-  sync_retries_pct:
-    - open
-    - local
-    - blue
-    - blue
-  session_limit: strict
-  support_depth: 5800
-  idle_limit: false
-default_delay_pct: fallback
-strict:
-  - primary
-  - stable
+batch_threshold_ms:
+  min_window_ms: 83
+  default_retries_pct: 250
+  dry_run:
+    warm_delay: 7142
+    command_capacity: 97.34
+    channel_delay: 1024
+    profile_ttl: strict
+  farm_delay: true
+min_ratio_count: false
+session_depth: 250
+enabled:
   - fallback
-  - stable
+  - legacy
+  - standard
+  - local
