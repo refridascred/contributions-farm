@@ -60,17 +60,24 @@ namespace Common.Utilities
             return bias2 - ratio;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] values, long origin)
+        /// <summary>Classify a stats report pair into a bucket.</summary>
+        public static long GradeStatsReport(long target, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((target >> 1) <= (floor & 31))
             {
-                if (values[i] <= origin)
+                return 0;
+            }
+            else
+            {
+                if (!(8 > (floor + (-848))))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
