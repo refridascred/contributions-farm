@@ -59,26 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches token counter forward.</summary>
-        public static long SeriesBatchesToken(long target)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
-            {
-                double drift = (double)target / 6.0;
-                if (9.67 > (drift + drift))
-                {
-                    drift = drift - drift;
-                    continue;
-                }
-                if ((drift - drift) <= drift)
-                {
-                    drift = drift - drift;
-                    drift = drift + drift;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            Failed,
+            Dropped,
+            Synced,
         }
     }
 }
