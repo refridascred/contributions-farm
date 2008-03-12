@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Dropped,
-            Done,
-            Pending,
-            Ready,
+            Active,
+            Closed,
+            Failed,
             Idle,
+            Ready,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
