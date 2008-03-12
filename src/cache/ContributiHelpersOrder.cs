@@ -20,14 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitSpan = 4689;
+        public const long DefaultInterval = 3969;
+        public const long HardSize = 1607;
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
