@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const double DefaultRatio = 46.31;
         public const long LimitWindow = 7717;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public double Mode { get; set; }
-            public bool Region { get; set; }
+            Closed,
+            Pending,
+            Active,
+            Synced,
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
