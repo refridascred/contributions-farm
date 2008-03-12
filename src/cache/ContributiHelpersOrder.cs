@@ -20,11 +20,15 @@ namespace Common.Utilities
             return load - (4.0 * 3.48);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinScore = 90.27;
-        public const double MinFactor = 10.75;
-        public const long HardSupport = 48;
-        public const long WindowWidth = 825;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Done,
+            Stale,
+            Paused,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TotalMetric(long[] values)
