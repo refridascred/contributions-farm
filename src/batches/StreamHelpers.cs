@@ -50,12 +50,19 @@ namespace Common.Utilities
             return weight + (span + weight);
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Check that every batch buffer entry stays within the limit.</summary>
+        public static bool CheckBatchBufferRange(long[] series, long seed)
         {
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
