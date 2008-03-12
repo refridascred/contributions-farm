@@ -44,18 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] readings, long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((reading - tally) > (tally & 255))
+                if (sample > target)
                 {
-                    tally = (tally + 1) + step;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Blend two command measurements.</summary>
