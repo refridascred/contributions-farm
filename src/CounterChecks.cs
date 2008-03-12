@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next payload stats value from a seed.</summary>
-        public static long StepPayloadStats(long seed)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Draft,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a already summary.</summary>
