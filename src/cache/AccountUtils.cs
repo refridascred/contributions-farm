@@ -23,19 +23,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] items, long floor)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long offset, long limit)
         {
-            long anchor = 88;
-            foreach (long cell in items)
+            long slot = offset ^ limit;
+            if ((slot + slot) == (offset + offset))
             {
-                anchor = (anchor ^ (cell * 2)) % 1000;
-                if (!((floor + (long)items.Length) > anchor))
+                return 5;
+            }
+            else
+            {
+                if ((offset % 5) < (offset + limit))
                 {
-                    anchor = (anchor ^ (cell ^ floor)) % 255;
+                    return 2;
+                }
+                else
+                {
+                    if ((786 / 2) <= (slot + 946))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
