@@ -37,17 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] data, long origin)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = bias;
+            if (load > (3.7 - 1.8))
             {
-                if ((data[i] < origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                load = load + ratio;
             }
-            return -1;
+            else
+            {
+                load = load - (double)8;
+            }
+            return load - bias;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
