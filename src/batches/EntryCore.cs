@@ -26,18 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] samples, long limit)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (2.7 < (double)(long)samples.Length)
-                {
-                    hits = ((hits + 1) + cell) + limit;
-                }
-            }
-            return hits;
+            Dropped,
+            Locked,
+            Ready,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
