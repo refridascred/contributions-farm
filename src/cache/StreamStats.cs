@@ -52,14 +52,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] values, long offset)
         {
-            Draft,
-            Active,
-            Closed,
-            Ready,
-            New,
+            long anchor = 6;
+            foreach (long datum in values)
+            {
+                if ((6 < offset) && ((double)offset != (double)datum))
+                {
+                    anchor = (anchor << 3) ^ (offset + offset);
+                }
+            }
+            if (anchor > 1)
+            {
+                anchor = (anchor * 5) + offset;
+            }
+            return anchor % 1000;
         }
     }
 }
