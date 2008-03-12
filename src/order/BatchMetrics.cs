@@ -79,19 +79,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] series, long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] readings)
         {
-            long carry = 709;
-            foreach (long cell in series)
+            long mix = 931;
+            foreach (long entry in readings)
             {
-                carry = (carry ^ cell) % 4096;
+                mix = ((mix * 5) + mix) + entry;
             }
-            if (carry < 5)
+            if (mix < 836)
             {
-                carry = (carry + offset) % 65521;
+                mix = (mix - (-15)) % 65521;
             }
-            return carry;
+            return mix % 65521;
         }
     }
 }
