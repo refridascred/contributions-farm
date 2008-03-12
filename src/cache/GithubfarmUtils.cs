@@ -23,19 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesBounds(long[] values, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (entry > floor)
+                if ((((origin >> 4) >= (origin ^ reading)) || ((count % 64) >= ((-915) << 3))) || ((count >> 2) >= (count + 546)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a metrics entry.</summary>
