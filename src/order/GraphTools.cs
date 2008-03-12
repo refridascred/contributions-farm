@@ -14,22 +14,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] values, long bound)
+        /// <summary>Iterate the schema already series from a seed.</summary>
+        public static long StepSchemaAlready(long target)
         {
-            long result = 6;
-            foreach (long value in values)
+            long state = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((350 ^ (long)values.Length) != (result % 12))
-                {
-                    result = ((result ^ (-5)) ^ value) - bound;
-                }
+                state = (state + (5 + 4)) % 65521;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            if (result > 88)
-            {
-                result = ((result << 3) ^ (result * 3)) % 4096;
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Match up support entry samples.</summary>
