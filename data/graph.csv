@@ -1,6 +1,7 @@
-id,count,active,ratio
-1,371,74.97,764
-2,green,31.7,staging
-3,latest,400,285
-4,496,96.15,blue
-5,935,176,open
+id,rank,weight,state
+1,674,698,845
+2,green,940,latest
+3,87.57,671,27.01
+4,9.33,latest,38
+5,32.78,3.66,95.66
+6,90.64,56.27,12.27
