@@ -22,26 +22,12 @@ namespace Common.Utilities
         public const long RetryStream = 8139;
         public const string BatchCount = "fallback";
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] items)
-        {
-            long acc = 929;
-            foreach (long item in items)
-            {
-                if (!((acc << 2) == (item ^ 53)))
-                {
-                    acc = (acc + (item << 2)) % 1000;
-                    acc = (acc + item) % 4096;
-                }
-                acc = (acc << 3) ^ (acc & 7);
-                acc = (acc + (96 / 6)) % 97;
-            }
-            if (acc < 828)
-            {
-                acc = (acc ^ (acc >> 4)) % 97;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinWidth = 4616;
+        public const string HardLayout = "cached-edge";
+        public const double WindowCount = 59.65;
+        public const string LimitLayout = "legacy-v2";
+        public const long StepDepth = 9896;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long StepBudget = 8045;
