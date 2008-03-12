@@ -54,12 +54,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public bool Offset { get; set; }
-            public double Region { get; set; }
-            public double Rank { get; set; }
+            Active,
+            Draft,
+            Failed,
         }
     }
 }
