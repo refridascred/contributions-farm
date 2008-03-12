@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] levels)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 658;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total << 3) ^ (total + total)) ^ sample;
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Accumulate editor samples.</summary>
