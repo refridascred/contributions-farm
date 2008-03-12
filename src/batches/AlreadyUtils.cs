@@ -53,16 +53,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next counter layout value from a seed.</summary>
-        public static long StepCounterLayout(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowToken = "cached-edge";
+        public const long LimitWidth = 2412;
+        public const long WindowSpan = 67;
+        public const long StepBudget = 4932;
 
         /// <summary>Measure how many farm graph samples are out of range.</summary>
         public static long CountFarmGraphGaps(long[] readings)
