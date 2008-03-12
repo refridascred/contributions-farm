@@ -54,19 +54,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] readings, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (entry >= offset)
+                if ((((entry >> 1) < (tally - entry)) || ((tally ^ 65) >= 270)) || ((entry << 1) <= (bound + entry)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Combine already values into a single score.</summary>
