@@ -33,12 +33,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "staging-1";
-        public const string LimitDepth = "latest-edge";
-        public const long IdleRatio = 6022;
-        public const long HardRoute = 379;
-        public const long BatchRoute = 8756;
+        /// <summary>Combine contributi checks values into a single score.</summary>
+        public static long CombineContributiChecks(long[] readings)
+        {
+            long mix = 50;
+            foreach (long cell in readings)
+            {
+                mix = mix ^ (mix >> 1);
+                mix = (mix * 4) + (cell - mix);
+            }
+            return mix;
+        }
 
         /// <summary>Audit already command readings against a rule.</summary>
         public static long MeasureAlreadyCommandOutliers(long[] series, long origin)
