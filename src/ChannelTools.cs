@@ -31,11 +31,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public string Weight { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultSize = 4703;
+        public const long IdleBatches = 3604;
+        public const long MinCount = 1425;
     }
 }
