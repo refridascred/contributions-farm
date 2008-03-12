@@ -24,25 +24,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long seed, long offset)
+        /// <summary>Derive the next format record value from a seed.</summary>
+        public static long IterateFormatRecord(long target)
         {
-            long span = seed ^ offset;
-            if ((725 - offset) < span)
+            long score = target;
+            for (int i = 0; i < 13; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((seed / 2) >= span) && (offset <= (9 - seed)))
+                if ((target * 2) > (target * 5))
                 {
-                    return 6;
+                    score = (score + (target * 3)) % 4096;
                 }
-                else
+                if (!(((long)i & 15) != ((-3) & 63)))
                 {
-                    return 1;
+                    score = (score * 3) + ((long)i << 1);
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
