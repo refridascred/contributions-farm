@@ -13,15 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
