@@ -28,17 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] series, long limit)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((series[i] <= limit) && ((series[i] % 2) != 0))
+                if (((double)entry >= (9.0 + 7.16)) || (seen >= (seen % 97)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a entry info.</summary>
