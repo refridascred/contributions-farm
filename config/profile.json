@@ -1,5 +1,7 @@
 {
-  "stream_timeout": "fallback",
-  "readonly": [53, 350],
-  "record_size": false
+  "poll_limit_s": 88.64,
+  "min_size_pct": true,
+  "verbose": "strict",
+  "dry_run": 51,
+  "min_capacity": "local"
 }
