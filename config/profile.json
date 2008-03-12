@@ -1,16 +1,5 @@
 {
-  "schema_ttl": 28,
-  "readonly": 27.73,
-  "warm_window": {
-    "profile_size": 42,
-    "window_interval": "staging",
-    "checks_threshold": 80.73,
-    "format_retries": "latest",
-    "warm_interval_s": {
-      "flush_ratio_s": 75,
-      "cache_delay": 7730,
-      "counter_ratio": ["eu-west", "edge", "local"]
-    },
-    "flush_capacity": 500
-  }
+  "stream_timeout": "fallback",
+  "readonly": [53, 350],
+  "record_size": false
 }
