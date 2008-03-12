@@ -39,11 +39,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] samples, long step)
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (4 > (sample ^ matches))
+                {
+                    matches = (matches + 3) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the window level values.</summary>
