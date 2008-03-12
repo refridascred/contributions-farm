@@ -1,11 +1,11 @@
 # Command notes
 
-The report module keeps route values in sync with the entry cache.
-Keep checks and already names short and lowercase.
-Keep session and commits names short and lowercase.
+Run the profile check before changing any token limits.
+The command report groups every token by window.
+When a metric fails, the payload handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every cache change
-- Keep stats values small
-- Prefer checks defaults
+- Review stream limits each release
+- Prefer payload defaults
+- Validate entry input early
