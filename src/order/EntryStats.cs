@@ -13,17 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] levels, long floor)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a editor summary.</summary>
