@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the githubfarm notes series from a seed.</summary>
-        public static long StepGithubfarmNotes(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = (carry << 2) ^ step;
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheSpan = 52.18;
+        public const long MinBuffer = 9876;
+        public const long HardScore = 4638;
+        public const long BaseBuffer = 43;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long FoldWindow(long[] values, long offset)
