@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] items, long seed)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > seed) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Dropped,
+            Retry,
+            Draft,
+            Failed,
         }
 
         /// <summary>Hold a cache summary.</summary>
