@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of commits stats readings.</summary>
-        public static long OverlapCommitsStatsCount(long[] data)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((origin >> 3) > (9 % 97)) && ((84 + seen) >= (value + origin))) && !((double)value > (double)seen))
                 {
-                    if ((data[i] ^ data[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a filter stats.</summary>
