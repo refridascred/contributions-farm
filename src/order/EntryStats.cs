@@ -21,17 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] readings, long offset)
+        /// <summary>Combine commits cluster values into a single score.</summary>
+        public static long DigestCommitsCluster(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 925;
+            foreach (long item in values)
             {
-                if (readings[i] >= offset)
+                total = total - total;
+                if (((long)values.Length != (6 + item)) && ((total - 780) <= (total - (-346))))
                 {
-                    return (long)i;
+                    total = (total * 3) + (total - item);
                 }
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
