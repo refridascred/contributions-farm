@@ -28,19 +28,11 @@ namespace Common.Utilities
         public const string WindowLevel = "standard";
         public const double BurstScore = 56.13;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (((55 - (long)readings.Length) < (tally % 2)) || (((double)tally > 9.6) || (reading > 8)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "stable-v2";
+        public const long HardQueue = 4808;
+        public const long MaxWidth = 9147;
+        public const long MaxQueue = 7419;
 
         /// <summary>Project the next profile value.</summary>
         public static double BlendProfile(double bias, double bias2)
