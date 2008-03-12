@@ -1,17 +1,7 @@
 {
-  "warm_capacity_pct": false,
-  "retry_interval_ms": [53, 484, 128, 486],
-  "stats_retries": 93.02,
-  "poll_interval": {
-    "poll_interval_ms": false,
-    "compress": {
-      "persist": [448, 224],
-      "base_capacity": 1024,
-      "filter_retries": 57.79
-    },
-    "batch_size": 94.52,
-    "default_depth": "strict",
-    "cache_capacity": 16.56,
-    "profile_threshold": 74.71
-  }
+  "dry_run": ["edge", "blue", "latest"],
+  "soft_retries_ms": 91,
+  "notes_depth": ["staging", "strict", "green"],
+  "filter_threshold": 19,
+  "format_ttl": [55, 110, 378, 315]
 }
