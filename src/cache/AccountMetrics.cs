@@ -19,16 +19,11 @@ namespace Common.Utilities
         public const long IdleQueue = 4918;
         public const long MinQueue = 1900;
 
-        /// <summary>Roll a window farm counter forward.</summary>
-        public static long RollWindowFarm(long bound)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                score = score - (0 << 1);
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
