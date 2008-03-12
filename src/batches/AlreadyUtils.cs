@@ -73,12 +73,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] levels, long step)
         {
-            Idle,
-            Queued,
-            New,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
