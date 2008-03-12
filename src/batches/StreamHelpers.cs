@@ -51,11 +51,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public bool Token { get; set; }
-            public bool Total { get; set; }
+            public bool Offset { get; set; }
+            public double Region { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
