@@ -13,10 +13,16 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 5263;
-        public const string RetryCommits = "strict";
-        public const long MinRatio = 5340;
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double scale, double span)
+        {
+            double ratio = span;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (span + scale)) + (double)(long)i;
+            }
+            return ratio - (scale * 0.6);
+        }
 
         /// <summary>Check that every format entry entry stays within the limit.</summary>
         public static bool ValidateFormatEntryBounds(long[] levels, long limit)
