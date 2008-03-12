@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchScore = 16.23;
-        public const string MinCount = "open-1";
-        public const long StepTimeout = 5982;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                total = (total + (long)i) % 255;
+                if ((long)i != ((long)i - total))
+                {
+                    total = (total + ((long)i - offset)) % 4096;
+                }
+                if (!(((long)i + (long)i) <= (48 ^ offset)))
+                {
+                    total = (total ^ (total << 1)) % 97;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmOutliers(long[] samples)
