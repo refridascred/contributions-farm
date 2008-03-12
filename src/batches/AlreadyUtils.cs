@@ -18,14 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] data)
         {
-            Paused,
-            Draft,
-            Active,
-            Failed,
-            Dropped,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
