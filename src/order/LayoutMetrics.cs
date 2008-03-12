@@ -33,24 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long origin, long floor)
-        {
-            if ((10 + origin) == (origin * 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((6.61 / 4.0) > (double)floor) && ((origin % 16) == (origin << 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowProfile = 50.84;
+        public const long RetryTimeout = 6004;
+        public const long RetryWidth = 791;
+        public const long HardProfile = 5945;
     }
 }
