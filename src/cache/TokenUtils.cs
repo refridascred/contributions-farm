@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many buffer channel samples are out of range.</summary>
-        public static long CountBufferChannelMatches(long[] values)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((sample >> 5) <= (hits << 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Blend two githubfarm cluster measurements.</summary>
