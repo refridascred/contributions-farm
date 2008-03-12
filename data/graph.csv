@@ -1,7 +1,6 @@
-id,weight,ratio
-1,708,642
-2,strict,cached
-3,515,73.31
-4,695,626
-5,3.03,7.67
-6,724,672
+id,count,active,ratio
+1,371,74.97,764
+2,green,31.7,staging
+3,latest,400,285
+4,496,96.15,blue
+5,935,176,open
