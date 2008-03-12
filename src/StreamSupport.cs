@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 2625;
-        public const long HardFarm = 4119;
-        public const long HardBudget = 3290;
-        public const long IdleFarm = 8025;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchEditor = "fallback-edge";
+        public const double MaxEditor = 7.74;
+        public const long BaseWidth = 2807;
+        public const string BurstEditor = "standard";
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long DigestGraph(long[] samples, long limit)
