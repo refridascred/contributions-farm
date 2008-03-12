@@ -57,25 +57,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long floor, long offset)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] items, long seed)
         {
-            long offset2 = floor ^ offset;
-            if ((offset2 * 3) <= (offset2 ^ floor))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset * 5) != (offset2 << 2))
+                if (items[i] == seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
