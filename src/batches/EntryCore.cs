@@ -45,11 +45,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowRatio = "primary-1";
-        public const long CacheCount = 1412;
-        public const long MaxStats = 2205;
-        public const long IdleStats = 6481;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Done,
+            Retry,
+            Active,
+            Pending,
+            New,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double StepTimeout = 29.49;
