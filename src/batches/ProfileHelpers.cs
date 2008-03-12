@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long bound, long floor)
         {
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long cur = bound + floor;
+            if ((bound ^ floor) > (cur & 15))
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound < (bound * 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
