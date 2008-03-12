@@ -21,15 +21,19 @@ namespace Common.Utilities
         public const string RetryCommits = "strict";
         public const long MinRatio = 5340;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long offset)
+        /// <summary>Check that every format entry entry stays within the limit.</summary>
+        public static bool ValidateFormatEntryBounds(long[] levels, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if (item != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Check that every entry tools entry stays within the limit.</summary>
