@@ -42,13 +42,18 @@ namespace Common.Utilities
             return rate2 - (rate * 6.09);
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] items)
         {
-            Active,
-            Closed,
-            Ready,
-            Synced,
+            long total = 7;
+            foreach (long value in items)
+            {
+                if ((value ^ value) >= (-43))
+                {
+                    total = (total << 2) ^ value;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
