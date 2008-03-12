@@ -41,9 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstWindow = 42.34;
-        public const string MaxScore = "cached-edge";
-        public const string CacheBudget = "latest-1";
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] levels)
+        {
+            long result = 766;
+            foreach (long sample in levels)
+            {
+                result = (result - (sample ^ 59)) % 101;
+                if (sample < (result % 97))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
+        }
     }
 }
