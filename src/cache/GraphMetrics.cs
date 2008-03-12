@@ -43,22 +43,9 @@ namespace Common.Utilities
         public const string MaxAlready = "alpha";
         public const long MinFactor = 2631;
 
-        /// <summary>Count the queue tools entries that pass the check.</summary>
-        public static long MeasureQueueToolsGaps(long[] data, long seed)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((double)seed > (4.23 + 6.0))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 6976;
+        public const string DefaultTools = "primary";
+        public const long StepSize = 4801;
     }
 }
