@@ -31,19 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double weight, double floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] levels, long seed)
         {
-            double scale = weight / 3.0;
-            if (scale <= 3.4)
+            long total = -20;
+            foreach (long item in levels)
             {
-                scale = (scale - (double)(-92)) + floor;
+                if ((seed / 3) < seed)
+                {
+                    total = ((total - ((long)levels.Length & 255)) % 1000) + item;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (seed << 1)) % 101;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (scale + weight)) + (double)(long)i;
-            }
-            return scale + (double)3;
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
