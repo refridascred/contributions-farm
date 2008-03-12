@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] readings)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (((256 <= (cell ^ 645)) || ((seen / 2) == (cell << 1))) || ((cell ^ 314) == (seen + cell)))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    seen = seen + 1;
+                    acc = (acc ^ (20 - acc)) + (long)i2;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
