@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] samples)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (3.0 >= (double)value)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
