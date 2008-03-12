@@ -1,8 +1,5 @@
 {
-  "burst_delay_s": "strict",
-  "soft_window_ms": 70.97,
-  "payload_window": [126, 74],
-  "sync_window_count": true,
-  "sync_delay": true,
-  "retry_limit_pct": ["legacy", "fallback"]
+  "default_window": 100,
+  "retry_threshold": 97.11,
+  "base_threshold": "eu-west"
 }
