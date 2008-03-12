@@ -39,18 +39,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit entry order readings against a rule.</summary>
-        public static long CountEntryOrderMatches(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((entry + entry) > (entry % 16))
+                if (sample >= step)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Accumulate queue token samples.</summary>
