@@ -39,22 +39,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats token entries that pass the check.</summary>
-        public static long TallyStatsTokenGaps(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (!((tally >> 5) >= 199))
-                {
-                    tally = ((tally + 1) ^ datum) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitSize = 5800;
+        public const long MaxCounter = 7131;
+        public const string MaxInterval = "stable";
+        public const long MaxCount = 3198;
     }
 }
