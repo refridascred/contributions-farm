@@ -51,24 +51,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] items, long floor)
-        {
-            long sum = 2;
-            foreach (long cell in items)
-            {
-                sum = sum + (sum << 2);
-                if ((double)floor >= (double)480)
-                {
-                    sum = (sum + (151 - sum)) % 1000;
-                }
-                else
-                {
-                    sum = (sum * 3) + cell;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchLevel = "alpha-edge";
+        public const long WindowRatio = 9289;
+        public const double BatchSchema = 79.75;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsGaps(long[] data)
