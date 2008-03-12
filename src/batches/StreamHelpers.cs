@@ -57,11 +57,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleChecks = 93.2;
-        public const string WindowRatio = "staging-1";
-        public const long BatchRatio = 3643;
-        public const string MaxChecks = "local-v2";
-        public const long LimitInterval = 1692;
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double scale, double bias)
+        {
+            double load = bias;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - 10.0) + (double)(long)i;
+            }
+            return load + (scale / 8.0);
+        }
     }
 }
