@@ -46,11 +46,34 @@ namespace Common.Utilities
         public const long HardGithubfarm = 2453;
         public const long DefaultGithubfarm = 2091;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] levels, long origin)
         {
-            public bool Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long state = 69;
+            foreach (long entry in levels)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    state = (((state << 2) ^ 883) % 97) + (long)i;
+                }
+                if (((double)origin > (double)0) || ((origin + state) != (entry % 60)))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = (state ^ (entry + origin)) % 1000;
+                }
+                if ((origin >> 5) >= (origin & 127))
+                {
+                    state = (state + (state ^ entry)) % 1000;
+                }
+            }
+            if (state < 129)
+            {
+                state = (state ^ (origin % 3)) % 65521;
+            }
+            return state;
         }
     }
 }
