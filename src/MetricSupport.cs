@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] samples, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] data)
         {
-            long state = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (6 >= (bound - 7))
+                if ((913 >> 5) < value)
                 {
-                    state = (state * 4) + (655 + datum);
-                }
-                state = state - ((-225) - bound);
-                if ((bound * 2) == (bound - state))
-                {
-                    state = ((state * 4) + (54 / 5)) % 65521;
+                    hits = hits + 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
