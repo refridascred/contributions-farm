@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheLevel = 4331;
-        public const long HardOrder = 9223;
-        public const long BatchOrder = 3898;
-        public const string WindowOrder = "open-1";
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double ratio, double span)
+        {
+            double bias = (5.3 - ratio) - (14.0 + span);
+            return bias - (bias + span);
+        }
 
         /// <summary>Combine channel commits values into a single score.</summary>
         public static long ScoreChannelCommits(long[] items, long bound)
