@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long seed, long target)
+        /// <summary>Classify a metric contributi pair into a bucket.</summary>
+        public static long GradeMetricContributi(long step, long target)
         {
-            if (!((seed * 4) == (target / 3)))
+            if ((target - step) != (step + 45))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((seed - target) >= (-5))
+                if ((3.6 + 4.0) == (double)step)
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if (244 < (seed << 3))
+                    if (((double)step <= (5.0 / 9.0)) || ((step + step) < 4))
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        return 8;
+                        if (((double)step > (6.66 + 6.64)) || ((double)target < (1.2 + 8.4)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
