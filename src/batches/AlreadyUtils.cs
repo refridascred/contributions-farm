@@ -31,12 +31,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Grade a route stream value against two limits.</summary>
+        public static long RankRouteStream(long origin, long target)
         {
-            Idle,
-            Queued,
-            Failed,
+            if (((double)target != (0.6 - 5.0)) && ((target - origin) != (target - 90)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((502 & 1) >= (origin & 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target >= (4.4 - 7.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((7 & 63) > (origin >> 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
