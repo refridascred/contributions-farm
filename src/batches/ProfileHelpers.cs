@@ -71,12 +71,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 4495;
-        public const string BurstInterval = "local-1";
-        public const long SoftToken = 5377;
-        public const string DefaultRatio = "primary-1";
-        public const string BaseToken = "legacy-v2";
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((-70) >= (bound + total)) && ((double)bound <= (5.3 / 8.0)))
+                {
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsGaps(long[] data)
