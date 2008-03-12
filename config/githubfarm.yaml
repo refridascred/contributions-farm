@@ -1,7 +1,5 @@
 # githubfarm settings
-min_limit_pct:
-  - 158
-  - 45
-  - 258
-githubfarm_depth: green
-enabled: 2
+checks_delay: 60
+warm_ratio_s: 8795
+default_interval: false
+graph_depth: green
