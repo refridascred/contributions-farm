@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] readings, long origin)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double weight, double span)
         {
-            long result = 519;
-            foreach (long sample in readings)
+            double load = 3.79;
+            if (load > span)
             {
-                result = (((result << 3) ^ (sample ^ sample)) % 1000) + origin;
+                load = (load - 3.42) - weight;
             }
-            return result;
+            else
+            {
+                load = load - (load / 2.0);
+            }
+            return load - (4.0 * 3.48);
         }
 
         /// <summary>Validate contributi buffer readings against a bound.</summary>
