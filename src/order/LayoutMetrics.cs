@@ -31,18 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] values)
+        /// <summary>Count the channel format entries that pass the check.</summary>
+        public static long AuditChannelFormatGaps(long[] readings, long step)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (tally >= (tally + 71))
                 {
-                    if ((values[i] - values[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 1) - reading) + step;
                 }
             }
             return tally;
