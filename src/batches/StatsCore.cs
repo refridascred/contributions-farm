@@ -53,22 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] items, long offset)
+        /// <summary>Accumulate format batch samples.</summary>
+        public static long DigestFormatBatch(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long mark = 43;
+            foreach (long sample in values)
             {
-                if (((-915) + entry) < (tally + offset))
+                if (!((sample + mark) >= (mark + mark)))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mark = ((mark << 3) ^ (sample % 3)) % 65521;
                 }
             }
-            return tally;
+            if (mark < 6)
+            {
+                mark = ((mark << 2) ^ 78) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define session limits and defaults.</summary>
