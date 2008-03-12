@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Stale,
-            Dropped,
-            Closed,
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
