@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a payload githubfarm sample.</summary>
-        public static long FindPayloadGithubfarmIndex(long[] values, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (values[i] < offset)
+                if ((long)levels.Length <= (2 + matches))
                 {
-                    return (long)i;
+                    matches = ((matches + 2) + cell) + offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
