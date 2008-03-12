@@ -1,45 +1,5 @@
 # support settings
-base_retries: latest
-poll_size: eu-west
-audit:
-  - stable
-  - standard
-  - eu-west
-retry_window_ms:
-  poll_depth_pct:
-    - 436
-    - 454
-    - 340
-    - 290
-  poll_ratio_pct:
-    retry_ttl:
-      - stable
-      - legacy
-    session_size: 500
-    hard_threshold: 46.46
-    compress:
-      - legacy
-      - legacy
-      - cached
-      - edge
-    sync_threshold_ms: legacy
-    poll_retries: 2.74
-  verbose:
-    metric_capacity:
-      - 296
-      - 306
-    poll_ttl_pct: 22.3
-    persist: 59
-    channel_ratio: 9602
-    report_retries:
-      - 236
-      - 459
-      - 101
-      - 443
-  batch_threshold_count: 9539
-  cache_threshold: local
-  command_depth:
-    - 482
-    - 20
-    - 76
-stats_window: 100
+cache_size_pct: staging
+enabled: 1024
+notes_size: 38
+cache_ratio: eu-west
