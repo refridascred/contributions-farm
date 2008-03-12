@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 5365;
-        public const string CacheBudget = "cached-1";
-        public const long CacheLevel = 6533;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public long Score { get; set; }
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long DigestCache(long[] values, long step)
