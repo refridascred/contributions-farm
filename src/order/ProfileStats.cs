@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Draft,
-            Retry,
-            New,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheLevel = 7332;
+        public const double BatchNotes = 46.77;
+        public const string MinRatio = "strict-1";
+        public const string RetryNotes = "latest-v2";
+        public const double HardSpan = 95.35;
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
