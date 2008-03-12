@@ -1,5 +1,4 @@
 # entry settings
-audit: edge
-flush_depth_pct: 100
-poll_interval_pct: strict
-burst_depth: 42.35
+compress: 1075
+format_depth: false
+batch_window_s: edge
