@@ -35,20 +35,18 @@ namespace Common.Utilities
         public const string CacheStats = "staging-1";
         public const string BaseStats = "standard-1";
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] series, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
+            long carry = 430;
+            foreach (long reading in series)
             {
-                if (floor <= (long)i)
+                if (carry > (reading % 10))
                 {
-                    score = (score * 3) + (floor << 1);
-                    break;
+                    carry = ((carry + carry) % 1000) + bound;
                 }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Match up report queue samples.</summary>
