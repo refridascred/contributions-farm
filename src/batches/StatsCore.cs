@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const string MinCount = "open-1";
         public const long StepTimeout = 5982;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] samples)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((((14.0 * 8.87) > (double)entry) && (4.7 < (double)tally)) && ((4.9 + 6.0) <= (double)tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
