@@ -35,22 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session githubfarm entries that pass the check.</summary>
-        public static long MeasureSessionGithubfarmOutliers(long[] samples)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((73 % 60) == (item + (-653))) || ((double)tally < (double)item)) && ((double)item < (7.3 / 4.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] - series[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
