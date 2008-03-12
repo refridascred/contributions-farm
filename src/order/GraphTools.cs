@@ -32,21 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 8;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry & 31) != ((-68) / 4))
                 {
-                    if ((items[i] - items[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum * 2) + seed) % 97;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Match up format samples.</summary>
