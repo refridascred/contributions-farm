@@ -1,4 +1,19 @@
 # entry settings
-retry_ratio_count: edge
-stream_interval: true
-idle_window: true
+min_size_count:
+  audit: 27.62
+  max_delay_s:
+    flush_interval: false
+    verbose: true
+    poll_delay_pct: cached
+  verbose: primary
+commits_size:
+  - strict
+  - strict
+  - open
+record_timeout:
+  warm_capacity_s: green
+  max_depth: edge
+  batch_ttl:
+    - 482
+    - 485
+    - 53
