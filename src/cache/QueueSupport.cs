@@ -18,19 +18,14 @@ namespace Common.Utilities
         public const long WindowWidth = 2446;
         public const long IdleEditor = 3036;
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double gain, double span)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            double drift = span;
-            if (drift > drift)
-            {
-                drift = (drift - 5.0) + gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (span + span)) + (double)(long)i;
-            }
-            return drift + (15.0 * 9.2);
+            Failed,
+            Retry,
+            Closed,
+            Active,
+            Ready,
         }
     }
 }
