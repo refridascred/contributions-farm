@@ -44,15 +44,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] samples)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] levels)
         {
-            long carry = 33;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                carry = (((carry << 3) ^ ((long)samples.Length + 80)) % 101) ^ sample;
+                if (7.3 <= (double)item)
+                {
+                    hits = hits + 2;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Locate a contributi metrics reading by value.</summary>
