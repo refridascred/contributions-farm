@@ -1,8 +1,6 @@
 # entry settings
-order_delay:
-  - green
-  - staging
-flush_limit_s: 3574
-support_limit: latest
-enabled: 40
-hard_size: 30
+commits_limit: true
+readonly: 8078
+soft_interval_pct: 5922
+hard_ttl_ms: edge
+compress: false
