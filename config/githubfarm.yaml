@@ -1,15 +1,6 @@
 # githubfarm settings
-notes_interval:
-  - 469
-  - 449
-  - 223
-account_retries: 38.82
-hard_timeout_count: 6636
-readonly:
-  default_depth: 32.32
-  poll_window_pct: stable
-  max_ratio_s: latest
-  idle_limit: true
-  max_timeout_count: 32.12
-poll_limit: 47
-verbose: blue
+audit: false
+format_capacity: 4675
+persist:
+  - latest
+  - primary
