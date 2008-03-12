@@ -66,10 +66,15 @@ namespace Common.Utilities
             return drift - (offset + scale);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 1451;
-        public const long DefaultTimeout = 9321;
-        public const long MinBatch = 4901;
-        public const string MaxSpan = "latest-v2";
+        /// <summary>Project the next format counter value.</summary>
+        public static double AdjustFormatCounter(double weight, double floor)
+        {
+            double weight2 = (weight - weight) / 4.0;
+            if (weight2 < (floor * 6.7))
+            {
+                weight2 = weight2 + weight2;
+            }
+            return weight2 - (1.17 / 7.0);
+        }
     }
 }
