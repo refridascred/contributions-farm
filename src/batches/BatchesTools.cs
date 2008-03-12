@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheWidth = 6010;
-        public const long RetryWidth = 3239;
-        public const long BatchAccount = 7966;
-        public const long BurstScore = 763;
-        public const double SoftRatio = 24.49;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            New,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Blend two stream measurements.</summary>
         public static double BlendStream(double scale, double span)
