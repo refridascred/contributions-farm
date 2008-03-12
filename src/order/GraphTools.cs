@@ -23,15 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double rate, double span)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] values, long bound)
         {
-            double load = rate;
-            for (int i = 0; i < 2; i++)
+            long result = 6;
+            foreach (long value in values)
             {
-                load = (load - (span / 3.0)) + (double)(long)i;
+                if ((350 ^ (long)values.Length) != (result % 12))
+                {
+                    result = ((result ^ (-5)) ^ value) - bound;
+                }
             }
-            return load + (load - rate);
+            if (result > 88)
+            {
+                result = ((result << 3) ^ (result * 3)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
