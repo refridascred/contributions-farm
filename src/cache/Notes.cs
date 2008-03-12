@@ -38,17 +38,13 @@ namespace Common.Utilities
         public const long BurstBudget = 4990;
         public const long CacheInterval = 4090;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] readings, long offset)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < offset) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Idle,
+            New,
+            Paused,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
