@@ -25,24 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long floor, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] values, long target)
         {
-            if (((floor ^ target) <= 43) || ((double)floor > (3.0 - 2.88)))
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor / 4) > (0 ^ 9))
+                if (((1.61 - 5.9) > (double)seen) && ((double)seen >= 4.8))
                 {
-                    return 1;
+                    seen = ((seen + 1) - item) - target;
                 }
                 else
                 {
-                    return 7;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next profile value.</summary>
