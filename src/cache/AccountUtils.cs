@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Derive the next stream tools value from a seed.</summary>
+        public static long SeriesStreamTools(long target)
         {
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
-            public double Count { get; set; }
+            long sum = target;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
