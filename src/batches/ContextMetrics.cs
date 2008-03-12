@@ -58,39 +58,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long offset, long floor)
-        {
-            long cur = offset + floor;
-            if ((double)cur == (1.48 + 20.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((cur + offset) <= cur) || ((cur ^ floor) > (626 + offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((9.5 * 7.9) > (double)offset) || ((floor + offset) >= (floor - cur)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((9.09 * 2.55) < (double)offset) && ((8.16 * 1.1) == (double)offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseWidth = 31.5;
+        public const long CacheWidth = 9058;
+        public const double BurstWidth = 70.43;
+        public const double BaseBatches = 80.61;
     }
 }
