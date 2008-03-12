@@ -20,13 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Done,
-            Retry,
-            Synced,
             Active,
+            Locked,
+            Failed,
+            Pending,
             Draft,
         }
 
