@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] data)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
