@@ -51,19 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double scale, double offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] samples, long origin)
         {
-            double drift = scale;
-            if (drift < drift)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                drift = drift - (double)8;
+                if (!((value >> 5) == (value % 64)) || ((value - seen) < 34))
+                {
+                    seen = (seen + 3) + origin;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (offset + scale);
+            return seen;
         }
 
         /// <summary>Project the next format counter value.</summary>
