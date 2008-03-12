@@ -40,9 +40,13 @@ namespace Common.Utilities
         public const long WindowScore = 6651;
         public const long SoftDepth = 7089;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchAccount = "standard-edge";
-        public const string RetryAccount = "primary-1";
-        public const long CacheAccount = 9665;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            New,
+            Closed,
+            Queued,
+            Done,
+        }
     }
 }
