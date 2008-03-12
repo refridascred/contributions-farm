@@ -19,14 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Retry,
-            Active,
-            Ready,
-            Draft,
-            Synced,
+            public double Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the batches phase values.</summary>
