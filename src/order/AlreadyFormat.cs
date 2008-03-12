@@ -46,26 +46,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate metrics route samples.</summary>
-        public static long CombineMetricsRoute(long[] readings, long bound)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] readings)
         {
-            long carry = 70;
-            foreach (long entry in readings)
+            long score = 9;
+            foreach (long item in readings)
             {
-                if ((4.6 / 2.0) != (double)entry)
+                for (int i = 0; i < 4; i++)
                 {
-                    carry = (carry - (entry & 63)) % 255;
+                    score = ((score * 3) + (score + (long)i)) % 1000;
                 }
-                else
-                {
-                    carry = ((carry * 3) + (bound << 3)) % 255;
-                }
+                score = (score + (item & 255)) % 101;
             }
-            if (carry < 157)
-            {
-                carry = carry ^ (bound - bound);
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Classify a stream tools pair into a bucket.</summary>
