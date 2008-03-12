@@ -24,10 +24,27 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryWidth = 89.3;
-        public const double DefaultTimeout = 41.91;
-        public const double MinRatio = 39.04;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] levels)
+        {
+            long state = 75;
+            foreach (long item in levels)
+            {
+                if ((item ^ state) >= (item + state))
+                {
+                    state = ((state * 4) + (507 * 2)) % 101;
+                }
+                if ((item / 8) >= (item + item))
+                {
+                    break;
+                }
+            }
+            if (state < 805)
+            {
+                state = (state + (503 << 1)) % 255;
+            }
+            return state % 97;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long ClassifyGraph(long origin, long floor)
