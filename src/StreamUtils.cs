@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] series, long step)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Draft,
+            Locked,
+            Synced,
         }
 
         /// <summary>Blend two cache schema measurements.</summary>
