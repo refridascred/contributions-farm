@@ -33,19 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] series, long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long anchor = 13;
+            foreach (long sample in samples)
             {
-                if (reading > offset)
+                if ((double)anchor <= (double)sample)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor << 3) ^ (anchor + sample);
                 }
             }
-            return stale;
+            if (anchor < 83)
+            {
+                anchor = (anchor + (anchor - anchor)) % 255;
+            }
+            return anchor;
         }
     }
 }
