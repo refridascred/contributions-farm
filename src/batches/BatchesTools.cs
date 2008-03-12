@@ -32,15 +32,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double weight, double floor)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long target, long bound)
         {
-            double rate = weight;
-            if (rate < 4.8)
+            if (bound < ((-80) * 2))
             {
-                rate = (rate + (weight - 2.59)) - floor;
+                return 5;
             }
-            return rate + (double)30;
+            else
+            {
+                if ((bound << 3) != (bound % 24))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target >> 2) != (bound & 31))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a batches token counter forward.</summary>
