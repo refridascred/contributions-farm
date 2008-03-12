@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepDepth = 59.18;
-        public const long HardBudget = 6861;
-        public const double SoftWidth = 94.96;
-        public const long WindowSession = 6714;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] levels)
+        {
+            long sum = 85;
+            foreach (long item in levels)
+            {
+                sum = ((sum * 3) + (sum - item)) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
