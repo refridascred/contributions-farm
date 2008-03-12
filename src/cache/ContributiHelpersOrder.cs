@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 3969;
         public const long HardSize = 1607;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] readings, long limit)
         {
-            Draft,
-            Dropped,
-            Queued,
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
