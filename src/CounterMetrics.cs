@@ -54,19 +54,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] items, long target)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Stale,
+            Done,
+            Locked,
+            Failed,
         }
     }
 }
