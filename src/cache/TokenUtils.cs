@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            New,
-            Draft,
-            Ready,
-            Stale,
+            public double Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a schema stats.</summary>
