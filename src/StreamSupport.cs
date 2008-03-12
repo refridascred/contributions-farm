@@ -29,17 +29,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 7249;
+        public const long StepScore = 8536;
+        public const long WindowProfile = 7140;
+        public const string IdleProfile = "strict-edge";
+        public const long StepProfile = 6001;
     }
 }
