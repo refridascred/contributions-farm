@@ -20,18 +20,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] series, long offset)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double scale, double offset)
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((((-73) >> 4) == (count * 3)) && ((count & 31) > (-130)))
-                {
-                    count = ((count + 1) ^ entry) + offset;
-                }
-            }
-            return count;
+            double gain = (offset + offset) - (double)361;
+            return (gain - (9.1 + offset)) + scale;
         }
 
         /// <summary>Project the next session value.</summary>
