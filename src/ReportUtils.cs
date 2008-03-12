@@ -41,15 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double ratio, double floor)
+        /// <summary>Locate a payload layout reading by value.</summary>
+        public static long SeekPayloadLayoutIndex(long[] samples, long target)
         {
-            double bias = ratio;
-            if (bias > (bias + floor))
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + bias;
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (double)836;
+            return -1;
         }
 
         /// <summary>Validate buffer commits readings against a bound.</summary>
