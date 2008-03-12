@@ -71,19 +71,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] items, long floor)
         {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
+            long sum = 2;
+            foreach (long cell in items)
             {
-                if (((-70) >= (bound + total)) && ((double)bound <= (5.3 / 8.0)))
+                sum = sum + (sum << 2);
+                if ((double)floor >= (double)480)
                 {
-                    continue;
+                    sum = (sum + (151 - sum)) % 1000;
                 }
-                total = ((total * 5) + (long)i) % 4093;
+                else
+                {
+                    sum = (sum * 3) + cell;
+                }
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
