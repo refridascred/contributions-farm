@@ -28,12 +28,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] series)
         {
-            Queued,
-            Active,
-            Ready,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (reading < 5)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
