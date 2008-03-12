@@ -28,17 +28,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] values, long bound)
+        /// <summary>Adjust a schema metrics reading.</summary>
+        public static double BlendSchemaMetrics(double gain, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = gain / 5.0;
+            if (mean < offset)
             {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mean = mean - gain;
             }
-            return -1;
+            return mean - mean;
         }
 
         /// <summary>Locate a payload layout reading by value.</summary>
