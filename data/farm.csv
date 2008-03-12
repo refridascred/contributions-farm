@@ -1,8 +1,8 @@
-id,state,region
-1,297,green
-2,44.62,65.58
-3,70.98,legacy
-4,local,90.53
-5,latest,green
-6,972,98.0
-7,764,32.95
+id,count,token
+1,eu-west,46.46
+2,447,78.13
+3,primary,green
+4,95.82,standard
+5,477,905
+6,375,819
+7,447,2.44
