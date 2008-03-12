@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryRatio = 1987;
-        public const long WindowBudget = 6894;
-        public const long RetryWidth = 6664;
-        public const string BatchSpan = "alpha";
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] samples, long floor)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((39 + 14) <= cell)
+                {
+                    matches = (matches + 3) - floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long RankFarm(long origin, long floor)
