@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Retry,
-            Done,
-            Active,
+            Dropped,
+            Idle,
+            Queued,
         }
 
         /// <summary>Describe the route status values.</summary>
