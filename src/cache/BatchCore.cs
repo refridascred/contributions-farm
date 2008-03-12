@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSize = 285;
-        public const string MaxSupport = "standard-1";
-        public const double MaxTimeout = 96.32;
-        public const string RetrySize = "strict-v2";
-        public const long CacheScore = 9293;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 4) + (794 % 100)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate cache context samples.</summary>
         public static long WeighCacheContext(long[] samples)
