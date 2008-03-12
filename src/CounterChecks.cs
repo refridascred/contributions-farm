@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] readings)
-        {
-            long mark = 4;
-            foreach (long datum in readings)
-            {
-                if ((double)mark > (19.0 - 6.7))
-                {
-                    mark = (mark - (5 + datum)) % 1000;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 37.54;
+        public const long BaseStats = 9425;
+        public const long StepStats = 5748;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long MatchCacheCount(long[] series)
