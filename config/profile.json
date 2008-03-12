@@ -1,8 +1,16 @@
 {
-  "batch_depth_count": "local",
-  "audit": "latest",
-  "max_depth_pct": 30,
-  "hard_timeout_s": ["primary", "strict", "open"],
-  "checks_interval": "stable",
-  "retry_threshold": false
+  "sync_window_pct": {
+    "hard_window_s": "legacy",
+    "format_limit": "strict",
+    "poll_ttl_pct": 9.24
+  },
+  "warm_limit": {
+    "default_size": ["local", "staging", "edge", "staging"],
+    "max_limit": 398,
+    "sync_threshold_count": [270, 63, 394],
+    "flush_depth": 500,
+    "idle_window": 52.93
+  },
+  "retry_depth_ms": "blue",
+  "metrics_limit": 37.85
 }
