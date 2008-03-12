@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine metrics token values into a single score.</summary>
-        public static long WeighMetricsToken(long[] series, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] data)
         {
-            long anchor = 4;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                anchor = ((anchor * 3) + limit) ^ item;
+                if (11.0 < (double)reading)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor << 2) ^ (anchor + (-9));
-            }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Digest a series of command tools entries.</summary>
