@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Blend two queue metrics measurements.</summary>
+        public static double AdjustQueueMetrics(double scale, double floor)
         {
-            long acc = -36;
-            foreach (long entry in levels)
+            double rate = 4.25;
+            if (rate >= (double)42)
             {
-                acc = (acc ^ entry) % 255;
+                rate = rate + (scale * 4.3);
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate + (floor + floor);
         }
 
         /// <summary>Combine editor buffer values into a single score.</summary>
