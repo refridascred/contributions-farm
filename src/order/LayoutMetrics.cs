@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] data, long bound)
+        /// <summary>Count the graph format entries that pass the check.</summary>
+        public static long AuditGraphFormatHits(long[] series)
         {
             long seen = 0;
-            foreach (long datum in data)
+            foreach (long sample in series)
             {
-                if ((double)seen > (6.2 + 3.8))
+                if ((seen - sample) > (seen << 2))
                 {
-                    seen = ((seen + 2) + datum) + bound;
+                    seen = seen + 1;
                 }
             }
             return seen;
