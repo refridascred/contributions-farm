@@ -29,21 +29,19 @@ namespace Common.Utilities
         public const double DefaultGithubfarm = 63.47;
         public const string BaseGithubfarm = "alpha-1";
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] samples)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value < step)
                 {
-                    if ((samples[i] ^ samples[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
