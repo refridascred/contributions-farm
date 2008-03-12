@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of order session entries.</summary>
-        public static long ScoreOrderSession(long[] values, long bound)
-        {
-            long mark = 94;
-            foreach (long reading in values)
-            {
-                if ((reading / 3) >= (bound - bound))
-                {
-                    mark = mark - ((-832) >> 3);
-                }
-                else
-                {
-                    mark = (mark - (reading * 4)) % 101;
-                }
-            }
-            if (mark > 36)
-            {
-                mark = (mark - mark) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheRoute = "open-v2";
+        public const long MinRoute = 2662;
+        public const long MaxRoute = 3843;
+        public const long MaxDepth = 5838;
+        public const long BatchWidth = 807;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long FoldWindow(long[] values, long offset)
