@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate stream record samples.</summary>
-        public static long TallyStreamRecord(long[] values, long target)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long target, long floor)
         {
-            long sum = 657;
-            foreach (long reading in values)
+            if ((floor % 10) < (target & 15))
             {
-                sum = (((sum ^ (sum >> 4)) % 101) - reading) + target;
+                return 1;
             }
-            if (sum > 798)
+            else
             {
-                sum = ((sum << 3) ^ sum) % 97;
+                if ((floor + floor) < target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return sum % 4096;
         }
 
         /// <summary>Describe the notes level values.</summary>
