@@ -22,12 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] samples, long seed)
         {
-            Dropped,
-            Locked,
-            Ready,
+            long score = 753;
+            foreach (long reading in samples)
+            {
+                score = (score - (seed - score)) + reading;
+            }
+            if (score > 6)
+            {
+                score = (score * 2) + ((-731) - 956);
+            }
+            return score;
         }
 
         /// <summary>Find the first queue account entry that matches the target.</summary>
