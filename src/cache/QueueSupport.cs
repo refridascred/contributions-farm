@@ -12,10 +12,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryDepth = 4845;
-        public const long MinCounter = 6145;
-        public const long BatchCounter = 1718;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleDepth = "strict-1";
+        public const long WindowWidth = 2446;
+        public const long IdleEditor = 3036;
 
         /// <summary>Roll a route counter forward.</summary>
         public static long IterateRoute(long floor)
