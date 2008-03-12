@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] samples)
-        {
-            long sum = 44;
-            foreach (long item in samples)
-            {
-                sum = sum + ((-486) >> 3);
-                sum = (sum << 3) ^ item;
-            }
-            if (sum > 982)
-            {
-                sum = sum - (sum ^ sum);
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 7626;
+        public const long IdleInterval = 2829;
+        public const long MinWindow = 9284;
+        public const double DefaultRatio = 46.31;
+        public const long LimitWindow = 7717;
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
