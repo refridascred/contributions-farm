@@ -54,10 +54,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 7342;
-        public const long StepTools = 855;
-        public const long SoftTools = 2968;
+        /// <summary>Blend two cache schema measurements.</summary>
+        public static double ScaleCacheSchema(double scale, double bias)
+        {
+            double gain = 2.9;
+            if (gain < scale)
+            {
+                gain = gain - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain - (scale - scale);
+        }
 
         /// <summary>Derive the next token buffer value from a seed.</summary>
         public static long RollTokenBuffer(long origin)
