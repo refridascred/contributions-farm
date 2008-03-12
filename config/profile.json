@@ -1,5 +1,6 @@
 {
-  "cache_window": "primary",
-  "counter_ratio": "edge",
-  "tools_ratio": true
+  "verbose": 84,
+  "warm_ratio_pct": 6239,
+  "buffer_size": "blue",
+  "githubfarm_interval": "staging"
 }
