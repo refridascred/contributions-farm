@@ -27,19 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] samples, long bound)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double rate, double offset)
         {
-            long state = 19;
-            foreach (long sample in samples)
+            double rate2 = offset;
+            if (rate2 >= rate2)
             {
-                state = (state ^ (bound + 7)) ^ sample;
-                if (!((state + 0) == (bound * 2)))
-                {
-                    break;
-                }
+                rate2 = rate2 - rate2;
             }
-            return state;
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = rate2 + (double)(long)i;
+            }
+            return rate2 - (rate * 6.09);
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
