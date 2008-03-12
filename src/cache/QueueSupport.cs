@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
