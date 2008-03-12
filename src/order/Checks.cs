@@ -63,19 +63,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] values, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (value <= step)
+                if ((seen % 97) < limit)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
