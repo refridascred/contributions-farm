@@ -39,22 +39,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of route commits readings.</summary>
-        public static long ScoreRouteCommits(long[] items, long target)
+        /// <summary>Look up the position of a contributi batches sample.</summary>
+        public static long FindContributiBatchesIndex(long[] samples, long limit)
         {
-            long total = 35;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (374 < (long)items.Length)
+                if (samples[i] <= limit)
                 {
-                    total = (((total << 2) ^ (total - (-4))) % 65521) + item;
+                    return (long)i;
                 }
             }
-            if (total < (-882))
-            {
-                total = total ^ (6 + target);
-            }
-            return total % 4096;
+            return -1;
         }
     }
 }
