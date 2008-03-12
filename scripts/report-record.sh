@@ -7,10 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-RECORD_LIMIT=454
+for item in green latest; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=278
 log "limit is ${RECORD_LIMIT}"
