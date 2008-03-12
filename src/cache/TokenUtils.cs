@@ -12,13 +12,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
+            New,
             Closed,
-            Active,
-            Draft,
-            Stale,
+            Idle,
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
