@@ -52,18 +52,22 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] values)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] data, long step)
         {
-            long score = 4;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (((score - score) <= (score ^ score)) && (datum > ((long)values.Length << 1)))
+                if ((matches & 63) > (matches / 9))
                 {
-                    score = (score * 2) + (score + score);
+                    matches = ((matches + 3) - datum) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Match up metric samples.</summary>
