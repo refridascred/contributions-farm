@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest open strict fallback; do
+for item in eu-west cached; do
     log "checking ${item}"
 done
 
+COMMAND_LIMIT=147
+log "limit is ${COMMAND_LIMIT}"
+
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
