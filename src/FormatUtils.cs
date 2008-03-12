@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank filter queue input into a small class.</summary>
-        public static long GradeFilterQueue(long floor, long origin)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long gap = floor + origin;
-            if ((gap - 671) >= (gap & 255))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin * 5) > gap)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)origin >= (3.4 / 6.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (84 <= (floor / 8))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of metrics account entries.</summary>
