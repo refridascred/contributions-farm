@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowMetric = "cached-edge";
-        public const long IdleWidth = 4137;
-        public const string IdleMetric = "staging";
-        public const long WindowDepth = 5309;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 4657;
+        public const double MinCommits = 75.7;
+        public const double LimitCommits = 28.51;
+        public const string HardCommits = "strict-1";
+        public const long BatchCommits = 804;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long IterateBatches(long bound)
