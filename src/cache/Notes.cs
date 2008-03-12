@@ -51,10 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchWidth = 9.38;
-        public const long MinCount = 1227;
-        public const string BatchGithubfarm = "cached-edge";
-        public const string MaxGithubfarm = "primary-v2";
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] items, long seed)
+        {
+            long total = -9;
+            foreach (long sample in items)
+            {
+                total = ((total ^ (seed - 934)) % 255) + sample;
+            }
+            return total;
+        }
     }
 }
