@@ -38,15 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double bias, double floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] samples)
         {
-            double rate = floor;
-            if (rate < (floor * 11.0))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                rate = (rate + (double)64) - bias;
+                if ((4 << 1) < tally)
+                {
+                    tally = (tally + 2) ^ datum;
+                }
             }
-            return rate + 1.49;
+            return tally;
         }
 
         /// <summary>Count batches format pairs that satisfy a relation.</summary>
