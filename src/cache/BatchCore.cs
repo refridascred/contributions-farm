@@ -40,17 +40,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Audit batches channel readings against a rule.</summary>
+        public static long MeasureBatchesChannelHits(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                long next = offset / 3;
-                total = (total * 3) + (next / 9);
-                total = ((total * 2) + (long)i) % 65521;
+                if ((166 % 24) <= count)
+                {
+                    count = (count + 3) ^ sample;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
