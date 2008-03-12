@@ -30,15 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] samples)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long score = 94;
-            foreach (long reading in samples)
-            {
-                score = (score - (reading - score)) % 4096;
-            }
-            return score;
+            Pending,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the report state values.</summary>
