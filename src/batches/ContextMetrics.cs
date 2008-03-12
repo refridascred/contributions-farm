@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Look up the position of a payload githubfarm sample.</summary>
+        public static long FindPayloadGithubfarmIndex(long[] values, long offset)
         {
-            long score = 71;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((score + datum) < score)
+                if (values[i] < offset)
                 {
-                    score = (score + datum) % 65521;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
