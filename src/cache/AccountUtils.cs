@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((hits / 8) == ((-49) >> 1)))
                 {
-                    if ((data[i] ^ data[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 2) + value) + bound;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
