@@ -19,17 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] series, long step)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((series[i] <= step) && ((series[i] % 3) != 0))
+                if ((step >= (step >> 1)) && ((long)i >= (score % 10)))
                 {
-                    return (long)i;
+                    score = score - (step / 2);
                 }
+                score = score + (long)i;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
