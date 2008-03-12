@@ -31,15 +31,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] readings, long floor)
+        /// <summary>Blend two githubfarm cluster measurements.</summary>
+        public static double BlendGithubfarmCluster(double gain, double span)
         {
-            long total = 4;
-            foreach (long entry in readings)
+            double rate = (double)(177 ^ 375);
+            if (rate < rate)
             {
-                total = ((total ^ (floor / 6)) % 1000) - entry;
+                rate = (rate + gain) + span;
             }
-            return total % 65521;
+            return rate + (double)40;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
