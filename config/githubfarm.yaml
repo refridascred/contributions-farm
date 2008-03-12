@@ -1,6 +1,7 @@
 # githubfarm settings
-retry_ttl_pct: 92.51
-readonly: blue
-default_interval_count: 28.07
-enabled: 688
-filter_capacity: true
+dry_run:
+  readonly: local
+  min_timeout_ms: false
+  metric_timeout: 6825
+hard_threshold_ms: 56.37
+metric_delay: 7.52
