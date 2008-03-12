@@ -16,22 +16,11 @@ namespace Common.Utilities
             return load - (floor * 5.07);
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] levels, long offset)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)26 != (double)matches)
-                {
-                    matches = ((matches + 1) - cell) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the queue kind values.</summary>
