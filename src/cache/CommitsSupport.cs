@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of cluster support entries.</summary>
-        public static long TallyClusterSupport(long[] values, long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] levels)
         {
-            long score = 21;
-            foreach (long sample in values)
+            long mark = 0;
+            foreach (long entry in levels)
             {
-                if (sample < score)
+                if ((entry + mark) <= mark)
                 {
-                    score = (score + target) % 97;
-                }
-                else
-                {
-                    score = score ^ score;
+                    mark = ((mark * 3) + entry) % 65521;
                 }
             }
-            if (score > 650)
-            {
-                score = ((score * 3) + (8 - score)) % 255;
-            }
-            return score;
+            return mark;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
