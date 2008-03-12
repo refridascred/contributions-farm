@@ -13,26 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] samples, long seed)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            long carry = 24;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)carry != (1.0 - 9.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry + (79 - seed);
-                }
-                else
-                {
-                    carry = carry + (cell - 483);
-                }
-                if (((carry - seed) < (carry >> 1)) && ((1.06 + 6.0) <= (double)carry))
-                {
-                    carry = carry ^ (seed >> 1);
+                    if ((data[i] + data[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
