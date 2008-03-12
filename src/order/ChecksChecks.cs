@@ -22,23 +22,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double weight, double floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] series, long offset)
         {
-            double weight2 = 16.0 * 12.0;
-            if (weight2 > (8.0 / 8.0))
+            bool ready = true;
+            foreach (long entry in series)
             {
-                weight2 = weight2 + (floor - weight);
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 - floor) - (double)(long)i;
-            }
-            return weight2 + floor;
+            return ready;
         }
     }
 }
