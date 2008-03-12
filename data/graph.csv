@@ -1,8 +1,7 @@
-id,owner,count,active,ratio
-1,55,local,green,193
-2,27.71,183,368,466
-3,blue,172,fallback,64
-4,70,17.85,31.93,603
-5,53.24,658,540,cached
-6,fallback,80.58,blue,850
-7,local,331,951,open
+id,weight,ratio
+1,708,642
+2,strict,cached
+3,515,73.31
+4,695,626
+5,3.03,7.67
+6,724,672
