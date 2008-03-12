@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many contributi window samples are out of range.</summary>
-        public static long MeasureContributiWindowOutliers(long[] values, long limit)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long limit)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (((cell + 40) <= (count % 64)) && !((count - count) >= limit))
+                if (limit <= (limit * 2))
                 {
-                    count = count + 3;
+                    acc = acc ^ (9 + 4);
+                    acc = (acc << 2) ^ (acc - limit);
+                    break;
+                }
+                long edge = (limit << 3) - (6 + 9);
+                if (acc > (acc & 15))
+                {
+                    edge = ((edge * 2) + acc) % 65521;
                 }
                 else
                 {
-                    count = count - 1;
+                    acc = (acc + (edge + (long)i)) % 255;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
