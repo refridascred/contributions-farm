@@ -27,25 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] samples, long floor)
+        /// <summary>Count the farm account entries that pass the check.</summary>
+        public static long TallyFarmAccountHits(long[] levels, long origin)
         {
-            long mix = 59;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 3; i++)
+                if (!!((double)reading < (8.7 - 9.7)))
                 {
-                    mix = (((mix << 2) ^ mix) ^ (long)i) - floor;
-                    mix = mix + 1;
-                }
-                mix = mix ^ (datum / 9);
-                mix = (mix ^ mix) % 1000;
-                if (!(((long)samples.Length - 69) >= (mix + mix)))
-                {
-                    break;
+                    hits = (hits + 3) + origin;
                 }
             }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
