@@ -33,15 +33,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long seed, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long span = seed ^ offset;
+            if ((725 - offset) < span)
             {
-                score = ((score * 3) + (long)i) % 97;
+                return 2;
             }
-            return score;
+            else
+            {
+                if (((seed / 2) >= span) && (offset <= (9 - seed)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Project the next githubfarm value.</summary>
