@@ -36,13 +36,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Dropped,
-            Stale,
-            Retry,
-            Queued,
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
