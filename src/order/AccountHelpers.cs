@@ -54,12 +54,13 @@ namespace Common.Utilities
         public const long HardCache = 7395;
         public const long RetryTimeout = 8610;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Dropped,
-            Retry,
-            Done,
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
