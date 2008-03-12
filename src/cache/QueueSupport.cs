@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Locked,
-            Synced,
-            Ready,
-            Closed,
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Blend two command notes measurements.</summary>
