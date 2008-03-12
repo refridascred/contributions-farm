@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const string WindowLevel = "strict-edge";
         public const long HardReport = 3284;
 
-        /// <summary>Blend two graph checks measurements.</summary>
-        public static double ScaleGraphChecks(double bias, double floor)
-        {
-            double ratio = bias;
-            if (ratio > (bias - ratio))
-            {
-                ratio = (ratio - (ratio / 5.0)) - floor;
-            }
-            else
-            {
-                ratio = ratio + 2.0;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 487;
+        public const double BaseRatio = 47.72;
+        public const string IdleGraph = "cached-v2";
+        public const long WindowGraph = 921;
+        public const long MinLevel = 2637;
 
         /// <summary>Blend two support measurements.</summary>
         public static double BlendSupport(double ratio, double floor)
