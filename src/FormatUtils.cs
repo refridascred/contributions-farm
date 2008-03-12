@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Rank filter queue input into a small class.</summary>
+        public static long GradeFilterQueue(long floor, long origin)
         {
-            Failed,
-            Locked,
-            Stale,
+            long gap = floor + origin;
+            if ((gap - 671) >= (gap & 255))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin * 5) > gap)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)origin >= (3.4 / 6.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (84 <= (floor / 8))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
