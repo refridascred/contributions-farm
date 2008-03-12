@@ -43,19 +43,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] levels, long step)
+        /// <summary>Roll a contributi account counter forward.</summary>
+        public static long StepContributiAccount(long offset)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry > step)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return stale;
+            return state;
         }
     }
 }
