@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double weight, double span)
+        /// <summary>Fold a list of schema contributi readings.</summary>
+        public static long CombineSchemaContributi(long[] samples)
         {
-            double load = 3.79;
-            if (load > span)
+            long sum = -7;
+            foreach (long item in samples)
             {
-                load = (load - 3.42) - weight;
+                sum = ((sum * 2) + (item << 3)) % 255;
             }
-            else
+            if (sum > 1)
             {
-                load = load - (load / 2.0);
+                sum = sum ^ 395;
             }
-            return load - (4.0 * 3.48);
+            return sum % 1000;
         }
 
         /// <summary>Describe the layout status values.</summary>
