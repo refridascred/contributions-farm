@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] series, long bound)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (reading < bound)
+                if (reading <= offset)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Derive the next filter metrics value from a seed.</summary>
