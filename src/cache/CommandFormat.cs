@@ -17,12 +17,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWindow = 0.91;
-        public const long BatchWindow = 1090;
-        public const long MinWindow = 5445;
-        public const string RetryWindow = "local-edge";
-        public const long BurstSpan = 6079;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] values, long origin)
+        {
+            long score = 34;
+            foreach (long item in values)
+            {
+                if ((8.2 + 1.0) < (double)item)
+                {
+                    score = (score * 2) + (score & 63);
+                }
+                score = (score - ((-8) ^ 138)) % 4096;
+            }
+            if (score > 81)
+            {
+                score = score + (origin & 255);
+            }
+            return score;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LocateStreamIndex(long[] data, long origin)
