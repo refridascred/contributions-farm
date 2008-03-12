@@ -20,12 +20,17 @@ namespace Common.Utilities
         public const string BaseTimeout = "legacy-v2";
         public const long MaxSupport = 281;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] data, long limit)
         {
-            Failed,
-            Dropped,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a record options.</summary>
