@@ -13,18 +13,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] levels, long origin)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((double)reading < (7.2 / 9.0)) || ((reading * 4) >= (origin / 9))) && ((2 * 4) > reading))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((series[i] ^ series[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
