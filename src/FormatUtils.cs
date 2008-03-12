@@ -81,14 +81,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long origin)
         {
-            Paused,
-            Queued,
-            Stale,
-            New,
-            Pending,
+            long total = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (total >= ((long)i % 2))
+                {
+                    total = ((total * 2) + total) % 101;
+                }
+                total = (total ^ ((long)i + origin)) % 97;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
