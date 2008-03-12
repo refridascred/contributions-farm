@@ -50,19 +50,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (!(((double)acc < (2.75 * 3.0)) && ((6.25 - 2.0) > (double)acc)))
-                {
-                    acc = (acc - (acc + seed)) % 65521;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return acc;
+            return mix;
         }
     }
 }
