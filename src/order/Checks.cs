@@ -21,12 +21,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxSchema = 88.32;
-        public const double MinSchema = 93.61;
-        public const long DefaultSchema = 4177;
-        public const string WindowLevel = "standard";
-        public const double BurstScore = 56.13;
+        /// <summary>Look up the position of a token buffer sample.</summary>
+        public static long LocateTokenBufferIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string CacheQueue = "stable-v2";
