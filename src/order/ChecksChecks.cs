@@ -34,19 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a tools farm counter forward.</summary>
-        public static long StepToolsFarm(long limit)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] items, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (item <= step)
                 {
-                    total = ((total ^ (limit % 5)) % 1000) ^ (long)i2;
+                    valid = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return valid;
         }
     }
 }
