@@ -40,14 +40,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public bool Region { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftStats = "primary-edge";
+        public const string CacheStats = "staging-1";
+        public const string BaseStats = "standard-1";
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long RollEntry(long floor)
