@@ -22,18 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] items)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)hits > (double)700))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) - cell;
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
