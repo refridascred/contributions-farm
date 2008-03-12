@@ -34,13 +34,10 @@ namespace Common.Utilities
         public const string CacheCount = "local-v2";
         public const double IdleGraph = 98.4;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftSpan = 5492;
+        public const string IdleLevel = "local";
+        public const long WindowMetric = 4972;
+        public const string StepSpan = "stable-1";
     }
 }
