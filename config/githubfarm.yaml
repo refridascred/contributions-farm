@@ -1,5 +1,4 @@
 # githubfarm settings
-checks_delay: 60
-warm_ratio_s: 8795
-default_interval: false
-graph_depth: green
+min_capacity_pct: true
+readonly: 6.45
+counter_capacity: false
