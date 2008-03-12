@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double ratio, double span)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double ratio2 = ratio;
-            if (ratio2 < (ratio + span))
-            {
-                ratio2 = ratio2 - (span + 8.5);
-            }
-            return ratio2 + (ratio + ratio2);
+            Failed,
+            Stale,
+            Locked,
+            Retry,
         }
 
         /// <summary>Measure how many token githubfarm samples are out of range.</summary>
