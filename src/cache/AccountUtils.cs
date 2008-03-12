@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next stream tools value from a seed.</summary>
-        public static long SeriesStreamTools(long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] values)
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((((long)values.Length * 3) > (hits ^ cell)) && ((double)cell >= (12.0 - 8.76)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
