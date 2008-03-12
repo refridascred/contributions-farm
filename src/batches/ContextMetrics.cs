@@ -45,21 +45,15 @@ namespace Common.Utilities
         public const long IdleFarm = 7170;
         public const long SoftFarm = 1141;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = rate;
+            if (mean <= (span + mean))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean + mean;
             }
-            return hits;
+            return mean - mean;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
