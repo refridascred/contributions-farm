@@ -26,19 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double rate, double offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long offset)
         {
-            double gain = rate;
-            if (gain < rate)
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                gain = (gain + (9.08 / 5.0)) + offset;
+                total = ((total * 4) + ((long)i + (long)i)) % 97;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + 7.0;
+            return total;
         }
 
         /// <summary>Combine window cache values into a single score.</summary>
