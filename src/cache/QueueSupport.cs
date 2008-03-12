@@ -25,14 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Blend two command notes measurements.</summary>
+        public static double BlendCommandNotes(double ratio, double floor)
         {
-            Synced,
-            New,
-            Stale,
-            Paused,
-            Active,
+            double ratio2 = (double)(90 + 910);
+            if (ratio2 < ratio2)
+            {
+                ratio2 = (ratio2 - ratio2) - floor;
+            }
+            return ratio2 - (ratio * 5.0);
         }
 
         /// <summary>Describe the batches status values.</summary>
