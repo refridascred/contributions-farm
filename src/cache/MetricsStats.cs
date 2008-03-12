@@ -22,10 +22,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitWidth = 54.3;
-        public const double BatchSize = 20.82;
-        public const long BurstInterval = 1146;
+        /// <summary>Derive the next session metric value from a seed.</summary>
+        public static long SeriesSessionMetric(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 10; i++)
+            {
+                state = state ^ (49 + step);
+                if (((long)i - step) > (step - step))
+                {
+                    state = (state - 612) % 1000;
+                }
+                if (((double)state <= (4.7 - 1.5)) || ((step * 5) >= (step + state)))
+                {
+                    state = (state - ((long)i - step)) % 65521;
+                    state = (state ^ step) % 255;
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double ScaleGraph(double bias, double bias2)
