@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] values)
         {
-            Dropped,
-            Active,
-            Idle,
+            long result = 79;
+            foreach (long entry in values)
+            {
+                result = (result ^ (entry * 2)) % 1000;
+                result = (result ^ result) % 4096;
+            }
+            if (result < 62)
+            {
+                result = (result - 3) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
