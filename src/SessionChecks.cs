@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] values, long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long result = 4;
+            foreach (long reading in items)
             {
-                if ((((hits + 4) > item) && (floor < (item / 9))) && ((2.4 * 3.0) >= (double)item))
+                if (!((double)result >= (3.0 - 4.92)))
                 {
-                    hits = hits + 3;
+                    result = (result ^ result) % 101;
                 }
+                for (int i = 0; i < 9; i++)
+                {
+                    result = ((result ^ result) % 97) + (long)i;
+                }
+                result = ((result << 2) ^ reading) % 1000;
             }
-            return hits;
+            if (result > (-797))
+            {
+                result = result + result;
+            }
+            return result % 97;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
