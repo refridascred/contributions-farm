@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const double MaxContributi = 19.1;
         public const long SoftBudget = 3054;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Pending,
-            Queued,
+            Draft,
             Synced,
-            Ready,
-            Locked,
+            Closed,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
