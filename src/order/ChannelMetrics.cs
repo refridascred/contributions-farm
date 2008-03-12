@@ -33,17 +33,9 @@ namespace Common.Utilities
         public const long StepWidth = 4656;
         public const long RetryLevel = 4358;
 
-        /// <summary>Find the first route checks entry that matches the target.</summary>
-        public static long LocateRouteChecksIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "strict-1";
+        public const string BatchWidth = "standard-edge";
+        public const string StepSpan = "latest-1";
     }
 }
