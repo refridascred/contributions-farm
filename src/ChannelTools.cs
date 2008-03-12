@@ -42,11 +42,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 6950;
-        public const double HardBudget = 37.04;
-        public const long WindowStream = 9672;
-        public const long BaseTimeout = 6860;
-        public const string WindowCount = "primary-v2";
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryToken = "open";
+        public const double WindowToken = 80.12;
+        public const long DefaultToken = 4809;
     }
 }
