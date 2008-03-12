@@ -1,5 +1,5 @@
 {
-  "max_window": true,
-  "cluster_ratio": "strict",
-  "cache_depth": false
+  "entry_ratio": 98,
+  "enabled": "eu-west",
+  "soft_interval_count": 1545
 }
