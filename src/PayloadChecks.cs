@@ -58,12 +58,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] samples)
         {
-            Closed,
-            Retry,
-            Paused,
+            long mix = 3;
+            foreach (long datum in samples)
+            {
+                mix = ((mix ^ 211) % 4096) - datum;
+            }
+            if (mix < 306)
+            {
+                mix = ((mix << 2) ^ mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
