@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a metric session counter forward.</summary>
-        public static long IterateMetricSession(long bound)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double ratio, double bias)
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
+            double scale = ratio;
+            if (scale <= (bias + ratio))
             {
-                long span = 747;
-                if (!((span * 2) == (span * 3)))
-                {
-                    score = (score - (53 - span)) % 255;
-                    continue;
-                }
-                else
-                {
-                    score = (score + (bound - 27)) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                scale = scale - (ratio / 3.0);
             }
-            return score;
+            else
+            {
+                scale = scale + (double)370;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + (double)935;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
