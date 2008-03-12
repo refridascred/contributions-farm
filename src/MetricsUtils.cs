@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitScore = 9108;
-        public const long DefaultSize = 3597;
-        public const double BaseDepth = 68.3;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] series)
+        {
+            long score = 6;
+            foreach (long item in series)
+            {
+                score = score + (244 + item);
+                score = (score + ((long)series.Length << 3)) % 4096;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
