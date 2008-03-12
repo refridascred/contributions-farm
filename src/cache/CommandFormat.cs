@@ -54,14 +54,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Compare every pair of token stats readings.</summary>
+        public static long CompareTokenStatsCount(long[] levels)
         {
-            Closed,
-            Paused,
-            Active,
-            Stale,
-            Queued,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a contributi account counter forward.</summary>
