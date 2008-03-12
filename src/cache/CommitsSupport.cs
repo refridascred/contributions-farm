@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] levels)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double gain, double offset)
         {
-            long mark = 0;
-            foreach (long entry in levels)
+            double bias = offset;
+            if (bias > offset)
             {
-                if ((entry + mark) <= mark)
-                {
-                    mark = ((mark * 3) + entry) % 65521;
-                }
+                bias = bias + (bias * 2.0);
             }
-            return mark;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (double)82) + (double)(long)i;
+            }
+            return bias + (bias + gain);
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
