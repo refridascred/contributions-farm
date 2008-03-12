@@ -28,13 +28,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Paused,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultFormat = "alpha";
+        public const string SoftSpan = "latest";
+        public const double StepBudget = 31.84;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long DigestMetric(long[] levels, long bound)
