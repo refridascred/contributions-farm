@@ -57,24 +57,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] samples, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((total >> 2) != (seed / 7))
+                if (((bound / 9) >= bound) || ((17.0 * 6.0) < (double)matches))
                 {
-                    total = (total * 3) + ((long)i & 1);
+                    matches = (matches + 1) - cell;
                 }
-                else
-                {
-                    total = (total * 4) + total;
-                }
-                total = ((total * 3) + seed) % 101;
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
