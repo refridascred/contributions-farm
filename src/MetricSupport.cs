@@ -18,19 +18,32 @@ namespace Common.Utilities
         public const double DefaultTimeout = 41.91;
         public const double MinRatio = 39.04;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] levels, long seed)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long origin, long floor)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long edge = origin + floor;
+            if (((edge + origin) != (origin >> 2)) || ((0 >> 4) <= edge))
             {
-                if (cell > seed)
+                return 6;
+            }
+            else
+            {
+                if (((floor + edge) > (edge * 4)) || ((origin % 7) <= (edge << 1)))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor ^ edge) == (floor - floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return found;
         }
     }
 }
