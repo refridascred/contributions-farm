@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the record already entries that pass the check.</summary>
-        public static long TallyRecordAlreadyOutliers(long[] samples, long step)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            double ratio = 15.0;
+            if (ratio > (19.0 / 9.0))
             {
-                if (!(step <= (step % 3)) && (((1 % 10) == (reading & 15)) || ((reading - 731) > tally)))
-                {
-                    tally = tally + 2;
-                }
+                ratio = (ratio - rate) - bias;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + (double)8;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
