@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Locate a payload commits reading by value.</summary>
+        public static long SeekPayloadCommitsIndex(long[] values, long step)
         {
-            Queued,
-            Retry,
-            Dropped,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the route status values.</summary>
