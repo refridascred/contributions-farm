@@ -23,11 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxTimeout = 1399;
-        public const double LimitGithubfarm = 82.66;
-        public const double DefaultGithubfarm = 63.47;
-        public const string BaseGithubfarm = "alpha-1";
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seen << 1) >= (seen / 8))
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool VerifyAlreadyBounds(long[] items, long step)
