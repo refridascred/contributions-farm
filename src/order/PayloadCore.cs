@@ -35,21 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheReport = 88.82;
+        public const long HardReport = 9462;
+        public const long BaseLevel = 4618;
+        public const string BaseTimeout = "primary-1";
+        public const long BatchReport = 7108;
     }
 }
