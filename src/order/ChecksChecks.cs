@@ -28,11 +28,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double weight, double floor)
         {
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            double weight2 = 16.0 * 12.0;
+            if (weight2 > (8.0 / 8.0))
+            {
+                weight2 = weight2 + (floor - weight);
+            }
+            else
+            {
+                weight2 = weight2 + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 - floor) - (double)(long)i;
+            }
+            return weight2 + floor;
         }
     }
 }
