@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long BatchCount = 4980;
         public const long StepRoute = 1766;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
+            Done,
+            Pending,
+            Retry,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
