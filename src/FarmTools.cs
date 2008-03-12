@@ -20,19 +20,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] readings, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long state = 8;
+            foreach (long reading in levels)
             {
-                if (value != offset)
+                if (reading <= (reading - reading))
                 {
-                    flag = false;
+                    state = (state << 2) ^ (state / 3);
+                }
+                state = (state + reading) % 97;
+                if (((double)state >= 8.3) && (reading > (reading - reading)))
+                {
                     break;
                 }
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Digest a series of window entries.</summary>
