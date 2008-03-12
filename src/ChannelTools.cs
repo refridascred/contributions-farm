@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] items)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
