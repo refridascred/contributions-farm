@@ -40,31 +40,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long target, long step)
+        /// <summary>Digest a series of metrics account entries.</summary>
+        public static long TallyMetricsAccount(long[] items)
         {
-            if ((step ^ step) >= target)
+            long result = 19;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target - step) != (target * 5))
+                if ((reading % 7) >= reading)
                 {
-                    return 1;
+                    result = (result - (result ^ result)) % 101;
                 }
-                else
+                if (((1.06 / 8.0) >= (double)result) || (903 < (reading << 3)))
                 {
-                    if ((880 % 97) == (step + 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    result = (result ^ (result + result)) % 4096;
+                }
+                if (reading > (reading - result))
+                {
+                    break;
                 }
             }
+            if (result < 2)
+            {
+                result = result - result;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
