@@ -22,23 +22,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] levels, long bound)
-        {
-            long total = 3;
-            foreach (long cell in levels)
-            {
-                if (((68 * 3) != (total * 4)) && ((total * 2) == (bound + cell)))
-                {
-                    total = (total - (total & 255)) % 255;
-                }
-                else
-                {
-                    total = (total << 3) ^ 5;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitFactor = 3501;
+        public const string IdleSpan = "local-edge";
+        public const long BaseTools = 1499;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] items, long step)
