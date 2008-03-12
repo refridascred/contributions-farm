@@ -16,10 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardLevel = 92.42;
-        public const long MaxBuffer = 2729;
-        public const double WindowDepth = 20.36;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportOutliers(long[] readings, long step)
