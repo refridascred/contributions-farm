@@ -24,11 +24,13 @@ namespace Common.Utilities
         public const long BaseGraph = 1841;
         public const long RetryInterval = 4248;
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
+            Failed,
+            Active,
+            Ready,
+            Locked,
         }
 
         /// <summary>Combine context values into a single score.</summary>
