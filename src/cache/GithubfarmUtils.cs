@@ -19,15 +19,15 @@ namespace Common.Utilities
         public const long WindowMetric = 2239;
         public const long IdleMetric = 2944;
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] levels)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) < 17)
+                    if ((samples[i] ^ samples[j]) > 18)
                     {
                         count = count + 1;
                     }
