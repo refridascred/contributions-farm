@@ -36,12 +36,19 @@ namespace Common.Utilities
         public const double DefaultTimeout = 41.91;
         public const double MinRatio = 39.04;
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] levels, long seed)
         {
-            public bool Owner { get; set; }
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
