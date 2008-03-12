@@ -1,6 +1,6 @@
 {
-  "flush_threshold_count": 86,
-  "max_ttl_ms": "legacy",
-  "context_ratio": "legacy",
-  "batch_depth_ms": 100
+  "hard_threshold_pct": true,
+  "stream_size": 43.23,
+  "default_limit": 89.76,
+  "flush_size_pct": 8940
 }
