@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a session farm sample.</summary>
-        public static long LookupSessionFarmIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 0.91;
+        public const long BatchWindow = 1090;
+        public const long MinWindow = 5445;
+        public const string RetryWindow = "local-edge";
+        public const long BurstSpan = 6079;
 
         /// <summary>Project the next record value.</summary>
         public static double ProjectRecord(double weight, double offset)
