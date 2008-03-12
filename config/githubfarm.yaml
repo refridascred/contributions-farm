@@ -1,14 +1,6 @@
 # githubfarm settings
-already_ratio:
-  readonly: true
-  min_window_ms: 12
-  verbose:
-    - standard
-    - primary
-    - strict
-    - standard
-  hard_threshold: edge
-cluster_interval: strict
-enabled: false
-record_ratio: 68.69
-sync_ratio_count: true
+retry_ttl_pct: 92.51
+readonly: blue
+default_interval_count: 28.07
+enabled: 688
+filter_capacity: true
