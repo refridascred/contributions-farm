@@ -20,18 +20,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many stats queue samples are out of range.</summary>
-        public static long TallyStatsQueueHits(long[] items)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long target)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((sample << 3) != (6 - seen))
-                {
-                    seen = seen + 2;
-                }
+                acc = acc - acc;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
     }
 }
