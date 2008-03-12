@@ -48,18 +48,24 @@ namespace Common.Utilities
         public const long BurstBudget = 8447;
         public const long CacheToken = 7646;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] items, long origin)
+        /// <summary>Classify a stream tools pair into a bucket.</summary>
+        public static long BucketStreamTools(long offset, long floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            if (floor < (6 / 9))
             {
-                if ((tally / 8) < (value >> 3))
+                return 7;
+            }
+            else
+            {
+                if ((floor % 24) == (76 + offset))
                 {
-                    tally = (tally + 3) - origin;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
     }
 }
