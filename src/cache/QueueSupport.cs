@@ -14,23 +14,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((hits << 2) <= (1 - cell))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "local-v2";
+        public const long IdleFilter = 9216;
+        public const long WindowSize = 4371;
+        public const long BaseScore = 1445;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
