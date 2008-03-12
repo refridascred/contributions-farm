@@ -37,11 +37,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] values, long origin)
         {
-            public bool Total { get; set; }
-            public double Count { get; set; }
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Project the next buffer batches value.</summary>
