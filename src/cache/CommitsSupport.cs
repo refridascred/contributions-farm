@@ -100,9 +100,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheGithubfarm = 59.17;
-        public const long BaseGithubfarm = 7752;
-        public const long MaxGithubfarm = 2803;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
