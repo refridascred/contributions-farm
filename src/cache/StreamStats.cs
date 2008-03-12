@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long origin, long origin2)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] levels, long floor)
         {
-            if ((5 + 841) <= (origin2 + origin))
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((5.26 - 17.0) >= (double)origin)
+                if (sample != floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin2 < (2.0 - 4.75))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((origin % 8) <= (origin2 + origin)) || ((origin2 >> 3) != (origin2 * 4)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the channel kind values.</summary>
