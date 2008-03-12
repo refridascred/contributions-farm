@@ -32,18 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order window readings.</summary>
-        public static long TotalOrderWindow(long[] series)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long target)
         {
-            long result = 797;
-            foreach (long reading in series)
+            long carry = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (9.2 <= (double)result)
-                {
-                    result = ((result + (3 / 5)) % 4096) - reading;
-                }
+                carry = (carry - carry) % 97;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return result % 4096;
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
