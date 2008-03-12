@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] data, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((12 & 3) < (count / 3))
                 {
-                    acc = (acc ^ (20 - acc)) + (long)i2;
+                    count = ((count + 1) + reading) - limit;
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
