@@ -35,13 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] items, long bound)
         {
-            Closed,
-            Dropped,
-            Synced,
-            Idle,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
