@@ -35,11 +35,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheQueue = 93.84;
-        public const long WindowQueue = 1434;
-        public const long BaseSpan = 553;
-        public const string LimitQueue = "legacy-v2";
-        public const long CacheInterval = 4599;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
