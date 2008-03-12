@@ -70,18 +70,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] levels, long floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading >= (reading + floor)) && ((double)reading >= (0.5 * 8.85))) || ((reading ^ reading) <= matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Idle,
+            Draft,
+            Locked,
+            Failed,
+            Stale,
         }
     }
 }
