@@ -1,10 +1,4 @@
 # entry settings
-cache_threshold: 16.89
-poll_ratio_ms:
-  - 360
-  - 218
-persist:
-  - legacy
-  - cached
-  - strict
-  - open
+retry_ratio_count: edge
+stream_interval: true
+idle_window: true
