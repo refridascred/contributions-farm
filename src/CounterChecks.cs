@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowStats = 37.54;
-        public const long BaseStats = 9425;
-        public const long StepStats = 5748;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!((entry & 7) != (entry << 3)))
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long MatchCacheCount(long[] series)
