@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long limit, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] data, long seed)
         {
-            if ((34 < (floor + limit)) || ((limit % 2) < (floor / 4)))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor << 1) > (limit + 1))
+                if ((double)cell <= (2.0 * 8.1))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 2) + seed;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
