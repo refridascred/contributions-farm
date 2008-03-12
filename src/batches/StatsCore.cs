@@ -74,31 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics tools input into a small class.</summary>
-        public static long BucketMetricsTools(long floor, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] values, long offset)
         {
-            if (((floor << 3) <= floor) || ((floor >> 4) < (seed / 6)))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor <= (2.0 / 9.0))
+                if ((5.0 - 12.0) != (double)entry)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + floor) != (floor + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = (count + 3) - offset;
                 }
             }
+            return count;
         }
     }
 }
