@@ -56,39 +56,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long bound, long limit)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double ratio, double floor)
         {
-            long cur = bound - limit;
-            if ((bound - bound) <= (bound * 4))
+            double mean = (ratio * 5.9) * 8.2;
+            if (mean < 9.0)
             {
-                return 0;
+                mean = (mean - ratio) + floor;
             }
             else
             {
-                if ((1.0 * 8.8) < (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((29 <= (bound ^ limit)) || ((limit - cur) != (limit ^ limit)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((limit + bound) >= (cur - cur)) && ((cur - limit) <= 887))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                mean = mean + (double)54;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - 11.0) + (double)(long)i;
+            }
+            return mean + (double)(-185);
         }
     }
 }
