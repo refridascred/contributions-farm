@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long seed, long step)
+        /// <summary>Count the cache already entries that pass the check.</summary>
+        public static long TallyCacheAlreadyGaps(long[] readings, long limit)
         {
-            long cur = seed + step;
-            if (((cur % 2) > 11) || (13 > (seed & 63)))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((13.0 + 2.4) < (double)seed)
+                if ((double)6 <= (7.3 * 0.48))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed - step) == (498 >> 4)) && ((12.0 - 8.3) != (double)cur))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = ((count + 2) ^ item) - limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
