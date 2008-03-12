@@ -1,8 +1,8 @@
 {
-  "layout_delay": ["green", "green", "legacy", "green"],
-  "persist": true,
-  "account_window": 25.78,
-  "githubfarm_window": "local",
-  "base_timeout": ["eu-west", "strict"],
-  "flush_depth_count": 9770
+  "verbose": 59,
+  "batch_capacity": 33,
+  "flush_delay_ms": 87,
+  "support_limit": [14, 115],
+  "dry_run": true,
+  "audit": 66.15
 }
