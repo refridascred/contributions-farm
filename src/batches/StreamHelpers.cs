@@ -65,11 +65,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            long total = 677;
+            foreach (long datum in samples)
+            {
+                total = (((total * 3) + (21 & 7)) % 4096) - datum;
+                if (3.47 <= (double)total)
+                {
+                    total = ((total * 2) + (total + total)) % 97;
+                }
+            }
+            return total % 1000;
         }
     }
 }
