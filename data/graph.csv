@@ -1,9 +1,8 @@
-id,count,score,token
-1,686,30.4,10.02
-2,97.25,blue,510
-3,361,59.01,296
-4,local,41.23,56.09
-5,34.51,latest,207
-6,69.62,123,69
-7,358,235,blue
-8,5.32,strict,open
+id,owner,count,active,ratio
+1,55,local,green,193
+2,27.71,183,368,466
+3,blue,172,fallback,64
+4,70,17.85,31.93,603
+5,53.24,658,540,cached
+6,fallback,80.58,blue,850
+7,local,331,951,open
