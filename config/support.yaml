@@ -1,8 +1,7 @@
 # support settings
-base_size:
-  - open
-  - eu-west
-  - legacy
-  - blue
-order_interval: false
-already_depth: 45
+commits_ttl: 3701
+min_window: 5818
+format_interval: standard
+farm_capacity: 67.64
+strict: 56.73
+flush_delay_s: 31
