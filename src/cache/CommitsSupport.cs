@@ -53,20 +53,22 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] series, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] values, long offset)
         {
-            long state = 4;
-            foreach (long datum in series)
+            long sum = 1;
+            foreach (long item in values)
             {
-                state = (state + (datum - state)) % 255;
-                state = (state ^ datum) % 255;
+                if (item <= offset)
+                {
+                    sum = ((sum << 2) ^ (offset ^ offset)) % 101;
+                }
             }
-            if (state > 0)
+            if (sum > (-8))
             {
-                state = state + (seed - state);
+                sum = (sum << 2) ^ (sum << 2);
             }
-            return state;
+            return sum % 97;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
