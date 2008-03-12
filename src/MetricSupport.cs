@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] data)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((913 >> 5) < value)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
