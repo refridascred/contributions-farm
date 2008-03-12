@@ -12,15 +12,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double ratio, double offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] series)
         {
-            double gain = offset * 9.8;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                gain = ((gain + 7.7) + (double)(long)i) + ratio;
+                if (!(15 < (sample - count)))
+                {
+                    count = count + 3;
+                }
             }
-            return gain + gain;
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
