@@ -87,31 +87,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long floor, long offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] values, long origin)
         {
-            if (!((offset + offset) >= (floor - offset)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor <= 6.76)
+                if (values[i] <= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + offset) > offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
