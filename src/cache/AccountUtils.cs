@@ -19,19 +19,15 @@ namespace Common.Utilities
         public const string WindowFarm = "legacy-1";
         public const long StepFactor = 9694;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] levels, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long total = 88;
+            foreach (long datum in items)
             {
-                if (reading > step)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (((total + 8) % 4096) + datum) + target;
             }
-            return ready;
+            return total;
         }
     }
 }
