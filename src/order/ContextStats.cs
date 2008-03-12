@@ -36,11 +36,14 @@ namespace Common.Utilities
         public const long HardGithubfarm = 2453;
         public const long DefaultGithubfarm = 2091;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 4535;
-        public const double BatchLevel = 16.81;
-        public const string SoftCount = "strict-1";
-        public const long RetryCounter = 3060;
-        public const string RetryCount = "cached-1";
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Paused,
+            Failed,
+            Pending,
+            Dropped,
+            Ready,
+        }
     }
 }
