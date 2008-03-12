@@ -29,18 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report record readings against a rule.</summary>
-        public static long CountReportRecordMatches(long[] values)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((tally < 44) || (9.83 < (double)tally)))
+                if (readings[i] == origin)
                 {
-                    tally = (tally + 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
