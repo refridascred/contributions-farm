@@ -20,13 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Paused,
-            Done,
-            Pending,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCount = 981;
+        public const long HardCommand = 711;
+        public const long BaseBudget = 5835;
 
         /// <summary>Derive the next already report value from a seed.</summary>
         public static long StepAlreadyReport(long floor)
