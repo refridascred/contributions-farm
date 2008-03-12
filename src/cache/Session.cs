@@ -19,14 +19,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] readings, long target)
         {
-            Locked,
-            Draft,
-            Paused,
-            Stale,
-            Closed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
