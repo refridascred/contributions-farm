@@ -61,19 +61,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double bias, double bias2)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double rate = (bias / 2.0) + (bias / 9.0);
-            if (rate >= bias)
-            {
-                rate = (rate - (rate + bias)) - bias2;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate + (double)56;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
