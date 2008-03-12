@@ -14,23 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double gain, double span)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double rate = (double)977;
-            if (rate < gain)
-            {
-                rate = (rate + (gain / 2.0)) + span;
-            }
-            else
-            {
-                rate = rate + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - rate;
+            Pending,
+            Failed,
+            Active,
+            Ready,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
