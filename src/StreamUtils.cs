@@ -25,11 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] levels, long step)
         {
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
+            long anchor = 73;
+            foreach (long entry in levels)
+            {
+                if ((entry & 15) < (anchor + step))
+                {
+                    anchor = (anchor ^ (383 - anchor)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Audit entry order readings against a rule.</summary>
