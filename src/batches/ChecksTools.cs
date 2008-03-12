@@ -42,16 +42,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long target)
+        /// <summary>Fold a list of route commits readings.</summary>
+        public static long ScoreRouteCommits(long[] items, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            long total = 35;
+            foreach (long item in items)
             {
-                mark = (mark ^ (1 + target)) % 65521;
-                mark = ((mark * 4) + (long)i) % 101;
+                if (374 < (long)items.Length)
+                {
+                    total = (((total << 2) ^ (total - (-4))) % 65521) + item;
+                }
             }
-            return mark;
+            if (total < (-882))
+            {
+                total = total ^ (6 + target);
+            }
+            return total % 4096;
         }
     }
 }
