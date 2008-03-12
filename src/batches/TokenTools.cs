@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] data)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long carry = 867;
-            foreach (long entry in data)
-            {
-                carry = ((carry * 3) + 5) ^ entry;
-            }
-            return carry;
+            Active,
+            Locked,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
