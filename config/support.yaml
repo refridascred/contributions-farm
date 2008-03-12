@@ -1,24 +1,13 @@
 # support settings
-dry_run:
-  - 276
-  - 202
-schema_retries:
+readonly:
   - blue
-  - edge
-  - eu-west
-verbose:
   - standard
+strict: 60
+compress: false
+retry_timeout:
+  - stable
+  - open
   - local
-  - latest
-  - strict
-base_threshold_count: 77.07
-audit:
-  audit: 9035
-  strict:
-    retry_ttl_pct: 42.91
-    default_retries_pct: strict
-    retry_capacity_count: green
-    tools_interval: 250
-    strict: 8620
-    tools_ttl: 2979
-  poll_window: legacy
+  - standard
+contributi_capacity: legacy
+batch_window: true
