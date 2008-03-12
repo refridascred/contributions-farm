@@ -31,22 +31,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] items)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long step)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (((hits & 255) == (hits % 3)) && (hits >= (sample + hits)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = mark + (mark + (long)i);
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
     }
 }
