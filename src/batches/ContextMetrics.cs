@@ -21,15 +21,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Pending,
-            Paused,
-            Draft,
-            Failed,
-            Active,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardWidth = 823;
+        public const double LimitFarm = 39.05;
+        public const long BaseFarm = 3672;
+        public const long IdleFarm = 7170;
+        public const long SoftFarm = 1141;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long GradeFarm(long step, long seed)
