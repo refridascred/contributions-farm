@@ -52,19 +52,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long step)
         {
-            long mark = 24;
-            foreach (long value in levels)
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                mark = (mark - (value * 3)) % 255;
-                if (((value ^ mark) >= mark) || ((4 << 3) <= (mark + value)))
-                {
-                    mark = mark - (value - mark);
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return mark % 1000;
+            return sum;
         }
     }
 }
