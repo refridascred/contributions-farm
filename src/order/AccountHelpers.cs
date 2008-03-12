@@ -54,16 +54,11 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Blend two account cluster measurements.</summary>
-        public static double ScaleAccountCluster(double rate, double floor)
-        {
-            double gain = rate;
-            if (gain < rate)
-            {
-                gain = (gain - 4.0) - floor;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftFactor = 3355;
+        public const long MaxCache = 8718;
+        public const long HardCache = 7395;
+        public const long RetryTimeout = 8610;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
