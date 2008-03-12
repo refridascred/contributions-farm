@@ -1,5 +1,9 @@
 # support settings
-max_ratio_ms: 10.08
-session_capacity: 2060
-burst_limit_ms: true
-entry_timeout: 26.46
+warm_capacity_s:
+  - 326
+  - 41
+window_timeout: edge
+strict: 76.85
+batch_ttl: strict
+audit: 250
+layout_interval: open
