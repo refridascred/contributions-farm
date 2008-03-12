@@ -22,22 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] series)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] items)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((double)count != (0.98 + 3.6))
+                if (!((double)hits > (double)700))
                 {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 3) - cell;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
