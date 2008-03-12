@@ -13,12 +13,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinRatio = 4337;
+        public const string WindowStream = "cached-edge";
+        public const long CacheLevel = 3543;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportHits(long[] data, long step)
