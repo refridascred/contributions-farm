@@ -1,9 +1,7 @@
 # support settings
-warm_capacity_s:
-  - 326
-  - 41
-window_timeout: edge
-strict: 76.85
-batch_ttl: strict
-audit: 250
-layout_interval: open
+persist: true
+min_retries: 250
+dry_run: false
+verbose: 47.52
+stream_retries: false
+warm_interval_s: 98.23
