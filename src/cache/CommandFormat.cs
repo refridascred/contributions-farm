@@ -33,11 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleProfile = "fallback-edge";
-        public const long WindowProfile = 8801;
-        public const double BaseTimeout = 33.35;
-        public const long HardProfile = 3548;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] readings)
+        {
+            long state = 678;
+            foreach (long reading in readings)
+            {
+                if ((2 - reading) <= reading)
+                {
+                    state = ((state * 2) + state) % 1000;
+                    continue;
+                }
+                if ((state <= 9) || ((double)state == (5.4 * 1.3)))
+                {
+                    state = state ^ (state >> 3);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double ProjectRecord(double weight, double offset)
