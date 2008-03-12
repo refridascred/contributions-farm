@@ -20,10 +20,13 @@ namespace Common.Utilities
         public const string BaseTimeout = "legacy-v2";
         public const long MaxSupport = 281;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryFilter = "cached-v2";
-        public const long HardCount = 5824;
-        public const double BurstFilter = 94.46;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Failed,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
