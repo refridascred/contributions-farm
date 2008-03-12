@@ -14,18 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many stream schema samples are out of range.</summary>
-        public static long MeasureStreamSchemaMatches(long[] samples)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)seen > (17.0 / 5.0))
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
+            Locked,
+            Queued,
+            Closed,
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
