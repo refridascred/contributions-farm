@@ -24,16 +24,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a editor graph counter forward.</summary>
-        public static long IterateEditorGraph(long bound)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] items, long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix - (69 - mix);
-                mix = ((mix * 4) + (long)i) % 97;
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Fold a list of route commits readings.</summary>
