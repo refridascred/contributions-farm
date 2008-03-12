@@ -43,12 +43,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleChecks = 77.72;
-        public const long BurstSize = 2440;
-        public const string BatchChecks = "local";
-        public const long MaxScore = 2144;
-        public const long BurstFactor = 1106;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((seen << 2) >= (value ^ value))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
