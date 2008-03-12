@@ -1,10 +1,28 @@
 # githubfarm settings
-soft_ttl: true
-base_threshold: 24.82
-flush_depth_ms: 61.04
-batch_interval: staging
-warm_delay_pct:
-  - 311
-  - 338
-  - 96
-  - 244
+idle_timeout_pct: 94.39
+max_ttl_count: false
+compress:
+  flush_capacity_s: 85.17
+  farm_limit:
+    - 347
+    - 399
+  persist:
+    poll_depth_ms: 5890
+    record_threshold: primary
+    checks_capacity: eu-west
+    cache_size_s: true
+    batch_threshold_s: 36.94
+  entry_threshold: 6.91
+default_capacity_count: local
+notes_window: 37.12
+max_timeout_ms:
+  base_delay:
+    warm_ttl_count: 44.93
+    default_retries_pct: primary
+    readonly:
+      - fallback
+      - standard
+      - open
+      - local
+  enabled: open
+  batch_delay: 250
