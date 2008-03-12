@@ -1,8 +1,6 @@
 # entry settings
-max_ratio_s: 60
-burst_capacity:
-  base_ratio_s: fallback
-  idle_depth_count: 9.1
-  batch_interval_count: eu-west
-farm_threshold: false
-contributi_limit: 88
+farm_window: 94.31
+burst_threshold: local
+enabled:
+  - 470
+  - 392
