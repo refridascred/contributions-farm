@@ -16,26 +16,11 @@ namespace Common.Utilities
         public const long MinTimeout = 4444;
         public const long BurstOrder = 5397;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long offset, long limit)
-        {
-            long slot = offset + limit;
-            if ((8.8 + 5.24) == (double)slot)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((3 * 4) == (slot - limit)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleCount = 7461;
+        public const long SoftCount = 5490;
+        public const long StepSession = 3772;
+        public const long CacheSession = 4398;
 
         /// <summary>Count the channel support entries that pass the check.</summary>
         public static long TallyChannelSupportHits(long[] values)
