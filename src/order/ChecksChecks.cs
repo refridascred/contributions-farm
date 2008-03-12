@@ -40,39 +40,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long seed, long seed2)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] items, long step)
         {
-            long offset = seed ^ seed2;
-            if (((seed * 5) > (seed + offset)) && ((7 + 587) != (offset * 5)))
+            long score = 30;
+            foreach (long item in items)
             {
-                return 2;
+                score = (score ^ item) + step;
             }
-            else
-            {
-                if (1.67 <= (double)seed2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed2 < (53 << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset + (-44)) > offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return score;
         }
     }
 }
