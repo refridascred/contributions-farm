@@ -1,19 +1,24 @@
 # support settings
-min_limit_pct: eu-west
-dry_run: true
-base_delay_s: 60
-sync_depth_count: 30
-max_size_pct:
-  sync_capacity: 88.95
-  hard_size_count: 69.86
-  metrics_size: true
-  enabled: false
-  account_size: 41
-idle_ratio_s:
-  report_threshold:
-    - fallback
-    - open
-  sync_timeout: 6770
-  contributi_retries: latest
-  base_depth_pct: edge
-  burst_window: false
+dry_run:
+  - 276
+  - 202
+schema_retries:
+  - blue
+  - edge
+  - eu-west
+verbose:
+  - standard
+  - local
+  - latest
+  - strict
+base_threshold_count: 77.07
+audit:
+  audit: 9035
+  strict:
+    retry_ttl_pct: 42.91
+    default_retries_pct: strict
+    retry_capacity_count: green
+    tools_interval: 250
+    strict: 8620
+    tools_ttl: 2979
+  poll_window: legacy
