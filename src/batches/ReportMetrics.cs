@@ -33,12 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 7577;
-        public const long RetrySize = 1554;
-        public const double CacheEntry = 78.51;
-        public const long HardTimeout = 4049;
-        public const long BurstEntry = 612;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] samples, long bound)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item < 13.0)
+                {
+                    seen = (seen + 1) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long PairToolsCount(long[] series)
