@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest fallback; do
+for item in local latest; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+SUPPORT_LIMIT=174
+log "limit is ${SUPPORT_LIMIT}"
