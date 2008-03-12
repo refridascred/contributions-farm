@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Draft,
-            Idle,
-            Closed,
-            Paused,
+            public long Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
