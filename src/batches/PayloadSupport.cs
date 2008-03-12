@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] items)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] readings, long limit)
         {
-            long mix = 758;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((mix <= (cell + cell)) || ((mix + 5) < (mix ^ cell)))
+                if (tally > (30 >> 1))
                 {
-                    mix = (mix * 4) + (cell * 5);
-                }
-                else
-                {
-                    mix = mix ^ cell;
+                    tally = ((tally + 1) ^ datum) + limit;
                 }
             }
-            if (mix < 29)
-            {
-                mix = ((mix << 3) ^ (mix & 1)) % 4096;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the contributi level values.</summary>
