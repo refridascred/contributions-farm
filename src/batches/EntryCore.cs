@@ -45,14 +45,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Done,
-            Retry,
-            Active,
-            Pending,
-            New,
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
