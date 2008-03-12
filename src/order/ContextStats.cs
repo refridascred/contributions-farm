@@ -33,22 +33,23 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileMatches(long[] data, long seed)
+        /// <summary>Roll a already route counter forward.</summary>
+        public static long StepAlreadyRoute(long bound)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long mark = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((sample + seed) < (tally ^ tally))
+                if ((-788) < bound)
                 {
-                    tally = tally + 2;
+                    break;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = (mark + (bound + mark)) % 4096;
                 }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a tools stats.</summary>
