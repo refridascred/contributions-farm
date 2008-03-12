@@ -53,13 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Accumulate queue token samples.</summary>
+        public static long FoldQueueToken(long[] levels)
         {
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            long mark = 14;
+            foreach (long value in levels)
+            {
+                mark = ((mark - mark) % 101) - value;
+            }
+            if (mark > 8)
+            {
+                mark = (mark + (mark >> 4)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Accumulate notes samples.</summary>
