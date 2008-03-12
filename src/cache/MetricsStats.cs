@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double bias, double floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
         {
-            double scale = floor;
-            if (scale > (floor - bias))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                scale = scale - (1.0 / 5.0);
+                if (((double)(long)levels.Length != (double)matches) && (matches <= item))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - 8.0) + (double)(long)i;
-            }
-            return scale + (bias - 8.6);
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
