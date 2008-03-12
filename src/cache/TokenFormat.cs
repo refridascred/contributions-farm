@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate cluster editor readings against a bound.</summary>
-        public static bool GuardClusterEditorRange(long[] series, long offset)
+        /// <summary>Digest a series of channel cache entries.</summary>
+        public static long ScoreChannelCache(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long acc = 131;
+            foreach (long datum in items)
             {
-                if (entry > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc - (datum << 1)) % 1000;
+                acc = ((acc << 2) ^ datum) % 4096;
             }
-            return stale;
+            return acc % 65521;
         }
 
         /// <summary>Describe the support kind values.</summary>
