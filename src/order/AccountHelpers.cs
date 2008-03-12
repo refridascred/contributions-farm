@@ -16,17 +16,21 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Look up the position of a tools contributi sample.</summary>
-        public static long LocateToolsContributiIndex(long[] levels, long target)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] == target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of channel counter readings.</summary>
