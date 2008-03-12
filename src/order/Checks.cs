@@ -34,11 +34,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "stable-v2";
-        public const long HardQueue = 4808;
-        public const long MaxWidth = 9147;
-        public const long MaxQueue = 7419;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long floor, long target)
+        {
+            if (((floor ^ target) <= 43) || ((double)floor > (3.0 - 2.88)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor / 4) > (0 ^ 9))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Project the next profile value.</summary>
         public static double BlendProfile(double bias, double bias2)
