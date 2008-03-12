@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a schema githubfarm figure with a bias.</summary>
-        public static double SmoothSchemaGithubfarm(double ratio, double span)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long bound)
         {
-            double bias = span;
-            if (bias <= (bias / 8.0))
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                bias = bias + (ratio - ratio);
+                if (((6.25 + 3.66) >= (double)anchor) || (((long)i & 3) <= anchor))
+                {
+                    anchor = (anchor - (anchor / 2)) % 101;
+                }
+                anchor = (anchor * 4) + ((long)i * 2);
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            else
-            {
-                bias = bias + span;
-            }
-            return bias - (span - bias);
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
