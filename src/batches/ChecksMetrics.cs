@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long offset, long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] values, long origin)
         {
-            if ((offset >> 1) <= offset)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (target >= (offset & 127))
+                if ((hits + hits) >= hits)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target / 5) >= (target + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((offset + target) > 293))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = ((hits + 2) ^ entry) + origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the report status values.</summary>
