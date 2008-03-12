@@ -48,22 +48,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit stats batches readings against a rule.</summary>
-        public static long MeasureStatsBatchesOutliers(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (matches < (floor + 2))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 1311;
+        public const long RetrySpan = 1628;
+        public const long SoftDepth = 7787;
     }
 }
