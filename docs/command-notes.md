@@ -1,11 +1,11 @@
 # Command notes
 
-When a record fails, the graph handler retries a few times before giving up.
-Run the farm check before changing any report limits.
+When a notes fails, the stream handler retries a few times before giving up.
+Use record settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Keep report values small
-- Prefer batch defaults
-- Log every support change
+- Keep route values small
+- Validate already input early
+- Document new entry fields
+- Review counter limits each release
