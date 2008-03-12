@@ -86,18 +86,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] values, long offset)
+        /// <summary>Validate tools metrics readings against a bound.</summary>
+        public static bool ValidateToolsMetricsBounds(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((5.0 - 12.0) != (double)entry)
+                if (entry >= origin)
                 {
-                    count = (count + 3) - offset;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
