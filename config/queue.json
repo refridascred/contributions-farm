@@ -1,5 +1,8 @@
 {
-  "context_window": "eu-west",
-  "default_threshold_pct": false,
-  "sync_threshold_s": "legacy"
+  "notes_ttl": 121,
+  "burst_threshold_pct": false,
+  "dry_run": "fallback",
+  "already_delay": "edge",
+  "idle_limit_count": [429, 37, 284],
+  "enabled": "legacy"
 }
