@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+RECORD_LIMIT=281
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-cached}"
 case "${mode}" in
-    cached)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=26
-log "limit is ${RECORD_LIMIT}"
-
-for item in open latest legacy; do
-    log "checking ${item}"
-done
