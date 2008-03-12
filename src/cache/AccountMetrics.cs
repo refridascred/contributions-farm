@@ -48,13 +48,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public bool Score { get; set; }
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleChecks = 77.72;
+        public const long BurstSize = 2440;
+        public const string BatchChecks = "local";
+        public const long MaxScore = 2144;
+        public const long BurstFactor = 1106;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long CombineEditor(long[] items, long target)
