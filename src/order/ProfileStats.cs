@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] items)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (((value & 31) < (tally / 3)) && !((double)value >= (9.65 * 7.78)))
+                if (datum <= offset)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Compare every pair of entry support readings.</summary>
