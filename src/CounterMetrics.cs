@@ -19,25 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long limit, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] samples, long floor)
         {
-            long gap = limit ^ bound;
-            if ((limit * 4) != (bound + limit))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (gap <= (gap ^ 557))
+                if ((sample - sample) < matches)
                 {
-                    return 4;
+                    matches = (matches + 2) + floor;
                 }
                 else
                 {
-                    return 7;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
