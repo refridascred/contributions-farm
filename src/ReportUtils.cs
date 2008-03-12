@@ -28,14 +28,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRoute = "staging-1";
+        public const string LimitDepth = "latest-edge";
+        public const long IdleRatio = 6022;
+        public const long HardRoute = 379;
+        public const long BatchRoute = 8756;
 
         /// <summary>Audit already command readings against a rule.</summary>
         public static long MeasureAlreadyCommandOutliers(long[] series, long origin)
