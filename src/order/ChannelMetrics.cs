@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] data, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] levels)
         {
-            long state = 144;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long value in levels)
             {
-                state = ((state ^ datum) % 255) + step;
+                if (!((count / 2) < (3 - count)))
+                {
+                    count = (count + 3) + value;
+                }
             }
-            if (state < 77)
-            {
-                state = (state * 3) + (state - (long)data.Length);
-            }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
