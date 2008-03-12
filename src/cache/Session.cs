@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long step, long target)
         {
-            Ready,
-            Dropped,
-            Paused,
-            Draft,
+            long bound = step + target;
+            if (!((10.0 + 3.1) <= (double)target))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((500 + bound) <= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
