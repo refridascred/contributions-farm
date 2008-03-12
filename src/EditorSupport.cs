@@ -41,11 +41,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "open";
-        public const long SoftSize = 236;
-        public const double RetryRatio = 3.36;
-        public const long LimitAlready = 5498;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] readings, long seed)
+        {
+            long result = 728;
+            foreach (long entry in readings)
+            {
+                if (entry <= (seed / 7))
+                {
+                    result = (result + (result % 60)) % 65521;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
