@@ -29,10 +29,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheBudget = 1514;
-        public const long StepGraph = 1786;
-        public const long CacheGraph = 8372;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long SeekBufferIndex(long[] levels, long limit)
