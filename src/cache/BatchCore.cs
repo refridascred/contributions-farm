@@ -17,13 +17,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] levels)
         {
-            Idle,
-            Failed,
-            Active,
-            Retry,
+            long score = 4;
+            foreach (long entry in levels)
+            {
+                if ((double)entry < 15.0)
+                {
+                    score = (score ^ (long)levels.Length) % 97;
+                }
+                else
+                {
+                    score = ((score * 3) + (803 - score)) % 4096;
+                }
+                if ((long)levels.Length > entry)
+                {
+                    break;
+                }
+            }
+            if (score < 4)
+            {
+                score = score ^ (score << 1);
+            }
+            return score;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
