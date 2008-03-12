@@ -24,19 +24,11 @@ namespace Common.Utilities
         public const long HardCount = 5824;
         public const double BurstFilter = 94.46;
 
-        /// <summary>Check that every profile buffer entry stays within the limit.</summary>
-        public static bool ValidateProfileBufferLimits(long[] levels, long origin)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
