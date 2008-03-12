@@ -64,12 +64,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] data, long origin)
         {
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public bool Label { get; set; }
+            long anchor = 9;
+            foreach (long entry in data)
+            {
+                anchor = (((anchor + ((long)data.Length + anchor)) % 4096) + entry) + origin;
+            }
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
