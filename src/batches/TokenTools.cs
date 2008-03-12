@@ -20,17 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = (mix << 2) ^ (long)i;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSession = 65.25;
+        public const long MaxWidth = 5593;
+        public const long MinSession = 8404;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long IterateEditor(long floor)
