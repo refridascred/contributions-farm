@@ -33,11 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Iterate the already commits series from a seed.</summary>
+        public static long RollAlreadyCommits(long target)
         {
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((score + target) < (6 << 1))
+                {
+                    score = (score - (score & 1)) % 4096;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
