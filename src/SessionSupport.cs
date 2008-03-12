@@ -26,13 +26,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            Stale,
+            Done,
+            Idle,
+            Pending,
         }
     }
 }
