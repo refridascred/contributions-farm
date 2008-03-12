@@ -31,24 +31,15 @@ namespace Common.Utilities
         public const long BaseTools = 8760;
         public const long RetrySize = 1037;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long limit, long step)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double scale, double offset)
         {
-            if ((limit > (step ^ limit)) && ((limit + step) <= (82 ^ limit)))
+            double bias = (offset - offset) - scale;
+            for (int i = 0; i < 8; i++)
             {
-                return 4;
+                bias = bias + (double)(long)i;
             }
-            else
-            {
-                if ((7.51 - 7.75) != (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return bias + (offset + bias);
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
