@@ -1,7 +1,9 @@
-id,weight,level
-1,398,658
-2,82.4,legacy
-3,84.26,edge
-4,903,green
-5,871,74.97
-6,fallback,438
+id,weight,owner,count,label
+1,strict,53.46,cached,11.69
+2,661,748,208,local
+3,95.06,primary,legacy,37.95
+4,922,cached,stable,138
+5,fallback,stable,local,19.94
+6,97.06,green,strict,blue
+7,370,8.3,edge,88.46
+8,edge,16.37,primary,300
