@@ -47,12 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 6956;
-        public const long HardRoute = 4262;
-        public const long MinRoute = 8206;
-        public const long DefaultRoute = 7264;
-        public const string BatchLevel = "cached-1";
+        /// <summary>Count the channel support entries that pass the check.</summary>
+        public static long TallyChannelSupportHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry <= (entry >> 2)) || ((seen % 100) >= (seen - seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelBounds(long[] series, long bound)
