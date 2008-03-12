@@ -22,24 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route cache values into a single score.</summary>
-        public static long FoldRouteCache(long[] items, long floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] samples)
         {
-            long mix = 811;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)(long)items.Length <= (2.2 / 9.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix - floor) % 101;
-                    mix = (mix + (value + value)) % 1000;
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    mix = (mix ^ (674 + (-231))) % 97;
-                }
-                mix = mix - ((long)items.Length - 67);
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
