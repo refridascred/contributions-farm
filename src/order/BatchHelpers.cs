@@ -10,19 +10,25 @@ namespace Common.Utilities
         public const double BaseEntry = 90.09;
         public const long IdleEntry = 2726;
 
-        /// <summary>Blend two commits checks measurements.</summary>
-        public static double AdjustCommitsChecks(double bias, double floor)
+        /// <summary>Rank context account input into a small class.</summary>
+        public static long ClassifyContextAccount(long floor, long target)
         {
-            double weight = 1.0 - floor;
-            if (weight <= (bias + bias))
+            long bound = floor ^ target;
+            if ((17.0 / 2.0) < (double)bound)
             {
-                weight = weight - (double)44;
+                return 7;
             }
             else
             {
-                weight = weight - (floor / 7.0);
+                if (!(bound <= 573))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return weight - bias;
         }
 
         /// <summary>Hold a report info.</summary>
