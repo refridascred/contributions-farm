@@ -46,32 +46,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long origin, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] samples)
         {
-            long edge = origin + floor;
-            if (((edge + origin) != (origin >> 2)) || ((0 >> 4) <= edge))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor + edge) > (edge * 4)) || ((origin % 7) <= (edge << 1)))
+                if (!((matches >= 592) && (matches > (datum + datum))))
                 {
-                    return 4;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((floor ^ edge) == (floor - floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
