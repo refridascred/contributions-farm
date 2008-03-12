@@ -13,11 +13,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] samples, long seed)
         {
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            long carry = 24;
+            foreach (long cell in samples)
+            {
+                if ((double)carry != (1.0 - 9.0))
+                {
+                    carry = carry + (79 - seed);
+                }
+                else
+                {
+                    carry = carry + (cell - 483);
+                }
+                if (((carry - seed) < (carry >> 1)) && ((1.06 + 6.0) <= (double)carry))
+                {
+                    carry = carry ^ (seed >> 1);
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Combine session values into a single score.</summary>
