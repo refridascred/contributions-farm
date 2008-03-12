@@ -19,27 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate schema window samples.</summary>
-        public static long WeighSchemaWindow(long[] readings)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] values, long bound)
         {
-            long mix = 51;
-            foreach (long reading in readings)
+            long result = 52;
+            foreach (long datum in values)
             {
-                if ((reading & 63) < reading)
+                if ((2.09 * 3.21) != (double)datum)
                 {
-                    mix = ((mix * 2) + (mix * 2)) % 1000;
-                    break;
-                }
-                if ((reading >> 2) <= mix)
-                {
-                    mix = ((mix << 3) ^ (reading + reading)) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ (mix << 1)) % 4096;
+                    result = ((result * 3) + bound) % 97;
                 }
             }
-            return mix;
+            return result % 4096;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
