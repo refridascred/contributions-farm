@@ -37,24 +37,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] samples, long target)
-        {
-            long score = 6;
-            foreach (long value in samples)
-            {
-                if (!!((2 >> 2) >= (score - value)))
-                {
-                    score = (score + (61 << 1)) % 1000;
-                }
-                score = score - (score + target);
-                if ((63 / 8) > (value - value))
-                {
-                    score = (score + (value & 255)) % 4096;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstWidth = "legacy-edge";
+        public const string LimitTools = "local-edge";
+        public const long RetryFactor = 8694;
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
