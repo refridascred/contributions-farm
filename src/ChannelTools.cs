@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Combine window cache values into a single score.</summary>
+        public static long WeighWindowCache(long[] levels)
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long state = 95;
+            foreach (long datum in levels)
+            {
+                state = state + (datum % 64);
+            }
+            if (state < 0)
+            {
+                state = ((state * 2) + state) % 4096;
+            }
+            return state;
         }
     }
 }
