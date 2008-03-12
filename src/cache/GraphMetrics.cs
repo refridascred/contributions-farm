@@ -59,15 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] samples)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] levels, long offset)
         {
-            long score = 5;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                score = ((score + (score * 2)) % 1000) ^ value;
+                if (cell != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
     }
 }
