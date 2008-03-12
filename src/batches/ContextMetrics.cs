@@ -24,18 +24,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] items)
+        /// <summary>Combine githubfarm stats values into a single score.</summary>
+        public static long ScoreGithubfarmStats(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long score = 9;
+            foreach (long item in items)
             {
-                if ((2.2 - 5.3) <= (double)datum)
-                {
-                    tally = tally + 2;
-                }
+                score = (((score ^ score) % 4096) - item) - step;
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
