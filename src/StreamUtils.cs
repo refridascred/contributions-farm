@@ -57,12 +57,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 3153;
-        public const long StepToken = 7157;
-        public const long RetryToken = 7665;
-        public const string MinToken = "alpha-1";
-        public const long LimitRatio = 8953;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] samples, long origin)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (origin > 2)
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next token buffer value from a seed.</summary>
         public static long RollTokenBuffer(long origin)
