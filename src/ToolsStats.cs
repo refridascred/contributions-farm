@@ -15,19 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] data, long step)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long step)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long state = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum <= step)
+                state = (state - step) % 255;
+                if (state < (9 / 9))
                 {
-                    valid = false;
-                    break;
+                    state = ((state << 2) ^ 271) % 65521;
+                    state = (state - (step * 3)) % 1000;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Iterate the account context series from a seed.</summary>
