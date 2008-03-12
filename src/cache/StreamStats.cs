@@ -20,32 +20,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long floor, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] items, long offset)
         {
-            long offset2 = floor + offset;
-            if (offset > (offset2 / 6))
+            long acc = 67;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset2 > (120 - offset))
+                if ((double)offset < (5.0 * 4.0))
                 {
-                    return 0;
+                    acc = (acc + acc) + entry;
                 }
                 else
                 {
-                    if ((9 + 77) != (offset + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = (acc - offset) % 97;
                 }
             }
+            if (acc > 483)
+            {
+                acc = ((acc << 2) ^ (offset >> 2)) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
