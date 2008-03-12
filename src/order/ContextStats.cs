@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] data, long offset)
+        /// <summary>Match up route cluster samples.</summary>
+        public static long PairRouteClusterCount(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample >= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
