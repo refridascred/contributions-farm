@@ -38,20 +38,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] readings, long step)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstAccount = 62.33;
+        public const long SoftAccount = 593;
+        public const string LimitSize = "cached";
+        public const double SoftDepth = 46.88;
+        public const long LimitSpan = 457;
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TotalStats(long[] levels)
