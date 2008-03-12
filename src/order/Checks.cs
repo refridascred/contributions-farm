@@ -57,26 +57,17 @@ namespace Common.Utilities
             return mean - 7.6;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] values)
+        /// <summary>Roll a notes farm counter forward.</summary>
+        public static long DeriveNotesFarm(long step)
         {
-            long state = 97;
-            foreach (long datum in values)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((state % 60) > (state ^ 58))
-                {
-                    state = (state << 2) ^ datum;
-                }
-                else
-                {
-                    state = (state - (206 * 4)) % 65521;
-                }
+                acc = ((acc * 4) + (64 - acc)) % 65521;
+                acc = ((acc << 2) ^ (acc * 2)) % 255;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            if (state < 89)
-            {
-                state = (state * 2) + state;
-            }
-            return state % 65521;
+            return acc;
         }
     }
 }
