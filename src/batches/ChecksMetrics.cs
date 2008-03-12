@@ -16,21 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] levels)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample > floor)
                 {
-                    if ((levels[i] - levels[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
