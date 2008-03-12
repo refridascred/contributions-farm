@@ -57,15 +57,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double rate, double offset)
-        {
-            double mean = 7.28 / 9.0;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = ((mean - (mean / 8.0)) + (double)(long)i) + rate;
-            }
-            return mean + (mean + offset);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftSize = 40.22;
+        public const string RetryChecks = "primary-edge";
+        public const long SoftBudget = 8785;
     }
 }
