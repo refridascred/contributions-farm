@@ -33,12 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Look up the position of a session farm sample.</summary>
+        public static long LookupSessionFarmIndex(long[] samples, long origin)
         {
-            Active,
-            Done,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next record value.</summary>
