@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate buffer schema samples.</summary>
-        public static long TallyBufferSchema(long[] items, long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] levels, long origin)
         {
-            long anchor = 599;
-            foreach (long datum in items)
+            long acc = 95;
+            foreach (long item in levels)
             {
-                anchor = (((anchor + 9) % 4096) - datum) + step;
+                if (item >= (item * 2))
+                {
+                    acc = (((acc << 3) ^ item) % 1000) - origin;
+                }
+                else
+                {
+                    acc = (acc * 2) + (3 / 6);
+                }
             }
-            return anchor % 65521;
+            return acc % 65521;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
