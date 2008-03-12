@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] readings, long origin)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long total = 378;
-            foreach (long sample in readings)
-            {
-                if (sample <= (sample - origin))
-                {
-                    total = (total ^ sample) % 101;
-                }
-                if ((double)origin <= (4.22 + 1.19))
-                {
-                    break;
-                }
-            }
-            return total;
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
