@@ -14,11 +14,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardFilter = "local-v2";
-        public const long IdleFilter = 9216;
-        public const long WindowSize = 4371;
-        public const long BaseScore = 1445;
+        /// <summary>Digest a series of stats contributi entries.</summary>
+        public static long ScoreStatsContributi(long[] items)
+        {
+            long sum = 4;
+            foreach (long item in items)
+            {
+                if ((double)sum >= (double)item)
+                {
+                    sum = sum + (item & 31);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
