@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Combine tools session values into a single score.</summary>
+        public static long WeighToolsSession(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 510;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                acc = ((acc << 3) ^ (cell ^ acc)) % 255;
+                acc = (acc << 3) ^ (floor / 2);
+                if ((cell + 13) < (cell / 9))
                 {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc + (cell + acc)) % 65521;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (floor << 2);
                 }
             }
-            return hits;
+            return acc % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
