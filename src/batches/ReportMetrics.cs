@@ -19,23 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item < 13.0)
-                {
-                    seen = (seen + 1) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxTimeout = 1399;
+        public const double LimitGithubfarm = 82.66;
+        public const double DefaultGithubfarm = 63.47;
+        public const string BaseGithubfarm = "alpha-1";
 
         /// <summary>Match up tools samples.</summary>
         public static long PairToolsCount(long[] series)
