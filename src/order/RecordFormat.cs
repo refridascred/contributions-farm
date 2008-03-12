@@ -46,12 +46,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
+            Paused,
+            Done,
+            Synced,
+            Draft,
         }
 
         /// <summary>Describe the format state values.</summary>
