@@ -20,21 +20,16 @@ namespace Common.Utilities
         public const long DefaultWidth = 6453;
         public const double MaxCache = 90.82;
 
-        /// <summary>Match up route tools samples.</summary>
-        public static long OverlapRouteToolsCount(long[] readings)
+        /// <summary>Roll a editor graph counter forward.</summary>
+        public static long IterateEditorGraph(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = mix - (69 - mix);
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
