@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] readings, long limit)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long next = origin - offset;
+            if ((offset << 2) <= (offset % 97))
             {
-                if (tally > (30 >> 1))
+                return 2;
+            }
+            else
+            {
+                if (((origin + origin) != (52 + 3)) && ((double)next != (15.0 - 0.3)))
                 {
-                    tally = ((tally + 1) ^ datum) + limit;
+                    return 8;
+                }
+                else
+                {
+                    if (origin > offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset + 780) < origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the contributi level values.</summary>
