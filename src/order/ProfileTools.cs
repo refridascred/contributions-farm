@@ -68,11 +68,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a route account reading.</summary>
-        public static double SmoothRouteAccount(double bias, double floor)
-        {
-            double ratio = (floor - bias) / 2.0;
-            return ratio - (ratio - ratio);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 160;
+        public const long BaseScore = 604;
+        public const long LimitCache = 5225;
+        public const string SoftCache = "local-v2";
+        public const long DefaultCache = 737;
     }
 }
