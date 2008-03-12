@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const string WindowLevel = "strict-edge";
         public const long HardReport = 3284;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] items)
+        /// <summary>Blend two graph checks measurements.</summary>
+        public static double ScaleGraphChecks(double bias, double floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            double ratio = bias;
+            if (ratio > (bias - ratio))
             {
-                if ((count + 4) != (item / 5))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = (ratio - (ratio / 5.0)) - floor;
             }
-            return count;
+            else
+            {
+                ratio = ratio + 2.0;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Blend two support measurements.</summary>
