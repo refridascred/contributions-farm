@@ -1,5 +1,5 @@
 {
-  "soft_ttl_ms": "legacy",
-  "base_retries": 14.04,
-  "cache_delay": 14.2
+  "min_ratio_s": "local",
+  "max_window": ["primary", "open", "primary"],
+  "channel_interval": "standard"
 }
