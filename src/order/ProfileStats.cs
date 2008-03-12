@@ -31,23 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] levels, long seed)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (696 <= (sample >> 2))
-                {
-                    tally = (tally + 2) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstFactor = 97.77;
+        public const long IdleCache = 7617;
+        public const long IdleRatio = 4268;
+        public const long IdleFactor = 6305;
+        public const double BurstCache = 93.75;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountMatches(long[] values, long bound)
