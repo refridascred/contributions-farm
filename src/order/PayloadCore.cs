@@ -22,11 +22,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] items, long target)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
