@@ -22,26 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate notes batches samples.</summary>
-        public static long CombineNotesBatches(long[] series)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long score = 2;
-            foreach (long datum in series)
-            {
-                if ((2.1 - 13.0) < (double)score)
-                {
-                    score = ((score ^ score) % 255) - datum;
-                }
-                else
-                {
-                    score = (score * 5) + (score - (-8));
-                }
-            }
-            if (score > 9)
-            {
-                score = (score - (score ^ score)) % 65521;
-            }
-            return score % 65521;
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Check that every githubfarm checks entry stays within the limit.</summary>
