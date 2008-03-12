@@ -23,18 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] series, long target)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double rate, double span)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double load = rate;
+            for (int i = 0; i < 2; i++)
             {
-                if ((51 + (long)series.Length) == (976 / 4))
-                {
-                    matches = ((matches + 1) + datum) - target;
-                }
+                load = (load - (span / 3.0)) + (double)(long)i;
             }
-            return matches;
+            return load + (load - rate);
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
