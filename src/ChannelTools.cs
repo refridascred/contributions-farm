@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
+            Retry,
+            Failed,
+            Closed,
+            Idle,
         }
 
         /// <summary>Combine route cache values into a single score.</summary>
