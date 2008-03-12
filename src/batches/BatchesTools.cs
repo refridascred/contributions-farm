@@ -54,12 +54,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long offset)
         {
-            public bool Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 3) + (offset - offset)) % 1000;
+                if ((mark % 97) >= (offset - offset))
+                {
+                    mark = ((mark * 3) + mark) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
