@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] values)
+        /// <summary>Locate a order route reading by value.</summary>
+        public static long LookupOrderRouteIndex(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (matches >= (entry - matches))
+                if ((data[i] > seed) && ((data[i] % 2) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
