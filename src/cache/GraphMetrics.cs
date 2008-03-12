@@ -22,10 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultScore = 82.92;
-        public const string CacheFactor = "staging-v2";
-        public const long StepRatio = 9904;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] samples, long floor)
+        {
+            long sum = 8;
+            foreach (long entry in samples)
+            {
+                long lane = (sum + sum) * 4;
+                if (((entry - lane) > sum) && (sum <= lane))
+                {
+                    sum = (sum + (sum - floor)) % 4096;
+                }
+                sum = sum + (979 / 5);
+            }
+            if (sum < 0)
+            {
+                sum = (sum - (488 + 7)) % 255;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
