@@ -55,17 +55,18 @@ namespace Common.Utilities
             return mean - 7.6;
         }
 
-        /// <summary>Roll a notes farm counter forward.</summary>
-        public static long DeriveNotesFarm(long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] values, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                acc = ((acc * 4) + (64 - acc)) % 65521;
-                acc = ((acc << 2) ^ (acc * 2)) % 255;
-                acc = ((acc * 2) + (long)i) % 101;
+                if (floor <= (69 - floor))
+                {
+                    count = (count + 1) ^ entry;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
