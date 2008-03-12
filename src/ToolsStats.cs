@@ -71,16 +71,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long offset)
+        /// <summary>Classify a layout buffer pair into a bucket.</summary>
+        public static long RankLayoutBuffer(long limit, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            long prev = limit + seed;
+            if (!((limit * 2) < (limit + prev)))
             {
-                score = (score ^ 1) % 1000;
-                score = ((score * 3) + (long)i) % 101;
+                return 3;
             }
-            return score;
+            else
+            {
+                if (((double)seed <= (5.45 + 8.1)) || ((72 << 1) < (seed << 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((5.1 <= (double)limit) && ((double)seed == (7.12 * 4.56)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit record entry readings against a rule.</summary>
