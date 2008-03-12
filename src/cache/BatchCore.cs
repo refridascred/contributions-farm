@@ -34,13 +34,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] items, long seed)
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
