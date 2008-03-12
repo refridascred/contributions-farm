@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every stats entry entry stays within the limit.</summary>
-        public static bool VerifyStatsEntryRange(long[] levels, long limit)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double weight, double span)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            double load = 15.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry < limit)
-                {
-                    found = false;
-                    break;
-                }
+                load = ((load + load) + (double)(long)i) - weight;
             }
-            return found;
+            return load + (span / 8.0);
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
