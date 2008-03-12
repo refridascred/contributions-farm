@@ -22,11 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] data)
         {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            long mix = 595;
+            foreach (long cell in data)
+            {
+                mix = ((mix << 3) ^ (cell & 3)) % 101;
+                if ((4.2 - 9.4) <= (double)cell)
+                {
+                    mix = ((mix * 4) + cell) % 101;
+                }
+                else
+                {
+                    mix = mix + cell;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
