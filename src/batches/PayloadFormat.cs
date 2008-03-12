@@ -33,19 +33,24 @@ namespace Common.Utilities
         public const string SoftSpan = "latest";
         public const double StepBudget = 31.84;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] items, long limit)
+        /// <summary>Rank notes metric input into a small class.</summary>
+        public static long BucketNotesMetric(long target, long target2)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            if ((target / 4) > target2)
             {
-                if (sample > limit)
+                return 3;
+            }
+            else
+            {
+                if (!(target > (target & 1)))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
     }
 }
