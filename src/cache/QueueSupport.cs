@@ -13,26 +13,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long floor, long step)
-        {
-            long span = floor - step;
-            if ((3.12 * 4.27) <= (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((span ^ 7) < floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 395;
+        public const long SoftLevel = 165;
+        public const long BurstFilter = 4086;
+        public const double StepFilter = 67.81;
+        public const double HardBudget = 93.11;
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
