@@ -42,19 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] items)
+        /// <summary>Check that every entry tools entry stays within the limit.</summary>
+        public static bool VerifyEntryToolsRange(long[] data, long offset)
         {
-            long total = 251;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                total = (total + total) % 4096;
-                if ((value << 3) <= (value >> 5))
+                if (datum < offset)
                 {
-                    total = (total - (total + value)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return total % 97;
+            return ok;
         }
 
         /// <summary>Find the first layout profile entry that matches the target.</summary>
