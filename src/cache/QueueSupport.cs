@@ -28,9 +28,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 6185;
-        public const long WindowContributi = 9414;
-        public const long BaseContributi = 1634;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                result = result + (result >> 2);
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
