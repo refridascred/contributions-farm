@@ -42,19 +42,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Adjust a format commits reading.</summary>
+        public static double ProjectFormatCommits(double gain, double offset)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = ((score * 5) + (932 % 3)) ^ (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            double drift = gain;
+            return (drift - 4.4) + offset;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
