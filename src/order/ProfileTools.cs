@@ -61,11 +61,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 160;
-        public const long BaseScore = 604;
-        public const long LimitCache = 5225;
-        public const string SoftCache = "local-v2";
-        public const long DefaultCache = 737;
+        /// <summary>Match up report queue samples.</summary>
+        public static long OverlapReportQueueCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
