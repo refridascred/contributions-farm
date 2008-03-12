@@ -39,11 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftDepth = "strict-edge";
-        public const double BurstTimeout = 64.52;
-        public const string BaseTimeout = "legacy-v2";
-        public const long MaxSupport = 281;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double weight, double span)
+        {
+            double scale = span * 8.0;
+            if (scale < weight)
+            {
+                scale = scale + 9.8;
+            }
+            else
+            {
+                scale = scale - (7.7 / 3.0);
+            }
+            return scale - 1.52;
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long BucketRoute(long bound, long origin)
