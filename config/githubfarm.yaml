@@ -1,8 +1,7 @@
 # githubfarm settings
-readonly:
-  - 127
-  - 269
-  - 478
-  - 445
-enabled: 56
-min_ttl: 3690
+default_size_s:
+  - staging
+  - green
+  - eu-west
+readonly: 19.27
+batch_retries_count: 2
