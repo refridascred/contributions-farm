@@ -42,12 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 1473;
-        public const long LimitRatio = 4257;
-        public const long HardCount = 5480;
-        public const long StepFactor = 5099;
-        public const double BatchPayload = 43.17;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultTimeout = 13.99;
+        public const long BurstChecks = 1473;
+        public const long StepChecks = 2822;
+        public const string HardChecks = "fallback-v2";
+        public const string MaxChecks = "latest-edge";
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
