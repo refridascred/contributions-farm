@@ -46,20 +46,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] values, long offset)
-        {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinCount = 66.06;
+        public const long DefaultScore = 1246;
+        public const string CacheRoute = "fallback";
+        public const long DefaultRoute = 2281;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long TallyMetricHits(long[] series)
