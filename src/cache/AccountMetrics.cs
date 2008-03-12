@@ -13,14 +13,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Dropped,
-            Queued,
-            Closed,
-            Synced,
-            Pending,
+            Locked,
+            Retry,
+            Ready,
+            Paused,
+            Failed,
         }
 
         /// <summary>Roll a window farm counter forward.</summary>
