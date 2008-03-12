@@ -40,13 +40,9 @@ namespace Common.Utilities
         public const long WindowScore = 6651;
         public const long SoftDepth = 7089;
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchAccount = "standard-edge";
+        public const string RetryAccount = "primary-1";
+        public const long CacheAccount = 9665;
     }
 }
