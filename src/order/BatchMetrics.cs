@@ -54,13 +54,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] series)
         {
-            Queued,
-            Retry,
-            New,
-            Pending,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches + reading) < (850 + reading))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
