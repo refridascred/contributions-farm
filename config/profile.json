@@ -1,7 +1,10 @@
 {
-  "poll_limit_s": 88.64,
-  "min_size_pct": true,
-  "verbose": "strict",
-  "dry_run": 51,
-  "min_capacity": "local"
+  "audit": "fallback",
+  "strict": "local",
+  "min_delay_ms": {
+    "warm_ratio_s": 60,
+    "hard_delay_ms": 60,
+    "strict": 82.73
+  },
+  "base_depth": 9034
 }
