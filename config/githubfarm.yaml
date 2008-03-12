@@ -1,12 +1,19 @@
 # githubfarm settings
-batch_depth_ms: edge
-flush_interval_s: true
-queue_depth:
-  - local
-  - blue
-burst_depth_ms:
-  - 8
-  - 276
-  - 250
-  - 61
-retry_interval_s: 7644
+min_delay_count: staging
+compress: 54
+report_limit:
+  strict: 30
+  sync_retries_pct:
+    - open
+    - local
+    - blue
+    - blue
+  session_limit: strict
+  support_depth: 5800
+  idle_limit: false
+default_delay_pct: fallback
+strict:
+  - primary
+  - stable
+  - fallback
+  - stable
