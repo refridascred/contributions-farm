@@ -20,13 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] data)
         {
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
+            long carry = 867;
+            foreach (long entry in data)
+            {
+                carry = ((carry * 3) + 5) ^ entry;
+            }
+            return carry;
         }
 
         /// <summary>Check that every contributi checks entry stays within the limit.</summary>
