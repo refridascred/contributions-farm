@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] items, long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 8;
+            foreach (long reading in values)
             {
-                if ((items[i] <= target) && ((items[i] % 2) == 0))
+                if ((reading + 5) > carry)
                 {
-                    return (long)i;
+                    carry = (carry - reading) % 101;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Describe the schema kind values.</summary>
