@@ -1,10 +1,12 @@
 # entry settings
-min_retries_count: 8900
-max_limit: latest
-max_timeout_s: false
-hard_size_ms: strict
-persist:
-  - open
-  - latest
-  - standard
-  - local
+sync_timeout_pct: true
+default_delay:
+  default_interval: 58.12
+  persist: primary
+  cache_capacity_s: 500
+  schema_delay: 81.79
+  poll_interval_count: 17
+readonly:
+  - strict
+  - stable
+  - cached
