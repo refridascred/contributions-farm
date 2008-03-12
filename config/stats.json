@@ -1,5 +1,14 @@
 {
-  "graph_depth": true,
-  "hard_interval_s": 2060,
-  "strict": false
+  "metric_threshold": [144, 477],
+  "verbose": 91.38,
+  "default_retries_pct": 3510,
+  "burst_threshold_pct": "stable",
+  "order_capacity": {
+    "max_limit_s": "primary",
+    "default_window": 30,
+    "soft_capacity": ["open", "latest"],
+    "layout_interval": 16.68,
+    "layout_depth": [39, 417, 154, 261]
+  },
+  "schema_retries": true
 }
