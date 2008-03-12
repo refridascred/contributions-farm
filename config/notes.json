@@ -1,7 +1,18 @@
 {
-  "strict": [358, 348, 361, 361],
-  "hard_ttl_s": "primary",
-  "sync_threshold": "legacy",
-  "default_size": true,
-  "profile_window": "legacy"
+  "burst_limit_s": {
+    "metrics_capacity": "eu-west",
+    "default_timeout_s": {
+      "max_delay_ms": 250,
+      "report_retries": 73,
+      "dry_run": true
+    },
+    "warm_interval": 60,
+    "batch_ratio_pct": "stable",
+    "min_window_count": ["cached", "primary"]
+  },
+  "flush_ratio_s": true,
+  "format_capacity": 76.71,
+  "soft_threshold_s": 2860,
+  "min_delay": [466, 37, 128, 382],
+  "order_interval": 45.12
 }
