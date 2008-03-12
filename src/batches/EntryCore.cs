@@ -54,10 +54,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepTimeout = 29.49;
-        public const double SoftLevel = 61.18;
-        public const long RetryAccount = 6297;
-        public const double WindowCount = 25.49;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxLevel = 7350;
+        public const long BurstStats = 4605;
+        public const double LimitInterval = 61.5;
+        public const long IdleSpan = 5873;
+        public const double BurstRatio = 62.05;
     }
 }
