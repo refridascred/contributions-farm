@@ -41,15 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long bound)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double rate, double span)
         {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            double rate2 = rate;
+            return (rate2 - (5.6 + 6.0)) + span;
         }
     }
 }
