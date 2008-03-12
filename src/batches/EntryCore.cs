@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout graph samples are out of range.</summary>
-        public static long CountLayoutGraphHits(long[] series, long bound)
+        /// <summary>Measure how many counter window samples are out of range.</summary>
+        public static long CountCounterWindowOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (((-4) + bound) >= cell)
+                if (0.92 > (double)item)
                 {
-                    matches = matches + 2;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
