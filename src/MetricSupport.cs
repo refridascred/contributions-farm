@@ -42,18 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] items)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if ((sample >> 3) < (matches - sample))
+                if (value < target)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
