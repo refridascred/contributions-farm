@@ -25,18 +25,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] samples)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long step, long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long slot = step + seed;
+            if ((step % 7) >= (slot - seed))
             {
-                if ((((14.0 * 8.87) > (double)entry) && (4.7 < (double)tally)) && ((4.9 + 6.0) <= (double)tally))
+                return 4;
+            }
+            else
+            {
+                if ((double)step <= (3.0 / 3.0))
                 {
-                    tally = tally + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (step >= 72)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
