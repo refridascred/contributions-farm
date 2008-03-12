@@ -92,25 +92,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a channel profile value against two limits.</summary>
-        public static long BucketChannelProfile(long step, long bound)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long lane = step + bound;
-            if ((double)bound >= (3.1 + 7.5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((lane >> 1) >= lane)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
