@@ -33,23 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] readings)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] readings, long floor)
         {
-            long state = 678;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2 - reading) <= reading)
+                if (readings[i] > floor)
                 {
-                    state = ((state * 2) + state) % 1000;
-                    continue;
-                }
-                if ((state <= 9) || ((double)state == (5.4 * 1.3)))
-                {
-                    state = state ^ (state >> 3);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Project the next record value.</summary>
