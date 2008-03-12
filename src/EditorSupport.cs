@@ -89,17 +89,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] items, long bound)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] >= bound)
+                if (((long)i - mix) >= (mix % 3))
                 {
-                    return (long)i;
+                    mix = ((mix * 5) + ((long)i + mix)) % 1000;
                 }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
     }
 }
