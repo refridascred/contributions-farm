@@ -43,19 +43,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] data, long bound)
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
+            long acc = 186;
+            foreach (long value in data)
             {
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    state = ((state * 4) + (bound * 4)) + (long)i3;
-                }
-                state = ((state * 4) + (long)i) % 4093;
+                acc = (((acc - (acc % 12)) % 65521) ^ value) - bound;
             }
-            return state;
+            return acc;
         }
     }
 }
