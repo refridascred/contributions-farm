@@ -40,12 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] readings, long target)
         {
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
