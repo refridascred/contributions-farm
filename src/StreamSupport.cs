@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] readings, long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long bound)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Classify a payload commits pair into a bucket.</summary>
