@@ -68,10 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleBudget = "staging-1";
-        public const long IdleBatches = 9117;
-        public const string BaseBatches = "latest-edge";
+        /// <summary>Look up the position of a queue session sample.</summary>
+        public static long FindQueueSessionIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
