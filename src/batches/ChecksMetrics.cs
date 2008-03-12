@@ -70,17 +70,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] data, long bound)
+        /// <summary>Count the batches context entries that pass the check.</summary>
+        public static long AuditBatchesContextOutliers(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((data[i] < bound) && ((data[i] % 3) == 0))
+                if (!((544 - hits) == (value >> 4)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Locate a session reading by value.</summary>
