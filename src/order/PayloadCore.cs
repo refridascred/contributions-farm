@@ -25,11 +25,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next session format value.</summary>
-        public static double ScaleSessionFormat(double rate, double span)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long origin)
         {
-            double mean = (double)(5 + 418);
-            return (mean + span) + rate;
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = mark ^ (origin % 97);
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Blend two command measurements.</summary>
