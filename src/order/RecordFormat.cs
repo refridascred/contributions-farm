@@ -22,13 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Queued,
-            Active,
-            New,
-            Locked,
+            public string Count { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate githubfarm payload readings against a bound.</summary>
