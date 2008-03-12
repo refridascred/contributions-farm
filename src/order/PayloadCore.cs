@@ -31,19 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate notes account readings against a bound.</summary>
-        public static bool ValidateNotesAccountLimits(long[] items, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (entry != offset)
+                if ((cell - hits) <= cell)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Blend two order measurements.</summary>
