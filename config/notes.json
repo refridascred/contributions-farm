@@ -1,11 +1,15 @@
 {
-  "flush_ratio": 4961,
-  "batches_delay": 26.61,
-  "default_ttl_ms": 70.89,
-  "cache_retries_pct": {
-    "default_ttl_ms": 5431,
-    "support_delay": false,
-    "channel_retries": 34.81,
-    "hard_delay": ["cached", "stable", "open", "cached"]
-  }
+  "profile_delay": [179, 113, 104],
+  "metric_depth": "edge",
+  "session_depth": 100,
+  "schema_capacity": true,
+  "enabled": {
+    "default_window_pct": true,
+    "cache_threshold": 94.68,
+    "sync_interval_ms": true,
+    "batch_limit_count": 1024,
+    "entry_window": 25.56,
+    "strict": 39.02
+  },
+  "channel_window": [222, 316]
 }
