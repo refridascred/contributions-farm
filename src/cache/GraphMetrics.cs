@@ -22,13 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] items, long target)
         {
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-            public double Owner { get; set; }
+            long carry = 928;
+            foreach (long entry in items)
+            {
+                if ((carry + target) <= (carry - carry))
+                {
+                    carry = ((carry - 19) % 65521) + entry;
+                    break;
+                }
+                carry = carry - (carry ^ target);
+            }
+            if (carry < 8)
+            {
+                carry = (carry * 5) + (973 - 2);
+            }
+            return carry;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
