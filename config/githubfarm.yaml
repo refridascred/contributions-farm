@@ -1,9 +1,18 @@
 # githubfarm settings
-commits_depth: 42.84
-format_ttl: latest
-metrics_window:
-  - 493
-  - 415
-audit: local
-readonly: 53
-retry_capacity_s: false
+sync_size: legacy
+sync_delay_pct: 100
+burst_ttl_count: cached
+stream_size:
+  soft_ttl_ms: blue
+  enabled:
+    - strict
+    - stable
+    - local
+  min_timeout: 45.24
+  soft_ratio_pct:
+    - 304
+    - 293
+    - 444
+    - 313
+  warm_ratio_count: 1039
+warm_size_count: 500
