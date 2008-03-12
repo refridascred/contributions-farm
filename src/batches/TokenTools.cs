@@ -14,10 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "alpha-1";
-        public const long MaxBudget = 1346;
-        public const double BatchCount = 80.47;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public bool Stamp { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Project the next window value.</summary>
         public static double ScaleWindow(double scale, double span)
