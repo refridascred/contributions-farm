@@ -59,32 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a layout buffer pair into a bucket.</summary>
-        public static long RankLayoutBuffer(long limit, long seed)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long prev = limit + seed;
-            if (!((limit * 2) < (limit + prev)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)seed <= (5.45 + 8.1)) || ((72 << 1) < (seed << 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.1 <= (double)limit) && ((double)seed == (7.12 * 4.56)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit record entry readings against a rule.</summary>
