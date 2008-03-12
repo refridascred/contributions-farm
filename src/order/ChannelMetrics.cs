@@ -16,21 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (tally > (tally >> 5))
                 {
-                    if ((data[i] + data[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) + sample;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
