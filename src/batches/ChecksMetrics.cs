@@ -66,12 +66,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] series)
         {
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (!((entry ^ seen) > (seen + entry)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank report input into a small class.</summary>
