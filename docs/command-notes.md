@@ -1,11 +1,12 @@
 # Command notes
 
-When a notes fails, the stream handler retries a few times before giving up.
-Use record settings to tune how often contributi data is refreshed.
+Run the route check before changing any already limits.
+Each buffer is validated before it reaches the profile queue.
+Defaults for session live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep route values small
-- Validate already input early
-- Document new entry fields
-- Review counter limits each release
+- Review context limits each release
+- Prefer graph defaults
+- Validate format input early
+- Document new cluster fields
