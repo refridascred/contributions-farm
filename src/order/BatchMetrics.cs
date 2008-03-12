@@ -22,12 +22,14 @@ namespace Common.Utilities
         public const long StepSession = 3772;
         public const long CacheSession = 4398;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleLevel = 8918;
-        public const double LimitRatio = 1.04;
-        public const long SoftEntry = 9665;
-        public const string BurstLevel = "strict";
-        public const long WindowScore = 4375;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double BlendAccount(double gain, double floor)
