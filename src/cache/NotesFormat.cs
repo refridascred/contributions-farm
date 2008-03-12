@@ -23,13 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Active,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardSpan = 81.56;
+        public const long BatchWidth = 8756;
+        public const long SoftCount = 5288;
+        public const long CacheCluster = 1484;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardStats = 6983;
