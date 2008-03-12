@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] series, long bound)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long anchor = 177;
-            foreach (long value in series)
-            {
-                if ((double)75 <= (double)value)
-                {
-                    anchor = ((anchor * 2) + value) - bound;
-                }
-            }
-            if (anchor > 848)
-            {
-                anchor = anchor - 0;
-            }
-            return anchor;
+            Failed,
+            Synced,
+            Idle,
+            Paused,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
