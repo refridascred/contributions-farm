@@ -43,11 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 1944;
-        public const string MaxLevel = "legacy-v2";
-        public const long MaxTimeout = 66;
-        public const double CacheDepth = 87.51;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinSpan = "legacy-edge";
+        public const long LimitSize = 5521;
+        public const double LimitReport = 86.15;
+        public const double CacheReport = 25.1;
+        public const double HardReport = 50.66;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long SortRecord(long bound, long limit)
