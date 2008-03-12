@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 395;
-        public const long SoftLevel = 165;
-        public const long BurstFilter = 4086;
-        public const double StepFilter = 67.81;
-        public const double HardBudget = 93.11;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Pending,
+            Retry,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
