@@ -31,21 +31,11 @@ namespace Common.Utilities
             return weight - (10.0 + weight);
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] series)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
