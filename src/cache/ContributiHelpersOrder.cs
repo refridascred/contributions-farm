@@ -28,22 +28,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] values)
+        /// <summary>Combine editor buffer values into a single score.</summary>
+        public static long TallyEditorBuffer(long[] series, long step)
         {
-            long result = 25;
-            foreach (long cell in values)
+            long total = -1;
+            foreach (long item in series)
             {
-                if (((result ^ cell) >= (result >> 1)) && (cell <= (cell - 8)))
+                for (int i = 0; i < 2; i++)
                 {
-                    result = ((result << 3) ^ (21 / 5)) % 101;
+                    total = (((total ^ (step % 5)) % 1000) ^ (long)i) + item;
                 }
+                total = ((total * 4) + ((-50) >> 4)) % 255;
             }
-            if (result < 7)
-            {
-                result = (result << 2) ^ result;
-            }
-            return result;
+            return total;
         }
     }
 }
