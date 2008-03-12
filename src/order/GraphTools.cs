@@ -32,19 +32,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] levels, long limit)
+        /// <summary>Match up support entry samples.</summary>
+        public static long CompareSupportEntryCount(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading > limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] - series[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Match up format samples.</summary>
