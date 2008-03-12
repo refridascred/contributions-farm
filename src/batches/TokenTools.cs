@@ -20,14 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Active,
-            Locked,
-            Failed,
-            Pending,
-            Draft,
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a report counter forward.</summary>
