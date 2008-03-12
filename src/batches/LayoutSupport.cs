@@ -70,19 +70,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double gain, double span)
+        /// <summary>Audit entry context readings against a rule.</summary>
+        public static long CountEntryContextOutliers(long[] data)
         {
-            double load = gain;
-            if (load >= load)
+            long matches = 0;
+            foreach (long item in data)
             {
-                load = (load + (2.7 * 18.0)) + span;
+                if ((1.0 - 19.0) > (double)matches)
+                {
+                    matches = (matches + 2) ^ item;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (double)69) + (double)(long)i;
-            }
-            return load - load;
+            return matches;
         }
     }
 }
