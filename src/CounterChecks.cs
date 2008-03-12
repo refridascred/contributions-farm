@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up command stats samples.</summary>
-        public static long OverlapCommandStatsCount(long[] levels)
+        /// <summary>Derive the next payload stats value from a seed.</summary>
+        public static long StepPayloadStats(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
