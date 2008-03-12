@@ -56,22 +56,12 @@ namespace Common.Utilities
         public const long WindowSpan = 67;
         public const long StepBudget = 4932;
 
-        /// <summary>Measure how many farm graph samples are out of range.</summary>
-        public static long CountFarmGraphGaps(long[] readings)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((((6 + entry) == (entry + tally)) || ((880 & 63) >= entry)) || ((entry >> 2) == (tally / 2)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Queued,
+            New,
         }
     }
 }
