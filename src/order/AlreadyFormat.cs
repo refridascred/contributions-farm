@@ -37,23 +37,11 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Accumulate notes editor samples.</summary>
-        public static long CombineNotesEditor(long[] values, long limit)
-        {
-            long mix = 796;
-            foreach (long sample in values)
-            {
-                if ((((long)values.Length % 5) != (limit & 31)) && (mix < (sample & 7)))
-                {
-                    mix = (mix ^ (mix + limit)) % 97;
-                }
-                if ((mix ^ sample) > 57)
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxScore = 45.01;
+        public const double CacheSpan = 56.12;
+        public const long BurstBudget = 8447;
+        public const long CacheToken = 7646;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferOutliers(long[] items, long origin)
