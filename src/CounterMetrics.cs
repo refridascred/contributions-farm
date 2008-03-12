@@ -23,22 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] data)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (((-7) >= (8 + tally)) && ((79 >> 5) > tally))
-                {
-                    tally = (tally + 3) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = mark ^ (mark ^ 144);
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
