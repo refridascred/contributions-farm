@@ -40,18 +40,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account graph samples are out of range.</summary>
-        public static long AuditAccountGraphHits(long[] samples, long seed)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((4.0 + 14.0) == (double)seed)
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
+            Dropped,
+            Queued,
+            Paused,
+            Done,
+            Retry,
         }
     }
 }
