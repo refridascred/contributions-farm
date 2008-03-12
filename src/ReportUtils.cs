@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Measure how many batch support samples are out of range.</summary>
+        public static long TallyBatchSupportHits(long[] levels, long origin)
         {
-            Synced,
-            Closed,
-            Pending,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count & 1) > 414)
+                {
+                    count = ((count + 1) + entry) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine contributi checks values into a single score.</summary>
