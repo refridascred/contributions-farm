@@ -55,19 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double bias, double bias2)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] readings, long bound)
         {
-            double mean = bias;
-            if (mean > (mean - mean))
+            bool flag = true;
+            foreach (long item in readings)
             {
-                mean = mean + bias;
+                if (item <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (bias2 - mean);
-            }
-            return mean - 7.6;
+            return flag;
         }
 
         /// <summary>Hold a checks stats.</summary>
