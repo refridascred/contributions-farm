@@ -44,12 +44,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftDepth = 6162;
-        public const long StepWindow = 7784;
-        public const long CacheWindow = 82;
-        public const long SoftWindow = 4567;
-        public const double MinWindow = 97.55;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepWidth = 1537;
+        public const long MaxSpan = 6601;
+        public const long BatchWidth = 8707;
+        public const long SoftSize = 6067;
+        public const string CacheInterval = "fallback-1";
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long StepStats(long step)
