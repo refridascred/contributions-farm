@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBudget = 1571;
+        public const string MinCount = "primary-edge";
+        public const string CacheTimeout = "primary-v2";
+        public const double MinInterval = 5.09;
+        public const long HardBuffer = 7123;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long DigestAccount(long[] series)
