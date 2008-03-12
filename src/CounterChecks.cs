@@ -50,17 +50,19 @@ namespace Common.Utilities
             return drift + (double)8;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] samples, long limit)
+        /// <summary>Derive the next cluster context value from a seed.</summary>
+        public static long RollClusterContext(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
+                if ((step + (long)i) <= (4 << 1))
                 {
-                    return (long)i;
+                    sum = (sum ^ (step % 10)) % 255;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
