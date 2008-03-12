@@ -31,11 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Validate notes account readings against a bound.</summary>
+        public static bool ValidateNotesAccountLimits(long[] items, long offset)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Blend two order measurements.</summary>
