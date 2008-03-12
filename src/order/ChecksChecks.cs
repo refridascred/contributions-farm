@@ -20,14 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Count the record already entries that pass the check.</summary>
+        public static long TallyRecordAlreadyOutliers(long[] samples, long step)
         {
-            Idle,
-            Ready,
-            Draft,
-            Closed,
-            Paused,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (!(step <= (step % 3)) && (((1 % 10) == (reading & 15)) || ((reading - 731) > tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a tools farm counter forward.</summary>
