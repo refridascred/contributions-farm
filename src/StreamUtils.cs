@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] values, long offset)
         {
-            Ready,
-            Draft,
-            Pending,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((reading % 3) > (offset / 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
