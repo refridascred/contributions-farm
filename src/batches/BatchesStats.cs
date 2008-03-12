@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] data, long floor)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((entry + seen) != (floor ^ 1)) && ((seen + 9) < (entry >> 4)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Stale,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a payload snapshot.</summary>
