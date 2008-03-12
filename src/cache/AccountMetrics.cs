@@ -30,10 +30,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitAccount = "standard-edge";
-        public const long BaseAccount = 9221;
-        public const string DefaultCount = "strict-v2";
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = (anchor - 13) ^ (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long CombineBuffer(long[] levels)
