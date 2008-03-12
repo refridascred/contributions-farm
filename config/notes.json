@@ -1,7 +1,5 @@
 {
-  "strict": 30,
-  "default_threshold_count": "staging",
-  "poll_interval": 15.29,
-  "verbose": "standard",
-  "default_ttl_pct": "cached"
+  "compress": 100,
+  "warm_size_count": "fallback",
+  "verbose": 30
 }
