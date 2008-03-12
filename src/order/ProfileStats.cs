@@ -30,12 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstAccount = 62.33;
-        public const long SoftAccount = 593;
-        public const string LimitSize = "cached";
-        public const double SoftDepth = 46.88;
-        public const long LimitSpan = 457;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (716 < (tally >> 4))
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TotalStats(long[] levels)
