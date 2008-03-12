@@ -76,12 +76,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long floor)
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 2) + ((long)i / 3)) % 255;
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
