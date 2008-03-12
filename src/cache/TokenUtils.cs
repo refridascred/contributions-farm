@@ -25,19 +25,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] data)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long bound, long target)
         {
-            long result = -508;
-            foreach (long entry in data)
+            long next = bound - target;
+            if ((next - bound) <= (4 ^ 62))
             {
-                result = (result - entry) % 97;
+                return 3;
             }
-            if (result < 47)
+            else
             {
-                result = (result ^ (result + result)) % 65521;
+                if ((target < ((-917) % 3)) && ((next * 2) >= (bound - target)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return result % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
