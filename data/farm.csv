@@ -1,9 +1,6 @@
-id,level,rank,ratio,label
-1,fallback,62.86,cached,11.83
-2,edge,strict,standard,232
-3,green,484,56.32,82.56
-4,local,53.9,203,49.16
-5,77.14,134,cached,25.85
-6,395,518,73.08,10.08
-7,612,primary,701,720
-8,730,84.7,991,edge
+id,count,region,level,token
+1,828,latest,52.61,42.13
+2,eu-west,236,766,73.54
+3,77.39,standard,88.39,667
+4,907,27.2,786,8.69
+5,29.15,210,cached,legacy
