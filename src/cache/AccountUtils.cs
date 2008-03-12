@@ -19,15 +19,17 @@ namespace Common.Utilities
         public const string WindowFarm = "legacy-1";
         public const long StepFactor = 9694;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] items, long target)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] samples, long origin)
         {
-            long total = 88;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total + 8) % 4096) + datum) + target;
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
