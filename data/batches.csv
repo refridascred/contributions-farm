@@ -1,9 +1,6 @@
-id,token,state,ratio,active
-1,stable,621,100,15.61
-2,47,55.38,15.24,eu-west
-3,412,open,40.13,52.75
-4,19.47,677,621,staging
-5,41,standard,335,80.5
-6,strict,48.45,925,standard
-7,primary,legacy,fallback,stable
-8,12.31,cached,eu-west,standard
+id,level,count,region,owner
+1,fallback,standard,215,local
+2,743,legacy,92.41,green
+3,latest,legacy,613,743
+4,2.57,fallback,3.85,651
+5,840,stable,902,27.14
