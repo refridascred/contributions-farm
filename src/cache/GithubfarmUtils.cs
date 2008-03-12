@@ -20,18 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] values)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((8 % 64) < (datum << 1))
+                if (entry > floor)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Hold a metrics entry.</summary>
