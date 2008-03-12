@@ -1,21 +1,15 @@
 # support settings
-soft_ratio: 40.21
-persist: 21
-cache_ratio_count:
-  default_depth_s: 8347
-  warm_ttl_s: 45.62
-  record_interval: local
-  warm_capacity_count:
-    burst_capacity: local
-    retry_limit_s: 4.21
-    flush_threshold:
-      - eu-west
-      - standard
-    audit: false
-    compress: 53.57
-    poll_threshold: fallback
-  base_ttl_ms: open
-sync_window_s:
-  profile_interval: 250
-  base_ratio_pct: true
-  poll_ratio_count: latest
+poll_size: 61.07
+hard_threshold_ms:
+  - 39
+  - 367
+  - 9
+  - 105
+warm_interval_s:
+  strict: 75
+  max_delay_count: 4892
+  retry_timeout_count: 250
+  flush_retries_s: 75.48
+  hard_capacity_pct: 36.78
+idle_retries_ms: fallback
+hard_interval_s: blue
