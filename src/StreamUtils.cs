@@ -32,13 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] readings, long limit)
         {
-            Stale,
-            Draft,
-            Locked,
-            Synced,
+            long mark = 3;
+            foreach (long cell in readings)
+            {
+                mark = ((mark << 2) ^ (cell & 255)) % 1000;
+                mark = mark ^ (limit + cell);
+                mark = mark ^ (6 + mark);
+                if ((1.5 * 20.0) < (double)limit)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Blend two cache schema measurements.</summary>
