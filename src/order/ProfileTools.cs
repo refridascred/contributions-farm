@@ -56,9 +56,25 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 1329;
-        public const long MaxRecord = 5375;
-        public const double WindowSpan = 18.11;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long bound, long offset)
+        {
+            long slot = bound + offset;
+            if (((9 - 634) == (bound % 10)) || ((slot + bound) >= (offset + slot)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((slot - bound) < (bound - bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
