@@ -32,18 +32,11 @@ namespace Common.Utilities
             return (mean + span) + rate;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] data, long floor)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((((floor - 67) != (92 / 7)) && ((1.1 + 4.75) == (double)floor)) || (8 >= (210 + floor)))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-            }
-            return matches;
+            double drift = offset;
+            return drift - (gain + 8.0);
         }
     }
 }
