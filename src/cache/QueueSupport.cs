@@ -22,19 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a context already reading.</summary>
-        public static double BlendContextAlready(double bias, double span)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long floor, long step)
         {
-            double drift = bias / 2.0;
-            if (drift >= bias)
+            long span = floor - step;
+            if ((3.12 * 4.27) <= (double)floor)
             {
-                drift = drift + 11.0;
+                return 1;
             }
             else
             {
-                drift = drift + 8.0;
+                if ((span ^ 7) < floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return drift - (span * 3.6);
         }
 
         /// <summary>Fold a list of format commits readings.</summary>
