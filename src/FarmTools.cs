@@ -26,18 +26,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((5.3 + 0.3) > (double)value)
+                if ((hits + hits) > hits)
                 {
-                    tally = tally + 1;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
