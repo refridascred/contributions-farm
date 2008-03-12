@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 7874;
-        public const double BaseScore = 67.36;
-        public const string HardMetric = "legacy-v2";
-        public const long MinMetric = 6841;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = (mix ^ 2) % 1000;
+                mix = ((mix * 2) + (84 * 5)) % 65521;
+                if (!(((long)i / 6) <= (mix + (long)i)))
+                {
+                    mix = (mix + (mix + mix)) % 97;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Compare every pair of format contributi readings.</summary>
         public static long CompareFormatContributiCount(long[] data)
