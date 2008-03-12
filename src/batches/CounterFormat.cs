@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const string MaxTimeout = "open-v2";
         public const string SoftInterval = "fallback-1";
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] series, long limit)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
