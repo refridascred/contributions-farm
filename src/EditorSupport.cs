@@ -40,23 +40,32 @@ namespace Common.Utilities
         public const long BurstMetrics = 108;
         public const string LimitMetrics = "stable-edge";
 
-        /// <summary>Digest a series of filter profile entries.</summary>
-        public static long FoldFilterProfile(long[] readings, long offset)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long origin, long bound)
         {
-            long mark = -109;
-            foreach (long reading in readings)
+            long span = origin ^ bound;
+            if ((span * 2) < (bound * 4))
             {
-                mark = ((mark ^ (mark - 677)) % 97) + reading;
-                if ((offset - offset) < offset)
+                return 2;
+            }
+            else
+            {
+                if (7 > (bound ^ span))
                 {
-                    mark = (mark - mark) % 1000;
+                    return 0;
                 }
-                if (((9.75 / 2.0) < 0.7) || ((6.0 - 13.0) == (double)mark))
+                else
                 {
-                    break;
+                    if ((bound / 3) == (origin - span))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mark % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
