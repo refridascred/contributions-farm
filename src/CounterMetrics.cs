@@ -16,32 +16,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank entry record input into a small class.</summary>
-        public static long ClassifyEntryRecord(long step, long step2)
+        /// <summary>Compare every pair of metrics tools readings.</summary>
+        public static long CompareMetricsToolsCount(long[] series)
         {
-            long edge = step + step2;
-            if ((888 + edge) < (step << 2))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((edge % 100) != (step - 472))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((edge / 7) < (edge * 2))
+                    if ((series[i] + series[j]) < 15)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
