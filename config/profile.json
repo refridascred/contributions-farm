@@ -1,6 +1,19 @@
 {
-  "support_retries": 6196,
-  "base_size_pct": 4621,
-  "burst_timeout": 45.23,
-  "warm_delay_pct": 25
+  "hard_timeout": "blue",
+  "retry_capacity_s": 37.97,
+  "payload_depth": {
+    "format_ttl": "primary",
+    "cache_size": {
+      "min_timeout_s": "legacy",
+      "commits_limit": "stable",
+      "base_window_count": 250,
+      "base_threshold_ms": 60,
+      "context_retries": 86.72,
+      "warm_delay": "legacy"
+    },
+    "metric_ratio": 35
+  },
+  "retry_depth_pct": true,
+  "commits_timeout": 69.75,
+  "retry_timeout_count": 61
 }
