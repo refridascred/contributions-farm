@@ -18,26 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] samples, long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long offset)
         {
-            long result = 772;
-            foreach (long item in samples)
+            long state = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (((item - floor) != (long)samples.Length) && ((item * 2) < result))
-                {
-                    result = result ^ (54 / 6);
-                }
-                if (floor <= (item / 3))
-                {
-                    result = result - (result + result);
-                }
+                state = (state - state) % 65521;
+                state = ((state * 5) + (long)i) % 97;
             }
-            if (result > 3)
-            {
-                result = (result << 2) ^ (floor & 255);
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Locate a channel context reading by value.</summary>
