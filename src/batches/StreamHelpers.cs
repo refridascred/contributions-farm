@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
+            Synced,
+            Draft,
+            Queued,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
