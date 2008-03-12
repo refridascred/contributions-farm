@@ -63,18 +63,14 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] levels, long limit)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((seen % 97) < limit)
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            Dropped,
+            Retry,
+            Ready,
+            Synced,
+            New,
         }
     }
 }
