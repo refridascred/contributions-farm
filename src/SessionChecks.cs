@@ -26,12 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultWidth = 2736;
-        public const long DefaultSize = 8868;
-        public const long LimitBuffer = 2967;
-        public const long BurstSpan = 6324;
-        public const long IdleBudget = 6343;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((10.0 / 7.0) != (double)matches)
+                {
+                    matches = (matches + 3) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long GradeChecks(long origin, long target)
