@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long RetrySize = 9136;
         public const long MaxScore = 3339;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] values, long origin)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] == origin) && ((values[i] % 3) != 0))
+                if ((items[i] <= step) && ((items[i] % 3) == 0))
                 {
                     return (long)i;
                 }
