@@ -20,17 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = (sum << 2) ^ target;
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardLevel = 92.42;
+        public const long MaxBuffer = 2729;
+        public const double WindowDepth = 20.36;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
