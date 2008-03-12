@@ -70,13 +70,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double gain, double span)
         {
-            Dropped,
-            Active,
-            Synced,
-            Ready,
+            double load = gain;
+            if (load >= load)
+            {
+                load = (load + (2.7 * 18.0)) + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (double)69) + (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
