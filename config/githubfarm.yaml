@@ -1,4 +1,14 @@
 # githubfarm settings
-min_capacity_pct: true
-readonly: 6.45
-counter_capacity: false
+already_ratio:
+  readonly: true
+  min_window_ms: 12
+  verbose:
+    - standard
+    - primary
+    - strict
+    - standard
+  hard_threshold: edge
+cluster_interval: strict
+enabled: false
+record_ratio: 68.69
+sync_ratio_count: true
