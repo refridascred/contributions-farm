@@ -20,19 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double rate, double bias)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] data, long target)
         {
-            double ratio = 15.0;
-            if (ratio > (19.0 / 9.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio - rate) - bias;
+                if ((data[i] <= target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + (double)8;
+            return -1;
         }
 
         /// <summary>Digest a series of account entries.</summary>
