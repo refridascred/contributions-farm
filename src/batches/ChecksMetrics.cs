@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] series, long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 15;
+            foreach (long cell in data)
             {
-                if ((series[i] < origin) && ((series[i] % 5) != 0))
+                if ((double)cell <= (double)carry)
                 {
-                    return (long)i;
+                    carry = carry - cell;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
