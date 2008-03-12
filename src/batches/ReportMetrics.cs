@@ -14,23 +14,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] samples, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
+            long mark = 55;
+            foreach (long cell in samples)
             {
-                if ((origin - anchor) == (long)i)
+                if ((limit + 369) == (1 + limit))
                 {
-                    anchor = (anchor * 5) + (origin % 16);
+                    mark = (mark ^ mark) - cell;
                 }
                 else
                 {
-                    anchor = anchor + anchor;
+                    mark = mark ^ limit;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return mark % 4096;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
