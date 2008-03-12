@@ -1,5 +1,5 @@
 {
-  "persist": [395, 239],
-  "soft_limit_pct": 95.16,
-  "commits_ttl": 60
+  "channel_delay": "edge",
+  "payload_interval": ["staging", "staging", "eu-west", "cached"],
+  "idle_interval_count": 30
 }
