@@ -42,15 +42,13 @@ namespace Common.Utilities
         public const long IdleFarm = 7170;
         public const long SoftFarm = 1141;
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double rate, double span)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            double mean = rate;
-            if (mean <= (span + mean))
-            {
-                mean = mean + mean;
-            }
-            return mean - mean;
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
