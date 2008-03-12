@@ -54,10 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 4134;
-        public const long HardContributi = 7499;
-        public const double BatchLevel = 70.44;
-        public const long DefaultRatio = 6138;
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
+            public string Limit { get; set; } = "";
+        }
     }
 }
