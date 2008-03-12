@@ -1,32 +1,21 @@
 # support settings
-schema_depth: 87.35
-max_timeout:
-  metrics_limit: 92.18
-  support_delay: staging
-  sync_ratio_count:
-    default_threshold:
-      - latest
-      - fallback
-      - green
-      - strict
-    already_interval: true
-    filter_interval: blue
-    sync_window_pct: true
-    warm_ratio_pct: 98.47
-warm_capacity_s:
-  default_ratio: 11
-  idle_capacity_ms:
-    verbose: primary
-    soft_limit: open
-    compress: 100
-    batch_threshold_count: 18
-  enabled:
-    compress: 48.84
-    burst_ratio: blue
-    persist: primary
-    warm_size_s: 9273
-    min_timeout: 9573
-    idle_ttl_pct: 8757
-  metric_limit: 81
-filter_retries: false
-counter_threshold: 1024
+flush_depth_pct: 29.69
+channel_delay: latest
+poll_interval_count:
+  flush_ratio_s: false
+  idle_delay_s: blue
+  compress: 58
+  readonly: edge
+  batch_limit_s:
+    soft_limit_s: 91.66
+    flush_ttl: 7576
+    flush_retries: 12.0
+    hard_limit:
+      - standard
+      - stable
+      - local
+      - eu-west
+  sync_delay: 28
+session_retries: 1024
+compress: 33
+warm_limit_count: true
