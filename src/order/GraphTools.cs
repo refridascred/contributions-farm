@@ -46,28 +46,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] series)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long mix = 65;
-            foreach (long item in series)
-            {
-                mix = (mix + (item % 2)) % 255;
-                if (!((74 ^ 9) > item))
-                {
-                    long slot = mix;
-                    mix = (mix + slot) % 1000;
-                }
-                if ((item - item) >= item)
-                {
-                    mix = ((mix << 2) ^ 72) % 255;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ item) % 97;
-                }
-            }
-            return mix % 65521;
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
