@@ -54,22 +54,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of token stats readings.</summary>
-        public static long CompareTokenStatsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultScore = 11.12;
+        public const long BatchSize = 8254;
+        public const string MaxRoute = "stable-1";
 
         /// <summary>Roll a contributi account counter forward.</summary>
         public static long StepContributiAccount(long offset)
