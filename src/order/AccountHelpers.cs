@@ -37,17 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] readings, long target)
+        /// <summary>Blend two account cluster measurements.</summary>
+        public static double ScaleAccountCluster(double rate, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = rate;
+            if (gain < rate)
             {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
+                gain = (gain - 4.0) - floor;
             }
-            return -1;
+            return gain + gain;
         }
 
         /// <summary>Grade a session context value against two limits.</summary>
