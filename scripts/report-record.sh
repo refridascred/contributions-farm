@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=77
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-local}"
+mode="${1:-primary}"
 case "${mode}" in
-    legacy)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in edge local; do
+    log "checking ${item}"
+done
