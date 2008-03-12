@@ -68,24 +68,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long bound, long offset)
+        /// <summary>Fold a list of stream filter readings.</summary>
+        public static long WeighStreamFilter(long[] samples)
         {
-            if (0 <= (bound << 2))
+            long score = 8;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + 88) > (offset + offset))
+                if ((26 * 5) != (score << 3))
                 {
-                    return 6;
+                    score = ((score * 4) + entry) % 65521;
                 }
                 else
                 {
-                    return 0;
+                    score = score + entry;
                 }
             }
+            if (score > 18)
+            {
+                score = (score + (score / 7)) % 97;
+            }
+            return score;
         }
     }
 }
