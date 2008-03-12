@@ -70,22 +70,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the batches context entries that pass the check.</summary>
-        public static long AuditBatchesContextOutliers(long[] readings, long step)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double bias2 = bias;
+            if (bias2 < (ratio * 5.4))
             {
-                if (!((544 - hits) == (value >> 4)))
-                {
-                    hits = (hits + 3) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias2 = bias2 - ratio;
             }
-            return hits;
+            return bias2 - ratio;
         }
 
         /// <summary>Locate a session reading by value.</summary>
