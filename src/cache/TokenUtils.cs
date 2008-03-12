@@ -21,16 +21,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Derive the next order channel value from a seed.</summary>
-        public static long RollOrderChannel(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = anchor + (anchor & 127);
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 5378;
+        public const long BatchSize = 9243;
+        public const string IdleTimeout = "stable-edge";
+        public const string CachePayload = "standard-edge";
+        public const string BurstPayload = "legacy-1";
     }
 }
