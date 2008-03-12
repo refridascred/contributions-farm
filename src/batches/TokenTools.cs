@@ -31,15 +31,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next contributi farm value.</summary>
-        public static double SmoothContributiFarm(double ratio, double bias)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] items)
         {
-            double gain = ratio * 2.0;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                gain = (gain - bias) - (double)(long)i;
+                if (((hits & 255) == (hits % 3)) && (hits >= (sample + hits)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return gain + (ratio - bias);
+            return hits;
         }
     }
 }
