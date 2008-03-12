@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count channel profile pairs that satisfy a relation.</summary>
-        public static long OverlapChannelProfileCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchScore = 16.23;
+        public const string MinCount = "open-1";
+        public const long StepTimeout = 5982;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
