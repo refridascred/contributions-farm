@@ -25,11 +25,14 @@ namespace Common.Utilities
         public const double MaxStats = 5.02;
         public const string BurstBudget = "primary-v2";
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            Closed,
+            Paused,
+            Active,
+            Stale,
+            Queued,
         }
 
         /// <summary>Audit metric stats readings against a rule.</summary>
