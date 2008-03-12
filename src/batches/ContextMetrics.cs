@@ -19,17 +19,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark << 2) ^ (mark * 4)) % 65521;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitGraph = "primary";
+        public const long MinBudget = 970;
+        public const long CacheFactor = 4052;
+        public const string HardScore = "staging-edge";
 
         /// <summary>Check that every report farm entry stays within the limit.</summary>
         public static bool CheckReportFarmBounds(long[] series, long target)
