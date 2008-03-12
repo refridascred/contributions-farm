@@ -1,7 +1,7 @@
-id,token,weight,state,count
-1,blue,483,79.4,11.41
-2,legacy,870,4.27,cached
-3,12.02,475,64.49,46.02
-4,staging,941,31.3,42.7
-5,32.17,11.27,35.82,198
-6,legacy,latest,894,235
+id,count,owner,ratio,score
+1,525,eu-west,cached,830
+2,434,238,773,local
+3,63.03,74.33,12.38,89.94
+4,10.64,54.03,49.89,891
+5,286,143,375,515
+6,896,strict,101,local
