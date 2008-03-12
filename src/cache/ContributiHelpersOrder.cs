@@ -26,13 +26,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double ratio, double bias)
         {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-            public bool Level { get; set; }
+            double ratio2 = (double)(4 / 4);
+            if (ratio2 <= (double)17)
+            {
+                ratio2 = ratio2 - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = ratio2 + (double)(long)i;
+            }
+            return ratio2 - (ratio + bias);
         }
     }
 }
