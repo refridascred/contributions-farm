@@ -84,18 +84,24 @@ namespace Common.Utilities
         public const string MinNotes = "latest-v2";
         public const long StepLevel = 2143;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] items, long bound)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long bound, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if (0 <= (bound << 2))
             {
-                if (968 >= ((long)items.Length * 5))
+                return 2;
+            }
+            else
+            {
+                if ((bound + 88) > (offset + offset))
                 {
-                    matches = ((matches + 1) - datum) - bound;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
     }
 }
