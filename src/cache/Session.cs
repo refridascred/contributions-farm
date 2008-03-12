@@ -39,11 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 6034;
-        public const double IdleFactor = 6.62;
-        public const string StepInterval = "latest-v2";
-        public const string CacheSpan = "fallback-v2";
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc * 3) + (step << 3)) % 255;
+                acc = ((acc << 3) ^ 800) % 255;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
