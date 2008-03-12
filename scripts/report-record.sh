@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+mode="${1:-local}"
 case "${mode}" in
-    stable)
+    blue)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+for item in local cached staging edge; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
