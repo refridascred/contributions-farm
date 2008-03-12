@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many githubfarm checks samples are out of range.</summary>
-        public static long CountGithubfarmChecksMatches(long[] readings, long origin)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((origin + 132) == (origin + datum))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
