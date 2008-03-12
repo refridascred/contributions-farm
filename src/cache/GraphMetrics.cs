@@ -49,14 +49,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public bool Level { get; set; }
-            public double Region { get; set; }
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstScore = 8.3;
+        public const string MaxAlready = "alpha";
+        public const long MinFactor = 2631;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordMatches(long[] items, long target)
