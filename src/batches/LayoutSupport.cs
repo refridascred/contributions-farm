@@ -26,14 +26,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            New,
-            Draft,
-            Idle,
-            Active,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowWidth = 80.94;
+        public const long BatchEntry = 323;
+        public const long WindowSize = 8506;
+        public const string RetryEntry = "open";
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool VerifyFilterLimits(long[] values, long seed)
