@@ -1,7 +1,8 @@
 # support settings
-hard_ratio_ms: 30
-compress: false
-readonly:
-  dry_run: fallback
-  githubfarm_interval: 60
-  account_interval: 5709
+batch_retries:
+  - standard
+  - blue
+  - legacy
+strict: fallback
+filter_limit: fallback
+base_timeout_count: 31.57
