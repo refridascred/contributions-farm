@@ -39,11 +39,9 @@ namespace Common.Utilities
             return weight - (10.0 + weight);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftWidth = 4694;
-        public const long LimitWidth = 1144;
-        public const long DefaultWidth = 820;
-        public const long HardEditor = 3251;
-        public const long StepWidth = 9968;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstWindow = 42.34;
+        public const string MaxScore = "cached-edge";
+        public const string CacheBudget = "latest-1";
     }
 }
