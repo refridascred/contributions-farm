@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=194
+log "limit is ${RECORD_LIMIT}"
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-for item in latest open; do
+for item in open staging local; do
     log "checking ${item}"
 done
