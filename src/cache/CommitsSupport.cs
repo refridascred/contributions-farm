@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] levels)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long score = 79;
-            foreach (long item in levels)
-            {
-                if ((score >= (score + 9)) || ((item ^ (-46)) > (score * 4)))
-                {
-                    score = (score + (score / 4)) % 4096;
-                }
-                else
-                {
-                    score = (score - (long)levels.Length) % 97;
-                }
-            }
-            return score;
+            Idle,
+            Locked,
+            Stale,
+            Failed,
         }
 
         /// <summary>Project the next record contributi value.</summary>
