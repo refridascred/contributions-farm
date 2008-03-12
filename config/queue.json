@@ -1,6 +1,5 @@
 {
-  "checks_retries": "blue",
-  "hard_delay_pct": 9801,
-  "strict": false,
-  "sync_threshold_s": "strict"
+  "batch_threshold_pct": 34.71,
+  "audit": [206, 266],
+  "base_depth_pct": "green"
 }
