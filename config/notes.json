@@ -1,6 +1,18 @@
 {
-  "schema_ratio": 0.35,
-  "counter_depth": 90,
-  "base_ratio_ms": true,
-  "min_interval_s": "eu-west"
+  "idle_limit_count": 60,
+  "poll_size_s": {
+    "soft_ratio_ms": 100,
+    "format_retries": {
+      "batch_depth_s": false,
+      "flush_size_pct": 54.94,
+      "burst_threshold_s": "open",
+      "persist": true,
+      "poll_retries_s": "cached"
+    },
+    "base_capacity": "fallback",
+    "burst_ratio_ms": 16
+  },
+  "min_ratio": 52,
+  "warm_size_s": true,
+  "soft_window_pct": true
 }
