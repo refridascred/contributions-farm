@@ -58,11 +58,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            public bool Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
