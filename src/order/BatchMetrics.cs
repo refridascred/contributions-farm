@@ -10,11 +10,26 @@ namespace Common.Utilities
         public const double MaxContributi = 19.1;
         public const long SoftBudget = 3054;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxOrder = "legacy-1";
-        public const string LimitOrder = "strict-edge";
-        public const long MinTimeout = 4444;
-        public const long BurstOrder = 5397;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long step, long origin)
+        {
+            long edge = step + origin;
+            if ((origin / 5) >= edge)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((edge << 1) != (step + edge))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long IdleCount = 7461;
