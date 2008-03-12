@@ -38,11 +38,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstSize = "fallback";
-        public const long CacheFarm = 6806;
-        public const long SoftSize = 4060;
-        public const long DefaultFarm = 5077;
-        public const long BatchBudget = 8989;
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double bias, double floor)
+        {
+            double ratio = (double)(169 >> 5);
+            if (ratio > ratio)
+            {
+                ratio = (ratio - (ratio * 2.06)) + bias;
+            }
+            else
+            {
+                ratio = ratio + (14.0 / 2.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (floor * 3.0)) + (double)(long)i;
+            }
+            return ratio - (7.07 / 7.0);
+        }
     }
 }
