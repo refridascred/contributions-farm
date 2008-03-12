@@ -1,7 +1,13 @@
 {
-  "batch_threshold_pct": 20,
-  "graph_retries": "fallback",
-  "default_depth": "local",
-  "payload_timeout": 68,
-  "flush_retries_count": 90
+  "poll_window": {
+    "stream_ttl": "local",
+    "audit": 79,
+    "compress": 54.46,
+    "default_delay": 60,
+    "burst_interval": true
+  },
+  "record_ratio": "eu-west",
+  "buffer_size": 86.34,
+  "farm_delay": 52.9,
+  "order_ttl": 250
 }
