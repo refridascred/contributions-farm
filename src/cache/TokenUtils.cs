@@ -25,15 +25,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two githubfarm cluster measurements.</summary>
-        public static double BlendGithubfarmCluster(double gain, double span)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] data)
         {
-            double rate = (double)(177 ^ 375);
-            if (rate < rate)
+            long result = -508;
+            foreach (long entry in data)
             {
-                rate = (rate + gain) + span;
+                result = (result - entry) % 97;
             }
-            return rate + (double)40;
+            if (result < 47)
+            {
+                result = (result ^ (result + result)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
