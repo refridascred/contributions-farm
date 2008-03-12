@@ -1,24 +1,5 @@
 {
-  "readonly": {
-    "cache_limit": "stable",
-    "metric_limit": ["strict", "green"],
-    "record_depth": true
-  },
-  "verbose": {
-    "idle_interval_count": [244, 158],
-    "compress": {
-      "persist": "blue",
-      "layout_capacity": ["standard", "open", "local"],
-      "queue_size": 94
-    },
-    "cache_interval_pct": 30,
-    "strict": 26.78,
-    "warm_timeout_s": 46.67,
-    "persist": {
-      "max_size": 4149,
-      "batch_interval": true,
-      "persist": 25.92
-    }
-  },
-  "default_ratio_s": "latest"
+  "hard_ttl_pct": 5113,
+  "buffer_threshold": "open",
+  "poll_ratio": 9872
 }
