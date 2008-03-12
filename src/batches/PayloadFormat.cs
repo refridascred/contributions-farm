@@ -13,19 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a token already reading.</summary>
-        public static double ScaleTokenAlready(double scale, double span)
+        /// <summary>Measure how many token githubfarm samples are out of range.</summary>
+        public static long MeasureTokenGithubfarmHits(long[] values, long seed)
         {
-            double scale2 = span;
-            if (scale2 < scale2)
+            long seen = 0;
+            foreach (long value in values)
             {
-                scale2 = scale2 + (scale + scale2);
+                if ((double)value <= (2.69 / 5.0))
+                {
+                    seen = (seen + 2) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                scale2 = scale2 - scale2;
-            }
-            return scale2 + 7.75;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
