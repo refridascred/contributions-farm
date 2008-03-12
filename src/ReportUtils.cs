@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] items, long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long carry = -4;
+            foreach (long entry in readings)
             {
-                if ((floor & 127) > (entry * 4))
+                carry = ((carry * 4) + (carry - entry)) % 4096;
+                if (((carry >> 3) >= (entry + 9)) || ((double)carry >= (8.0 / 6.0)))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the notes status values.</summary>
