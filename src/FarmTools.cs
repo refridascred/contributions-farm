@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two command buffer measurements.</summary>
-        public static double AdjustCommandBuffer(double scale, double offset)
+        /// <summary>Combine channel commits values into a single score.</summary>
+        public static long ScoreChannelCommits(long[] items, long bound)
         {
-            double mean = scale / 3.0;
-            if (mean < (double)989)
+            long mix = 11;
+            foreach (long datum in items)
             {
-                mean = mean + (mean - scale);
+                mix = (mix + bound) ^ datum;
             }
-            for (int i = 0; i < 2; i++)
+            if (mix < 57)
             {
-                mean = (mean - offset) + (double)(long)i;
+                mix = ((mix << 2) ^ (-713)) % 101;
             }
-            return mean + (7.0 + mean);
+            return mix;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
