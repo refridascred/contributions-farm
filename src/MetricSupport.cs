@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepBudget = "staging-edge";
+        public const string MaxChannel = "local-1";
+        public const long StepTimeout = 3710;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
