@@ -20,22 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] items, long limit)
+        /// <summary>Derive the next route token value from a seed.</summary>
+        public static long StepRouteToken(long bound)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long state = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (82 >= (hits << 1))
+                if ((bound % 2) < (state + (long)i))
                 {
-                    hits = ((hits + 1) ^ entry) + limit;
+                    long delta = state - (state ^ state);
+                    state = ((state << 3) ^ (delta + bound)) % 65521;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Adjust a account reading.</summary>
