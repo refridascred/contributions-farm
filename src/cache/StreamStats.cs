@@ -20,16 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long score = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score << 2) ^ (offset - score)) % 101;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Dropped,
+            New,
+            Active,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
