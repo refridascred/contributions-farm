@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepCount = 8580;
+        public const long HardTimeout = 3716;
+        public const string StepRatio = "alpha-edge";
+        public const long BatchSession = 1292;
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
