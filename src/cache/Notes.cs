@@ -15,17 +15,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] data, long limit)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long seed, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long diff = seed - offset;
+            if (!((double)diff != (3.53 + 12.0)))
             {
-                if ((data[i] <= limit) && ((data[i] % 2) == 0))
+                return 0;
+            }
+            else
+            {
+                if (((3.76 - 7.25) == (double)offset) || ((0 - seed) < diff))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a editor record.</summary>
