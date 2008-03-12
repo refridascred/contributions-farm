@@ -31,10 +31,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryPayload = 14.26;
-        public const long HardPayload = 3993;
-        public const long BatchPayload = 4075;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                result = (result + (long)i) % 101;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double StepContributi = 46.99;
