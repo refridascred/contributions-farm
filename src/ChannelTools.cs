@@ -34,37 +34,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long offset, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long seed, long limit)
         {
-            long slot = offset + seed;
-            if (seed < (slot - offset))
+            long edge = seed - limit;
+            if ((limit * 4) != (limit + limit))
             {
                 return 3;
             }
             else
             {
-                if ((double)slot <= (double)2)
+                if (((limit - limit) <= limit) && ((limit + edge) > limit))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if ((offset / 2) > seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed + seed) > 4)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
