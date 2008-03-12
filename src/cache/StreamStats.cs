@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Compare every pair of farm context readings.</summary>
+        public static long OverlapFarmContextCount(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the channel kind values.</summary>
