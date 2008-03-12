@@ -1,13 +1,19 @@
 # support settings
-cluster_delay: 94.85
-burst_delay: 25.59
-poll_threshold_s: legacy
-burst_size:
-  min_capacity: true
-  persist:
-    flush_delay_pct: strict
-    flush_retries_ms:
-      - cached
-      - open
-    order_ratio: latest
-  retry_capacity_s: fallback
+retry_interval_pct: edge
+persist: 1046
+enabled: edge
+hard_threshold:
+  flush_interval_count: 18.62
+  batch_limit_pct:
+    strict:
+      - 46
+      - 217
+      - 72
+      - 396
+    persist: 52
+    stats_ratio: 52.65
+    graph_size:
+      - 364
+      - 244
+    format_ttl: stable
+  sync_depth: 77
