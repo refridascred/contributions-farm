@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] samples)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long sum = 64;
-            foreach (long reading in samples)
-            {
-                sum = (sum ^ (reading - sum)) % 101;
-            }
-            return sum;
+            Dropped,
+            Done,
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
