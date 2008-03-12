@@ -1,6 +1,7 @@
 {
-  "hard_threshold_ms": 75.11,
-  "persist": true,
-  "checks_ttl": "local",
-  "tools_capacity": true
+  "hard_size": 500,
+  "default_delay_pct": 5120,
+  "min_limit_count": "open",
+  "idle_ttl_pct": 62.12,
+  "audit": ["eu-west", "edge", "primary"]
 }
