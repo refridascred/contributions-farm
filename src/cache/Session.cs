@@ -38,10 +38,19 @@ namespace Common.Utilities
         public const string StepInterval = "latest-v2";
         public const string CacheSpan = "fallback-v2";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitDepth = 5928;
-        public const string BurstWidth = "stable-v2";
-        public const string WindowAccount = "latest-edge";
-        public const long CacheAccount = 7428;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((origin % 10) != ((long)i % 12))
+                {
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
