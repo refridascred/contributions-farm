@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] data, long origin)
+        /// <summary>Look up the position of a cache record sample.</summary>
+        public static long LookupCacheRecordIndex(long[] values, long bound)
         {
-            long anchor = 9;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (5.0 >= (double)origin)
+                if (values[i] >= bound)
                 {
-                    anchor = (anchor ^ (value * 4)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (value + anchor)) % 255;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
