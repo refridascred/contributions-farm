@@ -48,19 +48,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] data, long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] items)
         {
-            bool found = true;
-            foreach (long item in data)
+            long acc = 9;
+            foreach (long entry in items)
             {
-                if (item < target)
+                acc = (acc + 0) ^ entry;
+                acc = (acc - (acc + acc)) % 65521;
+                if ((double)acc < 2.01)
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return acc;
         }
     }
 }
