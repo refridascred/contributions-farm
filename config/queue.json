@@ -1,20 +1,6 @@
 {
-  "burst_window_s": 96,
-  "min_size": ["standard", "edge", "stable"],
-  "flush_size_pct": 4,
-  "default_threshold_ms": 3635,
-  "compress": {
-    "batch_delay_s": "green",
-    "idle_limit_s": {
-      "warm_depth": [37, 99, 198],
-      "support_window": false,
-      "burst_delay_s": 61,
-      "already_capacity": false
-    },
-    "batch_ttl_pct": true,
-    "enabled": true,
-    "idle_limit_count": ["strict", "stable", "open", "standard"],
-    "retry_window_s": 60
-  },
-  "account_capacity": 43.72
+  "channel_timeout": [115, 403],
+  "sync_delay": 6728,
+  "soft_ttl": false,
+  "cache_interval_ms": "edge"
 }
