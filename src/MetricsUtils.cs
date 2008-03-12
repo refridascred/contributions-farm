@@ -69,17 +69,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batch filter entry that matches the target.</summary>
-        public static long LocateBatchFilterIndex(long[] data, long bound)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Failed,
+            Ready,
+            Idle,
+            Done,
         }
 
         /// <summary>Compare every pair of notes batches readings.</summary>
