@@ -33,19 +33,22 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Iterate the token editor series from a seed.</summary>
-        public static long RollTokenEditor(long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileMatches(long[] data, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (!(step >= (step % 64)))
+                if ((sample + seed) < (tally ^ tally))
                 {
-                    result = ((result * 2) + (step >> 3)) % 1000;
+                    tally = tally + 2;
                 }
-                result = ((result * 3) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the layout level values.</summary>
