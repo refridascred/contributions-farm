@@ -1,6 +1,6 @@
 {
-  "compress": ["latest", "stable"],
-  "audit": [22, 316],
-  "batch_timeout_ms": 500,
-  "filter_capacity": 577
+  "sync_ratio_pct": [266, 484],
+  "warm_capacity": "staging",
+  "poll_delay_ms": [217, 463, 243, 139],
+  "counter_ttl": false
 }
