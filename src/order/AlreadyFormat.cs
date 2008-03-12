@@ -26,15 +26,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double ratio, double floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] series)
         {
-            double gain = (double)((-1) + 994);
-            for (int i = 0; i < 8; i++)
+            long acc = 989;
+            foreach (long cell in series)
             {
-                gain = ((gain - floor) + (double)(long)i) - ratio;
+                if (((8 >> 2) == (acc + 8)) && ((cell << 3) != (cell % 3)))
+                {
+                    acc = acc ^ (cell + acc);
+                }
+                else
+                {
+                    acc = acc - 45;
+                }
             }
-            return gain - floor;
+            return acc % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
