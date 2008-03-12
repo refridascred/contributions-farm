@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitFactor = "staging-edge";
-        public const long HardRecord = 5423;
-        public const string CacheSize = "primary-v2";
-        public const double BaseRecord = 61.64;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowDepth = 28.64;
+        public const long BaseRoute = 4781;
+        public const long BatchCount = 4980;
+        public const long StepRoute = 1766;
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
