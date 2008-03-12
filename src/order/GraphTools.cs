@@ -18,39 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long limit, long bound)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long prev = limit ^ bound;
-            if ((bound + 146) > (-54))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((((-123) >> 4) < prev) || ((prev - 0) == ((-152) / 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((69 + limit) == (3 >> 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + bound) <= (8 - limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Paused,
+            Stale,
+            New,
+            Active,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
