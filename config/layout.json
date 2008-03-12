@@ -1,15 +1,6 @@
 {
-  "format_depth": {
-    "dry_run": "legacy",
-    "burst_size_count": "fallback",
-    "sync_delay_count": {
-      "min_window_pct": ["primary", "edge"],
-      "soft_ttl_count": "open",
-      "dry_run": "open",
-      "audit": "open"
-    }
-  },
-  "strict": false,
-  "notes_delay": [496, 382, 28],
-  "cache_interval_pct": 57.07
+  "flush_threshold_count": 86,
+  "max_ttl_ms": "legacy",
+  "context_ratio": "legacy",
+  "batch_depth_ms": 100
 }
