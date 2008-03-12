@@ -36,16 +36,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = (sum + 60) % 65521;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Dropped,
+            Pending,
+            Synced,
+            Draft,
         }
     }
 }
