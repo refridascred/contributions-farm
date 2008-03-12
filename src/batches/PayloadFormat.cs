@@ -14,22 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many token githubfarm samples are out of range.</summary>
-        public static long MeasureTokenGithubfarmHits(long[] values, long seed)
+        /// <summary>Measure how many tools window samples are out of range.</summary>
+        public static long AuditToolsWindowMatches(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((double)value <= (2.69 / 5.0))
+                if (count > (4 + count))
                 {
-                    seen = (seen + 2) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = ((count + 2) - entry) - target;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the cluster support entries that pass the check.</summary>
