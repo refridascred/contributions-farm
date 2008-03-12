@@ -1,6 +1,8 @@
 {
-  "format_window": 100,
-  "cache_size_s": "blue",
-  "min_limit": "fallback",
-  "counter_delay": "open"
+  "graph_limit": 9461,
+  "min_interval_pct": 250,
+  "compress": [406, 44, 349, 385],
+  "enabled": ["cached", "fallback", "staging", "primary"],
+  "format_limit": 9,
+  "flush_ttl_pct": 4848
 }
