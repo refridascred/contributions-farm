@@ -12,18 +12,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] series, long target)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((sample >> 2) < (sample % 60))
-                {
-                    seen = (seen + 1) - target;
-                }
-            }
-            return seen;
+            Closed,
+            Active,
+            Draft,
+            Stale,
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
