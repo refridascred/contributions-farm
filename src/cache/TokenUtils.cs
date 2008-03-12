@@ -46,15 +46,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the channel record series from a seed.</summary>
-        public static long RollChannelRecord(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 8615;
+        public const long StepDepth = 4544;
+        public const double WindowDepth = 20.04;
     }
 }
