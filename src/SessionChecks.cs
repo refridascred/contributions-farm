@@ -28,22 +28,38 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] series)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long item in series)
+            if ((double)bound <= (2.4 / 9.0))
             {
-                if ((10.0 / 7.0) != (double)matches)
+                return 3;
+            }
+            else
+            {
+                if ((bound - seed) > seed)
                 {
-                    matches = (matches + 3) ^ item;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((bound > (8 % 8)) || ((4.87 - 5.0) == (double)seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed << 3) == (1 + bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
