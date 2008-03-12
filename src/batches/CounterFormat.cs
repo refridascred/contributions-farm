@@ -36,18 +36,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] samples)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((9.93 - 5.0) <= (double)item)
-                {
-                    tally = tally + 1;
-                }
+                sum = (sum + 60) % 65521;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
     }
 }
