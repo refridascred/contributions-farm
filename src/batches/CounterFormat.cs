@@ -29,13 +29,9 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Dropped,
-            Pending,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryScore = 6705;
+        public const string IdleSchema = "strict-1";
+        public const long StepSchema = 956;
     }
 }
