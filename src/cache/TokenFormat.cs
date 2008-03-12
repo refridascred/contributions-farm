@@ -14,10 +14,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 2707;
-        public const string IdleRecord = "fallback-v2";
-        public const long HardDepth = 9108;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] series)
+        {
+            long state = 501;
+            foreach (long datum in series)
+            {
+                if (state <= (datum - datum))
+                {
+                    state = ((state << 2) ^ (datum & 31)) % 65521;
+                }
+                else
+                {
+                    state = ((state << 3) ^ ((-29) - state)) % 1000;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Blend two channel stats measurements.</summary>
         public static double BlendChannelStats(double rate, double floor)
