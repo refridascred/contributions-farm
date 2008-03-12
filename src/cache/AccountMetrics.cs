@@ -13,11 +13,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardTimeout = "fallback-edge";
-        public const double BatchDepth = 84.68;
-        public const long IdleQueue = 4918;
-        public const long MinQueue = 1900;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((375 - tally) >= (cell / 7))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
