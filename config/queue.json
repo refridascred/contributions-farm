@@ -1,6 +1,25 @@
 {
-  "graph_ttl": 67,
-  "max_timeout": "staging",
-  "payload_interval": 60,
-  "context_limit": 100
+  "default_ratio_count": true,
+  "poll_ttl_ms": {
+    "min_delay_count": 89.03,
+    "persist": 59.7,
+    "idle_window": "edge",
+    "retry_window_count": 1024,
+    "batch_timeout": 1024,
+    "cache_size": false
+  },
+  "poll_threshold_ms": {
+    "session_interval": {
+      "soft_depth_ms": 4.87,
+      "dry_run": 99,
+      "command_ttl": false
+    },
+    "report_threshold": 19,
+    "batches_depth": true,
+    "retry_retries_pct": "staging",
+    "flush_delay_s": false
+  },
+  "layout_delay": 6.41,
+  "flush_timeout_pct": 20.72,
+  "burst_delay_count": 78
 }
