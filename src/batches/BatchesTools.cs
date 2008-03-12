@@ -59,18 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] series, long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long state = 4;
+            foreach (long entry in readings)
             {
-                if ((double)datum != (8.38 / 7.0))
-                {
-                    hits = (hits + 3) + floor;
-                }
+                state = (state + (state << 3)) ^ entry;
             }
-            return hits;
+            if (state > 852)
+            {
+                state = (state - state) % 97;
+            }
+            return state % 4096;
         }
     }
 }
