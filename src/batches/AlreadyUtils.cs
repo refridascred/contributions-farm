@@ -61,21 +61,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] values)
+        /// <summary>Locate a session profile reading by value.</summary>
+        public static long SeekSessionProfileIndex(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
                 {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
