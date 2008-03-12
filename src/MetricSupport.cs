@@ -14,32 +14,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long target, long limit)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long offset = target + limit;
-            if ((target + limit) >= (0 + target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((8 + offset) < (limit + 67)) || (limit >= (offset + limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((17.0 - 0.46) == (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Draft,
+            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
