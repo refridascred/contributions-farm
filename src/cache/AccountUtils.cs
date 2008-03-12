@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Done,
+            Active,
+            Pending,
             New,
-            Stale,
-            Queued,
-            Locked,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
