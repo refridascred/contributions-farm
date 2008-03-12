@@ -37,18 +37,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter profile readings.</summary>
-        public static long TallyFilterProfile(long[] readings, long bound)
-        {
-            long mix = 3;
-            foreach (long datum in readings)
-            {
-                if (((double)mix >= (6.0 - 19.0)) && ((double)bound > (19.0 / 7.0)))
-                {
-                    mix = (((mix * 3) + (bound ^ mix)) % 101) - datum;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 6185;
+        public const long WindowContributi = 9414;
+        public const long BaseContributi = 1634;
     }
 }
