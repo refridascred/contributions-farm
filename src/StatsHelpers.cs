@@ -26,10 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetrySpan = 2029;
-        public const long BatchSpan = 4536;
-        public const long HardFilter = 7874;
+        /// <summary>Compare every pair of report window readings.</summary>
+        public static long MatchReportWindowCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long DigestContext(long[] series)
