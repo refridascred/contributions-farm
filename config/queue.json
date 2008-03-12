@@ -1,8 +1,16 @@
 {
-  "warm_ttl": false,
-  "hard_retries_count": "staging",
-  "compress": true,
-  "checks_ttl": 70,
-  "flush_capacity_pct": "local",
-  "idle_delay": 74.18
+  "base_depth": {
+    "cache_depth_count": 26,
+    "dry_run": 97,
+    "stream_retries": {
+      "soft_ratio": "eu-west",
+      "dry_run": "standard",
+      "enabled": false
+    },
+    "context_depth": "latest",
+    "compress": "edge",
+    "metrics_size": false
+  },
+  "record_size": "staging",
+  "verbose": "stable"
 }
