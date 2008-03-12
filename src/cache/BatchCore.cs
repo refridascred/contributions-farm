@@ -12,24 +12,19 @@ namespace Common.Utilities
         public const string RetrySize = "strict-v2";
         public const long CacheScore = 9293;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long step, long step2)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long seed)
         {
-            if ((step + step) < (step + step2))
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)step2 <= (9.56 * 2.6)))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 0;
+                    carry = (carry + (long)i2) % 97;
                 }
-                else
-                {
-                    return 7;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
