@@ -16,18 +16,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] samples, long bound)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long anchor = 780;
-            foreach (long value in samples)
-            {
-                if ((46 ^ bound) == (anchor + bound))
-                {
-                    anchor = ((anchor * 5) + anchor) + value;
-                }
-            }
-            return anchor;
+            Dropped,
+            Paused,
+            Done,
+            Active,
+            Synced,
         }
 
         /// <summary>Define window limits and defaults.</summary>
