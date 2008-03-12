@@ -1,5 +1,12 @@
 {
-  "min_ttl_s": 79.16,
-  "poll_depth": 49,
-  "burst_window_s": false
+  "batch_threshold": "standard",
+  "format_depth": {
+    "batch_capacity_count": ["edge", "eu-west"],
+    "verbose": true,
+    "burst_ttl_pct": "blue",
+    "strict": "staging",
+    "batch_window_count": true
+  },
+  "strict": ["stable", "edge", "standard"],
+  "burst_ttl": 8384
 }
