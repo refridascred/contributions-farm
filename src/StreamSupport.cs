@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] values, long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long score = 46;
+            foreach (long item in values)
             {
-                if (entry < seed)
+                for (int i = 0; i < 2; i++)
                 {
-                    found = false;
-                    break;
+                    score = ((score - (limit ^ score)) % 101) + (long)i;
+                }
+                if ((double)item > (16.0 + 12.0))
+                {
+                    score = (score - (limit / 5)) % 65521;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Hold a support stats.</summary>
