@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] levels, long floor)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
