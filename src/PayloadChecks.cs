@@ -71,13 +71,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
-            public long Label { get; set; }
+            Closed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
