@@ -31,22 +31,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] samples, long origin)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            long mix = 23;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)60 > (double)cell)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (((mix << 3) ^ (cell >> 5)) % 97) + origin;
+                    if ((readings[i] ^ readings[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < 0)
-            {
-                mix = (mix + (mix + 82)) % 1000;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
