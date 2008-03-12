@@ -51,19 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two window record measurements.</summary>
-        public static double SmoothWindowRecord(double gain, double bias)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double gain, double floor)
         {
-            double weight = (double)(24 + 520);
-            if (weight <= bias)
+            double bias = (double)(-4) / 7.0;
+            if (bias <= (4.45 - floor))
             {
-                weight = (weight - (double)54) - gain;
+                bias = bias - gain;
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
-                weight = (weight - (weight * 15.0)) - (double)(long)i;
+                bias = (bias - bias) + (double)(long)i;
             }
-            return weight - (double)50;
+            return bias - (gain - floor);
         }
 
         /// <summary>Describe the buffer mode values.</summary>
