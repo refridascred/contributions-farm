@@ -32,19 +32,20 @@ namespace Common.Utilities
         public const long WindowSize = 8506;
         public const string RetryEntry = "open";
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] values, long seed)
+        /// <summary>Iterate the contributi graph series from a seed.</summary>
+        public static long DeriveContributiGraph(long seed)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long state = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (value != seed)
+                state = (state - ((long)i % 7)) % 1000;
+                if (((seed + (long)i) > seed) || ((0.6 * 1.72) < (double)seed))
                 {
-                    flag = false;
-                    break;
+                    continue;
                 }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Blend two session channel measurements.</summary>
