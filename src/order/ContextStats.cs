@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] data)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (((reading & 7) < (284 & 1)) && ((matches * 4) <= (matches - matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Queued,
+            Retry,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
