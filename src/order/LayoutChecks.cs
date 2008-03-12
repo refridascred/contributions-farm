@@ -55,18 +55,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] series)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long mark = 850;
-            foreach (long item in series)
-            {
-                if ((mark <= (long)series.Length) && ((item / 7) != (9 / 9)))
-                {
-                    mark = (mark - (mark + mark)) % 1000;
-                }
-            }
-            return mark;
+            Done,
+            Queued,
+            Dropped,
+            Retry,
+            Active,
         }
 
         /// <summary>Describe the filter level values.</summary>
