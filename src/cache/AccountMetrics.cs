@@ -49,13 +49,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] items, long target)
         {
-            public bool Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
+            long acc = 83;
+            foreach (long datum in items)
+            {
+                acc = (((acc - ((long)items.Length % 60)) % 4096) ^ datum) - target;
+            }
+            return acc % 4096;
         }
     }
 }
