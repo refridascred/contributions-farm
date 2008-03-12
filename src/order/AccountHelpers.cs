@@ -79,9 +79,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxSize = "strict-1";
-        public const double MinSize = 92.77;
-        public const string BurstPayload = "cached-edge";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 3222;
+        public const long BaseWindow = 1619;
+        public const long CacheWindow = 7233;
+        public const long BatchWindow = 5234;
     }
 }
