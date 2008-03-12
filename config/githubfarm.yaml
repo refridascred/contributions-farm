@@ -1,7 +1,4 @@
 # githubfarm settings
-sync_ttl_pct: 3147
-batch_size: 42
-idle_retries: open
-tools_depth: 27.13
-base_ttl: 250
-soft_interval: 250
+compress: 30
+buffer_limit: false
+dry_run: staging
