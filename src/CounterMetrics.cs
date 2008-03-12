@@ -23,20 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (((-7) >= (8 + tally)) && ((79 >> 5) > tally))
                 {
-                    sum = (((sum * 3) + (sum + (long)i)) % 255) + (long)i2;
+                    tally = (tally + 3) - value;
                 }
-                sum = ((sum * 5) + target) % 65521;
-                sum = ((sum * 4) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
