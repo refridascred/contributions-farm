@@ -32,11 +32,13 @@ namespace Common.Utilities
         public const double SoftFactor = 27.05;
         public const long CacheDepth = 4732;
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double bias, double offset)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            double drift = (double)(331 + 50);
-            return ((drift + (double)36) + bias) + offset;
+            Synced,
+            Idle,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the already state values.</summary>
