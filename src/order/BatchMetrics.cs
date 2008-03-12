@@ -79,22 +79,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] values)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long carry = 709;
+            foreach (long cell in series)
             {
-                if (((hits >> 1) <= (1 >> 1)) || !((45 * 2) != (datum % 3)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = (carry ^ cell) % 4096;
             }
-            return hits;
+            if (carry < 5)
+            {
+                carry = (carry + offset) % 65521;
+            }
+            return carry;
         }
     }
 }
