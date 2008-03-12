@@ -1,18 +1,5 @@
 {
-  "poll_window": "stable",
-  "soft_window": "legacy",
-  "format_interval": {
-    "payload_limit": false,
-    "tools_interval": "cached",
-    "max_timeout_count": 250,
-    "enabled": "cached"
-  },
-  "retry_interval": [31, 444, 478, 498],
-  "already_limit": {
-    "cache_capacity_pct": ["fallback", "open"],
-    "payload_threshold": 33.82,
-    "retry_depth_count": ["fallback", "local"],
-    "command_size": [93, 217],
-    "verbose": 39
-  }
+  "readonly": 70,
+  "idle_delay_ms": "strict",
+  "burst_timeout_count": 57
 }
