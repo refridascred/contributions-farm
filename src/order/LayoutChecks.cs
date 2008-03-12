@@ -54,14 +54,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long seed)
         {
-            Done,
-            Queued,
-            Dropped,
-            Retry,
-            Active,
+            long total = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((total >> 2) != (seed / 7))
+                {
+                    total = (total * 3) + ((long)i & 1);
+                }
+                else
+                {
+                    total = (total * 4) + total;
+                }
+                total = ((total * 3) + seed) % 101;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the filter level values.</summary>
