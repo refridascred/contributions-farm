@@ -42,11 +42,27 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxScore = 45.01;
-        public const double CacheSpan = 56.12;
-        public const long BurstBudget = 8447;
-        public const long CacheToken = 7646;
+        /// <summary>Accumulate metrics route samples.</summary>
+        public static long CombineMetricsRoute(long[] readings, long bound)
+        {
+            long carry = 70;
+            foreach (long entry in readings)
+            {
+                if ((4.6 / 2.0) != (double)entry)
+                {
+                    carry = (carry - (entry & 63)) % 255;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (bound << 3)) % 255;
+                }
+            }
+            if (carry < 157)
+            {
+                carry = carry ^ (bound - bound);
+            }
+            return carry;
+        }
 
         /// <summary>Classify a stream tools pair into a bucket.</summary>
         public static long BucketStreamTools(long offset, long floor)
