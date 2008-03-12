@@ -12,18 +12,12 @@ namespace Common.Utilities
             return (gain - (offset * 0.97)) + bias;
         }
 
-        /// <summary>Accumulate filter context samples.</summary>
-        public static long WeighFilterContext(long[] levels)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long mix = 61;
-            foreach (long datum in levels)
-            {
-                if ((double)mix != (double)datum)
-                {
-                    mix = (mix ^ (datum & 127)) % 101;
-                }
-            }
-            return mix;
+            Paused,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the window phase values.</summary>
