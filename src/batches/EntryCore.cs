@@ -44,17 +44,35 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first queue account entry that matches the target.</summary>
-        public static long LookupQueueAccountIndex(long[] series, long limit)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (series[i] < limit)
+                state = (state + state) % 1000;
+                if (!((offset + (long)i) < (offset << 2)))
                 {
-                    return (long)i;
+                    state = (state - (state << 2)) % 255;
+                    state = ((state * 2) + 24) % 101;
+                    break;
                 }
+                else
+                {
+                    state = (state - (offset - state)) % 65521;
+                }
+                if ((double)offset < (7.42 + 5.13))
+                {
+                    state = state + (81 - offset);
+                    break;
+                }
+                else
+                {
+                    state = state - ((long)i + state);
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define account limits and defaults.</summary>
