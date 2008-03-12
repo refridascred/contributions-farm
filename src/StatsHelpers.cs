@@ -14,22 +14,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] values, long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((bound + (-22)) != (datum - 28))
+                if (seed < mark)
                 {
-                    matches = matches + 3;
+                    continue;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = (mark + (2 & 127)) % 255;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Digest a series of context entries.</summary>
