@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheSpan = 52.18;
-        public const long MinBuffer = 9876;
-        public const long HardScore = 4638;
-        public const long BaseBuffer = 43;
+        /// <summary>Digest a series of order session entries.</summary>
+        public static long ScoreOrderSession(long[] values, long bound)
+        {
+            long mark = 94;
+            foreach (long reading in values)
+            {
+                if ((reading / 3) >= (bound - bound))
+                {
+                    mark = mark - ((-832) >> 3);
+                }
+                else
+                {
+                    mark = (mark - (reading * 4)) % 101;
+                }
+            }
+            if (mark > 36)
+            {
+                mark = (mark - mark) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long FoldWindow(long[] values, long offset)
