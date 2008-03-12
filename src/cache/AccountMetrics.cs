@@ -13,12 +13,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            Dropped,
+            Queued,
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Roll a window farm counter forward.</summary>
