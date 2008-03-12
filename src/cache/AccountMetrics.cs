@@ -57,26 +57,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] items, long offset)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long carry = 7;
-            foreach (long item in items)
-            {
-                if (offset >= (item ^ 402))
-                {
-                    carry = ((carry << 3) ^ (carry % 8)) % 255;
-                }
-                else
-                {
-                    carry = carry + item;
-                }
-            }
-            if (carry < 53)
-            {
-                carry = (carry + (61 * 2)) % 97;
-            }
-            return carry;
+            public bool Score { get; set; }
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a account record.</summary>
