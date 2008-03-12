@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a command format sample.</summary>
-        public static long FindCommandFormatIndex(long[] samples, long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 887;
+            foreach (long value in readings)
             {
-                if (samples[i] < target)
+                sum = (sum + floor) % 1000;
+                sum = ((sum * 5) + (value >> 1)) % 1000;
+                if (((long)readings.Length % 5) > floor)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (sum < 69)
+            {
+                sum = (sum ^ ((long)readings.Length % 24)) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Rank entry record input into a small class.</summary>
