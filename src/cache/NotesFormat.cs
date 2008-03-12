@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of record layout readings.</summary>
-        public static long WeighRecordLayout(long[] series, long bound)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long score = -648;
-            foreach (long datum in series)
-            {
-                score = (((score << 2) ^ datum) % 97) + bound;
-            }
-            return score % 65521;
+            public bool Total { get; set; }
+            public double Limit { get; set; }
+            public double Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
