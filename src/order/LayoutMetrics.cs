@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstSize = 4681;
+        public const double LimitWidth = 20.49;
+        public const string WindowScore = "strict";
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long MatchContributiCount(long[] readings)
