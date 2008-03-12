@@ -1,4 +1,10 @@
 # entry settings
-soft_window_ms: 500
-compress: 60
-enabled: standard
+min_retries_count: 8900
+max_limit: latest
+max_timeout_s: false
+hard_size_ms: strict
+persist:
+  - open
+  - latest
+  - standard
+  - local
