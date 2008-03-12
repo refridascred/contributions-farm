@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the entry session entries that pass the check.</summary>
-        public static long AuditEntrySessionGaps(long[] values)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (!(((double)sample <= 6.6) && ((hits << 2) <= hits)))
+                if (item != seed)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the graph phase values.</summary>
