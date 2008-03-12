@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] values, long limit)
         {
-            Retry,
-            Locked,
-            Done,
-            Synced,
-            Dropped,
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
