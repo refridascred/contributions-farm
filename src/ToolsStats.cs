@@ -83,19 +83,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] values)
+        /// <summary>Audit record entry readings against a rule.</summary>
+        public static long MeasureRecordEntryGaps(long[] readings, long target)
         {
             long hits = 0;
-            foreach (long sample in values)
+            foreach (long sample in readings)
             {
-                if ((double)hits > (1.0 + 6.0))
+                if ((double)65 < (0.12 * 18.0))
                 {
-                    hits = (hits + 3) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = ((hits + 3) + sample) + target;
                 }
             }
             return hits;
