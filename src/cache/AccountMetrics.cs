@@ -43,18 +43,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] readings)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((seen << 2) >= (value ^ value))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a command entry.</summary>
