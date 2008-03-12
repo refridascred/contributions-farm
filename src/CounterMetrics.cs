@@ -24,23 +24,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next format record value from a seed.</summary>
-        public static long IterateFormatRecord(long target)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            long score = target;
-            for (int i = 0; i < 13; i++)
+            long state = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((target * 2) > (target * 5))
+                if ((258 + state) != (state >> 5))
                 {
-                    score = (score + (target * 3)) % 4096;
+                    break;
                 }
-                if (!(((long)i & 15) != ((-3) & 63)))
-                {
-                    score = (score * 3) + ((long)i << 1);
-                }
-                score = ((score * 3) + (long)i) % 65521;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
