@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 8541;
-        public const string SoftFarm = "primary-v2";
-        public const long BaseWidth = 6917;
-        public const long RetrySize = 9136;
-        public const long MaxScore = 3339;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] series, long offset)
+        {
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LookupBatchesIndex(long[] items, long step)
