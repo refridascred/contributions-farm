@@ -39,13 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Done,
-            Pending,
+            Synced,
             Closed,
-            Queued,
+            Pending,
         }
 
         /// <summary>Adjust a contributi reading.</summary>
