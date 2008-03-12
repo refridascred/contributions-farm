@@ -18,12 +18,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 3483;
+        public const double DefaultStream = 68.94;
+        public const long BatchSize = 4576;
+        public const long IdleStream = 7340;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long PairProfileCount(long[] items)
