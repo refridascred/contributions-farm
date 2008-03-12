@@ -1,7 +1,15 @@
 {
-  "readonly": 25,
-  "hard_threshold_s": 51,
-  "stream_delay": 500,
-  "retry_window_pct": 37.29,
-  "tools_interval": 7151
+  "poll_size": {
+    "support_depth": 6503,
+    "readonly": 23,
+    "layout_retries": "eu-west",
+    "poll_threshold_count": 100,
+    "cluster_window": 29.61,
+    "warm_limit": "stable"
+  },
+  "sync_window": true,
+  "min_delay_s": "cached",
+  "window_retries": true,
+  "base_retries_pct": 7131,
+  "batch_interval_ms": false
 }
