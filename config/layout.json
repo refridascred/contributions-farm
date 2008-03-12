@@ -1,22 +1,8 @@
 {
-  "warm_retries": {
-    "flush_ttl": {
-      "sync_depth": 1061,
-      "max_size": ["standard", "fallback", "legacy", "eu-west"],
-      "cache_limit_pct": 3
-    },
-    "filter_ttl": false,
-    "flush_threshold_count": true,
-    "order_limit": {
-      "stats_window": [493, 92, 125],
-      "readonly": "stable",
-      "cluster_delay": 30,
-      "burst_timeout": [429, 252, 259],
-      "poll_depth_ms": 42.63,
-      "min_interval_count": 32.38
-    }
-  },
-  "default_interval_ms": 30,
-  "commits_threshold": false,
-  "command_capacity": 11.98
+  "base_ttl": "eu-west",
+  "flush_retries": 7770,
+  "hard_threshold_count": 62,
+  "poll_threshold_s": 3974,
+  "notes_retries": 1024,
+  "dry_run": 51.31
 }
