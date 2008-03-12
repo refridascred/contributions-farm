@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the session token series from a seed.</summary>
-        public static long RollSessionToken(long floor)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((6.4 * 8.87) < (double)acc)
-                {
-                    acc = (acc + (floor * 5)) % 97;
-                }
-                if ((double)floor != (2.5 / 4.0))
-                {
-                    acc = (acc - ((long)i * 5)) % 1000;
-                    acc = (acc * 4) + acc;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc ^ (long)i) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
