@@ -20,10 +20,30 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheBudget = 48.15;
-        public const long BaseDepth = 5048;
-        public const long BurstRatio = 4337;
-        public const string BatchRecord = "strict-v2";
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] series)
+        {
+            long total = 3;
+            foreach (long sample in series)
+            {
+                if ((double)sample < (4.5 - 1.97))
+                {
+                    total = (total << 2) ^ (sample >> 2);
+                }
+                else
+                {
+                    total = (total - (total << 3)) % 255;
+                }
+                if ((total + sample) > 452)
+                {
+                    break;
+                }
+            }
+            if (total < 515)
+            {
+                total = total ^ (total ^ total);
+            }
+            return total;
+        }
     }
 }
