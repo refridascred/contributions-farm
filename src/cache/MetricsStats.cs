@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const string MaxSpan = "open-v2";
         public const long BaseLevel = 6890;
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public double Count { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowFactor = 9980;
+        public const double BurstWidth = 3.37;
+        public const long StepNotes = 7976;
+        public const long WindowSize = 2706;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BurstBatches = 169;
