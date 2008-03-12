@@ -40,18 +40,9 @@ namespace Common.Utilities
         public const long SoftLayout = 5789;
         public const long RetryInterval = 8721;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] series)
-        {
-            long state = 73;
-            foreach (long item in series)
-            {
-                if (item < (item ^ item))
-                {
-                    state = state + (item % 2);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowFactor = 4464;
+        public const double RetryTimeout = 74.57;
+        public const long CacheSize = 8524;
     }
 }
