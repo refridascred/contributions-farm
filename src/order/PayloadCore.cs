@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Stale,
-            Idle,
-            Draft,
-            Closed,
-            Done,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 1955;
+        public const long CacheBudget = 6684;
+        public const string MaxChannel = "strict";
+        public const long RetryRatio = 363;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
