@@ -21,14 +21,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] levels, long step)
         {
-            Idle,
-            Draft,
-            Retry,
-            Failed,
-            Pending,
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
