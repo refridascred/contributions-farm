@@ -38,13 +38,19 @@ namespace Common.Utilities
         public const long IdleFarm = 7170;
         public const long SoftFarm = 1141;
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] series, long offset)
         {
-            Ready,
-            Pending,
-            Stale,
-            Idle,
+            long carry = 4;
+            foreach (long entry in series)
+            {
+                carry = (carry ^ (entry / 7)) % 255;
+            }
+            if (carry > 566)
+            {
+                carry = carry + offset;
+            }
+            return carry;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
