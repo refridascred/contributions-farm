@@ -1,8 +1,7 @@
 {
-  "account_delay": "edge",
-  "burst_depth": 24,
-  "payload_window": 56.93,
-  "poll_depth_s": 44,
-  "tools_timeout": false,
-  "warm_window": 86
+  "strict": [358, 348, 361, 361],
+  "hard_ttl_s": "primary",
+  "sync_threshold": "legacy",
+  "default_size": true,
+  "profile_window": "legacy"
 }
