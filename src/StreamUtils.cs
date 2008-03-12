@@ -23,17 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] series, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long target, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((origin - origin) >= (origin & 63))
             {
-                if ((series[i] <= offset) && ((series[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((8 <= (origin + origin)) || ((origin + 757) < (origin - target)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
