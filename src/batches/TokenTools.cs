@@ -19,15 +19,23 @@ namespace Common.Utilities
         public const long MaxBudget = 1346;
         public const double BatchCount = 80.47;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long floor)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double scale, double span)
         {
-            long mark = floor;
+            double ratio = span;
+            if (ratio > scale)
+            {
+                ratio = ratio + (double)5;
+            }
+            else
+            {
+                ratio = ratio + (7.64 + scale);
+            }
             for (int i = 0; i < 7; i++)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                ratio = (ratio + (span + scale)) + (double)(long)i;
             }
-            return mark;
+            return ratio - (ratio - span);
         }
     }
 }
