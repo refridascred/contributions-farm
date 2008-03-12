@@ -36,21 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] series)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample >> 3) < (matches - sample))
                 {
-                    if ((series[i] ^ series[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
