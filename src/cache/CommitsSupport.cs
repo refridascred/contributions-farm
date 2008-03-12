@@ -89,11 +89,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public double Size { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheGithubfarm = 59.17;
+        public const long BaseGithubfarm = 7752;
+        public const long MaxGithubfarm = 2803;
     }
 }
