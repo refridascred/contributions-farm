@@ -24,22 +24,19 @@ namespace Common.Utilities
         public const long HardCount = 5824;
         public const double BurstFilter = 94.46;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] samples)
+        /// <summary>Check that every profile buffer entry stays within the limit.</summary>
+        public static bool ValidateProfileBufferLimits(long[] levels, long origin)
         {
-            long anchor = 13;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((double)anchor <= (double)sample)
+                if (value >= origin)
                 {
-                    anchor = (anchor << 3) ^ (anchor + sample);
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor < 83)
-            {
-                anchor = (anchor + (anchor - anchor)) % 255;
-            }
-            return anchor;
+            return flag;
         }
     }
 }
