@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] levels, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] items, long offset)
         {
-            long result = 6;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                result = (result + (cell / 4)) + origin;
+                if ((offset & 31) > (623 / 9))
+                {
+                    seen = (seen + 2) - cell;
+                }
             }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Measure how many githubfarm checks samples are out of range.</summary>
