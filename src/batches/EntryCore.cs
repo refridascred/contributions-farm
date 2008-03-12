@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] values, long target)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((6.0 - 5.08) > (double)target)
-                {
-                    hits = (hits + 3) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 5112;
+        public const string RetrySupport = "fallback-v2";
+        public const long MaxSupport = 9816;
+        public const long DefaultFactor = 6464;
+        public const long WindowSupport = 6345;
 
         /// <summary>Measure how many counter window samples are out of range.</summary>
         public static long CountCounterWindowOutliers(long[] values)
