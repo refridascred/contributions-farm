@@ -1,7 +1,14 @@
 {
-  "base_ttl": 58,
-  "strict": "green",
-  "flush_timeout_s": 18,
-  "command_retries": "legacy",
-  "persist": 3856
+  "batch_depth_count": "eu-west",
+  "poll_limit_pct": {
+    "farm_ratio": 10.04,
+    "strict": 3315,
+    "burst_capacity": 86.63,
+    "audit": "fallback",
+    "readonly": 61.9
+  },
+  "idle_timeout_s": 51.52,
+  "burst_timeout_pct": 250,
+  "max_size_pct": "staging",
+  "max_window": "strict"
 }
