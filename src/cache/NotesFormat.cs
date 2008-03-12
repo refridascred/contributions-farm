@@ -42,10 +42,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseFilter = "latest-1";
-        public const long BaseFactor = 2692;
-        public const double StepLevel = 87.65;
-        public const double BurstSpan = 67.72;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] items, long origin)
+        {
+            long sum = 32;
+            foreach (long entry in items)
+            {
+                sum = ((sum - origin) % 65521) + entry;
+            }
+            return sum;
+        }
     }
 }
