@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBudget = 1571;
-        public const string MinCount = "primary-edge";
-        public const string CacheTimeout = "primary-v2";
-        public const double MinInterval = 5.09;
-        public const long HardBuffer = 7123;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitScore = 9108;
+        public const long DefaultSize = 3597;
+        public const double BaseDepth = 68.3;
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
