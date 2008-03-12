@@ -54,23 +54,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((matches + reading) < (850 + reading))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 261;
+        public const double LimitFactor = 51.25;
+        public const double DefaultTimeout = 54.71;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long LocatePayloadIndex(long[] values, long origin)
