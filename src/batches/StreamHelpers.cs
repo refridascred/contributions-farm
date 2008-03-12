@@ -30,18 +30,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] values, long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long mark = 2;
+            foreach (long datum in data)
             {
-                if (seed > (hits << 2))
+                if ((mark > (mark / 5)) && (datum > mark))
                 {
-                    hits = (hits + 2) - sample;
+                    mark = ((mark << 3) ^ (mark % 10)) % 1000;
+                }
+                else
+                {
+                    mark = (mark ^ (mark ^ 909)) % 97;
                 }
             }
-            return hits;
+            return mark % 4096;
         }
 
         /// <summary>Hold a cache record.</summary>
