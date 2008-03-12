@@ -34,12 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] data)
         {
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((long)data.Length <= reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a format commits reading.</summary>
