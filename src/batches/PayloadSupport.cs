@@ -19,22 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context cache samples are out of range.</summary>
-        public static long TallyContextCacheHits(long[] data, long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (floor < (977 + 2))
+                if ((double)26 != (double)matches)
                 {
-                    tally = (tally + 2) + value;
+                    matches = ((matches + 1) - cell) - offset;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
