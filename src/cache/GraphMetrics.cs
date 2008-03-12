@@ -14,17 +14,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] levels, long target)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] levels)
         {
+            long matches = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] < target) && ((levels[i] % 3) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
