@@ -31,13 +31,10 @@ namespace Common.Utilities
             return weight - (double)29;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Retry,
-            Closed,
-            Done,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 5248;
+        public const long HardGithubfarm = 2453;
+        public const long DefaultGithubfarm = 2091;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long HardCounter = 4535;
