@@ -1,6 +1,6 @@
 {
-  "window_retries": "standard",
-  "warm_ratio_count": 23,
-  "persist": 408,
-  "readonly": [495, 352, 181]
+  "batch_interval_count": "cached",
+  "flush_interval_pct": 60,
+  "max_timeout": false,
+  "default_ratio": ["blue", "edge"]
 }
