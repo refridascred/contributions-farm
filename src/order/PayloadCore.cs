@@ -23,11 +23,13 @@ namespace Common.Utilities
             return weight - (scale / 5.0);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryBudget = 4622;
-        public const string IdleAlready = "fallback-edge";
-        public const long SoftAlready = 8082;
-        public const long RetryScore = 5240;
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long RetryCount = 4101;
