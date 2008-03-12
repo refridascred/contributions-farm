@@ -1,9 +1,8 @@
-id,count,token
-1,760,35.4
-2,blue,530
-3,staging,open
-4,local,409
-5,903,edge
-6,green,98.77
-7,57.5,open
-8,local,legacy
+id,token,score,state
+1,813,888,334
+2,865,522,eu-west
+3,673,94.94,70.06
+4,697,502,fallback
+5,702,primary,17.48
+6,95.03,56,762
+7,fallback,strict,634
