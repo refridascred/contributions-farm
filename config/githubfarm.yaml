@@ -1,4 +1,4 @@
 # githubfarm settings
-compress: 30
-buffer_limit: false
-dry_run: staging
+cache_retries_count: 1437
+retry_retries_pct: 82
+command_timeout: 1024
