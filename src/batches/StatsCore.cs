@@ -53,25 +53,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long floor, long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long prev = floor + offset;
-            if ((prev > (637 + floor)) || ((prev << 1) >= 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)prev <= (6.71 + 7.25)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Active,
+            Done,
+            Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
