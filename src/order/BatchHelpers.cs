@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metric batches samples are out of range.</summary>
-        public static long AuditMetricBatchesMatches(long[] readings, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (((count - count) <= (step << 1)) && ((reading + count) == (4 - reading)))
+                if (value >= limit)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
