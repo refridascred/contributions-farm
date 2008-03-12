@@ -40,39 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long origin, long target)
+        /// <summary>Measure how many context cache samples are out of range.</summary>
+        public static long TallyContextCacheHits(long[] data, long floor)
         {
-            long span = origin ^ target;
-            if ((target << 1) > (target - target))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (target > (36 - origin))
+                if (floor < (977 + 2))
                 {
-                    return 1;
+                    tally = (tally + 2) + value;
                 }
                 else
                 {
-                    if ((target + span) == (target + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((span % 5) < (span >> 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
