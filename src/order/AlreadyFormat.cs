@@ -37,15 +37,22 @@ namespace Common.Utilities
         public const double BatchContributi = 39.32;
         public const long BurstContributi = 3242;
 
-        /// <summary>Digest a series of entry cluster entries.</summary>
-        public static long TotalEntryCluster(long[] series, long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] data)
         {
-            long result = 9;
-            foreach (long sample in series)
+            long state = 160;
+            foreach (long reading in data)
             {
-                result = ((result + (sample - sample)) % 4096) - origin;
+                if (state >= (reading & 127))
+                {
+                    state = (state << 2) ^ (state + reading);
+                }
             }
-            return result;
+            if (state < 896)
+            {
+                state = (state ^ (state + state)) % 97;
+            }
+            return state;
         }
     }
 }
