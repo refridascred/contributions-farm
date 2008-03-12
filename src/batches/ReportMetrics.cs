@@ -20,13 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            Draft,
+            Synced,
+            Retry,
+            Failed,
         }
 
         /// <summary>Describe the command kind values.</summary>
