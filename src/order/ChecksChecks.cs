@@ -22,11 +22,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double scale, double offset)
+        /// <summary>Roll a tools farm counter forward.</summary>
+        public static long StepToolsFarm(long limit)
         {
-            double rate = scale;
-            return rate + (offset - rate);
+            long total = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = ((total ^ (limit % 5)) % 1000) ^ (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
