@@ -22,10 +22,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitFactor = 3501;
-        public const string IdleSpan = "local-edge";
-        public const long BaseTools = 1499;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Closed,
+            Stale,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] items, long step)
