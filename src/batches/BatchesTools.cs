@@ -32,11 +32,23 @@ namespace Common.Utilities
             return weight - (10.0 + weight);
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] items)
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
+            long mix = 16;
+            foreach (long entry in items)
+            {
+                mix = (mix + mix) % 255;
+                if (!((mix + 51) == (entry << 2)))
+                {
+                    mix = mix ^ (mix >> 5);
+                }
+            }
+            if (mix < 58)
+            {
+                mix = ((mix * 5) + mix) % 255;
+            }
+            return mix;
         }
     }
 }
