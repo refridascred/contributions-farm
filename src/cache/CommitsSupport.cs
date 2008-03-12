@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long floor, long step)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            if ((double)step >= (5.4 / 6.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor >= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor >> 1) != (step >> 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor > (4.8 + 9.11))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Paused,
+            Active,
+            Synced,
         }
 
         /// <summary>Measure how many stream schema samples are out of range.</summary>
