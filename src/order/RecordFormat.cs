@@ -59,15 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window contributi value.</summary>
-        public static double BlendWindowContributi(double gain, double floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            double gain2 = gain;
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 + floor) - (double)(long)i;
-            }
-            return gain2 - (0.28 - floor);
+            Active,
+            Draft,
+            Paused,
+            Pending,
         }
     }
 }
