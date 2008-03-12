@@ -71,21 +71,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count command window pairs that satisfy a relation.</summary>
-        public static long PairCommandWindowCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheSession = 27.89;
+        public const long CacheWidth = 1154;
+        public const long HardInterval = 3540;
+        public const long MaxSession = 8095;
     }
 }
