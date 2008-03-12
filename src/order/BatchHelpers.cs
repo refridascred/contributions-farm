@@ -20,26 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the channel layout series from a seed.</summary>
-        public static long StepChannelLayout(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
-            {
-                if (4 <= (mix ^ mix))
-                {
-                    mix = (mix + ((long)i / 3)) % 101;
-                    mix = (mix - (mix - target)) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ (mix + 8)) % 4096;
-                    mix = ((mix * 2) + mix) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryLevel = 4251;
+        public const long LimitTimeout = 7937;
+        public const long MaxDepth = 8784;
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
