@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] readings)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if ((reading - reading) >= (reading & 127))
+                if (value >= floor)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
