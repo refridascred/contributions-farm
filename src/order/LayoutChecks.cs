@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] data, long seed)
         {
-            long score = 391;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((score >> 5) == (score / 5))
+                if (cell > seed)
                 {
-                    score = (score + item) % 101;
-                }
-                else
-                {
-                    score = ((score * 2) + (6 ^ item)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            if (score < 6)
-            {
-                score = score - (95 - score);
-            }
-            return score;
+            return stale;
         }
 
         /// <summary>Digest a series of tools contributi entries.</summary>
