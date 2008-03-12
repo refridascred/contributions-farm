@@ -1,7 +1,15 @@
 # githubfarm settings
-dry_run:
-  readonly: local
-  min_timeout_ms: false
-  metric_timeout: 6825
-hard_threshold_ms: 56.37
-metric_delay: 7.52
+notes_interval:
+  - 469
+  - 449
+  - 223
+account_retries: 38.82
+hard_timeout_count: 6636
+readonly:
+  default_depth: 32.32
+  poll_window_pct: stable
+  max_ratio_s: latest
+  idle_limit: true
+  max_timeout_count: 32.12
+poll_limit: 47
+verbose: blue
