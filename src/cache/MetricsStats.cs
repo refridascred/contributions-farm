@@ -25,11 +25,23 @@ namespace Common.Utilities
         public const long StepNotes = 7976;
         public const long WindowSize = 2706;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 169;
-        public const long BaseBudget = 6063;
-        public const string SoftTimeout = "fallback-v2";
-        public const long BatchBatches = 2303;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample != (6.0 + 7.1))
+                {
+                    count = (count + 3) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MinRoute = 1944;
