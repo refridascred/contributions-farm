@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a layout contributi counter forward.</summary>
-        public static long IterateLayoutContributi(long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (acc < (acc / 5))
+                if ((entry / 4) <= (entry + hits))
                 {
-                    acc = ((acc * 5) + target) % 255;
+                    hits = hits + 1;
                 }
-                else
-                {
-                    acc = (acc * 5) + (long)i;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
