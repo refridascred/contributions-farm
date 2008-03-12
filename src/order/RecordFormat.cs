@@ -28,11 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepLevel = "cached-edge";
-        public const string BatchSpan = "staging-1";
-        public const double SoftFactor = 27.05;
-        public const long CacheDepth = 4732;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] readings, long bound)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (value <= (value % 16))
+                {
+                    count = (count + 1) - bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
