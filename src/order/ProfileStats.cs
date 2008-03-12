@@ -20,11 +20,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double scale, double offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] levels)
         {
-            double gain = (offset + offset) - (double)361;
-            return (gain - (9.1 + offset)) + scale;
+            long mix = -3;
+            foreach (long datum in levels)
+            {
+                if (datum > (datum % 10))
+                {
+                    mix = mix ^ (datum & 15);
+                }
+                else
+                {
+                    mix = ((mix * 4) + (mix * 2)) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Project the next session value.</summary>
