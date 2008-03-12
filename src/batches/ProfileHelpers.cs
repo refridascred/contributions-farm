@@ -52,19 +52,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every entry tools entry stays within the limit.</summary>
-        public static bool VerifyEntryToolsRange(long[] data, long offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (datum < offset)
+                if (entry != limit)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
