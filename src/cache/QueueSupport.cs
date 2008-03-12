@@ -14,15 +14,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two command notes measurements.</summary>
-        public static double BlendCommandNotes(double ratio, double floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] readings)
         {
-            double ratio2 = (double)(90 + 910);
-            if (ratio2 < ratio2)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                ratio2 = (ratio2 - ratio2) - floor;
+                if ((hits << 2) <= (1 - cell))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio2 - (ratio * 5.0);
+            return hits;
         }
 
         /// <summary>Describe the support kind values.</summary>
