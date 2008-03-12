@@ -16,21 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] series)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((item + (-287)) >= (tally + 123)) && ((limit + limit) >= limit))
                 {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
