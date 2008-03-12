@@ -40,21 +40,21 @@ namespace Common.Utilities
         public const long HardTimeout = 4049;
         public const long BurstEntry = 612;
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] data)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) > 4)
+                    if ((series[i] - series[j]) < 14)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
