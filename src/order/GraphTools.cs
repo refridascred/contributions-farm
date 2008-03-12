@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] readings, long floor)
+        /// <summary>Scale a graph metrics figure with a bias.</summary>
+        public static double BlendGraphMetrics(double scale, double span)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            double weight = 4.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (value >= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = ((weight + (3.8 * 17.0)) - (double)(long)i) - scale;
             }
-            return valid;
+            return weight + (span * 8.14);
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
