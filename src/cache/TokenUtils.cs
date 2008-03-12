@@ -46,9 +46,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 8615;
-        public const long StepDepth = 4544;
-        public const double WindowDepth = 20.04;
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
+        }
     }
 }
