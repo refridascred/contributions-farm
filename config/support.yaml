@@ -1,10 +1,23 @@
 # support settings
-order_threshold: local
-retry_timeout_s: 100
-poll_ratio_pct:
-  githubfarm_limit: 3719
-  max_delay: true
-  sync_window_ms: false
-  dry_run: stable
-  entry_size: 20.95
-burst_capacity_count: 60.53
+flush_threshold_s: 25.86
+filter_ttl: 53.9
+base_ratio_ms:
+  entry_window:
+    - 334
+    - 447
+    - 145
+    - 391
+  batch_delay_pct:
+    - 364
+    - 55
+  warm_depth_pct: 51.8
+  max_delay_s:
+    persist: 34.23
+    audit: 1024
+    token_timeout: true
+batches_ttl:
+  - edge
+  - local
+  - strict
+idle_ttl_pct: 8620
+entry_limit: eu-west
