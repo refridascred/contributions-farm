@@ -47,12 +47,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseBudget = 4822;
-        public const long BaseCounter = 7923;
-        public const string DefaultWidth = "strict-1";
-        public const long LimitDepth = 9134;
-        public const double StepCounter = 35.64;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] values, long seed)
+        {
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double StepTimeout = 29.49;
