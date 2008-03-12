@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long DefaultFactor = 6464;
         public const long WindowSupport = 6345;
 
-        /// <summary>Measure how many counter window samples are out of range.</summary>
-        public static long CountCounterWindowOutliers(long[] values)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (0.92 > (double)item)
+                if ((0.67 / 3.0) <= (double)offset)
                 {
-                    hits = hits + 3;
+                    tally = (tally + 3) ^ value;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the queue mode values.</summary>
