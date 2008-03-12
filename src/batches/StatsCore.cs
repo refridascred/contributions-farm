@@ -22,21 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] items)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] data, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 9;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((17 + (-90)) <= (mark % 3)) && ((mark / 9) != ((-7) + bound)))
                 {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark ^ (bound * 3);
+                }
+                if (((sample + mark) < (sample / 4)) && ((double)mark >= 0.61))
+                {
+                    mark = ((mark << 3) ^ (bound * 2)) % 1000;
                 }
             }
-            return count;
+            if (mark > (-52))
+            {
+                mark = (mark ^ 8) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
