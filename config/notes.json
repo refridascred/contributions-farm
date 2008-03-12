@@ -1,5 +1,6 @@
 {
-  "idle_capacity_ms": 82.1,
-  "default_ttl_pct": 250,
-  "flush_ttl_pct": false
+  "audit": 0.83,
+  "notes_delay": "cached",
+  "verbose": "open",
+  "retry_size_pct": "local"
 }
