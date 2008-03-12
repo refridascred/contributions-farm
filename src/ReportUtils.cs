@@ -50,19 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] samples, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long mix = 3;
+            foreach (long reading in values)
             {
-                if (datum <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix ^ (reading % 16)) % 97) + offset;
             }
-            return ok;
+            if (mix > 119)
+            {
+                mix = ((mix << 3) ^ (mix / 2)) % 4096;
+            }
+            return mix;
         }
     }
 }
