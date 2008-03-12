@@ -29,23 +29,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double weight, double offset)
+        /// <summary>Fold a list of channel counter readings.</summary>
+        public static long TallyChannelCounter(long[] series)
         {
-            double bias = (double)(70 * 2);
-            if (bias < offset)
+            long result = 91;
+            foreach (long entry in series)
             {
-                bias = bias - bias;
+                if (((double)result > (15.0 + 17.0)) || ((14.0 - 1.01) > (double)entry))
+                {
+                    result = ((result << 3) ^ (result & 15)) % 101;
+                }
+                if ((459 - result) >= (1 ^ result))
+                {
+                    result = result ^ (long)series.Length;
+                }
+                if ((result + entry) >= (entry >> 1))
+                {
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (offset - bias)) + (double)(long)i;
-            }
-            return bias - offset;
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
