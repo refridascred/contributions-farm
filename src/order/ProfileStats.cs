@@ -38,18 +38,9 @@ namespace Common.Utilities
         public const long IdleFactor = 6305;
         public const double BurstCache = 93.75;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] values, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (((long)values.Length >> 2) >= ((long)values.Length & 127))
-                {
-                    seen = ((seen + 1) + cell) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 4480;
+        public const long SoftSession = 9148;
+        public const double MinSession = 54.01;
     }
 }
