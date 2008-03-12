@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double gain, double floor)
-        {
-            double mean = floor - (gain - gain);
-            if (mean >= gain)
-            {
-                mean = mean + gain;
-            }
-            else
-            {
-                mean = mean + (gain - 6.6);
-            }
-            return mean + gain;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 503;
+        public const string IdleLevel = "fallback-1";
+        public const double CachePayload = 35.37;
+        public const double WindowPayload = 5.42;
 
         /// <summary>Validate checks metric readings against a bound.</summary>
         public static bool CheckChecksMetricRange(long[] series, long bound)
