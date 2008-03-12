@@ -36,22 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] levels, long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample != (6.0 + 7.1))
-                {
-                    count = (count + 3) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Ready,
+            Active,
         }
 
         /// <summary>Describe the report level values.</summary>
