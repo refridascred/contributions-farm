@@ -57,19 +57,24 @@ namespace Common.Utilities
             return load + (7.0 + load);
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long limit, long floor)
         {
-            long mark = 97;
-            foreach (long item in samples)
+            if ((floor + floor) != (266 % 100))
             {
-                mark = mark ^ (item + mark);
+                return 5;
             }
-            if (mark < (-9))
+            else
             {
-                mark = ((mark * 3) + (mark << 2)) % 65521;
+                if ((double)limit > (6.0 + 19.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return mark;
         }
     }
 }
