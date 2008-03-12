@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] items, long origin)
         {
-            New,
-            Pending,
-            Failed,
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two stream measurements.</summary>
