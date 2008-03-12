@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long target, long floor)
-        {
-            if ((floor % 10) < (target & 15))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor + floor) < target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleTimeout = 1722;
+        public const long SoftMetrics = 5394;
+        public const string MaxMetrics = "local-v2";
+        public const long CacheMetrics = 1829;
+        public const long DefaultCount = 3961;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long LocateChannelIndex(long[] levels, long origin)
