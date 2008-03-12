@@ -20,14 +20,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] data, long floor)
         {
-            Closed,
-            Done,
-            Pending,
-            Dropped,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
