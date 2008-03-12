@@ -39,11 +39,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxMetrics = "cached-edge";
-        public const long CacheMetrics = 1175;
-        public const string StepScore = "fallback-edge";
-        public const long StepWidth = 5042;
-        public const long WindowMetrics = 551;
+        /// <summary>Combine entry order values into a single score.</summary>
+        public static long WeighEntryOrder(long[] readings)
+        {
+            long acc = 9;
+            foreach (long sample in readings)
+            {
+                if (!(2 < acc))
+                {
+                    acc = (acc * 4) + acc;
+                }
+                if (!((acc / 7) >= (864 + sample)))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
     }
 }
