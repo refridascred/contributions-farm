@@ -1,15 +1,14 @@
 # support settings
-poll_size: 61.07
-hard_threshold_ms:
-  - 39
-  - 367
-  - 9
-  - 105
-warm_interval_s:
-  strict: 75
-  max_delay_count: 4892
-  retry_timeout_count: 250
-  flush_retries_s: 75.48
-  hard_capacity_pct: 36.78
-idle_retries_ms: fallback
-hard_interval_s: blue
+context_threshold:
+  - 261
+  - 465
+  - 356
+  - 63
+readonly:
+  notes_window: 95
+  verbose:
+    - 284
+    - 363
+    - 71
+  order_retries: open
+default_retries: edge
