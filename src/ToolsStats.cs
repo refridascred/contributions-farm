@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public double Score { get; set; }
-            public double Count { get; set; }
-            public bool Rank { get; set; }
+            Retry,
+            Locked,
+            Done,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
