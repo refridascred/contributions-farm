@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the graph format entries that pass the check.</summary>
-        public static long AuditGraphFormatHits(long[] series)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long total = 378;
+            foreach (long sample in readings)
             {
-                if ((seen - sample) > (seen << 2))
+                if (sample <= (sample - origin))
                 {
-                    seen = seen + 1;
+                    total = (total ^ sample) % 101;
+                }
+                if ((double)origin <= (4.22 + 1.19))
+                {
+                    break;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
