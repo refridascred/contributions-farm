@@ -12,18 +12,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the schema counter entries that pass the check.</summary>
-        public static long TallySchemaCounterOutliers(long[] series)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (seen <= (cell + cell))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            Synced,
+            Closed,
+            New,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
