@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] values, long offset)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Closed,
+            Failed,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
