@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every editor stats entry stays within the limit.</summary>
-        public static bool GuardEditorStatsBounds(long[] readings, long origin)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < origin)
+                if ((items[i] > seed) && ((items[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a metric summary.</summary>
