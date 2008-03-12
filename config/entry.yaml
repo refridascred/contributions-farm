@@ -1,13 +1,19 @@
 # entry settings
-flush_threshold_pct: open
-enabled: cached
-base_threshold_count:
-  base_delay: primary
-  contributi_size: local
-  editor_size: latest
-  compress:
-    compress: latest
-    readonly: fallback
-    default_size: 4338
-  cache_limit_s: 500
-readonly: 67.79
+cache_retries_pct: fallback
+warm_threshold_ms: strict
+hard_ratio:
+  - latest
+  - local
+  - blue
+  - strict
+idle_ratio_ms: 51.77
+dry_run:
+  base_window_pct: legacy
+  compress: local
+  queue_ttl: standard
+  strict: false
+  warm_interval_s:
+    - green
+    - eu-west
+    - blue
+  sync_window_pct: local
