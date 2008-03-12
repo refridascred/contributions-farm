@@ -20,16 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next filter metrics value from a seed.</summary>
-        public static long DeriveFilterMetrics(long seed)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double scale, double span)
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
+            double weight = span - (scale + 4.39);
+            if (weight >= scale)
             {
-                score = (score ^ (score + (long)i)) % 4096;
-                score = ((score * 2) + (long)i) % 65521;
+                weight = weight + (scale * 5.9);
             }
-            return score;
+            else
+            {
+                weight = weight + (span / 8.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (span / 5.0)) + (double)(long)i;
+            }
+            return weight - (10.0 + weight);
         }
 
         /// <summary>Audit format readings against a rule.</summary>
