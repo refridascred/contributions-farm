@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const long CacheFactor = 4052;
         public const string HardScore = "staging-edge";
 
-        /// <summary>Check that every report farm entry stays within the limit.</summary>
-        public static bool CheckReportFarmBounds(long[] series, long target)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (datum > target)
+                if (item <= seed)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Digest a series of account entries.</summary>
