@@ -14,11 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepDepth = "fallback-1";
-        public const double WindowCache = 84.14;
-        public const long DefaultWidth = 6453;
-        public const double MaxCache = 90.82;
+        /// <summary>Look up the position of a farm cache sample.</summary>
+        public static long LookupFarmCacheIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a editor graph counter forward.</summary>
         public static long IterateEditorGraph(long bound)
