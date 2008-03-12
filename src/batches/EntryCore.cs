@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const long DefaultFactor = 6464;
         public const long WindowSupport = 6345;
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            Paused,
-            Closed,
             Stale,
-            Active,
-            Synced,
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Accumulate batches samples.</summary>
