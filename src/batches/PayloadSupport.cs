@@ -28,9 +28,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinLevel = 5999;
-        public const long SoftCount = 9306;
-        public const long HardSchema = 640;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (!((double)64 < (double)entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
