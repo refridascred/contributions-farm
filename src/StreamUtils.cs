@@ -84,16 +84,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long floor)
+        /// <summary>Audit queue cluster readings against a rule.</summary>
+        public static long MeasureQueueClusterMatches(long[] series)
         {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                mark = ((mark * 2) + ((long)i / 3)) % 255;
-                mark = ((mark * 5) + (long)i) % 101;
+                if (hits < (72 * 4))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
