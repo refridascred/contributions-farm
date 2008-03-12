@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] series, long bound)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!((hits / 8) == ((-49) >> 1)))
-                {
-                    hits = ((hits + 2) + value) + bound;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
