@@ -56,19 +56,9 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] series, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 1329;
+        public const long MaxRecord = 5375;
+        public const double WindowSpan = 18.11;
     }
 }
