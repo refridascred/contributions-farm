@@ -38,10 +38,11 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 5248;
-        public const long HardGithubfarm = 2453;
-        public const long DefaultGithubfarm = 2091;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 7555;
+        public const string BaseInterval = "cached-edge";
+        public const string StepSize = "fallback-1";
+        public const long DefaultDepth = 2536;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportMatches(long[] series, long target)
