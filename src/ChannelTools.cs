@@ -18,21 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] samples)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long seed, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long next = seed + floor;
+            if ((double)floor == (1.9 / 7.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((seed ^ next) > (seed - 7))
                 {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a tools options.</summary>
