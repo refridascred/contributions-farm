@@ -1,6 +1,8 @@
 {
-  "idle_retries": "local",
-  "poll_ratio_ms": ["eu-west", "cached", "blue"],
-  "warm_ttl_ms": 71,
-  "report_ratio": 54
+  "sync_ttl": "green",
+  "command_timeout": "cached",
+  "warm_ratio_ms": false,
+  "enabled": ["blue", "fallback", "fallback"],
+  "payload_threshold": "primary",
+  "token_depth": 22.24
 }
