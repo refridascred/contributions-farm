@@ -39,19 +39,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] series, long target)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            long mix = 802;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)target > (double)value)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = mix - (mix - mix);
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = (mix * 2) + (target + target);
             }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Locate a contributi metrics reading by value.</summary>
