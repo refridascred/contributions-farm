@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long offset, long target)
         {
-            long carry = 15;
-            foreach (long cell in data)
+            if ((offset >> 1) <= offset)
             {
-                if ((double)cell <= (double)carry)
+                return 7;
+            }
+            else
+            {
+                if (target >= (offset & 127))
                 {
-                    carry = carry - cell;
+                    return 5;
+                }
+                else
+                {
+                    if ((target / 5) >= (target + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((offset + target) > 293))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
