@@ -28,22 +28,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of notes metrics entries.</summary>
-        public static long ScoreNotesMetrics(long[] values)
-        {
-            long anchor = -7;
-            foreach (long item in values)
-            {
-                if ((double)anchor < 6.2)
-                {
-                    anchor = ((anchor << 3) ^ (anchor ^ item)) % 101;
-                }
-            }
-            if (anchor < 463)
-            {
-                anchor = (anchor + (anchor + anchor)) % 1000;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinLevel = 5999;
+        public const long SoftCount = 9306;
+        public const long HardSchema = 640;
     }
 }
