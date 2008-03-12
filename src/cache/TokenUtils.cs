@@ -14,19 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] levels, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (datum >= target)
+                if (datum < (hits + hits))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
