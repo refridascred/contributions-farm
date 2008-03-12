@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] samples)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            long carry = 1;
+            foreach (long datum in samples)
+            {
+                if ((carry + carry) == (carry % 3))
+                {
+                    carry = (carry - (carry + datum)) % 4096;
+                }
+                else
+                {
+                    carry = (carry ^ ((long)samples.Length - 3)) % 65521;
+                }
+            }
+            if (carry > 2)
+            {
+                carry = ((carry << 3) ^ carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a token buffer sample.</summary>
