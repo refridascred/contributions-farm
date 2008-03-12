@@ -22,13 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Look up the position of a tools contributi sample.</summary>
+        public static long LocateToolsContributiIndex(long[] levels, long target)
         {
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
