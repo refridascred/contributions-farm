@@ -41,13 +41,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
             public double Count { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the session state values.</summary>
