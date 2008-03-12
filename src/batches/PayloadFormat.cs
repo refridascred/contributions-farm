@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] readings, long step)
+        /// <summary>Audit buffer session readings against a rule.</summary>
+        public static long TallyBufferSessionOutliers(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (entry < step)
+                if (!(((double)item == (3.55 / 2.0)) || ((matches + matches) >= matches)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the account level values.</summary>
