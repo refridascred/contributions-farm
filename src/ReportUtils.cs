@@ -39,16 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine contributi checks values into a single score.</summary>
-        public static long CombineContributiChecks(long[] readings)
+        /// <summary>Measure how many schema layout samples are out of range.</summary>
+        public static long TallySchemaLayoutHits(long[] samples)
         {
-            long mix = 50;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                mix = mix ^ (mix >> 1);
-                mix = (mix * 4) + (cell - mix);
+                if ((item & 3) <= (-4))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Audit already command readings against a rule.</summary>
