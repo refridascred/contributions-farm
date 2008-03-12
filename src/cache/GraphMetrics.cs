@@ -22,24 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long origin, long offset)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long limit)
         {
-            if ((0.02 < (double)origin) && (offset >= (origin + origin)))
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (origin < 516)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
