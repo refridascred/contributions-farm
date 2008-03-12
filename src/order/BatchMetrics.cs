@@ -26,25 +26,22 @@ namespace Common.Utilities
         public const long MinTimeout = 4444;
         public const long BurstOrder = 5397;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long bound, long limit)
+        /// <summary>Measure how many tools route samples are out of range.</summary>
+        public static long CountToolsRouteOutliers(long[] levels)
         {
-            long slot = bound + limit;
-            if (slot <= bound)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound >> 1) > bound)
+                if (datum >= (datum * 4))
                 {
-                    return 3;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    return 1;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the channel support entries that pass the check.</summary>
