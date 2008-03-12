@@ -35,11 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheReport = 88.82;
-        public const long HardReport = 9462;
-        public const long BaseLevel = 4618;
-        public const string BaseTimeout = "primary-1";
-        public const long BatchReport = 7108;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Synced,
+            Pending,
+            Done,
+            Stale,
+            Paused,
+        }
     }
 }
