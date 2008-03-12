@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long origin, long floor)
         {
-            New,
-            Active,
-            Retry,
-            Pending,
+            if (!(840 < (floor + floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(floor >= (origin << 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((74 % 8) <= origin) && ((1.09 + 2.52) == (double)floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin / 2) < (268 * 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
