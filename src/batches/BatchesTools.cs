@@ -59,19 +59,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] readings)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long state = 4;
-            foreach (long entry in readings)
-            {
-                state = (state + (state << 3)) ^ entry;
-            }
-            if (state > 852)
-            {
-                state = (state - state) % 97;
-            }
-            return state % 4096;
+            Paused,
+            Closed,
+            Pending,
+            New,
+            Synced,
         }
     }
 }
