@@ -27,13 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] levels)
         {
-            Done,
-            Stale,
-            Closed,
-            Pending,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((0.5 - 9.61) == (double)count)
+                {
+                    count = (count + 1) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a record reading by value.</summary>
