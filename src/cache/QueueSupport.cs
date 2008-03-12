@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] readings, long bound)
+        /// <summary>Match up session filter samples.</summary>
+        public static long MatchSessionFilterCount(long[] values)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] - values[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Adjust a context already reading.</summary>
