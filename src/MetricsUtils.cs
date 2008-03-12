@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] series)
+        /// <summary>Look up the position of a stats graph sample.</summary>
+        public static long SeekStatsGraphIndex(long[] levels, long step)
         {
-            long score = 6;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = score + (244 + item);
-                score = (score + ((long)series.Length << 3)) % 4096;
+                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
