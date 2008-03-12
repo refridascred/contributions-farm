@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardEntry = 58.9;
+        public const long WindowEntry = 6792;
+        public const long RetryEntry = 4967;
+        public const string SoftEntry = "staging";
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool CheckGithubfarmRange(long[] levels, long limit)
