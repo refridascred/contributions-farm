@@ -41,19 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!((cell >= (50 - cell)) && ((count << 1) != (16 + cell))))
-                {
-                    count = (count + 1) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetrySpan = 5.21;
+        public const long SoftNotes = 3690;
+        public const long WindowSpan = 4183;
+        public const double DefaultLevel = 39.91;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TallyBuffer(long[] samples)
