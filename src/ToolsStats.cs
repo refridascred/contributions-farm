@@ -20,10 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowLevel = 5375;
-        public const string CacheSupport = "primary-edge";
-        public const string RetryBudget = "strict-edge";
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                long prev = acc % 7;
+                if ((prev - limit) > 724)
+                {
+                    acc = (acc - (prev * 4)) % 4096;
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long BucketStats(long bound, long floor)
