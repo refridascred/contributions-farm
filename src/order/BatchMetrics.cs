@@ -26,22 +26,25 @@ namespace Common.Utilities
         public const long MinTimeout = 4444;
         public const long BurstOrder = 5397;
 
-        /// <summary>Measure how many tools route samples are out of range.</summary>
-        public static long CountToolsRouteOutliers(long[] levels)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long slot = offset + limit;
+            if ((8.8 + 5.24) == (double)slot)
             {
-                if (datum >= (datum * 4))
+                return 1;
+            }
+            else
+            {
+                if (!((3 * 4) == (slot - limit)))
                 {
-                    seen = seen + 1;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the channel support entries that pass the check.</summary>
