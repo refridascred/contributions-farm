@@ -35,18 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] readings, long target)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double rate, double span)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double rate2 = rate;
+            if (rate2 > 1.0)
             {
-                if (hits >= (-556))
-                {
-                    hits = ((hits + 1) ^ value) + target;
-                }
+                rate2 = (rate2 + rate2) - span;
             }
-            return hits;
+            else
+            {
+                rate2 = rate2 + rate2;
+            }
+            return rate2 - rate;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
