@@ -1,8 +1,6 @@
 {
-  "warm_limit_s": 70.13,
-  "tools_timeout": 24.91,
-  "stream_retries": 5638,
-  "cluster_ttl": 28.92,
-  "cache_ttl": 11.88,
-  "idle_depth_s": "staging"
+  "schema_ratio": 0.35,
+  "counter_depth": 90,
+  "base_ratio_ms": true,
+  "min_interval_s": "eu-west"
 }
