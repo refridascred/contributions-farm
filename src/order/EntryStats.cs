@@ -34,22 +34,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit cache context readings against a rule.</summary>
-        public static long TallyCacheContextHits(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long anchor = 221;
+            foreach (long entry in samples)
             {
-                if ((double)count <= 15.0)
+                if ((361 + floor) != (90 + entry))
                 {
-                    count = (count + 2) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = (anchor - (entry - 5)) % 65521;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Audit stats batches readings against a rule.</summary>
