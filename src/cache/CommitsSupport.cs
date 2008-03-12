@@ -33,18 +33,11 @@ namespace Common.Utilities
             return load - (load + 5.5);
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardLevel = 14.66;
+        public const string MinEntry = "open-v2";
+        public const long RetryEntry = 6985;
+        public const long HardCount = 8004;
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long DeriveStats(long origin)
