@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long limit, long target)
-        {
-            long lane = limit ^ target;
-            if ((710 % 12) > (lane + lane))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)target != (5.35 * 8.12)) && ((double)lane >= (2.8 / 6.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)lane == (0.75 + 0.6))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((lane & 15) >= target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 5365;
+        public const string CacheBudget = "cached-1";
+        public const long CacheLevel = 6533;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorMatches(long[] readings, long offset)
