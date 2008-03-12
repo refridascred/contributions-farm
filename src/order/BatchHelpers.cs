@@ -13,21 +13,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] data)
+        /// <summary>Accumulate filter context samples.</summary>
+        public static long WeighFilterContext(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 61;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)mix != (double)datum)
                 {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix ^ (datum & 127)) % 101;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the window phase values.</summary>
