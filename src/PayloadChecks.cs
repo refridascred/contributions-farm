@@ -57,11 +57,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long bound, long step)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
+            long gap = bound + step;
+            if ((gap % 2) < (step % 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (bound >= (step * 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound >> 5) > gap)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (gap < (step ^ bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
