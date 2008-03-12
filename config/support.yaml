@@ -1,13 +1,7 @@
 # support settings
-window_timeout:
-  audit: primary
-  poll_depth: 26
-  base_threshold_ms:
-    soft_interval_ms: false
-    entry_depth: false
-    enabled: 4124
-    hard_retries: 88.46
-  burst_capacity_s: 9287
-  burst_size: strict
-base_interval: edge
-audit: 8.85
+hard_ratio_ms: 30
+compress: false
+readonly:
+  dry_run: fallback
+  githubfarm_interval: 60
+  account_interval: 5709
