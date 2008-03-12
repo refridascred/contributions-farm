@@ -1,6 +1,6 @@
-id,level,weight,label,token
-1,local,471,85.9,694
-2,36.02,892,208,74.68
-3,stable,53.93,fallback,edge
-4,latest,strict,65.13,6
-5,12.06,269,659,7.05
+id,active,rank,state
+1,288,57.77,26.52
+2,52,494,283
+3,47.03,469,51.96
+4,19.77,open,772
+5,strict,90.97,27.86
