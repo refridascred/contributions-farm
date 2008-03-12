@@ -63,12 +63,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] values, long step)
         {
-            public long Size { get; set; }
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
