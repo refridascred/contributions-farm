@@ -17,10 +17,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 3938;
-        public const double MinLevel = 65.01;
-        public const long DefaultRatio = 4824;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 182;
+        public const long MinContributi = 2407;
+        public const long MaxContributi = 5652;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long SeriesOrder(long target)
