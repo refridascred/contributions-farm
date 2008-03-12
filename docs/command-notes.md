@@ -1,14 +1,10 @@
 # Command notes
 
-A token that stays idle for too long is moved to the token list.
-The context report groups every notes by queue.
-
-When a contributi fails, the window handler retries a few times before giving up.
-A channel that stays idle for too long is moved to the support list.
+Defaults for metric live in the config folder and can be overridden per environment.
+Use notes settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Keep profile values small
-- Log every tools change
-- Document new context fields
-- Validate checks input early
+- Prefer githubfarm defaults
+- Review batches limits each release
+- Document new cluster fields
