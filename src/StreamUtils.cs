@@ -85,19 +85,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] items, long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long score = 0;
+            foreach (long value in levels)
             {
-                if (cell >= step)
+                if ((score << 1) >= (score * 3))
                 {
-                    ready = false;
-                    break;
+                    score = ((score + value) % 97) - limit;
+                }
+                else
+                {
+                    score = (score ^ (score << 3)) % 97;
                 }
             }
-            return ready;
+            return score % 65521;
         }
     }
 }
