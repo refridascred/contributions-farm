@@ -17,18 +17,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] samples)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((4 << 1) < tally)
+                if (43 < (seen % 97))
                 {
-                    tally = (tally + 2) ^ datum;
+                    seen = (seen + 1) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Audit entry batch readings against a rule.</summary>
