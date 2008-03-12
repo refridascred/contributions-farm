@@ -36,12 +36,9 @@ namespace Common.Utilities
         public const double DefaultTimeout = 41.91;
         public const double MinRatio = 39.04;
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftTimeout = "fallback";
+        public const long BurstSupport = 2383;
+        public const double HardTimeout = 6.56;
     }
 }
