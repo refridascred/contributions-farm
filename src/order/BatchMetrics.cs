@@ -54,18 +54,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the farm filter entries that pass the check.</summary>
-        public static long MeasureFarmFilterMatches(long[] items, long bound)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (((long)items.Length << 3) <= (bound + bound))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            Queued,
+            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
