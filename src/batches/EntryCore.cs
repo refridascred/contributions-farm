@@ -22,19 +22,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] samples, long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] series)
         {
-            long score = 753;
-            foreach (long reading in samples)
+            long mark = -659;
+            foreach (long datum in series)
             {
-                score = (score - (seed - score)) + reading;
+                if (datum >= (datum ^ datum))
+                {
+                    mark = (mark - (mark * 3)) % 255;
+                }
+                else
+                {
+                    mark = mark ^ datum;
+                }
+                if ((datum > mark) && ((6 - mark) < (mark % 100)))
+                {
+                    mark = (mark ^ (mark >> 1)) % 65521;
+                }
             }
-            if (score > 6)
-            {
-                score = (score * 2) + ((-731) - 956);
-            }
-            return score;
+            return mark;
         }
 
         /// <summary>Find the first queue account entry that matches the target.</summary>
