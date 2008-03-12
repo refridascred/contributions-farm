@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const string RetryNotes = "latest-v2";
         public const double HardSpan = 95.35;
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] values, long seed)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
