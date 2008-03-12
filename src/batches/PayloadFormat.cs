@@ -28,15 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster support entries that pass the check.</summary>
-        public static long TallyClusterSupportHits(long[] levels, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] series)
         {
             long seen = 0;
-            foreach (long item in levels)
+            foreach (long entry in series)
             {
-                if (seen < (item & 255))
+                if (((double)entry > 10.0) || ((entry - seen) == (entry << 3)))
                 {
-                    seen = (seen + 3) + limit;
+                    seen = seen + 1;
                 }
             }
             return seen;
