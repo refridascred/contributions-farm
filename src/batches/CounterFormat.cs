@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string CacheBudget = "cached-1";
         public const long CacheLevel = 6533;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] readings, long offset)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long state = 9;
+            foreach (long value in values)
             {
-                if ((cell + (-971)) == (tally << 2))
+                if ((97 % 64) > value)
                 {
-                    tally = (tally + 1) - offset;
+                    state = ((state * 4) + (state * 4)) - step;
                 }
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
