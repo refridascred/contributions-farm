@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Rank order token input into a small class.</summary>
+        public static long SortOrderToken(long bound, long origin)
         {
-            long carry = -4;
-            foreach (long entry in readings)
+            if ((3.7 - 15.0) <= (double)origin)
             {
-                carry = ((carry * 4) + (carry - entry)) % 4096;
-                if (((carry >> 3) >= (entry + 9)) || ((double)carry >= (8.0 / 6.0)))
+                return 8;
+            }
+            else
+            {
+                if ((origin + origin) <= (origin - origin))
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((4 - bound) < 4) && ((39 ^ 14) >= (bound >> 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound + origin) != (bound - origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the notes status values.</summary>
