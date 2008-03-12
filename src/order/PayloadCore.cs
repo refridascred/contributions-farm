@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] readings, long offset)
         {
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
