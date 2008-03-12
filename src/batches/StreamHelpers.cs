@@ -42,19 +42,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] items, long limit)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            double gain = (rate + rate) * 17.0;
+            if (gain >= (double)6)
             {
-                if (sample < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (gain - (double)898) - bias;
             }
-            return valid;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + 20.0) + (double)(long)i;
+            }
+            return gain + (gain - gain);
         }
 
         /// <summary>Project the next counter value.</summary>
