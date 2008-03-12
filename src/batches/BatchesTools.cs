@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] series, long floor)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long seed, long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            if ((seed + seed) < (step - seed))
             {
-                if ((floor - 695) > (floor * 4))
+                return 4;
+            }
+            else
+            {
+                if ((step + (-951)) == (0 & 3))
                 {
-                    tally = (tally + 2) + sample;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two stream measurements.</summary>
