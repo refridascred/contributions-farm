@@ -1,8 +1,8 @@
-id,score,rank
-1,97.26,2.52
-2,584,52.69
-3,blue,252
-4,44.96,primary
-5,fallback,28.96
-6,956,primary
-7,32.7,728
+id,region,count,label,owner
+1,11.98,local,strict,14.02
+2,152,67.54,1.63,legacy
+3,88.77,26.15,fallback,latest
+4,81.78,206,191,17.93
+5,standard,eu-west,staging,blue
+6,2,15.74,standard,5.25
+7,open,280,740,43
