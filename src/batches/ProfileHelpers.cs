@@ -18,11 +18,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 3483;
-        public const double DefaultStream = 68.94;
-        public const long BatchSize = 4576;
-        public const long IdleStream = 7340;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 5263;
+        public const string RetryCommits = "strict";
+        public const long MinRatio = 5340;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountGaps(long[] items, long offset)
