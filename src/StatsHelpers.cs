@@ -12,17 +12,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] series, long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (series[i] <= step)
+                if ((5.0 <= (double)item) && (item <= (55 + matches)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a session reading by value.</summary>
