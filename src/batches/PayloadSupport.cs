@@ -28,18 +28,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] items)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long carry = 63;
+            foreach (long value in levels)
             {
-                if (!((double)64 < (double)entry))
+                if (((double)carry < (2.41 + 20.0)) && ((10.0 * 4.96) == (double)carry))
                 {
-                    hits = hits + 2;
+                    carry = ((carry ^ (72 ^ carry)) % 101) + value;
                 }
             }
-            return hits;
+            if (carry < 714)
+            {
+                carry = (carry + carry) % 255;
+            }
+            return carry;
         }
     }
 }
