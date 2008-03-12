@@ -42,9 +42,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchTimeout = "fallback-1";
-        public const double IdleInterval = 74.04;
-        public const string IdleRoute = "stable";
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
