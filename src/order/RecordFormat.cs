@@ -32,12 +32,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultTimeout = 13.99;
-        public const long BurstChecks = 1473;
-        public const long StepChecks = 2822;
-        public const string HardChecks = "fallback-v2";
-        public const string MaxChecks = "latest-edge";
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
