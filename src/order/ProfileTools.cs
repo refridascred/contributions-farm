@@ -46,21 +46,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Match up report queue samples.</summary>
-        public static long OverlapReportQueueCount(long[] readings)
+        /// <summary>Project the next buffer batches value.</summary>
+        public static double ScaleBufferBatches(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (double)(88 - 4);
+            if (scale > (double)94)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale - (span - span);
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (ratio + 8.7)) + (double)(long)i;
+            }
+            return scale + (span - ratio);
         }
     }
 }
