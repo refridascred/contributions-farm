@@ -54,19 +54,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate graph cluster readings against a bound.</summary>
-        public static bool CheckGraphClusterLimits(long[] items, long floor)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchWidth = 9.38;
+        public const long MinCount = 1227;
+        public const string BatchGithubfarm = "cached-edge";
+        public const string MaxGithubfarm = "primary-v2";
     }
 }
