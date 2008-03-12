@@ -46,13 +46,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long target)
         {
-            Paused,
-            Done,
-            Synced,
-            Draft,
+            long sum = target;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = (((sum * 2) + (target + sum)) % 4096) - (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the format state values.</summary>
