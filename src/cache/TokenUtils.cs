@@ -12,21 +12,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] readings)
+        /// <summary>Count the schema counter entries that pass the check.</summary>
+        public static long TallySchemaCounterOutliers(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (seen <= (cell + cell))
                 {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
