@@ -33,24 +33,12 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Roll a already route counter forward.</summary>
-        public static long StepAlreadyRoute(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((-788) < bound)
-                {
-                    break;
-                }
-                else
-                {
-                    mark = (mark + (bound + mark)) % 4096;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseLevel = 3637;
+        public const long DefaultInterval = 6176;
+        public const string WindowGraph = "latest-1";
+        public const string CacheCount = "local-v2";
+        public const double IdleGraph = 98.4;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
