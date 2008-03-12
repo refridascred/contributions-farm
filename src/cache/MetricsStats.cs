@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheStats = "cached-1";
-        public const double DefaultDepth = 14.06;
-        public const string MaxSpan = "open-v2";
-        public const long BaseLevel = 6890;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepCommand = "local-1";
+        public const long BatchSize = 696;
+        public const long WindowSpan = 8662;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long WindowFactor = 9980;
