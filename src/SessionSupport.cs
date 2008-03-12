@@ -26,19 +26,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] items, long bound)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
