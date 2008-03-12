@@ -62,15 +62,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] items)
         {
-            long acc = 8;
+            long result = 6;
             foreach (long cell in items)
             {
-                acc = (acc ^ (414 << 3)) + cell;
+                if (((cell / 3) < result) && ((9.0 - 0.84) < (double)result))
+                {
+                    result = ((result << 3) ^ (cell + cell)) % 255;
+                }
+                else
+                {
+                    result = (result ^ (548 >> 5)) % 4096;
+                }
             }
-            return acc;
+            if (result > 748)
+            {
+                result = result ^ (result * 3);
+            }
+            return result;
         }
 
         /// <summary>Describe the entry state values.</summary>
