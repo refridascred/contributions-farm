@@ -13,10 +13,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryTimeout = 2412;
-        public const long BaseScore = 4861;
-        public const long BurstFarm = 3961;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (((207 % 7) < count) || ((double)value == (18.0 - 8.8)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double RetryPayload = 14.26;
