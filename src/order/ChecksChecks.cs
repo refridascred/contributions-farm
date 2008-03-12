@@ -35,30 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] items, long limit)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long acc = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry <= (6.0 - 3.3))
-                {
-                    acc = (acc * 2) + (acc + limit);
-                }
-                else
-                {
-                    acc = acc - ((long)items.Length << 2);
-                }
-                if ((-1) <= limit)
-                {
-                    break;
-                }
-            }
-            if (acc > (-2))
-            {
-                acc = (acc * 2) + (acc + acc);
-            }
-            return acc;
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
