@@ -68,26 +68,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of stream filter readings.</summary>
-        public static long WeighStreamFilter(long[] samples)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long score = 8;
-            foreach (long entry in samples)
-            {
-                if ((26 * 5) != (score << 3))
-                {
-                    score = ((score * 4) + entry) % 65521;
-                }
-                else
-                {
-                    score = score + entry;
-                }
-            }
-            if (score > 18)
-            {
-                score = (score + (score / 7)) % 97;
-            }
-            return score;
+            Paused,
+            Ready,
+            Locked,
+            New,
+            Active,
         }
     }
 }
