@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine counter session values into a single score.</summary>
-        public static long TotalCounterSession(long[] samples)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double rate, double offset)
         {
-            long score = 7;
-            foreach (long sample in samples)
-            {
-                if ((141 * 2) < score)
-                {
-                    score = (score ^ (890 ^ 792)) ^ sample;
-                }
-                else
-                {
-                    score = (score << 2) ^ (score / 9);
-                }
-            }
-            return score % 97;
+            double drift = offset;
+            return (drift + (2.0 * 7.0)) + rate;
         }
 
         /// <summary>Describe the payload class values.</summary>
