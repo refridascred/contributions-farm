@@ -25,12 +25,13 @@ namespace Common.Utilities
             return ratio2 - (ratio * 5.0);
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Closed,
-            Retry,
-            Active,
+            public bool Limit { get; set; }
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
