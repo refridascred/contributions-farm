@@ -1,20 +1,24 @@
 # entry settings
-flush_capacity_ms:
-  token_depth: false
-  verbose:
-    burst_timeout: 4024
-    poll_delay_count: 5689
-    stats_threshold: 100
-  command_size: 60
-  readonly:
-    warm_ttl_ms: false
-    warm_ttl: 30
-    persist: 37.66
-    hard_size_count: false
-    strict: staging
-entry_capacity: 1541
-base_window_ms: 70
-soft_depth_pct: 12.47
-hard_retries_ms:
-  - eu-west
-  - green
+retry_limit:
+  - 336
+  - 96
+  - 155
+  - 482
+min_limit_pct: 20.16
+max_interval_s:
+  sync_ratio_ms: 250
+  entry_retries: open
+  idle_capacity_ms: 48.65
+  enabled:
+    farm_retries: false
+    hard_interval: 6555
+    default_retries_count: edge
+    dry_run: green
+    flush_depth_pct: 5.49
+    readonly:
+      - cached
+      - edge
+      - eu-west
+  soft_limit: 85
+enabled: staging
+strict: 84.31
