@@ -31,21 +31,27 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 12;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mix = (mix << 3) ^ 529;
+                if (4 < (sample / 3))
                 {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix + (floor + floor)) % 97;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ floor;
+                }
+                if (((long)readings.Length <= (mix - mix)) && ((double)floor > (double)sample))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix % 4096;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
