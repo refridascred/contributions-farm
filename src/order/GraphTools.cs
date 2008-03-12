@@ -29,20 +29,12 @@ namespace Common.Utilities
             return weight + (span * 8.14);
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryInterval = 3435;
+        public const long MinTimeout = 4469;
+        public const long HardRatio = 4648;
+        public const long MaxFactor = 4603;
+        public const long WindowCommits = 8763;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
