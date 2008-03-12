@@ -1,15 +1,12 @@
 # Command notes
 
-Run the profile check before changing any stats limits.
-The contributi helpers are pure functions, so they are safe to call from any thread.
-
-Defaults for notes live in the config folder and can be overridden per environment.
-Keep graph and record names short and lowercase.
-Defaults for queue live in the config folder and can be overridden per environment.
+When a format fails, the account handler retries a few times before giving up.
+Use support settings to tune how often account data is refreshed.
+When a route fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review checks limits each release
-- Prefer checks defaults
-- Log every githubfarm change
-- Keep payload values small
+- Review buffer limits each release
+- Log every checks change
+- Validate batches input early
+- Keep githubfarm values small
