@@ -12,13 +12,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double ratio, double offset)
         {
-            Ready,
-            Synced,
-            Closed,
-            New,
+            double gain = offset * 9.8;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = ((gain + 7.7) + (double)(long)i) + ratio;
+            }
+            return gain + gain;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
