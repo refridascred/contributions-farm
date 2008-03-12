@@ -1,6 +1,11 @@
 # entry settings
-farm_window: 94.31
-burst_threshold: local
-enabled:
-  - 470
-  - 392
+contributi_interval: 250
+readonly: 96.76
+strict:
+  - standard
+  - staging
+  - open
+  - stable
+format_depth: 38.32
+audit: 18.93
+burst_window_pct: 30
