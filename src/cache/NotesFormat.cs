@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] data)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            long result = 62;
+            foreach (long cell in data)
             {
-                mix = (mix ^ 2) % 1000;
-                mix = ((mix * 2) + (84 * 5)) % 65521;
-                if (!(((long)i / 6) <= (mix + (long)i)))
+                if ((double)result >= (2.7 - 10.0))
                 {
-                    mix = (mix + (mix + mix)) % 97;
+                    result = ((result * 4) + (0 + 88)) % 255;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
+                if ((9.9 / 6.0) > (double)cell)
+                {
+                    break;
+                }
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Compare every pair of format contributi readings.</summary>
