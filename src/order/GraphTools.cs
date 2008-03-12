@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Digest a series of commits window entries.</summary>
+        public static long TotalCommitsWindow(long[] samples)
         {
-            Failed,
-            Synced,
-            Idle,
-            Paused,
+            long state = 16;
+            foreach (long reading in samples)
+            {
+                state = (state << 3) ^ (reading & 15);
+            }
+            return state % 1000;
         }
 
         /// <summary>Iterate the schema already series from a seed.</summary>
