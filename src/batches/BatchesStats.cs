@@ -14,10 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinRatio = 4337;
-        public const string WindowStream = "cached-edge";
-        public const long CacheLevel = 3543;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftDepth = "strict-edge";
+        public const double BurstTimeout = 64.52;
+        public const string BaseTimeout = "legacy-v2";
+        public const long MaxSupport = 281;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string RetryFilter = "cached-v2";
