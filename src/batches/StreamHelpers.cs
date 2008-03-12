@@ -14,11 +14,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxStream = 10.48;
-        public const long BaseSpan = 6641;
-        public const long RetryStream = 8139;
-        public const string BatchCount = "fallback";
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
