@@ -23,13 +23,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] items)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
