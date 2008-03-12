@@ -25,32 +25,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long step, long seed)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long seed)
         {
-            long slot = step + seed;
-            if ((step % 7) >= (slot - seed))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step <= (3.0 / 3.0))
+                if ((readings[i] >= seed) && ((readings[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (step >= 72)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate format batch samples.</summary>
