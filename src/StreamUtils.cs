@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] samples, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 264;
+            foreach (long value in data)
             {
-                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
+                if ((double)value <= (2.0 * 6.82))
                 {
-                    return (long)i;
+                    carry = ((carry - (value << 1)) % 1000) + bound;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of account readings.</summary>
