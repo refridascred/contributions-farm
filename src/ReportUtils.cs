@@ -25,18 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch support samples are out of range.</summary>
-        public static long TallyBatchSupportHits(long[] levels, long origin)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count & 1) > 414)
+                if (levels[i] < origin)
                 {
-                    count = ((count + 1) + entry) + origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many schema layout samples are out of range.</summary>
