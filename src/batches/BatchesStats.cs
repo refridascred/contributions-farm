@@ -29,14 +29,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Pending,
-            New,
-            Active,
             Closed,
-            Locked,
+            Done,
+            Pending,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
