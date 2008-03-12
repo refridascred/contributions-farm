@@ -1,11 +1,14 @@
 # Command notes
 
-The farm module keeps stream values in sync with the metric cache.
-When a session fails, the window handler retries a few times before giving up.
-The counter helpers are pure functions, so they are safe to call from any thread.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Run the checks check before changing any layout limits.
+
+Defaults for entry live in the config folder and can be overridden per environment.
+Use stream settings to tune how often order data is refreshed.
+When a order fails, the notes handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review window limits each release
-- Keep context values small
-- Document new metrics fields
+- Log every metric change
+- Validate support input early
+- Prefer githubfarm defaults
