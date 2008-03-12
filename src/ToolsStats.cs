@@ -29,18 +29,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the notes metric entries that pass the check.</summary>
-        public static long CountNotesMetricOutliers(long[] data, long bound)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (19 > datum)
-                {
-                    tally = (tally + 2) + bound;
-                }
-            }
-            return tally;
+            Stale,
+            Queued,
+            Active,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
