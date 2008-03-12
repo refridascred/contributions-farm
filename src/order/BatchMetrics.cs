@@ -43,22 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi batches readings.</summary>
-        public static long WeighContributiBatches(long[] readings, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] data, long target)
         {
-            long acc = 798;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long value in data)
             {
-                if ((acc * 3) < (value - 63))
+                if (value >= target)
                 {
-                    acc = (acc - (acc - 6)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (acc < 29)
-            {
-                acc = (acc - (seed - 384)) % 97;
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Define account limits and defaults.</summary>
