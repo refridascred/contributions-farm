@@ -12,14 +12,21 @@ namespace Common.Utilities
             return (drift + (2.0 * 7.0)) + rate;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            Ready,
-            Synced,
-            Pending,
-            Queued,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the window phase values.</summary>
