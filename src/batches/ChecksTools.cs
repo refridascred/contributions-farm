@@ -22,38 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long origin, long offset)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            if ((origin + 66) == (origin + offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset - offset) < origin) || ((7.0 / 4.0) <= (double)origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)origin == (double)offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset > (origin >> 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Roll a editor graph counter forward.</summary>
