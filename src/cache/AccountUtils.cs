@@ -23,32 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long offset, long limit)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] readings)
         {
-            long slot = offset ^ limit;
-            if ((slot + slot) == (offset + offset))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset % 5) < (offset + limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((786 / 2) <= (slot + 946))
+                    if ((readings[i] + readings[j]) < 14)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
