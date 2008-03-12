@@ -47,9 +47,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftSize = 40.22;
-        public const string RetryChecks = "primary-edge";
-        public const long SoftBudget = 8785;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long offset, long floor)
+        {
+            long cur = offset + floor;
+            if ((double)cur == (1.48 + 20.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((cur + offset) <= cur) || ((cur ^ floor) > (626 + offset)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((9.5 * 7.9) > (double)offset) || ((floor + offset) >= (floor - cur)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((9.09 * 2.55) < (double)offset) && ((8.16 * 1.1) == (double)offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
