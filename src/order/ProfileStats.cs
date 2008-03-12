@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] samples, long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (cell != seed)
+                if ((((double)reading < (7.2 / 9.0)) || ((reading * 4) >= (origin / 9))) && ((2 * 4) > reading))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
