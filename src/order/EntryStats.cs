@@ -21,10 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 8274;
-        public const string DefaultLayout = "cached-edge";
-        public const long MinLayout = 2441;
+        /// <summary>Count the githubfarm queue entries that pass the check.</summary>
+        public static long MeasureGithubfarmQueueMatches(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (10.0 >= (double)cell)
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
