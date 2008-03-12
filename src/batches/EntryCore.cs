@@ -47,21 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batch graph readings.</summary>
-        public static long FoldBatchGraph(long[] series, long offset)
-        {
-            long mark = 322;
-            foreach (long reading in series)
-            {
-                mark = ((mark * 4) + mark) % 1000;
-                mark = mark + mark;
-                if (!((reading + reading) >= (offset + (long)series.Length)))
-                {
-                    mark = (mark - reading) % 255;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseBudget = 4822;
+        public const long BaseCounter = 7923;
+        public const string DefaultWidth = "strict-1";
+        public const long LimitDepth = 9134;
+        public const double StepCounter = 35.64;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
