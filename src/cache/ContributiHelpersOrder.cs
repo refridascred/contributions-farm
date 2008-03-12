@@ -31,13 +31,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] values)
         {
-            public string Count { get; set; } = "";
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
+            long result = 25;
+            foreach (long cell in values)
+            {
+                if (((result ^ cell) >= (result >> 1)) && (cell <= (cell - 8)))
+                {
+                    result = ((result << 3) ^ (21 / 5)) % 101;
+                }
+            }
+            if (result < 7)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result;
         }
     }
 }
