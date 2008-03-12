@@ -27,18 +27,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the farm account entries that pass the check.</summary>
-        public static long TallyFarmAccountHits(long[] levels, long origin)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((double)reading < (8.7 - 9.7)))
+                if ((samples[i] >= step) && ((samples[i] % 2) != 0))
                 {
-                    hits = (hits + 3) + origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
