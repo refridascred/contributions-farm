@@ -16,11 +16,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultCount = 2255;
-        public const string CacheToken = "staging";
-        public const long BurstRatio = 3529;
-        public const string WindowToken = "strict-1";
+        /// <summary>Combine window stream values into a single score.</summary>
+        public static long ScoreWindowStream(long[] data, long floor)
+        {
+            long mark = 1;
+            foreach (long datum in data)
+            {
+                mark = (mark + (floor ^ floor)) ^ datum;
+            }
+            if (mark > 306)
+            {
+                mark = mark - (mark >> 5);
+            }
+            return mark;
+        }
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
