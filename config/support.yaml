@@ -1,25 +1,8 @@
 # support settings
-metric_limit:
-  - 13
-  - 294
-  - 125
-warm_depth:
-  commits_retries:
-    - standard
-    - primary
-  strict: 4478
-  metrics_capacity:
-    - 385
-    - 51
-    - 432
-  poll_interval_count: primary
-  audit: blue
-  soft_ttl_count:
-    - 435
-    - 349
-    - 477
-    - 317
-min_capacity_s: legacy
-verbose: 30
-metrics_threshold: true
-filter_timeout: false
+base_size:
+  - open
+  - eu-west
+  - legacy
+  - blue
+order_interval: false
+already_depth: 45
