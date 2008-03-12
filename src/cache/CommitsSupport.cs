@@ -33,17 +33,13 @@ namespace Common.Utilities
             return load - (load + 5.5);
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] samples, long step)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
