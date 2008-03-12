@@ -12,15 +12,14 @@ namespace Common.Utilities
         public const double DefaultSession = 33.49;
         public const long CacheSession = 3787;
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double scale, double bias)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            double weight = bias;
-            if (weight > (weight + 3.2))
-            {
-                weight = weight + weight;
-            }
-            return weight - (scale / 5.0);
+            Queued,
+            Draft,
+            Paused,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a cluster stats.</summary>
