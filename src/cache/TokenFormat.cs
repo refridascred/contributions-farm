@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many editor account samples are out of range.</summary>
-        public static long AuditEditorAccountMatches(long[] series)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (((matches & 63) < (item ^ matches)) || !((5.44 * 1.34) >= (double)item))
+                if (tally > (floor >> 5))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 2) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
