@@ -36,19 +36,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] items, long offset)
+        /// <summary>Digest a series of notes metrics entries.</summary>
+        public static long ScoreNotesMetrics(long[] values)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long anchor = -7;
+            foreach (long item in values)
             {
-                if (sample >= offset)
+                if ((double)anchor < 6.2)
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (anchor ^ item)) % 101;
                 }
             }
-            return found;
+            if (anchor < 463)
+            {
+                anchor = (anchor + (anchor + anchor)) % 1000;
+            }
+            return anchor % 1000;
         }
     }
 }
