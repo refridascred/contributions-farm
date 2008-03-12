@@ -40,25 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long seed, long limit)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long edge = seed - limit;
-            if ((limit * 4) != (limit + limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((limit - limit) <= limit) && ((limit + edge) > limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
