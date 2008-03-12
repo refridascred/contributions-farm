@@ -59,18 +59,17 @@ namespace Common.Utilities
         public const long MaxScore = 2644;
         public const string CacheLevel = "open";
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] series)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((entry ^ seen) > (seen + entry)))
+                if ((data[i] < bound) && ((data[i] % 3) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank report input into a small class.</summary>
