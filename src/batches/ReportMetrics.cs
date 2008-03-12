@@ -14,12 +14,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 2518;
-        public const long LimitCommand = 9319;
-        public const double BaseTimeout = 35.71;
-        public const long StepDepth = 367;
-        public const string DefaultWidth = "primary-edge";
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total * 5) + (limit << 1)) % 101;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long PairClusterCount(long[] data)
