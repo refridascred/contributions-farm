@@ -1,6 +1,6 @@
-id,active,token
-1,442,280
-2,cached,619
-3,staging,637
-4,eu-west,58.33
-5,45.73,807
+id,score,region,level
+1,2,96.93,93.33
+2,582,22.85,70.33
+3,54.29,legacy,52.74
+4,46.29,595,cached
+5,29,strict,687
