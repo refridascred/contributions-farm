@@ -59,14 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Closed,
-            Failed,
-            Ready,
-            Idle,
-            Done,
+            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Rank already input into a small class.</summary>
