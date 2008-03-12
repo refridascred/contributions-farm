@@ -57,22 +57,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count buffer queue pairs that satisfy a relation.</summary>
-        public static long OverlapBufferQueueCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 3153;
+        public const long StepToken = 7157;
+        public const long RetryToken = 7665;
+        public const string MinToken = "alpha-1";
+        public const long LimitRatio = 8953;
 
         /// <summary>Derive the next token buffer value from a seed.</summary>
         public static long RollTokenBuffer(long origin)
