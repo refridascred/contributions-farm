@@ -1,6 +1,19 @@
 {
-  "hard_threshold_pct": true,
-  "stream_size": 43.23,
-  "default_limit": 89.76,
-  "flush_size_pct": 8940
+  "min_window": {
+    "flush_delay_ms": 81.14,
+    "poll_retries": 3030,
+    "payload_limit": 4768,
+    "idle_delay_count": true
+  },
+  "base_ratio_count": {
+    "cache_depth": "eu-west",
+    "batches_depth": true,
+    "readonly": 7627,
+    "sync_ratio_count": "latest",
+    "enabled": "green"
+  },
+  "burst_window": ["strict", "primary"],
+  "flush_ratio_ms": "fallback",
+  "enabled": ["standard", "staging"],
+  "burst_size_pct": 10
 }
