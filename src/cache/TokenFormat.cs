@@ -19,21 +19,23 @@ namespace Common.Utilities
         public const long BatchCommand = 7543;
         public const long WindowCommand = 3563;
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 4;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = (sum + sum) % 4096;
+                if (((sum - 546) < (item ^ item)) || ((7.02 * 9.3) > (double)item))
                 {
-                    if ((series[i] + series[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (sum > 811)
+            {
+                sum = (sum << 3) ^ 88;
+            }
+            return sum % 1000;
         }
     }
 }
