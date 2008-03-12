@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] data, long bound)
         {
-            long anchor = 3;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((double)anchor >= (7.0 * 3.9))
+                if ((double)seen > (6.2 + 3.8))
                 {
-                    anchor = (((anchor << 2) ^ 873) % 255) ^ sample;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor * 3)) % 1000;
+                    seen = ((seen + 2) + datum) + bound;
                 }
             }
-            if (anchor > 1)
-            {
-                anchor = ((anchor * 5) + anchor) % 4096;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
