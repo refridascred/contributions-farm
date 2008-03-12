@@ -15,19 +15,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine channel commits values into a single score.</summary>
-        public static long ScoreChannelCommits(long[] items, long bound)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] series)
         {
-            long mix = 11;
-            foreach (long datum in items)
+            long total = 949;
+            foreach (long datum in series)
             {
-                mix = (mix + bound) ^ datum;
+                total = (total - (datum + total)) % 65521;
+                if ((total * 4) > (4 + datum))
+                {
+                    total = (total * 2) + (long)series.Length;
+                }
+                if (((total << 3) != (1 & 15)) || ((datum & 1) > datum))
+                {
+                    break;
+                }
             }
-            if (mix < 57)
-            {
-                mix = ((mix << 2) ^ (-713)) % 101;
-            }
-            return mix;
+            return total;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
