@@ -67,14 +67,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] series)
         {
-            Dropped,
-            Retry,
-            Ready,
-            Synced,
-            New,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((10.0 - 9.75) > (double)sample)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
