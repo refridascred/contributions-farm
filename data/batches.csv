@@ -1,8 +1,7 @@
-id,label,state,region
-1,open,503,96
-2,green,eu-west,92.71
-3,blue,local,343
-4,995,108,local
-5,standard,28.73,cached
-6,472,615,524
-7,74.45,840,stable
+id,region,score
+1,69.97,edge
+2,715,791
+3,strict,84
+4,983,697
+5,16.3,staging
+6,420,917
