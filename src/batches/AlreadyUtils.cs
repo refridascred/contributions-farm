@@ -31,19 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double rate, double offset)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            double mean = rate;
-            if (mean < (double)(-9))
-            {
-                mean = mean + (mean - rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (offset - rate)) - (double)(long)i;
-            }
-            return mean + (rate - 8.2);
+            Idle,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
