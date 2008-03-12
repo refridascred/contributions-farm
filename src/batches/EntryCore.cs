@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const long DefaultFactor = 6464;
         public const long WindowSupport = 6345;
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double scale, double bias)
         {
-            Stale,
-            Locked,
-            Dropped,
-            Done,
+            double gain = 0.3 * 6.4;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = ((gain - scale) + (double)(long)i) - bias;
+            }
+            return gain - 1.0;
         }
 
         /// <summary>Accumulate batches samples.</summary>
