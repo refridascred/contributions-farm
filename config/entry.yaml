@@ -1,6 +1,6 @@
 # entry settings
-verbose: true
-sync_depth_count: false
-already_size: 92
-readonly: 100
-max_ttl: true
+flush_interval: stable
+cache_ratio_ms: latest
+support_ttl: 18.24
+flush_retries_ms: 57
+hard_capacity_pct: 67
