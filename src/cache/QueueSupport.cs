@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            Draft,
+            Ready,
+            Idle,
+            Closed,
         }
 
         /// <summary>Audit session queue readings against a rule.</summary>
