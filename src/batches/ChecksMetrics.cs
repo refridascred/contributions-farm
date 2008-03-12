@@ -31,23 +31,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((value - (long)values.Length) >= tally)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultFactor = "strict-v2";
+        public const long BaseCommand = 4618;
+        public const double MaxCommand = 6.61;
+        public const long DefaultDepth = 1415;
+        public const long IdleCommand = 2166;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double HardStream = 91.51;
