@@ -26,21 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of report window readings.</summary>
-        public static long MatchReportWindowCount(long[] values)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = 8.46;
+            if (bias <= (weight / 7.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias + (span / 2.0);
             }
-            return seen;
+            return bias - (double)(-69);
         }
 
         /// <summary>Define session limits and defaults.</summary>
