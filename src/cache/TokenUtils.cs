@@ -26,19 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] samples, long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (sample < floor)
+                if ((sample - sample) <= (hits & 31))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
