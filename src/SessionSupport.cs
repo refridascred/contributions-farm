@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double gain, double bias)
-        {
-            double ratio = (double)(46 / 9);
-            if (ratio <= bias)
-            {
-                ratio = ratio + gain;
-            }
-            else
-            {
-                ratio = ratio + 5.0;
-            }
-            return ratio + (5.31 - ratio);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseBuffer = 2.58;
+        public const long WindowBuffer = 8678;
+        public const long SoftBudget = 7543;
+        public const string BaseRatio = "strict-1";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long IdleCount = 3408;
