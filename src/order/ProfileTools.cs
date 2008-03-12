@@ -40,11 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] samples, long origin)
         {
-            public double Owner { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((5.0 <= (double)origin) || ((sample - origin) < (tally + sample)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
