@@ -17,16 +17,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long floor)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                total = (total << 3) ^ (total & 31);
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            Idle,
+            Failed,
+            Active,
+            Retry,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
