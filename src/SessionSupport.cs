@@ -16,12 +16,12 @@ namespace Common.Utilities
         public const long MaxBuffer = 2729;
         public const double WindowDepth = 20.36;
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            New,
+            Idle,
+            Closed,
         }
     }
 }
