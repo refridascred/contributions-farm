@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] items, long offset)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long step, long offset)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long gap = step ^ offset;
+            if ((double)step > (3.88 - 0.57))
             {
-                if (reading < offset)
+                return 2;
+            }
+            else
+            {
+                if ((75 <= (step % 10)) && ((4.1 - 9.0) >= (double)gap))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
