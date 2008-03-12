@@ -57,10 +57,26 @@ namespace Common.Utilities
             return mean - 7.6;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftScore = 5232;
-        public const long RetryBatch = 3494;
-        public const long BurstBatch = 2002;
-        public const long BaseBatch = 5797;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] values)
+        {
+            long state = 97;
+            foreach (long datum in values)
+            {
+                if ((state % 60) > (state ^ 58))
+                {
+                    state = (state << 2) ^ datum;
+                }
+                else
+                {
+                    state = (state - (206 * 4)) % 65521;
+                }
+            }
+            if (state < 89)
+            {
+                state = (state * 2) + state;
+            }
+            return state % 65521;
+        }
     }
 }
