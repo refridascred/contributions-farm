@@ -31,19 +31,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] readings, long limit)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Count { get; set; } = "";
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
