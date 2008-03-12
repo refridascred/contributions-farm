@@ -73,19 +73,19 @@ namespace Common.Utilities
         public const long IdleBatches = 9117;
         public const string BaseBatches = "latest-edge";
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Validate counter command readings against a bound.</summary>
+        public static bool ValidateCounterCommandRange(long[] series, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (((long)i - mix) >= (mix % 3))
+                if (item >= origin)
                 {
-                    mix = ((mix * 5) + ((long)i + mix)) % 1000;
+                    flag = false;
+                    break;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return flag;
         }
     }
 }
