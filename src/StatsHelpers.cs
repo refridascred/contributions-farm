@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] values)
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (((7.0 - 4.5) < (double)matches) || (((matches % 12) < (reading - reading)) || ((1 * 3) >= (reading / 4))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
