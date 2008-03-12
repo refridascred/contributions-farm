@@ -26,19 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] samples, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if (sample != seed)
+                if (item != target)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Hold a token header.</summary>
