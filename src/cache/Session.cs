@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double weight, double span)
+        /// <summary>Grade a entry payload value against two limits.</summary>
+        public static long RankEntryPayload(long seed, long bound)
         {
-            double load = 15.0;
-            for (int i = 0; i < 9; i++)
+            long diff = seed - bound;
+            if ((seed % 24) <= (seed + bound))
             {
-                load = ((load + load) + (double)(long)i) - weight;
+                return 2;
             }
-            return load + (span / 8.0);
+            else
+            {
+                if (bound <= (diff + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)bound <= (double)diff))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound ^ seed) <= (diff + (-30)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
