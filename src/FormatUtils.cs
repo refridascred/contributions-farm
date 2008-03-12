@@ -49,19 +49,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((matches + reading) > matches) || ((double)matches >= (20.0 + 7.0)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepWidth = 68.81;
+        public const string StepInterval = "legacy-1";
+        public const long IdleDepth = 6052;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LookupChecksIndex(long[] levels, long seed)
