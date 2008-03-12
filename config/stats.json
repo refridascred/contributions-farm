@@ -1,20 +1,17 @@
 {
-  "filter_limit": {
-    "retry_ratio_s": 85,
-    "strict": 90.43,
-    "flush_ratio_count": 60,
-    "compress": [7, 341, 110],
-    "base_interval": 4
-  },
-  "compress": 6398,
-  "batch_timeout": "open",
-  "payload_size": "staging",
-  "enabled": {
-    "warm_capacity_s": "green",
-    "profile_retries": 35,
-    "checks_size": 250,
-    "warm_limit_s": false,
-    "max_threshold_count": [130, 13, 231]
-  },
-  "audit": "strict"
+  "batch_ttl": 65.84,
+  "burst_threshold": 500,
+  "retry_size_pct": false,
+  "batches_ttl": {
+    "persist": "edge",
+    "soft_size_count": true,
+    "batches_limit": 39,
+    "warm_timeout": {
+      "queue_retries": 500,
+      "metrics_limit": "green",
+      "metric_limit": 9538,
+      "farm_size": false
+    },
+    "idle_delay_s": true
+  }
 }
