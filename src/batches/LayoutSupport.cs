@@ -41,21 +41,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the contributi graph series from a seed.</summary>
-        public static long DeriveContributiGraph(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                state = (state - ((long)i % 7)) % 1000;
-                if (((seed + (long)i) > seed) || ((0.6 * 1.72) < (double)seed))
-                {
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSize = 7017;
+        public const long DefaultDepth = 8486;
+        public const long MaxSession = 1399;
 
         /// <summary>Blend two session channel measurements.</summary>
         public static double SmoothSessionChannel(double ratio, double bias)
