@@ -58,18 +58,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] items)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + cell) != (6 + cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
     }
 }
