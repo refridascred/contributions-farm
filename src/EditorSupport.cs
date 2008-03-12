@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long floor, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] samples, long bound)
         {
-            if (limit >= (floor << 2))
+            long sum = 29;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor >= (floor & 15))
+                sum = (sum << 3) ^ bound;
+                if ((value * 3) == (bound & 7))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    sum = sum + 56;
                 }
             }
+            if (sum < 998)
+            {
+                sum = ((sum << 3) ^ 6) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Match up format samples.</summary>
