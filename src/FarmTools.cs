@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double ratio, double span)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            double bias = (5.3 - ratio) - (14.0 + span);
-            return bias - (bias + span);
+            Retry,
+            New,
+            Done,
+            Pending,
+            Active,
         }
 
         /// <summary>Combine channel commits values into a single score.</summary>
