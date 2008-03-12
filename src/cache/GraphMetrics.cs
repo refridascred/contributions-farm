@@ -40,22 +40,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many tools format samples are out of range.</summary>
-        public static long TallyToolsFormatMatches(long[] series)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            long count = 0;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)item > 8.1)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] - readings[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Rank entry context input into a small class.</summary>
