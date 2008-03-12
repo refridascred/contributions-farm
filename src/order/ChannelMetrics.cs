@@ -44,19 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate commits already readings against a bound.</summary>
-        public static bool GuardCommitsAlreadyBounds(long[] items, long floor)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Weight { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
