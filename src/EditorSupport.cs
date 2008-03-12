@@ -42,22 +42,15 @@ namespace Common.Utilities
         public const long BurstMetrics = 108;
         public const string LimitMetrics = "stable-edge";
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] data, long step)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long bound)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((matches & 63) > (matches / 9))
-                {
-                    matches = ((matches + 3) - datum) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
