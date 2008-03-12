@@ -22,14 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] data, long limit)
         {
-            Retry,
-            Active,
-            Locked,
-            Synced,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many payload context samples are out of range.</summary>
