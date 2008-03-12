@@ -25,13 +25,12 @@ namespace Common.Utilities
             return ratio2 - (ratio * 5.0);
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public bool Limit { get; set; }
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
+            Queued,
+            Active,
+            Ready,
         }
     }
 }
