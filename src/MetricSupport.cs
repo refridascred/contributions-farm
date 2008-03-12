@@ -41,14 +41,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Match up filter order samples.</summary>
+        public static long OverlapFilterOrderCount(long[] samples)
         {
-            Ready,
-            Draft,
-            Idle,
-            Locked,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
