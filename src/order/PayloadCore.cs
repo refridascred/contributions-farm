@@ -22,14 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] samples, long floor)
         {
-            Queued,
-            Draft,
-            Paused,
-            Dropped,
-            Pending,
+            long result = 772;
+            foreach (long item in samples)
+            {
+                if (((item - floor) != (long)samples.Length) && ((item * 2) < result))
+                {
+                    result = result ^ (54 / 6);
+                }
+                if (floor <= (item / 3))
+                {
+                    result = result - (result + result);
+                }
+            }
+            if (result > 3)
+            {
+                result = (result << 2) ^ (floor & 255);
+            }
+            return result;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
