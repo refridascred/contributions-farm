@@ -72,12 +72,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardStream = 91.51;
-        public const long WindowRatio = 8292;
-        public const string DefaultTimeout = "latest-edge";
-        public const long MaxScore = 2644;
-        public const string CacheLevel = "open";
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Closed,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long FindBufferIndex(long[] data, long bound)
