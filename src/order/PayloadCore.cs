@@ -29,19 +29,9 @@ namespace Common.Utilities
         public const long SoftAlready = 8082;
         public const long RetryScore = 5240;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] values, long target)
-        {
-            long total = 784;
-            foreach (long sample in values)
-            {
-                total = ((total - ((-10) - total)) % 97) - sample;
-            }
-            if (total < 0)
-            {
-                total = ((total << 3) ^ (target * 5)) % 1000;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryCount = 4101;
+        public const double IdleWidth = 32.37;
+        public const long CacheBatches = 1892;
     }
 }
