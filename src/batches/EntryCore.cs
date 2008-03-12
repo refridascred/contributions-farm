@@ -65,12 +65,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
+            Idle,
+            Draft,
+            Paused,
+            Done,
+            Stale,
         }
     }
 }
