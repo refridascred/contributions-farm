@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long result = 62;
-            foreach (long cell in data)
-            {
-                if ((double)result >= (2.7 - 10.0))
-                {
-                    result = ((result * 4) + (0 + 88)) % 255;
-                }
-                if ((9.9 / 6.0) > (double)cell)
-                {
-                    break;
-                }
-            }
-            return result;
+            Queued,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
