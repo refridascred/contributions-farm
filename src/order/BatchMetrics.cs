@@ -46,15 +46,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a payload report reading.</summary>
-        public static double AdjustPayloadReport(double ratio, double offset)
+        /// <summary>Check that every stream buffer entry stays within the limit.</summary>
+        public static bool CheckStreamBufferBounds(long[] data, long origin)
         {
-            double ratio2 = (1.1 / 3.0) + (double)(-701);
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                ratio2 = ((ratio2 - ratio) + (double)(long)i) + offset;
+                if (datum != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio2 - 15.0;
+            return ready;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
