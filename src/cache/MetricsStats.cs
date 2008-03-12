@@ -12,22 +12,11 @@ namespace Common.Utilities
             return (weight - ratio) + bias;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] readings, long seed)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (9.28 <= (double)item)
-                {
-                    matches = (matches + 1) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
