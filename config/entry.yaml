@@ -1,6 +1,7 @@
 # entry settings
-commits_limit: true
-readonly: 8078
-soft_interval_pct: 5922
-hard_ttl_ms: edge
-compress: false
+min_timeout_ms: legacy
+notes_delay: 7409
+idle_capacity_count: 250
+farm_ratio: 31.29
+base_timeout_count: 3454
+window_depth: 100
