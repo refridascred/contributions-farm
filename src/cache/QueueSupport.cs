@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] readings, long limit)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry + limit) <= (entry + entry))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
