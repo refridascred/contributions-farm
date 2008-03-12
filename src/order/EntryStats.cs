@@ -40,19 +40,22 @@ namespace Common.Utilities
         public const long WindowScore = 6651;
         public const long SoftDepth = 7089;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] items, long origin)
+        /// <summary>Audit stats batches readings against a rule.</summary>
+        public static long MeasureStatsBatchesOutliers(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (cell >= origin)
+                if (matches < (floor + 2))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
