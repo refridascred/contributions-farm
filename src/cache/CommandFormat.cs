@@ -25,12 +25,15 @@ namespace Common.Utilities
         public const double MaxStats = 5.02;
         public const string BurstBudget = "primary-v2";
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long seed)
         {
-            Pending,
-            Locked,
-            Done,
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Audit metric stats readings against a rule.</summary>
