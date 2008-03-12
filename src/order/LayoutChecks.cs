@@ -57,12 +57,22 @@ namespace Common.Utilities
         public const double DefaultRoute = 44.0;
         public const double MinRoute = 6.37;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] levels, long limit)
         {
-            Active,
-            Synced,
-            Retry,
+            long total = 346;
+            foreach (long cell in levels)
+            {
+                if ((total & 3) < limit)
+                {
+                    total = (total ^ limit) % 1000;
+                }
+                else
+                {
+                    total = (total + (cell * 2)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
