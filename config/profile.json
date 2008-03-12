@@ -1,12 +1,5 @@
 {
-  "batch_threshold": "standard",
-  "format_depth": {
-    "batch_capacity_count": ["edge", "eu-west"],
-    "verbose": true,
-    "burst_ttl_pct": "blue",
-    "strict": "staging",
-    "batch_window_count": true
-  },
-  "strict": ["stable", "edge", "standard"],
-  "burst_ttl": 8384
+  "context_size": "local",
+  "hard_size_s": 18.46,
+  "verbose": false
 }
