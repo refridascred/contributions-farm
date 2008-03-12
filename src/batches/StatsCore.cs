@@ -60,18 +60,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] series, long floor)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long score = 7;
-            foreach (long value in series)
-            {
-                if ((double)value != (8.0 + 2.5))
-                {
-                    score = (score - (39 ^ value)) - floor;
-                }
-            }
-            return score;
+            Locked,
+            Idle,
+            Stale,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
