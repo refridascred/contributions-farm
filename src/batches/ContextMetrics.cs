@@ -40,11 +40,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowSpan = 3528;
-        public const long MinLevel = 4716;
-        public const long StepContributi = 4957;
-        public const long RetryContributi = 9811;
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double ratio, double floor)
+        {
+            double load = floor;
+            if (load <= floor)
+            {
+                load = load + (double)(-531);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + 1.0) + (double)(long)i;
+            }
+            return load - ratio;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BaseWidth = 31.5;
