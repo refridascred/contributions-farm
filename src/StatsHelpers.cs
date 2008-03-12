@@ -43,10 +43,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultTimeout = "staging-edge";
-        public const long IdleSupport = 7887;
-        public const long MinSupport = 8787;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public double Size { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long TallyFarmGaps(long[] items)
