@@ -12,21 +12,24 @@ namespace Common.Utilities
         public const string RetrySize = "strict-v2";
         public const long CacheScore = 9293;
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long step, long step2)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((step + step) < (step + step2))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((double)step2 <= (9.56 * 2.6)))
                 {
-                    if ((levels[i] + levels[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of order window readings.</summary>
