@@ -72,12 +72,19 @@ namespace Common.Utilities
         public const string WindowLevel = "alpha-1";
         public const long BatchTimeout = 3836;
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double bias, double offset)
         {
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
-            public long Stamp { get; set; }
+            double scale = (double)(8 & 3);
+            if (scale <= scale)
+            {
+                scale = scale - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (double)9) + (double)(long)i;
+            }
+            return scale - offset;
         }
     }
 }
