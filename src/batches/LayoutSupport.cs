@@ -26,11 +26,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowWidth = 80.94;
-        public const long BatchEntry = 323;
-        public const long WindowSize = 8506;
-        public const string RetryEntry = "open";
+        /// <summary>Validate profile metrics readings against a bound.</summary>
+        public static bool GuardProfileMetricsLimits(long[] series, long floor)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the contributi graph series from a seed.</summary>
         public static long DeriveContributiGraph(long seed)
