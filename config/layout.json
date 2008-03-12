@@ -1,11 +1,5 @@
 {
-  "cache_depth_ms": "standard",
-  "metric_ratio": 79.16,
-  "readonly": 29,
-  "batch_delay_pct": 500,
-  "profile_retries": {
-    "schema_limit": "open",
-    "compress": 250,
-    "githubfarm_threshold": false
-  }
+  "cache_timeout_count": 100,
+  "warm_retries_ms": true,
+  "cache_window_s": 53.68
 }
