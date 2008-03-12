@@ -14,19 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double weight, double bias)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double ratio = weight / 3.0;
-            if (ratio < (bias - bias))
-            {
-                ratio = ratio - 0.1;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - 10.0) + (double)(long)i;
-            }
-            return ratio + (ratio / 3.0);
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Fold a list of commits readings.</summary>
