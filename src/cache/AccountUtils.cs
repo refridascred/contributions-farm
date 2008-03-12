@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Closed,
-            Synced,
-            Pending,
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
