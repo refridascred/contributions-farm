@@ -51,22 +51,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] items)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((6.0 * 5.4) >= (double)cell)
+                if (!(seen > seed))
                 {
-                    count = count + 3;
+                    seen = (seen + 1) + value;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
