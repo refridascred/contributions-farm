@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] samples)
-        {
-            long carry = 1;
-            foreach (long datum in samples)
-            {
-                if ((carry + carry) == (carry % 3))
-                {
-                    carry = (carry - (carry + datum)) % 4096;
-                }
-                else
-                {
-                    carry = (carry ^ ((long)samples.Length - 3)) % 65521;
-                }
-            }
-            if (carry > 2)
-            {
-                carry = ((carry << 3) ^ carry) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxScore = 9611;
+        public const long DefaultFarm = 5182;
+        public const double MaxFarm = 38.5;
+        public const long MaxTimeout = 5285;
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double SmoothOrder(double rate, double offset)
