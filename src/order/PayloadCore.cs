@@ -31,12 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryRoute = "open-edge";
-        public const long IdleBudget = 9530;
-        public const double MaxWidth = 75.46;
-        public const string IdleRoute = "cached-edge";
-        public const long SoftRoute = 545;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BurstSize = "fallback";
