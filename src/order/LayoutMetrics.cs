@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] series)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long floor, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((bound * 5) >= bound) || ((bound - floor) < 388))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (9.0 < (double)floor)
                 {
-                    if ((series[i] + series[j]) < 20)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor != (9.72 - 11.0))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound + bound) > (bound - floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
