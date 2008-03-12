@@ -20,20 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] levels, long bound)
+        /// <summary>Match up stream report samples.</summary>
+        public static long PairStreamReportCount(long[] samples)
         {
-            long total = 703;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total - (bound * 3)) % 255;
-                total = (total ^ (bound & 7)) % 101;
-                if ((double)reading > (double)91)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total * 3) + (total - bound);
+                    if ((samples[i] ^ samples[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
