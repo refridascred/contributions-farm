@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long step, long target)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long bound = step + target;
-            if (!((10.0 + 3.1) <= (double)target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((500 + bound) <= bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Dropped,
+            Active,
+            Ready,
+            Synced,
+            Done,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
