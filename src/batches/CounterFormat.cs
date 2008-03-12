@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] samples, long floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long limit, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long lane = limit ^ target;
+            if ((710 % 12) > (lane + lane))
             {
-                if (samples[i] <= floor)
+                return 1;
+            }
+            else
+            {
+                if (((double)target != (5.35 * 8.12)) && ((double)lane >= (2.8 / 6.0)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)lane == (0.75 + 0.6))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((lane & 15) >= target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
