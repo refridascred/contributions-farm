@@ -29,22 +29,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] series)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((((double)count >= (4.99 - 4.5)) && ((value - value) == (count - count))) && (((value << 2) < (count - count)) && ((value ^ value) < count)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Synced,
+            Draft,
+            Active,
         }
     }
 }
