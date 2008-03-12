@@ -30,27 +30,17 @@ namespace Common.Utilities
         public const long BurstBudget = 4990;
         public const long CacheInterval = 4090;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] readings, long floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] readings, long offset)
         {
-            long mix = 12;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix << 3) ^ 529;
-                if (4 < (sample / 3))
+                if ((readings[i] < offset) && ((readings[i] % 5) == 0))
                 {
-                    mix = (mix + (floor + floor)) % 97;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ floor;
-                }
-                if (((long)readings.Length <= (mix - mix)) && ((double)floor > (double)sample))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
