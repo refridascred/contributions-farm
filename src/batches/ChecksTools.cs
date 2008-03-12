@@ -42,15 +42,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long target)
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                mark = (mark ^ (1 + target)) % 65521;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return sum;
+            return mark;
         }
     }
 }
