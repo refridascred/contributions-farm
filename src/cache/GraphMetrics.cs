@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] readings)
+        /// <summary>Roll a layout contributi counter forward.</summary>
+        public static long IterateLayoutContributi(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (acc < (acc / 5))
                 {
-                    if ((readings[i] + readings[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc * 5) + target) % 255;
                 }
+                else
+                {
+                    acc = (acc * 5) + (long)i;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
