@@ -20,22 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state - step) % 255;
-                if (state < (9 / 9))
-                {
-                    state = ((state << 2) ^ 271) % 65521;
-                    state = (state - (step * 3)) % 1000;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowLevel = 5375;
+        public const string CacheSupport = "primary-edge";
+        public const string RetryBudget = "strict-edge";
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long BucketStats(long bound, long floor)
