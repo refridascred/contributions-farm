@@ -47,22 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 6956;
+        public const long HardRoute = 4262;
+        public const long MinRoute = 8206;
+        public const long DefaultRoute = 7264;
+        public const string BatchLevel = "cached-1";
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelBounds(long[] series, long bound)
