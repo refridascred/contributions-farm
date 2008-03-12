@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double bias, double offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] samples, long seed)
         {
-            double drift = bias - (bias * 6.3);
-            if (drift >= (drift / 4.0))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                drift = (drift + (double)0) - offset;
+                if (seen > (seed * 5))
+                {
+                    seen = (seen + 1) ^ item;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift - (drift - 8.0);
+            return seen;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
