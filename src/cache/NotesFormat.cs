@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Combine metrics token values into a single score.</summary>
+        public static long WeighMetricsToken(long[] series, long limit)
         {
-            Queued,
-            Draft,
-            Failed,
+            long anchor = 4;
+            foreach (long item in series)
+            {
+                anchor = ((anchor * 3) + limit) ^ item;
+            }
+            if (anchor < 8)
+            {
+                anchor = (anchor << 2) ^ (anchor + (-9));
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of command tools entries.</summary>
