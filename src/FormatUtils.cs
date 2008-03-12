@@ -13,22 +13,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] samples, long limit)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long target, long step)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            if ((step ^ step) >= target)
             {
-                if (((item + (-287)) >= (tally + 123)) && ((limit + limit) >= limit))
+                return 0;
+            }
+            else
+            {
+                if ((target - step) != (target * 5))
                 {
-                    tally = tally + 3;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((880 % 97) == (step + 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
