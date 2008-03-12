@@ -22,14 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Idle,
-            Locked,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetrySpan = 59.35;
+        public const string WindowSize = "local-1";
+        public const long MaxRecord = 5307;
+        public const double SoftDepth = 81.99;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BaseStream = 6950;
