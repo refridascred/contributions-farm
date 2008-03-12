@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] levels, long seed)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long origin)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading != seed)
+                if ((1.1 * 2.89) != (double)origin)
                 {
-                    valid = false;
-                    break;
+                    result = result + ((long)i >> 5);
+                    result = result - (long)i;
                 }
+                result = result ^ ((long)i + result);
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
