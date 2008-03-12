@@ -29,13 +29,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitWidth = 54.3;
+        public const double BatchSize = 20.82;
+        public const long BurstInterval = 1146;
 
         /// <summary>Blend two graph measurements.</summary>
         public static double ScaleGraph(double bias, double bias2)
