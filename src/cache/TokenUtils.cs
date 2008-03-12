@@ -16,18 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a entry checks sample.</summary>
-        public static long FindEntryChecksIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardRatio = 6467;
+        public const double LimitLevel = 75.65;
+        public const double RetryOrder = 35.6;
+        public const double BatchSize = 92.85;
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double BlendGithubfarm(double weight, double offset)
