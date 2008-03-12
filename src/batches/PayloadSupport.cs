@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowContributi = 33.98;
-        public const double MaxSize = 82.5;
-        public const long StepBudget = 2413;
-        public const string HardCount = "staging-edge";
-        public const string WindowScore = "fallback-edge";
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many context cache samples are out of range.</summary>
         public static long TallyContextCacheHits(long[] data, long floor)
