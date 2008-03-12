@@ -14,18 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] items, long step)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((9.9 / 2.0) == (double)step)
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            Idle,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Adjust a report reading.</summary>
