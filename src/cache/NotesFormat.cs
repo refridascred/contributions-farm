@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowDepth = 28.64;
-        public const long BaseRoute = 4781;
-        public const long BatchCount = 4980;
-        public const long StepRoute = 1766;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
