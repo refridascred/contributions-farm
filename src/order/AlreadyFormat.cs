@@ -11,17 +11,21 @@ namespace Common.Utilities
         public const long RetryEntry = 4967;
         public const string SoftEntry = "staging";
 
-        /// <summary>Find the first metric checks entry that matches the target.</summary>
-        public static long SeekMetricChecksIndex(long[] samples, long step)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] samples)
         {
+            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] <= step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate schema samples.</summary>
