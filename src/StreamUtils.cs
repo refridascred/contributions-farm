@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] series, long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long carry = 7;
-            foreach (long cell in series)
+            long acc = 67;
+            foreach (long reading in series)
             {
-                if (cell <= (5 * 4))
+                acc = acc - (acc * 5);
+                acc = acc ^ ((-5) >> 5);
+                if ((acc ^ acc) >= (9 * 5))
                 {
-                    carry = ((carry << 2) ^ (cell / 6)) - bound;
+                    acc = (acc ^ (reading * 5)) % 97;
                 }
-                else
-                {
-                    carry = carry ^ (cell + carry);
-                }
-                carry = carry - (carry / 9);
             }
-            return carry;
+            if (acc > 9)
+            {
+                acc = acc + (acc * 4);
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of account readings.</summary>
