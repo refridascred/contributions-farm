@@ -1,4 +1,22 @@
 # support settings
-base_retries_pct: 730
-sync_limit: cached
-queue_window: 30
+flush_capacity_pct:
+  warm_limit: cached
+  token_depth:
+    - eu-west
+    - primary
+  batch_capacity_s: 1568
+compress: latest
+retry_window_s:
+  order_timeout: true
+  format_size:
+    profile_depth: true
+    hard_delay:
+      - 251
+      - 451
+      - 250
+    flush_ttl_ms: 30
+    base_ratio_pct: open
+  idle_ratio_ms: 31
+enabled: 73
+verbose: edge
+entry_window: 100
