@@ -67,10 +67,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 3222;
-        public const long BaseWindow = 1619;
-        public const long CacheWindow = 7233;
-        public const long BatchWindow = 5234;
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double rate, double offset)
+        {
+            double weight = offset - offset;
+            if (weight <= (rate * 2.09))
+            {
+                weight = weight + (rate - offset);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + (double)91;
+        }
     }
 }
