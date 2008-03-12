@@ -1,4 +1,5 @@
 # entry settings
-compress: 1075
-format_depth: false
-batch_window_s: edge
+min_size_pct: 7087
+default_depth_ms: fallback
+idle_limit_pct: 81.03
+cache_capacity: latest
