@@ -37,22 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] items)
         {
-            long carry = 63;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (((double)carry < (2.41 + 20.0)) && ((10.0 * 4.96) == (double)carry))
+                if (seen >= (reading + reading))
                 {
-                    carry = ((carry ^ (72 ^ carry)) % 101) + value;
+                    seen = seen + 1;
                 }
             }
-            if (carry < 714)
-            {
-                carry = (carry + carry) % 255;
-            }
-            return carry;
+            return seen;
         }
     }
 }
