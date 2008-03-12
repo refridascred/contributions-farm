@@ -1,16 +1,10 @@
 # githubfarm settings
-hard_ratio_pct: 8544
-sync_limit_count: 339
-base_ttl: true
-idle_delay: true
-format_threshold:
-  flush_limit_s: 50.78
-  enabled: 78.81
-  flush_threshold: false
-  window_ttl:
-    - eu-west
-    - open
-    - green
-    - green
-  batch_size_ms: blue
-  idle_capacity_ms: 2463
+idle_window:
+  report_depth: true
+  flush_size_pct: staging
+  max_limit_ms: 1024
+  poll_delay: 60
+retry_timeout:
+  - staging
+  - primary
+enabled: 47
