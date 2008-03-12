@@ -59,11 +59,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double gain, double offset)
-        {
-            double drift = offset;
-            return drift - (gain + 8.0);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstSize = "fallback";
+        public const long CacheFarm = 6806;
+        public const long SoftSize = 4060;
+        public const long DefaultFarm = 5077;
+        public const long BatchBudget = 8989;
     }
 }
