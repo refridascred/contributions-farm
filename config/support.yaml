@@ -1,7 +1,13 @@
 # support settings
-persist: true
-min_retries: 250
-dry_run: false
-verbose: 47.52
-stream_retries: false
-warm_interval_s: 98.23
+window_timeout:
+  audit: primary
+  poll_depth: 26
+  base_threshold_ms:
+    soft_interval_ms: false
+    entry_depth: false
+    enabled: 4124
+    hard_retries: 88.46
+  burst_capacity_s: 9287
+  burst_size: strict
+base_interval: edge
+audit: 8.85
