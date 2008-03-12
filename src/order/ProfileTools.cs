@@ -52,19 +52,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next buffer batches value.</summary>
-        public static double ScaleBufferBatches(double ratio, double span)
+        /// <summary>Validate profile stats readings against a bound.</summary>
+        public static bool CheckProfileStatsBounds(long[] readings, long limit)
         {
-            double scale = (double)(88 - 4);
-            if (scale > (double)94)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                scale = scale - (span - span);
+                if (entry < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (ratio + 8.7)) + (double)(long)i;
-            }
-            return scale + (span - ratio);
+            return valid;
         }
     }
 }
