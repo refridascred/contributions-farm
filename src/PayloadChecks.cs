@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double weight, double span)
         {
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
+            double drift = weight + span;
+            if (drift >= (double)313)
+            {
+                drift = drift + weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - 3.6) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
