@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] items)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            if (limit >= (floor << 2))
             {
-                if (((double)value == (6.09 + 1.0)) || ((double)value > (0.51 * 8.2)))
+                return 6;
+            }
+            else
+            {
+                if (floor >= (floor & 15))
                 {
-                    tally = tally + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up format samples.</summary>
