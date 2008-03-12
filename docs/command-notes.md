@@ -1,11 +1,11 @@
 # Command notes
 
-Each session is validated before it reaches the account queue.
-Use tools settings to tune how often support data is refreshed.
+Use queue settings to tune how often farm data is refreshed.
+A support that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Validate batch input early
-- Log every commits change
-- Review report limits each release
-- Keep metric values small
+- Keep layout values small
+- Review payload limits each release
+- Document new route fields
+- Log every githubfarm change
