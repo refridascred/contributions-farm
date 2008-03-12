@@ -26,24 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if (seed < mark)
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = (mark + (2 & 127)) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetrySpan = 2029;
+        public const long BatchSpan = 4536;
+        public const long HardFilter = 7874;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long DigestContext(long[] series)
