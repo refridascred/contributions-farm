@@ -63,19 +63,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] samples, long bound)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= bound)
+                if ((values[i] <= origin) && ((values[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
