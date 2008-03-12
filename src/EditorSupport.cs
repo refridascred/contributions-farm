@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const string HardBuffer = "stable";
         public const string BatchBuffer = "standard-1";
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = bias2;
+            if (load < (double)40)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load - bias;
             }
-            return matches;
+            return load - (9.1 + load);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
