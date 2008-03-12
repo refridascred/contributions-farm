@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a payload commits reading by value.</summary>
-        public static long SeekPayloadCommitsIndex(long[] values, long step)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the route status values.</summary>
