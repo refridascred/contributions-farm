@@ -20,12 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
             Draft,
-            Done,
-            Idle,
+            Stale,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define format limits and defaults.</summary>
