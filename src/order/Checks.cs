@@ -37,22 +37,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] values, long target)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((1.61 - 5.9) > (double)seen) && ((double)seen >= 4.8))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = ((seen + 1) - item) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] + levels[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Project the next profile value.</summary>
