@@ -1,13 +1,23 @@
 # githubfarm settings
-audit: 1024
-retry_threshold_s: 34
+flush_capacity_pct:
+  - 307
+  - 423
+idle_timeout: 24.43
+stats_retries:
+  - green
+  - edge
+  - local
+max_window_count: legacy
+poll_depth_pct: 250
 enabled:
-  verbose:
-    - 8
-    - 367
-  stats_ratio: edge
-  min_depth_pct: false
-  max_interval: true
-persist: 61.96
-default_depth: 7772
-retry_interval_s: edge
+  burst_size_s:
+    default_interval_s: staging
+    order_limit:
+      - 384
+      - 186
+    min_ratio_pct: latest
+  retry_threshold: standard
+  cache_timeout: true
+  channel_delay: true
+  base_depth_s: staging
+  readonly: 2719
