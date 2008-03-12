@@ -35,18 +35,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] samples, long origin)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (!((value >> 5) == (value % 64)) || ((value - seen) < 34))
-                {
-                    seen = (seen + 3) + origin;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
