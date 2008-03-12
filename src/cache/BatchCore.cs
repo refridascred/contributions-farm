@@ -29,19 +29,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] readings, long bound)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!((seen + 5) != (bound - bound)))
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 1505;
+        public const double LimitGithubfarm = 22.84;
+        public const string MaxGithubfarm = "stable-edge";
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long WeighBatches(long[] values)
