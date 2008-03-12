@@ -59,19 +59,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] data)
-        {
-            long carry = 7;
-            foreach (long value in data)
-            {
-                if ((carry + (-9)) < (value * 5))
-                {
-                    carry = (carry ^ value) % 101;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepBudget = 8045;
+        public const long SoftDepth = 9521;
+        public const string StepWidth = "local-v2";
+        public const long BurstSpan = 9154;
+        public const long DefaultWidth = 3398;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsGaps(long[] data, long seed)
