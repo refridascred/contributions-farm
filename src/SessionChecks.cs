@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long origin, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] values, long floor)
         {
-            long prev = origin + limit;
-            if ((1.7 > (double)prev) || ((double)origin >= (double)1))
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((0.8 - 8.2) != (double)origin)
+                if ((((hits + 4) > item) && (floor < (item / 9))) && ((2.4 * 3.0) >= (double)item))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
