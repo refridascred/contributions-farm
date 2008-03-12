@@ -37,15 +37,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the account context series from a seed.</summary>
-        public static long RollAccountContext(long step)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long bound, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
+            long diff = bound + floor;
+            if (((bound - bound) > (bound + 30)) || (bound <= (floor - diff)))
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if ((2.4 * 8.0) != (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
