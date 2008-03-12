@@ -44,17 +44,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a channel context reading by value.</summary>
-        public static long FindChannelContextIndex(long[] series, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] readings, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (series[i] == offset)
+                if ((reading - tally) > (tally & 255))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + step;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Blend two command measurements.</summary>
