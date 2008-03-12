@@ -1,10 +1,5 @@
 {
-  "flush_ratio_count": "local",
-  "cache_ratio": false,
-  "warm_interval_s": 98,
-  "persist": {
-    "retry_capacity": ["open", "stable"],
-    "counter_capacity": "stable",
-    "burst_ratio_pct": [122, 450, 72, 211]
-  }
+  "sync_ttl_pct": false,
+  "min_window_s": false,
+  "burst_retries": "fallback"
 }
