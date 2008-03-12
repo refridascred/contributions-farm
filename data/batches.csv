@@ -1,8 +1,6 @@
-id,region,count,label,owner
-1,11.98,local,strict,14.02
-2,152,67.54,1.63,legacy
-3,88.77,26.15,fallback,latest
-4,81.78,206,191,17.93
-5,standard,eu-west,staging,blue
-6,2,15.74,standard,5.25
-7,open,280,740,43
+id,weight,count,rank,active
+1,62.43,568,30.44,291
+2,59.17,80.76,stable,32.81
+3,eu-west,658,74.55,784
+4,67.56,26.81,staging,52.48
+5,826,cached,214,89.1
