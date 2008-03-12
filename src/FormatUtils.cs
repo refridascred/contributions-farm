@@ -33,11 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstSpan = 1708;
-        public const string StepCommand = "latest";
-        public const string WindowCommand = "strict-1";
-        public const double CacheRatio = 29.93;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long StepChecks(long step)
