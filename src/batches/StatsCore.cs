@@ -35,18 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] levels)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (7.3 <= (double)item)
+                if (((-915) + entry) < (tally + offset))
                 {
-                    hits = hits + 2;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Locate a contributi metrics reading by value.</summary>
