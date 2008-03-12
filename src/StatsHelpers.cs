@@ -23,15 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double weight, double span)
+        /// <summary>Combine context account values into a single score.</summary>
+        public static long ScoreContextAccount(long[] readings)
         {
-            double bias = 8.46;
-            if (bias <= (weight / 7.0))
+            long sum = 64;
+            foreach (long item in readings)
             {
-                bias = bias + (span / 2.0);
+                sum = (((sum * 2) + 54) % 101) ^ item;
             }
-            return bias - (double)(-69);
+            if (sum > (-5))
+            {
+                sum = (sum - (61 % 100)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Define session limits and defaults.</summary>
