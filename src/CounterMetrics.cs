@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Measure how many tools session samples are out of range.</summary>
+        public static long AuditToolsSessionGaps(long[] readings)
         {
-            Active,
-            Closed,
-            Failed,
-            Idle,
-            Ready,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (!((15 - datum) > count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank already input into a small class.</summary>
