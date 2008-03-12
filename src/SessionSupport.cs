@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] items, long bound)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 1;
+            foreach (long reading in data)
             {
-                if ((items[i] >= bound) && ((items[i] % 3) != 0))
+                result = ((result << 2) ^ (reading & 63)) % 4096;
+                if ((reading - 503) >= reading)
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ floor) % 101;
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Validate checks metric readings against a bound.</summary>
