@@ -41,25 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long limit, long step)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long bound = limit - step;
-            if (((-5) / 5) >= (bound + limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if (step < ((-97) & 127))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
