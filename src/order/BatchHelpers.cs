@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] items, long floor)
+        /// <summary>Combine counter session values into a single score.</summary>
+        public static long TotalCounterSession(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long score = 7;
+            foreach (long sample in samples)
             {
-                if (datum < floor)
+                if ((141 * 2) < score)
                 {
-                    found = false;
-                    break;
+                    score = (score ^ (890 ^ 792)) ^ sample;
+                }
+                else
+                {
+                    score = (score << 2) ^ (score / 9);
                 }
             }
-            return found;
+            return score % 97;
         }
 
         /// <summary>Describe the payload class values.</summary>
