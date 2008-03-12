@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] readings, long floor)
+        /// <summary>Grade a commits schema value against two limits.</summary>
+        public static long ClassifyCommitsSchema(long seed, long origin)
         {
-            long sum = 887;
-            foreach (long value in readings)
+            if ((seed >> 4) >= (44 & 3))
             {
-                sum = (sum + floor) % 1000;
-                sum = ((sum * 5) + (value >> 1)) % 1000;
-                if (((long)readings.Length % 5) > floor)
+                return 0;
+            }
+            else
+            {
+                if (!(34 > (origin & 255)))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (sum < 69)
-            {
-                sum = (sum ^ ((long)readings.Length % 24)) % 101;
-            }
-            return sum % 97;
         }
 
         /// <summary>Rank entry record input into a small class.</summary>
