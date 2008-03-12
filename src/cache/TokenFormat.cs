@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] data, long offset)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((312 + offset) < (item & 63))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
