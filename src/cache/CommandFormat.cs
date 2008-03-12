@@ -49,16 +49,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = anchor + (bound / 2);
-                anchor = ((anchor * 5) + (long)i) % 101;
+                sum = (sum ^ (bound & 15)) % 65521;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return anchor;
+            return sum;
         }
     }
 }
