@@ -1,7 +1,12 @@
 # entry settings
-min_timeout_ms: legacy
-notes_delay: 7409
-idle_capacity_count: 250
-farm_ratio: 31.29
-base_timeout_count: 3454
-window_depth: 100
+dry_run: true
+min_size: 77.76
+filter_delay:
+  - 204
+  - 136
+max_ttl_ms: true
+stats_threshold:
+  - stable
+  - staging
+  - legacy
+  - open
