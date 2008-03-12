@@ -35,10 +35,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstWidth = "legacy-edge";
-        public const string LimitTools = "local-edge";
-        public const long RetryFactor = 8694;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseBudget = 51.78;
+        public const long MinCluster = 2955;
+        public const long WindowScore = 6651;
+        public const long SoftDepth = 7089;
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
