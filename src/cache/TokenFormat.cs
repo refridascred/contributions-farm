@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] series, long target)
         {
-            long anchor = -72;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (188 > (entry - entry))
+                if ((target - value) < (9 + value))
                 {
-                    break;
+                    tally = tally + 2;
                 }
-                if (((double)entry != (15.0 / 8.0)) || (439 > (entry << 1)))
+                else
                 {
-                    anchor = anchor ^ anchor;
+                    tally = tally - 1;
                 }
-                anchor = ((anchor << 2) ^ (anchor + anchor)) % 101;
             }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
