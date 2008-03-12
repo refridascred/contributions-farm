@@ -31,23 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] levels, long seed)
-        {
-            long total = -20;
-            foreach (long item in levels)
-            {
-                if ((seed / 3) < seed)
-                {
-                    total = ((total - ((long)levels.Length & 255)) % 1000) + item;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (seed << 1)) % 101;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 26.9;
+        public const long DefaultTimeout = 8097;
+        public const long SoftBuffer = 7223;
+        public const string CacheBuffer = "local-edge";
+        public const string CacheTimeout = "strict-1";
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BurstScore = 8.3;
