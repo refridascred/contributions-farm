@@ -57,18 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] levels, long offset)
         {
-            long score = 87;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (score > (score - score))
+                if ((levels[i] == offset) && ((levels[i] % 5) == 0))
                 {
-                    score = ((score ^ (76 >> 5)) % 65521) ^ sample;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
