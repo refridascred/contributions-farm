@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (((double)(long)levels.Length != (double)matches) && (matches <= item))
+                if (3.0 >= (double)value)
                 {
-                    matches = matches + 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
