@@ -1,10 +1,7 @@
 # githubfarm settings
-idle_window:
-  report_depth: true
-  flush_size_pct: staging
-  max_limit_ms: 1024
-  poll_delay: 60
-retry_timeout:
-  - staging
-  - primary
-enabled: 47
+min_limit_pct:
+  - 158
+  - 45
+  - 258
+githubfarm_depth: green
+enabled: 2
