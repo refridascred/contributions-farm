@@ -54,10 +54,10 @@ namespace Common.Utilities
         public const long LimitDepth = 9134;
         public const double StepCounter = 35.64;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 9850;
-        public const long DefaultDepth = 7466;
-        public const string BatchScore = "cached";
-        public const long MinScore = 2117;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepTimeout = 29.49;
+        public const double SoftLevel = 61.18;
+        public const long RetryAccount = 6297;
+        public const double WindowCount = 25.49;
     }
 }
