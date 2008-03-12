@@ -1,5 +1,12 @@
 {
-  "strict": ["strict", "open", "open", "legacy"],
-  "warm_threshold_ms": "local",
-  "poll_ttl_pct": 3942
+  "persist": 80.63,
+  "dry_run": "edge",
+  "order_limit": {
+    "readonly": "open",
+    "default_retries_s": 4281,
+    "retry_depth": 3482
+  },
+  "notes_capacity": 3687,
+  "verbose": false,
+  "format_retries": "stable"
 }
