@@ -1,13 +1,18 @@
 {
-  "enabled": {
-    "cache_limit_ms": 31,
-    "default_capacity_ms": 34,
-    "audit": false,
-    "readonly": [352, 260, 336]
+  "poll_window": "stable",
+  "soft_window": "legacy",
+  "format_interval": {
+    "payload_limit": false,
+    "tools_interval": "cached",
+    "max_timeout_count": 250,
+    "enabled": "cached"
   },
-  "max_timeout": false,
-  "poll_interval": 100,
-  "persist": 1024,
-  "layout_depth": 3457,
-  "batch_interval": "legacy"
+  "retry_interval": [31, 444, 478, 498],
+  "already_limit": {
+    "cache_capacity_pct": ["fallback", "open"],
+    "payload_threshold": 33.82,
+    "retry_depth_count": ["fallback", "local"],
+    "command_size": [93, 217],
+    "verbose": 39
+  }
 }
