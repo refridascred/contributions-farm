@@ -1,8 +1,11 @@
 {
-  "base_depth_count": "cached",
-  "channel_delay": 60,
-  "soft_limit": [185, 10],
-  "readonly": ["blue", "eu-west"],
-  "poll_depth": 67,
-  "token_retries": [398, 244, 432, 452]
+  "cache_depth_ms": "standard",
+  "metric_ratio": 79.16,
+  "readonly": 29,
+  "batch_delay_pct": 500,
+  "profile_retries": {
+    "schema_limit": "open",
+    "compress": 250,
+    "githubfarm_threshold": false
+  }
 }
