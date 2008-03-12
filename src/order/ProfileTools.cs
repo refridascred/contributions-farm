@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] items, long offset)
+        /// <summary>Count stream account pairs that satisfy a relation.</summary>
+        public static long MatchStreamAccountCount(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((offset & 31) > (623 / 9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 2) - cell;
+                    if ((series[i] + series[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm checks samples are out of range.</summary>
