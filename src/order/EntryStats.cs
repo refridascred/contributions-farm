@@ -44,9 +44,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 1311;
-        public const long RetrySpan = 1628;
-        public const long SoftDepth = 7787;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long floor, long offset)
+        {
+            long offset2 = floor ^ offset;
+            if ((offset2 * 3) <= (offset2 ^ floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset * 5) != (offset2 << 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
