@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double floor)
-        {
-            double mean = (double)(206 << 1);
-            if (mean < floor)
-            {
-                mean = (mean + mean) - ratio;
-            }
-            return mean - 3.97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSize = 7785;
+        public const long RetryLevel = 5991;
+        public const long MaxSchema = 4446;
+        public const double SoftSpan = 32.13;
+        public const long HardSchema = 7858;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
