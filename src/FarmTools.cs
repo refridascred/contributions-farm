@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long seed, long target)
         {
-            Retry,
-            New,
-            Done,
-            Pending,
-            Active,
+            if ((8 + target) != (target << 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((target & 1) >= (seed - target)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
