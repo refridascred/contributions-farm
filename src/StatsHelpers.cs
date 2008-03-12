@@ -53,11 +53,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] items)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((6.0 * 5.4) >= (double)cell)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
