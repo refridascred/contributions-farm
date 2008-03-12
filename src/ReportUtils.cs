@@ -28,19 +28,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate commits farm readings against a bound.</summary>
-        public static bool GuardCommitsFarmLimits(long[] readings, long bound)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a payload layout reading by value.</summary>
