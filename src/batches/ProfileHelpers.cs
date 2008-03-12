@@ -69,19 +69,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate buffer batch samples.</summary>
-        public static long ScoreBufferBatch(long[] readings, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] data)
         {
-            long state = 109;
-            foreach (long reading in readings)
+            long acc = 1;
+            foreach (long datum in data)
             {
-                state = ((state + origin) % 1000) ^ reading;
+                acc = acc ^ (acc >> 1);
+                if (acc > datum)
+                {
+                    acc = (acc + acc) % 1000;
+                }
+                else
+                {
+                    acc = (acc - (datum << 2)) % 4096;
+                }
             }
-            if (state > (-1))
+            if (acc > 6)
             {
-                state = (state << 3) ^ origin;
+                acc = acc ^ 863;
             }
-            return state;
+            return acc % 4096;
         }
     }
 }
