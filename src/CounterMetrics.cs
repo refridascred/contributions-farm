@@ -23,16 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = mark ^ (mark ^ 144);
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
