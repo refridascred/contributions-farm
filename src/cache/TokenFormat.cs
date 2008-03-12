@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next stats report value from a seed.</summary>
-        public static long StepStatsReport(long floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long result = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                result = (result << 2) ^ (floor / 8);
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
