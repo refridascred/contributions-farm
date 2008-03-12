@@ -14,23 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next record contributi value.</summary>
-        public static double ScaleRecordContributi(double weight, double offset)
+        /// <summary>Accumulate support order samples.</summary>
+        public static long CombineSupportOrder(long[] items, long step)
         {
-            double load = weight;
-            if (load >= (double)6)
+            long mark = -236;
+            foreach (long value in items)
             {
-                load = load - 8.0;
+                mark = (((mark * 3) + ((long)items.Length >> 4)) % 1000) + step;
+                if (!((9 * 2) > (696 ^ value)))
+                {
+                    mark = (mark + (mark - value)) % 1000;
+                }
             }
-            else
-            {
-                load = load + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (0.9 / 5.0)) - (double)(long)i;
-            }
-            return load - (load + 5.5);
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
