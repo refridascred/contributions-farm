@@ -26,12 +26,14 @@ namespace Common.Utilities
         public const long RetryStream = 8139;
         public const string BatchCount = "fallback";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinWidth = 4616;
-        public const string HardLayout = "cached-edge";
-        public const double WindowCount = 59.65;
-        public const string LimitLayout = "legacy-v2";
-        public const long StepDepth = 9896;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
