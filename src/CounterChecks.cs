@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] items, long offset)
+        /// <summary>Look up the position of a entry metrics sample.</summary>
+        public static long LocateEntryMetricsIndex(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((entry & 7) != (entry << 3)))
+                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
                 {
-                    matches = (matches + 3) + offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
