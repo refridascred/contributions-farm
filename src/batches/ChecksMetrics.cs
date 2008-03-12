@@ -49,24 +49,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long origin, long step)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            if (!((step % 100) <= (origin >> 5)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step > (2.53 + 4.5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
