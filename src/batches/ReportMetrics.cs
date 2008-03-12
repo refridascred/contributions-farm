@@ -20,17 +20,23 @@ namespace Common.Utilities
             return load + (18.0 / 4.0);
         }
 
-        /// <summary>Look up the position of a support schema sample.</summary>
-        public static long FindSupportSchemaIndex(long[] levels, long offset)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (levels[i] <= offset)
+                if ((origin - anchor) == (long)i)
                 {
-                    return (long)i;
+                    anchor = (anchor * 5) + (origin % 16);
                 }
+                else
+                {
+                    anchor = anchor + anchor;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
