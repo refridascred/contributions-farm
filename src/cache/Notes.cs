@@ -45,42 +45,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] data, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] levels, long target)
         {
-            long acc = 586;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 8; i++)
+                if ((6.87 * 9.69) == (double)matches)
                 {
-                    acc = ((acc << 2) ^ (2 / 5)) ^ (long)i;
-                }
-                if ((sample - acc) != (target + target))
-                {
-                    acc = ((acc << 3) ^ target) % 255;
-                }
-                else
-                {
-                    acc = (acc + (acc + acc)) % 255;
-                }
-                if ((sample <= (75 >> 3)) && ((405 + acc) != (3 + 2)))
-                {
-                    acc = (acc - 394) % 65521;
-                }
-                else
-                {
-                    acc = (acc - sample) % 65521;
-                }
-                if (((5 / 8) <= acc) || ((target + sample) >= target))
-                {
-                    break;
+                    matches = ((matches + 1) + item) + target;
                 }
             }
-            if (acc > 9)
-            {
-                acc = ((acc << 2) ^ (689 + acc)) % 65521;
-            }
-            return acc % 1000;
+            return matches;
         }
     }
 }
