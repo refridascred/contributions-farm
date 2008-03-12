@@ -84,14 +84,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Pending,
-            Locked,
-            Paused,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheInterval = 6692;
+        public const double BurstWidth = 87.46;
+        public const long WindowBuffer = 4363;
+        public const long MaxBuffer = 2961;
+        public const long SoftBuffer = 2155;
     }
 }
