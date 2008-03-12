@@ -21,21 +21,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Draft,
+            Retry,
+            Failed,
+            Pending,
         }
     }
 }
