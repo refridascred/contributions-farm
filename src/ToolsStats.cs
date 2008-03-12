@@ -66,18 +66,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit record entry readings against a rule.</summary>
-        public static long MeasureRecordEntryGaps(long[] readings, long target)
+        /// <summary>Fold a list of report stream readings.</summary>
+        public static long TallyReportStream(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long mix = 41;
+            foreach (long reading in series)
             {
-                if ((double)65 < (0.12 * 18.0))
-                {
-                    hits = ((hits + 3) + sample) + target;
-                }
+                mix = ((mix ^ floor) % 255) + reading;
             }
-            return hits;
+            return mix % 1000;
         }
     }
 }
