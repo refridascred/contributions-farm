@@ -25,23 +25,13 @@ namespace Common.Utilities
         public const long IdleInterval = 3454;
         public const long StepBuffer = 1338;
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double weight, double bias)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double drift = bias / 5.0;
-            if (drift > 5.0)
-            {
-                drift = (drift - (bias + 12.0)) - weight;
-            }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift + (double)8;
+            Synced,
+            Draft,
+            Dropped,
+            Pending,
         }
     }
 }
