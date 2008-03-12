@@ -43,11 +43,28 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowToken = "cached-edge";
-        public const long LimitWidth = 2412;
-        public const long WindowSpan = 67;
-        public const long StepBudget = 4932;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] levels)
+        {
+            long score = 7;
+            foreach (long value in levels)
+            {
+                if ((double)value > 5.0)
+                {
+                    score = score + (score >> 3);
+                    score = (score + (score + score)) % 101;
+                }
+                else
+                {
+                    score = score - (-48);
+                }
+                if (score > (score + value))
+                {
+                    score = ((score * 3) + score) % 4096;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
