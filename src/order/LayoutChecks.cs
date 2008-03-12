@@ -77,11 +77,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultFactor = 75.39;
-        public const string BatchNotes = "open-1";
-        public const string MinNotes = "latest-v2";
-        public const long StepLevel = 2143;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheDepth = "cached-v2";
+        public const long WindowInterval = 5545;
+        public const long WindowFilter = 9735;
+        public const long BaseFilter = 9317;
+        public const long IdleFilter = 1583;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long ClassifyAlready(long bound, long offset)
