@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long limit, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] levels, long seed)
         {
-            long edge = limit ^ origin;
-            if ((9.5 - 6.9) > (double)origin)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((-1) - edge) < (origin - edge))
+                if (!((seed << 2) >= ((-9) - tally)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin < (15.0 * 8.6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((edge - limit) <= (limit << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 2) ^ sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine context account values into a single score.</summary>
