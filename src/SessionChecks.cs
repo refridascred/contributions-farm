@@ -54,11 +54,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLevel = 3964;
-        public const long DefaultFactor = 357;
-        public const long HardWidth = 8796;
-        public const long SoftLayout = 1535;
-        public const long CacheLayout = 1207;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+        }
     }
 }
