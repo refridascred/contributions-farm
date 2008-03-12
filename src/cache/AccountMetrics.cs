@@ -30,19 +30,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = (anchor - 13) ^ (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
