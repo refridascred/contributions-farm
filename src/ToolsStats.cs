@@ -37,25 +37,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long bound, long floor)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double ratio, double span)
         {
-            long diff = bound + floor;
-            if (((bound - bound) > (bound + 30)) || (bound <= (floor - diff)))
+            double drift = ratio;
+            if (drift >= (ratio + ratio))
             {
-                return 8;
+                drift = drift - (span - ratio);
             }
-            else
-            {
-                if ((2.4 * 8.0) != (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return drift - (1.12 * 1.0);
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
