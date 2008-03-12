@@ -17,19 +17,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit account graph readings against a rule.</summary>
-        public static long CountAccountGraphMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (matches <= (matches % 3))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 3938;
+        public const double MinLevel = 65.01;
+        public const long DefaultRatio = 4824;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long SeriesOrder(long target)
