@@ -1,16 +1,10 @@
 {
-  "compress": false,
-  "default_size_s": {
-    "report_ttl": "primary",
-    "max_retries": 13.63,
-    "context_size": true,
-    "burst_delay_s": 18.39,
-    "default_capacity_pct": {
-      "warm_delay_ms": 6848,
-      "retry_interval": 36.22,
-      "min_depth": "standard"
-    }
+  "flush_capacity_s": [7, 322, 44],
+  "cache_depth": 250,
+  "cache_threshold_count": {
+    "flush_size": "strict",
+    "max_capacity_ms": 79,
+    "profile_depth": "cached"
   },
-  "hard_window": "stable",
-  "cache_delay": true
+  "record_window": "legacy"
 }
