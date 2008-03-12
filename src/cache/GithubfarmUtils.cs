@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const long BurstSchema = 4238;
         public const long StepSchema = 7743;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] items, long target)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Pending,
+            Synced,
+            Active,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
