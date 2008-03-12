@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long limit)
         {
-            Failed,
-            Stale,
-            Retry,
+            long result = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                result = (result ^ result) % 97;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Classify a payload commits pair into a bucket.</summary>
