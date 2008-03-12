@@ -30,10 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinBudget = 599;
-        public const long SoftCount = 1709;
-        public const long BatchSpan = 1054;
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] samples, long target)
