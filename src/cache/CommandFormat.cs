@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many stream editor samples are out of range.</summary>
-        public static long CountStreamEditorOutliers(long[] series, long origin)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long seed)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((sample / 6) <= 75)
-                {
-                    matches = (matches + 3) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = (mark * 5) + (mark >> 4);
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
