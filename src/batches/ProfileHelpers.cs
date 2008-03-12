@@ -50,28 +50,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next filter githubfarm value from a seed.</summary>
-        public static long DeriveFilterGithubfarm(long origin)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (((long)i % 7) != (origin * 3))
+                if (((long)i * 2) < floor)
                 {
-                    break;
+                    anchor = (anchor - (anchor + (-387))) % 4096;
                 }
-                else
-                {
-                    sum = ((sum * 3) + origin) % 1000;
-                    sum = (sum ^ (38 / 6)) % 97;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = ((sum << 2) ^ origin) - (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
