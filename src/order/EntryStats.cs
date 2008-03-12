@@ -13,18 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] levels, long offset)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((count & 15) <= (count / 5)) && ((3 - 5) == (offset * 2)))
+                if ((levels[i] < floor) && ((levels[i] % 2) != 0))
                 {
-                    count = (count + 2) + datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a editor summary.</summary>
