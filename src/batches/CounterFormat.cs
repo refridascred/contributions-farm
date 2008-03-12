@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] items, long origin)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((origin >> 3) > (9 % 97)) && ((84 + seen) >= (value + origin))) && !((double)value > (double)seen))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a filter stats.</summary>
