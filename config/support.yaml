@@ -1,21 +1,13 @@
 # support settings
-flush_depth_pct: 29.69
-channel_delay: latest
-poll_interval_count:
-  flush_ratio_s: false
-  idle_delay_s: blue
-  compress: 58
-  readonly: edge
-  batch_limit_s:
-    soft_limit_s: 91.66
-    flush_ttl: 7576
-    flush_retries: 12.0
-    hard_limit:
-      - standard
-      - stable
-      - local
-      - eu-west
-  sync_delay: 28
-session_retries: 1024
-compress: 33
-warm_limit_count: true
+cluster_delay: 94.85
+burst_delay: 25.59
+poll_threshold_s: legacy
+burst_size:
+  min_capacity: true
+  persist:
+    flush_delay_pct: strict
+    flush_retries_ms:
+      - cached
+      - open
+    order_ratio: latest
+  retry_capacity_s: fallback
