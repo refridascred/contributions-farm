@@ -19,11 +19,13 @@ namespace Common.Utilities
         public const string MaxMetrics = "staging-edge";
         public const long RetryMetrics = 3629;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
