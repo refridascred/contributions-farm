@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            Failed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Classify a payload commits pair into a bucket.</summary>
