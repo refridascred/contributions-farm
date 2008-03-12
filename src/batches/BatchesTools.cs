@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] items, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (value > origin)
+                if ((double)matches > (0.4 / 8.0))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) + item;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Blend two stream measurements.</summary>
