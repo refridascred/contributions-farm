@@ -1,10 +1,6 @@
 # support settings
-compress:
-  - open
-  - staging
-  - eu-west
-  - strict
-soft_timeout_count: stable
-cache_interval: cached
-poll_retries: fallback
-persist: blue
+editor_interval: legacy
+default_limit_count: latest
+farm_capacity: false
+idle_ratio_s: green
+batch_timeout_pct: 60
