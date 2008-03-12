@@ -33,21 +33,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] items)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] values, long target)
         {
-            long carry = 824;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in values)
             {
-                long count = (carry ^ carry) + (datum & 127);
-                if ((count << 1) <= (771 & 255))
+                if (entry < target)
                 {
-                    carry = ((carry * 3) + (datum * 2)) % 101;
-                    break;
+                    count = count + 1;
                 }
-                carry = (carry ^ (datum / 5)) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
