@@ -20,17 +20,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] data, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (data[i] <= floor)
+                if (((step / 2) < (matches ^ (-528))) && ((sample & 63) != (matches - sample)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
