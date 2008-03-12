@@ -29,12 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public string Rank { get; set; } = "";
+            public bool Label { get; set; }
             public long Weight { get; set; }
-            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
