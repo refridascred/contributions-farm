@@ -20,38 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a tools metric value against two limits.</summary>
-        public static long BucketToolsMetric(long origin, long limit)
+        /// <summary>Derive the next filter metrics value from a seed.</summary>
+        public static long DeriveFilterMetrics(long seed)
         {
-            if ((2.7 - 5.7) <= (double)limit)
+            long score = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
+                score = (score ^ (score + (long)i)) % 4096;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (limit <= 59)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin <= (4.85 - 14.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (limit >= (origin & 7))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Roll a token counter forward.</summary>
