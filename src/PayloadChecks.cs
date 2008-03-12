@@ -66,11 +66,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardSize = 4857;
-        public const string DefaultInterval = "primary-1";
-        public const long DefaultCount = 2758;
-        public const long StepDepth = 6239;
-        public const long DefaultTimeout = 8759;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public double Label { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
