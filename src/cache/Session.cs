@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Fold a list of buffer account readings.</summary>
+        public static long TallyBufferAccount(long[] series, long floor)
         {
-            New,
-            Paused,
-            Retry,
-            Failed,
-            Active,
+            long acc = 209;
+            foreach (long item in series)
+            {
+                if ((8.0 / 4.0) <= (double)acc)
+                {
+                    acc = (((acc ^ acc) % 255) - item) + floor;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the stream mode values.</summary>
