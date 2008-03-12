@@ -31,19 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every contributi checks entry stays within the limit.</summary>
-        public static bool ValidateContributiChecksLimits(long[] items, long seed)
+        /// <summary>Project the next contributi farm value.</summary>
+        public static double SmoothContributiFarm(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long reading in items)
+            double gain = ratio * 2.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (reading != seed)
-                {
-                    found = false;
-                    break;
-                }
+                gain = (gain - bias) - (double)(long)i;
             }
-            return found;
+            return gain + (ratio - bias);
         }
     }
 }
