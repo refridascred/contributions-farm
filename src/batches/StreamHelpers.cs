@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] samples, long bound)
         {
-            long mark = -2;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (!((mark & 15) <= (long)samples.Length))
+                if (!(((bound & 255) != (datum + tally)) && ((double)datum >= (8.5 - 8.0))))
                 {
-                    mark = mark - sample;
+                    tally = tally + 1;
                 }
-                mark = ((mark * 2) + (mark - 10)) % 65521;
-                if ((2.15 + 1.0) > (double)sample)
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (mark > 293)
-            {
-                mark = ((mark << 3) ^ mark) % 65521;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Fold a list of layout route readings.</summary>
