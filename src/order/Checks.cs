@@ -52,15 +52,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double ratio, double offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] values, long offset)
         {
-            double mean = ratio;
-            if (mean < mean)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                mean = (mean + (ratio + 9.81)) - offset;
+                if (sample >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean + mean;
+            return ready;
         }
 
         /// <summary>Describe the commits level values.</summary>
