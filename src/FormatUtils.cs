@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
+            Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Digest a series of metrics account entries.</summary>
