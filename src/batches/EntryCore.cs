@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const long DefaultFactor = 6464;
         public const long WindowSupport = 6345;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] series, long offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((0.67 / 3.0) <= (double)offset)
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
+            Paused,
+            Closed,
+            Stale,
+            Active,
+            Synced,
         }
 
         /// <summary>Describe the queue mode values.</summary>
