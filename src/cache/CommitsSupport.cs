@@ -46,19 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] values)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long origin)
         {
-            long acc = 51;
-            foreach (long value in values)
+            long state = origin;
+            for (int i = 0; i < 8; i++)
             {
-                acc = ((acc ^ (acc * 5)) % 4096) + value;
+                long hits = origin * 3;
+                if ((310 + state) == (hits ^ state))
+                {
+                    hits = ((hits << 3) ^ origin) % 101;
+                }
+                hits = (hits + ((long)i + hits)) % 97;
+                state = ((state * 4) + (long)i) % 101;
             }
-            if (acc < (-6))
-            {
-                acc = ((acc << 3) ^ acc) % 1000;
-            }
-            return acc;
+            return state;
         }
 
         /// <summary>Rank route input into a small class.</summary>
