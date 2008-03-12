@@ -37,18 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] readings)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (matches <= (816 + matches))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            Stale,
+            Closed,
+            Synced,
+            Dropped,
         }
     }
 }
