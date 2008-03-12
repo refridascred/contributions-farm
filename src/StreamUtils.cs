@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] items, long bound)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((double)matches >= (double)sample)
-                {
-                    matches = (matches + 3) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Draft,
+            Pending,
         }
 
         /// <summary>Rank cache input into a small class.</summary>
