@@ -77,24 +77,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a token payload value against two limits.</summary>
-        public static long GradeTokenPayload(long bound, long target)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] data)
         {
-            if ((bound ^ bound) <= bound)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)bound >= (8.77 / 8.0)) && ((bound - bound) != (target - target)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    if ((data[i] + data[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
