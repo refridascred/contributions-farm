@@ -30,13 +30,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Roll a window farm counter forward.</summary>
+        public static long RollWindowFarm(long bound)
         {
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Token { get; set; }
+            long score = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                score = score - (0 << 1);
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
