@@ -50,12 +50,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Closed,
-            Ready,
-            Retry,
+            Draft,
+            Paused,
+            New,
+            Synced,
         }
     }
 }
