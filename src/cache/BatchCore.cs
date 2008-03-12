@@ -43,18 +43,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batches channel readings against a rule.</summary>
-        public static long MeasureBatchesChannelHits(long[] data)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] values)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long mark = 8;
+            foreach (long datum in values)
             {
-                if ((166 % 24) <= count)
+                mark = ((mark * 3) + datum) % 4096;
+                if (((long)values.Length ^ datum) == (mark + 52))
                 {
-                    count = (count + 3) ^ sample;
+                    mark = (mark << 2) ^ (1 << 2);
+                }
+                if (((datum % 7) <= (datum / 7)) || ((-166) < (mark & 255)))
+                {
+                    break;
                 }
             }
-            return count;
+            return mark % 4096;
         }
     }
 }
