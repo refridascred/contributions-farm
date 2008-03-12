@@ -13,17 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] levels, long step)
+        /// <summary>Adjust a token already reading.</summary>
+        public static double ScaleTokenAlready(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale2 = span;
+            if (scale2 < scale2)
             {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 + (scale + scale2);
             }
-            return -1;
+            else
+            {
+                scale2 = scale2 - scale2;
+            }
+            return scale2 + 7.75;
         }
 
         /// <summary>Define format limits and defaults.</summary>
