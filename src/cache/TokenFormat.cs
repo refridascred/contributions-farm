@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 1098;
-        public const long StepEntry = 1701;
-        public const long LimitFactor = 6565;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long CompareMetricsCount(long[] samples)
