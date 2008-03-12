@@ -30,19 +30,38 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine checks metrics values into a single score.</summary>
-        public static long DigestChecksMetrics(long[] series, long limit)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long floor, long target)
         {
-            long state = 2;
-            foreach (long value in series)
+            if (!((floor - 893) > (target + floor)))
             {
-                state = (state + (value / 5)) + limit;
+                return 2;
             }
-            if (state < 51)
+            else
             {
-                state = state - 119;
+                if ((floor << 1) > floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target + floor) < (-2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((21 - floor) >= target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return state;
         }
     }
 }
