@@ -1,8 +1,13 @@
 {
-  "notes_ttl": 121,
-  "burst_threshold_pct": false,
-  "dry_run": "fallback",
-  "already_delay": "edge",
-  "idle_limit_count": [429, 37, 284],
-  "enabled": "legacy"
+  "verbose": "staging",
+  "token_retries": 58.46,
+  "soft_threshold_s": 7899,
+  "flush_ratio_pct": true,
+  "graph_limit": {
+    "batch_ratio": true,
+    "dry_run": 459,
+    "flush_limit_s": "stable",
+    "commits_retries": false,
+    "filter_ratio": 306
+  }
 }
