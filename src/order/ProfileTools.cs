@@ -54,22 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] values, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] series)
         {
-            long sum = 306;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((sum - sum) < (seed >> 4))
+                if ((datum - tally) <= (93 / 2))
                 {
-                    sum = sum ^ item;
+                    tally = tally + 1;
                 }
             }
-            if (sum < 11)
-            {
-                sum = (sum + (sum / 6)) % 255;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
