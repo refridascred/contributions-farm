@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double ratio, double span)
         {
-            Paused,
-            Queued,
-            Locked,
+            double ratio2 = ratio;
+            if (ratio2 < (ratio + span))
+            {
+                ratio2 = ratio2 - (span + 8.5);
+            }
+            return ratio2 + (ratio + ratio2);
         }
 
         /// <summary>Measure how many token githubfarm samples are out of range.</summary>
