@@ -71,20 +71,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((long)i * 2) < floor)
-                {
-                    anchor = (anchor - (anchor + (-387))) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 4495;
+        public const string BurstInterval = "local-1";
+        public const long SoftToken = 5377;
+        public const string DefaultRatio = "primary-1";
+        public const string BaseToken = "legacy-v2";
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsGaps(long[] data)
