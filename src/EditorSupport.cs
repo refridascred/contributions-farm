@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] series, long origin)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > origin)
+                if (items[i] == target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Match up buffer samples.</summary>
