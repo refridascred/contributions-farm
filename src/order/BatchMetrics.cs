@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a tools metrics sample.</summary>
-        public static long LocateToolsMetricsIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < limit) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepContributi = 37.69;
+        public const double MaxContributi = 19.1;
+        public const long SoftBudget = 3054;
 
         /// <summary>Define order limits and defaults.</summary>
         public const string MaxOrder = "legacy-1";
