@@ -38,30 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] levels, long offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] samples, long origin)
         {
-            long carry = 610;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((entry & 1) == (carry ^ offset))
+                if (entry < origin)
                 {
-                    carry = (carry - ((-859) - 14)) % 4096;
-                }
-                else
-                {
-                    carry = carry ^ entry;
-                }
-                if ((5.0 * 3.1) != (double)entry)
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (carry > 590)
-            {
-                carry = carry - (290 + (long)levels.Length);
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Derive the next counter layout value from a seed.</summary>
