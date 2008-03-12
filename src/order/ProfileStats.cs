@@ -23,21 +23,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] series)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
