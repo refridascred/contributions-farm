@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long limit, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
+            long edge = limit ^ origin;
+            if ((9.5 - 6.9) > (double)origin)
             {
-                state = (state - state) % 97;
-                state = ((state * 4) + (long)i) % 97;
+                return 1;
             }
-            return state;
+            else
+            {
+                if (((-1) - edge) < (origin - edge))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin < (15.0 * 8.6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((edge - limit) <= (limit << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine context account values into a single score.</summary>
