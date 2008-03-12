@@ -55,10 +55,17 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseWidth = 31.5;
-        public const long CacheWidth = 9058;
-        public const double BurstWidth = 70.43;
-        public const double BaseBatches = 80.61;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
