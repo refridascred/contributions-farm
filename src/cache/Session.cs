@@ -35,31 +35,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long limit, long origin)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long offset)
         {
-            if (((double)origin <= (1.0 * 7.43)) || ((origin + limit) >= origin))
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 1;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)origin < (4.0 + 20.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (14.0 < (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Describe the session state values.</summary>
