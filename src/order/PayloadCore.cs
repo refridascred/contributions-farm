@@ -38,23 +38,19 @@ namespace Common.Utilities
         public const long BurstTimeout = 2732;
         public const double RetryWidth = 15.1;
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double bias, double floor)
+        /// <summary>Check that every route record entry stays within the limit.</summary>
+        public static bool ValidateRouteRecordBounds(long[] samples, long origin)
         {
-            double ratio = (double)(169 >> 5);
-            if (ratio > ratio)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                ratio = (ratio - (ratio * 2.06)) + bias;
+                if (sample >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (14.0 / 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (floor * 3.0)) + (double)(long)i;
-            }
-            return ratio - (7.07 / 7.0);
+            return found;
         }
     }
 }
