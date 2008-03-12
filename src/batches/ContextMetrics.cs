@@ -38,13 +38,13 @@ namespace Common.Utilities
         public const long IdleFarm = 7170;
         public const long SoftFarm = 1141;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
+            Ready,
+            Pending,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
