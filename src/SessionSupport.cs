@@ -17,20 +17,13 @@ namespace Common.Utilities
         public const string HardStream = "open-1";
         public const double LimitStream = 12.89;
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = (mark * 2) + mark;
-                if ((mark & 3) <= bound)
-                {
-                    mark = mark - (mark & 63);
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            Closed,
+            Dropped,
+            Synced,
+            Idle,
         }
     }
 }
