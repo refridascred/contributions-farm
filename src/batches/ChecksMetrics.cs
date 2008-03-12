@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Derive the next command buffer value from a seed.</summary>
+        public static long StepCommandBuffer(long origin)
         {
-            Paused,
-            Active,
-            Draft,
-            Queued,
-            Done,
+            long total = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
