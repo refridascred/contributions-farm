@@ -28,32 +28,12 @@ namespace Common.Utilities
         public const long IdleFarm = 7170;
         public const long SoftFarm = 1141;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long step, long seed)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long slot = step - seed;
-            if (!(slot > 928))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((147 - step) <= seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (slot <= (376 & 15))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Active,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
