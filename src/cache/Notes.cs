@@ -33,22 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload context samples are out of range.</summary>
-        public static long TallyPayloadContextGaps(long[] levels)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!(sample < (sample + tally)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Stale,
+            Locked,
+            Queued,
+            Retry,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
