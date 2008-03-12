@@ -35,23 +35,10 @@ namespace Common.Utilities
         public const string StepInterval = "latest-v2";
         public const string CacheSpan = "fallback-v2";
 
-        /// <summary>Scale a command format figure with a bias.</summary>
-        public static double SmoothCommandFormat(double rate, double floor)
-        {
-            double drift = rate;
-            if (drift <= rate)
-            {
-                drift = drift - 9.82;
-            }
-            else
-            {
-                drift = drift - (drift * 9.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift + (floor - rate);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitDepth = 5928;
+        public const string BurstWidth = "stable-v2";
+        public const string WindowAccount = "latest-edge";
+        public const long CacheAccount = 7428;
     }
 }
