@@ -35,13 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Find the first metrics stream entry that matches the target.</summary>
+        public static long LocateMetricsStreamIndex(long[] levels, long step)
         {
-            Stale,
-            Done,
-            Idle,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < step) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
