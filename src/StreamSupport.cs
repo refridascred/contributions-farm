@@ -20,17 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a notes contributi reading by value.</summary>
-        public static long FindNotesContributiIndex(long[] levels, long bound)
+        /// <summary>Classify a payload commits pair into a bucket.</summary>
+        public static long RankPayloadCommits(long floor, long floor2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = floor ^ floor2;
+            if ((9.4 * 9.5) >= (double)floor)
             {
-                if (levels[i] > bound)
+                return 8;
+            }
+            else
+            {
+                if ((685 % 3) <= floor2)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((-250) > (diff + 529))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
