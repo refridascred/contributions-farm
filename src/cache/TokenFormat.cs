@@ -19,38 +19,21 @@ namespace Common.Utilities
         public const long BatchCommand = 7543;
         public const long WindowCommand = 3563;
 
-        /// <summary>Grade a token editor value against two limits.</summary>
-        public static long RankTokenEditor(long origin, long bound)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] series)
         {
-            if ((origin / 6) <= (origin + origin))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)7 <= (double)bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound >= (2.4 * 9.5))
+                    if ((series[i] + series[j]) > 5)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound <= (bound - bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
