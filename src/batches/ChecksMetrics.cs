@@ -52,18 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= origin) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardStream = 91.51;
+        public const long WindowRatio = 8292;
+        public const string DefaultTimeout = "latest-edge";
+        public const long MaxScore = 2644;
+        public const string CacheLevel = "open";
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksGaps(long[] series)
