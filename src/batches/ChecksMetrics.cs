@@ -24,18 +24,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many support notes samples are out of range.</summary>
-        public static long MeasureSupportNotesOutliers(long[] readings, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] series)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (((((-117) - floor) > (4 + floor)) && ((tally - tally) < (floor % 2))) && ((tally + (long)readings.Length) >= (tally + tally)))
+                if ((datum + count) > (count + count))
                 {
-                    tally = (tally + 3) + value;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
