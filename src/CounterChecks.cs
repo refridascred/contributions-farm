@@ -22,37 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank filter payload input into a small class.</summary>
-        public static long GradeFilterPayload(long seed, long origin)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long floor, long offset)
         {
-            long next = seed - origin;
-            if ((14.0 / 2.0) != (double)seed)
+            if ((offset - 6) <= floor)
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((origin <= seed) || ((origin + origin) >= origin))
+                if ((6 / 2) > (649 - floor))
                 {
                     return 0;
                 }
                 else
                 {
-                    if (origin >= (next - seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin < (1.9 + 14.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
