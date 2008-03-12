@@ -20,12 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long floor, long offset)
         {
-            Dropped,
-            New,
-            Active,
+            long offset2 = floor + offset;
+            if (offset > (offset2 / 6))
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset2 > (120 - offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((9 + 77) != (offset + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
