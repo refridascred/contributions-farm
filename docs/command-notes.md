@@ -1,12 +1,11 @@
 # Command notes
 
-The metrics report groups every commits by layout.
-Run the queue check before changing any batches limits.
-Defaults for counter live in the config folder and can be overridden per environment.
+Each session is validated before it reaches the account queue.
+Use tools settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Validate report input early
-- Review format limits each release
-- Document new graph fields
-- Prefer token defaults
+- Validate batch input early
+- Log every commits change
+- Review report limits each release
+- Keep metric values small
