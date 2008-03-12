@@ -20,13 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] readings, long offset)
         {
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of window entries.</summary>
