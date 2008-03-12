@@ -13,10 +13,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitFormat = 47.32;
-        public const double WindowFormat = 98.81;
-        public const string BaseFormat = "open-1";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheDepth = 19.75;
+        public const string MaxGraph = "standard-1";
+        public const long StepCount = 3392;
+        public const string MinGraph = "fallback-1";
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
