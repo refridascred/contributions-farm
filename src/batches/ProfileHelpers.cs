@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a contributi window counter forward.</summary>
-        public static long SeriesContributiWindow(long seed)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
