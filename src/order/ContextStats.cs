@@ -51,14 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Paused,
-            Queued,
-            Done,
-            Stale,
-            Idle,
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
