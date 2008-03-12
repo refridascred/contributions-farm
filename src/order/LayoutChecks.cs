@@ -65,19 +65,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] levels, long limit)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] readings)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item <= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
