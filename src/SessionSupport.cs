@@ -26,11 +26,20 @@ namespace Common.Utilities
         public const string HardStream = "open-1";
         public const double LimitStream = 12.89;
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long bound)
         {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = (mark * 2) + mark;
+                if ((mark & 3) <= bound)
+                {
+                    mark = mark - (mark & 63);
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
