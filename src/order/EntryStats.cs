@@ -40,14 +40,13 @@ namespace Common.Utilities
         public const long WindowScore = 6651;
         public const long SoftDepth = 7089;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Queued,
-            Closed,
-            Idle,
-            Done,
-            Active,
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
