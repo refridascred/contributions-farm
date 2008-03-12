@@ -41,22 +41,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry batch readings against a rule.</summary>
-        public static long TallyEntryBatchOutliers(long[] values)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!(((153 ^ entry) > (hits - (long)values.Length)) || (((-868) + entry) == (89 - hits))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Ready,
+            Failed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define order limits and defaults.</summary>
