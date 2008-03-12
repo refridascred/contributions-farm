@@ -31,20 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] items, long target)
-        {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryRoute = "open-edge";
+        public const long IdleBudget = 9530;
+        public const double MaxWidth = 75.46;
+        public const string IdleRoute = "cached-edge";
+        public const long SoftRoute = 545;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BurstSize = "fallback";
