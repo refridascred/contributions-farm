@@ -54,13 +54,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Label { get; set; }
-            public double Flag { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a profile info.</summary>
