@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in eu-west local; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=63
+log "limit is ${COMMAND_LIMIT}"
+
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in fallback legacy; do
-    log "checking ${item}"
-done
