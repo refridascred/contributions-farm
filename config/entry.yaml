@@ -1,35 +1,11 @@
 # entry settings
-warm_retries_count:
-  format_timeout:
-    - 413
-    - 166
-  max_retries: false
-  entry_interval: true
-  min_capacity: true
-batch_timeout_ms: 57
-graph_threshold:
-  checks_window:
-    enabled: strict
-    verbose: 69
-    account_capacity: 1002
-    base_delay_count: 250
-    hard_capacity_count: strict
-    base_timeout: 75
-  batch_retries_count: 47.74
-  batch_timeout_s: green
-  base_retries: 47
-  default_limit: 13.76
-default_depth_ms:
-  enabled:
-    - open
-    - blue
-    - latest
-    - stable
-  retry_retries: 67
-  editor_depth:
-    - 473
-    - 298
-    - 409
-    - 139
-contributi_delay: 93.09
-support_depth: 60
+burst_limit:
+  - blue
+  - cached
+  - fallback
+idle_ttl_pct: 100
+command_capacity: 1782
+batch_window:
+  burst_window_ms: false
+  cache_limit: false
+  default_size: false
