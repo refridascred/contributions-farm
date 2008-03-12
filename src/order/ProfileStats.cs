@@ -49,16 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream batches series from a seed.</summary>
-        public static long IterateStreamBatches(long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] values, long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                score = (score ^ ((long)i / 5)) % 101;
-                score = ((score * 2) + (long)i) % 101;
+                if (((long)values.Length >> 2) >= ((long)values.Length & 127))
+                {
+                    seen = ((seen + 1) + cell) + bound;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
