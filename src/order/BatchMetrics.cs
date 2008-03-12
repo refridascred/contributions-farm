@@ -68,14 +68,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] samples, long bound)
         {
-            Pending,
-            New,
-            Queued,
-            Failed,
-            Synced,
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
