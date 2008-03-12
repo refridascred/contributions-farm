@@ -1,6 +1,8 @@
 {
-  "sync_ratio_pct": [266, 484],
-  "warm_capacity": "staging",
-  "poll_delay_ms": [217, 463, 243, 139],
-  "counter_ttl": false
+  "readonly": 35.04,
+  "audit": 81.48,
+  "verbose": false,
+  "burst_ttl": 250,
+  "poll_limit_s": "staging",
+  "channel_timeout": true
 }
