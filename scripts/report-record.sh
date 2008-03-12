@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard staging; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+RECORD_LIMIT=176
+log "limit is ${RECORD_LIMIT}"
 
 mode="${1:-open}"
 case "${mode}" in
-    standard)
+    fallback)
         log "fast path"
         ;;
     *)
