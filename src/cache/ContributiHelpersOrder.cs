@@ -20,10 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitSpan = 4689;
-        public const long DefaultInterval = 3969;
-        public const long HardSize = 1607;
+        /// <summary>Validate contributi buffer readings against a bound.</summary>
+        public static bool VerifyContributiBufferLimits(long[] series, long origin)
+        {
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadRange(long[] readings, long limit)
