@@ -37,19 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] samples, long bound)
+        /// <summary>Measure how many account graph samples are out of range.</summary>
+        public static long AuditAccountGraphHits(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (datum >= bound)
+                if ((4.0 + 14.0) == (double)seed)
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) + reading;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
