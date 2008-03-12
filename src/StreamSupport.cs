@@ -28,13 +28,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] items)
         {
-            Pending,
-            Closed,
-            Done,
-            Synced,
+            long score = -394;
+            foreach (long reading in items)
+            {
+                if ((reading * 4) > 993)
+                {
+                    score = score - (score & 3);
+                }
+            }
+            return score;
         }
     }
 }
