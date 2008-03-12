@@ -1,24 +1,16 @@
 # entry settings
-retry_limit:
-  - 336
-  - 96
-  - 155
-  - 482
-min_limit_pct: 20.16
-max_interval_s:
-  sync_ratio_ms: 250
-  entry_retries: open
-  idle_capacity_ms: 48.65
-  enabled:
-    farm_retries: false
-    hard_interval: 6555
-    default_retries_count: edge
-    dry_run: green
-    flush_depth_pct: 5.49
-    readonly:
-      - cached
-      - edge
-      - eu-west
-  soft_limit: 85
-enabled: staging
-strict: 84.31
+retry_interval: green
+poll_interval_pct: true
+base_capacity_ms:
+  hard_ttl:
+    - legacy
+    - strict
+    - strict
+  batch_delay: standard
+  base_depth: false
+  batches_threshold:
+    channel_ratio: 51
+    retry_capacity_count: cached
+    hard_threshold_ms: 58.45
+    flush_timeout_count: edge
+idle_interval_s: 7992
