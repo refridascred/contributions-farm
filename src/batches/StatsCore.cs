@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] series, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                total = (total + (long)i) % 255;
-                if ((long)i != ((long)i - total))
+                if (entry >= limit)
                 {
-                    total = (total + ((long)i - offset)) % 4096;
+                    ok = false;
+                    break;
                 }
-                if (!(((long)i + (long)i) <= (48 ^ offset)))
-                {
-                    total = (total ^ (total << 1)) % 97;
-                }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
