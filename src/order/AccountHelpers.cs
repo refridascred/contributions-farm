@@ -67,9 +67,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleCount = "legacy-v2";
-        public const long MinNotes = 8;
-        public const long BurstNotes = 635;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Closed,
+            Ready,
+            Active,
+        }
     }
 }
