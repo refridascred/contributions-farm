@@ -14,19 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate checks metric readings against a bound.</summary>
-        public static bool CheckChecksMetricRange(long[] series, long bound)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Stamp { get; set; }
+            public double Offset { get; set; }
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the contributi mode values.</summary>
