@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const long RetryStream = 8139;
         public const string BatchCount = "fallback";
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] values, long bound)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((7.5 - 2.17) > (double)entry)
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Accumulate cache samples.</summary>
