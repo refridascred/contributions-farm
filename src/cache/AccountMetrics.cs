@@ -30,27 +30,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate metrics commits samples.</summary>
-        public static long WeighMetricsCommits(long[] data, long limit)
-        {
-            long state = -398;
-            foreach (long entry in data)
-            {
-                if ((state << 3) < (limit & 15))
-                {
-                    state = state ^ 27;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (entry - limit)) % 255;
-                }
-            }
-            if (state < 4)
-            {
-                state = ((state * 3) + (state << 2)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitAccount = "standard-edge";
+        public const long BaseAccount = 9221;
+        public const string DefaultCount = "strict-v2";
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long CombineBuffer(long[] levels)
