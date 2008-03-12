@@ -38,11 +38,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardContributi = "legacy-edge";
-        public const long LimitContributi = 5097;
-        public const string SoftFactor = "cached-v2";
-        public const long RetryContributi = 2282;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Done,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Audit record window readings against a rule.</summary>
         public static long CountRecordWindowMatches(long[] values)
