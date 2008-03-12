@@ -20,21 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of entry support readings.</summary>
-        public static long PairEntrySupportCount(long[] items)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (acc < (acc - (long)i))
                 {
-                    if ((items[i] + items[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc - target) % 1000;
+                    break;
                 }
+                acc = (acc - acc) % 65521;
+                acc = (acc ^ (0 % 100)) % 97;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
