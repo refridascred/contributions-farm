@@ -40,17 +40,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] levels, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = -21;
+            foreach (long item in readings)
             {
-                if ((levels[i] < limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor + (item + target)) % 65521;
             }
-            return -1;
+            if (anchor < 552)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
     }
 }
