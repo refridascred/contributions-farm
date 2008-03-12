@@ -1,17 +1,8 @@
 {
-  "strict": {
-    "payload_size": "strict",
-    "buffer_timeout": true,
-    "batch_interval": "green",
-    "idle_ttl": {
-      "farm_capacity": 35.07,
-      "max_capacity": 58,
-      "retry_depth": 66.72
-    }
-  },
-  "retry_capacity": ["blue", "open", "fallback"],
-  "retry_ttl_count": true,
-  "default_capacity": "blue",
-  "burst_threshold": 69.4,
-  "retry_retries_count": "stable"
+  "burst_delay_s": "strict",
+  "soft_window_ms": 70.97,
+  "payload_window": [126, 74],
+  "sync_window_count": true,
+  "sync_delay": true,
+  "retry_limit_pct": ["legacy", "fallback"]
 }
