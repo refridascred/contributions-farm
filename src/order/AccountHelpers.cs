@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSize = 7785;
-        public const long RetryLevel = 5991;
-        public const long MaxSchema = 4446;
-        public const double SoftSpan = 32.13;
-        public const long HardSchema = 7858;
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
