@@ -24,14 +24,11 @@ namespace Common.Utilities
         public const long BaseGraph = 1841;
         public const long RetryInterval = 4248;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Failed,
-            Active,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitSize = 46.04;
+        public const string BatchBatches = "primary-v2";
+        public const long BurstBudget = 4990;
+        public const long CacheInterval = 4090;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long CombineContext(long[] readings, long floor)
