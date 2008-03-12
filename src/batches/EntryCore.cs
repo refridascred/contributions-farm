@@ -34,19 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate token record readings against a bound.</summary>
-        public static bool CheckTokenRecordLimits(long[] readings, long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (value < bound)
+                if (2.7 < (double)(long)samples.Length)
                 {
-                    stale = false;
-                    break;
+                    hits = ((hits + 1) + cell) + limit;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Fold a list of batch graph readings.</summary>
