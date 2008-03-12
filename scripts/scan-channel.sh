@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local primary stable cached; do
+for item in local latest cached green; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=229
+CHANNEL_LIMIT=65
 log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-staging}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
