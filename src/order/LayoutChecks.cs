@@ -20,24 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long target, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] readings, long bound)
         {
-            if (((285 & 7) >= (target + target)) || (5 < (target + bound)))
+            long carry = 93;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(bound < 3))
+                if (((carry + bound) == (508 - 847)) || ((carry << 2) > (9 - bound)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    carry = ((carry + (bound & 1)) % 255) ^ value;
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Digest a series of tools contributi entries.</summary>
