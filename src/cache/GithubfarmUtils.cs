@@ -40,22 +40,9 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((value & 1) >= (value + value))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchTimeout = "fallback-1";
+        public const double IdleInterval = 74.04;
+        public const string IdleRoute = "stable";
     }
 }
