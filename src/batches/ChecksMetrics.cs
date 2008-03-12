@@ -24,18 +24,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] series)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] data)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((datum + count) > (count + count))
+                if (((hits + hits) <= (entry * 3)) || ((hits * 5) != (hits + entry)))
                 {
-                    count = count + 1;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
