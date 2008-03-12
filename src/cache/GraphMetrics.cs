@@ -42,11 +42,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchInterval = "staging-1";
-        public const long BurstInterval = 541;
-        public const long MinChannel = 574;
-        public const string HardChannel = "standard-1";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftDepth = 6162;
+        public const long StepWindow = 7784;
+        public const long CacheWindow = 82;
+        public const long SoftWindow = 4567;
+        public const double MinWindow = 97.55;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long StepStats(long step)
