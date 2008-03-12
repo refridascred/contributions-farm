@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] series, long target)
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((sample >> 2) < (sample % 60))
+                {
+                    seen = (seen + 1) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
