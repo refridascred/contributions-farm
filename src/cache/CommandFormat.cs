@@ -17,23 +17,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] values, long origin)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] readings, long origin)
         {
-            long score = 34;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((8.2 + 1.0) < (double)item)
+                if (readings[i] > origin)
                 {
-                    score = (score * 2) + (score & 63);
+                    return (long)i;
                 }
-                score = (score - ((-8) ^ 138)) % 4096;
             }
-            if (score > 81)
-            {
-                score = score + (origin & 255);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
