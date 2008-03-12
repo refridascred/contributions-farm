@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardEntry = 58.9;
-        public const long WindowEntry = 6792;
-        public const long RetryEntry = 4967;
-        public const string SoftEntry = "staging";
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long PairFarmCount(long[] samples)
