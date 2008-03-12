@@ -24,13 +24,19 @@ namespace Common.Utilities
         public const long BurstSchema = 4238;
         public const long StepSchema = 7743;
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] levels, long bound)
         {
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public bool Size { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many profile format samples are out of range.</summary>
