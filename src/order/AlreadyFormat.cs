@@ -29,16 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double ratio, double floor)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            double gain = (double)((-1) + 994);
+            for (int i = 0; i < 8; i++)
             {
-                result = (result + (long)i) % 101;
-                result = ((result * 4) + (long)i) % 4093;
+                gain = ((gain - floor) + (double)(long)i) - ratio;
             }
-            return result;
+            return gain - floor;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
