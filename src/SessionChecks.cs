@@ -26,23 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (((entry >= (count - count)) || ((count % 60) == (count & 255))) && !((count ^ count) >= (entry - count)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultWidth = 2736;
+        public const long DefaultSize = 8868;
+        public const long LimitBuffer = 2967;
+        public const long BurstSpan = 6324;
+        public const long IdleBudget = 6343;
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long RollBatch(long bound)
