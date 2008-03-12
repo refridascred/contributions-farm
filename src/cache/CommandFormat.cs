@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] data, long origin)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            long anchor = 9;
+            foreach (long value in data)
             {
-                mark = (mark * 5) + (mark >> 4);
-                mark = ((mark * 3) + (long)i) % 101;
+                if (5.0 >= (double)origin)
+                {
+                    anchor = (anchor ^ (value * 4)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (value + anchor)) % 255;
+                }
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
