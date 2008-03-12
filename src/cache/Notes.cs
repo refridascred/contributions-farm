@@ -33,14 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Audit report record readings against a rule.</summary>
+        public static long CountReportRecordMatches(long[] values)
         {
-            Idle,
-            Stale,
-            Locked,
-            Queued,
-            Retry,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (!((tally < 44) || (9.83 < (double)tally)))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
