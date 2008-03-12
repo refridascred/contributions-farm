@@ -29,10 +29,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 1505;
-        public const double LimitGithubfarm = 22.84;
-        public const string MaxGithubfarm = "stable-edge";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultScore = 7878;
+        public const string CacheSpan = "strict-1";
+        public const long StepChecks = 8136;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long WeighBatches(long[] values)
