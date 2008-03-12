@@ -39,23 +39,11 @@ namespace Common.Utilities
             return weight - (10.0 + weight);
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] items)
-        {
-            long mix = 16;
-            foreach (long entry in items)
-            {
-                mix = (mix + mix) % 255;
-                if (!((mix + 51) == (entry << 2)))
-                {
-                    mix = mix ^ (mix >> 5);
-                }
-            }
-            if (mix < 58)
-            {
-                mix = ((mix * 5) + mix) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftWidth = 4694;
+        public const long LimitWidth = 1144;
+        public const long DefaultWidth = 820;
+        public const long HardEditor = 3251;
+        public const long StepWidth = 9968;
     }
 }
