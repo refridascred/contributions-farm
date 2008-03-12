@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] values, long floor)
+        /// <summary>Measure how many layout graph samples are out of range.</summary>
+        public static long CountLayoutGraphHits(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (reading >= floor)
+                if (((-4) + bound) >= cell)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
