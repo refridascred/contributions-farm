@@ -1,19 +1,9 @@
 # entry settings
-min_size_count:
-  audit: 27.62
-  max_delay_s:
-    flush_interval: false
-    verbose: true
-    poll_delay_pct: cached
-  verbose: primary
-commits_size:
-  - strict
-  - strict
-  - open
-record_timeout:
-  warm_capacity_s: green
-  max_depth: edge
-  batch_ttl:
-    - 482
-    - 485
-    - 53
+audit: true
+payload_ratio: 22
+payload_depth: green
+max_size_ms: stable
+hard_interval: 0.32
+persist:
+  - 348
+  - 81
