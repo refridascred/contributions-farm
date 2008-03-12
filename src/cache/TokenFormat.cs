@@ -17,15 +17,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double ratio, double bias)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double weight, double offset)
         {
-            double rate = bias;
-            if (rate >= (rate - ratio))
+            double weight2 = weight;
+            if (weight2 >= (weight2 - offset))
             {
-                rate = rate - (ratio - rate);
+                weight2 = weight2 + weight2;
             }
-            return rate - 7.97;
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 - weight2) + (double)(long)i;
+            }
+            return weight2 - (double)3;
         }
 
         /// <summary>Describe the window kind values.</summary>
