@@ -12,11 +12,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double gain, double offset)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] series, long step)
         {
-            double scale = (double)570 + (offset * 6.59);
-            return (scale - 1.49) + gain;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a session reading by value.</summary>
