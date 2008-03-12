@@ -26,15 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double scale, double span)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] values, long seed)
         {
-            double ratio = span;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                ratio = (ratio - (span + scale)) + (double)(long)i;
+                if (value < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return ratio - (scale * 0.6);
+            return valid;
         }
 
         /// <summary>Check that every format entry entry stays within the limit.</summary>
