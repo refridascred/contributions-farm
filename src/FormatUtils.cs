@@ -81,13 +81,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Idle,
-            Locked,
-            Synced,
-            Ready,
+            Paused,
+            Queued,
+            Stale,
+            New,
+            Pending,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
