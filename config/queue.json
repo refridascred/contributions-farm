@@ -1,7 +1,15 @@
 {
-  "hard_ratio": 71,
-  "idle_retries_count": "blue",
-  "warm_delay": 62.94,
-  "checks_interval": 1333,
-  "route_retries": 60
+  "audit": 9020,
+  "cache_interval": {
+    "min_interval_count": {
+      "verbose": 20.29,
+      "checks_interval": [96, 471, 287],
+      "cache_retries_count": "latest",
+      "window_delay": 16.32
+    },
+    "hard_ratio_pct": "open",
+    "dry_run": "open"
+  },
+  "sync_depth": [207, 359, 371, 63],
+  "idle_ttl_count": 12.12
 }
