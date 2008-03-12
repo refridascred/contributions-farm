@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] items, long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (reading < limit)
+                if ((reading - reading) >= (reading & 127))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the tools level values.</summary>
