@@ -20,21 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 703;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                total = (total - (bound * 3)) % 255;
+                total = (total ^ (bound & 7)) % 101;
+                if ((double)reading > (double)91)
                 {
-                    if ((data[i] - data[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total * 3) + (total - bound);
                 }
             }
-            return seen;
+            return total % 4096;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
