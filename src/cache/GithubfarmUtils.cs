@@ -12,21 +12,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the order token series from a seed.</summary>
-        public static long StepOrderToken(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = (anchor ^ (long)i) % 97;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    anchor = (((anchor * 4) + (anchor / 5)) % 101) - (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinSize = 63.14;
+        public const string BatchBudget = "primary-1";
+        public const string MinMetrics = "standard-edge";
+        public const string MaxMetrics = "staging-edge";
+        public const long RetryMetrics = 3629;
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
