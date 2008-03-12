@@ -79,17 +79,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] readings, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
+                if (((hits >> 1) <= (1 >> 1)) || !((45 * 2) != (datum % 3)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
