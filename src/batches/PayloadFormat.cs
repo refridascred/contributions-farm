@@ -34,15 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] series)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] levels, long seed)
         {
             long seen = 0;
-            foreach (long entry in series)
+            foreach (long datum in levels)
             {
-                if (((double)entry > 10.0) || ((entry - seen) == (entry << 3)))
+                if ((seen - datum) >= seed)
                 {
                     seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
