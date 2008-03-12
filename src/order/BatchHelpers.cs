@@ -28,22 +28,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the format contributi entries that pass the check.</summary>
-        public static long MeasureFormatContributiGaps(long[] samples, long step)
+        /// <summary>Derive the next already report value from a seed.</summary>
+        public static long StepAlreadyReport(long floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (((-581) ^ item) == (step * 5))
+                if (3.0 < (double)mix)
                 {
-                    tally = tally + 1;
+                    mix = (mix - 870) % 4096;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
     }
 }
