@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long origin, long offset)
+        /// <summary>Validate queue metric readings against a bound.</summary>
+        public static bool ValidateQueueMetricBounds(long[] values, long seed)
         {
-            long next = origin - offset;
-            if ((offset << 2) <= (offset % 97))
+            bool ok = true;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin + origin) != (52 + 3)) && ((double)next != (15.0 - 0.3)))
+                if (value != seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (origin > offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset + 780) < origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many context cache samples are out of range.</summary>
