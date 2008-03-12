@@ -14,24 +14,24 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long target, long origin)
+        /// <summary>Combine route cache values into a single score.</summary>
+        public static long FoldRouteCache(long[] items, long floor)
         {
-            if (((-7) >> 5) >= target)
+            long mix = 811;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin <= (target << 2))
+                if ((double)(long)items.Length <= (2.2 / 9.0))
                 {
-                    return 0;
+                    mix = (mix - floor) % 101;
+                    mix = (mix + (value + value)) % 1000;
                 }
                 else
                 {
-                    return 1;
+                    mix = (mix ^ (674 + (-231))) % 97;
                 }
+                mix = mix - ((long)items.Length - 67);
             }
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
