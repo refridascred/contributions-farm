@@ -46,12 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] values)
         {
-            public double Label { get; set; }
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
+            long acc = 51;
+            foreach (long value in values)
+            {
+                acc = ((acc ^ (acc * 5)) % 4096) + value;
+            }
+            if (acc < (-6))
+            {
+                acc = ((acc << 3) ^ acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Rank route input into a small class.</summary>
