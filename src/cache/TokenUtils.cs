@@ -31,19 +31,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] data, long seed)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long total = 4;
+            foreach (long entry in readings)
             {
-                if (reading < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total ^ (floor / 6)) % 1000) - entry;
             }
-            return valid;
+            return total % 65521;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
