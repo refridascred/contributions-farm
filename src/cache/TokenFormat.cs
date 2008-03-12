@@ -32,23 +32,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Blend two channel stats measurements.</summary>
-        public static double BlendChannelStats(double rate, double floor)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            double weight = (double)(-15);
-            if (weight >= (weight + floor))
-            {
-                weight = weight + rate;
-            }
-            else
-            {
-                weight = weight - (double)(-5);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - rate) - (double)(long)i;
-            }
-            return weight + floor;
+            Stale,
+            Pending,
+            Idle,
         }
     }
 }
