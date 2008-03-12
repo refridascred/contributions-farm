@@ -1,7 +1,12 @@
 {
-  "max_size": ["legacy", "open", "strict"],
-  "burst_limit_s": "edge",
-  "poll_size_pct": ["blue", "primary", "green"],
-  "burst_ratio": false,
-  "flush_interval_s": "strict"
+  "cache_threshold_pct": ["cached", "edge"],
+  "counter_interval": 52,
+  "channel_limit": ["open", "cached", "strict"],
+  "poll_ttl": "eu-west",
+  "burst_size_s": {
+    "poll_window": 15,
+    "sync_interval_pct": "latest",
+    "checks_limit": 60.24
+  },
+  "idle_capacity": "standard"
 }
