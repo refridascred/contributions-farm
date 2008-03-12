@@ -20,10 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 5761;
-        public const long BurstSchema = 4238;
-        public const long StepSchema = 7743;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((8 % 64) < (datum << 1))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long FoldCommits(long[] values)
