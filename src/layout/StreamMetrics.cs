@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream metrics helpers.</summary>
     public static class StreamMetrics
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] series, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (series[i] <= offset)
+                if (tally < (item / 3))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
