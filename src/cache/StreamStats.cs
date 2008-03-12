@@ -16,26 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] items, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] data)
         {
-            long acc = 67;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((double)offset < (5.0 * 4.0))
+                if ((hits & 1) > (278 / 8))
                 {
-                    acc = (acc + acc) + entry;
-                }
-                else
-                {
-                    acc = (acc - offset) % 97;
+                    hits = (hits + 2) + item;
                 }
             }
-            if (acc > 483)
-            {
-                acc = ((acc << 2) ^ (offset >> 2)) % 4096;
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Hold a payload summary.</summary>
