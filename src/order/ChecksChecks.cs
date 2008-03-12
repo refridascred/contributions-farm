@@ -22,17 +22,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] data, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 3;
+            foreach (long cell in levels)
             {
-                if ((data[i] <= target) && ((data[i] % 5) != 0))
+                if (((68 * 3) != (total * 4)) && ((total * 2) == (bound + cell)))
                 {
-                    return (long)i;
+                    total = (total - (total & 255)) % 255;
+                }
+                else
+                {
+                    total = (total << 3) ^ 5;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a batch entry.</summary>
