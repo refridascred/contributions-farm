@@ -1,8 +1,8 @@
 {
-  "base_capacity": 90,
-  "retry_capacity_count": "fallback",
-  "base_retries": "green",
-  "notes_interval": "edge",
-  "max_ttl_count": "cached",
-  "burst_threshold_pct": "green"
+  "batch_timeout_s": true,
+  "persist": true,
+  "dry_run": ["standard", "standard"],
+  "cache_ratio": 46.1,
+  "default_threshold_ms": [172, 214, 210],
+  "batch_interval_ms": "standard"
 }
