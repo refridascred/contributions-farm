@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long StepEditor = 6281;
         public const double HardDepth = 20.1;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] data)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long total = 118;
-            foreach (long item in data)
-            {
-                total = (total + 444) % 255;
-                if ((double)item == (2.14 * 6.5))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the command kind values.</summary>
