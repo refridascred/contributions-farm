@@ -7,20 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+for i in $(seq 1 12); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-staging}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in primary blue legacy standard; do
+    log "checking ${item}"
+done
 
-RECORD_LIMIT=362
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
