@@ -28,19 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] items, long offset)
+        /// <summary>Find the first route checks entry that matches the target.</summary>
+        public static long LocateRouteChecksIndex(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample != offset)
+                if (levels[i] > offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
