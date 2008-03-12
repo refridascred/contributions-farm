@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long step, long limit)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            if ((limit + limit) < (step >> 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit <= (step >> 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((limit - step) >= (step - step)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a queue info.</summary>
