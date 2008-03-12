@@ -45,36 +45,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state + state) % 1000;
-                if (!((offset + (long)i) < (offset << 2)))
-                {
-                    state = (state - (state << 2)) % 255;
-                    state = ((state * 2) + 24) % 101;
-                    break;
-                }
-                else
-                {
-                    state = (state - (offset - state)) % 65521;
-                }
-                if ((double)offset < (7.42 + 5.13))
-                {
-                    state = state + (81 - offset);
-                    break;
-                }
-                else
-                {
-                    state = state - ((long)i + state);
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowRatio = "primary-1";
+        public const long CacheCount = 1412;
+        public const long MaxStats = 2205;
+        public const long IdleStats = 6481;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double StepTimeout = 29.49;
