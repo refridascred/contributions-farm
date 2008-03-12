@@ -34,18 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] data)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((long)data.Length <= reading)
+                if (item <= target)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Adjust a format commits reading.</summary>
