@@ -55,15 +55,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double scale, double bias)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] items, long target)
         {
-            double mean = scale + (double)15;
-            if (mean < (scale * 3.74))
+            bool flag = true;
+            foreach (long entry in items)
             {
-                mean = mean - (scale / 8.0);
+                if (entry <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean - (scale - bias);
+            return flag;
         }
     }
 }
