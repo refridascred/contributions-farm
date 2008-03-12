@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double weight, double span)
-        {
-            double drift = weight + span;
-            if (drift >= (double)313)
-            {
-                drift = drift + weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - 3.6) + (double)(long)i;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 1152;
+        public const string IdleCount = "legacy-1";
+        public const double StepLevel = 69.12;
+        public const long HardMetric = 2917;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TallyStream(long[] samples, long origin)
