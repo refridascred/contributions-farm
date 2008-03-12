@@ -49,12 +49,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstTimeout = 2681;
-        public const double IdleOrder = 34.44;
-        public const double LimitOrder = 86.64;
-        public const long BurstOrder = 9503;
-        public const long MaxBudget = 5193;
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public bool Level { get; set; }
+            public double Region { get; set; }
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordMatches(long[] items, long target)
