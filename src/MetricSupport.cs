@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] values)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] levels, long floor)
         {
-            long state = -413;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 5; i++)
+                if (item < floor)
                 {
-                    long step = 216 * 4;
-                    state = (((state << 2) ^ step) % 4096) - (long)i;
-                }
-                if ((double)datum >= (2.0 + 0.14))
-                {
-                    state = (state * 3) + (datum - state);
+                    stale = false;
+                    break;
                 }
             }
-            return state % 97;
+            return stale;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
