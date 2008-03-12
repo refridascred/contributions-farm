@@ -47,16 +47,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = (sum ^ (bound & 15)) % 65521;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            Paused,
+            Ready,
+            Locked,
+            Done,
+            Draft,
         }
     }
 }
