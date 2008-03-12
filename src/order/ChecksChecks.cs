@@ -20,13 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] values, long offset)
         {
-            Paused,
-            Locked,
-            New,
-            Dropped,
+            long sum = 6;
+            foreach (long entry in values)
+            {
+                sum = (((sum + (31 >> 3)) % 97) + entry) - offset;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a format summary.</summary>
