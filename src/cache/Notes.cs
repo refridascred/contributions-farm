@@ -51,15 +51,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] items, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long bound, long limit)
         {
-            long total = -9;
-            foreach (long sample in items)
+            long bound2 = bound - limit;
+            if (bound <= bound2)
             {
-                total = ((total ^ (seed - 934)) % 255) + sample;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((bound2 - limit) <= (limit ^ limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit >> 4) <= (3 % 16))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound & 255) >= (bound / 9))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
