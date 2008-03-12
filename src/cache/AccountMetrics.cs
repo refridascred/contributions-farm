@@ -30,12 +30,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Accumulate metrics commits samples.</summary>
+        public static long WeighMetricsCommits(long[] data, long limit)
         {
-            Idle,
-            Ready,
-            Retry,
+            long state = -398;
+            foreach (long entry in data)
+            {
+                if ((state << 3) < (limit & 15))
+                {
+                    state = state ^ 27;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (entry - limit)) % 255;
+                }
+            }
+            if (state < 4)
+            {
+                state = ((state * 3) + (state << 2)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
