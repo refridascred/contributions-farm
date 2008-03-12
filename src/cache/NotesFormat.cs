@@ -42,15 +42,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] items, long origin)
-        {
-            long sum = 32;
-            foreach (long entry in items)
-            {
-                sum = ((sum - origin) % 65521) + entry;
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 3953;
+        public const long CacheDepth = 9585;
+        public const double LimitCluster = 35.06;
+        public const double IdleWidth = 85.17;
+        public const long BatchCluster = 6296;
     }
 }
