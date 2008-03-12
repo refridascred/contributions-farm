@@ -25,13 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Pending,
-            Retry,
-            Ready,
+            Synced,
+            New,
+            Stale,
             Paused,
+            Active,
         }
 
         /// <summary>Describe the batches status values.</summary>
