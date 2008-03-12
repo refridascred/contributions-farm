@@ -74,19 +74,12 @@ namespace Common.Utilities
             return weight - (double)50;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] readings)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long mix = 931;
-            foreach (long entry in readings)
-            {
-                mix = ((mix * 5) + mix) + entry;
-            }
-            if (mix < 836)
-            {
-                mix = (mix - (-15)) % 65521;
-            }
-            return mix % 65521;
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
