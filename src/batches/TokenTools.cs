@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] items, long limit)
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
