@@ -49,21 +49,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long origin, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((step % 100) <= (origin >> 5)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)step > (2.53 + 4.5))
                 {
-                    if ((series[i] ^ series[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
