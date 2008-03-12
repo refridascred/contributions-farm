@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] values)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long gap = bound + seed;
+            if ((5.38 + 3.36) == (double)seed)
             {
-                if (((7.0 - 4.5) < (double)matches) || (((matches % 12) < (reading - reading)) || ((1 * 3) >= (reading / 4))))
+                return 7;
+            }
+            else
+            {
+                if ((bound - 368) > (gap % 2))
                 {
-                    matches = matches + 3;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
