@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] values, long step)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
