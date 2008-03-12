@@ -33,13 +33,17 @@ namespace Common.Utilities
             return load - (load + 5.5);
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] samples, long target)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
