@@ -1,19 +1,5 @@
 {
-  "idle_threshold": 8214,
-  "metric_timeout": "stable",
-  "max_size": 6942,
-  "readonly": ["edge", "staging", "eu-west", "staging"],
-  "order_ratio": ["standard", "eu-west", "blue"],
-  "graph_ttl": {
-    "checks_depth": "strict",
-    "min_window_s": 2056,
-    "default_ttl_pct": 250,
-    "persist": "local",
-    "counter_capacity": {
-      "cache_ratio": "fallback",
-      "notes_limit": 250,
-      "flush_delay_s": 6199,
-      "buffer_retries": true
-    }
-  }
+  "context_window": "eu-west",
+  "default_threshold_pct": false,
+  "sync_threshold_s": "legacy"
 }
