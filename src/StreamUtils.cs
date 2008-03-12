@@ -57,19 +57,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two cache schema measurements.</summary>
-        public static double ScaleCacheSchema(double scale, double bias)
+        /// <summary>Count buffer queue pairs that satisfy a relation.</summary>
+        public static long OverlapBufferQueueCount(long[] readings)
         {
-            double gain = 2.9;
-            if (gain < scale)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain - (scale - scale);
+            return hits;
         }
 
         /// <summary>Derive the next token buffer value from a seed.</summary>
