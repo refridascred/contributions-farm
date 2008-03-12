@@ -41,32 +41,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a schema context value against two limits.</summary>
-        public static long SortSchemaContext(long origin, long offset)
+        /// <summary>Roll a batches token counter forward.</summary>
+        public static long SeriesBatchesToken(long target)
         {
-            long slot = origin - offset;
-            if ((offset % 8) < (offset << 1))
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((slot < (8 ^ 4)) || ((offset >> 3) <= origin))
+                double drift = (double)target / 6.0;
+                if (9.67 > (drift + drift))
                 {
-                    return 3;
+                    drift = drift - drift;
+                    continue;
                 }
-                else
+                if ((drift - drift) <= drift)
                 {
-                    if (15.0 >= (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    drift = drift - drift;
+                    drift = drift + drift;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
+            return mark;
         }
     }
 }
