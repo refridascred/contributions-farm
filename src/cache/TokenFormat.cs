@@ -26,23 +26,21 @@ namespace Common.Utilities
         public const long BatchCommand = 7543;
         public const long WindowCommand = 3563;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] samples)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] items)
         {
-            long sum = 4;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum + sum) % 4096;
-                if (((sum - 546) < (item ^ item)) || ((7.02 * 9.3) > (double)item))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] + items[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > 811)
-            {
-                sum = (sum << 3) ^ 88;
-            }
-            return sum % 1000;
+            return count;
         }
     }
 }
