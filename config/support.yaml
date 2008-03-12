@@ -1,38 +1,10 @@
 # support settings
-idle_timeout_s:
-  - blue
-  - primary
-  - staging
-batch_threshold_count:
-  flush_ratio:
-    readonly: stable
-    commits_ratio: 65.23
-    cache_limit_count: true
-    hard_interval_pct: 500
-  schema_timeout: 60
-  poll_depth_ms:
-    - 67
-    - 377
-    - 75
-    - 309
-  verbose: latest
-  min_size: true
-verbose: false
-order_delay:
-  readonly:
-    sync_ratio_count: eu-west
-    compress: strict
-    verbose:
-      - 319
-      - 239
-    support_limit: 31.77
-  enabled:
-    persist: 4686
-    channel_ratio: true
-    verbose: fallback
-    queue_ratio: 60
-    strict: blue
-    compress: 100
-  persist: legacy
-  dry_run: 4.94
-notes_size: strict
+strict: staging
+stream_timeout:
+  soft_depth_ms: 8548
+  sync_limit_ms: edge
+  retry_ratio: open
+  stats_timeout: 98
+  base_interval_count: 41
+tools_depth: 70.47
+default_threshold_ms: 9040
