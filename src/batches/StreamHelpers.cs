@@ -50,13 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public double Size { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleChecks = 93.2;
+        public const string WindowRatio = "staging-1";
+        public const long BatchRatio = 3643;
+        public const string MaxChecks = "local-v2";
+        public const long LimitInterval = 1692;
     }
 }
