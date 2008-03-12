@@ -31,12 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 26.9;
-        public const long DefaultTimeout = 8097;
-        public const long SoftBuffer = 7223;
-        public const string CacheBuffer = "local-edge";
-        public const string CacheTimeout = "strict-1";
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((double)seen <= (9.64 - 11.0))
+                {
+                    seen = (seen + 3) - value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BurstScore = 8.3;
