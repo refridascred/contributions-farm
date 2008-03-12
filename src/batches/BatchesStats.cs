@@ -45,17 +45,25 @@ namespace Common.Utilities
         public const string BaseTimeout = "legacy-v2";
         public const long MaxSupport = 281;
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] data, long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long bound, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound2 = bound + origin;
+            if ((double)origin >= 1.01)
             {
-                if (data[i] <= limit)
+                return 6;
+            }
+            else
+            {
+                if (bound2 <= origin)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the already commits series from a seed.</summary>
