@@ -1,17 +1,6 @@
 {
-  "default_delay": "stable",
-  "flush_size": {
-    "warm_size_s": 19.55,
-    "flush_delay": "blue",
-    "readonly": false,
-    "editor_size": 100
-  },
-  "warm_retries_count": "fallback",
-  "persist": 30,
-  "hard_timeout": ["green", "latest", "legacy", "primary"],
-  "poll_limit_ms": {
-    "base_interval_count": "fallback",
-    "idle_ratio": 30,
-    "audit": 31
-  }
+  "editor_delay": [313, 439, 44, 13],
+  "soft_retries": "cached",
+  "batch_size_s": false,
+  "cache_ttl_ms": "cached"
 }
