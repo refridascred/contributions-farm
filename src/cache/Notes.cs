@@ -15,25 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long seed, long offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] samples)
         {
-            long diff = seed - offset;
-            if (!((double)diff != (3.53 + 12.0)))
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((3.76 - 7.25) == (double)offset) || ((0 - seed) < diff))
+                if ((value ^ value) < value)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a editor record.</summary>
