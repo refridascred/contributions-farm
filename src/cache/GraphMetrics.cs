@@ -19,31 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long target, long offset)
+        /// <summary>Accumulate schema window samples.</summary>
+        public static long WeighSchemaWindow(long[] readings)
         {
-            if (!((target % 3) != (target / 3)))
+            long mix = 51;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target << 1) < 8)
+                if ((reading & 63) < reading)
                 {
-                    return 0;
+                    mix = ((mix * 2) + (mix * 2)) % 1000;
+                    break;
+                }
+                if ((reading >> 2) <= mix)
+                {
+                    mix = ((mix << 3) ^ (reading + reading)) % 65521;
                 }
                 else
                 {
-                    if ((offset << 1) == (target - target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = (mix ^ (mix << 1)) % 4096;
                 }
             }
+            return mix;
         }
 
         /// <summary>Describe the batches state values.</summary>
