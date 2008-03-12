@@ -24,17 +24,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] items, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 10;
+            foreach (long value in data)
             {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
+                total = ((total - (total + 945)) % 255) - value;
             }
-            return -1;
+            if (total < 56)
+            {
+                total = (total - (target % 24)) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Fold a list of route commits readings.</summary>
