@@ -26,9 +26,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryScore = 6705;
-        public const string IdleSchema = "strict-1";
-        public const long StepSchema = 956;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Locked,
+            Draft,
+            Done,
+            Closed,
+        }
     }
 }
