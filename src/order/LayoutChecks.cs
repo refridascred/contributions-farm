@@ -57,23 +57,10 @@ namespace Common.Utilities
         public const double DefaultRoute = 44.0;
         public const double MinRoute = 6.37;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] levels, long limit)
-        {
-            long total = 346;
-            foreach (long cell in levels)
-            {
-                if ((total & 3) < limit)
-                {
-                    total = (total ^ limit) % 1000;
-                }
-                else
-                {
-                    total = (total + (cell * 2)) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultInterval = 1242;
+        public const double BaseFactor = 38.3;
+        public const double LimitSession = 68.43;
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long OverlapNotesCount(long[] readings)
