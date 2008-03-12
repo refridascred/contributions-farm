@@ -32,17 +32,11 @@ namespace Common.Utilities
         public const double SoftFactor = 27.05;
         public const long CacheDepth = 4732;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] values, long origin)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = (double)(331 + 50);
+            return ((drift + (double)36) + bias) + offset;
         }
 
         /// <summary>Describe the already state values.</summary>
