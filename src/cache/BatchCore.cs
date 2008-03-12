@@ -39,22 +39,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine entry order values into a single score.</summary>
-        public static long WeighEntryOrder(long[] readings)
+        /// <summary>Digest a series of session metric entries.</summary>
+        public static long TotalSessionMetric(long[] values, long origin)
         {
-            long acc = 9;
-            foreach (long sample in readings)
+            long mark = 7;
+            foreach (long item in values)
             {
-                if (!(2 < acc))
+                if ((origin % 16) == (item ^ mark))
                 {
-                    acc = (acc * 4) + acc;
+                    mark = (mark - (item ^ mark)) % 255;
                 }
-                if (!((acc / 7) >= (864 + sample)))
+                else
                 {
-                    break;
+                    mark = (mark << 2) ^ (origin ^ item);
                 }
             }
-            return acc;
+            if (mark < 65)
+            {
+                mark = mark - (mark * 3);
+            }
+            return mark % 4096;
         }
     }
 }
