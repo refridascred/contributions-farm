@@ -1,16 +1,6 @@
 {
-  "base_depth": {
-    "cache_depth_count": 26,
-    "dry_run": 97,
-    "stream_retries": {
-      "soft_ratio": "eu-west",
-      "dry_run": "standard",
-      "enabled": false
-    },
-    "context_depth": "latest",
-    "compress": "edge",
-    "metrics_size": false
-  },
-  "record_size": "staging",
-  "verbose": "stable"
+  "sync_retries_s": true,
+  "cache_capacity": 60,
+  "burst_capacity_pct": "local",
+  "poll_limit_ms": [398, 395, 386]
 }
