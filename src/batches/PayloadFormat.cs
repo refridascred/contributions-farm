@@ -34,12 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitSize = "stable";
-        public const string MaxChecks = "latest-1";
-        public const double LimitChecks = 64.67;
-        public const long MinScore = 4952;
-        public const double HardChecks = 46.22;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 1759;
+        public const string BatchBudget = "alpha-edge";
+        public const long MaxReport = 6336;
+        public const long LimitReport = 3865;
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
