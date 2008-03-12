@@ -1,6 +1,7 @@
 {
-  "audit": true,
-  "strict": "primary",
-  "min_interval": false,
-  "verbose": "open"
+  "readonly": [189, 143],
+  "buffer_capacity": "open",
+  "poll_depth": "latest",
+  "batches_ttl": ["blue", "latest", "latest", "primary"],
+  "layout_limit": ["primary", "fallback", "strict", "edge"]
 }
