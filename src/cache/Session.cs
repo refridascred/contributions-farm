@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Check that every stats entry entry stays within the limit.</summary>
+        public static bool VerifyStatsEntryRange(long[] levels, long limit)
         {
-            Retry,
-            Ready,
-            Failed,
-            Done,
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
