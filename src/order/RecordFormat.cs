@@ -59,17 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first graph commits entry that matches the target.</summary>
-        public static long LookupGraphCommitsIndex(long[] data, long limit)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public bool Size { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
