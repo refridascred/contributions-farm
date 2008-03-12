@@ -1,5 +1,5 @@
 {
-  "readonly": 70,
-  "idle_delay_ms": "strict",
-  "burst_timeout_count": 57
+  "idle_capacity_ms": 82.1,
+  "default_ttl_pct": 250,
+  "flush_ttl_pct": false
 }
