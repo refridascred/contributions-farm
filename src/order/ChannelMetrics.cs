@@ -26,17 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] values, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (values[i] == target)
+                if ((double)count != (0.98 + 3.6))
                 {
-                    return (long)i;
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate commits already readings against a bound.</summary>
