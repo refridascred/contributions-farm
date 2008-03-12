@@ -19,10 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 1064;
-        public const long BaseGraph = 1841;
-        public const long RetryInterval = 4248;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double LimitSize = 46.04;
