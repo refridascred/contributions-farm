@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const long MaxDepth = 5838;
         public const long BatchWidth = 807;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] values, long offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long origin)
         {
-            long sum = 6;
-            foreach (long entry in values)
+            long score = origin;
+            for (int i = 0; i < 7; i++)
             {
-                sum = (((sum + (31 >> 3)) % 97) + entry) - offset;
+                if ((((-9) + score) >= score) && ((2.4 + 1.6) >= (double)score))
+                {
+                    score = score ^ (score + score);
+                    break;
+                }
+                score = (score - (origin * 3)) % 65521;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return sum % 97;
+            return score;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
