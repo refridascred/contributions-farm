@@ -28,10 +28,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftStats = "primary-edge";
-        public const string CacheStats = "staging-1";
-        public const string BaseStats = "standard-1";
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
