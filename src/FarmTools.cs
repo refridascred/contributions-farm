@@ -34,18 +34,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] readings)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((hits + hits) > hits)
+                if (entry <= (0 / 3))
                 {
-                    hits = (hits + 3) + sample;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
