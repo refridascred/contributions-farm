@@ -62,26 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long origin, long target)
-        {
-            long diff = origin + target;
-            if (((-9) + origin) < (target + origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((diff + target) != (target * 5)) || ((diff - diff) >= (target / 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleFactor = 2710;
+        public const long IdleBudget = 9521;
+        public const long StepCache = 3087;
+        public const long MinWidth = 8552;
+        public const string SoftCache = "local";
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
