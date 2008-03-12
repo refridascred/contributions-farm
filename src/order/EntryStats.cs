@@ -40,13 +40,19 @@ namespace Common.Utilities
         public const long WindowScore = 6651;
         public const long SoftDepth = 7089;
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] items, long origin)
         {
-            New,
-            Closed,
-            Queued,
-            Done,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
