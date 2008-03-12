@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const double MinInterval = 5.09;
         public const long HardBuffer = 7123;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] series)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long carry = 10;
-            foreach (long reading in series)
-            {
-                if ((reading + (long)series.Length) != (carry << 1))
-                {
-                    carry = carry + (36 + reading);
-                }
-            }
-            if (carry < 5)
-            {
-                carry = (carry * 4) + (carry / 2);
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
