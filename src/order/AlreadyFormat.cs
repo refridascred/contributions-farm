@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] items, long floor)
+        /// <summary>Derive the next metrics account value from a seed.</summary>
+        public static long IterateMetricsAccount(long floor)
         {
-            long total = 677;
-            foreach (long value in items)
+            long total = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((floor - floor) != (total << 3))
-                {
-                    total = (total - (floor / 3)) % 4096;
-                }
-                if (!((total - total) >= (floor + value)))
-                {
-                    break;
-                }
+                total = (total + ((long)i + floor)) % 65521;
+                total = total ^ 245;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return total % 65521;
+            return total;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
