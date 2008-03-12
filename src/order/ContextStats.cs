@@ -22,12 +22,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseLevel = 3637;
-        public const long DefaultInterval = 6176;
-        public const string WindowGraph = "latest-1";
-        public const string CacheCount = "local-v2";
-        public const double IdleGraph = 98.4;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Draft,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LocateStatsIndex(long[] levels, long target)
