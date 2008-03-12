@@ -1,19 +1,8 @@
 # entry settings
-cache_retries_pct: fallback
-warm_threshold_ms: strict
-hard_ratio:
-  - latest
-  - local
-  - blue
-  - strict
-idle_ratio_ms: 51.77
-dry_run:
-  base_window_pct: legacy
-  compress: local
-  queue_ttl: standard
-  strict: false
-  warm_interval_s:
-    - green
-    - eu-west
-    - blue
-  sync_window_pct: local
+order_delay:
+  - green
+  - staging
+flush_limit_s: 3574
+support_limit: latest
+enabled: 40
+hard_size: 30
