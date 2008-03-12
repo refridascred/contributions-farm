@@ -29,17 +29,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = (carry - carry) % 97;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheBudget = 1514;
+        public const long StepGraph = 1786;
+        public const long CacheGraph = 8372;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long SeekBufferIndex(long[] levels, long limit)
