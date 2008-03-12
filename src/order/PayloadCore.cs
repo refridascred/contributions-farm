@@ -35,9 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryCount = 4101;
-        public const double IdleWidth = 32.37;
-        public const long CacheBatches = 1892;
+        /// <summary>Count the session githubfarm entries that pass the check.</summary>
+        public static long MeasureSessionGithubfarmOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((((73 % 60) == (item + (-653))) || ((double)tally < (double)item)) && ((double)item < (7.3 / 4.0)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
