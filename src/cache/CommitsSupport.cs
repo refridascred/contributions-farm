@@ -91,18 +91,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] levels)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item != (6.0 + 9.56))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public double Size { get; set; }
         }
     }
 }
