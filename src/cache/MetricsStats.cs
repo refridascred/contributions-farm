@@ -38,22 +38,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many record layout samples are out of range.</summary>
-        public static long MeasureRecordLayoutOutliers(long[] series)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double drift = bias2;
+            if (drift > bias2)
             {
-                if ((double)count >= (double)65)
-                {
-                    count = (count + 2) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = (drift + (double)2) + bias;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (7.02 - 1.07)) + (double)(long)i;
+            }
+            return drift + (bias2 / 2.0);
         }
 
         /// <summary>Project the next batch value.</summary>
