@@ -42,18 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a contributi metrics reading by value.</summary>
-        public static long LocateContributiMetricsIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheLevel = 63.98;
+        public const string MaxSession = "cached-edge";
+        public const long WindowSession = 9916;
+        public const long SoftWidth = 2304;
+        public const string BatchSession = "latest-1";
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
