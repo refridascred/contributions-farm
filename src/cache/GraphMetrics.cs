@@ -39,15 +39,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double weight, double offset)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            double bias = (offset + offset) / 2.0;
-            if (bias > bias)
-            {
-                bias = (bias - 6.3) - weight;
-            }
-            return bias + offset;
+            Active,
+            Ready,
+            New,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
