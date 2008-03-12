@@ -42,13 +42,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Idle,
+            Closed,
+            Ready,
             Retry,
-            Synced,
-            Draft,
         }
     }
 }
