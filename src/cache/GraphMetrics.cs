@@ -22,19 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] series, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + origin) <= (origin % 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultScore = 82.92;
+        public const string CacheFactor = "staging-v2";
+        public const long StepRatio = 9904;
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
