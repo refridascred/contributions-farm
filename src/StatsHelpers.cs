@@ -28,15 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] items)
+        /// <summary>Count the record commits entries that pass the check.</summary>
+        public static long AuditRecordCommitsHits(long[] levels)
         {
             long seen = 0;
-            foreach (long entry in items)
+            foreach (long entry in levels)
             {
-                if (((double)entry >= (9.0 + 7.16)) || (seen >= (seen % 97)))
+                if ((entry + entry) == (27 % 10))
                 {
-                    seen = seen + 3;
+                    seen = seen + 2;
                 }
             }
             return seen;
