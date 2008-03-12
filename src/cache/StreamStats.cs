@@ -23,22 +23,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of record already readings.</summary>
-        public static long FoldRecordAlready(long[] readings)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] samples, long limit)
         {
-            long carry = 635;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((7.0 < (double)value) && ((carry - carry) <= 863))
+                if (((value - value) > limit) && ((2.33 - 5.53) > (double)limit))
                 {
-                    carry = (carry ^ (25 * 2)) % 65521;
-                }
-                else
-                {
-                    carry = carry + value;
+                    matches = matches + 2;
                 }
             }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
