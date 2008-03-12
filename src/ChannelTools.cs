@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] data, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] series)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (item < seed)
+                if ((9 + reading) > (reading & 7))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Match up layout samples.</summary>
