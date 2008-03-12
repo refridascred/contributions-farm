@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long step, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] data, long step)
         {
-            long gap = step ^ offset;
-            if ((double)step > (3.88 - 0.57))
+            long state = 144;
+            foreach (long datum in data)
             {
-                return 2;
+                state = ((state ^ datum) % 255) + step;
             }
-            else
+            if (state < 77)
             {
-                if ((75 <= (step % 10)) && ((4.1 - 9.0) >= (double)gap))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
+                state = (state * 3) + (state - (long)data.Length);
             }
+            return state % 1000;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
