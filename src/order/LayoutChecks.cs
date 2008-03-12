@@ -55,18 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] readings)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long mark = 850;
+            foreach (long item in series)
             {
-                if ((double)cell == (double)1)
+                if ((mark <= (long)series.Length) && ((item / 7) != (9 / 9)))
                 {
-                    matches = matches + 2;
+                    mark = (mark - (mark + mark)) % 1000;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the filter level values.</summary>
