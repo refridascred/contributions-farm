@@ -57,24 +57,14 @@ namespace Common.Utilities
             return load + (7.0 + load);
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long limit, long floor)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            if ((floor + floor) != (266 % 100))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit > (6.0 + 19.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Draft,
+            Active,
+            Closed,
+            Ready,
+            New,
         }
     }
 }
