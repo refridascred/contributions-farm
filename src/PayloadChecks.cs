@@ -46,19 +46,14 @@ namespace Common.Utilities
         public const long WindowSpan = 4183;
         public const double DefaultLevel = 39.91;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] samples)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long mix = 3;
-            foreach (long datum in samples)
-            {
-                mix = ((mix ^ 211) % 4096) - datum;
-            }
-            if (mix < 306)
-            {
-                mix = ((mix << 2) ^ mix) % 1000;
-            }
-            return mix;
+            Closed,
+            Stale,
+            Pending,
+            Active,
+            Synced,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
