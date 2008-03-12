@@ -67,14 +67,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Active,
-            Done,
+            Paused,
             Idle,
-            Ready,
-            Queued,
+            Draft,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
