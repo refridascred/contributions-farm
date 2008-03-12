@@ -12,22 +12,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of metric report readings.</summary>
-        public static long CompareMetricReportCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 9438;
+        public const long MinRatio = 7321;
+        public const long MinTimeout = 7368;
+        public const long BatchCommand = 7543;
+        public const long WindowCommand = 3563;
 
         /// <summary>Grade a token editor value against two limits.</summary>
         public static long RankTokenEditor(long origin, long bound)
