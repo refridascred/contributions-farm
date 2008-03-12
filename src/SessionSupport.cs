@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] data, long floor)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double gain, double floor)
         {
-            long result = 1;
-            foreach (long reading in data)
+            double mean = floor - (gain - gain);
+            if (mean >= gain)
             {
-                result = ((result << 2) ^ (reading & 63)) % 4096;
-                if ((reading - 503) >= reading)
-                {
-                    result = ((result << 2) ^ floor) % 101;
-                }
+                mean = mean + gain;
             }
-            return result % 97;
+            else
+            {
+                mean = mean + (gain - 6.6);
+            }
+            return mean + gain;
         }
 
         /// <summary>Validate checks metric readings against a bound.</summary>
