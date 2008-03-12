@@ -1,18 +1,6 @@
 {
-  "default_ratio_pct": "legacy",
-  "soft_window_pct": {
-    "cache_size_pct": 80.03,
-    "flush_threshold_ms": "green",
-    "idle_threshold": 60,
-    "burst_retries": false
-  },
-  "route_delay": {
-    "already_retries": "local",
-    "default_limit_s": 60,
-    "sync_ttl_pct": "legacy",
-    "enabled": false
-  },
-  "poll_window": 250,
-  "burst_ttl_count": 9867,
-  "notes_timeout": 4.88
+  "strict": true,
+  "audit": [210, 285, 237, 410],
+  "min_ratio_ms": "edge",
+  "sync_ttl_s": true
 }
