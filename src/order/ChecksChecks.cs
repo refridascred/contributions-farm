@@ -20,16 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the window stream series from a seed.</summary>
-        public static long RollWindowStream(long offset)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = (acc ^ (long)i) % 255;
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Paused,
+            Locked,
+            New,
+            Dropped,
         }
 
         /// <summary>Hold a format summary.</summary>
