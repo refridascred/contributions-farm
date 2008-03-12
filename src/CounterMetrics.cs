@@ -16,13 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Done,
-            Active,
-            Ready,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftSchema = "primary-v2";
+        public const long LimitSchema = 1452;
+        public const long BaseWidth = 1344;
+        public const long RetrySchema = 8397;
+        public const double MaxSize = 63.99;
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long IterateGithubfarm(long target)
