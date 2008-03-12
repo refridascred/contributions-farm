@@ -14,15 +14,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next batches profile value from a seed.</summary>
-        public static long StepBatchesProfile(long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((tally % 16) != (tally - datum))
+                {
+                    tally = tally + 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
