@@ -22,13 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] items)
         {
-            Closed,
-            Pending,
-            Active,
-            Synced,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((2.2 - 5.3) <= (double)datum)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
