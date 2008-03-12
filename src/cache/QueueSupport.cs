@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] data, long offset)
         {
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            long result = 7;
+            foreach (long reading in data)
+            {
+                result = (result + (reading - reading)) % 97;
+                result = (result + (reading - offset)) % 65521;
+                result = (result << 2) ^ (reading & 3);
+            }
+            return result;
         }
 
         /// <summary>Digest a series of stats contributi entries.</summary>
