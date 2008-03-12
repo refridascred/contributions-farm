@@ -39,21 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] levels)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 33;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (((carry << 3) ^ ((long)samples.Length + 80)) % 101) ^ sample;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Locate a contributi metrics reading by value.</summary>
