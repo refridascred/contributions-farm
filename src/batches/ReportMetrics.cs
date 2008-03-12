@@ -23,21 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many account graph samples are out of range.</summary>
