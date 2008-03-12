@@ -20,22 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] values, long target)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((target >= (tally + reading)) || (reading < (4 * 4))) || ((target & 127) == (0 - tally)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Active,
+            New,
+            Done,
         }
 
         /// <summary>Describe the window kind values.</summary>
