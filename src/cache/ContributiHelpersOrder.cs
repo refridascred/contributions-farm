@@ -37,19 +37,39 @@ namespace Common.Utilities
             return rate + (floor + floor);
         }
 
-        /// <summary>Combine editor buffer values into a single score.</summary>
-        public static long TallyEditorBuffer(long[] series, long step)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long step, long floor)
         {
-            long total = -1;
-            foreach (long item in series)
+            long offset = step - floor;
+            if (3.39 >= (double)floor)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    total = (((total ^ (step % 5)) % 1000) ^ (long)i) + item;
-                }
-                total = ((total * 4) + ((-50) >> 4)) % 255;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((double)step <= (5.49 / 3.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((1 & 31) == (offset << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor >> 5) < step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
