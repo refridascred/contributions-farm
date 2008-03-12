@@ -1,9 +1,10 @@
 # entry settings
-dry_run: cached
-min_timeout: true
-burst_capacity_ms: 54.71
-format_ratio: 92
-base_size_s:
-  - 458
-  - 105
-hard_limit_count: 10.48
+cache_threshold: 16.89
+poll_ratio_ms:
+  - 360
+  - 218
+persist:
+  - legacy
+  - cached
+  - strict
+  - open
