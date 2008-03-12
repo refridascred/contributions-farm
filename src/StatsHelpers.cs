@@ -70,17 +70,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] series, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (series[i] <= offset)
+                if ((cell + cell) != (6 + cell))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
