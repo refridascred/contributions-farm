@@ -53,22 +53,12 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] values, long offset)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long sum = 1;
-            foreach (long item in values)
-            {
-                if (item <= offset)
-                {
-                    sum = ((sum << 2) ^ (offset ^ offset)) % 101;
-                }
-            }
-            if (sum > (-8))
-            {
-                sum = (sum << 2) ^ (sum << 2);
-            }
-            return sum % 97;
+            public double Label { get; set; }
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
