@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] readings, long bound)
         {
-            Draft,
-            Ready,
-            Idle,
-            Closed,
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit session queue readings against a rule.</summary>
