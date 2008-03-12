@@ -22,15 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next route notes value.</summary>
-        public static double BlendRouteNotes(double scale, double span)
+        /// <summary>Accumulate notes batches samples.</summary>
+        public static long CombineNotesBatches(long[] series)
         {
-            double scale2 = (double)(1 * 4);
-            if (scale2 > (double)436)
+            long score = 2;
+            foreach (long datum in series)
             {
-                scale2 = scale2 - scale;
+                if ((2.1 - 13.0) < (double)score)
+                {
+                    score = ((score ^ score) % 255) - datum;
+                }
+                else
+                {
+                    score = (score * 5) + (score - (-8));
+                }
             }
-            return scale2 - span;
+            if (score > 9)
+            {
+                score = (score - (score ^ score)) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Check that every githubfarm checks entry stays within the limit.</summary>
