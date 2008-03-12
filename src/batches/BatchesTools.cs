@@ -32,20 +32,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] series)
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                mark = ((mark * 3) + (offset - offset)) % 1000;
-                if ((mark % 97) >= (offset - offset))
+                if ((cell * 5) != (6 << 1))
                 {
-                    mark = ((mark * 3) + mark) % 255;
+                    seen = seen + 1;
                 }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return seen;
         }
     }
 }
