@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long seed, long bound)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long delta = seed ^ bound;
-            if (seed > (bound - delta))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((94 << 1) > (seed % 5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Retry,
+            Ready,
+            Failed,
+            Done,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
