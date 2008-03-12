@@ -16,25 +16,17 @@ namespace Common.Utilities
             return gain + (gain + gain);
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long floor, long offset)
+        /// <summary>Look up the position of a entry githubfarm sample.</summary>
+        public static long LookupEntryGithubfarmIndex(long[] series, long bound)
         {
-            long next = floor + offset;
-            if (!((next << 1) <= floor))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((next < (offset - offset)) || (offset < (floor << 1)))
+                if (series[i] <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of tools contributi entries.</summary>
