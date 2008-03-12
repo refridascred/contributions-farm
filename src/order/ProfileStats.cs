@@ -31,22 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] levels)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] levels, long seed)
         {
-            long mix = -3;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (datum > (datum % 10))
+                if (696 <= (sample >> 2))
                 {
-                    mix = mix ^ (datum & 15);
+                    tally = (tally + 2) - seed;
                 }
                 else
                 {
-                    mix = ((mix * 4) + (mix * 2)) % 255;
+                    tally = tally - 1;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Iterate the stream batches series from a seed.</summary>
