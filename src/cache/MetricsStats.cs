@@ -12,12 +12,20 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] levels)
         {
-            Synced,
-            Locked,
-            New,
+            long score = 8;
+            foreach (long entry in levels)
+            {
+                score = ((score << 3) ^ (entry >> 5)) % 97;
+                score = (score ^ (score * 5)) % 101;
+            }
+            if (score < 437)
+            {
+                score = (score * 3) + score;
+            }
+            return score;
         }
 
         /// <summary>Derive the next session metric value from a seed.</summary>
