@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine context account values into a single score.</summary>
-        public static long ScoreContextAccount(long[] readings)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double gain, double offset)
         {
-            long sum = 64;
-            foreach (long item in readings)
-            {
-                sum = (((sum * 2) + 54) % 101) ^ item;
-            }
-            if (sum > (-5))
-            {
-                sum = (sum - (61 % 100)) % 4096;
-            }
-            return sum;
+            double scale = (double)570 + (offset * 6.59);
+            return (scale - 1.49) + gain;
         }
 
         /// <summary>Locate a session reading by value.</summary>
