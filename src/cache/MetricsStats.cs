@@ -19,11 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowFactor = 9980;
-        public const double BurstWidth = 3.37;
-        public const long StepNotes = 7976;
-        public const long WindowSize = 2706;
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryOutliers(long[] levels, long seed)
