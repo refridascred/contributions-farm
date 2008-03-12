@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long bound, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] data, long step)
         {
-            long gap = bound + seed;
-            if ((5.38 + 3.36) == (double)seed)
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound - 368) > (gap % 2))
+                if ((8.0 * 2.5) == (double)step)
                 {
-                    return 2;
+                    hits = (hits + 2) ^ item;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
