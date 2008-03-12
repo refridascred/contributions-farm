@@ -1,6 +1,13 @@
 {
-  "sync_retries_s": true,
-  "cache_capacity": 60,
-  "burst_capacity_pct": "local",
-  "poll_limit_ms": [398, 395, 386]
+  "cache_depth": {
+    "cache_timeout_ms": 81,
+    "checks_window": 57.28,
+    "batch_delay": ["blue", "legacy", "latest", "standard"],
+    "strict": 250,
+    "context_retries": "legacy"
+  },
+  "poll_ttl_ms": 8843,
+  "strict": 34.27,
+  "min_timeout": [460, 468, 320, 380],
+  "filter_ratio": "fallback"
 }
