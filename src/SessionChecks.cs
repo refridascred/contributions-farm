@@ -67,11 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 2399;
-        public const long WindowRecord = 9695;
-        public const long LimitRecord = 8578;
-        public const long BatchDepth = 3348;
-        public const string BurstScore = "open-1";
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Queued,
+            Locked,
+            Synced,
+            Idle,
+        }
     }
 }
