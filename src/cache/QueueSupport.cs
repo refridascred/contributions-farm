@@ -43,31 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format commits readings.</summary>
-        public static long FoldFormatCommits(long[] series)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] samples)
         {
-            long total = 200;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                total = ((total * 3) + total) % 1000;
-                if ((double)286 != (double)total)
+                if (!((19.0 * 8.73) <= (double)sample))
                 {
-                    total = ((total << 3) ^ (cell ^ 80)) % 65521;
-                }
-                if (!((double)cell < (6.99 - 8.2)))
-                {
-                    total = (total - (total * 5)) % 255;
-                }
-                else
-                {
-                    total = (total ^ (cell + cell)) % 101;
-                }
-                if ((long)series.Length > (cell << 1))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return total;
+            return matches;
         }
     }
 }
