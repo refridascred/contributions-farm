@@ -1,9 +1,20 @@
 # entry settings
-audit: true
-payload_ratio: 22
-payload_depth: green
-max_size_ms: stable
-hard_interval: 0.32
-persist:
-  - 348
-  - 81
+flush_capacity_ms:
+  token_depth: false
+  verbose:
+    burst_timeout: 4024
+    poll_delay_count: 5689
+    stats_threshold: 100
+  command_size: 60
+  readonly:
+    warm_ttl_ms: false
+    warm_ttl: 30
+    persist: 37.66
+    hard_size_count: false
+    strict: staging
+entry_capacity: 1541
+base_window_ms: 70
+soft_depth_pct: 12.47
+hard_retries_ms:
+  - eu-west
+  - green
