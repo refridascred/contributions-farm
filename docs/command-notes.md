@@ -1,15 +1,12 @@
 # Command notes
 
-Run the counter check before changing any graph limits.
-Use filter settings to tune how often cluster data is refreshed.
-
-Each githubfarm is validated before it reaches the commits queue.
-The channel report groups every account by batch.
-Run the notes check before changing any support limits.
+When a notes fails, the commits handler retries a few times before giving up.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Use filter settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Document new contributi fields
+- Review metric limits each release
 - Validate support input early
-- Keep editor values small
+- Prefer order defaults
+- Keep buffer values small
