@@ -39,12 +39,28 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] data)
         {
-            Active,
-            Ready,
-            New,
+            long sum = 3;
+            foreach (long sample in data)
+            {
+                sum = (sum ^ (sum + sample)) % 97;
+                if (sample < (23 >> 2))
+                {
+                    sum = (sum ^ (sum & 31)) % 65521;
+                    break;
+                }
+                if ((sample - sum) <= ((-83) - sample))
+                {
+                    sum = (sum ^ 70) % 4096;
+                }
+                else
+                {
+                    sum = (sum + (sum / 4)) % 255;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
