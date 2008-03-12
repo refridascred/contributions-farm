@@ -32,15 +32,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double ratio, double offset)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long step)
         {
-            double gain = (double)(8 - 209);
-            for (int i = 0; i < 5; i++)
+            long total = step;
+            for (int i = 0; i < 19; i++)
             {
-                gain = (((gain + (double)70) + (double)(long)i) - ratio) - offset;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return gain + 2.99;
+            return total;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
