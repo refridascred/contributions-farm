@@ -1,5 +1,5 @@
 {
-  "stats_size": [382, 6],
-  "payload_size": 60,
-  "audit": ["local", "latest"]
+  "persist": [395, 239],
+  "soft_limit_pct": 95.16,
+  "commits_ttl": 60
 }
