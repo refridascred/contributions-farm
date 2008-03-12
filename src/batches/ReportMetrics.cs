@@ -13,21 +13,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 118;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = (total + 444) % 255;
+                if ((double)item == (2.14 * 6.5))
                 {
-                    if ((readings[i] - readings[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return total % 4096;
         }
 
         /// <summary>Describe the command kind values.</summary>
