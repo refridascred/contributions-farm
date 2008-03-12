@@ -26,20 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinTools = 94.72;
+        public const long BaseTools = 8760;
+        public const long RetrySize = 1037;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long RankOrder(long limit, long step)
