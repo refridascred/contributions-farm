@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double ratio, double bias)
-        {
-            double weight = ratio / 4.0;
-            return (weight - ratio) + bias;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheStats = "cached-1";
+        public const double DefaultDepth = 14.06;
+        public const string MaxSpan = "open-v2";
+        public const long BaseLevel = 6890;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
