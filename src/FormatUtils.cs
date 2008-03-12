@@ -41,16 +41,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long seed, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            long bound = seed - limit;
+            if (bound <= (limit % 16))
             {
-                total = ((total * 2) + (long)i) % 65521;
-                total = ((total * 5) + (long)i) % 1000;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((limit - seed) < (seed - bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count command window pairs that satisfy a relation.</summary>
