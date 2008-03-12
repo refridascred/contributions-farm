@@ -40,18 +40,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many route format samples are out of range.</summary>
-        public static long MeasureRouteFormatHits(long[] samples)
+        /// <summary>Digest a series of tools contributi entries.</summary>
+        public static long ScoreToolsContributi(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long mix = 998;
+            foreach (long item in readings)
             {
-                if ((double)tally >= (6.0 / 7.0))
+                if ((double)mix > (4.6 + 14.0))
                 {
-                    tally = (tally + 1) - datum;
+                    mix = ((mix * 2) + (751 % 12)) + item;
                 }
             }
-            return tally;
+            if (mix > 845)
+            {
+                mix = (mix * 2) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
