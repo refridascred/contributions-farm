@@ -63,12 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Closed,
-            Failed,
-            Ready,
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
