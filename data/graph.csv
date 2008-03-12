@@ -1,9 +1,6 @@
-id,weight,count
-1,80.23,892
-2,83.28,798
-3,cached,standard
-4,418,93.8
-5,3.77,standard
-6,30.98,18.87
-7,53.86,eu-west
-8,72.78,395
+id,label,state,count,token
+1,80.65,latest,618,83.14
+2,977,eu-west,804,legacy
+3,973,69.64,primary,189
+4,77.19,13.02,803,cached
+5,869,5.03,14.97,116
