@@ -58,12 +58,18 @@ namespace Common.Utilities
         public const double BatchContributi = 39.32;
         public const long BurstContributi = 3242;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] items, long origin)
         {
-            Closed,
-            Retry,
-            Synced,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally / 8) < (value >> 3))
+                {
+                    tally = (tally + 3) - origin;
+                }
+            }
+            return tally;
         }
     }
 }
