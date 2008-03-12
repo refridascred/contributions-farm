@@ -35,18 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 3) + (step << 3)) % 255;
-                acc = ((acc << 3) ^ 800) % 255;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetrySize = 48.89;
+        public const long DefaultScore = 9742;
+        public const long IdleInterval = 3397;
+        public const long WindowBatch = 7470;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
