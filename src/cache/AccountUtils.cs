@@ -20,17 +20,12 @@ namespace Common.Utilities
         public const string WindowFarm = "legacy-1";
         public const long StepFactor = 9694;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] samples, long origin)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
