@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinWidth = 42.1;
-        public const long IdleSize = 659;
-        public const string WindowLevel = "strict-edge";
-        public const long HardReport = 3284;
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long StepGraph = 487;
