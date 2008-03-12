@@ -46,26 +46,24 @@ namespace Common.Utilities
         public const long StepTools = 855;
         public const long SoftTools = 2968;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Derive the next token buffer value from a seed.</summary>
+        public static long RollTokenBuffer(long origin)
         {
-            long result = 6;
-            foreach (long cell in items)
+            long mix = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (((cell / 3) < result) && ((9.0 - 0.84) < (double)result))
+                mix = (mix * 5) + origin;
+                if (mix >= origin)
                 {
-                    result = ((result << 3) ^ (cell + cell)) % 255;
+                    mix = (mix ^ (mix + (long)i)) % 255;
                 }
                 else
                 {
-                    result = (result ^ (548 >> 5)) % 4096;
+                    mix = (mix ^ mix) % 1000;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            if (result > 748)
-            {
-                result = result ^ (result * 3);
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a queue entry.</summary>
