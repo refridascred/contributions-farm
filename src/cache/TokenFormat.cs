@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
+            long anchor = -72;
+            foreach (long entry in data)
+            {
+                if (188 > (entry - entry))
+                {
+                    break;
+                }
+                if (((double)entry != (15.0 / 8.0)) || (439 > (entry << 1)))
+                {
+                    anchor = anchor ^ anchor;
+                }
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define command limits and defaults.</summary>
