@@ -19,21 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] readings)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long target, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset = target + limit;
+            if ((target + limit) >= (0 + target))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((8 + offset) < (limit + 67)) || (limit >= (offset + limit)))
                 {
-                    if ((readings[i] - readings[j]) < 16)
+                    return 2;
+                }
+                else
+                {
+                    if ((17.0 - 0.46) == (double)target)
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
