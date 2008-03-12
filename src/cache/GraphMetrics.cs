@@ -19,11 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 1442;
-        public const long RetryTools = 3037;
-        public const string MaxDepth = "strict";
-        public const long BurstTools = 4184;
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] series, long step)
+        {
+            long result = 53;
+            foreach (long cell in series)
+            {
+                result = result ^ (668 << 2);
+                result = ((result << 2) ^ (68 * 3)) % 65521;
+                if (((cell + cell) >= (cell & 255)) || ((double)step <= (2.4 + 9.9)))
+                {
+                    result = result - (result % 97);
+                }
+                if (((long)series.Length - result) >= (step + step))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double BlendGraph(double weight, double offset)
