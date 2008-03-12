@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double weight, double bias)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] items)
         {
-            double weight2 = (double)(139 - 11);
-            if (weight2 < (double)9)
+            long mix = 758;
+            foreach (long cell in items)
             {
-                weight2 = weight2 + weight;
+                if ((mix <= (cell + cell)) || ((mix + 5) < (mix ^ cell)))
+                {
+                    mix = (mix * 4) + (cell * 5);
+                }
+                else
+                {
+                    mix = mix ^ cell;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (mix < 29)
             {
-                weight2 = (weight2 - (9.0 - bias)) + (double)(long)i;
+                mix = ((mix << 3) ^ (mix & 1)) % 4096;
             }
-            return weight2 + (double)6;
+            return mix;
         }
 
         /// <summary>Describe the contributi level values.</summary>
