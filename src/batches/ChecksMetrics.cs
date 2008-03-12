@@ -42,19 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] readings, long bound)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up token samples.</summary>
