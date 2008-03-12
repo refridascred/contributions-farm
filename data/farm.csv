@@ -1,6 +1,10 @@
-id,label,weight,count,score
-1,green,435,883,latest
-2,276,440,38.03,green
-3,58.1,148,891,745
-4,626,210,cached,stable
-5,46.13,601,local,local
+id,rank,count
+1,local,latest
+2,17.61,2.78
+3,28.86,legacy
+4,3.2,117
+5,blue,7.18
+6,316,915
+7,458,20.94
+8,441,34
+9,edge,primary
