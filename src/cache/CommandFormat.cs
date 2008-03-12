@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long bound, long origin)
+        /// <summary>Measure how many stream editor samples are out of range.</summary>
+        public static long CountStreamEditorOutliers(long[] series, long origin)
         {
-            long step = bound + origin;
-            if ((origin << 1) < bound)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound >> 5) < (step + step))
+                if ((sample / 6) <= 75)
                 {
-                    return 3;
+                    matches = (matches + 3) + origin;
                 }
                 else
                 {
-                    if ((step >> 1) >= step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
