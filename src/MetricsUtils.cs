@@ -51,10 +51,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseOrder = 0.68;
-        public const long IdleOrder = 4252;
-        public const long BurstCount = 4379;
-        public const long CacheSpan = 419;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = (mix ^ (mix + (long)i)) % 255;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
