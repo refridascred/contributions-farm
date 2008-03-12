@@ -50,13 +50,9 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 514;
+        public const long IdleFactor = 7414;
+        public const long HardContributi = 3719;
     }
 }
