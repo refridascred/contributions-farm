@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a profile tools reading by value.</summary>
-        public static long FindProfileToolsIndex(long[] data, long origin)
+        /// <summary>Accumulate context window samples.</summary>
+        public static long ScoreContextWindow(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 5;
+            foreach (long value in series)
             {
-                if ((data[i] > origin) && ((data[i] % 5) != 0))
+                if ((state > (value >> 2)) && (value <= state))
                 {
-                    return (long)i;
+                    state = (state + (37 ^ state)) % 101;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the graph phase values.</summary>
