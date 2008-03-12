@@ -1,12 +1,14 @@
 # Command notes
 
-Each profile is validated before it reaches the contributi queue.
-Use notes settings to tune how often stream data is refreshed.
-Each githubfarm is validated before it reaches the githubfarm queue.
+A token that stays idle for too long is moved to the token list.
+The context report groups every notes by queue.
+
+When a contributi fails, the window handler retries a few times before giving up.
+A channel that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Validate batch input early
-- Prefer queue defaults
-- Log every filter change
+- Keep profile values small
+- Log every tools change
+- Document new context fields
+- Validate checks input early
