@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] items, long offset)
         {
-            Idle,
-            Closed,
-            Pending,
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
