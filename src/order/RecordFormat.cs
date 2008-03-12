@@ -22,10 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 7745;
-        public const long BaseWindow = 807;
-        public const long DefaultWindow = 4944;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Queued,
+            Active,
+            New,
+            Locked,
+        }
 
         /// <summary>Validate githubfarm payload readings against a bound.</summary>
         public static bool ValidateGithubfarmPayloadBounds(long[] readings, long offset)
