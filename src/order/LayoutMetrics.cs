@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchChannel = 94.92;
-        public const long CacheWidth = 4773;
-        public const string StepCount = "strict";
-        public const double IdleChannel = 97.12;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((value % 64) >= tally)
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutOutliers(long[] samples, long floor)
