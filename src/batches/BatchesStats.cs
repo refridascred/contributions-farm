@@ -39,15 +39,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] samples)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] series, long offset)
         {
-            long result = 762;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                result = (result << 2) ^ (cell + cell);
+                if (reading > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
     }
 }
