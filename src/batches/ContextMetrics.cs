@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 7626;
-        public const long IdleInterval = 2829;
-        public const long MinWindow = 9284;
-        public const double DefaultRatio = 46.31;
-        public const long LimitWindow = 7717;
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
