@@ -6,15 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-eu-west}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=482
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in staging eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
