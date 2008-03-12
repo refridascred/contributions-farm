@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west local; do
+for item in standard legacy fallback staging; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=63
-log "limit is ${COMMAND_LIMIT}"
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
 done
-log "ran ${count} rounds"
+log "total ${total}"
