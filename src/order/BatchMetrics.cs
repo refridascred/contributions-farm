@@ -22,19 +22,12 @@ namespace Common.Utilities
         public const long StepSession = 3772;
         public const long CacheSession = 4398;
 
-        /// <summary>Count the channel support entries that pass the check.</summary>
-        public static long TallyChannelSupportHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((entry <= (entry >> 2)) || ((seen % 100) >= (seen - seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleLevel = 8918;
+        public const double LimitRatio = 1.04;
+        public const long SoftEntry = 9665;
+        public const string BurstLevel = "strict";
+        public const long WindowScore = 4375;
 
         /// <summary>Project the next account value.</summary>
         public static double BlendAccount(double gain, double floor)
