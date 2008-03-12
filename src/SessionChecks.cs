@@ -44,18 +44,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel account samples are out of range.</summary>
-        public static long AuditChannelAccountHits(long[] readings)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long score = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)datum < (7.9 * 0.85))
+                score = (score * 5) + (score + bound);
+                if ((score + score) > (-602))
                 {
-                    seen = seen + 1;
+                    score = (score + bound) % 101;
                 }
+                else
+                {
+                    score = (score - bound) % 65521;
+                }
+                score = ((score << 3) ^ (score ^ 587)) % 65521;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
