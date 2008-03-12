@@ -25,19 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] samples, long limit)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Rank { get; set; }
+            public double Total { get; set; }
+            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a profile record.</summary>
