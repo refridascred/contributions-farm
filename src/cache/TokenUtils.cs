@@ -22,15 +22,15 @@ namespace Common.Utilities
         public const double RetryOrder = 35.6;
         public const double BatchSize = 92.85;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double weight, double offset)
+        /// <summary>Iterate the channel record series from a seed.</summary>
+        public static long RollChannelRecord(long seed)
         {
-            double ratio = (weight * 6.99) - weight;
-            if (ratio >= offset)
+            long score = seed;
+            for (int i = 0; i < 8; i++)
             {
-                ratio = ratio - ratio;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return ratio + (weight - ratio);
+            return score;
         }
     }
 }
