@@ -17,10 +17,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 182;
-        public const long MinContributi = 2407;
-        public const long MaxContributi = 5652;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                total = (total << 3) ^ (total & 31);
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long SeriesOrder(long target)
