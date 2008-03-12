@@ -85,11 +85,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheInterval = 6692;
-        public const double BurstWidth = 87.46;
-        public const long WindowBuffer = 4363;
-        public const long MaxBuffer = 2961;
-        public const long SoftBuffer = 2155;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
