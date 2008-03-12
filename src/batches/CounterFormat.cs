@@ -24,11 +24,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] samples)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((9.93 - 5.0) <= (double)item)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
