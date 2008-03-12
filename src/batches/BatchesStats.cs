@@ -32,19 +32,10 @@ namespace Common.Utilities
         public const string WindowStream = "cached-edge";
         public const long CacheLevel = 3543;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] data, long step)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (((step / 2) < (matches ^ (-528))) && ((sample & 63) != (matches - sample)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryFilter = "cached-v2";
+        public const long HardCount = 5824;
+        public const double BurstFilter = 94.46;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long ScoreStream(long[] samples)
