@@ -67,17 +67,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleCount = "legacy-v2";
+        public const long MinNotes = 8;
+        public const long BurstNotes = 635;
     }
 }
