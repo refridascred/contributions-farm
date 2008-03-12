@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Measure how many contributi window samples are out of range.</summary>
+        public static long MeasureContributiWindowOutliers(long[] values, long limit)
         {
-            Stale,
-            Closed,
-            Draft,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((cell + 40) <= (count % 64)) && !((count - count) >= limit))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
