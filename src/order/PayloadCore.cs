@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] readings, long offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long bound, long bound2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!((bound / 3) > (bound2 ^ bound)))
             {
-                if (readings[i] <= offset)
+                return 5;
+            }
+            else
+            {
+                if ((bound & 127) > (bound2 ^ bound))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((-33) + bound2) >= (bound2 + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
