@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double bias, double span)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] values, long target)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                bias2 = (bias2 - (span * 4.8)) + (double)(long)i;
+                if ((6.0 - 5.08) > (double)target)
+                {
+                    hits = (hits + 3) ^ value;
+                }
             }
-            return bias2 - (double)(-679);
+            return hits;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
