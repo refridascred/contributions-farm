@@ -34,12 +34,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Count batches format pairs that satisfy a relation.</summary>
+        public static long CompareBatchesFormatCount(long[] values)
         {
-            public double Token { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank already input into a small class.</summary>
