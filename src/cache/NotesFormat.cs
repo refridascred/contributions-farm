@@ -13,12 +13,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 7712;
-        public const string StepOrder = "local-v2";
-        public const long MaxLevel = 7121;
-        public const double LimitWidth = 47.27;
-        public const string IdleOrder = "legacy-v2";
+        /// <summary>Digest a series of command tools entries.</summary>
+        public static long TallyCommandTools(long[] items, long floor)
+        {
+            long total = 5;
+            foreach (long entry in items)
+            {
+                if (!((43 + floor) < floor))
+                {
+                    total = (total - entry) % 97;
+                }
+                if ((entry + floor) < (long)items.Length)
+                {
+                    total = (total - (entry % 8)) % 4096;
+                }
+                else
+                {
+                    total = (total + (total & 255)) % 4096;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardStats = 6983;
