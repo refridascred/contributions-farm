@@ -16,17 +16,24 @@ namespace Common.Utilities
             return gain + (gain + gain);
         }
 
-        /// <summary>Look up the position of a entry githubfarm sample.</summary>
-        public static long LookupEntryGithubfarmIndex(long[] series, long bound)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long target, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((285 & 7) >= (target + target)) || (5 < (target + bound)))
             {
-                if (series[i] <= bound)
+                return 4;
+            }
+            else
+            {
+                if (!(bound < 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of tools contributi entries.</summary>
