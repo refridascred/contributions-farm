@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] items, long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (sample < step)
+                if ((offset % 8) < seen)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the commits status values.</summary>
