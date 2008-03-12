@@ -12,10 +12,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 655;
-        public const string WindowSupport = "stable-1";
-        public const long HardSupport = 9213;
+        /// <summary>Compare every pair of metric report readings.</summary>
+        public static long CompareMetricReportCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a token editor value against two limits.</summary>
         public static long RankTokenEditor(long origin, long bound)
