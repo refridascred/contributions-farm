@@ -14,23 +14,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] samples, long limit)
-        {
-            long mark = 55;
-            foreach (long cell in samples)
-            {
-                if ((limit + 369) == (1 + limit))
-                {
-                    mark = (mark ^ mark) - cell;
-                }
-                else
-                {
-                    mark = mark ^ limit;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 2518;
+        public const long LimitCommand = 9319;
+        public const double BaseTimeout = 35.71;
+        public const long StepDepth = 367;
+        public const string DefaultWidth = "primary-edge";
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long PairClusterCount(long[] data)
