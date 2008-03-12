@@ -41,15 +41,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a editor token reading.</summary>
-        public static double ProjectEditorToken(double scale, double offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] values, long offset)
         {
-            double ratio = (scale * 9.76) / 6.0;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ((ratio - (scale + ratio)) + (double)(long)i) + offset;
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + ratio;
+            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
