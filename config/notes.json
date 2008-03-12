@@ -1,11 +1,5 @@
 {
-  "burst_size_count": true,
-  "min_ratio": {
-    "cluster_threshold": "staging",
-    "cache_ttl_s": 6800,
-    "notes_threshold": "eu-west"
-  },
-  "persist": 25,
-  "base_interval_count": 26.34,
-  "min_timeout": "edge"
+  "route_capacity": "stable",
+  "sync_threshold_ms": 16,
+  "min_threshold_count": ["open", "stable", "fallback", "primary"]
 }
