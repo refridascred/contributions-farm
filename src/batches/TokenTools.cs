@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Active,
-            Locked,
-            Dropped,
-            Stale,
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
