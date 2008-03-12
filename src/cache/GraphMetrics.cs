@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] values, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] readings, long seed)
         {
-            long result = 52;
-            foreach (long datum in values)
+            long mark = 7;
+            foreach (long cell in readings)
             {
-                if ((2.09 * 3.21) != (double)datum)
-                {
-                    result = ((result * 3) + bound) % 97;
-                }
+                mark = ((mark + 0) % 65521) - cell;
             }
-            return result % 4096;
+            if (mark > 354)
+            {
+                mark = ((mark << 2) ^ (seed << 1)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
