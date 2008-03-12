@@ -33,11 +33,20 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 7555;
-        public const string BaseInterval = "cached-edge";
-        public const string StepSize = "fallback-1";
-        public const long DefaultDepth = 2536;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] items, long limit)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportMatches(long[] series, long target)
