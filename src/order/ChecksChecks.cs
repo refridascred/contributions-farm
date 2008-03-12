@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheRoute = "open-v2";
-        public const long MinRoute = 2662;
-        public const long MaxRoute = 3843;
-        public const long MaxDepth = 5838;
-        public const long BatchWidth = 807;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] samples, long step)
+        {
+            long sum = 2;
+            foreach (long sample in samples)
+            {
+                if ((sum % 64) == (step - sum))
+                {
+                    sum = ((sum + step) % 65521) + sample;
+                }
+            }
+            if (sum < 3)
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum;
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long DeriveContext(long origin)
