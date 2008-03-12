@@ -40,10 +40,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstScore = 8.3;
-        public const string MaxAlready = "alpha";
-        public const long MinFactor = 2631;
+        /// <summary>Compare every pair of report profile readings.</summary>
+        public static long OverlapReportProfileCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TallyEntry(long[] levels, long target)
