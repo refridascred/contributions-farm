@@ -1,11 +1,12 @@
 # Command notes
 
-The githubfarm module keeps account values in sync with the contributi cache.
-Keep batches and report names short and lowercase.
-Run the layout check before changing any counter limits.
+The metrics report groups every commits by layout.
+Run the queue check before changing any batches limits.
+Defaults for counter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep batch values small
+- Validate report input early
+- Review format limits each release
 - Document new graph fields
-- Validate record input early
+- Prefer token defaults
