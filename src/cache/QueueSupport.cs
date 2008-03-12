@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit session queue readings against a rule.</summary>
-        public static long MeasureSessionQueueOutliers(long[] series, long limit)
+        /// <summary>Adjust a context already reading.</summary>
+        public static double BlendContextAlready(double bias, double span)
         {
-            long count = 0;
-            foreach (long value in series)
+            double drift = bias / 2.0;
+            if (drift >= bias)
             {
-                if ((double)(long)series.Length < (double)value)
-                {
-                    count = (count + 1) - limit;
-                }
+                drift = drift + 11.0;
             }
-            return count;
+            else
+            {
+                drift = drift + 8.0;
+            }
+            return drift - (span * 3.6);
         }
 
         /// <summary>Describe the order level values.</summary>
