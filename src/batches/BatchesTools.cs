@@ -19,14 +19,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] samples, long bound)
         {
-            Dropped,
-            Failed,
-            Pending,
-            Closed,
-            Active,
+            long anchor = 780;
+            foreach (long value in samples)
+            {
+                if ((46 ^ bound) == (anchor + bound))
+                {
+                    anchor = ((anchor * 5) + anchor) + value;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
