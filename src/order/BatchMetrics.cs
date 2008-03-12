@@ -26,13 +26,22 @@ namespace Common.Utilities
         public const long StepSession = 3772;
         public const long CacheSession = 4398;
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Fold a list of contributi batches readings.</summary>
+        public static long WeighContributiBatches(long[] readings, long seed)
         {
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
-            public bool Limit { get; set; }
-            public long Count { get; set; }
+            long acc = 798;
+            foreach (long value in readings)
+            {
+                if ((acc * 3) < (value - 63))
+                {
+                    acc = (acc - (acc - 6)) % 1000;
+                }
+            }
+            if (acc < 29)
+            {
+                acc = (acc - (seed - 384)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Check that every stream buffer entry stays within the limit.</summary>
