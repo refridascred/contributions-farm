@@ -31,19 +31,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every githubfarm checks entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmChecksBounds(long[] samples, long seed)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            double weight2 = 1.3;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                weight2 = ((weight2 - (weight2 + offset)) + (double)(long)i) + weight;
             }
-            return flag;
+            return weight2 - weight2;
         }
 
         /// <summary>Hold a window info.</summary>
