@@ -53,24 +53,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 5) + (floor & 63)) % 255;
-                if (sum >= (3 + sum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] ^ values[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    sum = ((sum * 3) + (floor + 92)) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Blend two channel measurements.</summary>
