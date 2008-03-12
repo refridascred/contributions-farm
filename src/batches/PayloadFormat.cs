@@ -32,18 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] series)
+        /// <summary>Count the cluster support entries that pass the check.</summary>
+        public static long TallyClusterSupportHits(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((value * 5) < matches)
+                if (seen < (item & 255))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 3) + limit;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a cluster options.</summary>
