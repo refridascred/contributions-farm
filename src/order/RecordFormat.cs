@@ -28,12 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Validate githubfarm payload readings against a bound.</summary>
+        public static bool ValidateGithubfarmPayloadBounds(long[] readings, long offset)
         {
-            Locked,
-            Stale,
-            Done,
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
