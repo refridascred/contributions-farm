@@ -43,22 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] levels)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (((hits - hits) != ((-8) - hits)) || ((hits ^ hits) > (hits % 97)))
+                if (item >= target)
                 {
-                    hits = (hits + 2) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a graph options.</summary>
