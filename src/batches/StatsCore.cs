@@ -71,12 +71,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheLevel = 63.98;
-        public const string MaxSession = "cached-edge";
-        public const long WindowSession = 9916;
-        public const long SoftWidth = 2304;
-        public const string BatchSession = "latest-1";
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((long)items.Length == (hits + hits))
+                {
+                    hits = (hits + 2) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
