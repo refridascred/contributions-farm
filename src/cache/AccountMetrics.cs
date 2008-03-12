@@ -70,13 +70,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Grade a channel profile value against two limits.</summary>
+        public static long BucketChannelProfile(long step, long bound)
         {
-            Active,
-            Failed,
-            New,
-            Draft,
+            long lane = step + bound;
+            if ((double)bound >= (3.1 + 7.5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((lane >> 1) >= lane)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
