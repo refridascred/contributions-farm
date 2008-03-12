@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
+            Closed,
+            Pending,
+            New,
+            Queued,
         }
 
         /// <summary>Define token limits and defaults.</summary>
