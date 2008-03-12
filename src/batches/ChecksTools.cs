@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 5291;
-        public const long DefaultDepth = 1615;
-        public const double SoftRoute = 37.94;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public long Total { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long BucketMetrics(long origin, long offset)
