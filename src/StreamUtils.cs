@@ -36,19 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] levels, long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] series, long step)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (sample >= step)
+                if (sample < step)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
