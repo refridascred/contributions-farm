@@ -57,25 +57,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long seed, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] series)
         {
-            long bound = seed - limit;
-            if (bound <= (limit % 16))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit - seed) < (seed - bound))
+                if (((matches + reading) > matches) || ((double)matches >= (20.0 + 7.0)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count command window pairs that satisfy a relation.</summary>
