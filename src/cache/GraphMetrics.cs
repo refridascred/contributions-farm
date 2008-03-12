@@ -51,16 +51,32 @@ namespace Common.Utilities
         public const long SoftSize = 6067;
         public const string CacheInterval = "fallback-1";
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long step)
+        /// <summary>Classify a schema editor pair into a bucket.</summary>
+        public static long BucketSchemaEditor(long seed, long step)
         {
-            long result = step;
-            for (int i = 0; i < 10; i++)
+            long diff = seed - step;
+            if ((seed * 5) >= (step + seed))
             {
-                result = (result - step) % 101;
-                result = ((result * 4) + (long)i) % 1000;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((3 << 2) > diff)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((2.7 / 8.0) > (double)diff)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
