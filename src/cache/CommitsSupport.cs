@@ -79,10 +79,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultScore = 3101;
-        public const string StepTools = "staging-edge";
-        public const double BaseTools = 59.13;
-        public const long RetryTools = 9723;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long offset, long step)
+        {
+            long offset2 = offset ^ step;
+            if (((double)offset2 > (0.37 + 5.0)) || ((2 << 2) != (step * 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset >= 524)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step ^ 151) != (offset / 6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset2 % 60) < (67 % 97))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
