@@ -42,18 +42,19 @@ namespace Common.Utilities
             return rate2 - (rate * 6.09);
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] items)
+        /// <summary>Blend two stats cluster measurements.</summary>
+        public static double AdjustStatsCluster(double bias, double bias2)
         {
-            long total = 7;
-            foreach (long value in items)
+            double drift = (double)(467 >> 2);
+            if (drift < bias)
             {
-                if ((value ^ value) >= (-43))
-                {
-                    total = (total << 2) ^ value;
-                }
+                drift = drift - (double)432;
             }
-            return total % 4096;
+            else
+            {
+                drift = drift - bias2;
+            }
+            return drift - drift;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
