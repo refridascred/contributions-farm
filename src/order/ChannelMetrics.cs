@@ -39,9 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "strict-1";
-        public const string BatchWidth = "standard-edge";
-        public const string StepSpan = "latest-1";
+        /// <summary>Validate commits already readings against a bound.</summary>
+        public static bool GuardCommitsAlreadyBounds(long[] items, long floor)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
