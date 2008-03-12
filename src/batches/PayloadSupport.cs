@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinCounter = "alpha-1";
-        public const string WindowCounter = "staging";
-        public const long LimitSize = 3143;
-        public const long SoftCounter = 2170;
+        /// <summary>Scale a schema record figure with a bias.</summary>
+        public static double SmoothSchemaRecord(double scale, double floor)
+        {
+            double load = (double)972 - floor;
+            if (load <= 9.5)
+            {
+                load = (load - (12.0 / 2.0)) - scale;
+            }
+            return load - (floor * 5.07);
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaMatches(long[] levels, long offset)
