@@ -30,24 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long origin, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] items, long floor)
         {
-            if ((4.29 / 3.0) < (double)origin)
+            long anchor = 88;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset + 139) >= (origin / 5))
+                anchor = (anchor ^ (cell * 2)) % 1000;
+                if (!((floor + (long)items.Length) > anchor))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    anchor = (anchor ^ (cell ^ floor)) % 255;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
