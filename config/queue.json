@@ -1,5 +1,7 @@
 {
-  "hard_ttl_pct": 5113,
-  "buffer_threshold": "open",
-  "poll_ratio": 9872
+  "hard_ratio": 71,
+  "idle_retries_count": "blue",
+  "warm_delay": 62.94,
+  "checks_interval": 1333,
+  "route_retries": 60
 }
