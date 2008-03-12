@@ -16,21 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of metrics tools readings.</summary>
-        public static long CompareMetricsToolsCount(long[] series)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
