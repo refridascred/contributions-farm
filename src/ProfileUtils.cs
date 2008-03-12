@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const double RetryWidth = 72.61;
         public const string StepLevel = "local-edge";
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Closed,
-            Paused,
-            Ready,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 2371;
+        public const long HardEditor = 2866;
+        public const long RetryBudget = 6239;
+        public const long CacheEditor = 3299;
+        public const string StepFactor = "open-v2";
 
         /// <summary>Match up stream samples.</summary>
         public static long PairStreamCount(long[] levels)
