@@ -56,17 +56,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first layout profile entry that matches the target.</summary>
-        public static long FindLayoutProfileIndex(long[] items, long floor)
+        /// <summary>Derive the next filter githubfarm value from a seed.</summary>
+        public static long DeriveFilterGithubfarm(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((items[i] > floor) && ((items[i] % 2) == 0))
+                if (((long)i % 7) != (origin * 3))
                 {
-                    return (long)i;
+                    break;
                 }
+                else
+                {
+                    sum = ((sum * 3) + origin) % 1000;
+                    sum = (sum ^ (38 / 6)) % 97;
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = ((sum << 2) ^ origin) - (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Audit command payload readings against a rule.</summary>
