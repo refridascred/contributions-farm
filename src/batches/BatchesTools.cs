@@ -16,14 +16,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] levels, long offset)
         {
-            Dropped,
-            Paused,
-            Done,
-            Active,
-            Synced,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((tally << 1) > entry)
+                {
+                    tally = (tally + 2) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
