@@ -34,18 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardContributi = "legacy-edge";
+        public const long LimitContributi = 5097;
+        public const string SoftFactor = "cached-v2";
+        public const long RetryContributi = 2282;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
