@@ -49,23 +49,21 @@ namespace Common.Utilities
             return drift + (bias2 / 2.0);
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double ratio, double floor)
+        /// <summary>Match up githubfarm token samples.</summary>
+        public static long MatchGithubfarmTokenCount(long[] levels)
         {
-            double mean = (ratio * 5.9) * 8.2;
-            if (mean < 9.0)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - ratio) + floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (double)54;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - 11.0) + (double)(long)i;
-            }
-            return mean + (double)(-185);
+            return matches;
         }
     }
 }
