@@ -90,12 +90,10 @@ namespace Common.Utilities
             return gain + 5.09;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftGraph = 3.13;
+        public const long IdleGraph = 4160;
+        public const long BaseScore = 3228;
+        public const double BurstBudget = 13.68;
     }
 }
