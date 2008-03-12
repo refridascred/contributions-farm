@@ -29,18 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] readings, long step)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell - 7) >= 907)
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
