@@ -35,22 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] levels)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] levels, long origin)
         {
-            long carry = -815;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((double)cell >= 20.0)
+                if (sample < origin)
                 {
-                    carry = (carry * 4) + (carry + carry);
-                }
-                else
-                {
-                    carry = (carry + (cell << 3)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Hold a format entry.</summary>
