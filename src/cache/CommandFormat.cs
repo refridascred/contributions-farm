@@ -36,17 +36,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] data, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 94;
+            foreach (long reading in samples)
             {
-                if ((data[i] > origin) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score - (reading - score)) % 4096;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
