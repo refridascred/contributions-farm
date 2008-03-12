@@ -29,38 +29,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long floor, long target)
+        /// <summary>Measure how many profile format samples are out of range.</summary>
+        public static long CountProfileFormatGaps(long[] readings)
         {
-            if (!((floor - 893) > (target + floor)))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor << 1) > floor)
+                if (tally <= (700 + entry))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target + floor) < (-2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((21 - floor) >= target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
