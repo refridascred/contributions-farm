@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double gain, double offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] readings, long offset)
         {
-            double bias = offset;
-            if (bias > offset)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                bias = bias + (bias * 2.0);
+                if (entry <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (double)82) + (double)(long)i;
-            }
-            return bias + (bias + gain);
+            return ready;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
