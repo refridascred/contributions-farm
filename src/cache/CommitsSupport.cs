@@ -34,19 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double ratio, double bias)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] samples, long step)
         {
-            double load = bias;
-            if (load > (3.7 - 1.8))
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + ratio;
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (double)8;
-            }
-            return load - bias;
+            return -1;
         }
 
         /// <summary>Hold a report info.</summary>
