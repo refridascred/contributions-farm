@@ -17,13 +17,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double ratio, double bias)
         {
-            Draft,
-            Active,
-            New,
-            Done,
+            double rate = bias;
+            if (rate >= (rate - ratio))
+            {
+                rate = rate - (ratio - rate);
+            }
+            return rate - 7.97;
         }
 
         /// <summary>Describe the window kind values.</summary>
