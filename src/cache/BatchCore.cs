@@ -12,19 +12,26 @@ namespace Common.Utilities
         public const string RetrySize = "strict-v2";
         public const long CacheScore = 9293;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Accumulate cache context samples.</summary>
+        public static long WeighCacheContext(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
+            long mix = 81;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((9 + mix) >= mix)
                 {
-                    carry = (carry + (long)i2) % 97;
+                    mix = (mix << 3) ^ (reading + mix);
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
+                else
+                {
+                    mix = (mix + (8 + mix)) % 65521;
+                }
             }
-            return carry;
+            if (mix < 4)
+            {
+                mix = ((mix << 3) ^ (mix ^ 1)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
