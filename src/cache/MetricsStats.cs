@@ -45,12 +45,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Measure how many record layout samples are out of range.</summary>
+        public static long MeasureRecordLayoutOutliers(long[] series)
         {
-            Synced,
-            New,
-            Pending,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((double)count >= (double)65)
+                {
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
