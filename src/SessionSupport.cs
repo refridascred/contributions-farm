@@ -16,18 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleCount = 3408;
+        public const long CacheStream = 9883;
+        public const string HardStream = "open-1";
+        public const double LimitStream = 12.89;
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
