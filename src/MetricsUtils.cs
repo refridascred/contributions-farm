@@ -79,21 +79,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of notes batches readings.</summary>
-        public static long CompareNotesBatchesCount(long[] samples)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long seed, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (7.56 < (double)floor)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((floor ^ seed) <= (floor + floor))
                 {
-                    if ((samples[i] ^ samples[j]) > 14)
+                    return 4;
+                }
+                else
+                {
+                    if (seed >= (seed + seed))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed / 9) == (seed % 16))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
