@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 2787;
-        public const long WindowEditor = 4129;
-        public const long StepEditor = 6281;
-        public const double HardDepth = 20.1;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
