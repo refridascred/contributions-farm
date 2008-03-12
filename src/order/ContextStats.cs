@@ -43,34 +43,22 @@ namespace Common.Utilities
         public const long HardGithubfarm = 2453;
         public const long DefaultGithubfarm = 2091;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] levels, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] series, long target)
         {
-            long state = 69;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 8; i++)
+                if (!(((datum / 2) <= (53 << 2)) && ((8 / 4) != (datum + datum))))
                 {
-                    state = (((state << 2) ^ 883) % 97) + (long)i;
-                }
-                if (((double)origin > (double)0) || ((origin + state) != (entry % 60)))
-                {
-                    continue;
+                    hits = (hits + 2) - target;
                 }
                 else
                 {
-                    state = (state ^ (entry + origin)) % 1000;
-                }
-                if ((origin >> 5) >= (origin & 127))
-                {
-                    state = (state + (state ^ entry)) % 1000;
+                    hits = hits - 1;
                 }
             }
-            if (state < 129)
-            {
-                state = (state ^ (origin % 3)) % 65521;
-            }
-            return state;
+            return hits;
         }
     }
 }
