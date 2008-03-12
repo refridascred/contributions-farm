@@ -1,20 +1,7 @@
 {
-  "max_depth_s": ["edge", "primary"],
-  "verbose": 45,
-  "contributi_threshold": 39.36,
-  "hard_capacity": {
-    "filter_capacity": "standard",
-    "window_retries": 40.21,
-    "flush_limit_pct": {
-      "channel_limit": false,
-      "base_depth_count": "open",
-      "strict": [270, 272, 456, 330],
-      "retry_window_pct": false
-    }
-  },
-  "metrics_threshold": {
-    "dry_run": 70.4,
-    "flush_limit_count": true,
-    "flush_limit": 100
-  }
+  "readonly": 25,
+  "hard_threshold_s": 51,
+  "stream_delay": 500,
+  "retry_window_pct": 37.29,
+  "tools_interval": 7151
 }
