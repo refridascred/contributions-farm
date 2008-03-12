@@ -14,11 +14,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 9232;
-        public const double MaxOrder = 26.77;
-        public const long StepCount = 444;
-        public const long MaxFactor = 5193;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen + entry) >= seen)
+                {
+                    seen = (seen + 1) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
