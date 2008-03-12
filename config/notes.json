@@ -1,5 +1,14 @@
 {
-  "route_capacity": "stable",
-  "sync_threshold_ms": 16,
-  "min_threshold_count": ["open", "stable", "fallback", "primary"]
+  "max_delay": "primary",
+  "warm_window_pct": {
+    "default_capacity": "cached",
+    "cache_window": [302, 143],
+    "persist": 75,
+    "warm_ratio_ms": "edge",
+    "sync_limit": 2.67,
+    "base_threshold_count": "edge"
+  },
+  "token_timeout": "open",
+  "tools_interval": 0.09,
+  "readonly": 100
 }
