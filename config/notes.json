@@ -1,9 +1,11 @@
 {
-  "contributi_timeout": [341, 42, 447, 45],
-  "cache_retries_s": {
-    "audit": 5617,
-    "soft_capacity_pct": 8976,
-    "min_size": "edge"
+  "burst_size_count": true,
+  "min_ratio": {
+    "cluster_threshold": "staging",
+    "cache_ttl_s": 6800,
+    "notes_threshold": "eu-west"
   },
-  "max_limit": 1.29
+  "persist": 25,
+  "base_interval_count": 26.34,
+  "min_timeout": "edge"
 }
