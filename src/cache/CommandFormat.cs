@@ -18,11 +18,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 507;
-        public const double HardStats = 81.55;
-        public const double MaxStats = 5.02;
-        public const string BurstBudget = "primary-v2";
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] samples, long target)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
