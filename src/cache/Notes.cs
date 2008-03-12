@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Measure how many queue format samples are out of range.</summary>
+        public static long CountQueueFormatOutliers(long[] data, long target)
         {
-            Queued,
-            Dropped,
-            New,
-            Closed,
-            Idle,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (7.2 > (double)target)
+                {
+                    seen = (seen + 1) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
