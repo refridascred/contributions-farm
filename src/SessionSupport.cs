@@ -14,11 +14,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 3434;
-        public const long SoftFormat = 8885;
-        public const long LimitFormat = 3477;
-        public const double HardCount = 73.36;
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double weight, double bias)
+        {
+            double ratio = weight / 3.0;
+            if (ratio < (bias - bias))
+            {
+                ratio = ratio - 0.1;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - 10.0) + (double)(long)i;
+            }
+            return ratio + (ratio / 3.0);
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long FoldCommits(long[] items)
