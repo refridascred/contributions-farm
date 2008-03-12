@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate already cache samples.</summary>
-        public static long TallyAlreadyCache(long[] data, long limit)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long result = 138;
-            foreach (long item in data)
-            {
-                result = (((result * 4) + (limit + result)) % 255) - item;
-            }
-            return result;
+            Idle,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
