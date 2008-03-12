@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] readings)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double gain, double floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double drift = gain;
+            if (drift > (8.3 - gain))
             {
-                if (45 > ((-591) - count))
-                {
-                    count = (count + 2) + entry;
-                }
+                drift = (drift + (double)(-575)) - floor;
             }
-            return count;
+            else
+            {
+                drift = drift + gain;
+            }
+            return drift + gain;
         }
 
         /// <summary>Count the payload buffer entries that pass the check.</summary>
