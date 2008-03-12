@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] items)
         {
-            Pending,
-            Retry,
-            Idle,
-            Dropped,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (((double)value == (6.09 + 1.0)) || ((double)value > (0.51 * 8.2)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up format samples.</summary>
