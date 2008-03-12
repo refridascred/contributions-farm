@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers.</summary>
     public static class Stream
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] readings, long origin)
+        /// <summary>Count the route format entries that pass the check.</summary>
+        public static long CountRouteFormatHits(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (datum >= origin)
+                if ((double)offset < (18.0 * 0.71))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) - sample;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
