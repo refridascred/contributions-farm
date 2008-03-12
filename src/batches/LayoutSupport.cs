@@ -38,14 +38,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public long Offset { get; set; }
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftRoute = 38.07;
+        public const long BaseBudget = 1221;
+        public const string BurstTimeout = "alpha-edge";
+        public const long MaxInterval = 2802;
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
