@@ -44,18 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] levels)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long limit)
         {
-            long state = 89;
-            foreach (long entry in levels)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((double)entry >= 4.67))
-                {
-                    state = (state << 3) ^ (6 & 127);
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return state;
+            return result;
         }
     }
 }
