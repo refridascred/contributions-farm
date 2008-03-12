@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a commits schema value against two limits.</summary>
-        public static long ClassifyCommitsSchema(long seed, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] samples)
         {
-            if ((seed >> 4) >= (44 & 3))
+            long sum = 64;
+            foreach (long reading in samples)
             {
-                return 0;
+                sum = (sum ^ (reading - sum)) % 101;
             }
-            else
-            {
-                if (!(34 > (origin & 255)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Rank entry record input into a small class.</summary>
