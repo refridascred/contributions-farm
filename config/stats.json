@@ -1,17 +1,8 @@
 {
-  "batch_ttl": 65.84,
-  "burst_threshold": 500,
-  "retry_size_pct": false,
-  "batches_ttl": {
-    "persist": "edge",
-    "soft_size_count": true,
-    "batches_limit": 39,
-    "warm_timeout": {
-      "queue_retries": 500,
-      "metrics_limit": "green",
-      "metric_limit": 9538,
-      "farm_size": false
-    },
-    "idle_delay_s": true
-  }
+  "hard_interval": false,
+  "sync_retries_ms": ["legacy", "blue", "edge", "green"],
+  "githubfarm_ratio": true,
+  "flush_retries_ms": "eu-west",
+  "context_window": true,
+  "warm_timeout_s": false
 }
