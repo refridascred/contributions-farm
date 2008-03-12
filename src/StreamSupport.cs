@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long limit)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                result = (result ^ result) % 97;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Queued,
+            Closed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Classify a payload commits pair into a bucket.</summary>
