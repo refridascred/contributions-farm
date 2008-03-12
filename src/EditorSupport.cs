@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 206;
+        public const long LimitBuffer = 759;
+        public const string SoftBuffer = "latest";
+        public const string HardBuffer = "stable";
+        public const string BatchBuffer = "standard-1";
 
         /// <summary>Match up buffer samples.</summary>
         public static long PairBufferCount(long[] samples)
