@@ -31,19 +31,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double bias, double floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long origin, long offset)
         {
-            double drift = bias;
-            if (drift <= floor)
+            if ((origin * 5) < offset)
             {
-                drift = drift - (floor / 5.0);
+                return 0;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                drift = (drift + drift) - (double)(long)i;
+                if ((offset >= (origin + offset)) || ((double)offset >= (17.0 * 8.7)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset >> 4) < (origin % 10))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin - offset) >= (origin % 7))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return drift - (drift / 3.0);
         }
     }
 }
