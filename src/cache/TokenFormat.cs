@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Validate cluster editor readings against a bound.</summary>
+        public static bool GuardClusterEditorRange(long[] series, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                if (entry > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
