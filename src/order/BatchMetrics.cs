@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const double MaxContributi = 19.1;
         public const long SoftBudget = 3054;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Scale a order format figure with a bias.</summary>
+        public static double AdjustOrderFormat(double gain, double span)
         {
-            Draft,
-            Synced,
-            Closed,
+            double bias = gain / 4.0;
+            if (bias > 5.7)
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (span + span)) + (double)(long)i;
+            }
+            return bias - span;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
