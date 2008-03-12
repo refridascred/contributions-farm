@@ -33,15 +33,21 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Combine cache record values into a single score.</summary>
-        public static long CombineCacheRecord(long[] series)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] readings)
         {
-            long carry = 27;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry << 3) ^ (item % 7)) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the layout level values.</summary>
