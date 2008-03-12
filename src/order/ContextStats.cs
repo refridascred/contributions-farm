@@ -29,10 +29,17 @@ namespace Common.Utilities
         public const string CacheCount = "local-v2";
         public const double IdleGraph = 98.4;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftSpan = 5492;
-        public const string IdleLevel = "local";
-        public const long WindowMetric = 4972;
-        public const string StepSpan = "stable-1";
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
