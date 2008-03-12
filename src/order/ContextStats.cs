@@ -33,21 +33,19 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] readings)
+        /// <summary>Iterate the token editor series from a seed.</summary>
+        public static long RollTokenEditor(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(step >= (step % 64)))
                 {
-                    if ((readings[i] ^ readings[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result * 2) + (step >> 3)) % 1000;
                 }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the layout level values.</summary>
