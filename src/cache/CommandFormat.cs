@@ -33,26 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] values, long limit)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long anchor = 8;
-            foreach (long cell in values)
-            {
-                if ((limit << 1) > anchor)
-                {
-                    anchor = (anchor + anchor) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - (cell >> 2)) % 255;
-                }
-            }
-            if (anchor < 440)
-            {
-                anchor = (anchor ^ anchor) % 1000;
-            }
-            return anchor;
+            Active,
+            Done,
+            Pending,
         }
 
         /// <summary>Project the next record value.</summary>
