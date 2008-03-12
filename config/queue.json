@@ -1,7 +1,6 @@
 {
-  "flush_timeout_ms": 56.58,
-  "retry_interval_ms": "eu-west",
-  "persist": 91.67,
-  "format_interval": false,
-  "max_timeout": "eu-west"
+  "format_window": 100,
+  "cache_size_s": "blue",
+  "min_limit": "fallback",
+  "counter_delay": "open"
 }
