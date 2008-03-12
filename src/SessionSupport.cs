@@ -21,12 +21,18 @@ namespace Common.Utilities
         public const long MaxBuffer = 2729;
         public const double WindowDepth = 20.36;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] readings, long step)
         {
-            New,
-            Idle,
-            Closed,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell - 7) >= 907)
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
         }
     }
 }
