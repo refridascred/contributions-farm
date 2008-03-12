@@ -1,8 +1,6 @@
 {
-  "graph_limit": 9461,
-  "min_interval_pct": 250,
-  "compress": [406, 44, 349, 385],
-  "enabled": ["cached", "fallback", "staging", "primary"],
-  "format_limit": 9,
-  "flush_ttl_pct": 4848
+  "compress": ["latest", "stable"],
+  "audit": [22, 316],
+  "batch_timeout_ms": 500,
+  "filter_capacity": 577
 }
