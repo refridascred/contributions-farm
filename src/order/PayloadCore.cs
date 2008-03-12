@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 1955;
-        public const long CacheBudget = 6684;
-        public const string MaxChannel = "strict";
-        public const long RetryRatio = 363;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
