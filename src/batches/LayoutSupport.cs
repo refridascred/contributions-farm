@@ -41,10 +41,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSize = 7017;
-        public const long DefaultDepth = 8486;
-        public const long MaxSession = 1399;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] data, long step)
+        {
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Blend two session channel measurements.</summary>
         public static double SmoothSessionChannel(double ratio, double bias)
