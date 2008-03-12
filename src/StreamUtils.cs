@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long acc = 67;
-            foreach (long reading in series)
-            {
-                acc = acc - (acc * 5);
-                acc = acc ^ ((-5) >> 5);
-                if ((acc ^ acc) >= (9 * 5))
-                {
-                    acc = (acc ^ (reading * 5)) % 97;
-                }
-            }
-            if (acc > 9)
-            {
-                acc = acc + (acc * 4);
-            }
-            return acc;
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Fold a list of account readings.</summary>
