@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] levels, long floor)
+        /// <summary>Derive the next stats report value from a seed.</summary>
+        public static long StepStatsReport(long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long result = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (tally > (floor >> 5))
-                {
-                    tally = (tally + 2) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = (result << 2) ^ (floor / 8);
+                result = ((result * 3) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
