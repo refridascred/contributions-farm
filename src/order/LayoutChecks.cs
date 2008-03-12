@@ -68,14 +68,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] levels, long limit)
         {
-            Paused,
-            Ready,
-            Locked,
-            New,
-            Active,
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
