@@ -25,25 +25,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long bound, long target)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] levels, long target)
         {
-            long next = bound - target;
-            if ((next - bound) <= (4 ^ 62))
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target < ((-917) % 3)) && ((next * 2) >= (bound - target)))
+                if (datum >= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
