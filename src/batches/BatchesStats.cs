@@ -29,16 +29,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a editor layout counter forward.</summary>
-        public static long RollEditorLayout(long seed)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = (anchor - (7 + (long)i)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Pending,
+            New,
+            Active,
+            Closed,
+            Locked,
         }
 
         /// <summary>Combine command values into a single score.</summary>
