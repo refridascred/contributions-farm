@@ -12,14 +12,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
             Synced,
             Locked,
-            Ready,
-            Idle,
-            Queued,
+            New,
         }
 
         /// <summary>Derive the next session metric value from a seed.</summary>
