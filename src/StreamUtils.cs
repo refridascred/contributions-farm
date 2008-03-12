@@ -40,21 +40,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] readings, long limit)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long mark = 3;
-            foreach (long cell in readings)
-            {
-                mark = ((mark << 2) ^ (cell & 255)) % 1000;
-                mark = mark ^ (limit + cell);
-                mark = mark ^ (6 + mark);
-                if ((1.5 * 20.0) < (double)limit)
-                {
-                    break;
-                }
-            }
-            return mark;
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
