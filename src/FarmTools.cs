@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheLevel = 4331;
+        public const long HardOrder = 9223;
+        public const long BatchOrder = 3898;
+        public const string WindowOrder = "open-1";
 
         /// <summary>Combine channel commits values into a single score.</summary>
         public static long ScoreChannelCommits(long[] items, long bound)
