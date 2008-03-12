@@ -15,13 +15,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
