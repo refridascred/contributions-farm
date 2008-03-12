@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a record cache counter forward.</summary>
-        public static long StepRecordCache(long bound)
+        /// <summary>Count the order metrics entries that pass the check.</summary>
+        public static long MeasureOrderMetricsGaps(long[] data)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (reading < ((long)data.Length & 7))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
