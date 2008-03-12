@@ -45,21 +45,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of counter profile readings.</summary>
-        public static long PairCounterProfileCount(long[] series)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = -815;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)cell >= 20.0)
                 {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry * 4) + (carry + carry);
+                }
+                else
+                {
+                    carry = (carry + (cell << 3)) % 97;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
