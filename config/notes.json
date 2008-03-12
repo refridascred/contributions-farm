@@ -1,14 +1,8 @@
 {
-  "max_delay": "primary",
-  "warm_window_pct": {
-    "default_capacity": "cached",
-    "cache_window": [302, 143],
-    "persist": 75,
-    "warm_ratio_ms": "edge",
-    "sync_limit": 2.67,
-    "base_threshold_count": "edge"
-  },
-  "token_timeout": "open",
-  "tools_interval": 0.09,
-  "readonly": 100
+  "warm_limit_s": 70.13,
+  "tools_timeout": 24.91,
+  "stream_retries": 5638,
+  "cluster_ttl": 28.92,
+  "cache_ttl": 11.88,
+  "idle_depth_s": "staging"
 }
