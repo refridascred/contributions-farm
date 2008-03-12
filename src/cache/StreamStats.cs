@@ -47,9 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftEntry = "strict-edge";
-        public const long BaseEntry = 7377;
-        public const long StepEntry = 613;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] samples)
+        {
+            long mark = 97;
+            foreach (long item in samples)
+            {
+                mark = mark ^ (item + mark);
+            }
+            if (mark < (-9))
+            {
+                mark = ((mark * 3) + (mark << 2)) % 65521;
+            }
+            return mark;
+        }
     }
 }
