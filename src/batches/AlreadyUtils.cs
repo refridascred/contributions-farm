@@ -19,16 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Count the payload buffer entries that pass the check.</summary>
+        public static long AuditPayloadBufferGaps(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                score = (score << 2) ^ score;
-                score = ((score * 2) + (long)i) % 65521;
+                if ((1 + datum) == (datum * 3))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
