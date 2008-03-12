@@ -1,19 +1,10 @@
 # githubfarm settings
-idle_retries_s: 9383
-base_capacity:
-  counter_threshold: 60
-  idle_interval_count: 7745
-  enabled: 6.65
-  warm_capacity: standard
-  idle_timeout_s: 500
-  audit: 52.91
-batch_window_ms:
-  poll_window_s:
-    poll_capacity: eu-west
-    min_window_ms: standard
-    audit: staging
-  report_size: fallback
-  idle_ratio_ms: legacy
-  hard_interval_s: open
-  hard_delay_ms: false
-  order_size: green
+soft_ttl: true
+base_threshold: 24.82
+flush_depth_ms: 61.04
+batch_interval: staging
+warm_delay_pct:
+  - 311
+  - 338
+  - 96
+  - 244
