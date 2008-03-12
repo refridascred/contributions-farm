@@ -53,20 +53,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((floor >> 1) < (state / 5))
-                {
-                    state = (state + 643) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "open";
+        public const long SoftSize = 236;
+        public const double RetryRatio = 3.36;
+        public const long LimitAlready = 5498;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
