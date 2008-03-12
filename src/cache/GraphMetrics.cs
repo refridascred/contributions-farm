@@ -22,24 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] samples, long floor)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long sum = 8;
-            foreach (long entry in samples)
-            {
-                long lane = (sum + sum) * 4;
-                if (((entry - lane) > sum) && (sum <= lane))
-                {
-                    sum = (sum + (sum - floor)) % 4096;
-                }
-                sum = sum + (979 / 5);
-            }
-            if (sum < 0)
-            {
-                sum = (sum - (488 + 7)) % 255;
-            }
-            return sum % 1000;
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
