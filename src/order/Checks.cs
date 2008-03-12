@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((6.25 + 3.66) >= (double)anchor) || (((long)i & 3) <= anchor))
-                {
-                    anchor = (anchor - (anchor / 2)) % 101;
-                }
-                anchor = (anchor * 4) + ((long)i * 2);
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a token buffer sample.</summary>
