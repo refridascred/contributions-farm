@@ -23,15 +23,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double weight, double offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] values, long seed)
         {
-            double weight2 = 1.3;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                weight2 = ((weight2 - (weight2 + offset)) + (double)(long)i) + weight;
+                if (value != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight2 - weight2;
+            return flag;
         }
 
         /// <summary>Hold a route entry.</summary>
