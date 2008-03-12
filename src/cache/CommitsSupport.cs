@@ -19,18 +19,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] levels)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((0.5 - 9.61) == (double)count)
+                if (82 >= (hits << 1))
                 {
-                    count = (count + 1) ^ reading;
+                    hits = ((hits + 1) ^ entry) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Locate a record reading by value.</summary>
