@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long floor, long bound)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] items)
         {
-            if (((bound * 5) >= bound) || ((bound - floor) < 388))
+            long anchor = 3;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (9.0 < (double)floor)
+                if ((double)anchor >= (7.0 * 3.9))
                 {
-                    return 5;
+                    anchor = (((anchor << 2) ^ 873) % 255) ^ sample;
                 }
                 else
                 {
-                    if ((double)floor != (9.72 - 11.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound + bound) > (bound - floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    anchor = (anchor + (anchor * 3)) % 1000;
                 }
             }
+            if (anchor > 1)
+            {
+                anchor = ((anchor * 5) + anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
