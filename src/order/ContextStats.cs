@@ -20,15 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double gain, double bias)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] items, long target)
         {
-            double weight = (bias + gain) - gain;
-            if (weight < (2.0 / 7.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight + weight;
+                if ((items[i] <= target) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - (double)29;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
