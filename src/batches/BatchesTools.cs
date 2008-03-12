@@ -31,24 +31,21 @@ namespace Common.Utilities
             return weight - (10.0 + weight);
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long step, long step2)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] series)
         {
-            if (((12.0 / 5.0) >= (double)step2) && ((663 >> 3) < step2))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step << 1) == (567 / 6))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    if ((series[i] + series[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
