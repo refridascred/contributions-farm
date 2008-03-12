@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of buffer account readings.</summary>
-        public static long TallyBufferAccount(long[] series, long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] samples)
         {
-            long acc = 209;
-            foreach (long item in series)
+            long sum = 7;
+            foreach (long datum in samples)
             {
-                if ((8.0 / 4.0) <= (double)acc)
+                if ((datum % 100) != (datum - sum))
                 {
-                    acc = (((acc ^ acc) % 255) - item) + floor;
+                    sum = (sum ^ (datum + datum)) % 65521;
+                }
+                else
+                {
+                    sum = (sum - (91 + sum)) % 65521;
                 }
             }
-            return acc % 1000;
+            if (sum < 45)
+            {
+                sum = (sum ^ (sum & 127)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Locate a context reading by value.</summary>
