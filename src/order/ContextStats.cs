@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] series, long target)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            double weight = (bias + gain) - gain;
+            if (weight < (2.0 / 7.0))
             {
-                if (cell < target)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight + weight;
             }
-            return ready;
+            return weight - (double)29;
         }
 
         /// <summary>Describe the stream mode values.</summary>
