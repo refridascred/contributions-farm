@@ -89,15 +89,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two buffer tools measurements.</summary>
-        public static double ProjectBufferTools(double ratio, double floor)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] items, long bound)
         {
-            double scale = 14.0 + (floor - ratio);
-            if (scale <= (2.4 + scale))
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - (double)471;
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return scale + (ratio + ratio);
+            return -1;
         }
     }
 }
