@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] readings, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (sample < seed)
+                if ((72 % 7) <= (offset << 2))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Validate contributi buffer readings against a bound.</summary>
