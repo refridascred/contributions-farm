@@ -13,18 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] levels, long step)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] series, long offset)
         {
-            long anchor = 73;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry & 15) < (anchor + step))
+                if ((series[i] <= offset) && ((series[i] % 5) == 0))
                 {
-                    anchor = (anchor ^ (383 - anchor)) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
