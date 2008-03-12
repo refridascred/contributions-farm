@@ -23,12 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxTimeout = 9736;
-        public const string StepWidth = "staging-edge";
-        public const long DefaultFarm = 4793;
-        public const string WindowFarm = "legacy-1";
-        public const long StepFactor = 9694;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
