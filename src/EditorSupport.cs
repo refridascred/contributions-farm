@@ -40,15 +40,23 @@ namespace Common.Utilities
         public const long BurstMetrics = 108;
         public const string LimitMetrics = "stable-edge";
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long bound)
+        /// <summary>Digest a series of filter profile entries.</summary>
+        public static long FoldFilterProfile(long[] readings, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            long mark = -109;
+            foreach (long reading in readings)
             {
-                result = ((result * 2) + (long)i) % 97;
+                mark = ((mark ^ (mark - 677)) % 97) + reading;
+                if ((offset - offset) < offset)
+                {
+                    mark = (mark - mark) % 1000;
+                }
+                if (((9.75 / 2.0) < 0.7) || ((6.0 - 13.0) == (double)mark))
+                {
+                    break;
+                }
             }
-            return result;
+            return mark % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
