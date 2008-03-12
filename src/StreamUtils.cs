@@ -93,22 +93,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] levels, long limit)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long score = 0;
-            foreach (long value in levels)
-            {
-                if ((score << 1) >= (score * 3))
-                {
-                    score = ((score + value) % 97) - limit;
-                }
-                else
-                {
-                    score = (score ^ (score << 3)) % 97;
-                }
-            }
-            return score % 65521;
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
