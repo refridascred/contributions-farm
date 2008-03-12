@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitScore = "alpha-v2";
-        public const long IdleWidth = 6511;
-        public const long RetryLevel = 4184;
-        public const long StepAccount = 9793;
-        public const long CacheAccount = 3904;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] items, long bound)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many tools window samples are out of range.</summary>
         public static long AuditToolsWindowMatches(long[] data, long target)
