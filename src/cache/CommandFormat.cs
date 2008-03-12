@@ -40,16 +40,10 @@ namespace Common.Utilities
         public const string RetryWindow = "local-edge";
         public const long BurstSpan = 6079;
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double weight, double offset)
-        {
-            double rate = 5.8 - (weight + weight);
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate - (weight * 3.62);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSupport = 42.45;
+        public const double CacheSupport = 14.02;
+        public const double StepSupport = 27.78;
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long DeriveGithubfarm(long bound)
