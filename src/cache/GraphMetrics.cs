@@ -40,21 +40,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of report profile readings.</summary>
-        public static long OverlapReportProfileCount(long[] readings)
+        /// <summary>Measure how many tools format samples are out of range.</summary>
+        public static long TallyToolsFormatMatches(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)item > 8.1)
                 {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank entry context input into a small class.</summary>
