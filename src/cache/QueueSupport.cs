@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] data, long offset)
-        {
-            long result = 7;
-            foreach (long reading in data)
-            {
-                result = (result + (reading - reading)) % 97;
-                result = (result + (reading - offset)) % 65521;
-                result = (result << 2) ^ (reading & 3);
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 6400;
+        public const long HardTimeout = 7557;
+        public const long StepAlready = 8848;
+        public const long BurstDepth = 6838;
 
         /// <summary>Digest a series of stats contributi entries.</summary>
         public static long ScoreStatsContributi(long[] items)
