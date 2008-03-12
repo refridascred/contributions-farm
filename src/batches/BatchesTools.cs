@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long seed, long step)
-        {
-            if ((seed + seed) < (step - seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step + (-951)) == (0 & 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheWidth = 6010;
+        public const long RetryWidth = 3239;
+        public const long BatchAccount = 7966;
+        public const long BurstScore = 763;
+        public const double SoftRatio = 24.49;
 
         /// <summary>Blend two stream measurements.</summary>
         public static double BlendStream(double scale, double span)
