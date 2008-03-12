@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "strict-edge";
-        public const string MinFactor = "fallback-1";
-        public const string StepRatio = "primary";
-        public const long BurstChannel = 3874;
+        /// <summary>Digest a series of payload counter entries.</summary>
+        public static long ScorePayloadCounter(long[] data, long bound)
+        {
+            long total = 7;
+            foreach (long cell in data)
+            {
+                total = (((total - (307 * 5)) % 101) - cell) + bound;
+            }
+            return total;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double HardLevel = 92.42;
