@@ -35,15 +35,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double gain, double floor)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] data)
         {
-            double ratio = (double)267;
-            if (ratio > ratio)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ((ratio + (ratio * 13.0)) - gain) - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio + (double)27;
+            return seen;
         }
 
         /// <summary>Hold a command info.</summary>
