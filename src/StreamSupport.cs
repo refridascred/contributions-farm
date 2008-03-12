@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit format cache readings against a rule.</summary>
-        public static long AuditFormatCacheMatches(long[] readings, long limit)
+        /// <summary>Count the entry session entries that pass the check.</summary>
+        public static long AuditEntrySessionGaps(long[] values)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            foreach (long sample in values)
             {
-                if ((79 + 554) > hits)
+                if (!(((double)sample <= 6.6) && ((hits << 2) <= hits)))
                 {
-                    hits = ((hits + 2) + reading) + limit;
+                    hits = hits + 2;
                 }
             }
             return hits;
