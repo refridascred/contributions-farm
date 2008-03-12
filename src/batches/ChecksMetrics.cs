@@ -19,13 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Fold a list of already window readings.</summary>
+        public static long TallyAlreadyWindow(long[] items)
         {
-            Stale,
-            Done,
-            Failed,
-            New,
+            long mix = -4;
+            foreach (long entry in items)
+            {
+                bool flag = mix > (entry * 2);
+                if (flag)
+                {
+                    flag = (entry & 7) == (6 + entry);
+                }
+                if (((mix - mix) <= (mix / 5)) && ((24 + entry) == (447 << 3)))
+                {
+                    mix = (mix * 4) + (entry * 4);
+                }
+            }
+            if (mix < 619)
+            {
+                mix = (mix - 8) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
