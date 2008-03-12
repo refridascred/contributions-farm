@@ -1,13 +1,12 @@
 {
-  "metrics_limit": 50.13,
-  "audit": "fallback",
-  "poll_threshold": {
-    "flush_interval_pct": "standard",
-    "poll_retries_pct": ["blue", "cached", "stable", "latest"],
-    "record_timeout": true,
-    "readonly": ["blue", "cached"]
+  "poll_timeout": ["strict", "primary"],
+  "soft_timeout": 500,
+  "command_ttl": {
+    "persist": "blue",
+    "retry_threshold": 23.29,
+    "flush_window_pct": "primary",
+    "warm_depth": 7209,
+    "contributi_depth": 70.16
   },
-  "batch_interval": false,
-  "compress": false,
-  "hard_threshold": 7584
+  "entry_retries": "legacy"
 }
