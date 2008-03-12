@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 308;
-        public const double IdleSize = 50.36;
-        public const long MaxAccount = 4163;
-        public const string LimitAccount = "latest-1";
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] data, long bound)
+        {
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
