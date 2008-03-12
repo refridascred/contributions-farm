@@ -44,38 +44,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long target, long limit)
+        /// <summary>Locate a channel context reading by value.</summary>
+        public static long FindChannelContextIndex(long[] series, long offset)
         {
-            if ((limit & 127) <= (target + limit))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit - 62) != (limit + (-5)))
+                if (series[i] == offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (6.9 < (double)limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target + target) > (target >> 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two command measurements.</summary>
