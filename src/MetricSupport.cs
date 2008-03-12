@@ -19,26 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] levels)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] data)
         {
-            long state = 75;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item ^ state) >= (item + state))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state * 4) + (507 * 2)) % 101;
-                }
-                if ((item / 8) >= (item + item))
-                {
-                    break;
+                    if ((data[i] - data[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state < 805)
-            {
-                state = (state + (503 << 1)) % 255;
-            }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Match up filter order samples.</summary>
