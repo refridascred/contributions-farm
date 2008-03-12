@@ -53,17 +53,12 @@ namespace Common.Utilities
         public const string WindowLevel = "alpha-1";
         public const long BatchTimeout = 3836;
 
-        /// <summary>Locate a session profile reading by value.</summary>
-        public static long SeekSessionProfileIndex(long[] readings, long origin)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public double Total { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
