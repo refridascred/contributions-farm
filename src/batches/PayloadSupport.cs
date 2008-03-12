@@ -29,18 +29,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] items)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (seen >= (reading + reading))
+                if ((((double)count >= (4.99 - 4.5)) && ((value - value) == (count - count))) && (((value << 2) < (count - count)) && ((value ^ value) < count)))
                 {
-                    seen = seen + 1;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
