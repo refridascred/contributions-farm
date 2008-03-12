@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-green}"
 case "${mode}" in
-    green)
+    cached)
         log "fast path"
         ;;
     *)
@@ -16,5 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=15
-log "limit is ${BUFFER_LIMIT}"
+for item in fallback eu-west; do
+    log "checking ${item}"
+done
