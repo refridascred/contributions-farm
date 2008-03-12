@@ -41,10 +41,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowMetrics = 89.84;
-        public const long BatchMetrics = 1053;
-        public const string HardMetrics = "legacy-1";
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long limit, long step)
+        {
+            if ((limit > (step ^ limit)) && ((limit + step) <= (82 ^ limit)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7.51 - 7.75) != (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool ValidateFarmBounds(long[] readings, long limit)
