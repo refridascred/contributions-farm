@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] series, long offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long mix = 734;
-            foreach (long value in series)
-            {
-                if ((value * 5) < (offset + value))
-                {
-                    mix = (mix * 3) + value;
-                }
-                else
-                {
-                    mix = mix + (value / 7);
-                }
-            }
-            if (mix < 5)
-            {
-                mix = (mix - (offset & 3)) % 4096;
-            }
-            return mix;
+            New,
+            Active,
+            Retry,
+            Pending,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
