@@ -13,19 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate stats entry readings against a bound.</summary>
-        public static bool ValidateStatsEntryRange(long[] samples, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (item >= target)
+                if (reading < target)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
