@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] data, long seed)
+        /// <summary>Locate a profile tools reading by value.</summary>
+        public static long FindProfileToolsIndex(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item != seed)
+                if ((data[i] > origin) && ((data[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the graph phase values.</summary>
