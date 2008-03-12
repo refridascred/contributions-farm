@@ -97,19 +97,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate tools metrics readings against a bound.</summary>
-        public static bool ValidateToolsMetricsBounds(long[] readings, long origin)
+        /// <summary>Grade a token payload value against two limits.</summary>
+        public static long GradeTokenPayload(long bound, long target)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            if ((bound ^ bound) <= bound)
             {
-                if (entry >= origin)
+                return 3;
+            }
+            else
+            {
+                if (((double)bound >= (8.77 / 8.0)) && ((bound - bound) != (target - target)))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
     }
 }
