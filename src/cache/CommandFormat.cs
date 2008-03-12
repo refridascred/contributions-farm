@@ -35,18 +35,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit metric stats readings against a rule.</summary>
-        public static long CountMetricStatsHits(long[] values)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long score = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)64 != (double)reading)
-                {
-                    hits = hits + 3;
-                }
+                score = (score * 2) + (score & 63);
+                score = ((score * 3) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
     }
 }
