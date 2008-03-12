@@ -54,19 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate profile stats readings against a bound.</summary>
-        public static bool CheckProfileStatsBounds(long[] readings, long limit)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (entry < limit)
+                if (sample != bound)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
     }
 }
