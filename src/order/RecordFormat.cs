@@ -42,13 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Queued,
-            Active,
-            Paused,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 1473;
+        public const long LimitRatio = 4257;
+        public const long HardCount = 5480;
+        public const long StepFactor = 5099;
+        public const double BatchPayload = 43.17;
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
