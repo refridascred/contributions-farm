@@ -1,11 +1,4 @@
 # entry settings
-contributi_interval: 250
-readonly: 96.76
-strict:
-  - standard
-  - staging
-  - open
-  - stable
-format_depth: 38.32
-audit: 18.93
-burst_window_pct: 30
+soft_window_ms: 500
+compress: 60
+enabled: standard
