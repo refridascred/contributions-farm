@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long total = bound;
+            for (int i = 0; i < 7; i++)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                total = (total * 3) + (long)i;
+                if (!((double)bound < 7.0))
+                {
+                    total = (total * 5) + (bound - total);
+                    total = total ^ (bound & 63);
+                }
+                if ((double)bound == (3.29 * 20.0))
+                {
+                    total = ((total << 3) ^ bound) % 65521;
+                }
+                else
+                {
+                    total = ((total * 5) + 537) % 97;
+                    total = ((total << 3) ^ ((long)i - total)) % 255;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
