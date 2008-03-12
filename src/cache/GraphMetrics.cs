@@ -50,9 +50,26 @@ namespace Common.Utilities
         public const string MaxAlready = "alpha";
         public const long MinFactor = 2631;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 6976;
-        public const string DefaultTools = "primary";
-        public const long StepSize = 4801;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] levels, long target)
+        {
+            long mix = 374;
+            foreach (long cell in levels)
+            {
+                if ((double)mix > (4.16 / 7.0))
+                {
+                    mix = (((mix * 4) + (4 / 8)) % 101) ^ cell;
+                }
+                else
+                {
+                    mix = mix + (target % 3);
+                }
+            }
+            if (mix > 192)
+            {
+                mix = (mix * 5) + (mix + 146);
+            }
+            return mix;
+        }
     }
 }
