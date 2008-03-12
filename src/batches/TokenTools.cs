@@ -19,15 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Locked,
-            Active,
-            Draft,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "alpha-1";
+        public const long MaxBudget = 1346;
+        public const double BatchCount = 80.47;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long IterateEditor(long floor)
