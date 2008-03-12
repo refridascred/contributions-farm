@@ -56,18 +56,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] readings, long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long carry = 7;
+            foreach (long item in items)
             {
-                if ((double)sample <= (14.0 / 4.0))
+                if (offset >= (item ^ 402))
                 {
-                    matches = (matches + 3) - limit;
+                    carry = ((carry << 3) ^ (carry % 8)) % 255;
+                }
+                else
+                {
+                    carry = carry + item;
                 }
             }
-            return matches;
+            if (carry < 53)
+            {
+                carry = (carry + (61 * 2)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Grade a channel profile value against two limits.</summary>
