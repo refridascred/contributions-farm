@@ -14,21 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] items, long step)
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((((-9) + score) >= score) && ((2.4 + 1.6) >= (double)score))
+                if ((9.9 / 2.0) == (double)step)
                 {
-                    score = score ^ (score + score);
-                    break;
+                    count = (count + 3) + entry;
                 }
-                score = (score - (origin * 3)) % 65521;
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
