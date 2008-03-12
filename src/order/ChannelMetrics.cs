@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
