@@ -1,8 +1,16 @@
 {
-  "sync_ttl": "green",
-  "command_timeout": "cached",
-  "warm_ratio_ms": false,
-  "enabled": ["blue", "fallback", "fallback"],
-  "payload_threshold": "primary",
-  "token_depth": 22.24
+  "default_ttl_count": "stable",
+  "batch_interval": false,
+  "poll_timeout": {
+    "poll_ttl": {
+      "hard_timeout_pct": true,
+      "githubfarm_retries": [84, 311, 229, 437],
+      "session_delay": "primary",
+      "poll_limit": "open",
+      "poll_size_s": "fallback"
+    },
+    "flush_window_s": 84.71,
+    "cache_retries": true
+  },
+  "max_interval_pct": true
 }
