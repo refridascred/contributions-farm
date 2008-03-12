@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] series, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "strict-edge";
+        public const string MinFactor = "fallback-1";
+        public const string StepRatio = "primary";
+        public const long BurstChannel = 3874;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double HardLevel = 92.42;
