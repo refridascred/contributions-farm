@@ -14,22 +14,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] series)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] samples)
         {
-            long state = 501;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (state <= (datum - datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = ((state << 2) ^ (datum & 31)) % 65521;
-                }
-                else
-                {
-                    state = ((state << 3) ^ ((-29) - state)) % 1000;
+                    if ((samples[i] - samples[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Describe the buffer class values.</summary>
