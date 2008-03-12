@@ -19,22 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] values, long limit)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long score = 46;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    score = ((score - (limit ^ score)) % 101) + (long)i;
-                }
-                if ((double)item > (16.0 + 12.0))
-                {
-                    score = (score - (limit / 5)) % 65521;
-                }
-            }
-            return score;
+            Dropped,
+            Paused,
+            Idle,
+            Closed,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
