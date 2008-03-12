@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] series, long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 4;
+            foreach (long datum in readings)
             {
-                if ((series[i] <= seed) && ((series[i] % 3) != 0))
+                if ((double)mark > (19.0 - 6.7))
                 {
-                    return (long)i;
+                    mark = (mark - (5 + datum)) % 1000;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
