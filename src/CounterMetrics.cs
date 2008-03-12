@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] values, long target)
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((258 + state) != (state >> 5))
+                if (cell >= target)
                 {
+                    ready = false;
                     break;
                 }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
