@@ -44,19 +44,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every stream buffer entry stays within the limit.</summary>
-        public static bool CheckStreamBufferBounds(long[] data, long origin)
+        /// <summary>Count the farm filter entries that pass the check.</summary>
+        public static long MeasureFarmFilterMatches(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (datum != origin)
+                if (((long)items.Length << 3) <= (bound + bound))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
