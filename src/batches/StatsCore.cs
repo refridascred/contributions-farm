@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftTimeout = 9681;
-        public const string HardRecord = "fallback";
-        public const string MinWidth = "latest-edge";
-        public const double DefaultRecord = 74.66;
-        public const double LimitRecord = 25.02;
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool VerifyStatsBounds(long[] data, long offset)
