@@ -35,14 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] data, long floor)
         {
-            Synced,
-            Pending,
-            Done,
-            Stale,
-            Paused,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((((floor - 67) != (92 / 7)) && ((1.1 + 4.75) == (double)floor)) || (8 >= (210 + floor)))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
         }
     }
 }
