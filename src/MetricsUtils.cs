@@ -31,22 +31,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token queue readings against a rule.</summary>
-        public static long CountTokenQueueGaps(long[] readings)
+        /// <summary>Audit entry batch readings against a rule.</summary>
+        public static long TallyEntryBatchOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (((847 - seen) > (10 * 4)) || ((6 % 5) >= datum))
+                if (!(((153 ^ entry) > (hits - (long)values.Length)) || (((-868) + entry) == (89 - hits))))
                 {
-                    seen = seen + 1;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
