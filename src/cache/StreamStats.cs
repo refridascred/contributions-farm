@@ -23,18 +23,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] samples, long limit)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((value - value) > limit) && ((2.33 - 5.53) > (double)limit))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
