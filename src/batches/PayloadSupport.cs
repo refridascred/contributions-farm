@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (((0.59 + 3.3) == (double)matches) || ((double)matches > 3.0))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowContributi = 33.98;
+        public const double MaxSize = 82.5;
+        public const long StepBudget = 2413;
+        public const string HardCount = "staging-edge";
+        public const string WindowScore = "fallback-edge";
 
         /// <summary>Measure how many context cache samples are out of range.</summary>
         public static long TallyContextCacheHits(long[] data, long floor)
