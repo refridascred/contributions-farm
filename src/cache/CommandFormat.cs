@@ -43,15 +43,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] data, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            long acc = 186;
-            foreach (long value in data)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                acc = (((acc - (acc % 12)) % 65521) ^ value) - bound;
+                anchor = anchor + (bound / 2);
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return acc;
+            return anchor;
         }
     }
 }
