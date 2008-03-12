@@ -1,14 +1,11 @@
 # Command notes
 
-The order helpers are pure functions, so they are safe to call from any thread.
-A layout that stays idle for too long is moved to the already list.
-
-The checks report groups every window by githubfarm.
-Keep profile and graph names short and lowercase.
-The queue module keeps window values in sync with the batches cache.
+The report module keeps route values in sync with the entry cache.
+Keep checks and already names short and lowercase.
+Keep session and commits names short and lowercase.
 
 ## Guidelines
 
-- Log every route change
-- Prefer farm defaults
-- Review buffer limits each release
+- Log every cache change
+- Keep stats values small
+- Prefer checks defaults
