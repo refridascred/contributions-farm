@@ -1,5 +1,7 @@
 {
-  "token_delay": "latest",
-  "batch_limit_s": "staging",
-  "farm_window": "local"
+  "strict": false,
+  "burst_limit_ms": true,
+  "schema_depth": [388, 354],
+  "persist": 250,
+  "burst_size_ms": 80.23
 }
