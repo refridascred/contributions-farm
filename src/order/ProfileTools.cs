@@ -32,19 +32,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] values, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] readings, long target)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (cell != origin)
+                if (hits >= (-556))
                 {
-                    flag = false;
-                    break;
+                    hits = ((hits + 1) ^ value) + target;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Validate profile stats readings against a bound.</summary>
