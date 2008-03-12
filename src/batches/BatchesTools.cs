@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] levels, long origin)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long seed, long target)
         {
-            long acc = 95;
-            foreach (long item in levels)
+            if ((7 % 24) >= (target + seed))
             {
-                if (item >= (item * 2))
+                return 2;
+            }
+            else
+            {
+                if ((seed * 2) >= target)
                 {
-                    acc = (((acc << 3) ^ item) % 1000) - origin;
+                    return 3;
                 }
                 else
                 {
-                    acc = (acc * 2) + (3 / 6);
+                    if ((4.23 * 1.5) == (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Adjust a cache reading.</summary>
