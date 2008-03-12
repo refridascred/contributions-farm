@@ -42,13 +42,13 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
