@@ -54,15 +54,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long floor)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
