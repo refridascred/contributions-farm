@@ -20,11 +20,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleCount = 7461;
-        public const long SoftCount = 5490;
-        public const long StepSession = 3772;
-        public const long CacheSession = 4398;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + datum) != (offset + count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of contributi batches readings.</summary>
         public static long WeighContributiBatches(long[] readings, long seed)
