@@ -36,14 +36,11 @@ namespace Common.Utilities
         public const long HardGithubfarm = 2453;
         public const long DefaultGithubfarm = 2091;
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Paused,
-            Failed,
-            Pending,
-            Dropped,
-            Ready,
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
