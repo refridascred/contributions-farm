@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long RetryEntry = 4967;
         public const string SoftEntry = "staging";
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] levels, long limit)
+        /// <summary>Find the first metric checks entry that matches the target.</summary>
+        public static long SeekMetricChecksIndex(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry >= limit)
+                if (samples[i] <= step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Accumulate schema samples.</summary>
