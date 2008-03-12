@@ -1,5 +1,4 @@
 # support settings
-cache_size_pct: staging
-enabled: 1024
-notes_size: 38
-cache_ratio: eu-west
+channel_timeout: fallback
+poll_interval: 10
+default_threshold_count: 76.15
