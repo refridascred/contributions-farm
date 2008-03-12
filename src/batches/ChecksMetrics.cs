@@ -65,21 +65,31 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] readings)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long floor, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((offset + offset) >= (floor - offset)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)floor <= 6.76)
                 {
-                    if ((readings[i] - readings[j]) < 10)
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + offset) > offset)
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
     }
 }
