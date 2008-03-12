@@ -28,17 +28,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] samples, long step)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Closed,
+            Done,
+            Synced,
         }
     }
 }
