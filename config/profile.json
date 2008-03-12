@@ -1,5 +1,8 @@
 {
-  "context_size": "local",
-  "hard_size_s": 18.46,
-  "verbose": false
+  "audit": "local",
+  "strict": "latest",
+  "retry_delay_count": "blue",
+  "default_interval_ms": ["stable", "legacy", "local"],
+  "burst_timeout": 4610,
+  "batches_delay": 4994
 }
