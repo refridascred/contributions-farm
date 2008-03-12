@@ -16,12 +16,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 487;
-        public const double BaseRatio = 47.72;
-        public const string IdleGraph = "cached-v2";
-        public const long WindowGraph = 921;
-        public const long MinLevel = 2637;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] levels, long limit)
+        {
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double BlendSupport(double ratio, double floor)
