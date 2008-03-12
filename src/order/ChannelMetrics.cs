@@ -38,11 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public double Weight { get; set; }
-            public bool Label { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
