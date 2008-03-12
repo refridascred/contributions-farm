@@ -30,19 +30,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] values, long seed)
+        /// <summary>Find the first queue account entry that matches the target.</summary>
+        public static long LookupQueueAccountIndex(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= seed)
+                if (series[i] < limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
