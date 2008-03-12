@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the order layout entries that pass the check.</summary>
-        public static long CountOrderLayoutOutliers(long[] data)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long seed)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((((cell / 8) >= (cell ^ cell)) && ((cell + cell) >= (cell - cell))) || (cell > (cell + cell)))
-                {
-                    matches = matches + 3;
-                }
+                anchor = ((anchor << 3) ^ anchor) % 4096;
+                anchor = (anchor + 6) % 97;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
