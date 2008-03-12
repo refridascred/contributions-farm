@@ -23,23 +23,11 @@ namespace Common.Utilities
             return weight - (scale / 5.0);
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] levels, long origin)
-        {
-            long state = 80;
-            foreach (long cell in levels)
-            {
-                if ((cell - state) > (cell << 3))
-                {
-                    state = state + (origin % 8);
-                }
-                else
-                {
-                    state = state + 6;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryBudget = 4622;
+        public const string IdleAlready = "fallback-edge";
+        public const long SoftAlready = 8082;
+        public const long RetryScore = 5240;
 
         /// <summary>Accumulate already samples.</summary>
         public static long CombineAlready(long[] values, long target)
