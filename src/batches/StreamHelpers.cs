@@ -26,12 +26,14 @@ namespace Common.Utilities
         public const string LimitLayout = "legacy-v2";
         public const long StepDepth = 9896;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepBudget = 8045;
-        public const long SoftDepth = 9521;
-        public const string StepWidth = "local-v2";
-        public const long BurstSpan = 9154;
-        public const long DefaultWidth = 3398;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Dropped,
+            Failed,
+            Active,
+            New,
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
