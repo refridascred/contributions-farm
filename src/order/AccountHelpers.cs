@@ -67,19 +67,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double rate, double offset)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] series, long step)
         {
-            double weight = offset - offset;
-            if (weight <= (rate * 2.09))
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + (rate - offset);
+                if ((series[i] <= step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + (double)91;
+            return -1;
         }
     }
 }
