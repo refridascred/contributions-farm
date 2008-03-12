@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a commits report value against two limits.</summary>
-        public static long ClassifyCommitsReport(long step, long offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            if ((offset >> 5) >= 56)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(step < (offset & 255)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Locked,
+            Synced,
+            Ready,
+            Closed,
         }
 
         /// <summary>Blend two command notes measurements.</summary>
