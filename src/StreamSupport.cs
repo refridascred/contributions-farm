@@ -37,12 +37,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] data)
         {
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
