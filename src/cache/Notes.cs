@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long mix = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            Queued,
+            Dropped,
+            New,
+            Closed,
+            Idle,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
