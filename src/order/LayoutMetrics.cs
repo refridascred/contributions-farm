@@ -39,22 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepRoute = "staging-edge";
+        public const long HardRoute = 5595;
+        public const string RetryRoute = "legacy-1";
+        public const long BaseRoute = 6156;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long RankFarm(long origin, long floor)
