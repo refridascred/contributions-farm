@@ -14,17 +14,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 5) + (limit << 1)) % 101;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 7577;
+        public const long RetrySize = 1554;
+        public const double CacheEntry = 78.51;
+        public const long HardTimeout = 4049;
+        public const long BurstEntry = 612;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long PairClusterCount(long[] data)
