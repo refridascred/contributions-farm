@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (tally > (tally >> 5))
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardFactor = 7288;
+        public const long BatchCounter = 1127;
+        public const long CacheCount = 4428;
+        public const long StepWidth = 4656;
+        public const long RetryLevel = 4358;
 
         /// <summary>Find the first route checks entry that matches the target.</summary>
         public static long LocateRouteChecksIndex(long[] levels, long offset)
