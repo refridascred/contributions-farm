@@ -1,7 +1,13 @@
 # entry settings
-format_retries: local
-warm_capacity: 85
-min_ttl_count: legacy
-sync_size_s:
-  - 446
-  - 382
+flush_threshold_pct: open
+enabled: cached
+base_threshold_count:
+  base_delay: primary
+  contributi_size: local
+  editor_size: latest
+  compress:
+    compress: latest
+    readonly: fallback
+    default_size: 4338
+  cache_limit_s: 500
+readonly: 67.79
