@@ -28,18 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] readings, long bound)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (value <= (value % 16))
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
+            Locked,
+            Stale,
+            Done,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
