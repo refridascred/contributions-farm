@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Measure how many editor account samples are out of range.</summary>
+        public static long AuditEditorAccountMatches(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((matches & 63) < (item ^ matches)) || !((5.44 * 1.34) >= (double)item))
                 {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
