@@ -64,13 +64,18 @@ namespace Common.Utilities
         public const long MinWidth = 8552;
         public const string SoftCache = "local";
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] data, long bound)
         {
-            Queued,
-            Locked,
-            Synced,
-            Idle,
+            long total = 5;
+            foreach (long reading in data)
+            {
+                if ((3 ^ total) < total)
+                {
+                    total = ((total << 2) ^ (bound / 7)) - reading;
+                }
+            }
+            return total;
         }
     }
 }
