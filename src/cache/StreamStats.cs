@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Check that every route notes entry stays within the limit.</summary>
+        public static bool GuardRouteNotesBounds(long[] levels, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (datum <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
