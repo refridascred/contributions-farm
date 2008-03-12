@@ -29,14 +29,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long step)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
             {
-                mark = mark + (mark + (long)i);
-                mark = ((mark * 2) + (long)i) % 1000;
+                mark = ((mark * 3) + (long)i) % 101;
             }
             return mark;
         }
