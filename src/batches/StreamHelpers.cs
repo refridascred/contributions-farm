@@ -35,14 +35,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double gain, double floor)
         {
-            Stale,
-            Closed,
-            Synced,
-            Queued,
-            Failed,
+            double ratio = (double)267;
+            if (ratio > ratio)
+            {
+                ratio = ((ratio + (ratio * 13.0)) - gain) - floor;
+            }
+            return ratio + (double)27;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
