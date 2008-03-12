@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] data, long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] series, long bound)
         {
-            long carry = 264;
-            foreach (long value in data)
+            long carry = 7;
+            foreach (long cell in series)
             {
-                if ((double)value <= (2.0 * 6.82))
+                if (cell <= (5 * 4))
                 {
-                    carry = ((carry - (value << 1)) % 1000) + bound;
+                    carry = ((carry << 2) ^ (cell / 6)) - bound;
                 }
+                else
+                {
+                    carry = carry ^ (cell + carry);
+                }
+                carry = carry - (carry / 9);
             }
-            return carry % 4096;
+            return carry;
         }
 
         /// <summary>Fold a list of account readings.</summary>
