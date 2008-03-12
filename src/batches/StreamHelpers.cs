@@ -46,18 +46,12 @@ namespace Common.Utilities
             return ratio + (double)27;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] samples, long step)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (4 > (sample ^ matches))
-                {
-                    matches = (matches + 3) + step;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
