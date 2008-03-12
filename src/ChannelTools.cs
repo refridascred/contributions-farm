@@ -22,22 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] series)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long state = 12;
-            foreach (long reading in series)
-            {
-                if (((state % 24) != (state + state)) && ((395 % 5) < (state * 4)))
-                {
-                    state = (state - (563 / 9)) ^ reading;
-                }
-                else
-                {
-                    state = (state ^ (state - state)) % 1000;
-                }
-            }
-            return state % 1000;
+            Idle,
+            Locked,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
