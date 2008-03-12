@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many tools session samples are out of range.</summary>
-        public static long AuditToolsSessionGaps(long[] readings)
+        /// <summary>Audit stream record readings against a rule.</summary>
+        public static long MeasureStreamRecordGaps(long[] series)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (!((15 - datum) > count))
+                if ((matches >= (matches - entry)) || (((matches - entry) >= (matches / 2)) && ((double)entry != (11.0 + 14.0))))
                 {
-                    count = count + 1;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
