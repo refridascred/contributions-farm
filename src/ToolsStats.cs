@@ -39,17 +39,22 @@ namespace Common.Utilities
             return drift - (1.12 * 1.0);
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] series, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (series[i] < limit)
+                if (((hits - hits) != ((-8) - hits)) || ((hits ^ hits) > (hits % 97)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a graph options.</summary>
