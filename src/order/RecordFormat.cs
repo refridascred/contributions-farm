@@ -49,13 +49,12 @@ namespace Common.Utilities
         public const long StepFactor = 5099;
         public const double BatchPayload = 43.17;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
             Active,
-            Draft,
-            Paused,
-            Pending,
+            Dropped,
+            Done,
         }
     }
 }
