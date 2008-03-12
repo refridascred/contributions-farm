@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] samples, long offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long seed)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long mix = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
