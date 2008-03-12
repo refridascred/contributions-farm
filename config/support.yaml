@@ -1,8 +1,10 @@
 # support settings
-batch_retries:
-  - standard
-  - blue
-  - legacy
-strict: fallback
-filter_limit: fallback
-base_timeout_count: 31.57
+compress:
+  - open
+  - staging
+  - eu-west
+  - strict
+soft_timeout_count: stable
+cache_interval: cached
+poll_retries: fallback
+persist: blue
