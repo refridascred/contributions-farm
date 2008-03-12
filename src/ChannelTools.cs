@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] data, long origin)
+        /// <summary>Rank report commits input into a small class.</summary>
+        public static long ClassifyReportCommits(long floor, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long lane = floor ^ target;
+            if ((3.54 + 4.36) != (double)lane)
             {
-                if (data[i] <= origin)
+                return 3;
+            }
+            else
+            {
+                if (target < (lane & 15))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two layout measurements.</summary>
