@@ -28,19 +28,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double bias, double floor)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] values, long bound)
         {
-            double drift = floor;
-            if (drift > floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift - (floor - drift)) - bias;
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift - (double)442;
+            return -1;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
