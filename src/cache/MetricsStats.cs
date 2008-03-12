@@ -29,13 +29,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Locked,
-            Retry,
-            Dropped,
-            Idle,
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two graph measurements.</summary>
