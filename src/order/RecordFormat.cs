@@ -26,25 +26,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long bound, long seed)
-        {
-            if (!((5.2 - 0.65) > (double)bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if (seed < (seed ^ bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepLevel = "cached-edge";
+        public const string BatchSpan = "staging-1";
+        public const double SoftFactor = 27.05;
+        public const long CacheDepth = 4732;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long SeekFarmIndex(long[] values, long origin)
