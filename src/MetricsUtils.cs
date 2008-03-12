@@ -38,13 +38,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double bias, double floor)
         {
-            public bool Rank { get; set; }
-            public double Total { get; set; }
-            public bool Flag { get; set; }
-            public bool Ratio { get; set; }
+            double rate = floor;
+            if (rate < (floor * 11.0))
+            {
+                rate = (rate + (double)64) - bias;
+            }
+            return rate + 1.49;
         }
 
         /// <summary>Count batches format pairs that satisfy a relation.</summary>
