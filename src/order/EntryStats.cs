@@ -34,11 +34,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseBudget = 51.78;
-        public const long MinCluster = 2955;
-        public const long WindowScore = 6651;
-        public const long SoftDepth = 7089;
+        /// <summary>Audit cache context readings against a rule.</summary>
+        public static long TallyCacheContextHits(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((double)count <= 15.0)
+                {
+                    count = (count + 2) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit stats batches readings against a rule.</summary>
         public static long MeasureStatsBatchesOutliers(long[] samples, long floor)
