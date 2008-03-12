@@ -1,7 +1,6 @@
 {
-  "dry_run": ["edge", "blue", "latest"],
-  "soft_retries_ms": 91,
-  "notes_depth": ["staging", "strict", "green"],
-  "filter_threshold": 19,
-  "format_ttl": [55, 110, 378, 315]
+  "command_interval": 68,
+  "flush_size_s": 88,
+  "warm_delay_ms": "fallback",
+  "burst_retries_count": false
 }
