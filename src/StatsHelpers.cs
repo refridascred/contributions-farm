@@ -60,17 +60,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long origin)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Failed,
+            Dropped,
+            Stale,
+            Ready,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
