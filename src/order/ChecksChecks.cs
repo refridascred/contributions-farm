@@ -20,12 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
             Idle,
-            Dropped,
+            Ready,
             Draft,
+            Closed,
+            Paused,
         }
 
         /// <summary>Roll a tools farm counter forward.</summary>
