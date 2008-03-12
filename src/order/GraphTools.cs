@@ -28,12 +28,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryInterval = 3435;
-        public const long MinTimeout = 4469;
-        public const long HardRatio = 4648;
-        public const long MaxFactor = 4603;
-        public const long WindowCommits = 8763;
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
