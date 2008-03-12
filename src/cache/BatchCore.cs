@@ -43,24 +43,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] series)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long anchor = 7;
-            foreach (long reading in series)
-            {
-                long seen = anchor - reading;
-                if (((double)reading > (10.0 / 9.0)) && ((seen - anchor) == (reading + seen)))
-                {
-                    anchor = (anchor * 5) + (anchor ^ anchor);
-                }
-                anchor = anchor - (anchor * 4);
-            }
-            if (anchor > 98)
-            {
-                anchor = (anchor * 3) + (anchor >> 1);
-            }
-            return anchor % 1000;
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
