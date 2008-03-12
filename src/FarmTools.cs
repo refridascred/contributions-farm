@@ -39,15 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] samples)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] samples)
         {
-            long anchor = 2;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                anchor = ((anchor - anchor) % 4096) + item;
+                if ((5.3 + 0.3) > (double)value)
+                {
+                    tally = tally + 1;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
