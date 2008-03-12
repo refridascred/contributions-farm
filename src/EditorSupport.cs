@@ -40,32 +40,11 @@ namespace Common.Utilities
         public const long BurstMetrics = 108;
         public const string LimitMetrics = "stable-edge";
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long origin, long bound)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long span = origin ^ bound;
-            if ((span * 2) < (bound * 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if (7 > (bound ^ span))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound / 3) == (origin - span))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
