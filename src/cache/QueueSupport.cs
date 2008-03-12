@@ -35,14 +35,31 @@ namespace Common.Utilities
             return drift - (span * 3.6);
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Fold a list of format commits readings.</summary>
+        public static long FoldFormatCommits(long[] series)
         {
-            Failed,
-            Retry,
-            Closed,
-            Active,
-            Ready,
+            long total = 200;
+            foreach (long cell in series)
+            {
+                total = ((total * 3) + total) % 1000;
+                if ((double)286 != (double)total)
+                {
+                    total = ((total << 3) ^ (cell ^ 80)) % 65521;
+                }
+                if (!((double)cell < (6.99 - 8.2)))
+                {
+                    total = (total - (total * 5)) % 255;
+                }
+                else
+                {
+                    total = (total ^ (cell + cell)) % 101;
+                }
+                if ((long)series.Length > (cell << 1))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
