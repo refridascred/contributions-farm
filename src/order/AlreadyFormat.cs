@@ -46,19 +46,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] readings)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] items)
         {
-            long score = 9;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 4; i++)
+                if ((135 - seen) < (reading + reading))
                 {
-                    score = ((score * 3) + (score + (long)i)) % 1000;
+                    seen = seen + 3;
                 }
-                score = (score + (item & 255)) % 101;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Classify a stream tools pair into a bucket.</summary>
