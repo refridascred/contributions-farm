@@ -40,13 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Closed,
-            Stale,
-            Ready,
-            Idle,
+            public double Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
