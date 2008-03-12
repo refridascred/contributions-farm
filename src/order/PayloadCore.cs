@@ -23,12 +23,11 @@ namespace Common.Utilities
             return weight - (scale / 5.0);
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
             public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public string Label { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
