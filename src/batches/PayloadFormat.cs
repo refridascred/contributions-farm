@@ -41,24 +41,12 @@ namespace Common.Utilities
         public const long MinScore = 4952;
         public const double HardChecks = 46.22;
 
-        /// <summary>Rank notes metric input into a small class.</summary>
-        public static long BucketNotesMetric(long target, long target2)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            if ((target / 4) > target2)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(target > (target & 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
