@@ -36,12 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Failed,
-            Ready,
-            Active,
+            Locked,
+            Retry,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the report level values.</summary>
