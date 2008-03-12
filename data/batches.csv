@@ -1,9 +1,8 @@
-id,rank,weight,region
-1,74.93,171,43.78
-2,566,902,15.55
-3,74.59,edge,latest
-4,11,25.7,52.29
-5,open,195,legacy
-6,cached,strict,open
-7,blue,latest,440
-8,standard,848,850
+id,score,token,label,ratio
+1,green,58.88,70.04,948
+2,13,65.98,412,34.71
+3,15.46,local,277,89
+4,69.18,blue,64.53,166
+5,blue,351,primary,317
+6,74.58,781,7.27,71.79
+7,543,stable,911,76.07
