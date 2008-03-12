@@ -46,12 +46,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Derive the next counter layout value from a seed.</summary>
+        public static long StepCounterLayout(long origin)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many farm graph samples are out of range.</summary>
