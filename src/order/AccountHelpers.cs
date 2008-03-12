@@ -41,19 +41,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every layout filter entry stays within the limit.</summary>
-        public static bool VerifyLayoutFilterBounds(long[] values, long offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > offset)
+                if (readings[i] <= target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
