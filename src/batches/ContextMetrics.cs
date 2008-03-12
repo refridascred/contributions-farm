@@ -19,15 +19,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine githubfarm stats values into a single score.</summary>
-        public static long ScoreGithubfarmStats(long[] items, long step)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long target)
         {
-            long score = 9;
-            foreach (long item in items)
+            long mark = target;
+            for (int i = 0; i < 19; i++)
             {
-                score = (((score ^ score) % 4096) - item) - step;
+                mark = ((mark << 2) ^ (mark * 4)) % 65521;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return score % 65521;
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
