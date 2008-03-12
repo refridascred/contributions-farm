@@ -56,11 +56,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinSpan = 6561;
-        public const long IdleScore = 3002;
-        public const long SoftCache = 2584;
-        public const string RetryTimeout = "stable";
-        public const long IdleCount = 4438;
+        /// <summary>Derive the next cluster commits value from a seed.</summary>
+        public static long RollClusterCommits(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 18; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
