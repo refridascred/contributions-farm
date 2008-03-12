@@ -73,19 +73,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] levels, long step)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] values)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading != step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] + values[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
