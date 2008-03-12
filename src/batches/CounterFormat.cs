@@ -31,38 +31,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long origin, long offset)
-        {
-            if ((origin * 5) < offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset >= (origin + offset)) || ((double)offset >= (17.0 * 8.7)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset >> 4) < (origin % 10))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin - offset) >= (origin % 7))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryTools = 73.01;
+        public const long BaseTimeout = 7804;
+        public const string SoftFactor = "open";
     }
 }
