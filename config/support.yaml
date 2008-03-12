@@ -1,7 +1,10 @@
 # support settings
-commits_ttl: 3701
-min_window: 5818
-format_interval: standard
-farm_capacity: 67.64
-strict: 56.73
-flush_delay_s: 31
+order_threshold: local
+retry_timeout_s: 100
+poll_ratio_pct:
+  githubfarm_limit: 3719
+  max_delay: true
+  sync_window_ms: false
+  dry_run: stable
+  entry_size: 20.95
+burst_capacity_count: 60.53
