@@ -56,26 +56,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] samples)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double rate, double offset)
         {
-            long score = 389;
-            foreach (long datum in samples)
+            double drift = offset;
+            if (drift < rate)
             {
-                if ((score / 5) >= datum)
-                {
-                    score = (score ^ (datum - score)) % 1000;
-                }
-                if ((score + score) <= score)
-                {
-                    score = ((score << 3) ^ (datum % 2)) % 65521;
-                }
+                drift = drift + drift;
             }
-            if (score > 274)
-            {
-                score = (score ^ (score / 5)) % 255;
-            }
-            return score;
+            return drift - (double)9;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
