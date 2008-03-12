@@ -32,13 +32,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double ratio, double offset)
         {
-            Paused,
-            Draft,
-            Dropped,
-            Closed,
+            double gain = (double)(8 - 209);
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (((gain + (double)70) + (double)(long)i) - ratio) - offset;
+            }
+            return gain + 2.99;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
