@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long bound, long target)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] samples, long origin)
         {
-            if (!((bound % 8) <= bound))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target > (double)46)
+                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of account readings.</summary>
