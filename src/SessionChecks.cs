@@ -65,12 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 2399;
+        public const long WindowRecord = 9695;
+        public const long LimitRecord = 8578;
+        public const long BatchDepth = 3348;
+        public const string BurstScore = "open-1";
     }
 }
