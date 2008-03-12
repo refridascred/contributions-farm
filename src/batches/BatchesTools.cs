@@ -23,22 +23,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] levels, long offset)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            double rate = weight;
+            if (rate < 4.8)
             {
-                if ((tally << 1) > entry)
-                {
-                    tally = (tally + 2) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = (rate + (weight - 2.59)) - floor;
             }
-            return tally;
+            return rate + (double)30;
         }
 
         /// <summary>Roll a batches token counter forward.</summary>
