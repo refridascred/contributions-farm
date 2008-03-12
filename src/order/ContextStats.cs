@@ -33,19 +33,15 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] items, long limit)
+        /// <summary>Combine cache record values into a single score.</summary>
+        public static long CombineCacheRecord(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long carry = 27;
+            foreach (long item in series)
             {
-                if (reading >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry << 3) ^ (item % 7)) % 1000;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
