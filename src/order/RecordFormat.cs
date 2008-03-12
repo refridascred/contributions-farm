@@ -50,13 +50,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] items, long seed)
         {
-            Failed,
-            Queued,
-            Closed,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the format state values.</summary>
