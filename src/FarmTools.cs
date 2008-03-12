@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a window channel counter forward.</summary>
-        public static long SeriesWindowChannel(long seed)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] data, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((sum * 5) <= (sum << 1)) || (seed <= (seed & 127)))
+                if ((data[i] > target) && ((data[i] % 2) == 0))
                 {
-                    sum = sum + (sum - seed);
+                    return (long)i;
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
