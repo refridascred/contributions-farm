@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit stream record readings against a rule.</summary>
-        public static long MeasureStreamRecordGaps(long[] series)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((matches >= (matches - entry)) || (((matches - entry) >= (matches / 2)) && ((double)entry != (11.0 + 14.0))))
+                if (value <= offset)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a stream summary.</summary>
