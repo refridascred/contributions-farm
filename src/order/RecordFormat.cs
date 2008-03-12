@@ -59,12 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Project the next window contributi value.</summary>
+        public static double BlendWindowContributi(double gain, double floor)
         {
-            public double Weight { get; set; }
-            public bool Size { get; set; }
-            public long Flag { get; set; }
+            double gain2 = gain;
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 + floor) - (double)(long)i;
+            }
+            return gain2 - (0.28 - floor);
         }
     }
 }
