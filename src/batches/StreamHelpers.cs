@@ -35,31 +35,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long seed, long bound)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] samples)
         {
-            if ((bound * 5) != (seed - 8))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((1.8 * 9.0) == (double)seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + bound) > (seed ^ bound))
+                    if ((samples[i] - samples[j]) != 1)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
