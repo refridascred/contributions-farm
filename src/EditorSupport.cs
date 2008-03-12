@@ -53,18 +53,18 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] values)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] values)
         {
-            long count = 0;
+            long score = 4;
             foreach (long datum in values)
             {
-                if (!!(count <= (datum + count)))
+                if (((score - score) <= (score ^ score)) && (datum > ((long)values.Length << 1)))
                 {
-                    count = count + 3;
+                    score = (score * 2) + (score + score);
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Project the next filter value.</summary>
