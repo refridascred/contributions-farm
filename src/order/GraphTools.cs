@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] series, long bound)
         {
-            Locked,
-            Idle,
-            Active,
+            long anchor = 177;
+            foreach (long value in series)
+            {
+                if ((double)75 <= (double)value)
+                {
+                    anchor = ((anchor * 2) + value) - bound;
+                }
+            }
+            if (anchor > 848)
+            {
+                anchor = anchor - 0;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
