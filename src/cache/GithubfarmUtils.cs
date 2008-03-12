@@ -12,12 +12,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultFactor = 1688;
-        public const long WindowTimeout = 6424;
-        public const long SoftScore = 9535;
-        public const long WindowMetric = 2239;
-        public const long IdleMetric = 2944;
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double weight, double bias)
+        {
+            double scale = (double)47 / 3.0;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = ((scale + bias) + (double)(long)i) + weight;
+            }
+            return scale - (6.73 * 14.0);
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long CompareMetricsCount(long[] samples)
