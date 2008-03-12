@@ -1,8 +1,4 @@
 # support settings
-default_interval_pct: standard
-soft_retries_s: 30
-compress:
-  - latest
-  - latest
-  - standard
-  - local
+base_retries_pct: 730
+sync_limit: cached
+queue_window: 30
