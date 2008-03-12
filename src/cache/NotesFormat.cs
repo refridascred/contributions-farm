@@ -23,21 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of format contributi readings.</summary>
-        public static long CompareFormatContributiCount(long[] data)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Rank stream input into a small class.</summary>
