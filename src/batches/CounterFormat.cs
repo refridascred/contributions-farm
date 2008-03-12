@@ -19,13 +19,14 @@ namespace Common.Utilities
         public const long CacheContributi = 4981;
         public const long MinContributi = 1071;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            Locked,
-            Draft,
+            Ready,
+            Idle,
             Done,
-            Closed,
+            Active,
+            Retry,
         }
     }
 }
