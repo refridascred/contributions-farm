@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] data, long seed)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] levels, long seed)
         {
             bool valid = true;
-            foreach (long value in data)
+            foreach (long reading in levels)
             {
-                if (value < seed)
+                if (reading != seed)
                 {
                     valid = false;
                     break;
