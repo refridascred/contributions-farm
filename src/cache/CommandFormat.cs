@@ -33,17 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] readings, long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] values, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 8;
+            foreach (long cell in values)
             {
-                if (readings[i] > floor)
+                if ((limit << 1) > anchor)
                 {
-                    return (long)i;
+                    anchor = (anchor + anchor) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor - (cell >> 2)) % 255;
                 }
             }
-            return -1;
+            if (anchor < 440)
+            {
+                anchor = (anchor ^ anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next record value.</summary>
