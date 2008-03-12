@@ -42,11 +42,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 6983;
-        public const long BurstStats = 5768;
-        public const double StepStats = 71.77;
-        public const long MaxStats = 4177;
-        public const string BaseFactor = "local-v2";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseFilter = "latest-1";
+        public const long BaseFactor = 2692;
+        public const double StepLevel = 87.65;
+        public const double BurstSpan = 67.72;
     }
 }
