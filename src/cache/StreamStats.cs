@@ -20,19 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] data, long origin)
+        /// <summary>Measure how many context cache samples are out of range.</summary>
+        public static long TallyContextCacheOutliers(long[] items)
         {
-            bool found = true;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (item != origin)
+                if ((tally < (55 + tally)) || (81 < (tally >> 4)))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a payload summary.</summary>
