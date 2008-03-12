@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Closed,
-            Synced,
-            Done,
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the support level values.</summary>
