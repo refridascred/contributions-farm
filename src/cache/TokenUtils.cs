@@ -26,11 +26,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 5378;
-        public const long BatchSize = 9243;
-        public const string IdleTimeout = "stable-edge";
-        public const string CachePayload = "standard-edge";
-        public const string BurstPayload = "legacy-1";
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
