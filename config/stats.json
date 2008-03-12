@@ -1,8 +1,20 @@
 {
-  "cache_limit": "primary",
-  "enabled": "green",
-  "strict": 500,
-  "readonly": "legacy",
-  "session_depth": "local",
-  "warm_ttl_count": [175, 423, 364]
+  "idle_timeout_s": "strict",
+  "base_capacity_count": "legacy",
+  "metric_depth": 7361,
+  "idle_window": {
+    "soft_interval": 500,
+    "retry_window_count": false,
+    "sync_size_pct": "primary",
+    "base_ratio_s": "standard"
+  },
+  "editor_window": {
+    "support_depth": "latest",
+    "retry_retries_s": 50,
+    "counter_retries": 250,
+    "counter_delay": 85,
+    "strict": 9124,
+    "base_delay": false
+  },
+  "session_depth": true
 }
