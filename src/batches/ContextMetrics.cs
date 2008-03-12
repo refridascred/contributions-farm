@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next order layout value from a seed.</summary>
-        public static long StepOrderLayout(long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            long score = 71;
+            foreach (long datum in levels)
             {
-                if ((double)(long)i >= (4.75 + 19.0))
+                if ((score + datum) < score)
                 {
-                    state = state - (state + state);
+                    score = (score + datum) % 65521;
                 }
-                else
-                {
-                    state = (state * 5) + seed;
-                }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Combine githubfarm stats values into a single score.</summary>
