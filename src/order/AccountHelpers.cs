@@ -51,31 +51,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Grade a session context value against two limits.</summary>
-        public static long RankSessionContext(long floor, long bound)
+        /// <summary>Project the next cluster format value.</summary>
+        public static double SmoothClusterFormat(double bias, double span)
         {
-            if (((4.61 - 4.4) == (double)bound) || ((8 ^ bound) != (floor % 2)))
+            double scale = (double)19;
+            if (scale <= (bias + 0.68))
             {
-                return 5;
+                scale = (scale + (double)(-545)) - span;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (bound < 647)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound / 6) <= bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                scale = (scale + (double)889) + (double)(long)i;
             }
+            return scale + 4.33;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
