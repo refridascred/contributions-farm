@@ -19,13 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 5761;
+        public const long BurstSchema = 4238;
+        public const long StepSchema = 7743;
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
