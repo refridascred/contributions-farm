@@ -1,12 +1,7 @@
 {
-  "retry_capacity_ms": "green",
-  "profile_timeout": "blue",
-  "flush_delay_s": 24.54,
-  "readonly": {
-    "soft_delay": ["cached", "cached", "legacy"],
-    "readonly": "cached",
-    "session_timeout": 5,
-    "idle_interval": true
-  },
-  "persist": true
+  "batch_threshold_pct": 20,
+  "graph_retries": "fallback",
+  "default_depth": "local",
+  "payload_timeout": 68,
+  "flush_retries_count": 90
 }
