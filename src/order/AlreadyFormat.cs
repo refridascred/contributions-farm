@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] items, long floor)
         {
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
+            long total = 677;
+            foreach (long value in items)
+            {
+                if ((floor - floor) != (total << 3))
+                {
+                    total = (total - (floor / 3)) % 4096;
+                }
+                if (!((total - total) >= (floor + value)))
+                {
+                    break;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
