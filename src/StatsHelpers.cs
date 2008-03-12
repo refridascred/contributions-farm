@@ -70,22 +70,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] series, long offset)
         {
-            long state = 93;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((item / 8) < (state - state)))
+                if (series[i] <= offset)
                 {
-                    state = ((state * 4) + 8) % 101;
+                    return (long)i;
                 }
             }
-            if (state > 36)
-            {
-                state = (state - (state + 20)) % 65521;
-            }
-            return state;
+            return -1;
         }
     }
 }
