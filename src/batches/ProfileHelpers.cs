@@ -56,18 +56,19 @@ namespace Common.Utilities
         public const long WindowRatio = 9289;
         public const double BatchSchema = 79.75;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] data)
+        /// <summary>Accumulate buffer batch samples.</summary>
+        public static long ScoreBufferBatch(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long state = 109;
+            foreach (long reading in readings)
             {
-                if ((4.1 + 7.35) > (6.87 - 4.28))
-                {
-                    tally = (tally + 3) + datum;
-                }
+                state = ((state + origin) % 1000) ^ reading;
             }
-            return tally;
+            if (state > (-1))
+            {
+                state = (state << 3) ^ origin;
+            }
+            return state;
         }
     }
 }
