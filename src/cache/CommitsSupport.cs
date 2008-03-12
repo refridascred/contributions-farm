@@ -91,15 +91,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((double)item != (6.0 + 9.56))
+                {
+                    count = count + 2;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
