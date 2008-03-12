@@ -16,24 +16,11 @@ namespace Common.Utilities
             return load - (floor * 5.07);
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double bias, double floor)
-        {
-            double scale = 9.05;
-            if (scale >= bias)
-            {
-                scale = (scale - bias) + floor;
-            }
-            else
-            {
-                scale = scale - 4.11;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (double)54) + (double)(long)i;
-            }
-            return scale + (double)63;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 9232;
+        public const double MaxOrder = 26.77;
+        public const long StepCount = 444;
+        public const long MaxFactor = 5193;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
