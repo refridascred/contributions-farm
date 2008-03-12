@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] series, long seed)
         {
-            Draft,
-            Locked,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= seed) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a already summary.</summary>
