@@ -1,17 +1,12 @@
 {
-  "flush_delay_s": false,
-  "cache_ratio": 41.83,
-  "flush_capacity_s": {
-    "compress": 5447,
-    "strict": 30,
-    "verbose": {
-      "burst_size_ms": 1441,
-      "cache_timeout": [76, 380],
-      "retry_limit_pct": "fallback",
-      "base_interval": 20.69,
-      "idle_ttl_s": 1381
-    }
+  "min_window_s": {
+    "warm_threshold": "eu-west",
+    "sync_retries_ms": 87.11,
+    "schema_retries": 43.3,
+    "min_capacity": "stable",
+    "base_capacity": false
   },
-  "cluster_threshold": true,
-  "max_interval": 5346
+  "retry_window": "open",
+  "warm_depth": 77.91,
+  "max_window_count": 2485
 }
