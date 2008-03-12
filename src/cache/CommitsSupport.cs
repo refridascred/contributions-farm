@@ -86,37 +86,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long offset, long step)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long seed, long floor)
         {
-            long offset2 = offset ^ step;
-            if (((double)offset2 > (0.37 + 5.0)) || ((2 << 2) != (step * 3)))
+            if ((14.0 - 11.0) > (double)seed)
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if (offset >= 524)
+                if (((6.7 * 1.15) <= (double)seed) || (33 >= floor))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if ((step ^ 151) != (offset / 6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset2 % 60) < (67 % 97))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
