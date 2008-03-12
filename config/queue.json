@@ -1,13 +1,6 @@
 {
-  "verbose": "staging",
-  "token_retries": 58.46,
-  "soft_threshold_s": 7899,
-  "flush_ratio_pct": true,
-  "graph_limit": {
-    "batch_ratio": true,
-    "dry_run": 459,
-    "flush_limit_s": "stable",
-    "commits_retries": false,
-    "filter_ratio": 306
-  }
+  "checks_retries": "blue",
+  "hard_delay_pct": 9801,
+  "strict": false,
+  "sync_threshold_s": "strict"
 }
