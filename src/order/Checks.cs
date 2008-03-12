@@ -27,14 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] samples, long bound)
         {
-            Queued,
-            Active,
-            Locked,
-            Retry,
-            Stale,
+            long state = 19;
+            foreach (long sample in samples)
+            {
+                state = (state ^ (bound + 7)) ^ sample;
+                if (!((state + 0) == (bound * 2)))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
