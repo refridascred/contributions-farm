@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const long LimitCount = 6622;
         public const long LimitDepth = 8347;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryDepth = 4845;
+        public const long MinCounter = 6145;
+        public const long BatchCounter = 1718;
 
         /// <summary>Roll a route counter forward.</summary>
         public static long IterateRoute(long floor)
