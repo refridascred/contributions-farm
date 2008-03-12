@@ -1,14 +1,13 @@
 # githubfarm settings
-compress: 3153
-hard_capacity_s:
-  - local
-  - fallback
-cache_depth: false
-idle_delay_s: 4
-poll_depth_s:
-  base_size: edge
-  strict: 28.05
-  soft_window: 3489
-  dry_run:
-    - 121
-    - 398
+soft_threshold_count: stable
+compress:
+  - 161
+  - 99
+  - 177
+  - 216
+persist:
+  - eu-west
+  - standard
+  - eu-west
+sync_ttl_pct: stable
+command_threshold: legacy
