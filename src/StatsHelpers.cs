@@ -39,18 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats layout samples are out of range.</summary>
-        public static long TallyStatsLayoutHits(long[] readings, long origin)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (((double)seen != (7.1 - 7.2)) && (((long)readings.Length - (-469)) <= (origin & 31)))
-                {
-                    seen = (seen + 3) - datum;
-                }
-            }
-            return seen;
+            Done,
+            Draft,
+            Dropped,
+            Queued,
+            New,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
