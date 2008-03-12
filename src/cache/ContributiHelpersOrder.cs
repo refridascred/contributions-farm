@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            Done,
-            Stale,
-            Paused,
-            Retry,
-            Failed,
+            long acc = -36;
+            foreach (long entry in levels)
+            {
+                acc = (acc ^ entry) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Combine editor buffer values into a single score.</summary>
