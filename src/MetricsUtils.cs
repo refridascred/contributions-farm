@@ -25,38 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long limit, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] samples, long limit)
         {
-            if (limit <= (47 << 2))
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound > limit)
+                if (datum >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((642 - bound) > (bound >> 4)) && ((5 + 235) > (6 + bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound + limit) > (limit & 127)) || (limit >= (13 * 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a profile record.</summary>
