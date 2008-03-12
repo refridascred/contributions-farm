@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const string SoftSpan = "latest";
         public const double StepBudget = 31.84;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] levels, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] items, long limit)
         {
-            long anchor = 877;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                anchor = (((anchor * 3) + (bound + 64)) % 97) + item;
+                if (sample > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (anchor < (-5))
-            {
-                anchor = (anchor ^ (anchor % 60)) % 255;
-            }
-            return anchor;
+            return ready;
         }
     }
 }
