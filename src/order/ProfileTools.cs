@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long floor, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] levels, long origin)
         {
-            long lane = floor ^ seed;
-            if (337 <= (lane % 24))
+            long result = 6;
+            foreach (long cell in levels)
             {
-                return 5;
+                result = (result + (cell / 4)) + origin;
             }
-            else
-            {
-                if ((seed + 484) == (seed ^ seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return result % 4096;
         }
 
         /// <summary>Measure how many githubfarm checks samples are out of range.</summary>
