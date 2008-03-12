@@ -1,9 +1,6 @@
 # entry settings
-enabled: 77
-dry_run: primary
-base_threshold_s: true
-batch_retries_s:
-  dry_run: cached
-  sync_delay_count: 94
-  hard_limit: 5164
-persist: 9502
+verbose: true
+sync_depth_count: false
+already_size: 92
+readonly: 100
+max_ttl: true
