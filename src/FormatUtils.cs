@@ -46,15 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long step)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public bool Size { get; set; }
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
