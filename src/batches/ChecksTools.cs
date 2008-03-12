@@ -39,17 +39,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 24;
+            foreach (long value in levels)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 5) != 0))
+                mark = (mark - (value * 3)) % 255;
+                if (((value ^ mark) >= mark) || ((4 << 3) <= (mark + value)))
                 {
-                    return (long)i;
+                    mark = mark - (value - mark);
                 }
             }
-            return -1;
+            return mark % 1000;
         }
     }
 }
