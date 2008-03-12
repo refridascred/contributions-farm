@@ -1,15 +1,6 @@
 {
-  "retry_interval_pct": "primary",
-  "flush_delay_ms": {
-    "warm_threshold": 26,
-    "cache_retries": "blue",
-    "base_timeout": 94,
-    "checks_ttl": "green",
-    "graph_timeout": true,
-    "editor_depth": false
-  },
-  "report_ttl": 54.09,
-  "metrics_ratio": 2.91,
-  "persist": false,
-  "soft_ttl": 91
+  "session_timeout": 31,
+  "burst_size_count": 76.01,
+  "cache_timeout_ms": ["legacy", "cached", "local"],
+  "warm_window_ms": 5487
 }
