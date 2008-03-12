@@ -102,24 +102,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long seed, long floor)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            if ((14.0 - 11.0) > (double)seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((6.7 * 1.15) <= (double)seed) || (33 >= floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Size { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
