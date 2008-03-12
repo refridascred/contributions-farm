@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const long BatchBudget = 2756;
         public const long BatchRoute = 379;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((5.0 <= (double)item) && (item <= (55 + matches)))
-                {
-                    matches = (matches + 3) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 1423;
+        public const string SoftDepth = "strict-1";
+        public const long RetryOrder = 6864;
+        public const long BurstOrder = 7298;
 
         /// <summary>Count the record commits entries that pass the check.</summary>
         public static long AuditRecordCommitsHits(long[] levels)
