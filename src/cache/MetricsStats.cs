@@ -43,11 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
+            Synced,
+            New,
+            Pending,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
