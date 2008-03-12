@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Synced,
             Closed,
-            Idle,
+            Paused,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
