@@ -40,18 +40,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many profile format samples are out of range.</summary>
-        public static long CountProfileFormatGaps(long[] readings)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (tally <= (700 + entry))
+                if ((value & 1) >= (value + value))
                 {
-                    tally = tally + 1;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
