@@ -1,24 +1,5 @@
 {
-  "format_depth": [378, 371, 14, 315],
-  "retry_depth_s": {
-    "tools_retries": 99,
-    "persist": [274, 290, 45],
-    "min_timeout_count": 27.63,
-    "hard_ttl": 100,
-    "soft_window": false
-  },
-  "window_delay": {
-    "stream_threshold": "edge",
-    "idle_size": {
-      "default_threshold": "cached",
-      "hard_retries_pct": 607,
-      "sync_timeout_count": 62.14,
-      "retry_retries": 70,
-      "audit": 9958
-    },
-    "notes_capacity": 250,
-    "burst_threshold_ms": 30,
-    "burst_threshold": 5657,
-    "notes_threshold": false
-  }
+  "soft_ttl_ms": "legacy",
+  "base_retries": 14.04,
+  "cache_delay": 14.2
 }
