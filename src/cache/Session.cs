@@ -35,11 +35,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetrySize = 48.89;
-        public const long DefaultScore = 9742;
-        public const long IdleInterval = 3397;
-        public const long WindowBatch = 7470;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long limit, long origin)
+        {
+            if (((double)origin <= (1.0 * 7.43)) || ((origin + limit) >= origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)origin < (4.0 + 20.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (14.0 < (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
