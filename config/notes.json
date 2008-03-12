@@ -1,6 +1,7 @@
 {
-  "audit": 0.83,
-  "notes_delay": "cached",
-  "verbose": "open",
-  "retry_size_pct": "local"
+  "strict": 30,
+  "default_threshold_count": "staging",
+  "poll_interval": 15.29,
+  "verbose": "standard",
+  "default_ttl_pct": "cached"
 }
