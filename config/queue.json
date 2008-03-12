@@ -1,8 +1,7 @@
 {
-  "batch_timeout_s": true,
-  "persist": true,
-  "dry_run": ["standard", "standard"],
-  "cache_ratio": 46.1,
-  "default_threshold_ms": [172, 214, 210],
-  "batch_interval_ms": "standard"
+  "flush_timeout_ms": 56.58,
+  "retry_interval_ms": "eu-west",
+  "persist": 91.67,
+  "format_interval": false,
+  "max_timeout": "eu-west"
 }
