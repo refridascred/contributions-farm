@@ -1,28 +1,10 @@
 # githubfarm settings
-batch_ttl: true
-cache_retries:
+verbose: true
+audit: 3187
+hard_capacity_ms: false
+idle_capacity: false
+editor_interval:
+  - fallback
   - open
-  - stable
-  - local
-  - latest
-batch_capacity: 54.3
-sync_delay_ms:
-  stream_ratio:
-    max_retries_count: edge
-    persist: local
-    batch_delay_pct: 5
-    sync_capacity_pct:
-      - staging
-      - latest
-      - strict
-  batch_retries: 100
-  base_size_pct: local
-  cache_threshold:
-    - stable
-    - eu-west
-    - stable
-    - green
-  readonly: 2615
-  hard_ttl: false
-audit: 69
-cache_threshold_count: 72.09
+  - legacy
+  - open
