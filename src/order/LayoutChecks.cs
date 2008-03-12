@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] values, long target)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] < target) && ((values[i] % 5) == 0))
+                if (levels[i] >= target)
                 {
                     return (long)i;
                 }
