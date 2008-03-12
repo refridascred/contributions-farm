@@ -34,9 +34,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryToken = "open";
-        public const double WindowToken = 80.12;
-        public const long DefaultToken = 4809;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long offset, long seed)
+        {
+            long slot = offset + seed;
+            if (seed < (slot - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)slot <= (double)2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset / 2) > seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed + seed) > 4)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
