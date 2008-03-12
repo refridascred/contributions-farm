@@ -14,19 +14,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((tally % 16) != (tally - datum))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 7745;
+        public const long BaseWindow = 807;
+        public const long DefaultWindow = 4944;
 
         /// <summary>Validate githubfarm payload readings against a bound.</summary>
         public static bool ValidateGithubfarmPayloadBounds(long[] readings, long offset)
