@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a cache record sample.</summary>
-        public static long LookupCacheRecordIndex(long[] values, long bound)
+        /// <summary>Count the order layout entries that pass the check.</summary>
+        public static long CountOrderLayoutOutliers(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (values[i] >= bound)
+                if ((((cell / 8) >= (cell ^ cell)) && ((cell + cell) >= (cell - cell))) || (cell > (cell + cell)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
