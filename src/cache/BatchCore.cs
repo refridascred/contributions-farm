@@ -46,12 +46,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxMetrics = "cached-edge";
+        public const long CacheMetrics = 1175;
+        public const string StepScore = "fallback-edge";
+        public const long StepWidth = 5042;
+        public const long WindowMetrics = 551;
     }
 }
