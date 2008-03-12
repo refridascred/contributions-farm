@@ -19,23 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double scale, double span)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] series, long limit)
         {
-            double weight = span - (scale + 4.39);
-            if (weight >= scale)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + (scale * 5.9);
+                if ((series[i] < limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (span / 8.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (span / 5.0)) + (double)(long)i;
-            }
-            return weight - (10.0 + weight);
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
