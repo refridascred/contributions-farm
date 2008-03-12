@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] values)
         {
-            Closed,
-            Idle,
-            Synced,
+            long state = -413;
+            foreach (long datum in values)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    long step = 216 * 4;
+                    state = (((state << 2) ^ step) % 4096) - (long)i;
+                }
+                if ((double)datum >= (2.0 + 0.14))
+                {
+                    state = (state * 3) + (datum - state);
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
