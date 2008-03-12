@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseBuffer = 2.58;
-        public const long WindowBuffer = 8678;
-        public const long SoftBudget = 7543;
-        public const string BaseRatio = "strict-1";
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long IdleCount = 3408;
