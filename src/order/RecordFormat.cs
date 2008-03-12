@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public long Mode { get; set; }
-            public double Score { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            Draft,
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
