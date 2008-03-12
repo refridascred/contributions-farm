@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two queue metrics measurements.</summary>
-        public static double AdjustQueueMetrics(double scale, double floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] series, long target)
         {
-            double rate = 4.25;
-            if (rate >= (double)42)
+            bool found = true;
+            foreach (long cell in series)
             {
-                rate = rate + (scale * 4.3);
+                if (cell < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate + (floor + floor);
+            return found;
         }
 
         /// <summary>Hold a support record.</summary>
