@@ -1,9 +1,13 @@
 {
-  "cache_size_count": {
-    "audit": "staging",
-    "cluster_timeout": false,
-    "max_window_s": 500
+  "counter_retries": {
+    "entry_ratio": 76.15,
+    "channel_window": [400, 478],
+    "batch_limit_ms": 500,
+    "layout_depth": "blue"
   },
-  "cluster_ttl": 70.92,
-  "compress": [440, 105, 450]
+  "queue_threshold": "edge",
+  "poll_capacity_ms": 18,
+  "batch_retries_pct": ["local", "open"],
+  "enabled": 6296,
+  "order_interval": "green"
 }
