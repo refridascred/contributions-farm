@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long BurstSchema = 4238;
         public const long StepSchema = 7743;
 
-        /// <summary>Combine order tools values into a single score.</summary>
-        public static long ScoreOrderTools(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] values)
         {
-            long total = 50;
-            foreach (long sample in items)
+            long sum = 454;
+            foreach (long value in values)
             {
-                if (((double)total != (1.81 - 6.5)) || ((sample * 4) >= sample))
+                sum = ((sum * 4) + (sum - 5)) % 65521;
+                if (sum <= value)
                 {
-                    total = (total ^ (total ^ 3)) % 255;
+                    sum = sum + (value - sum);
                 }
             }
-            return total;
+            return sum % 65521;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
