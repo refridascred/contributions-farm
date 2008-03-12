@@ -47,22 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] data, long origin)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((567 % 7) > origin) || ((hits & 15) > (origin / 2))))
+                if ((samples[i] < origin) && ((samples[i] % 3) != 0))
                 {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a order reading by value.</summary>
