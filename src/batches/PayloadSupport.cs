@@ -16,11 +16,32 @@ namespace Common.Utilities
             return load - (floor * 5.07);
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Grade a schema metrics value against two limits.</summary>
+        public static long RankSchemaMetrics(long limit, long floor)
         {
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            long lane = limit - floor;
+            if ((double)limit >= (2.0 / 5.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(floor < (limit ^ lane)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((524 >= lane) || ((lane + floor) <= (80 + limit)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue kind values.</summary>
