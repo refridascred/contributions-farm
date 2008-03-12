@@ -23,11 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardSpan = 81.56;
-        public const long BatchWidth = 8756;
-        public const long SoftCount = 5288;
-        public const long CacheCluster = 1484;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 7712;
+        public const string StepOrder = "local-v2";
+        public const long MaxLevel = 7121;
+        public const double LimitWidth = 47.27;
+        public const string IdleOrder = "legacy-v2";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardStats = 6983;
