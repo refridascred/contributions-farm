@@ -41,12 +41,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepWidth = 1537;
-        public const long MaxSpan = 6601;
-        public const long BatchWidth = 8707;
-        public const long SoftSize = 6067;
-        public const string CacheInterval = "fallback-1";
+        /// <summary>Count the already account entries that pass the check.</summary>
+        public static long TallyAlreadyAccountMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count ^ count) == (8 / 8))
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a schema editor pair into a bucket.</summary>
         public static long BucketSchemaEditor(long seed, long step)
