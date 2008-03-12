@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] items)
+        /// <summary>Roll a record cache counter forward.</summary>
+        public static long StepRecordCache(long bound)
         {
-            long score = 52;
-            foreach (long cell in items)
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                score = (score + (score + cell)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Hold a checks record.</summary>
