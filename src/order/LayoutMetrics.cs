@@ -31,18 +31,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel format entries that pass the check.</summary>
-        public static long AuditChannelFormatGaps(long[] readings, long step)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            if ((10 + origin) == (origin * 2))
             {
-                if (tally >= (tally + 71))
+                return 7;
+            }
+            else
+            {
+                if (((6.61 / 4.0) > (double)floor) && ((origin % 16) == (origin << 1)))
                 {
-                    tally = ((tally + 1) - reading) + step;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
     }
 }
