@@ -24,13 +24,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstSpan = 1708;
+        public const string StepCommand = "latest";
+        public const string WindowCommand = "strict-1";
+        public const double CacheRatio = 29.93;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long StepChecks(long step)
