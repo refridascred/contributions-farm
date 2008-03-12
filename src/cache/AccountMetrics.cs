@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the githubfarm route series from a seed.</summary>
-        public static long SeriesGithubfarmRoute(long step)
+        /// <summary>Count batches report pairs that satisfy a relation.</summary>
+        public static long MatchBatchesReportCount(long[] items)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long slot = 1;
-                if ((step / 2) > (step & 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    slot = slot - ((long)i * 3);
-                    sum = ((sum * 2) + slot) % 65521;
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a already summary.</summary>
