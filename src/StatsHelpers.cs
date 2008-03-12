@@ -43,23 +43,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] series)
-        {
-            long state = 67;
-            foreach (long cell in series)
-            {
-                if ((cell ^ cell) > cell)
-                {
-                    state = (state - (state ^ cell)) % 1000;
-                }
-            }
-            if (state < 417)
-            {
-                state = (state + (state + state)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSpan = 4143;
+        public const long CacheSession = 3483;
+        public const long StepWidth = 573;
+        public const long MaxSession = 3702;
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
