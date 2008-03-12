@@ -22,17 +22,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] items, long target)
+        /// <summary>Project the next session format value.</summary>
+        public static double ScaleSessionFormat(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (double)(5 + 418);
+            return (mean + span) + rate;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
