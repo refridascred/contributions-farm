@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long limit, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            if ((5.9 * 0.6) >= (double)limit)
             {
-                anchor = ((anchor << 3) ^ anchor) % 4096;
-                anchor = (anchor + 6) % 97;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if (((limit + origin) > (17 ^ 19)) || ((555 + limit) == (origin - origin)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((limit / 9) >= (origin + origin)) || (origin < (86 % 24)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((origin >> 1) == (origin - origin)) || (origin < (604 / 6)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
