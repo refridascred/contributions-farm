@@ -35,21 +35,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] data)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = (span / 4.0) / 9.0;
+            if (weight > (double)6)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = (weight - (double)299) - scale;
             }
-            return seen;
+            else
+            {
+                weight = weight - (1.9 - weight);
+            }
+            return weight + (span + weight);
         }
 
         /// <summary>Hold a command info.</summary>
