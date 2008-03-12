@@ -20,13 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long bound)
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = (mix << 2) ^ (long)i;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
