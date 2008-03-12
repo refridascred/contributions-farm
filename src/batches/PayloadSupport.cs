@@ -16,32 +16,23 @@ namespace Common.Utilities
             return load - (floor * 5.07);
         }
 
-        /// <summary>Grade a schema metrics value against two limits.</summary>
-        public static long RankSchemaMetrics(long limit, long floor)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double bias, double floor)
         {
-            long lane = limit - floor;
-            if ((double)limit >= (2.0 / 5.0))
+            double scale = 9.05;
+            if (scale >= bias)
             {
-                return 7;
+                scale = (scale - bias) + floor;
             }
             else
             {
-                if (!(floor < (limit ^ lane)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((524 >= lane) || ((lane + floor) <= (80 + limit)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                scale = scale - 4.11;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (double)54) + (double)(long)i;
+            }
+            return scale + (double)63;
         }
 
         /// <summary>Describe the queue kind values.</summary>
