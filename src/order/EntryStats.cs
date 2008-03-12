@@ -52,13 +52,14 @@ namespace Common.Utilities
         public const string LimitTools = "local-edge";
         public const long RetryFactor = 8694;
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
+            Queued,
+            Closed,
+            Idle,
+            Done,
+            Active,
         }
     }
 }
