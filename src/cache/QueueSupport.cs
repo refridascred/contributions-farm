@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] items, long offset)
-        {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 1333;
+        public const double MaxContributi = 87.2;
+        public const long LimitCount = 6622;
+        public const long LimitDepth = 8347;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long PairRecordCount(long[] values)
