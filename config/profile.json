@@ -1,10 +1,8 @@
 {
-  "audit": "fallback",
-  "strict": "local",
-  "min_delay_ms": {
-    "warm_ratio_s": 60,
-    "hard_delay_ms": 60,
-    "strict": 82.73
-  },
-  "base_depth": 9034
+  "batch_depth_count": "local",
+  "audit": "latest",
+  "max_depth_pct": 30,
+  "hard_timeout_s": ["primary", "strict", "open"],
+  "checks_interval": "stable",
+  "retry_threshold": false
 }
