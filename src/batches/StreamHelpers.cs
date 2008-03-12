@@ -59,12 +59,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long floor)
         {
-            Active,
-            Draft,
-            Failed,
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
