@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the order metrics entries that pass the check.</summary>
-        public static long MeasureOrderMetricsGaps(long[] data)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (reading < ((long)data.Length & 7))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
