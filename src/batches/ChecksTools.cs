@@ -16,12 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Synced,
-            Locked,
-            Idle,
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
