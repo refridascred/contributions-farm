@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 3434;
+        public const long SoftFormat = 8885;
+        public const long LimitFormat = 3477;
+        public const double HardCount = 73.36;
 
         /// <summary>Find the first metrics stream entry that matches the target.</summary>
         public static long LocateMetricsStreamIndex(long[] levels, long step)
