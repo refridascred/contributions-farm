@@ -34,16 +34,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] levels, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                score = (score * 2) + (score & 63);
-                score = ((score * 3) + (long)i) % 97;
+                if (entry > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
     }
 }
