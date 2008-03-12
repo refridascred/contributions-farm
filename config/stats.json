@@ -1,6 +1,12 @@
 {
-  "session_timeout": 31,
-  "burst_size_count": 76.01,
-  "cache_timeout_ms": ["legacy", "cached", "local"],
-  "warm_window_ms": 5487
+  "retry_capacity_ms": "green",
+  "profile_timeout": "blue",
+  "flush_delay_s": 24.54,
+  "readonly": {
+    "soft_delay": ["cached", "cached", "legacy"],
+    "readonly": "cached",
+    "session_timeout": 5,
+    "idle_interval": true
+  },
+  "persist": true
 }
