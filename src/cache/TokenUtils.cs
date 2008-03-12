@@ -14,11 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double rate, double bias)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            double drift = 3.0;
-            return (drift + bias) + rate;
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
