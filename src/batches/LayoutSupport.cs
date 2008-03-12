@@ -47,27 +47,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] values)
+        /// <summary>Blend two session channel measurements.</summary>
+        public static double SmoothSessionChannel(double ratio, double bias)
         {
-            long carry = 1;
-            foreach (long entry in values)
+            double drift = bias;
+            for (int i = 0; i < 2; i++)
             {
-                carry = (carry + (entry + carry)) % 1000;
-                if (((double)entry == (double)carry) || (entry < (entry / 6)))
-                {
-                    carry = (carry + (carry + entry)) % 65521;
-                }
-                if ((carry + entry) != (entry % 64))
-                {
-                    break;
-                }
+                drift = (drift + ratio) - (double)(long)i;
             }
-            if (carry > 74)
-            {
-                carry = ((carry << 2) ^ carry) % 1000;
-            }
-            return carry;
+            return drift - 5.9;
         }
 
         /// <summary>Audit entry context readings against a rule.</summary>
