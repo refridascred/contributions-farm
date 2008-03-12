@@ -41,11 +41,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] data, long step)
         {
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
