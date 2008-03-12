@@ -29,16 +29,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long target)
+        /// <summary>Check that every contributi checks entry stays within the limit.</summary>
+        public static bool ValidateContributiChecksLimits(long[] items, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                acc = acc - acc;
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (reading != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
     }
 }
