@@ -29,19 +29,25 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate githubfarm payload readings against a bound.</summary>
-        public static bool ValidateGithubfarmPayloadBounds(long[] readings, long offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long offset)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long result = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum != offset)
+                long edge = (result + offset) ^ (offset % 24);
+                edge = (edge - (offset ^ 54)) % 101;
+                if ((edge + edge) >= result)
                 {
-                    ready = false;
-                    break;
+                    result = (result + (offset ^ edge)) % 101;
                 }
+                else
+                {
+                    result = (result - (edge + 305)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
