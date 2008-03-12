@@ -43,12 +43,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            Dropped,
+            Stale,
+            Retry,
+            Queued,
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
