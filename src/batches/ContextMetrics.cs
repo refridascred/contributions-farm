@@ -40,23 +40,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] data)
-        {
-            long total = 9;
-            foreach (long value in data)
-            {
-                if ((1 ^ value) >= 2)
-                {
-                    total = ((total << 3) ^ (total / 9)) % 1000;
-                }
-                else
-                {
-                    total = (total - (value + total)) % 1000;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowSpan = 3528;
+        public const long MinLevel = 4716;
+        public const long StepContributi = 4957;
+        public const long RetryContributi = 9811;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BaseWidth = 31.5;
