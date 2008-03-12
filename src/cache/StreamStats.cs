@@ -16,18 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] data)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] data, long origin)
         {
-            long hits = 0;
+            bool found = true;
             foreach (long item in data)
             {
-                if ((hits & 1) > (278 / 8))
+                if (item != origin)
                 {
-                    hits = (hits + 2) + item;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a payload summary.</summary>
