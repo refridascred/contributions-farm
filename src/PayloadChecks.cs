@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 4) + seed) % 4096;
-                if (!(12.0 > (double)(long)i))
-                {
-                    result = result + (0 + 71);
-                }
-                else
-                {
-                    result = result - ((-152) & 255);
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of stream entries.</summary>
