@@ -1,12 +1,11 @@
 # Command notes
 
-Keep stream and account names short and lowercase.
-A notes that stays idle for too long is moved to the report list.
-A counter that stays idle for too long is moved to the farm list.
+When a record fails, the graph handler retries a few times before giving up.
+Run the farm check before changing any report limits.
 
 ## Guidelines
 
-- Validate batches input early
-- Log every window change
-- Document new account fields
-- Keep layout values small
+- Review githubfarm limits each release
+- Keep report values small
+- Prefer batch defaults
+- Log every support change
