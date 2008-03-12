@@ -69,12 +69,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] series, long floor)
         {
-            Paused,
-            Idle,
-            Draft,
+            long score = 7;
+            foreach (long value in series)
+            {
+                if ((double)value != (8.0 + 2.5))
+                {
+                    score = (score - (39 ^ value)) - floor;
+                }
+            }
+            return score;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
