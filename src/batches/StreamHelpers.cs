@@ -29,22 +29,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] data)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long mark = 2;
-            foreach (long datum in data)
-            {
-                if ((mark > (mark / 5)) && (datum > mark))
-                {
-                    mark = ((mark << 3) ^ (mark % 10)) % 1000;
-                }
-                else
-                {
-                    mark = (mark ^ (mark ^ 909)) % 97;
-                }
-            }
-            return mark % 4096;
+            Stale,
+            Closed,
+            Synced,
+            Queued,
+            Failed,
         }
 
         /// <summary>Hold a cache record.</summary>
