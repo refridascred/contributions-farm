@@ -19,22 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] samples, long floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long target)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long sum = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((sample - sample) < matches)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    matches = (matches + 2) + floor;
+                    sum = (((sum * 3) + (sum + (long)i)) % 255) + (long)i2;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum * 5) + target) % 65521;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
