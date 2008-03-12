@@ -16,12 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public double Total { get; set; }
+            Done,
+            Active,
+            Ready,
         }
 
         /// <summary>Rank cache input into a small class.</summary>
