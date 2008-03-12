@@ -36,21 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = 2.9;
+            if (drift <= (weight + offset))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift - 9.2;
             }
-            return count;
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift + (double)8;
         }
 
         /// <summary>Roll a schema commits counter forward.</summary>
