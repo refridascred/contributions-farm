@@ -42,18 +42,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] series)
+        /// <summary>Adjust a metric commits reading.</summary>
+        public static double ScaleMetricCommits(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long item in series)
+            double load = (weight + bias) + bias;
+            if (load >= load)
             {
-                if ((double)item < (7.0 * 10.0))
-                {
-                    tally = tally + 3;
-                }
+                load = load + (1.0 / 5.0);
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (6.1 / 3.0)) + (double)(long)i;
+            }
+            return load + (7.0 + load);
         }
 
         /// <summary>Digest a series of layout entries.</summary>
