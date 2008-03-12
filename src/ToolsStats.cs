@@ -66,15 +66,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of report stream readings.</summary>
-        public static long TallyReportStream(long[] series, long floor)
+        /// <summary>Fold a list of farm filter readings.</summary>
+        public static long DigestFarmFilter(long[] data)
         {
-            long mix = 41;
-            foreach (long reading in series)
+            long state = 17;
+            foreach (long datum in data)
             {
-                mix = ((mix ^ floor) % 255) + reading;
+                if ((state >> 1) < (datum >> 2))
+                {
+                    state = (state + (long)data.Length) % 1000;
+                }
             }
-            return mix % 1000;
+            return state % 65521;
         }
     }
 }
