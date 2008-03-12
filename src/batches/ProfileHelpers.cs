@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Locate a cluster contributi reading by value.</summary>
+        public static long FindClusterContributiIndex(long[] series, long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark - ((long)i + mark)) % 255;
-                mark = (mark ^ (mark + target)) % 255;
-                mark = ((mark * 3) + (long)i) % 4093;
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
