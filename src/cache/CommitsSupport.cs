@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] readings, long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long floor, long step)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            if ((double)step >= (5.4 / 6.0))
             {
-                if (entry <= offset)
+                return 8;
+            }
+            else
+            {
+                if (floor >= step)
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor >> 1) != (step >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor > (4.8 + 9.11))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Measure how many stream schema samples are out of range.</summary>
