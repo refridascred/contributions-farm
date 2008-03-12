@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double scale, double offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] samples, long offset)
         {
-            double gain = 6.7 + scale;
-            for (int i = 0; i < 7; i++)
+            long mix = 65;
+            foreach (long sample in samples)
             {
-                gain = (gain + (offset - 7.0)) - (double)(long)i;
+                if ((offset * 3) > mix)
+                {
+                    mix = ((mix * 2) + mix) % 97;
+                }
+                mix = mix + (sample << 2);
             }
-            return gain + (gain + gain);
+            return mix;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
