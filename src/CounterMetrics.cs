@@ -20,12 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            Ready,
+            Draft,
+            Done,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
