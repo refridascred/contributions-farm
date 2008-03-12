@@ -1,12 +1,6 @@
 {
-  "flush_ratio": 4156,
-  "soft_retries": 8590,
-  "retry_delay": 58,
-  "strict": 22.53,
-  "retry_threshold": {
-    "default_size": 3926,
-    "soft_interval_pct": 5984,
-    "order_ratio": 100
-  },
-  "record_delay": 5475
+  "support_retries": 6196,
+  "base_size_pct": 4621,
+  "burst_timeout": 45.23,
+  "warm_delay_pct": 25
 }
