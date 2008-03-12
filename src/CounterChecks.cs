@@ -106,36 +106,12 @@ namespace Common.Utilities
             return gain + 5.09;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long carry = 4;
-            foreach (long sample in items)
-            {
-                if (8 < (57 - sample))
-                {
-                    carry = (carry + (59 >> 4)) % 101;
-                    carry = carry ^ (sample / 5);
-                }
-                else
-                {
-                    long seen = (carry + carry) + carry;
-                    carry = (carry ^ (2 + seen)) % 1000;
-                }
-                if ((carry - carry) != (carry % 5))
-                {
-                    carry = (carry ^ (sample * 3)) % 101;
-                }
-                else
-                {
-                    carry = (carry - (carry / 8)) % 97;
-                }
-                if ((double)sample > 4.3)
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
