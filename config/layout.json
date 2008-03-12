@@ -1,7 +1,6 @@
 {
-  "readonly": [189, 143],
-  "buffer_capacity": "open",
-  "poll_depth": "latest",
-  "batches_ttl": ["blue", "latest", "latest", "primary"],
-  "layout_limit": ["primary", "fallback", "strict", "edge"]
+  "compress": 250,
+  "batch_timeout_count": "strict",
+  "queue_interval": ["eu-west", "strict", "fallback", "blue"],
+  "strict": "edge"
 }
