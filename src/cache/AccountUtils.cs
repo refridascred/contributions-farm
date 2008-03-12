@@ -40,18 +40,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry < (double)950)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultSize = 1057;
+        public const double StepLevel = 49.82;
+        public const long HardTimeout = 2071;
     }
 }
