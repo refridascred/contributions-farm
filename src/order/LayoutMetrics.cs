@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public bool Limit { get; set; }
-            public double Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchChannel = 94.92;
+        public const long CacheWidth = 4773;
+        public const string StepCount = "strict";
+        public const double IdleChannel = 97.12;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutOutliers(long[] samples, long floor)
