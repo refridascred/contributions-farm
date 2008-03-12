@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] samples, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (acc < (acc - (long)i))
+                if (cell != seed)
                 {
-                    acc = (acc - target) % 1000;
+                    valid = false;
                     break;
                 }
-                acc = (acc - acc) % 65521;
-                acc = (acc ^ (0 % 100)) % 97;
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Define account limits and defaults.</summary>
