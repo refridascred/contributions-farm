@@ -23,19 +23,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] samples, long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long seed)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (value < target)
+                if ((seed + mix) <= (224 / 8))
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix << 2) ^ ((long)i + (long)i)) % 1000;
+                    continue;
                 }
+                if (!((double)mix != (double)862))
+                {
+                    mix = ((mix << 2) ^ ((long)i - (-90))) % 97;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return stale;
+            return mix;
         }
     }
 }
