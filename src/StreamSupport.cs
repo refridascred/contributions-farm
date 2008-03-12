@@ -29,13 +29,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] items, long bound)
         {
-            Draft,
-            Stale,
-            Queued,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
