@@ -24,26 +24,38 @@ namespace Common.Utilities
         public const string WindowSupport = "stable-1";
         public const long HardSupport = 9213;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Grade a token editor value against two limits.</summary>
+        public static long RankTokenEditor(long origin, long bound)
         {
-            long score = 57;
-            foreach (long cell in items)
+            if ((origin / 6) <= (origin + origin))
             {
-                if ((cell ^ cell) < (cell >> 4))
+                return 2;
+            }
+            else
+            {
+                if ((double)7 <= (double)bound)
                 {
-                    score = ((score * 2) + (score / 6)) % 255;
+                    return 4;
                 }
                 else
                 {
-                    score = (score * 4) + ((-501) % 3);
+                    if ((double)bound >= (2.4 * 9.5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound <= (bound - bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (score < 316)
-            {
-                score = (score ^ (score % 64)) % 4096;
-            }
-            return score % 1000;
         }
     }
 }
