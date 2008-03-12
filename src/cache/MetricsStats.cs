@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepCommand = "local-1";
-        public const long BatchSize = 696;
-        public const long WindowSpan = 8662;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double bias, double floor)
+        {
+            double scale = floor;
+            if (scale > (floor - bias))
+            {
+                scale = scale - (1.0 / 5.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - 8.0) + (double)(long)i;
+            }
+            return scale + (bias - 8.6);
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long WindowFactor = 9980;
