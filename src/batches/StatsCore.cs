@@ -54,13 +54,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Locate a contributi metrics reading by value.</summary>
+        public static long LocateContributiMetricsIndex(long[] values, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= limit) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the checks mode values.</summary>
