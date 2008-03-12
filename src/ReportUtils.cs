@@ -50,19 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer commits readings against a bound.</summary>
-        public static bool ValidateBufferCommitsRange(long[] readings, long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (value > floor)
+                if (datum <= floor)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
