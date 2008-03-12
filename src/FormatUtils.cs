@@ -44,13 +44,18 @@ namespace Common.Utilities
         public const string SoftFactor = "cached-v2";
         public const long RetryContributi = 2282;
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Audit record window readings against a rule.</summary>
+        public static long CountRecordWindowMatches(long[] values)
         {
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((double)matches < (double)7)
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
