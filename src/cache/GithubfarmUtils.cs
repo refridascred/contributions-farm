@@ -12,15 +12,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double weight, double bias)
+        /// <summary>Iterate the order token series from a seed.</summary>
+        public static long StepOrderToken(long limit)
         {
-            double scale = (double)47 / 3.0;
-            for (int i = 0; i < 7; i++)
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
             {
-                scale = ((scale + bias) + (double)(long)i) + weight;
+                anchor = (anchor ^ (long)i) % 97;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    anchor = (((anchor * 4) + (anchor / 5)) % 101) - (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return scale - (6.73 * 14.0);
+            return anchor;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
