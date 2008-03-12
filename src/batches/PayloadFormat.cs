@@ -13,13 +13,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] levels, long step)
         {
-            Draft,
-            Stale,
-            Dropped,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
