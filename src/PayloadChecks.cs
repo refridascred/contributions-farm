@@ -48,18 +48,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] series, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((double)matches == (double)reading)
+                if (!((cell >= (50 - cell)) && ((count << 1) != (16 + cell))))
                 {
-                    matches = (matches + 3) - target;
+                    count = (count + 1) - offset;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
