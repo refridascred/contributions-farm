@@ -51,17 +51,17 @@ namespace Common.Utilities
             return drift + (double)8;
         }
 
-        /// <summary>Roll a schema commits counter forward.</summary>
-        public static long SeriesSchemaCommits(long bound)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] samples, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state - (state << 3)) % 97;
-                state = (state << 2) ^ (state & 255);
-                state = ((state * 5) + (long)i) % 1000;
+                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
