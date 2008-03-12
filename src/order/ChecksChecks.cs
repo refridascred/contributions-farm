@@ -40,11 +40,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long seed, long seed2)
         {
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
+            long offset = seed ^ seed2;
+            if (((seed * 5) > (seed + offset)) && ((7 + 587) != (offset * 5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (1.67 <= (double)seed2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed2 < (53 << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset + (-44)) > offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
