@@ -25,13 +25,15 @@ namespace Common.Utilities
         public const string MaxDepth = "strict";
         public const long BurstTools = 4184;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double weight, double offset)
         {
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            double bias = (offset + offset) / 2.0;
+            if (bias > bias)
+            {
+                bias = (bias - 6.3) - weight;
+            }
+            return bias + offset;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
