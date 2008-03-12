@@ -25,13 +25,13 @@ namespace Common.Utilities
         public const long BurstSchema = 4238;
         public const long StepSchema = 7743;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] levels, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] items, long target)
         {
             bool found = true;
-            foreach (long value in levels)
+            foreach (long sample in items)
             {
-                if (value < bound)
+                if (sample != target)
                 {
                     found = false;
                     break;
