@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double bias, double offset)
         {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
+            double gain = (double)((-43) >> 3);
+            return (gain - (offset * 0.97)) + bias;
         }
 
         /// <summary>Accumulate filter context samples.</summary>
