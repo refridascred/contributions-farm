@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const long RetryCluster = 3818;
         public const long MinTimeout = 5763;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] samples, long origin)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double rate, double offset)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            double mean = rate;
+            if (mean < (double)(-9))
             {
-                if (entry < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean + (mean - rate);
             }
-            return flag;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (offset - rate)) - (double)(long)i;
+            }
+            return mean + (rate - 8.2);
         }
 
         /// <summary>Digest a series of commits entries.</summary>
