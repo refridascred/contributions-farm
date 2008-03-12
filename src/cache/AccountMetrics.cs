@@ -50,15 +50,13 @@ namespace Common.Utilities
         public const long MaxScore = 2144;
         public const long BurstFactor = 1106;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] items, long target)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long acc = 83;
-            foreach (long datum in items)
-            {
-                acc = (((acc - ((long)items.Length % 60)) % 4096) ^ datum) - target;
-            }
-            return acc % 4096;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
