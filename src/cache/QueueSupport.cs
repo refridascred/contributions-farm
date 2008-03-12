@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Grade a commits report value against two limits.</summary>
+        public static long ClassifyCommitsReport(long step, long offset)
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            if ((offset >> 5) >= 56)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(step < (offset & 255)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the contributi state values.</summary>
