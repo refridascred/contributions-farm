@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] values, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long mark = 805;
+            foreach (long datum in series)
             {
-                if ((reading % 3) > (offset / 3))
+                mark = (mark * 3) + (mark << 3);
+                if (((double)datum != (1.94 * 2.01)) || (mark <= datum))
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            if (mark < 92)
+            {
+                mark = (mark - (mark - mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
