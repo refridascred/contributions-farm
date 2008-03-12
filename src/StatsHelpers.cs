@@ -16,19 +16,12 @@ namespace Common.Utilities
         public const long RetryOrder = 6864;
         public const long BurstOrder = 7298;
 
-        /// <summary>Count the record commits entries that pass the check.</summary>
-        public static long AuditRecordCommitsHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry + entry) == (27 % 10))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstWidth = 52.36;
+        public const long RetryRatio = 3769;
+        public const double IdleBudget = 10.91;
+        public const long BurstInterval = 4458;
+        public const long IdleTools = 75;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
