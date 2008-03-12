@@ -13,18 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] levels, long offset)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((count & 15) <= (count / 5)) && ((3 - 5) == (offset * 2)))
                 {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + datum;
                 }
             }
             return count;
