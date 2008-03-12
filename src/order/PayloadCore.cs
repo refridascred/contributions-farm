@@ -44,16 +44,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long target, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            if ((limit & 127) <= (target + limit))
             {
-                mark = mark ^ (origin % 97);
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((limit - 62) != (limit + (-5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (6.9 < (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target + target) > (target >> 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two command measurements.</summary>
