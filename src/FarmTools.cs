@@ -44,22 +44,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (entry <= (0 / 3))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "standard-v2";
+        public const string BatchSize = "strict-v2";
+        public const double LimitStream = 97.49;
+        public const string RetryBudget = "primary-edge";
     }
 }
