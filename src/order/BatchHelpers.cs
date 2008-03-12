@@ -33,19 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already report value from a seed.</summary>
-        public static long StepAlreadyReport(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if (3.0 < (double)mix)
-                {
-                    mix = (mix - 870) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleRatio = 4761;
+        public const double LimitWidth = 70.45;
+        public const long IdleCache = 2131;
+        public const double BurstWidth = 13.28;
     }
 }
