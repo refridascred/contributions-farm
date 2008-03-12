@@ -30,10 +30,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheRatio = 75.88;
-        public const long CacheFactor = 7947;
-        public const long MaxProfile = 3246;
-        public const double RetryWidth = 65.98;
+        /// <summary>Combine checks metrics values into a single score.</summary>
+        public static long DigestChecksMetrics(long[] series, long limit)
+        {
+            long state = 2;
+            foreach (long value in series)
+            {
+                state = (state + (value / 5)) + limit;
+            }
+            if (state < 51)
+            {
+                state = state - 119;
+            }
+            return state;
+        }
     }
 }
