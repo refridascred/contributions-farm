@@ -74,13 +74,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Closed,
-            Locked,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultFactor = 75.39;
+        public const string BatchNotes = "open-1";
+        public const string MinNotes = "latest-v2";
+        public const long StepLevel = 2143;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorMatches(long[] items, long bound)
