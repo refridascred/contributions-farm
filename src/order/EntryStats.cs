@@ -34,18 +34,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] samples, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long origin)
         {
-            long anchor = 221;
-            foreach (long entry in samples)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((361 + floor) != (90 + entry))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    anchor = (anchor - (entry - 5)) % 65521;
+                    score = ((score * 5) + (932 % 3)) ^ (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
