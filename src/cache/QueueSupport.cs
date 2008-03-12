@@ -22,13 +22,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Pending,
-            Failed,
             Closed,
-            Idle,
+            Retry,
+            Active,
         }
     }
 }
