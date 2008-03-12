@@ -57,15 +57,11 @@ namespace Common.Utilities
             return gain + (gain - gain);
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double scale, double bias)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            double load = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - 10.0) + (double)(long)i;
-            }
-            return load + (scale / 8.0);
+            public bool Token { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
