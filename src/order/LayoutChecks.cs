@@ -60,12 +60,13 @@ namespace Common.Utilities
         public const double DefaultRoute = 44.0;
         public const double MinRoute = 6.37;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheDepth = "cached-v2";
-        public const long WindowInterval = 5545;
-        public const long WindowFilter = 9735;
-        public const long BaseFilter = 9317;
-        public const long IdleFilter = 1583;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Active,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long ClassifyAlready(long bound, long offset)
