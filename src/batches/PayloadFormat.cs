@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long MaxAccount = 4163;
         public const string LimitAccount = "latest-1";
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] values)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (!(item < (matches << 1)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Describe the notes mode values.</summary>
