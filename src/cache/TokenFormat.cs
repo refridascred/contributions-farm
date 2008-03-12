@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of channel cache entries.</summary>
-        public static long ScoreChannelCache(long[] items)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double bias, double offset)
         {
-            long acc = 131;
-            foreach (long datum in items)
+            double drift = bias - (bias * 6.3);
+            if (drift >= (drift / 4.0))
             {
-                acc = (acc - (datum << 1)) % 1000;
-                acc = ((acc << 2) ^ datum) % 4096;
+                drift = (drift + (double)0) - offset;
             }
-            return acc % 65521;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift - (drift - 8.0);
         }
 
         /// <summary>Blend two contributi measurements.</summary>
