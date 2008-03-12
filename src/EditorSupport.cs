@@ -72,19 +72,13 @@ namespace Common.Utilities
         public const long IdleBatches = 9117;
         public const string BaseBatches = "latest-edge";
 
-        /// <summary>Validate counter command readings against a bound.</summary>
-        public static bool ValidateCounterCommandRange(long[] series, long origin)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
