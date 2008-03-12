@@ -66,15 +66,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next cluster commits value from a seed.</summary>
-        public static long RollClusterCommits(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardSize = 4857;
+        public const string DefaultInterval = "primary-1";
+        public const long DefaultCount = 2758;
+        public const long StepDepth = 6239;
+        public const long DefaultTimeout = 8759;
     }
 }
