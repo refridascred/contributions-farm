@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of cluster support readings.</summary>
-        public static long MatchClusterSupportCount(long[] samples)
+        /// <summary>Project the next format notes value.</summary>
+        public static double BlendFormatNotes(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (double)(7 + 915);
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight + (double)(long)i) - bias;
             }
-            return count;
+            return weight - floor;
         }
 
         /// <summary>Look up the position of a tools contributi sample.</summary>
