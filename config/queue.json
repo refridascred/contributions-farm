@@ -1,13 +1,6 @@
 {
-  "cache_depth": {
-    "cache_timeout_ms": 81,
-    "checks_window": 57.28,
-    "batch_delay": ["blue", "legacy", "latest", "standard"],
-    "strict": 250,
-    "context_retries": "legacy"
-  },
-  "poll_ttl_ms": 8843,
-  "strict": 34.27,
-  "min_timeout": [460, 468, 320, 380],
-  "filter_ratio": "fallback"
+  "graph_ttl": 67,
+  "max_timeout": "staging",
+  "payload_interval": 60,
+  "context_limit": 100
 }
