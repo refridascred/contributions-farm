@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double rate, double offset)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double drift = offset;
-            return (drift + (2.0 * 7.0)) + rate;
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Match up counter samples.</summary>
