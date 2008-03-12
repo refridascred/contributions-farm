@@ -40,18 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] samples, long origin)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((5.0 <= (double)origin) || ((sample - origin) < (tally + sample)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Roll a entry counter forward.</summary>
