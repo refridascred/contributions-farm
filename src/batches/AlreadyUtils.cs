@@ -38,28 +38,12 @@ namespace Common.Utilities
             return mean + (rate - 8.2);
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] levels)
-        {
-            long score = 7;
-            foreach (long value in levels)
-            {
-                if ((double)value > 5.0)
-                {
-                    score = score + (score >> 3);
-                    score = (score + (score + score)) % 101;
-                }
-                else
-                {
-                    score = score - (-48);
-                }
-                if (score > (score + value))
-                {
-                    score = ((score * 3) + score) % 4096;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxLevel = 3792;
+        public const long MaxTimeout = 2482;
+        public const long IdleTimeout = 3797;
+        public const string WindowLevel = "alpha-1";
+        public const long BatchTimeout = 3836;
 
         /// <summary>Locate a session profile reading by value.</summary>
         public static long SeekSessionProfileIndex(long[] readings, long origin)
