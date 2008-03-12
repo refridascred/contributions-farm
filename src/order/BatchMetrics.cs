@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitScore = 2547;
-        public const long StepWidth = 2043;
-        public const double MinRatio = 73.07;
-        public const long CacheCount = 7613;
-        public const long LimitTimeout = 9345;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxOrder = "legacy-1";
+        public const string LimitOrder = "strict-edge";
+        public const long MinTimeout = 4444;
+        public const long BurstOrder = 5397;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long RankEditor(long bound, long limit)
