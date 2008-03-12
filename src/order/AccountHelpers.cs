@@ -50,19 +50,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] levels)
+        /// <summary>Grade a session context value against two limits.</summary>
+        public static long RankSessionContext(long floor, long bound)
         {
-            long mark = 4;
-            foreach (long entry in levels)
+            if (((4.61 - 4.4) == (double)bound) || ((8 ^ bound) != (floor % 2)))
             {
-                mark = (mark ^ (mark ^ mark)) + entry;
+                return 5;
             }
-            if (mark < 2)
+            else
             {
-                mark = mark ^ (mark / 4);
+                if (bound < 647)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound / 6) <= bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return mark;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
