@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] data)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((count >> 1) < (value - value))
-                {
-                    count = count + 2;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
