@@ -43,15 +43,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Done,
-            Draft,
-            Dropped,
-            Queued,
-            New,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultTimeout = "staging-edge";
+        public const long IdleSupport = 7887;
+        public const long MinSupport = 8787;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long TallyFarmGaps(long[] items)
