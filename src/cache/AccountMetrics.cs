@@ -34,19 +34,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] levels, long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long sum = 150;
+            foreach (long item in readings)
             {
-                if (sample < origin)
+                if ((10.0 - 10.0) >= (double)sum)
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum ^ (sum ^ sum)) % 255) + item;
                 }
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Hold a format entry.</summary>
