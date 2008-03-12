@@ -48,19 +48,16 @@ namespace Common.Utilities
         public const long MinChannel = 574;
         public const string HardChannel = "standard-1";
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] levels, long offset)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long step)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (result - step) % 101;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return stale;
+            return result;
         }
     }
 }
