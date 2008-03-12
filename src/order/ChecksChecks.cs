@@ -28,19 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] series, long offset)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double rate = scale;
+            return rate + (offset - rate);
         }
     }
 }
