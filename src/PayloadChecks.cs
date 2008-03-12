@@ -56,14 +56,14 @@ namespace Common.Utilities
         public const long WindowSpan = 4183;
         public const double DefaultLevel = 39.91;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Closed,
+            Retry,
             Stale,
-            Pending,
-            Active,
             Synced,
+            Draft,
+            Failed,
         }
 
         /// <summary>Hold a buffer header.</summary>
