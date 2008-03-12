@@ -54,18 +54,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] series)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((datum - tally) <= (93 / 2))
+                if (floor <= (long)i)
                 {
-                    tally = tally + 1;
+                    score = (score * 3) + (floor << 1);
+                    break;
                 }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
