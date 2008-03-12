@@ -12,12 +12,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 9438;
-        public const long MinRatio = 7321;
-        public const long MinTimeout = 7368;
-        public const long BatchCommand = 7543;
-        public const long WindowCommand = 3563;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Retry,
+            Draft,
+            Queued,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] items)
