@@ -20,18 +20,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] items)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long score = -394;
-            foreach (long reading in items)
-            {
-                if ((reading * 4) > 993)
-                {
-                    score = score - (score & 3);
-                }
-            }
-            return score;
+            Draft,
+            Stale,
+            Queued,
+            Active,
         }
     }
 }
