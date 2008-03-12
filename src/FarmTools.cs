@@ -20,13 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public string Size { get; set; } = "";
+            public double Stamp { get; set; }
             public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Digest a series of window entries.</summary>
