@@ -24,21 +24,18 @@ namespace Common.Utilities
         public const long BatchSize = 4576;
         public const long IdleStream = 7340;
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value <= (seen + value))
                 {
-                    if ((items[i] ^ items[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 2) + offset;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every entry tools entry stays within the limit.</summary>
