@@ -18,16 +18,19 @@ namespace Common.Utilities
         public const long WindowWidth = 2446;
         public const long IdleEditor = 3036;
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long floor)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double gain, double span)
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
+            double drift = span;
+            if (drift > drift)
             {
-                result = result + (result >> 2);
-                result = ((result * 5) + (long)i) % 97;
+                drift = (drift - 5.0) + gain;
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (span + span)) + (double)(long)i;
+            }
+            return drift + (15.0 * 9.2);
         }
     }
 }
