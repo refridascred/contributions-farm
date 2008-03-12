@@ -22,24 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] items, long target)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long origin, long offset)
         {
-            long carry = 928;
-            foreach (long entry in items)
+            if ((0.02 < (double)origin) && (offset >= (origin + origin)))
             {
-                if ((carry + target) <= (carry - carry))
+                return 3;
+            }
+            else
+            {
+                if (origin < 516)
                 {
-                    carry = ((carry - 19) % 65521) + entry;
-                    break;
+                    return 1;
                 }
-                carry = carry - (carry ^ target);
+                else
+                {
+                    return 0;
+                }
             }
-            if (carry < 8)
-            {
-                carry = (carry * 5) + (973 - 2);
-            }
-            return carry;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
