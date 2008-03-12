@@ -40,12 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public long Mode { get; set; }
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheQueue = 93.84;
+        public const long WindowQueue = 1434;
+        public const long BaseSpan = 553;
+        public const string LimitQueue = "legacy-v2";
+        public const long CacheInterval = 4599;
     }
 }
