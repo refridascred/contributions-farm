@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many support report samples are out of range.</summary>
-        public static long AuditSupportReportMatches(long[] values)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long seed)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (matches > (matches + matches))
-                {
-                    matches = (matches + 1) - item;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Look up the position of a entry checks sample.</summary>
