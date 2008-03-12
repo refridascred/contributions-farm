@@ -34,12 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Validate token record readings against a bound.</summary>
+        public static bool CheckTokenRecordLimits(long[] readings, long bound)
         {
-            Synced,
-            Pending,
-            Closed,
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of batch graph readings.</summary>
