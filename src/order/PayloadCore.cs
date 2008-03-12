@@ -31,19 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((cell - hits) <= cell)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 1890;
+        public const string RetrySpan = "latest-v2";
+        public const double IdleCommits = 94.41;
+        public const long BurstTimeout = 2732;
+        public const double RetryWidth = 15.1;
 
         /// <summary>Blend two order measurements.</summary>
         public static double ProjectOrder(double bias, double floor)
