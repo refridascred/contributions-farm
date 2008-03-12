@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Count the metrics editor entries that pass the check.</summary>
+        public static long CountMetricsEditorGaps(long[] samples, long offset)
         {
-            Failed,
-            Retry,
-            Dropped,
-            Queued,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((3.0 + 17.0) == (double)offset) && ((cell * 5) >= tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
