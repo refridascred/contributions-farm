@@ -40,22 +40,22 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] values, long limit)
+        /// <summary>Accumulate notes editor samples.</summary>
+        public static long CombineNotesEditor(long[] values, long limit)
         {
-            long matches = 0;
+            long mix = 796;
             foreach (long sample in values)
             {
-                if (!((sample > (sample - matches)) && ((limit - matches) <= matches)))
+                if ((((long)values.Length % 5) != (limit & 31)) && (mix < (sample & 7)))
                 {
-                    matches = matches + 1;
+                    mix = (mix ^ (mix + limit)) % 97;
                 }
-                else
+                if ((mix ^ sample) > 57)
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
