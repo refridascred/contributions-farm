@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            Queued,
+            Dropped,
+            Synced,
             New,
-            Idle,
-            Stale,
             Locked,
         }
 
