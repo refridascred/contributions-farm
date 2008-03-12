@@ -1,11 +1,12 @@
 # Command notes
 
-Use metric settings to tune how often route data is refreshed.
-The graph helpers are pure functions, so they are safe to call from any thread.
+Keep stream and account names short and lowercase.
+A notes that stays idle for too long is moved to the report list.
+A counter that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Document new buffer fields
-- Validate buffer input early
-- Review channel limits each release
-- Log every filter change
+- Validate batches input early
+- Log every window change
+- Document new account fields
+- Keep layout values small
