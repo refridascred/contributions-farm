@@ -14,11 +14,20 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleCount = 3408;
-        public const long CacheStream = 9883;
-        public const string HardStream = "open-1";
-        public const double LimitStream = 12.89;
+        /// <summary>Validate checks metric readings against a bound.</summary>
+        public static bool CheckChecksMetricRange(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
