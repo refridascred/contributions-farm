@@ -1,16 +1,13 @@
 {
-  "default_ttl_count": "stable",
-  "batch_interval": false,
-  "poll_timeout": {
-    "poll_ttl": {
-      "hard_timeout_pct": true,
-      "githubfarm_retries": [84, 311, 229, 437],
-      "session_delay": "primary",
-      "poll_limit": "open",
-      "poll_size_s": "fallback"
-    },
-    "flush_window_s": 84.71,
-    "cache_retries": true
+  "enabled": {
+    "cache_limit_ms": 31,
+    "default_capacity_ms": 34,
+    "audit": false,
+    "readonly": [352, 260, 336]
   },
-  "max_interval_pct": true
+  "max_timeout": false,
+  "poll_interval": 100,
+  "persist": 1024,
+  "layout_depth": 3457,
+  "batch_interval": "legacy"
 }
