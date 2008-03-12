@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next command buffer value from a seed.</summary>
-        public static long StepCommandBuffer(long origin)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] series, long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if ((series[i] < origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
