@@ -55,17 +55,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] data, long bound)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = ratio;
+            if (mean < mean)
             {
-                if ((data[i] > bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + (ratio + 9.81)) - offset;
             }
-            return -1;
+            return mean + mean;
         }
 
         /// <summary>Hold a checks stats.</summary>
