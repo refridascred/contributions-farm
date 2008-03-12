@@ -1,8 +1,6 @@
 {
-  "batch_limit": 3,
-  "default_threshold_count": 38.04,
-  "audit": 64,
-  "editor_limit": 25,
-  "account_limit": "fallback",
-  "idle_capacity_ms": ["primary", "eu-west"]
+  "readonly": false,
+  "audit": 0.73,
+  "batch_delay_ms": "open",
+  "burst_threshold_pct": 3367
 }
