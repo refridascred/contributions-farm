@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long bound, long bound2)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] values)
         {
-            if (!((bound / 3) > (bound2 ^ bound)))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound & 127) > (bound2 ^ bound))
+                if (matches >= (entry - matches))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((-33) + bound2) >= (bound2 + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
