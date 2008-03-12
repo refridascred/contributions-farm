@@ -31,11 +31,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
+            Idle,
+            Pending,
+            Active,
+            Done,
         }
     }
 }
