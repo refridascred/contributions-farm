@@ -21,18 +21,39 @@ namespace Common.Utilities
         public const string RetryCommits = "strict";
         public const long MinRatio = 5340;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] items, long offset)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long lane = seed ^ offset;
+            if ((87 % 2) <= (offset / 6))
             {
-                if (value <= (seen + value))
+                return 8;
+            }
+            else
+            {
+                if (lane < (seed / 2))
                 {
-                    seen = (seen + 2) + offset;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset - lane) > seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((lane + lane) < (seed << 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every entry tools entry stays within the limit.</summary>
