@@ -1,5 +1,7 @@
 {
-  "default_window": 100,
-  "retry_threshold": 97.11,
-  "base_threshold": "eu-west"
+  "max_size": ["legacy", "open", "strict"],
+  "burst_limit_s": "edge",
+  "poll_size_pct": ["blue", "primary", "green"],
+  "burst_ratio": false,
+  "flush_interval_s": "strict"
 }
