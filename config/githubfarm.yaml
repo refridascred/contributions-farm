@@ -1,5 +1,8 @@
 # githubfarm settings
-editor_depth: 44
-min_ratio_pct: 73
-commits_retries: open
-poll_interval: edge
+retry_limit_ms:
+  - primary
+  - blue
+max_interval: fallback
+audit: 1024
+persist: staging
+checks_timeout: false
