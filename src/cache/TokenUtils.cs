@@ -14,18 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] data)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (datum < (hits + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double drift = 3.0;
+            return (drift + bias) + rate;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
