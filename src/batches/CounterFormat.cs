@@ -14,10 +14,16 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstSpan = "latest-v2";
-        public const long CacheContributi = 4981;
-        public const long MinContributi = 1071;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] levels, long offset)
+        {
+            long carry = 2;
+            foreach (long value in levels)
+            {
+                carry = ((carry - offset) % 255) + value;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
