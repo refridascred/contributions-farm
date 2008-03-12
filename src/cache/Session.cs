@@ -31,12 +31,23 @@ namespace Common.Utilities
         public const string StepInterval = "latest-v2";
         public const string CacheSpan = "fallback-v2";
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Scale a command format figure with a bias.</summary>
+        public static double SmoothCommandFormat(double rate, double floor)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public double Size { get; set; }
+            double drift = rate;
+            if (drift <= rate)
+            {
+                drift = drift - 9.82;
+            }
+            else
+            {
+                drift = drift - (drift * 9.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift + (floor - rate);
         }
     }
 }
