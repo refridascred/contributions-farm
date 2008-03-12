@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support counter samples are out of range.</summary>
-        public static long TallySupportCounterMatches(long[] data)
+        /// <summary>Measure how many githubfarm checks samples are out of range.</summary>
+        public static long CountGithubfarmChecksMatches(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((double)reading != (1.1 * 17.0))
+                if ((origin + 132) == (origin + datum))
                 {
-                    hits = hits + 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
