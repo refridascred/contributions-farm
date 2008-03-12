@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] items, long bound)
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate checks metric readings against a bound.</summary>
