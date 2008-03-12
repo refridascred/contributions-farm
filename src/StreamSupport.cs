@@ -28,10 +28,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySupport = 66.65;
-        public const long MinDepth = 1428;
-        public const double IdleCount = 20.94;
-        public const long WindowSupport = 614;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
