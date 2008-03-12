@@ -39,19 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] data, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long mix = 802;
+            foreach (long value in series)
             {
-                if (sample > offset)
+                if ((double)target > (double)value)
                 {
-                    stale = false;
-                    break;
+                    mix = mix - (mix - mix);
                 }
+                mix = (mix * 2) + (target + target);
             }
-            return stale;
+            return mix % 4096;
         }
 
         /// <summary>Locate a contributi metrics reading by value.</summary>
