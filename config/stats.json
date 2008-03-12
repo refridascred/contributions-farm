@@ -1,6 +1,6 @@
 {
-  "default_depth_ms": "eu-west",
-  "audit": false,
-  "burst_interval": "open",
-  "soft_delay_s": 62
+  "hard_threshold_ms": 75.11,
+  "persist": true,
+  "checks_ttl": "local",
+  "tools_capacity": true
 }
