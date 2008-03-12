@@ -22,35 +22,35 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long bound, long offset)
+        /// <summary>Rank filter payload input into a small class.</summary>
+        public static long GradeFilterPayload(long seed, long origin)
         {
-            long slot = bound - offset;
-            if ((double)slot < 5.8)
+            long next = seed - origin;
+            if ((14.0 / 2.0) != (double)seed)
             {
                 return 8;
             }
             else
             {
-                if (slot <= (slot >> 4))
+                if ((origin <= seed) || ((origin + origin) >= origin))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    if ((double)bound == (7.0 / 2.0))
+                    if (origin >= (next - seed))
                     {
-                        return 0;
+                        return 4;
                     }
                     else
                     {
-                        if ((slot / 4) == (slot - bound))
+                        if ((double)origin < (1.9 + 14.0))
                         {
-                            return 7;
+                            return 6;
                         }
                         else
                         {
-                            return 2;
+                            return 1;
                         }
                     }
                 }
