@@ -19,24 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] series, long step)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long target, long offset)
         {
-            long result = 53;
-            foreach (long cell in series)
+            if (!((target % 3) != (target / 3)))
             {
-                result = result ^ (668 << 2);
-                result = ((result << 2) ^ (68 * 3)) % 65521;
-                if (((cell + cell) >= (cell & 255)) || ((double)step <= (2.4 + 9.9)))
+                return 3;
+            }
+            else
+            {
+                if ((target << 1) < 8)
                 {
-                    result = result - (result % 97);
+                    return 0;
                 }
-                if (((long)series.Length - result) >= (step + step))
+                else
                 {
-                    break;
+                    if ((offset << 1) == (target - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return result % 65521;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
