@@ -1,25 +1,19 @@
 # support settings
-notes_ratio: true
-base_depth:
-  burst_ttl_pct: legacy
-  report_delay: 7625
-  burst_limit_pct:
-    strict: 250
-    flush_capacity_ms: edge
-    burst_limit: open
-    compress:
-      - cached
-      - latest
-      - green
-    report_window: 76
-    dry_run: staging
-  stream_depth:
-    buffer_depth: latest
-    poll_threshold_count: standard
-    flush_limit_count: true
-    window_timeout: false
-    audit: 79.56
-    idle_depth_pct: legacy
-min_ttl: 96
-max_capacity: legacy
-readonly: 500
+min_limit_pct: eu-west
+dry_run: true
+base_delay_s: 60
+sync_depth_count: 30
+max_size_pct:
+  sync_capacity: 88.95
+  hard_size_count: 69.86
+  metrics_size: true
+  enabled: false
+  account_size: 41
+idle_ratio_s:
+  report_threshold:
+    - fallback
+    - open
+  sync_timeout: 6770
+  contributi_retries: latest
+  base_depth_pct: edge
+  burst_window: false
