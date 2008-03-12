@@ -10,25 +10,14 @@ namespace Common.Utilities
         public const double MaxContributi = 19.1;
         public const long SoftBudget = 3054;
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long step, long origin)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long edge = step + origin;
-            if ((origin / 5) >= edge)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((edge << 1) != (step + edge))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Queued,
+            Synced,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define session limits and defaults.</summary>
