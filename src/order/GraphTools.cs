@@ -27,13 +27,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
+            Pending,
+            Synced,
+            Done,
+            New,
+            Active,
         }
 
         /// <summary>Hold a already options.</summary>
