@@ -19,11 +19,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 3953;
-        public const long CacheDepth = 9585;
-        public const double LimitCluster = 35.06;
-        public const double IdleWidth = 85.17;
-        public const long BatchCluster = 6296;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 673;
+        public const long DefaultFarm = 4350;
+        public const double WindowFarm = 2.34;
+        public const long MinFarm = 855;
+        public const long MaxFarm = 6272;
     }
 }
