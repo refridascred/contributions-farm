@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] data, long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long floor, long offset)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long next = floor + offset;
+            if (!((next << 1) <= floor))
             {
-                if (cell > seed)
+                return 6;
+            }
+            else
+            {
+                if ((next < (offset - offset)) || (offset < (floor << 1)))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
 
         /// <summary>Digest a series of tools contributi entries.</summary>
