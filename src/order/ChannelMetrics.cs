@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] items, long offset)
         {
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public string Level { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
