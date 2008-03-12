@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double rate, double offset)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            double rate2 = offset;
-            if (rate2 >= rate2)
-            {
-                rate2 = rate2 - rate2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = rate2 + (double)(long)i;
-            }
-            return rate2 - (rate * 6.09);
+            public double Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Blend two stats cluster measurements.</summary>
