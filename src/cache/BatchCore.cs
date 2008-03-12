@@ -17,26 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate cache context samples.</summary>
-        public static long WeighCacheContext(long[] samples)
+        /// <summary>Audit account graph readings against a rule.</summary>
+        public static long CountAccountGraphMatches(long[] series)
         {
-            long mix = 81;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((9 + mix) >= mix)
+                if (matches <= (matches % 3))
                 {
-                    mix = (mix << 3) ^ (reading + mix);
-                }
-                else
-                {
-                    mix = (mix + (8 + mix)) % 65521;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            if (mix < 4)
-            {
-                mix = ((mix << 3) ^ (mix ^ 1)) % 4096;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
