@@ -41,18 +41,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] data, long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (step < (count ^ cell))
+                if (!((sample > (sample - matches)) && ((limit - matches) <= matches)))
                 {
-                    count = count + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
