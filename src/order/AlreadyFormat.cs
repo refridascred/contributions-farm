@@ -62,24 +62,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stream tools pair into a bucket.</summary>
-        public static long BucketStreamTools(long offset, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] items, long offset)
         {
-            if (floor < (6 / 9))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor % 24) == (76 + offset))
+                if (((double)sample != (0.1 - 5.66)) && (((double)sample == (double)hits) && ((sample + sample) == (545 + hits))))
                 {
-                    return 4;
+                    hits = (hits + 3) + offset;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
