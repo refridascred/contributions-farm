@@ -1,20 +1,8 @@
 {
-  "idle_capacity_ms": {
-    "channel_delay": 7799,
-    "cache_ttl_pct": ["latest", "standard"],
-    "base_size_pct": 7035
-  },
-  "entry_threshold": true,
-  "metric_ttl": {
-    "payload_threshold": 92,
-    "verbose": 1024,
-    "soft_limit_count": {
-      "poll_ratio_pct": ["blue", "cached"],
-      "verbose": [485, 354, 166],
-      "payload_retries": 77,
-      "soft_capacity_ms": "staging"
-    },
-    "layout_threshold": 9102
-  },
-  "checks_delay": 4618
+  "soft_window_ms": 500,
+  "base_capacity_count": true,
+  "payload_window": "primary",
+  "hard_depth_ms": true,
+  "batch_threshold_ms": 1024,
+  "burst_interval": "primary"
 }
