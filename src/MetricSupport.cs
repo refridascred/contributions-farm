@@ -46,22 +46,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] levels, long limit)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long acc = 64;
-            foreach (long item in levels)
-            {
-                if (!((20.0 / 3.0) < (double)item))
-                {
-                    acc = acc ^ (item - acc);
-                }
-                if (!((5.01 * 0.96) != (double)limit))
-                {
-                    acc = ((acc << 3) ^ acc) % 255;
-                }
-            }
-            return acc;
+            Ready,
+            Draft,
+            Idle,
+            Locked,
+            Queued,
         }
     }
 }
