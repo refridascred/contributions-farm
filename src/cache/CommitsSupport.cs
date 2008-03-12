@@ -14,12 +14,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Project the next record contributi value.</summary>
+        public static double ScaleRecordContributi(double weight, double offset)
         {
-            Locked,
-            Queued,
-            Closed,
+            double load = weight;
+            if (load >= (double)6)
+            {
+                load = load - 8.0;
+            }
+            else
+            {
+                load = load + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (0.9 / 5.0)) - (double)(long)i;
+            }
+            return load - (load + 5.5);
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
