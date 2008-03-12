@@ -29,10 +29,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowProfile = 50.84;
-        public const long RetryTimeout = 6004;
-        public const long RetryWidth = 791;
-        public const long HardProfile = 5945;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] data, long target)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
