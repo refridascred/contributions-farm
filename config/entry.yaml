@@ -1,16 +1,7 @@
 # entry settings
-retry_interval: green
-poll_interval_pct: true
-base_capacity_ms:
-  hard_ttl:
-    - legacy
-    - strict
-    - strict
-  batch_delay: standard
-  base_depth: false
-  batches_threshold:
-    channel_ratio: 51
-    retry_capacity_count: cached
-    hard_threshold_ms: 58.45
-    flush_timeout_count: edge
-idle_interval_s: 7992
+format_retries: local
+warm_capacity: 85
+min_ttl_count: legacy
+sync_size_s:
+  - 446
+  - 382
