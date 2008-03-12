@@ -43,12 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinSpan = "legacy-edge";
-        public const long LimitSize = 5521;
-        public const double LimitReport = 86.15;
-        public const double CacheReport = 25.1;
-        public const double HardReport = 50.66;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long SortRecord(long bound, long limit)
