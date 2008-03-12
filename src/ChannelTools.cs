@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item < seed)
                 {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Match up layout samples.</summary>
