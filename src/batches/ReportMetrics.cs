@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] series)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long score = 736;
-            foreach (long cell in series)
-            {
-                if (((score - 5) > score) || ((score + score) > (score << 2)))
-                {
-                    score = ((score ^ ((long)series.Length * 3)) % 65521) ^ cell;
-                }
-            }
-            if (score < 843)
-            {
-                score = ((score << 2) ^ (score ^ 89)) % 65521;
-            }
-            return score;
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
