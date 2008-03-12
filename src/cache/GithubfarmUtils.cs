@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinSize = 63.14;
-        public const string BatchBudget = "primary-1";
-        public const string MinMetrics = "standard-edge";
-        public const string MaxMetrics = "staging-edge";
-        public const long RetryMetrics = 3629;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
