@@ -32,22 +32,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] data)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long step2 = target - step;
+            if ((1.8 / 6.0) >= (double)step2)
             {
-                if (((hits + hits) <= (entry * 3)) || ((hits * 5) != (hits + entry)))
+                return 0;
+            }
+            else
+            {
+                if ((15 + target) == (step & 127))
                 {
-                    hits = hits + 3;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a route info.</summary>
