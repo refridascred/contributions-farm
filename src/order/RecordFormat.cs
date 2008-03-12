@@ -34,13 +34,13 @@ namespace Common.Utilities
         public const double SoftFactor = 27.05;
         public const long CacheDepth = 4732;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Synced,
-            Idle,
-            Stale,
-            Retry,
+            public bool Token { get; set; }
+            public bool Level { get; set; }
+            public double Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the already state values.</summary>
