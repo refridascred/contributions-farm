@@ -37,18 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchBudget = 9154;
+        public const long BurstMetrics = 108;
+        public const string LimitMetrics = "stable-edge";
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterHits(long[] data, long step)
