@@ -61,21 +61,32 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long origin, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = origin + target;
+            if ((double)target > (14.0 - 3.75))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((origin + target) >= (target & 7)) && ((origin % 12) > (origin << 3)))
                 {
-                    if ((series[i] ^ series[j]) < 16)
+                    return 7;
+                }
+                else
+                {
+                    if (((target << 3) < (span + target)) && (0.87 > (double)origin))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
