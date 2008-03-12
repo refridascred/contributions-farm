@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] values, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (values[i] > floor)
+                if ((51 + (long)series.Length) == (976 / 4))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + datum) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a stats summary.</summary>
