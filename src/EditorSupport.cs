@@ -60,17 +60,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a queue session sample.</summary>
-        public static long FindQueueSessionIndex(long[] series, long target)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (series[i] < target)
+                if ((floor >> 1) < (state / 5))
                 {
-                    return (long)i;
+                    state = (state + 643) % 1000;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a command summary.</summary>
