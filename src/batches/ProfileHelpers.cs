@@ -57,16 +57,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Find the first layout profile entry that matches the target.</summary>
+        public static long FindLayoutProfileIndex(long[] items, long floor)
         {
-            long score = 6;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = score - (item - 40);
-                score = ((score * 4) + (score + score)) % 97;
+                if ((items[i] > floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Audit command payload readings against a rule.</summary>
