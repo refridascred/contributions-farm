@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] values, long limit)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowMetric = "cached-edge";
+        public const long IdleWidth = 4137;
+        public const string IdleMetric = "staging";
+        public const long WindowDepth = 5309;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long IterateBatches(long bound)
