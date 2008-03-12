@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleDepth = "standard";
+        public const long DefaultBudget = 4794;
+        public const string DefaultRatio = "legacy-edge";
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] items, long floor)
