@@ -16,24 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long floor, long offset)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            if ((offset - 6) <= floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((6 / 2) > (649 - floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
