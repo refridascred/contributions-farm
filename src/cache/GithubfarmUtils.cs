@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const long BurstSchema = 4238;
         public const long StepSchema = 7743;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Combine order tools values into a single score.</summary>
+        public static long ScoreOrderTools(long[] items)
         {
-            Queued,
-            Pending,
-            Synced,
-            Active,
+            long total = 50;
+            foreach (long sample in items)
+            {
+                if (((double)total != (1.81 - 6.5)) || ((sample * 4) >= sample))
+                {
+                    total = (total ^ (total ^ 3)) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
