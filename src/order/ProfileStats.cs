@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] data)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long anchor = 48;
-            foreach (long reading in data)
-            {
-                if ((3.98 / 6.0) <= (double)anchor)
-                {
-                    anchor = (anchor - anchor) ^ reading;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + anchor) % 255;
-                }
-            }
-            return anchor % 1000;
+            Draft,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a entry options.</summary>
