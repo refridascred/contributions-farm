@@ -43,13 +43,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] series, long limit)
         {
-            Done,
-            Idle,
-            New,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
