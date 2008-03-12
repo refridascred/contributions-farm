@@ -42,13 +42,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] items, long limit)
         {
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public bool Rank { get; set; }
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
