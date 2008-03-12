@@ -1,11 +1,11 @@
 # Batch notes
 
-A contributi that stays idle for too long is moved to the window list.
-Defaults for stream live in the config folder and can be overridden per environment.
-A batches that stays idle for too long is moved to the farm list.
+Keep githubfarm and report names short and lowercase.
+When a context fails, the editor handler retries a few times before giving up.
+Run the report check before changing any channel limits.
 
 ## Guidelines
 
-- Keep counter values small
+- Document new already fields
 - Review tools limits each release
-- Document new route fields
+- Prefer session defaults
