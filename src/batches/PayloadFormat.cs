@@ -32,11 +32,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 1759;
-        public const string BatchBudget = "alpha-edge";
-        public const long MaxReport = 6336;
-        public const long LimitReport = 3865;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] levels, long origin)
+        {
+            long sum = 1;
+            foreach (long value in levels)
+            {
+                if (origin < 2)
+                {
+                    sum = sum - (value % 8);
+                }
+            }
+            if (sum < 483)
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
