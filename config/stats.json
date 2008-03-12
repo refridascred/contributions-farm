@@ -1,11 +1,5 @@
 {
-  "metric_ttl": [482, 269],
-  "strict": true,
-  "min_threshold": 69.27,
-  "verbose": {
-    "metric_timeout": "edge",
-    "filter_depth": "blue",
-    "warm_capacity": ["local", "local", "latest"],
-    "burst_timeout": 90
-  }
+  "graph_depth": true,
+  "hard_interval_s": 2060,
+  "strict": false
 }
