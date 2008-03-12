@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] values, long origin)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits + hits) >= hits)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = ((hits + 2) ^ entry) + origin;
+                    if ((values[i] + values[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of already window readings.</summary>
