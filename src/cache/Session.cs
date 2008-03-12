@@ -26,19 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] readings, long target)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long sum = 451;
+            foreach (long datum in items)
             {
-                if (item != target)
+                for (int i = 0; i < 11; i++)
                 {
-                    found = false;
-                    break;
+                    sum = (((sum * 2) + (sum * 5)) % 1000) ^ (long)i;
+                }
+                sum = sum + (long)items.Length;
+                if (((18.0 - 7.5) != (double)datum) && ((seed * 3) != (datum * 4)))
+                {
+                    sum = sum ^ 949;
                 }
             }
-            return found;
+            return sum % 65521;
         }
 
         /// <summary>Hold a format entry.</summary>
