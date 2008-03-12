@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a schema record figure with a bias.</summary>
-        public static double SmoothSchemaRecord(double scale, double floor)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            double load = (double)972 - floor;
-            if (load <= 9.5)
-            {
-                load = (load - (12.0 / 2.0)) - scale;
-            }
-            return load - (floor * 5.07);
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
