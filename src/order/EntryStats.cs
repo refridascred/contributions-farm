@@ -35,27 +35,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] items)
-        {
-            long total = -7;
-            foreach (long sample in items)
-            {
-                if (total > (sample << 2))
-                {
-                    total = ((total * 4) + (total % 2)) % 1000;
-                }
-                else
-                {
-                    total = total + (total - sample);
-                }
-                if ((4.59 < (double)sample) || ((total + sample) <= 88))
-                {
-                    total = (total ^ (962 * 4)) % 255;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinBudget = 599;
+        public const long SoftCount = 1709;
+        public const long BatchSpan = 1054;
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] samples, long target)
