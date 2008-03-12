@@ -33,38 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a route stream value against two limits.</summary>
-        public static long RankRouteStream(long origin, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] samples, long bound)
         {
-            if (((double)target != (0.6 - 5.0)) && ((target - origin) != (target - 90)))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((502 & 1) >= (origin & 7))
+                if ((datum >> 1) <= (seen + datum))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target >= (4.4 - 7.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((7 & 63) > (origin >> 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = (seen + 2) - bound;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
