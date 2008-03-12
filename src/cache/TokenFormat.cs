@@ -14,12 +14,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitTimeout = 2327;
-        public const double WindowLevel = 18.19;
-        public const long LimitRatio = 6132;
-        public const string MaxRatio = "legacy-1";
-        public const long HardScore = 570;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 2707;
+        public const string IdleRecord = "fallback-v2";
+        public const long HardDepth = 9108;
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] items)
