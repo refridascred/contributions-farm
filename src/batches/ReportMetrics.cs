@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long target)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double rate, double offset)
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
+            double load = rate;
+            if (load > load)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                load = (load - (rate + rate)) - offset;
             }
-            return mark;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + 15.0) + (double)(long)i;
+            }
+            return load + (18.0 / 4.0);
         }
 
         /// <summary>Look up the position of a support schema sample.</summary>
