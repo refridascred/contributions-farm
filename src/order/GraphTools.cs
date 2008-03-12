@@ -32,18 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] items, long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] levels, long limit)
         {
-            long sum = 8;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((entry & 31) != ((-68) / 4))
+                if (reading > limit)
                 {
-                    sum = ((sum * 2) + seed) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Match up format samples.</summary>
