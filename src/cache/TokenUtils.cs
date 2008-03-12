@@ -21,11 +21,16 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 2911;
-        public const long SoftTimeout = 8686;
-        public const long BatchRatio = 7248;
-        public const long LimitInterval = 1980;
-        public const string RetryBuffer = "strict-edge";
+        /// <summary>Derive the next order channel value from a seed.</summary>
+        public static long RollOrderChannel(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = anchor + (anchor & 127);
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
