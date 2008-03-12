@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] levels)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            long total = -103;
-            foreach (long datum in levels)
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    total = (total ^ datum) ^ (long)i;
-                }
-                total = ((total << 2) ^ datum) % 1000;
-                if (((total * 5) != (datum & 63)) || ((total * 4) != (311 % 3)))
-                {
-                    total = (total - (datum << 1)) % 255;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            if (total < 3)
-            {
-                total = (total * 3) + total;
-            }
-            return total % 1000;
+            return anchor;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
