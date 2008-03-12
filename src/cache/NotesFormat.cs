@@ -31,24 +31,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long origin, long origin2)
-        {
-            if (origin > 68)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin2 >> 5) < (origin ^ origin2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 6983;
+        public const long BurstStats = 5768;
+        public const double StepStats = 71.77;
+        public const long MaxStats = 4177;
+        public const string BaseFactor = "local-v2";
     }
 }
