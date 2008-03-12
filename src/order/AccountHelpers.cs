@@ -24,21 +24,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of token context readings.</summary>
-        public static long MatchTokenContextCount(long[] series)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] - series[j]) < 10)
+                    if ((items[i] - items[j]) == 12)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a route info.</summary>
