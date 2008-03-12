@@ -1,8 +1,30 @@
 # githubfarm settings
-retry_limit_ms:
-  - primary
-  - blue
-max_interval: fallback
-audit: 1024
-persist: staging
-checks_timeout: false
+graph_delay:
+  session_ratio: false
+  enabled: 44.69
+  idle_timeout:
+    cache_threshold_ms:
+      - edge
+      - primary
+    batch_interval: 250
+    enabled: true
+    context_window: false
+    soft_interval: legacy
+  editor_size: 70
+cache_window_s:
+  compress: cached
+  channel_capacity: 34.39
+  burst_retries: true
+  cache_limit:
+    support_limit: 38
+    already_ratio: legacy
+    notes_size:
+      - stable
+      - stable
+      - legacy
+      - strict
+  route_threshold: 500
+  counter_timeout: staging
+batches_capacity: false
+base_interval_count: open
+stats_size: staging
