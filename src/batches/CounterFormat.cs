@@ -22,18 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] values, long step)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long state = 9;
-            foreach (long value in values)
-            {
-                if ((97 % 64) > value)
-                {
-                    state = ((state * 4) + (state * 4)) - step;
-                }
-            }
-            return state % 97;
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the token state values.</summary>
