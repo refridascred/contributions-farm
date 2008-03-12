@@ -37,11 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Stale,
-            Pending,
+            Closed,
+            Paused,
+            Synced,
+            Failed,
             Idle,
         }
     }
