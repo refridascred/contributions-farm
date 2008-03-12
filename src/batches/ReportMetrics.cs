@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] series, long offset)
+        /// <summary>Look up the position of a support schema sample.</summary>
+        public static long FindSupportSchemaIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] > offset)
+                if (levels[i] <= offset)
                 {
                     return (long)i;
                 }
