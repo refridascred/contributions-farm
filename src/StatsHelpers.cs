@@ -55,11 +55,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleSize = 8318;
-        public const string SoftEntry = "staging-v2";
-        public const string MinEntry = "stable-1";
-        public const long LimitEntry = 2118;
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long AuditEntryMatches(long[] levels, long floor)
