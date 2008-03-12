@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] values)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (entry < count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
