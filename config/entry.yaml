@@ -1,7 +1,15 @@
 # entry settings
-layout_interval: 69.89
-account_capacity: blue
-max_size_s: local
-batch_interval: cached
-sync_delay: strict
-max_capacity_ms: 54.42
+readonly: 66
+soft_limit:
+  - strict
+  - edge
+profile_window: 27.37
+batch_ttl:
+  max_window_ms: 68.18
+  cache_ratio: staging
+  warm_size_pct:
+    soft_interval_count: staging
+    soft_size: blue
+    farm_capacity: standard
+    strict: 48
+  schema_limit: 6451
