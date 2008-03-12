@@ -1,8 +1,6 @@
 {
-  "default_interval": 37.54,
-  "soft_interval_s": "local",
-  "hard_window_pct": 88,
-  "account_threshold": "stable",
-  "verbose": 30,
-  "soft_window_count": 1024
+  "audit": true,
+  "strict": "primary",
+  "min_interval": false,
+  "verbose": "open"
 }
