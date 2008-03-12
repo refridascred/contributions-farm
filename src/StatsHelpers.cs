@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 5567;
+        public const long BatchBudget = 2756;
+        public const long BatchRoute = 379;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamOutliers(long[] samples, long target)
