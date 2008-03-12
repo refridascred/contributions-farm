@@ -54,18 +54,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] levels, long target)
+        /// <summary>Validate graph cluster readings against a bound.</summary>
+        public static bool CheckGraphClusterLimits(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if ((6.87 * 9.69) == (double)matches)
+                if (cell != floor)
                 {
-                    matches = ((matches + 1) + item) + target;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
