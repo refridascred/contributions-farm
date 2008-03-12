@@ -66,19 +66,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double ratio, double offset)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            double gain = (double)2 / 9.0;
-            if (gain > offset)
-            {
-                gain = (gain + (0.4 * 4.1)) - ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (offset - 7.0)) + (double)(long)i;
-            }
-            return gain + 5.09;
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
