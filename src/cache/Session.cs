@@ -41,13 +41,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public bool Region { get; set; }
-            public bool Size { get; set; }
+            public double Mode { get; set; }
+            public double Count { get; set; }
             public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the session state values.</summary>
