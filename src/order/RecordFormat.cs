@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Dropped,
-            Closed,
-            Paused,
-            Failed,
-            Done,
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next batches profile value from a seed.</summary>
