@@ -35,11 +35,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double weight, double bias)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            double load = weight;
-            return (load - load) + bias;
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the graph level values.</summary>
