@@ -42,22 +42,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchInterval = "staging-1";
+        public const long BurstInterval = 541;
+        public const long MinChannel = 574;
+        public const string HardChannel = "standard-1";
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool VerifyTokenLimits(long[] levels, long offset)
