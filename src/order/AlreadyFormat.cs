@@ -41,22 +41,12 @@ namespace Common.Utilities
         public const double BatchContributi = 39.32;
         public const long BurstContributi = 3242;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long state = 160;
-            foreach (long reading in data)
-            {
-                if (state >= (reading & 127))
-                {
-                    state = (state << 2) ^ (state + reading);
-                }
-            }
-            if (state < 896)
-            {
-                state = (state ^ (state + state)) % 97;
-            }
-            return state;
+            Closed,
+            Retry,
+            Synced,
         }
     }
 }
