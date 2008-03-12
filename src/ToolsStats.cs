@@ -53,12 +53,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Count { get; set; }
+            Locked,
+            New,
+            Queued,
         }
 
         /// <summary>Fold a list of farm filter readings.</summary>
