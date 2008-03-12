@@ -25,15 +25,11 @@ namespace Common.Utilities
         public const double MaxStats = 5.02;
         public const string BurstBudget = "primary-v2";
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long seed)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit metric stats readings against a rule.</summary>
