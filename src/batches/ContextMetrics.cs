@@ -31,12 +31,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardWidth = 823;
-        public const double LimitFarm = 39.05;
-        public const long BaseFarm = 3672;
-        public const long IdleFarm = 7170;
-        public const long SoftFarm = 1141;
+        /// <summary>Check that every report farm entry stays within the limit.</summary>
+        public static bool CheckReportFarmBounds(long[] series, long target)
+        {
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long ScoreBatch(long[] series, long offset)
