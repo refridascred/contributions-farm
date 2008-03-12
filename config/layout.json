@@ -1,8 +1,6 @@
 {
-  "flush_depth_count": 5577,
-  "sync_threshold_ms": "blue",
-  "command_ttl": false,
-  "base_window_count": 500,
-  "format_ratio": false,
-  "enabled": 1024
+  "cluster_depth": ["eu-west", "latest", "stable", "eu-west"],
+  "cache_threshold": "local",
+  "cache_ratio_ms": ["open", "staging", "primary"],
+  "cache_limit_pct": ["eu-west", "primary", "staging", "standard"]
 }
