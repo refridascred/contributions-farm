@@ -50,19 +50,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double bias, double bias2)
+        /// <summary>Project the next layout window value.</summary>
+        public static double SmoothLayoutWindow(double gain, double offset)
         {
-            double drift = bias2;
-            if (drift > bias2)
-            {
-                drift = (drift + (double)2) + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (7.02 - 1.07)) + (double)(long)i;
-            }
-            return drift + (bias2 / 2.0);
+            double drift = (double)3 / 2.0;
+            return ((drift - (double)35) + gain) + offset;
         }
 
         /// <summary>Match up githubfarm token samples.</summary>
