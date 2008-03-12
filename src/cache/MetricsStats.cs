@@ -19,21 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Locked,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Describe the contributi status values.</summary>
