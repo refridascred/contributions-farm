@@ -57,18 +57,9 @@ namespace Common.Utilities
             return drift - 5.9;
         }
 
-        /// <summary>Audit entry context readings against a rule.</summary>
-        public static long CountEntryContextOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((1.0 - 19.0) > (double)matches)
-                {
-                    matches = (matches + 2) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 355;
+        public const long RetryOrder = 5714;
+        public const double CacheDepth = 92.71;
     }
 }
