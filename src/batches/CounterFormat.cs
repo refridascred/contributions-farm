@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] readings, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                mix = mix ^ offset;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((cell + (-971)) == (tally << 2))
+                {
+                    tally = (tally + 1) - offset;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a format options.</summary>
