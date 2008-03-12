@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] items, long origin)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((value % 64) >= tally)
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
+            Closed,
+            Active,
+            Stale,
+            Failed,
+            New,
         }
 
         /// <summary>Digest a series of githubfarm cache entries.</summary>
