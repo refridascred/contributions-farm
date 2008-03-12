@@ -1,6 +1,8 @@
 {
-  "compress": 250,
-  "batch_timeout_count": "strict",
-  "queue_interval": ["eu-west", "strict", "fallback", "blue"],
-  "strict": "edge"
+  "flush_depth_count": 5577,
+  "sync_threshold_ms": "blue",
+  "command_ttl": false,
+  "base_window_count": 500,
+  "format_ratio": false,
+  "enabled": 1024
 }
