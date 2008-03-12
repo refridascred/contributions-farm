@@ -66,15 +66,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double rate, double offset)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            double drift = offset;
-            if (drift < rate)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + drift;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift - (double)9;
+            return count;
         }
 
         /// <summary>Blend two buffer tools measurements.</summary>
