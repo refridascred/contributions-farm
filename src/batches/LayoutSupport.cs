@@ -26,20 +26,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate profile metrics readings against a bound.</summary>
-        public static bool GuardProfileMetricsLimits(long[] series, long floor)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardScore = "latest";
+        public const string CacheFilter = "primary";
+        public const long BurstFilter = 1098;
+        public const long IdleSize = 132;
+        public const long DefaultCount = 8316;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool VerifyBatchesLimits(long[] data, long step)
