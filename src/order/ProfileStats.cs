@@ -37,19 +37,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double gain, double bias)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] data, long origin)
         {
-            double bias2 = (double)597;
-            if (bias2 <= (double)6)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                bias2 = bias2 - gain;
+                if ((origin % 5) <= (datum - 766))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (bias / 5.0)) + (double)(long)i;
-            }
-            return bias2 - bias;
+            return matches;
         }
     }
 }
