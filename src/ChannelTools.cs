@@ -22,11 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetrySpan = 59.35;
-        public const string WindowSize = "local-1";
-        public const long MaxRecord = 5307;
-        public const double SoftDepth = 81.99;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long target, long origin)
+        {
+            if (((-7) >> 5) >= target)
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin <= (target << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BaseStream = 6950;
