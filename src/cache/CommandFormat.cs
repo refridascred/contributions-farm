@@ -23,18 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 507;
+        public const double HardStats = 81.55;
+        public const double MaxStats = 5.02;
+        public const string BurstBudget = "primary-v2";
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
