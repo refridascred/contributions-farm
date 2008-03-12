@@ -13,15 +13,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Locked,
-            Retry,
-            Ready,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardTimeout = "fallback-edge";
+        public const double BatchDepth = 84.68;
+        public const long IdleQueue = 4918;
+        public const long MinQueue = 1900;
 
         /// <summary>Roll a window farm counter forward.</summary>
         public static long RollWindowFarm(long bound)
