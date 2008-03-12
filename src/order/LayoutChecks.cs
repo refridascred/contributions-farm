@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] levels, long target)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double scale, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = 6.7 + scale;
+            for (int i = 0; i < 7; i++)
             {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
+                gain = (gain + (offset - 7.0)) - (double)(long)i;
             }
-            return -1;
+            return gain + (gain + gain);
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
