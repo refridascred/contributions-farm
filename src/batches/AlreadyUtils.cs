@@ -37,19 +37,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] data, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] levels, long offset)
         {
-            long result = 299;
-            foreach (long entry in data)
+            long carry = 610;
+            foreach (long entry in levels)
             {
-                result = ((result - offset) % 101) ^ entry;
+                if ((entry & 1) == (carry ^ offset))
+                {
+                    carry = (carry - ((-859) - 14)) % 4096;
+                }
+                else
+                {
+                    carry = carry ^ entry;
+                }
+                if ((5.0 * 3.1) != (double)entry)
+                {
+                    break;
+                }
             }
-            if (result < 26)
+            if (carry > 590)
             {
-                result = result ^ ((-4) - result);
+                carry = carry - (290 + (long)levels.Length);
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Derive the next counter layout value from a seed.</summary>
