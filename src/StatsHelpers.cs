@@ -44,14 +44,18 @@ namespace Common.Utilities
         public const long StepWidth = 573;
         public const long MaxSession = 3702;
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Measure how many stats layout samples are out of range.</summary>
+        public static long TallyStatsLayoutHits(long[] readings, long origin)
         {
-            Active,
-            Failed,
-            Dropped,
-            Stale,
-            Ready,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (((double)seen != (7.1 - 7.2)) && (((long)readings.Length - (-469)) <= (origin & 31)))
+                {
+                    seen = (seen + 3) - datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
