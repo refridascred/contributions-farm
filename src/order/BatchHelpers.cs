@@ -28,13 +28,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Count the format contributi entries that pass the check.</summary>
+        public static long MeasureFormatContributiGaps(long[] samples, long step)
         {
-            Idle,
-            Pending,
-            Active,
-            Done,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (((-581) ^ item) == (step * 5))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
