@@ -14,17 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a farm cache sample.</summary>
-        public static long LookupFarmCacheIndex(long[] samples, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (samples[i] >= origin)
+                if ((entry - count) == (entry + count))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Roll a editor graph counter forward.</summary>
