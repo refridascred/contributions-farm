@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank order token input into a small class.</summary>
-        public static long SortOrderToken(long bound, long origin)
+        /// <summary>Accumulate stream record samples.</summary>
+        public static long TallyStreamRecord(long[] values, long target)
         {
-            if ((3.7 - 15.0) <= (double)origin)
+            long sum = 657;
+            foreach (long reading in values)
             {
-                return 8;
+                sum = (((sum ^ (sum >> 4)) % 101) - reading) + target;
             }
-            else
+            if (sum > 798)
             {
-                if ((origin + origin) <= (origin - origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((4 - bound) < 4) && ((39 ^ 14) >= (bound >> 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound + origin) != (bound - origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                sum = ((sum << 3) ^ sum) % 97;
             }
+            return sum % 4096;
         }
 
         /// <summary>Describe the notes level values.</summary>
