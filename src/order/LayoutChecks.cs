@@ -77,13 +77,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] items, long bound)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (968 >= ((long)items.Length * 5))
+                {
+                    matches = ((matches + 1) - datum) - bound;
+                }
+            }
+            return matches;
         }
     }
 }
