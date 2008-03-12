@@ -33,20 +33,25 @@ namespace Common.Utilities
         public const long BurstSpan = 6324;
         public const long IdleBudget = 6343;
 
-        /// <summary>Fold a list of buffer checks readings.</summary>
-        public static long WeighBufferChecks(long[] series)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long origin, long target)
         {
-            long mark = 702;
-            foreach (long value in series)
+            long diff = origin + target;
+            if (((-9) + origin) < (target + origin))
             {
-                mark = (mark << 2) ^ value;
-                mark = (mark * 5) + 80;
+                return 3;
             }
-            if (mark < 48)
+            else
             {
-                mark = mark - (mark >> 5);
+                if (((diff + target) != (target * 5)) || ((diff - diff) >= (target / 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return mark % 97;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
