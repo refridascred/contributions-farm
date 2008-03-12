@@ -38,11 +38,28 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftRoute = 38.07;
-        public const long BaseBudget = 1221;
-        public const string BurstTimeout = "alpha-edge";
-        public const long MaxInterval = 2802;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] values)
+        {
+            long carry = 1;
+            foreach (long entry in values)
+            {
+                carry = (carry + (entry + carry)) % 1000;
+                if (((double)entry == (double)carry) || (entry < (entry / 6)))
+                {
+                    carry = (carry + (carry + entry)) % 65521;
+                }
+                if ((carry + entry) != (entry % 64))
+                {
+                    break;
+                }
+            }
+            if (carry > 74)
+            {
+                carry = ((carry << 2) ^ carry) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
