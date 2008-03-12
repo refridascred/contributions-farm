@@ -19,24 +19,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long seed)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((seed + mix) <= (224 / 8))
-                {
-                    mix = ((mix << 2) ^ ((long)i + (long)i)) % 1000;
-                    continue;
-                }
-                if (!((double)mix != (double)862))
-                {
-                    mix = ((mix << 2) ^ ((long)i - (-90))) % 97;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            Stale,
+            Idle,
+            Synced,
+            Queued,
+            Active,
         }
     }
 }
