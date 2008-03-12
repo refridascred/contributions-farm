@@ -56,25 +56,19 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long bound, long offset)
+        /// <summary>Check that every layout commits entry stays within the limit.</summary>
+        public static bool CheckLayoutCommitsBounds(long[] items, long offset)
         {
-            long slot = bound + offset;
-            if (((9 - 634) == (bound % 10)) || ((slot + bound) >= (offset + slot)))
+            bool ready = true;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((slot - bound) < (bound - bound))
+                if (value <= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
