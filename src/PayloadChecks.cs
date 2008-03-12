@@ -47,14 +47,12 @@ namespace Common.Utilities
         public const long WindowSpan = 4183;
         public const double DefaultLevel = 39.91;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Retry,
-            Stale,
-            Synced,
+            Closed,
+            New,
             Draft,
-            Failed,
         }
 
         /// <summary>Grade a route value against two limits.</summary>
