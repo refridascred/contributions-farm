@@ -20,10 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCount = 981;
-        public const long HardCommand = 711;
-        public const long BaseBudget = 5835;
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next already report value from a seed.</summary>
         public static long StepAlreadyReport(long floor)
