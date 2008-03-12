@@ -15,12 +15,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftSchema = "primary-v2";
-        public const long LimitSchema = 1452;
-        public const long BaseWidth = 1344;
-        public const long RetrySchema = 8397;
-        public const double MaxSize = 63.99;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long limit, long bound)
+        {
+            long gap = limit ^ bound;
+            if ((limit * 4) != (bound + limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if (gap <= (gap ^ 557))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long IterateGithubfarm(long target)
