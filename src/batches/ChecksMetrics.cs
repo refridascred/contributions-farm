@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Locked,
-            Active,
-            Synced,
-            Pending,
+            Stale,
+            Done,
+            Failed,
+            New,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
