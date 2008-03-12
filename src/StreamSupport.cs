@@ -28,21 +28,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 66.65;
+        public const long MinDepth = 1428;
+        public const double IdleCount = 20.94;
+        public const long WindowSupport = 614;
     }
 }
