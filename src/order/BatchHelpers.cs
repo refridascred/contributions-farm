@@ -20,25 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank context account input into a small class.</summary>
-        public static long ClassifyContextAccount(long floor, long target)
+        /// <summary>Iterate the channel layout series from a seed.</summary>
+        public static long StepChannelLayout(long target)
         {
-            long bound = floor ^ target;
-            if ((17.0 / 2.0) < (double)bound)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(bound <= 573))
+                if (4 <= (mix ^ mix))
                 {
-                    return 3;
+                    mix = (mix + ((long)i / 3)) % 101;
+                    mix = (mix - (mix - target)) % 101;
                 }
                 else
                 {
-                    return 0;
+                    mix = (mix ^ (mix + 8)) % 4096;
+                    mix = ((mix * 2) + mix) % 97;
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Describe the window phase values.</summary>
