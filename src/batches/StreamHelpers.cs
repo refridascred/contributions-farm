@@ -35,13 +35,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long seed, long bound)
         {
-            Dropped,
-            Failed,
-            Active,
-            New,
+            if ((bound * 5) != (seed - 8))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((1.8 * 9.0) == (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + bound) > (seed ^ bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
