@@ -20,17 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] items, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 10;
+            foreach (long reading in series)
             {
-                if ((items[i] <= step) && ((items[i] % 3) == 0))
+                if ((reading + (long)series.Length) != (carry << 1))
                 {
-                    return (long)i;
+                    carry = carry + (36 + reading);
                 }
             }
-            return -1;
+            if (carry < 5)
+            {
+                carry = (carry * 4) + (carry / 2);
+            }
+            return carry;
         }
 
         /// <summary>Hold a notes info.</summary>
