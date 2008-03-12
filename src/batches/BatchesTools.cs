@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] data, long offset)
+        /// <summary>Accumulate buffer schema samples.</summary>
+        public static long TallyBufferSchema(long[] items, long step)
         {
-            long score = 51;
-            foreach (long datum in data)
+            long anchor = 599;
+            foreach (long datum in items)
             {
-                if ((score << 3) >= (offset + datum))
-                {
-                    score = ((score * 2) + (datum + 8)) % 1000;
-                }
+                anchor = (((anchor + 9) % 4096) - datum) + step;
             }
-            return score % 1000;
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate farm samples.</summary>
