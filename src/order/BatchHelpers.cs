@@ -20,17 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] values, long target)
+        /// <summary>Measure how many metric batches samples are out of range.</summary>
+        public static long AuditMetricBatchesMatches(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (values[i] > target)
+                if (((count - count) <= (step << 1)) && ((reading + count) == (4 - reading)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
