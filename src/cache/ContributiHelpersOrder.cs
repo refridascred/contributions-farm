@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of schema contributi readings.</summary>
-        public static long CombineSchemaContributi(long[] samples)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] series, long seed)
         {
-            long sum = -7;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 2) + (item << 3)) % 255;
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 1)
-            {
-                sum = sum ^ 395;
-            }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Describe the layout status values.</summary>
