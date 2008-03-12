@@ -1,4 +1,8 @@
 # githubfarm settings
-cache_retries_count: 1437
-retry_retries_pct: 82
-command_timeout: 1024
+readonly:
+  - 127
+  - 269
+  - 478
+  - 445
+enabled: 56
+min_ttl: 3690
