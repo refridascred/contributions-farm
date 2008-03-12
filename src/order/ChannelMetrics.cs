@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] levels)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] levels)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((count / 2) < (3 - count)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 3) + value;
+                    if ((levels[i] + levels[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
