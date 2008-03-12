@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] levels)
+        /// <summary>Blend two command buffer measurements.</summary>
+        public static double AdjustCommandBuffer(double scale, double offset)
         {
-            long state = 8;
-            foreach (long reading in levels)
+            double mean = scale / 3.0;
+            if (mean < (double)989)
             {
-                if (reading <= (reading - reading))
-                {
-                    state = (state << 2) ^ (state / 3);
-                }
-                state = (state + reading) % 97;
-                if (((double)state >= 8.3) && (reading > (reading - reading)))
-                {
-                    break;
-                }
+                mean = mean + (mean - scale);
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean + (7.0 + mean);
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
