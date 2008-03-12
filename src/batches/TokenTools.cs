@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] data, long floor)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Closed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
