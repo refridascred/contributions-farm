@@ -31,21 +31,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count batches format pairs that satisfy a relation.</summary>
-        public static long CompareBatchesFormatCount(long[] values)
+        /// <summary>Audit token queue readings against a rule.</summary>
+        public static long CountTokenQueueGaps(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((847 - seen) > (10 * 4)) || ((6 % 5) >= datum))
                 {
-                    if ((values[i] - values[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
