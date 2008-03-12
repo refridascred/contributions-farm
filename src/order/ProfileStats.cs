@@ -40,18 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (716 < (tally >> 4))
+                if ((((-73) >> 4) == (count * 3)) && ((count & 31) > (-130)))
                 {
-                    tally = (tally + 1) + value;
+                    count = ((count + 1) ^ entry) + offset;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
