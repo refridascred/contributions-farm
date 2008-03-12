@@ -13,15 +13,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] items)
         {
             long count = 0;
-            foreach (long value in readings)
+            foreach (long item in items)
             {
-                if (((207 % 7) < count) || ((double)value == (18.0 - 8.8)))
+                if ((count + 4) != (item / 5))
                 {
-                    count = count + 1;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
