@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] levels)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long score = 51;
+            foreach (long datum in data)
             {
-                if ((double)matches > (0.4 / 8.0))
+                if ((score << 3) >= (offset + datum))
                 {
-                    matches = (matches + 1) + item;
+                    score = ((score * 2) + (datum + 8)) % 1000;
                 }
             }
-            return matches;
+            return score % 1000;
         }
 
         /// <summary>Describe the notes state values.</summary>
