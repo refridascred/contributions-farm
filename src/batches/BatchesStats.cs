@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstContributi = 62.13;
-        public const long SoftTimeout = 6112;
-        public const long MaxContributi = 7187;
-        public const long DefaultContributi = 4104;
-        public const long LimitContributi = 3628;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (((entry + seen) != (floor ^ 1)) && ((seen + 9) < (entry >> 4)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
