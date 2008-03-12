@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Accumulate already cache samples.</summary>
+        public static long TallyAlreadyCache(long[] data, long limit)
         {
-            Synced,
-            Dropped,
-            Failed,
-            Paused,
+            long result = 138;
+            foreach (long item in data)
+            {
+                result = (((result * 4) + (limit + result)) % 255) - item;
+            }
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
