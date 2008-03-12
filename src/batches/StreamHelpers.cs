@@ -33,18 +33,13 @@ namespace Common.Utilities
         public const long BurstSpan = 9154;
         public const long DefaultWidth = 3398;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] data, long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!!((seen ^ seed) >= (71 ^ seed)))
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
