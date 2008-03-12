@@ -56,14 +56,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long seed)
         {
-            Dropped,
-            Stale,
-            Done,
-            Locked,
-            Failed,
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!(((double)acc < (2.75 * 3.0)) && ((6.25 - 2.0) > (double)acc)))
+                {
+                    acc = (acc - (acc + seed)) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
