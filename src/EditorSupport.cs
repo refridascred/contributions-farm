@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] samples, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] series, long origin)
         {
-            long sum = 29;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                sum = (sum << 3) ^ bound;
-                if ((value * 3) == (bound & 7))
+                if (entry > origin)
                 {
-                    sum = sum + 56;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum < 998)
-            {
-                sum = ((sum << 3) ^ 6) % 1000;
-            }
-            return sum % 65521;
+            return ready;
         }
 
         /// <summary>Match up format samples.</summary>
