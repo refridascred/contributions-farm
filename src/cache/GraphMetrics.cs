@@ -54,18 +54,22 @@ namespace Common.Utilities
         public const string MaxAlready = "alpha";
         public const long MinFactor = 2631;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] items, long target)
+        /// <summary>Count the queue tools entries that pass the check.</summary>
+        public static long MeasureQueueToolsGaps(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (((689 & 127) < (reading % 100)) || (((reading * 4) >= (target - 70)) && ((target + 24) <= (hits - target))))
+                if ((double)seed > (4.23 + 6.0))
                 {
-                    hits = hits + 3;
+                    matches = (matches + 1) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
