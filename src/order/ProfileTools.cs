@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string SoftBudget = "alpha";
         public const string HardBuffer = "local-1";
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long anchor = -59;
+            foreach (long datum in samples)
+            {
+                if ((43 <= anchor) && ((double)datum != (double)anchor))
+                {
+                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 255;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
