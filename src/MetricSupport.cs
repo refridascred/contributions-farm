@@ -36,9 +36,12 @@ namespace Common.Utilities
         public const double DefaultTimeout = 41.91;
         public const double MinRatio = 39.04;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftTimeout = "fallback";
-        public const long BurstSupport = 2383;
-        public const double HardTimeout = 6.56;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public bool Owner { get; set; }
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+        }
     }
 }
