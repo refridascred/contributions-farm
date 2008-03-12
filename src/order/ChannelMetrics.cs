@@ -16,23 +16,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] data)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] values, long floor)
         {
-            long mix = 595;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                mix = ((mix << 3) ^ (cell & 3)) % 101;
-                if ((4.2 - 9.4) <= (double)cell)
+                if (((sample + sample) < (sample << 2)) || ((sample - floor) > hits))
                 {
-                    mix = ((mix * 4) + cell) % 101;
-                }
-                else
-                {
-                    mix = mix + cell;
+                    hits = hits + 2;
                 }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Hold a queue info.</summary>
