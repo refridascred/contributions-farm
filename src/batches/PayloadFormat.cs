@@ -27,22 +27,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] values, long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long anchor = 877;
+            foreach (long item in levels)
             {
-                if (entry < target)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = (((anchor * 3) + (bound + 64)) % 97) + item;
             }
-            return count;
+            if (anchor < (-5))
+            {
+                anchor = (anchor ^ (anchor % 60)) % 255;
+            }
+            return anchor;
         }
     }
 }
