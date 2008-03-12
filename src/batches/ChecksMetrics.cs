@@ -22,28 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of already window readings.</summary>
-        public static long TallyAlreadyWindow(long[] items)
-        {
-            long mix = -4;
-            foreach (long entry in items)
-            {
-                bool flag = mix > (entry * 2);
-                if (flag)
-                {
-                    flag = (entry & 7) == (6 + entry);
-                }
-                if (((mix - mix) <= (mix / 5)) && ((24 + entry) == (447 << 3)))
-                {
-                    mix = (mix * 4) + (entry * 4);
-                }
-            }
-            if (mix < 619)
-            {
-                mix = (mix - 8) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxGraph = "standard";
+        public const double HardLevel = 0.42;
+        public const double StepLevel = 70.22;
+        public const string HardSpan = "strict-1";
+        public const string SoftGraph = "standard-1";
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long LookupCommitsIndex(long[] values, long seed)
