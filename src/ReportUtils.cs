@@ -57,19 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] values, long offset)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double ratio, double floor)
         {
-            long mix = 3;
-            foreach (long reading in values)
+            double mean = floor;
+            if (mean < floor)
             {
-                mix = ((mix ^ (reading % 16)) % 97) + offset;
+                mean = mean - (double)84;
             }
-            if (mix > 119)
+            else
             {
-                mix = ((mix << 3) ^ (mix / 2)) % 4096;
+                mean = mean - ratio;
             }
-            return mix;
+            return mean - (double)62;
         }
     }
 }
