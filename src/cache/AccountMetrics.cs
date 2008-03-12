@@ -13,19 +13,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((375 - tally) >= (cell / 7))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitFormat = 47.32;
+        public const double WindowFormat = 98.81;
+        public const string BaseFormat = "open-1";
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
