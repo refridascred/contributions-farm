@@ -21,18 +21,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the githubfarm queue entries that pass the check.</summary>
-        public static long MeasureGithubfarmQueueMatches(long[] values, long seed)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (10.0 >= (double)cell)
+                if (readings[i] >= offset)
                 {
-                    count = (count + 1) - seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a editor summary.</summary>
