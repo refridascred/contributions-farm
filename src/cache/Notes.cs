@@ -43,11 +43,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] samples, long origin)
         {
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
+            long mix = 23;
+            foreach (long cell in samples)
+            {
+                if ((double)60 > (double)cell)
+                {
+                    mix = (((mix << 3) ^ (cell >> 5)) % 97) + origin;
+                }
+            }
+            if (mix < 0)
+            {
+                mix = (mix + (mix + 82)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
