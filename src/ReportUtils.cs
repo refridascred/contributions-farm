@@ -28,15 +28,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a schema metrics reading.</summary>
-        public static double BlendSchemaMetrics(double gain, double offset)
+        /// <summary>Validate commits farm readings against a bound.</summary>
+        public static bool GuardCommitsFarmLimits(long[] readings, long bound)
         {
-            double mean = gain / 5.0;
-            if (mean < offset)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                mean = mean - gain;
+                if (reading <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean - mean;
+            return stale;
         }
 
         /// <summary>Locate a payload layout reading by value.</summary>
