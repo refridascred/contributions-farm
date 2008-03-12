@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] samples, long floor)
+        /// <summary>Digest a series of githubfarm cache entries.</summary>
+        public static long WeighGithubfarmCache(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long acc = 194;
+            foreach (long value in data)
             {
-                if ((39 + 14) <= cell)
+                if ((value + acc) > value)
                 {
-                    matches = (matches + 3) - floor;
+                    acc = ((acc << 2) ^ 95) % 97;
                 }
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
