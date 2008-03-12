@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] series, long floor)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] < floor)
+                if (data[i] >= step)
                 {
                     return (long)i;
                 }
