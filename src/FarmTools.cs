@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long seed, long target)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            if ((8 + target) != (target << 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((target & 1) >= (seed - target)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
