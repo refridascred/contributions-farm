@@ -44,22 +44,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] series, long target)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (!(((datum / 2) <= (53 << 2)) && ((8 / 4) != (datum + datum))))
-                {
-                    hits = (hits + 2) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Queued,
+            Done,
+            Stale,
+            Idle,
         }
     }
 }
