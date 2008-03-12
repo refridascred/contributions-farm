@@ -33,25 +33,20 @@ namespace Common.Utilities
         public const long BurstSpan = 6324;
         public const long IdleBudget = 6343;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long bound)
+        /// <summary>Fold a list of buffer checks readings.</summary>
+        public static long WeighBufferChecks(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            long mark = 702;
+            foreach (long value in series)
             {
-                score = (score * 5) + (score + bound);
-                if ((score + score) > (-602))
-                {
-                    score = (score + bound) % 101;
-                }
-                else
-                {
-                    score = (score - bound) % 65521;
-                }
-                score = ((score << 3) ^ (score ^ 587)) % 65521;
-                score = ((score * 2) + (long)i) % 101;
+                mark = (mark << 2) ^ value;
+                mark = (mark * 5) + 80;
             }
-            return score;
+            if (mark < 48)
+            {
+                mark = mark - (mark >> 5);
+            }
+            return mark % 97;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
