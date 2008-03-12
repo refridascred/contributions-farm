@@ -55,19 +55,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (((bound / 9) >= bound) || ((17.0 * 6.0) < (double)matches))
-                {
-                    matches = (matches + 1) - cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinBudget = 8603;
+        public const double DefaultRoute = 44.0;
+        public const double MinRoute = 6.37;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string CacheDepth = "cached-v2";
