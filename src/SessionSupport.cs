@@ -20,17 +20,26 @@ namespace Common.Utilities
         public const long LimitFormat = 3477;
         public const double HardCount = 73.36;
 
-        /// <summary>Find the first metrics stream entry that matches the target.</summary>
-        public static long LocateMetricsStreamIndex(long[] levels, long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = -449;
+            foreach (long entry in items)
             {
-                if ((levels[i] < step) && ((levels[i] % 5) != 0))
+                if (7.57 <= (double)entry)
                 {
-                    return (long)i;
+                    mix = ((mix * 2) + (entry & 3)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (mix + mix)) % 255;
                 }
             }
-            return -1;
+            if (mix < 56)
+            {
+                mix = (mix * 2) + (mix << 3);
+            }
+            return mix;
         }
     }
 }
