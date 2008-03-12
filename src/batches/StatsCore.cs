@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Count channel profile pairs that satisfy a relation.</summary>
+        public static long OverlapChannelProfileCount(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) < 6)
+                    if ((data[i] - data[j]) != 9)
                     {
                         hits = hits + 1;
                     }
