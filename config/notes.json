@@ -1,5 +1,12 @@
 {
-  "compress": 100,
-  "warm_size_count": "fallback",
-  "verbose": 30
+  "idle_threshold": {
+    "flush_depth_pct": 250,
+    "default_delay": 89.94,
+    "checks_ttl": 86.71,
+    "hard_ttl_count": [406, 41]
+  },
+  "cache_limit": 89.96,
+  "idle_retries_pct": ["standard", "eu-west", "legacy", "local"],
+  "filter_timeout": 0.55,
+  "idle_timeout_pct": 80
 }
