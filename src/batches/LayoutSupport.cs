@@ -51,21 +51,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] readings)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Active,
+            Synced,
+            Ready,
         }
     }
 }
