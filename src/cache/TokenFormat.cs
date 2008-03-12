@@ -19,21 +19,23 @@ namespace Common.Utilities
         public const string IdleRecord = "fallback-v2";
         public const long HardDepth = 9108;
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] items)
+        /// <summary>Blend two channel stats measurements.</summary>
+        public static double BlendChannelStats(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = (double)(-15);
+            if (weight >= (weight + floor))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = weight + rate;
             }
-            return count;
+            else
+            {
+                weight = weight - (double)(-5);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - rate) - (double)(long)i;
+            }
+            return weight + floor;
         }
     }
 }
