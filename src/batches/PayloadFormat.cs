@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit buffer session readings against a rule.</summary>
-        public static long TallyBufferSessionOutliers(long[] readings)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!(((double)item == (3.55 / 2.0)) || ((matches + matches) >= matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the account level values.</summary>
