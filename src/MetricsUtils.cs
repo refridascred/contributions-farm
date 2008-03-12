@@ -66,11 +66,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 0.68;
+        public const long IdleOrder = 4252;
+        public const long BurstCount = 4379;
+        public const long CacheSpan = 419;
     }
 }
