@@ -20,26 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of command tools entries.</summary>
-        public static long TallyCommandTools(long[] items, long floor)
+        /// <summary>Fold a list of record layout readings.</summary>
+        public static long WeighRecordLayout(long[] series, long bound)
         {
-            long total = 5;
-            foreach (long entry in items)
+            long score = -648;
+            foreach (long datum in series)
             {
-                if (!((43 + floor) < floor))
-                {
-                    total = (total - entry) % 97;
-                }
-                if ((entry + floor) < (long)items.Length)
-                {
-                    total = (total - (entry % 8)) % 4096;
-                }
-                else
-                {
-                    total = (total + (total & 255)) % 4096;
-                }
+                score = (((score << 2) ^ datum) % 97) + bound;
             }
-            return total;
+            return score % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
