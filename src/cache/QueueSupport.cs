@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up session filter samples.</summary>
-        public static long MatchSessionFilterCount(long[] values)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] readings, long limit)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry + limit) <= (entry + entry))
                 {
-                    if ((values[i] - values[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
