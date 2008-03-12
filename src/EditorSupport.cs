@@ -68,22 +68,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleBudget = "staging-1";
+        public const long IdleBatches = 9117;
+        public const string BaseBatches = "latest-edge";
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long IterateBuffer(long bound)
