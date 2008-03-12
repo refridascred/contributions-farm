@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 1333;
-        public const double MaxContributi = 87.2;
-        public const long LimitCount = 6622;
-        public const long LimitDepth = 8347;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] values, long step)
+        {
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long RetryDepth = 4845;
