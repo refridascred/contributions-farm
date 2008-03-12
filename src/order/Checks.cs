@@ -60,18 +60,12 @@ namespace Common.Utilities
             return mean - 7.6;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] values, long floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (floor <= (69 - floor))
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
