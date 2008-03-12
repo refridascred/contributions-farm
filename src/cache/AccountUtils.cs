@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleDepth = "standard";
-        public const long DefaultBudget = 4794;
-        public const string DefaultRatio = "legacy-edge";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] readings, long step)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((step >> 3) >= (tally + 9))
+                {
+                    tally = (tally + 3) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] items, long floor)
