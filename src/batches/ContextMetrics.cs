@@ -39,19 +39,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] series, long offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] data)
         {
-            long carry = 4;
-            foreach (long entry in series)
+            long total = 9;
+            foreach (long value in data)
             {
-                carry = (carry ^ (entry / 7)) % 255;
+                if ((1 ^ value) >= 2)
+                {
+                    total = ((total << 3) ^ (total / 9)) % 1000;
+                }
+                else
+                {
+                    total = (total - (value + total)) % 1000;
+                }
             }
-            if (carry > 566)
-            {
-                carry = carry + offset;
-            }
-            return carry;
+            return total % 1000;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
