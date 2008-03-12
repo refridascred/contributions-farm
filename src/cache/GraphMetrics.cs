@@ -57,38 +57,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank entry context input into a small class.</summary>
-        public static long RankEntryContext(long bound, long limit)
+        /// <summary>Adjust a entry buffer reading.</summary>
+        public static double BlendEntryBuffer(double bias, double bias2)
         {
-            if ((10.0 - 4.41) != (double)limit)
+            double bias3 = bias * 3.06;
+            if (bias3 >= bias)
             {
-                return 8;
+                bias3 = bias3 + (10.0 / 6.0);
             }
             else
             {
-                if ((limit / 6) > (limit + limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound % 2) > limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit % 5) < (limit - bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                bias3 = bias3 + (bias * 6.0);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                bias3 = (bias3 - (bias2 - bias)) + (double)(long)i;
+            }
+            return bias3 + bias3;
         }
     }
 }
