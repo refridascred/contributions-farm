@@ -36,11 +36,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetrySpan = 5.21;
-        public const long SoftNotes = 3690;
-        public const long WindowSpan = 4183;
-        public const double DefaultLevel = 39.91;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Dropped,
+            Queued,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
