@@ -65,15 +65,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] data, long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] values)
         {
-            long anchor = 9;
-            foreach (long entry in data)
+            long mix = -437;
+            foreach (long entry in values)
             {
-                anchor = (((anchor + ((long)data.Length + anchor)) % 4096) + entry) + origin;
+                mix = (mix - (mix & 127)) ^ entry;
             }
-            return anchor;
+            if (mix > 281)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
