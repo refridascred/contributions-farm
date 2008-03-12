@@ -35,19 +35,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Adjust a metric commits reading.</summary>
-        public static double ScaleMetricCommits(double weight, double bias)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double weight, double bias)
         {
-            double load = (weight + bias) + bias;
-            if (load >= load)
-            {
-                load = load + (1.0 / 5.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (6.1 / 3.0)) + (double)(long)i;
-            }
-            return load + (7.0 + load);
+            double load = weight;
+            return (load - load) + bias;
         }
 
         /// <summary>Describe the graph level values.</summary>
