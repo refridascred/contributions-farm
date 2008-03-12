@@ -25,14 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double bias, double floor)
         {
-            Ready,
-            Idle,
-            Done,
-            Active,
-            Retry,
+            double drift = bias;
+            if (drift <= floor)
+            {
+                drift = drift - (floor / 5.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift - (drift / 3.0);
         }
     }
 }
