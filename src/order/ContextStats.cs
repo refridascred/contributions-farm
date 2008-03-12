@@ -20,17 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] items, long target)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double gain, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = (double)977;
+            if (rate < gain)
             {
-                if ((items[i] <= target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate + (gain / 2.0)) + span;
             }
-            return -1;
+            else
+            {
+                rate = rate + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
