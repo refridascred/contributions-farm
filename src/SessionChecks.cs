@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long seed, long target)
         {
-            long result = 4;
-            foreach (long reading in items)
+            if (!((seed * 4) == (target / 3)))
             {
-                if (!((double)result >= (3.0 - 4.92)))
-                {
-                    result = (result ^ result) % 101;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    result = ((result ^ result) % 97) + (long)i;
-                }
-                result = ((result << 2) ^ reading) % 1000;
+                return 0;
             }
-            if (result > (-797))
+            else
             {
-                result = result + result;
+                if ((seed - target) >= (-5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (244 < (seed << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return result % 97;
         }
 
         /// <summary>Measure how many metrics commits samples are out of range.</summary>
