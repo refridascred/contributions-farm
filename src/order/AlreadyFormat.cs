@@ -48,10 +48,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepContributi = 46.99;
-        public const double BatchContributi = 39.32;
-        public const long BurstContributi = 3242;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (step < (count ^ cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferOutliers(long[] items, long origin)
