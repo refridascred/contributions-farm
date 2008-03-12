@@ -44,18 +44,24 @@ namespace Common.Utilities
             return weight - (10.0 + weight);
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] series)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long step, long step2)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            if (((12.0 / 5.0) >= (double)step2) && ((663 >> 3) < step2))
             {
-                if ((cell * 5) != (6 << 1))
+                return 0;
+            }
+            else
+            {
+                if ((step << 1) == (567 / 6))
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
