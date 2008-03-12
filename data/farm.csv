@@ -1,7 +1,9 @@
-id,count,rank
-1,86.69,706
-2,green,90.56
-3,295,cached
-4,22,634
-5,latest,646
-6,916,5.88
+id,label,count,owner
+1,54.45,42.55,blue
+2,469,38.13,89.49
+3,62.58,928,953
+4,latest,506,17.45
+5,staging,95.41,308
+6,37.7,staging,staging
+7,569,cached,18.49
+8,staging,standard,stable
