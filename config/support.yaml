@@ -1,11 +1,8 @@
 # support settings
-account_size: 82
-batch_ttl:
-  - 223
-  - 414
-  - 129
-  - 409
-poll_interval_count: latest
-cache_window_ms:
-  - primary
-  - blue
+default_interval_pct: standard
+soft_retries_s: 30
+compress:
+  - latest
+  - latest
+  - standard
+  - local
