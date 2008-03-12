@@ -1,5 +1,18 @@
 {
-  "min_ratio_s": "local",
-  "max_window": ["primary", "open", "primary"],
-  "channel_interval": "standard"
+  "retry_limit_pct": "eu-west",
+  "audit": "stable",
+  "compress": "cached",
+  "poll_timeout_pct": {
+    "base_window_ms": false,
+    "verbose": 500,
+    "notes_retries": "staging",
+    "record_ratio": [54, 132],
+    "batch_timeout_count": [40, 82, 64],
+    "entry_interval": {
+      "min_depth_s": "edge",
+      "metrics_threshold": "legacy",
+      "support_window": 4296,
+      "audit": [390, 150, 285]
+    }
+  }
 }
