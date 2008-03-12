@@ -34,10 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultFormat = "alpha";
-        public const string SoftSpan = "latest";
-        public const double StepBudget = 31.84;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitSize = "stable";
+        public const string MaxChecks = "latest-1";
+        public const double LimitChecks = 64.67;
+        public const long MinScore = 4952;
+        public const double HardChecks = 46.22;
 
         /// <summary>Rank notes metric input into a small class.</summary>
         public static long BucketNotesMetric(long target, long target2)
