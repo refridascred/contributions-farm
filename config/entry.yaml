@@ -1,5 +1,9 @@
 # entry settings
-min_size_pct: 7087
-default_depth_ms: fallback
-idle_limit_pct: 81.03
-cache_capacity: latest
+enabled: 77
+dry_run: primary
+base_threshold_s: true
+batch_retries_s:
+  dry_run: cached
+  sync_delay_count: 94
+  hard_limit: 5164
+persist: 9502
