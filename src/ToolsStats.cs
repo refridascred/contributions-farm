@@ -68,32 +68,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long offset, long offset2)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] values)
         {
-            long gap = offset + offset2;
-            if (89 >= gap)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset > (offset2 * 3)) || (offset2 > (gap % 64)))
+                if ((double)hits > (1.0 + 6.0))
                 {
-                    return 1;
+                    hits = (hits + 3) ^ sample;
                 }
                 else
                 {
-                    if (gap < (162 << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
