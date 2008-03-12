@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] samples, long step)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long sum = 2;
-            foreach (long sample in samples)
-            {
-                if ((sum % 64) == (step - sum))
-                {
-                    sum = ((sum + step) % 65521) + sample;
-                }
-            }
-            if (sum < 3)
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum;
+            New,
+            Paused,
+            Locked,
+            Stale,
         }
 
         /// <summary>Roll a context counter forward.</summary>
