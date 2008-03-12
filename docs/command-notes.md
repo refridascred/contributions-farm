@@ -1,15 +1,15 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the channel list.
-The githubfarm report groups every commits by checks.
-Use account settings to tune how often order data is refreshed.
+Use buffer settings to tune how often context data is refreshed.
+A commits that stays idle for too long is moved to the metrics list.
+Use metrics settings to tune how often order data is refreshed.
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Keep commits and notes names short and lowercase.
+Each contributi is validated before it reaches the schema queue.
+Defaults for metric live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Review batches limits each release
-- Document new channel fields
-- Keep format values small
+- Document new commits fields
+- Keep cluster values small
+- Prefer tools defaults
+- Validate filter input early
