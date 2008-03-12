@@ -56,19 +56,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already command readings against a rule.</summary>
-        public static long MeasureAlreadyCommandOutliers(long[] series, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] readings, long seed)
         {
             long matches = 0;
-            foreach (long datum in series)
+            foreach (long reading in readings)
             {
-                if (((double)origin == (double)matches) && ((3.8 / 6.0) <= (double)matches))
+                if (18 >= (seed + seed))
                 {
-                    matches = (matches + 2) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 3) ^ reading;
                 }
             }
             return matches;
