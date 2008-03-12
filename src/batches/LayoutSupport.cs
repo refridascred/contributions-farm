@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Roll a metric session counter forward.</summary>
+        public static long IterateMetricSession(long bound)
         {
-            Ready,
-            Retry,
-            New,
-            Failed,
+            long score = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                long span = 747;
+                if (!((span * 2) == (span * 3)))
+                {
+                    score = (score - (53 - span)) % 255;
+                    continue;
+                }
+                else
+                {
+                    score = (score + (bound - 27)) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the metric state values.</summary>
