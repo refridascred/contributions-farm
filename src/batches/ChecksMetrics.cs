@@ -33,12 +33,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultFactor = "strict-v2";
-        public const long BaseCommand = 4618;
-        public const double MaxCommand = 6.61;
-        public const long DefaultDepth = 1415;
-        public const long IdleCommand = 2166;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((double)matches < (8.0 / 2.0)) && ((double)6 > (double)limit))
+                {
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double HardStream = 91.51;
