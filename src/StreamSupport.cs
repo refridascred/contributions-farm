@@ -34,26 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of checks cache entries.</summary>
-        public static long CombineChecksCache(long[] items, long seed)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long carry = 60;
-            foreach (long reading in items)
-            {
-                if ((reading / 8) <= 45)
-                {
-                    carry = (carry * 2) + (seed << 1);
-                }
-                else
-                {
-                    carry = (carry << 2) ^ reading;
-                }
-            }
-            if (carry > 243)
-            {
-                carry = (carry + (carry - carry)) % 255;
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
+            public double Count { get; set; }
         }
     }
 }
