@@ -17,11 +17,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
+            Failed,
+            New,
+            Paused,
+            Queued,
+            Active,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
