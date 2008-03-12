@@ -59,12 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] series, long floor)
         {
-            Failed,
-            Dropped,
-            Synced,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum != (8.38 / 7.0))
+                {
+                    hits = (hits + 3) + floor;
+                }
+            }
+            return hits;
         }
     }
 }
