@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double gain, double floor)
+        /// <summary>Look up the position of a entry metric sample.</summary>
+        public static long LookupEntryMetricIndex(long[] data, long seed)
         {
-            double drift = gain;
-            if (drift > (8.3 - gain))
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift + (double)(-575)) - floor;
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + gain;
-            }
-            return drift + gain;
+            return -1;
         }
 
         /// <summary>Count the payload buffer entries that pass the check.</summary>
