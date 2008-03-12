@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitDepth = 7176;
-        public const long DefaultSize = 5511;
-        public const long BaseLevel = 6493;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstTimeout = 3049;
+        public const double CacheRoute = 40.0;
+        public const double HardRoute = 34.58;
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
