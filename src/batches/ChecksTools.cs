@@ -23,21 +23,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long origin, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((origin + 66) == (origin + offset))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((offset - offset) < origin) || ((7.0 / 4.0) <= (double)origin))
                 {
-                    if ((values[i] + values[j]) != 8)
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)origin == (double)offset))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset > (origin >> 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a editor graph counter forward.</summary>
