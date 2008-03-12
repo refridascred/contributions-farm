@@ -1,12 +1,6 @@
 # entry settings
-sync_timeout_pct: true
-default_delay:
-  default_interval: 58.12
-  persist: primary
-  cache_capacity_s: 500
-  schema_delay: 81.79
-  poll_interval_count: 17
-readonly:
-  - strict
-  - stable
-  - cached
+warm_depth: standard
+persist: 43.64
+warm_depth_count: edge
+min_size: blue
+poll_limit_s: 1024
