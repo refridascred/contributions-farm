@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] data, long floor)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double rate, double offset)
         {
-            long count = 0;
-            foreach (long item in data)
+            double gain = rate;
+            if (gain < rate)
             {
-                if (!(count > (count % 24)))
-                {
-                    count = ((count + 1) + item) + floor;
-                }
+                gain = (gain + (9.08 / 5.0)) + offset;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + 7.0;
         }
 
         /// <summary>Combine window cache values into a single score.</summary>
