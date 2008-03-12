@@ -31,22 +31,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] data, long offset)
         {
-            long state = 2;
-            foreach (long reading in items)
+            long result = 299;
+            foreach (long entry in data)
             {
-                if ((((long)items.Length * 5) <= (reading - reading)) || ((state - reading) >= (state + state)))
-                {
-                    state = (state + (state ^ state)) % 255;
-                }
+                result = ((result - offset) % 101) ^ entry;
             }
-            if (state < 30)
+            if (result < 26)
             {
-                state = state + state;
+                result = result ^ ((-4) - result);
             }
-            return state % 65521;
+            return result;
         }
 
         /// <summary>Hold a notes header.</summary>
