@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinContext = "open";
+        public const string BurstContext = "alpha-v2";
+        public const long BatchContext = 2579;
+        public const double WindowContext = 35.83;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
