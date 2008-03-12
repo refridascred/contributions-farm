@@ -29,14 +29,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Dropped,
-            Queued,
-            Paused,
-            Done,
-            Retry,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheBudget = 48.15;
+        public const long BaseDepth = 5048;
+        public const long BurstRatio = 4337;
+        public const string BatchRecord = "strict-v2";
     }
 }
