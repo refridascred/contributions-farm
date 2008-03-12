@@ -70,14 +70,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] series)
         {
-            Idle,
-            Draft,
-            Locked,
-            Failed,
-            Stale,
+            long state = 93;
+            foreach (long item in series)
+            {
+                if (!((item / 8) < (state - state)))
+                {
+                    state = ((state * 4) + 8) % 101;
+                }
+            }
+            if (state > 36)
+            {
+                state = (state - (state + 20)) % 65521;
+            }
+            return state;
         }
     }
 }
