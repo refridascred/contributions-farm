@@ -50,21 +50,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 4;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (mark ^ (mark ^ mark)) + entry;
             }
-            return count;
+            if (mark < 2)
+            {
+                mark = mark ^ (mark / 4);
+            }
+            return mark;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
