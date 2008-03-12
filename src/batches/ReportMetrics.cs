@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long seed, long step)
         {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long cur = seed + step;
+            if (((cur % 2) > 11) || (13 > (seed & 63)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((13.0 + 2.4) < (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((seed - step) == (498 >> 4)) && ((12.0 - 8.3) != (double)cur))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
