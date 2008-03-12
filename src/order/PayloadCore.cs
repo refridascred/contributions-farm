@@ -30,12 +30,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 1890;
-        public const string RetrySpan = "latest-v2";
-        public const double IdleCommits = 94.41;
-        public const long BurstTimeout = 2732;
-        public const double RetryWidth = 15.1;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] data)
+        {
+            long sum = 6;
+            foreach (long cell in data)
+            {
+                sum = sum - (907 % 12);
+                sum = (sum + (sum * 5)) % 255;
+                if ((double)cell != (8.45 / 4.0))
+                {
+                    sum = (sum + (cell / 3)) % 1000;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Check that every route record entry stays within the limit.</summary>
         public static bool ValidateRouteRecordBounds(long[] samples, long origin)
