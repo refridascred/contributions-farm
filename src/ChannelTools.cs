@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long seed, long floor)
+        /// <summary>Grade a channel window value against two limits.</summary>
+        public static long ClassifyChannelWindow(long offset, long floor)
         {
-            long next = seed + floor;
-            if ((double)floor == (1.9 / 7.0))
+            if ((double)floor > (7.88 + 8.2))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((seed ^ next) > (seed - 7))
+                if (((offset * 2) >= (floor - floor)) && ((offset - offset) > (offset % 100)))
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
