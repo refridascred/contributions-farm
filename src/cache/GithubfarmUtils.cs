@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long target, long target2)
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
+            if ((double)target <= (double)target2)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target % 16) < 7)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target <= target2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((9.0 / 4.0) <= (double)target2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm entry.</summary>
