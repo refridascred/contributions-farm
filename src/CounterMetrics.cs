@@ -44,13 +44,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long target)
         {
-            public bool Token { get; set; }
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
+            long score = target;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
