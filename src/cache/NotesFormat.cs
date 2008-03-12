@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] data)
+        /// <summary>Check that every editor stats entry stays within the limit.</summary>
+        public static bool GuardEditorStatsBounds(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (11.0 < (double)reading)
+                if (reading < origin)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Digest a series of command tools entries.</summary>
