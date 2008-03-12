@@ -41,20 +41,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every format entry entry stays within the limit.</summary>
-        public static bool ValidateFormatEntryBounds(long[] levels, long limit)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowMetrics = 89.84;
+        public const long BatchMetrics = 1053;
+        public const string HardMetrics = "legacy-1";
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool ValidateFarmBounds(long[] readings, long limit)
