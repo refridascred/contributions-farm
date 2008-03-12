@@ -1,6 +1,12 @@
 {
-  "verbose": 84,
-  "warm_ratio_pct": 6239,
-  "buffer_size": "blue",
-  "githubfarm_interval": "staging"
+  "flush_ratio": 4156,
+  "soft_retries": 8590,
+  "retry_delay": 58,
+  "strict": 22.53,
+  "retry_threshold": {
+    "default_size": 3926,
+    "soft_interval_pct": 5984,
+    "order_ratio": 100
+  },
+  "record_delay": 5475
 }
