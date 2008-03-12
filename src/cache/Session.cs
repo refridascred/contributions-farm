@@ -35,15 +35,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long offset)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] readings, long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if ((readings[i] >= target) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the session state values.</summary>
