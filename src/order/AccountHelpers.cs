@@ -31,21 +31,23 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = (double)(70 * 2);
+            if (bias < offset)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias - bias;
             }
-            return seen;
+            else
+            {
+                bias = bias - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (offset - bias)) + (double)(long)i;
+            }
+            return bias - offset;
         }
 
         /// <summary>Blend two account cluster measurements.</summary>
