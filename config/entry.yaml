@@ -1,15 +1,7 @@
 # entry settings
-readonly: 66
-soft_limit:
-  - strict
-  - edge
-profile_window: 27.37
-batch_ttl:
-  max_window_ms: 68.18
-  cache_ratio: staging
-  warm_size_pct:
-    soft_interval_count: staging
-    soft_size: blue
-    farm_capacity: standard
-    strict: 48
-  schema_limit: 6451
+poll_threshold_ms: 66
+tools_interval: 230
+support_depth: eu-west
+max_depth_s: 51
+idle_capacity_s: blue
+base_retries_count: blue
