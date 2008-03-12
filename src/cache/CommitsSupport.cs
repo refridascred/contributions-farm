@@ -20,20 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next route token value from a seed.</summary>
-        public static long StepRouteToken(long bound)
+        /// <summary>Measure how many stream schema samples are out of range.</summary>
+        public static long MeasureStreamSchemaMatches(long[] samples)
         {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((bound % 2) < (state + (long)i))
+                if ((double)seen > (17.0 / 5.0))
                 {
-                    long delta = state - (state ^ state);
-                    state = ((state << 3) ^ (delta + bound)) % 65521;
+                    seen = (seen + 3) + datum;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Adjust a account reading.</summary>
