@@ -54,11 +54,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 4134;
+        public const long HardContributi = 7499;
+        public const double BatchLevel = 70.44;
+        public const long DefaultRatio = 6138;
     }
 }
