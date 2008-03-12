@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const long CacheFactor = 4052;
         public const string HardScore = "staging-edge";
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] series, long seed)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Project the next cache value.</summary>
