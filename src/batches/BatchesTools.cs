@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] series, long floor)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((floor - 695) > (floor * 4))
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two stream measurements.</summary>
