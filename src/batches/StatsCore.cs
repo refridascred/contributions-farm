@@ -22,17 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batches notes reading by value.</summary>
-        public static long LocateBatchesNotesIndex(long[] series, long bound)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
