@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] values)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((((long)values.Length * 3) > (hits ^ cell)) && ((double)cell >= (12.0 - 8.76)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Queued,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
