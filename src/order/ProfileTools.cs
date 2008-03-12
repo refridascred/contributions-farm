@@ -68,24 +68,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long origin, long step)
+        /// <summary>Adjust a route account reading.</summary>
+        public static double SmoothRouteAccount(double bias, double floor)
         {
-            if (((-757) >> 2) >= (step + origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if (414 < (origin >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double ratio = (floor - bias) / 2.0;
+            return ratio - (ratio - ratio);
         }
     }
 }
