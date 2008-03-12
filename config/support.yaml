@@ -1,20 +1,9 @@
 # support settings
-poll_threshold_ms:
-  - 25
-  - 183
-  - 339
-persist: 87.61
-schema_window:
-  idle_timeout_ms:
-    default_timeout: fallback
-    report_capacity: 91
-    command_depth: 7.0
-    base_timeout_s: 22
-    cache_size_count: 810
-    soft_depth: 35.37
-  commits_depth: strict
-  poll_capacity_s: 8704
-  entry_ttl: green
-idle_capacity_pct: 2
-default_limit: local
-default_size: 69.16
+strict: blue
+max_limit_count: 25.59
+warm_retries: edge
+min_ratio_pct:
+  - 324
+  - 375
+  - 236
+  - 3
