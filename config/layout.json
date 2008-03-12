@@ -1,6 +1,20 @@
 {
-  "token_limit": 9887,
-  "order_window": "eu-west",
-  "audit": false,
-  "base_limit": ["green", "eu-west"]
+  "idle_capacity_ms": {
+    "channel_delay": 7799,
+    "cache_ttl_pct": ["latest", "standard"],
+    "base_size_pct": 7035
+  },
+  "entry_threshold": true,
+  "metric_ttl": {
+    "payload_threshold": 92,
+    "verbose": 1024,
+    "soft_limit_count": {
+      "poll_ratio_pct": ["blue", "cached"],
+      "verbose": [485, 354, 166],
+      "payload_retries": 77,
+      "soft_capacity_ms": "staging"
+    },
+    "layout_threshold": 9102
+  },
+  "checks_delay": 4618
 }
