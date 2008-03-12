@@ -41,22 +41,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of metrics token readings.</summary>
-        public static long PairMetricsTokenCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 7342;
+        public const long StepTools = 855;
+        public const long SoftTools = 2968;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TotalNotes(long[] items)
