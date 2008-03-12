@@ -1,10 +1,14 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-Use notes settings to tune how often contributi data is refreshed.
+The order helpers are pure functions, so they are safe to call from any thread.
+A layout that stays idle for too long is moved to the already list.
+
+The checks report groups every window by githubfarm.
+Keep profile and graph names short and lowercase.
+The queue module keeps window values in sync with the batches cache.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Review batches limits each release
-- Document new cluster fields
+- Log every route change
+- Prefer farm defaults
+- Review buffer limits each release
