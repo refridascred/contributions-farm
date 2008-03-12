@@ -1,8 +1,5 @@
 {
-  "batch_ratio": false,
-  "record_timeout": [429, 489, 76, 493],
-  "compress": 6952,
-  "soft_limit_count": 36.99,
-  "filter_delay": 1787,
-  "persist": "standard"
+  "hard_retries": "legacy",
+  "batch_threshold_pct": false,
+  "base_timeout_s": "open"
 }
