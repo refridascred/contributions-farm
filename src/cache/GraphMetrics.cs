@@ -42,12 +42,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Failed,
-            Synced,
-            Dropped,
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
