@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of payload counter entries.</summary>
-        public static long ScorePayloadCounter(long[] data, long bound)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double gain, double bias)
         {
-            long total = 7;
-            foreach (long cell in data)
+            double ratio = (double)(46 / 9);
+            if (ratio <= bias)
             {
-                total = (((total - (307 * 5)) % 101) - cell) + bound;
+                ratio = ratio + gain;
             }
-            return total;
+            else
+            {
+                ratio = ratio + 5.0;
+            }
+            return ratio + (5.31 - ratio);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
