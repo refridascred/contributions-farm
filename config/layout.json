@@ -1,8 +1,8 @@
 {
-  "base_ttl": "eu-west",
-  "flush_retries": 7770,
-  "hard_threshold_count": 62,
-  "poll_threshold_s": 3974,
-  "notes_retries": 1024,
-  "dry_run": 51.31
+  "base_depth_count": "cached",
+  "channel_delay": 60,
+  "soft_limit": [185, 10],
+  "readonly": ["blue", "eu-west"],
+  "poll_depth": 67,
+  "token_retries": [398, 244, 432, 452]
 }
