@@ -30,18 +30,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] values, long seed)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (seed > (hits << 2))
                 {
-                    if ((samples[i] - samples[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) - sample;
                 }
             }
             return hits;
