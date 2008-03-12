@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] levels, long bound)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long result = 591;
-            foreach (long value in levels)
-            {
-                if (!((bound - result) == (result << 2)))
-                {
-                    result = ((result << 3) ^ (0 * 4)) % 4096;
-                }
-                result = result ^ (result >> 3);
-                result = (result - (bound ^ value)) % 101;
-            }
-            if (result < 29)
-            {
-                result = (result - (695 - result)) % 1000;
-            }
-            return result;
+            New,
+            Draft,
+            Ready,
+            Stale,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
