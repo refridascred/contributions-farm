@@ -12,15 +12,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Retry,
-            Draft,
-            Queued,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitTimeout = 2327;
+        public const double WindowLevel = 18.19;
+        public const long LimitRatio = 6132;
+        public const string MaxRatio = "legacy-1";
+        public const long HardScore = 570;
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] items)
