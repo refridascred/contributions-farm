@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] data, long step)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long state = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((8.0 * 2.5) == (double)step)
-                {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (state - state) % 97;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Combine context account values into a single score.</summary>
