@@ -51,19 +51,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Project the next cluster format value.</summary>
-        public static double SmoothClusterFormat(double bias, double span)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            double scale = (double)19;
-            if (scale <= (bias + 0.68))
-            {
-                scale = (scale + (double)(-545)) - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (double)889) + (double)(long)i;
-            }
-            return scale + 4.33;
+            Dropped,
+            Retry,
+            Done,
         }
 
         /// <summary>Locate a stream reading by value.</summary>
