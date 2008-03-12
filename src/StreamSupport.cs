@@ -14,32 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a payload commits pair into a bucket.</summary>
-        public static long RankPayloadCommits(long floor, long floor2)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] values, long seed)
         {
-            long diff = floor ^ floor2;
-            if ((9.4 * 9.5) >= (double)floor)
+            bool found = true;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((685 % 3) <= floor2)
+                if (entry < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((-250) > (diff + 529))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Digest a series of checks cache entries.</summary>
