@@ -34,11 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBudget = 2087;
-        public const long BurstRatio = 3115;
-        public const long CacheBatch = 6990;
-        public const long SoftBatch = 6003;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string BatchTimeout = "fallback-1";
