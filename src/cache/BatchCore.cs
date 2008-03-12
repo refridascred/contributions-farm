@@ -40,19 +40,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] readings, long target)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long offset)
         {
-            long anchor = -21;
-            foreach (long item in readings)
+            long total = offset;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (anchor + (item + target)) % 65521;
+                long next = offset / 3;
+                total = (total * 3) + (next / 9);
+                total = ((total * 2) + (long)i) % 65521;
             }
-            if (anchor < 552)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            return total;
         }
     }
 }
