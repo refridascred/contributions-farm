@@ -1,8 +1,13 @@
 {
-  "audit": "local",
-  "strict": "latest",
-  "retry_delay_count": "blue",
-  "default_interval_ms": ["stable", "legacy", "local"],
-  "burst_timeout": 4610,
-  "batches_delay": 4994
+  "metrics_limit": 50.13,
+  "audit": "fallback",
+  "poll_threshold": {
+    "flush_interval_pct": "standard",
+    "poll_retries_pct": ["blue", "cached", "stable", "latest"],
+    "record_timeout": true,
+    "readonly": ["blue", "cached"]
+  },
+  "batch_interval": false,
+  "compress": false,
+  "hard_threshold": 7584
 }
