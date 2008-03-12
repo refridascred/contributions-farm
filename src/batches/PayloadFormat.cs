@@ -32,22 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] levels, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] series)
         {
-            long sum = 1;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (origin < 2)
+                if ((value * 5) < matches)
                 {
-                    sum = sum - (value % 8);
+                    matches = matches + 1;
                 }
             }
-            if (sum < 483)
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a cluster options.</summary>
