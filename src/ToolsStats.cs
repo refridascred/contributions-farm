@@ -29,15 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double ratio, double span)
+        /// <summary>Count the notes metric entries that pass the check.</summary>
+        public static long CountNotesMetricOutliers(long[] data, long bound)
         {
-            double drift = ratio;
-            if (drift >= (ratio + ratio))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                drift = drift - (span - ratio);
+                if (19 > datum)
+                {
+                    tally = (tally + 2) + bound;
+                }
             }
-            return drift - (1.12 * 1.0);
+            return tally;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
