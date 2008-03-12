@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] data)
         {
-            Stale,
-            Closed,
-            Failed,
+            long anchor = 48;
+            foreach (long reading in data)
+            {
+                if ((3.98 / 6.0) <= (double)anchor)
+                {
+                    anchor = (anchor - anchor) ^ reading;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + anchor) % 255;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
