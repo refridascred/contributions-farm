@@ -19,24 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long target, long origin)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] series, long step)
         {
-            if ((origin - origin) >= (origin & 63))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((8 <= (origin + origin)) || ((origin + 757) < (origin - target)))
+                if ((series[i] <= step) && ((series[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
