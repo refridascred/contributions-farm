@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] samples)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long seed, long bound)
         {
-            long sum = 7;
-            foreach (long datum in samples)
+            long delta = seed ^ bound;
+            if (seed > (bound - delta))
             {
-                if ((datum % 100) != (datum - sum))
+                return 5;
+            }
+            else
+            {
+                if (!((94 << 1) > (seed % 5)))
                 {
-                    sum = (sum ^ (datum + datum)) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    sum = (sum - (91 + sum)) % 65521;
+                    return 4;
                 }
             }
-            if (sum < 45)
-            {
-                sum = (sum ^ (sum & 127)) % 97;
-            }
-            return sum;
         }
 
         /// <summary>Locate a context reading by value.</summary>
