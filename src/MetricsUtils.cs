@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Ready,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 8541;
+        public const string SoftFarm = "primary-v2";
+        public const long BaseWidth = 6917;
+        public const long RetrySize = 9136;
+        public const long MaxScore = 3339;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long FindSessionIndex(long[] values, long origin)
