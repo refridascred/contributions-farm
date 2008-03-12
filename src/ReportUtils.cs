@@ -37,17 +37,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a payload layout reading by value.</summary>
-        public static long SeekPayloadLayoutIndex(long[] samples, long target)
+        /// <summary>Audit already command readings against a rule.</summary>
+        public static long MeasureAlreadyCommandOutliers(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (samples[i] > target)
+                if (((double)origin == (double)matches) && ((3.8 / 6.0) <= (double)matches))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
