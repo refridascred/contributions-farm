@@ -12,19 +12,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate window farm readings against a bound.</summary>
-        public static bool ValidateWindowFarmBounds(long[] values, long seed)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
