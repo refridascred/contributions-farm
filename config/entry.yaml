@@ -1,7 +1,5 @@
 # entry settings
-poll_threshold_ms: 66
-tools_interval: 230
-support_depth: eu-west
-max_depth_s: 51
-idle_capacity_s: blue
-base_retries_count: blue
+audit: edge
+flush_depth_pct: 100
+poll_interval_pct: strict
+burst_depth: 42.35
