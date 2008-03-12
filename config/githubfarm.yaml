@@ -1,7 +1,12 @@
 # githubfarm settings
-default_size_s:
-  - staging
-  - green
-  - eu-west
-readonly: 19.27
-batch_retries_count: 2
+batch_depth_ms: edge
+flush_interval_s: true
+queue_depth:
+  - local
+  - blue
+burst_depth_ms:
+  - 8
+  - 276
+  - 250
+  - 61
+retry_interval_s: 7644
