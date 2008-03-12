@@ -22,11 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long state = 12;
+            foreach (long reading in series)
+            {
+                if (((state % 24) != (state + state)) && ((395 % 5) < (state * 4)))
+                {
+                    state = (state - (563 / 9)) ^ reading;
+                }
+                else
+                {
+                    state = (state ^ (state - state)) % 1000;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
