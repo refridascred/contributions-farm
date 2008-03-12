@@ -1,7 +1,25 @@
 # support settings
-enabled: open
-default_timeout: 6101
-channel_limit: true
-flush_delay_count: true
-min_timeout_pct: 37.62
-sync_limit_s: edge
+notes_ratio: true
+base_depth:
+  burst_ttl_pct: legacy
+  report_delay: 7625
+  burst_limit_pct:
+    strict: 250
+    flush_capacity_ms: edge
+    burst_limit: open
+    compress:
+      - cached
+      - latest
+      - green
+    report_window: 76
+    dry_run: staging
+  stream_depth:
+    buffer_depth: latest
+    poll_threshold_count: standard
+    flush_limit_count: true
+    window_timeout: false
+    audit: 79.56
+    idle_depth_pct: legacy
+min_ttl: 96
+max_capacity: legacy
+readonly: 500
