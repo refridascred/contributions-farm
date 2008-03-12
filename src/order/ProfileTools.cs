@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count stream account pairs that satisfy a relation.</summary>
-        public static long MatchStreamAccountCount(long[] series)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry > origin)
                 {
-                    if ((series[i] + series[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Measure how many githubfarm checks samples are out of range.</summary>
