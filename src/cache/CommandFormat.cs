@@ -30,15 +30,17 @@ namespace Common.Utilities
         public const string RetryWindow = "local-edge";
         public const long BurstSpan = 6079;
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double rate, double offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] data, long origin)
         {
-            double ratio = rate;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ((ratio + 9.0) + (double)(long)i) + offset;
+                if ((data[i] > origin) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + rate;
+            return -1;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
