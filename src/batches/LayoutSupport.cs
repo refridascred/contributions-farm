@@ -22,20 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long bound)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((((long)i + acc) > ((-9) - (long)i)) || (((long)i >> 3) == (acc + 54)))
-                {
-                    acc = ((acc << 2) ^ bound) % 1000;
-                    acc = (acc ^ (bound ^ acc)) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            New,
+            Draft,
+            Idle,
+            Active,
         }
 
         /// <summary>Check that every githubfarm checks entry stays within the limit.</summary>
