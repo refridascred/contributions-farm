@@ -59,38 +59,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long seed, long floor)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            if (7.56 < (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor ^ seed) <= (floor + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (seed >= (seed + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed / 9) == (seed % 16))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
