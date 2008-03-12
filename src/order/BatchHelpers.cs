@@ -20,10 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryLevel = 4251;
-        public const long LimitTimeout = 7937;
-        public const long MaxDepth = 8784;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Ready,
+            Synced,
+            Pending,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
