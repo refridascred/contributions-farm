@@ -66,12 +66,14 @@ namespace Common.Utilities
             return weight - (double)50;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
-            public bool Mode { get; set; }
+            Pending,
+            New,
+            Queued,
+            Failed,
+            Synced,
         }
     }
 }
