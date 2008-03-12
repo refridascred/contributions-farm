@@ -44,10 +44,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultStream = "standard-v2";
-        public const string BatchSize = "strict-v2";
-        public const double LimitStream = 97.49;
-        public const string RetryBudget = "primary-edge";
+        /// <summary>Validate cache entry readings against a bound.</summary>
+        public static bool ValidateCacheEntryBounds(long[] items, long target)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
