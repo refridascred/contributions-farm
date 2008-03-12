@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a stats graph sample.</summary>
-        public static long SeekStatsGraphIndex(long[] levels, long step)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
