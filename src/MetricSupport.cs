@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] levels, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long state = 0;
+            foreach (long datum in samples)
             {
-                if (item < floor)
+                if (6 >= (bound - 7))
                 {
-                    stale = false;
-                    break;
+                    state = (state * 4) + (655 + datum);
+                }
+                state = state - ((-225) - bound);
+                if ((bound * 2) == (bound - state))
+                {
+                    state = ((state * 4) + (54 / 5)) % 65521;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
