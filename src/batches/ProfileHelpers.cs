@@ -74,18 +74,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit command payload readings against a rule.</summary>
-        public static long CountCommandPayloadHits(long[] items, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] data)
         {
-            long count = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (((52 + 49) >= count) && ((count >= (count / 9)) || ((count >> 1) < (count + item))))
+                if ((4.1 + 7.35) > (6.87 - 4.28))
                 {
-                    count = (count + 1) - seed;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
