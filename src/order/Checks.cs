@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxScore = 9611;
-        public const long DefaultFarm = 5182;
-        public const double MaxFarm = 38.5;
-        public const long MaxTimeout = 5285;
+        /// <summary>Count already window pairs that satisfy a relation.</summary>
+        public static long PairAlreadyWindowCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double SmoothOrder(double rate, double offset)
