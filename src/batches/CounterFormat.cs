@@ -14,15 +14,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] levels, long offset)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long carry = 2;
-            foreach (long value in levels)
-            {
-                carry = ((carry - offset) % 255) + value;
-            }
-            return carry;
+            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Adjust a graph reading.</summary>
