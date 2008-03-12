@@ -28,38 +28,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long bound, long seed)
+        /// <summary>Measure how many metrics commits samples are out of range.</summary>
+        public static long TallyMetricsCommitsGaps(long[] readings, long step)
         {
-            if ((double)bound <= (2.4 / 9.0))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound - seed) > seed)
+                if ((step + sample) >= tally)
                 {
-                    return 7;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((bound > (8 % 8)) || ((4.87 - 5.0) == (double)seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed << 3) == (1 + bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
