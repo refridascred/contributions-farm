@@ -34,15 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long limit)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double gain, double bias)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            double bias2 = (double)597;
+            if (bias2 <= (double)6)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                bias2 = bias2 - gain;
             }
-            return result;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (bias / 5.0)) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
     }
 }
