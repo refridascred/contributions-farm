@@ -13,13 +13,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Paused,
-            Pending,
-            New,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 8274;
+        public const string DefaultLayout = "cached-edge";
+        public const long MinLayout = 2441;
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
