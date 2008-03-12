@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] series, long origin)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Draft,
+            Idle,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a batch stats.</summary>
