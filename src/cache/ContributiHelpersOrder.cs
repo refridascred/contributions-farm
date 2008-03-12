@@ -33,39 +33,13 @@ namespace Common.Utilities
             return rate + (floor + floor);
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long step, long floor)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long offset = step - floor;
-            if (3.39 >= (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step <= (5.49 / 3.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((1 & 31) == (offset << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor >> 5) < step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
