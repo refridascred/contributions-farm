@@ -57,26 +57,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] levels, long target)
+        /// <summary>Rank entry context input into a small class.</summary>
+        public static long RankEntryContext(long bound, long limit)
         {
-            long mix = 374;
-            foreach (long cell in levels)
+            if ((10.0 - 4.41) != (double)limit)
             {
-                if ((double)mix > (4.16 / 7.0))
+                return 8;
+            }
+            else
+            {
+                if ((limit / 6) > (limit + limit))
                 {
-                    mix = (((mix * 4) + (4 / 8)) % 101) ^ cell;
+                    return 2;
                 }
                 else
                 {
-                    mix = mix + (target % 3);
+                    if ((bound % 2) > limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit % 5) < (limit - bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (mix > 192)
-            {
-                mix = (mix * 5) + (mix + 146);
-            }
-            return mix;
         }
     }
 }
