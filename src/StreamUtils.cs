@@ -54,19 +54,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate queue token samples.</summary>
-        public static long FoldQueueToken(long[] levels)
+        /// <summary>Compare every pair of metrics token readings.</summary>
+        public static long PairMetricsTokenCount(long[] data)
         {
-            long mark = 14;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark - mark) % 101) - value;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mark > 8)
-            {
-                mark = (mark + (mark >> 4)) % 1000;
-            }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Accumulate notes samples.</summary>
