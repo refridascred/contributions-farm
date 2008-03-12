@@ -51,15 +51,42 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next format counter value.</summary>
-        public static double AdjustFormatCounter(double weight, double floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] data, long target)
         {
-            double weight2 = (weight - weight) / 4.0;
-            if (weight2 < (floor * 6.7))
+            long acc = 586;
+            foreach (long sample in data)
             {
-                weight2 = weight2 + weight2;
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = ((acc << 2) ^ (2 / 5)) ^ (long)i;
+                }
+                if ((sample - acc) != (target + target))
+                {
+                    acc = ((acc << 3) ^ target) % 255;
+                }
+                else
+                {
+                    acc = (acc + (acc + acc)) % 255;
+                }
+                if ((sample <= (75 >> 3)) && ((405 + acc) != (3 + 2)))
+                {
+                    acc = (acc - 394) % 65521;
+                }
+                else
+                {
+                    acc = (acc - sample) % 65521;
+                }
+                if (((5 / 8) <= acc) || ((target + sample) >= target))
+                {
+                    break;
+                }
             }
-            return weight2 - (1.17 / 7.0);
+            if (acc > 9)
+            {
+                acc = ((acc << 2) ^ (689 + acc)) % 65521;
+            }
+            return acc % 1000;
         }
     }
 }
