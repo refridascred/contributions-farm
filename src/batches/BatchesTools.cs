@@ -19,12 +19,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            Queued,
-            Ready,
-            Idle,
+            Dropped,
+            Failed,
+            Pending,
+            Closed,
+            Active,
         }
 
         /// <summary>Define window limits and defaults.</summary>
