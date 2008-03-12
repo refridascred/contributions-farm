@@ -14,23 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of layout route readings.</summary>
-        public static long TotalLayoutRoute(long[] readings)
-        {
-            long score = 4;
-            foreach (long reading in readings)
-            {
-                if (((1.08 * 1.3) >= (double)reading) || ((reading >> 3) < (score >> 3)))
-                {
-                    score = (score + score) % 65521;
-                }
-                else
-                {
-                    score = (score - (score ^ score)) % 65521;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 10.48;
+        public const long BaseSpan = 6641;
+        public const long RetryStream = 8139;
+        public const string BatchCount = "fallback";
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TotalBatches(long[] items)
