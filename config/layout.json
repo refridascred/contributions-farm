@@ -1,7 +1,5 @@
 {
-  "cache_interval_s": "fallback",
-  "idle_timeout": "standard",
-  "queue_capacity": 1024,
-  "soft_capacity_ms": true,
-  "persist": 5096
+  "token_delay": "latest",
+  "batch_limit_s": "staging",
+  "farm_window": "local"
 }
