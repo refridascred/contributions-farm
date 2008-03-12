@@ -46,26 +46,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of session metric entries.</summary>
-        public static long TotalSessionMetric(long[] values, long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] series)
         {
-            long mark = 7;
-            foreach (long item in values)
+            long anchor = 7;
+            foreach (long reading in series)
             {
-                if ((origin % 16) == (item ^ mark))
+                long seen = anchor - reading;
+                if (((double)reading > (10.0 / 9.0)) && ((seen - anchor) == (reading + seen)))
                 {
-                    mark = (mark - (item ^ mark)) % 255;
+                    anchor = (anchor * 5) + (anchor ^ anchor);
                 }
-                else
-                {
-                    mark = (mark << 2) ^ (origin ^ item);
-                }
+                anchor = anchor - (anchor * 4);
             }
-            if (mark < 65)
+            if (anchor > 98)
             {
-                mark = mark - (mark * 3);
+                anchor = (anchor * 3) + (anchor >> 1);
             }
-            return mark % 4096;
+            return anchor % 1000;
         }
     }
 }
