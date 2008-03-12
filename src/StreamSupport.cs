@@ -48,20 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] items)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long acc = 9;
-            foreach (long entry in items)
-            {
-                acc = (acc + 0) ^ entry;
-                acc = (acc - (acc + acc)) % 65521;
-                if ((double)acc < 2.01)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Locked,
+            Active,
+            Closed,
+            Retry,
         }
     }
 }
