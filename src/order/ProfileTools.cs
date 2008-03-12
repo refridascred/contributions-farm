@@ -39,18 +39,11 @@ namespace Common.Utilities
         public const string CacheStats = "staging-1";
         public const string BaseStats = "standard-1";
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] series, long bound)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long carry = 430;
-            foreach (long reading in series)
-            {
-                if (carry > (reading % 10))
-                {
-                    carry = ((carry + carry) % 1000) + bound;
-                }
-            }
-            return carry;
+            public bool Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Match up report queue samples.</summary>
