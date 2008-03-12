@@ -12,12 +12,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Validate window farm readings against a bound.</summary>
+        public static bool ValidateWindowFarmBounds(long[] values, long seed)
         {
-            New,
-            Closed,
-            Idle,
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
