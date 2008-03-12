@@ -34,13 +34,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
+            Closed,
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Describe the queue phase values.</summary>
