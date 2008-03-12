@@ -20,10 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 65.25;
-        public const long MaxWidth = 5593;
-        public const long MinSession = 8404;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Locked,
+            Active,
+            Draft,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long IterateEditor(long floor)
