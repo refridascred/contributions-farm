@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] readings, long floor)
+        /// <summary>Count the channel filter entries that pass the check.</summary>
+        public static long AuditChannelFilterMatches(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (readings[i] < floor)
+                if ((65 < datum) && ((1 < (seen * 5)) || ((seen + datum) >= (seen * 5))))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many context cache samples are out of range.</summary>
