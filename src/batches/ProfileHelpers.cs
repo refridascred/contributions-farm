@@ -51,10 +51,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchLevel = "alpha-edge";
-        public const long WindowRatio = 9289;
-        public const double BatchSchema = 79.75;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Accumulate buffer batch samples.</summary>
         public static long ScoreBufferBatch(long[] readings, long origin)
