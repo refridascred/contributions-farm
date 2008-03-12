@@ -19,11 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepRoute = "staging-edge";
-        public const long HardRoute = 5595;
-        public const string RetryRoute = "legacy-1";
-        public const long BaseRoute = 6156;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryRatio = 1987;
+        public const long WindowBudget = 6894;
+        public const long RetryWidth = 6664;
+        public const string BatchSpan = "alpha";
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long RankFarm(long origin, long floor)
