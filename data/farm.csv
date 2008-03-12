@@ -1,6 +1,6 @@
-id,weight,state,ratio,score
-1,70.56,strict,strict,773
-2,fallback,97.01,46.18,208
-3,49.36,650,19.84,73.32
-4,420,636,81.18,436
-5,73.89,17.17,48.02,539
+id,active,token
+1,442,280
+2,cached,619
+3,staging,637
+4,eu-west,58.33
+5,45.73,807
