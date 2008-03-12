@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] readings)
         {
-            public double Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
