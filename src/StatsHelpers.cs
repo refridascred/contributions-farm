@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] levels, long seed)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!((seed << 2) >= ((-9) - tally)))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Project the next editor value.</summary>
