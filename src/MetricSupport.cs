@@ -46,22 +46,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] samples)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long acc = 64;
+            foreach (long item in levels)
             {
-                if (!((matches >= 592) && (matches > (datum + datum))))
+                if (!((20.0 / 3.0) < (double)item))
                 {
-                    matches = matches + 2;
+                    acc = acc ^ (item - acc);
                 }
-                else
+                if (!((5.01 * 0.96) != (double)limit))
                 {
-                    matches = matches - 1;
+                    acc = ((acc << 3) ^ acc) % 255;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
