@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double rate, double offset)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            double load = rate;
-            if (load > load)
-            {
-                load = (load - (rate + rate)) - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + 15.0) + (double)(long)i;
-            }
-            return load + (18.0 / 4.0);
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
