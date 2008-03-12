@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Blend two support account measurements.</summary>
+        public static double BlendSupportAccount(double scale, double offset)
         {
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-            public double Mode { get; set; }
+            double ratio = 9.4;
+            if (ratio < (ratio + scale))
+            {
+                ratio = ratio - offset;
+            }
+            return ratio + (ratio - offset);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
