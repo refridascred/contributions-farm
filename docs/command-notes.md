@@ -1,11 +1,11 @@
 # Command notes
 
-Run the profile check before changing any token limits.
-The command report groups every token by window.
-When a metric fails, the payload handler retries a few times before giving up.
+The farm module keeps stream values in sync with the metric cache.
+When a session fails, the window handler retries a few times before giving up.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review stream limits each release
-- Prefer payload defaults
-- Validate entry input early
+- Review window limits each release
+- Keep context values small
+- Document new metrics fields
