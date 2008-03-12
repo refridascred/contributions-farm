@@ -59,11 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
+            public double Token { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
