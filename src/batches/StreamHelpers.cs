@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            Synced,
-            Draft,
-            Queued,
-            Dropped,
-            Paused,
+            public long Label { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
