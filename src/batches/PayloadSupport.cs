@@ -40,13 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long origin, long target)
         {
-            Locked,
-            Synced,
-            Draft,
-            Failed,
+            long span = origin ^ target;
+            if ((target << 1) > (target - target))
+            {
+                return 4;
+            }
+            else
+            {
+                if (target > (36 - origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target + span) == (target + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((span % 5) < (span >> 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
