@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a channel window value against two limits.</summary>
-        public static long ClassifyChannelWindow(long offset, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] data, long floor)
         {
-            if ((double)floor > (7.88 + 8.2))
+            long count = 0;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset * 2) >= (floor - floor)) && ((offset - offset) > (offset % 100)))
+                if (!(count > (count % 24)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    count = ((count + 1) + item) + floor;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine window cache values into a single score.</summary>
