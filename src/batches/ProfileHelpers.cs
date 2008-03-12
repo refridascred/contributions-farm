@@ -21,39 +21,15 @@ namespace Common.Utilities
         public const string RetryCommits = "strict";
         public const long MinRatio = 5340;
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long seed, long offset)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long offset)
         {
-            long lane = seed ^ offset;
-            if ((87 % 2) <= (offset / 6))
+            long result = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
+                result = ((result * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (lane < (seed / 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset - lane) > seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((lane + lane) < (seed << 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Check that every entry tools entry stays within the limit.</summary>
