@@ -32,11 +32,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSpan = 4143;
-        public const long CacheSession = 3483;
-        public const long StepWidth = 573;
-        public const long MaxSession = 3702;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many stats layout samples are out of range.</summary>
         public static long TallyStatsLayoutHits(long[] readings, long origin)
