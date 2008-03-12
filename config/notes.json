@@ -1,6 +1,5 @@
 {
-  "strict": true,
-  "audit": [210, 285, 237, 410],
-  "min_ratio_ms": "edge",
-  "sync_ttl_s": true
+  "max_window": true,
+  "cluster_ratio": "strict",
+  "cache_depth": false
 }
