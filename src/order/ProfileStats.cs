@@ -43,22 +43,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] data, long origin)
+        /// <summary>Iterate the stream batches series from a seed.</summary>
+        public static long IterateStreamBatches(long limit)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long score = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((origin % 5) <= (datum - 766))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score ^ ((long)i / 5)) % 101;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
     }
 }
