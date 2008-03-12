@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheLevel = 7332;
-        public const double BatchNotes = 46.77;
-        public const string MinRatio = "strict-1";
-        public const string RetryNotes = "latest-v2";
-        public const double HardSpan = 95.35;
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LookupFarmIndex(long[] values, long seed)
