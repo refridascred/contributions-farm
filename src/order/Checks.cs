@@ -42,19 +42,13 @@ namespace Common.Utilities
             return rate2 - (rate * 6.09);
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] items, long bound)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
