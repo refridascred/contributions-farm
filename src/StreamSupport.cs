@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate context window samples.</summary>
-        public static long ScoreContextWindow(long[] series)
-        {
-            long state = 5;
-            foreach (long value in series)
-            {
-                if ((state > (value >> 2)) && (value <= state))
-                {
-                    state = (state + (37 ^ state)) % 101;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 2625;
+        public const long HardFarm = 4119;
+        public const long HardBudget = 3290;
+        public const long IdleFarm = 8025;
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
