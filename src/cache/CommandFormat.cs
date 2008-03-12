@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long limit, long origin)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long limit)
         {
-            if ((5.9 * 0.6) >= (double)limit)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit + origin) > (17 ^ 19)) || ((555 + limit) == (origin - origin)))
+                mark = mark + 355;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 3;
+                    mark = ((mark ^ (mark / 9)) % 255) - (long)i2;
                 }
-                else
-                {
-                    if (((limit / 9) >= (origin + origin)) || (origin < (86 % 24)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((origin >> 1) == (origin - origin)) || (origin < (604 / 6)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
