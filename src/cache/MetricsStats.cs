@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const string MaxSpan = "open-v2";
         public const long BaseLevel = 6890;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
+            public double Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
