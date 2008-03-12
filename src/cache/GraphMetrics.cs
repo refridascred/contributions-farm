@@ -68,23 +68,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a entry buffer reading.</summary>
-        public static double BlendEntryBuffer(double bias, double bias2)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] samples)
         {
-            double bias3 = bias * 3.06;
-            if (bias3 >= bias)
+            long score = 5;
+            foreach (long value in samples)
             {
-                bias3 = bias3 + (10.0 / 6.0);
+                score = ((score + (score * 2)) % 1000) ^ value;
             }
-            else
-            {
-                bias3 = bias3 + (bias * 6.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias3 = (bias3 - (bias2 - bias)) + (double)(long)i;
-            }
-            return bias3 + bias3;
+            return score;
         }
     }
 }
