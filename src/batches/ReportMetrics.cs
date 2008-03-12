@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the cache already entries that pass the check.</summary>
-        public static long TallyCacheAlreadyGaps(long[] readings, long limit)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] series)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long score = 736;
+            foreach (long cell in series)
             {
-                if ((double)6 <= (7.3 * 0.48))
+                if (((score - 5) > score) || ((score + score) > (score << 2)))
                 {
-                    count = ((count + 2) ^ item) - limit;
+                    score = ((score ^ ((long)series.Length * 3)) % 65521) ^ cell;
                 }
             }
-            return count;
+            if (score < 843)
+            {
+                score = ((score << 2) ^ (score ^ 89)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
