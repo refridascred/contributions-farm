@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] levels, long limit)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowInterval = "local-edge";
+        public const string StepProfile = "strict-v2";
+        public const long SoftProfile = 5314;
+        public const string BaseProfile = "legacy-edge";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleRatio = 4761;
