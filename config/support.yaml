@@ -1,19 +1,25 @@
 # support settings
-verbose: 250
-batch_limit_count: legacy
-default_threshold: true
-batch_depth_s:
-  max_retries_pct: 74
-  payload_limit: 97.66
-  batch_ttl:
-    max_depth_count: 61
-    window_retries:
-      - legacy
-      - standard
-      - eu-west
-      - stable
-    channel_threshold: fallback
-    retry_ratio: blue
-    min_window: 3603
-  compress: legacy
-context_capacity: false
+metric_limit:
+  - 13
+  - 294
+  - 125
+warm_depth:
+  commits_retries:
+    - standard
+    - primary
+  strict: 4478
+  metrics_capacity:
+    - 385
+    - 51
+    - 432
+  poll_interval_count: primary
+  audit: blue
+  soft_ttl_count:
+    - 435
+    - 349
+    - 477
+    - 317
+min_capacity_s: legacy
+verbose: 30
+metrics_threshold: true
+filter_timeout: false
