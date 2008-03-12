@@ -1,8 +1,7 @@
-id,rank,active,label
-1,eu-west,17.76,primary
-2,staging,597,502
-3,23.28,627,11.37
-4,open,160,eu-west
-5,green,primary,6.41
-6,83.51,883,48
-7,standard,edge,staging
+id,token,weight,state,count
+1,blue,483,79.4,11.41
+2,legacy,870,4.27,cached
+3,12.02,475,64.49,46.02
+4,staging,941,31.3,42.7
+5,32.17,11.27,35.82,198
+6,legacy,latest,894,235
