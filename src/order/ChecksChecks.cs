@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] readings, long seed)
+        /// <summary>Iterate the githubfarm notes series from a seed.</summary>
+        public static long StepGithubfarmNotes(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
+                carry = (carry << 2) ^ step;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Digest a series of window entries.</summary>
