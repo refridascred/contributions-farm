@@ -18,10 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinLevel = 6445;
-        public const string MaxTimeout = "open-v2";
-        public const string SoftInterval = "fallback-1";
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = mix ^ offset;
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
