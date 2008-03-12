@@ -1,23 +1,5 @@
 # support settings
-flush_threshold_s: 25.86
-filter_ttl: 53.9
-base_ratio_ms:
-  entry_window:
-    - 334
-    - 447
-    - 145
-    - 391
-  batch_delay_pct:
-    - 364
-    - 55
-  warm_depth_pct: 51.8
-  max_delay_s:
-    persist: 34.23
-    audit: 1024
-    token_timeout: true
-batches_ttl:
-  - edge
-  - local
-  - strict
-idle_ttl_pct: 8620
-entry_limit: eu-west
+max_ratio_ms: 10.08
+session_capacity: 2060
+burst_limit_ms: true
+entry_timeout: 26.46
