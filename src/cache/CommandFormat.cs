@@ -32,14 +32,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Audit metric stats readings against a rule.</summary>
+        public static long CountMetricStatsHits(long[] values)
         {
-            Paused,
-            Ready,
-            Locked,
-            Done,
-            Draft,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((double)64 != (double)reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
