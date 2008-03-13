@@ -30,15 +30,15 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double bias, double span)
         {
-            long score = bound;
-            for (int i = 0; i < 16; i++)
+            double drift = span;
+            if (drift > (bias + bias))
             {
-                score = ((score * 4) + (long)i) % 101;
+                drift = drift - drift;
             }
-            return score;
+            return drift + bias;
         }
     }
 }
