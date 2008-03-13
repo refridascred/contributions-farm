@@ -28,13 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Synced,
-            Idle,
-            Dropped,
-            Pending,
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
