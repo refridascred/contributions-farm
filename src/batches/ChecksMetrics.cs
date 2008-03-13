@@ -33,19 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph window entries that pass the check.</summary>
-        public static long CountGraphWindowHits(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((121 + matches) != (origin >> 3))
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 1176;
+        public const string SoftChecks = "cached-edge";
+        public const long BurstChecks = 2531;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long WeighNotes(long[] data)
