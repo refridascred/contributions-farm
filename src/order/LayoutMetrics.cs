@@ -12,13 +12,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public double Weight { get; set; }
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
+            Ready,
+            Synced,
+            Locked,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the notes level values.</summary>
