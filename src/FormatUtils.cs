@@ -46,14 +46,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Synced,
             Paused,
-            Stale,
+            Active,
+            Done,
             Draft,
-            Pending,
+            Synced,
         }
 
         /// <summary>Accumulate channel counter samples.</summary>
