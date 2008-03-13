@@ -17,11 +17,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheDepth = 19.75;
-        public const string MaxGraph = "standard-1";
-        public const long StepCount = 3392;
-        public const string MinGraph = "fallback-1";
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Closed,
+            Active,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MinBudget = 5494;
