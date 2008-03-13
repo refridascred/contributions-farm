@@ -40,22 +40,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] values, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (!(seen > seed))
+                if ((5.8 / 3.0) == (double)entry)
                 {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
