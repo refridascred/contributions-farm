@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public double Region { get; set; }
+            public bool Limit { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
