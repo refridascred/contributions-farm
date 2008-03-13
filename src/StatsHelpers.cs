@@ -36,19 +36,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the payload metrics entries that pass the check.</summary>
-        public static long AuditPayloadMetricsOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((entry - 6) > (2 >> 2))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinProfile = "alpha-edge";
+        public const double DefaultScore = 17.7;
+        public const double LimitInterval = 7.36;
+        public const string RetrySpan = "local-v2";
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double BlendBatch(double gain, double offset)
