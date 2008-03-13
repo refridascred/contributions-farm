@@ -27,20 +27,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] values, long step)
-        {
-            long acc = 55;
-            foreach (long cell in values)
-            {
-                acc = (acc ^ (acc % 16)) ^ cell;
-                acc = acc + (acc + step);
-                if ((step - 49) > (2 % 24))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowGithubfarm = 54.03;
+        public const double BatchGithubfarm = 2.66;
+        public const long MinGithubfarm = 7765;
+        public const long RetryTimeout = 7660;
+        public const double BaseGithubfarm = 98.22;
     }
 }
