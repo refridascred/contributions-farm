@@ -1,12 +1,13 @@
 {
-  "min_limit_count": {
-    "default_limit_s": 4,
-    "flush_ratio": "latest",
-    "batches_delay": 100
+  "graph_threshold": 58.76,
+  "default_limit_count": "strict",
+  "burst_depth_pct": ["primary", "staging", "edge", "standard"],
+  "audit": ["eu-west", "blue", "eu-west"],
+  "retry_window_pct": {
+    "default_window_count": 7357,
+    "cache_window_s": 97.31,
+    "cluster_capacity": 86,
+    "verbose": ["open", "cached", "open", "legacy"]
   },
-  "cache_size": "staging",
-  "strict": "stable",
-  "soft_timeout_s": ["strict", "stable", "legacy", "green"],
-  "cache_capacity_pct": true,
-  "soft_timeout_ms": "strict"
+  "cache_limit_count": "local"
 }
