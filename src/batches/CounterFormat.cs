@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long bound, long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] series, long offset)
         {
-            long offset = bound - limit;
-            if ((3 - 28) < offset)
+            bool valid = true;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound == (3.0 - 19.0))
+                if (value <= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Project the next command value.</summary>
