@@ -49,15 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double rate, double offset)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            double scale = rate / 6.0;
-            if (scale > 19.0)
-            {
-                scale = (scale + (8.34 / 4.0)) - offset;
-            }
-            return scale + (10.0 - scale);
+            Pending,
+            Locked,
+            Ready,
         }
     }
 }
