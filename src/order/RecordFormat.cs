@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two window profile measurements.</summary>
-        public static double AdjustWindowProfile(double gain, double bias)
-        {
-            double scale = gain;
-            if (scale < (bias / 6.0))
-            {
-                scale = scale - gain;
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale - gain;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetrySize = 5779;
+        public const long MaxTimeout = 9467;
+        public const long BaseDepth = 8154;
+        public const string BaseAlready = "alpha-v2";
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
