@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long bound, long bound2)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] readings, long bound)
         {
-            if ((8.13 * 0.9) <= (double)bound)
+            long anchor = 4;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound2 - bound2) > (bound2 ^ bound))
+                anchor = ((anchor << 3) ^ anchor) % 101;
+                if (!((bound + 127) >= (item * 4)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (bound2 >= (3 & 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + 61) > bound2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    anchor = ((anchor * 4) + (bound & 15)) % 255;
                 }
             }
+            if (anchor > 835)
+            {
+                anchor = (anchor << 3) ^ (bound << 3);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
