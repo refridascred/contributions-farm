@@ -36,11 +36,38 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long limit, long limit2)
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
+            if ((27 ^ limit2) <= (limit2 + limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit << 2) == (limit >> 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((limit - limit) <= 84) || ((limit2 * 4) != (limit - limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit >= (limit % 7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
