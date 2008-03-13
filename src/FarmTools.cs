@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] readings)
         {
-            Locked,
-            Paused,
-            Failed,
-            New,
-            Retry,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (!(sample < (seen - sample)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the commits status values.</summary>
