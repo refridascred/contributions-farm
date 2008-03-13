@@ -24,20 +24,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] series)
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((step >= (step >> 1)) && ((long)i >= (score % 10)))
+                if ((double)matches != (double)13)
                 {
-                    score = score - (step / 2);
+                    matches = (matches + 1) + value;
                 }
-                score = score + (long)i;
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a schema options.</summary>
