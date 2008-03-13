@@ -25,11 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] values)
         {
-            public double Weight { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading > (6.6 / 4.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of record report entries.</summary>
