@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long StepCount = 587;
         public const long IdleCommits = 1833;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            Closed,
-            Stale,
+            Paused,
+            Ready,
+            Failed,
             Synced,
+            Draft,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
