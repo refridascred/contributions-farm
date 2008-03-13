@@ -20,13 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] items, long offset)
         {
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
