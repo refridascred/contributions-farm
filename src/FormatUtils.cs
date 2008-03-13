@@ -32,23 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] series, long target)
+        /// <summary>Count the editor order entries that pass the check.</summary>
+        public static long CountEditorOrderGaps(long[] samples)
         {
-            long mark = 588;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                mark = (mark + datum) % 97;
-                if ((double)datum < (1.0 - 12.0))
+                if (!((entry & 3) > (matches & 15)))
                 {
-                    mark = ((mark << 2) ^ (mark ^ mark)) % 255;
-                }
-                if ((mark - target) == (mark + datum))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the route level values.</summary>
