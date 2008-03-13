@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] series)
         {
-            Retry,
-            Closed,
-            Idle,
-            Done,
-            Draft,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((matches % 5) > matches)
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a checks record.</summary>
