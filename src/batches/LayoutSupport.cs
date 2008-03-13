@@ -12,13 +12,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Locked,
-            New,
+            Paused,
             Done,
-            Closed,
+            Active,
+            Ready,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
