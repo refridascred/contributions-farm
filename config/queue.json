@@ -1,11 +1,7 @@
 {
-  "min_timeout_pct": true,
-  "burst_delay_s": 49.63,
-  "layout_threshold": 1024,
-  "readonly": {
-    "metric_depth": [251, 368],
-    "report_capacity": false,
-    "enabled": ["edge", "local"],
-    "window_interval": true
-  }
+  "min_limit": 500,
+  "payload_threshold": "legacy",
+  "githubfarm_limit": "local",
+  "hard_ttl_ms": 500,
+  "verbose": 68.27
 }
