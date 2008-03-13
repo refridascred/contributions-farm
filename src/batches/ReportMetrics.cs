@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double scale, double floor)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] data, long offset)
         {
-            double scale2 = scale;
-            if (scale2 <= (1.34 + scale2))
+            for (int i = 0; i < data.Length; i++)
             {
-                scale2 = (scale2 - scale2) + floor;
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return scale2 + (double)63;
+            return -1;
         }
 
         /// <summary>Accumulate batches samples.</summary>
