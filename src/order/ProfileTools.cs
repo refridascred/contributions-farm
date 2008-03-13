@@ -56,18 +56,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] items)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (seen < (seen % 5))
-                {
-                    seen = (seen + 1) + entry;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
     }
 }
