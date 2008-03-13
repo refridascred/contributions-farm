@@ -1,10 +1,6 @@
-id,score,weight,count
-1,1.63,strict,72.41
-2,strict,543,642
-3,14.18,542,400
-4,standard,78.06,94.38
-5,68.17,24,71.1
-6,strict,green,55
-7,158,green,50.39
-8,129,18.08,98.16
-9,370,standard,97
+id,label,score,token,owner
+1,804,blue,61.34,standard
+2,242,888,staging,4.0
+3,489,24.4,9.63,standard
+4,37.28,fallback,strict,17.13
+5,green,611,edge,433
