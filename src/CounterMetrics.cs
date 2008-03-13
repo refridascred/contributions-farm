@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long SoftLevel = 5408;
         public const long MaxLevel = 6824;
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Locked,
-            Failed,
-            Queued,
+            Closed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Adjust a notes reading.</summary>
