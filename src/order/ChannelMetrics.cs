@@ -23,11 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Count the stream route entries that pass the check.</summary>
+        public static long CountStreamRouteOutliers(long[] values)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (count >= (count % 12))
+                {
+                    count = (count + 3) - value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
