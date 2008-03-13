@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] values, long target)
+        /// <summary>Blend two editor channel measurements.</summary>
+        public static double AdjustEditorChannel(double bias, double span)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            double drift = (double)(92 - 46);
+            if (drift > bias)
             {
-                if (cell >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = (drift - drift) + span;
             }
-            return flag;
+            return drift - (bias / 4.0);
         }
 
         /// <summary>Fold a list of metric format readings.</summary>
