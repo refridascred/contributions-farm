@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] series)
         {
-            long sum = 92;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (sum >= (cell * 4))
+                if (!((hits << 3) == (hits - datum)))
                 {
-                    sum = sum - (cell + cell);
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
