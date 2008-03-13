@@ -48,12 +48,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
