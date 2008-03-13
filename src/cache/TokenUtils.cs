@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] samples)
+        /// <summary>Rank metric command input into a small class.</summary>
+        public static long ClassifyMetricCommand(long origin, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((origin + offset) >= (origin & 15))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((56 ^ origin) < (offset + offset))
                 {
-                    if ((samples[i] - samples[j]) > 10)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin == (double)offset)
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate context record samples.</summary>
