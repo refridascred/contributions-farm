@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=349
+mode="${1:-stable}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=52
 log "limit is ${BUFFER_LIMIT}"
-
-for item in legacy fallback green; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
