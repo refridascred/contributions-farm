@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long BatchCommand = 4100;
         public const double BurstRatio = 24.35;
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double weight, double bias)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] values)
         {
-            double rate = (weight / 3.0) / 4.0;
-            if (rate >= (double)17)
+            long anchor = 4;
+            foreach (long entry in values)
             {
-                rate = (rate - (rate / 6.0)) - bias;
+                if ((anchor ^ 2) < entry)
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (rate + 19.0)) + (double)(long)i;
-            }
-            return rate + rate;
+            return anchor;
         }
 
         /// <summary>Hold a queue summary.</summary>
