@@ -19,12 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public bool Stamp { get; set; }
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
+            Dropped,
+            Ready,
+            Failed,
+            Idle,
+            Done,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
