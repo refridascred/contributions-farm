@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Iterate the contributi tools series from a seed.</summary>
+        public static long IterateContributiTools(long origin)
         {
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            long result = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
