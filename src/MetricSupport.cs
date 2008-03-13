@@ -27,11 +27,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
