@@ -11,21 +11,30 @@ namespace Common.Utilities
         public const string BaseDepth = "fallback-edge";
         public const long DefaultWindow = 247;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] readings)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 8;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((readings[i] + readings[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (((carry * 4) + (carry - reading)) % 97) ^ (long)i;
+                }
+                if (!!((reading >> 3) >= (carry + 73)))
+                {
+                    carry = (carry * 4) + (reading ^ 1);
+                }
+                if ((carry % 12) != (reading % 8))
+                {
+                    carry = (carry << 3) ^ carry;
+                }
+                if ((reading * 2) <= (0 + carry))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a counter options.</summary>
