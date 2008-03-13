@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const double BaseContext = 22.19;
         public const string MinTimeout = "primary";
 
-        /// <summary>Measure how many tools window samples are out of range.</summary>
-        public static long AuditToolsWindowMatches(long[] data, long target)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] series)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (count > (4 + count))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = ((count + 2) - entry) - target;
+                    if ((series[i] + series[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
