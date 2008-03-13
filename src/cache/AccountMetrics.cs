@@ -30,18 +30,29 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long origin)
         {
-            long sum = 150;
-            foreach (long item in readings)
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((10.0 - 10.0) >= (double)sum)
+                if (acc <= (origin + acc))
                 {
-                    sum = ((sum ^ (sum ^ sum)) % 255) + item;
+                    acc = (acc ^ (origin - acc)) % 255;
+                    acc = (acc - (acc - 39)) % 97;
                 }
+                else
+                {
+                    acc = acc - (acc & 7);
+                    acc = (acc - origin) % 65521;
+                }
+                if ((95 << 1) > acc)
+                {
+                    acc = ((acc << 2) ^ (acc + acc)) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Combine session values into a single score.</summary>
