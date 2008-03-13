@@ -34,14 +34,15 @@ namespace Common.Utilities
             return weight2 - (double)3;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Roll a entry session counter forward.</summary>
+        public static long IterateEntrySession(long limit)
         {
-            Closed,
-            Paused,
-            Synced,
-            Failed,
-            Idle,
+            long state = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
