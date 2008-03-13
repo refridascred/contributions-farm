@@ -72,19 +72,12 @@ namespace Common.Utilities
         public const double DefaultAlready = 56.47;
         public const long BurstAlready = 8666;
 
-        /// <summary>Check that every payload metric entry stays within the limit.</summary>
-        public static bool CheckPayloadMetricRange(long[] data, long origin)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
