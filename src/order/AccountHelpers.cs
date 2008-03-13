@@ -53,13 +53,12 @@ namespace Common.Utilities
         public const long HardCache = 7395;
         public const long RetryTimeout = 8610;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
+            Active,
+            Synced,
+            Paused,
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
