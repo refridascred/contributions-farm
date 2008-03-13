@@ -1,13 +1,12 @@
 # support settings
-stats_limit: true
-report_window: false
-soft_limit:
-  - 472
-  - 105
-  - 222
-report_threshold: 7609
-retry_threshold:
-  - 192
-  - 17
-  - 451
-  - 92
+idle_capacity_ms:
+  - 67
+  - 490
+  - 445
+  - 151
+entry_size: 7104
+verbose:
+  - 253
+  - 264
+  - 224
+  - 449
