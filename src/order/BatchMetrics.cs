@@ -44,38 +44,11 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Rank already profile input into a small class.</summary>
-        public static long BucketAlreadyProfile(long bound, long offset)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            if ((-267) >= bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound - bound) <= (bound + 816))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset - bound) >= (offset + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((667 + bound) <= bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Project the next token value.</summary>
