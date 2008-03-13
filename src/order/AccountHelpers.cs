@@ -47,11 +47,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftFactor = 3355;
-        public const long MaxCache = 8718;
-        public const long HardCache = 7395;
-        public const long RetryTimeout = 8610;
+        /// <summary>Iterate the tools context series from a seed.</summary>
+        public static long SeriesToolsContext(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
