@@ -34,18 +34,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] data, long floor)
+        /// <summary>Rank tools record input into a small class.</summary>
+        public static long ClassifyToolsRecord(long origin, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            if ((floor ^ floor) >= floor)
             {
-                if (hits > (floor / 2))
+                return 7;
+            }
+            else
+            {
+                if ((double)origin != (6.5 - 3.53))
                 {
-                    hits = (hits + 3) + cell;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + floor) > origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
