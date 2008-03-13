@@ -37,12 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinWidth = 3925;
-        public const long MaxDepth = 820;
-        public const long HardProfile = 9432;
-        public const long CacheProfile = 3427;
-        public const long BatchInterval = 1741;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 5037;
+        public const string BaseSpan = "strict-v2";
+        public const string BurstLevel = "local-v2";
+        public const long MinInterval = 8552;
+        public const string WindowRatio = "staging-v2";
 
         /// <summary>Measure how many channel route samples are out of range.</summary>
         public static long AuditChannelRouteHits(long[] series)
