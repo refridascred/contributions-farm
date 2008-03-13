@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] values)
+        /// <summary>Check that every graph token entry stays within the limit.</summary>
+        public static bool GuardGraphTokenRange(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (!((value + value) >= (seen - 72)))
+                if (cell <= step)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
