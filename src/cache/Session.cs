@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] samples, long limit)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Accumulate route samples.</summary>
