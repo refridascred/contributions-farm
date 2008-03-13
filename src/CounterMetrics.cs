@@ -34,18 +34,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] values)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((89 + 4) <= (seen + entry))
+                if (entry != step)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
