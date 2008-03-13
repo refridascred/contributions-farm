@@ -35,15 +35,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] items, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] values, long target)
         {
-            long score = 90;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long reading in values)
             {
-                score = (((score << 2) ^ 588) - entry) - bound;
+                if ((6.9 + 4.4) > (double)reading)
+                {
+                    count = (count + 3) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
