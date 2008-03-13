@@ -1,5 +1,5 @@
 {
-  "warm_ratio": "cached",
-  "sync_depth": [488, 304, 434, 493],
-  "flush_timeout": [346, 310]
+  "sync_delay_count": 100,
+  "burst_depth": false,
+  "flush_timeout": "cached"
 }
