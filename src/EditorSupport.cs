@@ -44,28 +44,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine context account values into a single score.</summary>
-        public static long TallyContextAccount(long[] samples)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] values)
         {
-            long state = -10;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((sample >> 3) < state)
+                if ((matches & 255) > cell)
                 {
-                    continue;
+                    matches = matches + 3;
                 }
-                if (!((double)state > 11.0))
-                {
-                    state = (state ^ 485) % 255;
-                    state = (state << 2) ^ state;
-                }
-                else
-                {
-                    state = state ^ state;
-                }
-                state = (state + sample) % 65521;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Locate a already reading by value.</summary>
