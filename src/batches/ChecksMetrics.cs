@@ -14,12 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxGraph = "standard";
-        public const double HardLevel = 0.42;
-        public const double StepLevel = 70.22;
-        public const string HardSpan = "strict-1";
-        public const string SoftGraph = "standard-1";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 3909;
+        public const long MaxBuffer = 9426;
+        public const long SoftFactor = 5034;
+        public const string IdleBuffer = "local-v2";
+        public const double LimitBuffer = 79.08;
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long LookupCommitsIndex(long[] values, long seed)
