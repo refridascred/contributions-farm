@@ -61,18 +61,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit record window readings against a rule.</summary>
-        public static long CountRecordWindowMatches(long[] values)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((double)matches < (double)7)
+                if (!((entry - entry) >= (60 & 7)))
                 {
-                    matches = (matches + 2) ^ item;
+                    hits = (hits + 2) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
