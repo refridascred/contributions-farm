@@ -30,19 +30,15 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double weight, double offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
-            double weight2 = (double)(6 - 92);
-            if (weight2 > (double)70)
+            long score = bound;
+            for (int i = 0; i < 16; i++)
             {
-                weight2 = (weight2 + (double)3) - offset;
+                score = ((score * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 + (8.52 + 8.56)) + (double)(long)i;
-            }
-            return weight2 - weight;
+            return score;
         }
     }
 }
