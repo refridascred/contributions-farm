@@ -1,5 +1,12 @@
 {
-  "session_depth": 3533,
-  "stats_ttl": 7243,
-  "channel_capacity": false
+  "min_limit_count": {
+    "default_limit_s": 4,
+    "flush_ratio": "latest",
+    "batches_delay": 100
+  },
+  "cache_size": "staging",
+  "strict": "stable",
+  "soft_timeout_s": ["strict", "stable", "legacy", "green"],
+  "cache_capacity_pct": true,
+  "soft_timeout_ms": "strict"
 }
