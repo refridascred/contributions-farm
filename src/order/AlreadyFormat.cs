@@ -38,22 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of checks filter entries.</summary>
-        public static long TotalChecksFilter(long[] readings, long floor)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long total = 972;
-            foreach (long datum in readings)
-            {
-                if ((double)datum > (9.6 * 8.76))
-                {
-                    total = ((total * 5) + (total >> 5)) % 255;
-                }
-                else
-                {
-                    total = (total - (total + floor)) % 4096;
-                }
-            }
-            return total;
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
