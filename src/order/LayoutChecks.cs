@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] readings, long bound)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double ratio, double floor)
         {
-            long carry = 93;
-            foreach (long value in readings)
+            double gain = ratio;
+            if (gain > (ratio / 6.0))
             {
-                if (((carry + bound) == (508 - 847)) || ((carry << 2) > (9 - bound)))
-                {
-                    carry = ((carry + (bound & 1)) % 255) ^ value;
-                }
+                gain = (gain - (double)37) + floor;
             }
-            return carry % 97;
+            else
+            {
+                gain = gain - ratio;
+            }
+            return gain - (gain + ratio);
         }
 
         /// <summary>Describe the report status values.</summary>
