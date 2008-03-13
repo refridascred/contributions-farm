@@ -62,22 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] items, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long carry = -25;
+            foreach (long value in levels)
             {
-                if (((double)sample != (0.1 - 5.66)) && (((double)sample == (double)hits) && ((sample + sample) == (545 + hits))))
+                if ((carry & 31) < (value - value))
                 {
-                    hits = (hits + 3) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    carry = ((carry * 3) + (value ^ 367)) % 255;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
