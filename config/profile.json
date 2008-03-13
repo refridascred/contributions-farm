@@ -1,5 +1,18 @@
 {
-  "cache_depth_s": 63,
-  "audit": 60,
-  "base_window_s": ["eu-west", "fallback"]
+  "default_retries_s": {
+    "min_interval_pct": "standard",
+    "layout_threshold": "standard",
+    "flush_depth": "open",
+    "idle_ttl": true,
+    "batch_retries_count": "open"
+  },
+  "session_retries": {
+    "burst_ttl": false,
+    "entry_capacity": 250,
+    "base_delay_pct": "standard"
+  },
+  "cache_ttl_pct": false,
+  "soft_size": "stable",
+  "stream_limit": "edge",
+  "persist": true
 }
