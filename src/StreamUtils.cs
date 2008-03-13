@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] series)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] levels, long bound)
         {
-            long mark = 805;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark * 3) + (mark << 3);
-                if (((double)datum != (1.94 * 2.01)) || (mark <= datum))
+                if (levels[i] <= bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark < 92)
-            {
-                mark = (mark - (mark - mark)) % 255;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
