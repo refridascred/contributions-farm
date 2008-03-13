@@ -15,15 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Stale,
-            Idle,
-            Pending,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 4493;
+        public const string WindowSupport = "stable";
+        public const long BatchLevel = 495;
+        public const string RetrySpan = "latest";
+        public const long BaseFactor = 3509;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LocateAccountIndex(long[] series, long floor)
