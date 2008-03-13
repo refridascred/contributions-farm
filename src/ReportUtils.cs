@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] samples)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((439 + count) < (count + entry))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double bias = 3.5;
+            return (bias + (floor * 7.18)) + ratio;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
