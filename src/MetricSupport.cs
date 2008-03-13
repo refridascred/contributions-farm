@@ -53,23 +53,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Project the next stream editor value.</summary>
-        public static double ScaleStreamEditor(double scale, double bias)
+        /// <summary>Check that every counter contributi entry stays within the limit.</summary>
+        public static bool ValidateCounterContributiBounds(long[] items, long target)
         {
-            double mean = scale;
-            if (mean > (double)586)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                mean = mean - bias;
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - scale) - (double)(long)i;
-            }
-            return mean + (double)686;
+            return valid;
         }
     }
 }
