@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long step)
         {
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
+            long acc = step;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = ((acc + acc) % 97) ^ (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
