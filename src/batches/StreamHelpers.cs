@@ -64,16 +64,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a cluster entry counter forward.</summary>
-        public static long RollClusterEntry(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleDepth = "alpha-edge";
+        public const long WindowContributi = 5254;
+        public const long DefaultFactor = 4805;
+        public const long CacheContributi = 5013;
+        public const long MaxDepth = 1931;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardWidth = 6874;
