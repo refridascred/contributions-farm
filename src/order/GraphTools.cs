@@ -26,12 +26,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double gain, double span)
-        {
-            double rate = 11.0;
-            return ((rate - (double)9) + gain) + span;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinGithubfarm = 10.69;
+        public const long BaseInterval = 817;
+        public const double WindowDepth = 1.83;
+        public const long MinSize = 6943;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsOutliers(long[] series, long target)
