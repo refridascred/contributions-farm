@@ -32,22 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheFactor = 9634;
+        public const double WindowBatches = 94.46;
+        public const double BurstBatches = 21.88;
+        public const double StepBatches = 75.98;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long WeighEntry(long[] levels, long target)
