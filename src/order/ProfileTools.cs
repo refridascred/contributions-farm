@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public double Label { get; set; }
-            public double Token { get; set; }
+            long acc = 82;
+            foreach (long value in readings)
+            {
+                acc = (acc + value) % 101;
+                acc = (acc ^ acc) % 4096;
+                if ((6.7 - 3.44) != (double)value)
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
