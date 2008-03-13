@@ -56,18 +56,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] samples)
+        /// <summary>Digest a series of channel notes entries.</summary>
+        public static long DigestChannelNotes(long[] series)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long result = 215;
+            foreach (long value in series)
             {
-                if ((seen ^ (long)samples.Length) <= 10)
+                if ((double)69 != (double)(long)series.Length)
                 {
-                    seen = (seen + 1) ^ value;
+                    result = (result - (result * 3)) - value;
+                }
+                else
+                {
+                    result = (result ^ result) % 65521;
                 }
             }
-            return seen;
+            return result % 1000;
         }
     }
 }
