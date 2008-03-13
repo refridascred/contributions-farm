@@ -33,10 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 4713;
-        public const long RetryCommits = 881;
-        public const long BaseTimeout = 1972;
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long RollSupport(long offset)
