@@ -24,14 +24,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 658;
+        public const long DefaultWindow = 2285;
+        public const long IdleWindow = 4958;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultSize = 7572;
