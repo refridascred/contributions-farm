@@ -1,10 +1,6 @@
-id,score,token
-1,431,46.34
-2,14.61,71.8
-3,21.7,462
-4,269,97.51
-5,22.57,latest
-6,88.09,248
-7,legacy,standard
-8,539,636
-9,85.17,564
+id,state,count,region,level
+1,91.33,391,primary,631
+2,417,270,local,primary
+3,726,54.34,fallback,57.23
+4,legacy,open,4,4.0
+5,757,124,strict,61.29
