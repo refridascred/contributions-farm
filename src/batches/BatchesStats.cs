@@ -16,12 +16,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstInterval = 8272;
-        public const long LimitEditor = 5369;
-        public const string BurstCount = "standard-1";
-        public const long MaxEditor = 2252;
-        public const string BaseFactor = "latest-1";
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((719 - total) >= ((long)i + bound)))
+                {
+                    total = ((total << 3) ^ bound) % 4096;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = (((total << 3) ^ (total / 4)) % 101) ^ (long)i2;
+                }
+                total = ((total * 2) + ((long)i / 2)) % 255;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordHits(long[] data)
