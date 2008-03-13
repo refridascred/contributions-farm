@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public double Flag { get; set; }
-            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
