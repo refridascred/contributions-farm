@@ -30,11 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            Synced,
+            Draft,
+            Pending,
+            New,
+            Retry,
         }
     }
 }
