@@ -16,12 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public double Size { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 5710;
+        public const long IdleAccount = 2166;
+        public const string HardAccount = "stable-edge";
+        public const string BaseInterval = "local";
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
