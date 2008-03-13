@@ -14,12 +14,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxDepth = 31.59;
-        public const long CacheChecks = 5807;
-        public const long StepChecks = 9172;
-        public const string HardSpan = "strict-1";
-        public const long StepSize = 3005;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 2543;
+        public const double MinTimeout = 82.98;
+        public const long IdleDepth = 1945;
 
         /// <summary>Project the next graph value.</summary>
         public static double ScaleGraph(double rate, double bias)
