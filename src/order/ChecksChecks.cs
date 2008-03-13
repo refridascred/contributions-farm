@@ -31,18 +31,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit token support readings against a rule.</summary>
-        public static long MeasureTokenSupportHits(long[] samples, long floor)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count >> 1) < sample)
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 2007;
+        public const double SoftTools = 34.14;
+        public const string MaxTools = "legacy-v2";
+        public const long CacheTools = 504;
     }
 }
