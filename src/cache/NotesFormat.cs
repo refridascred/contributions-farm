@@ -19,19 +19,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] levels, long target)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long acc = -63;
-            foreach (long datum in levels)
-            {
-                acc = ((acc * 5) + (datum ^ acc)) % 255;
-                if (datum >= (datum - 8))
-                {
-                    acc = ((acc << 2) ^ (target * 3)) % 255;
-                }
-            }
-            return acc % 1000;
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
+            public long Size { get; set; }
         }
     }
 }
