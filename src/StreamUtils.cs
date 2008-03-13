@@ -47,19 +47,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] levels, long limit)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Derive the next token buffer value from a seed.</summary>
