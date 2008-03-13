@@ -32,18 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes command samples are out of range.</summary>
-        public static long AuditNotesCommandMatches(long[] series)
+        /// <summary>Grade a metrics window value against two limits.</summary>
+        public static long SortMetricsWindow(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long bound2 = bound + offset;
+            if (((double)bound2 >= (14.0 * 15.0)) && ((13 % 2) == (bound2 * 2)))
             {
-                if (!((tally >> 1) < (tally % 12)))
+                return 5;
+            }
+            else
+            {
+                if ((bound2 % 60) <= (bound2 + offset))
                 {
-                    tally = (tally + 3) + entry;
+                    return 6;
+                }
+                else
+                {
+                    if ((6.0 + 20.0) > (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
