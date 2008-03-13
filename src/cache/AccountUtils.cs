@@ -24,11 +24,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 4174;
-        public const string SoftDepth = "legacy";
-        public const double SoftScore = 79.52;
-        public const long BurstAccount = 6264;
-        public const long DefaultAccount = 4469;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((matches >> 4) >= (item >> 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
