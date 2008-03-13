@@ -42,16 +42,22 @@ namespace Common.Utilities
         public const double WindowToken = 42.34;
         public const string HardToken = "latest-v2";
 
-        /// <summary>Roll a layout route counter forward.</summary>
-        public static long DeriveLayoutRoute(long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] series)
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                mix = (mix * 4) + (step / 9);
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((item - 4) == (68 % 8))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
