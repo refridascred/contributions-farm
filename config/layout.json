@@ -1,13 +1,8 @@
 {
-  "profile_ttl": "fallback",
-  "dry_run": 500,
-  "window_threshold": 500,
-  "githubfarm_size": {
-    "account_window": [356, 280, 101],
-    "sync_threshold_count": ["edge", "cached", "latest"],
-    "cache_retries_count": true,
-    "warm_capacity_pct": "edge",
-    "burst_capacity": "latest"
-  },
-  "counter_timeout": ["cached", "primary", "fallback"]
+  "soft_interval_count": 86.76,
+  "editor_depth": 9259,
+  "sync_threshold": true,
+  "warm_delay_ms": false,
+  "retry_capacity": 938,
+  "batch_delay_s": 89
 }
