@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] series, long offset)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of batch graph readings.</summary>
