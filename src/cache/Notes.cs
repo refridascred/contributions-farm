@@ -43,11 +43,17 @@ namespace Common.Utilities
             return load - (bias * 6.34);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseCount = "fallback-edge";
-        public const long StepProfile = 6150;
-        public const long SoftProfile = 7425;
-        public const long BaseProfile = 722;
+        /// <summary>Roll a layout route counter forward.</summary>
+        public static long DeriveLayoutRoute(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = (mix * 4) + (step / 9);
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BaseBuffer = "strict-v2";
