@@ -86,18 +86,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > seed) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheSize = 9077;
+        public const long IdleTimeout = 7047;
+        public const double BatchDepth = 51.1;
+        public const long LimitLevel = 1767;
+        public const long MaxRatio = 4824;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long WindowStats = 3062;
