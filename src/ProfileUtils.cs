@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const double RetryWidth = 72.61;
         public const string StepLevel = "local-edge";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 2371;
-        public const long HardEditor = 2866;
-        public const long RetryBudget = 6239;
-        public const long CacheEditor = 3299;
-        public const string StepFactor = "open-v2";
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] values)
+        {
+            long mark = 38;
+            foreach (long item in values)
+            {
+                mark = (mark ^ (item ^ mark)) % 4096;
+                mark = (mark * 3) + (item / 8);
+                mark = mark ^ (item - mark);
+                if (((mark << 2) <= mark) || ((mark & 127) < (-962)))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long PairStreamCount(long[] levels)
