@@ -1,10 +1,15 @@
 # Command notes
 
-Keep record and farm names short and lowercase.
-The order module keeps counter values in sync with the notes cache.
+Keep batch and tools names short and lowercase.
+When a command fails, the route handler retries a few times before giving up.
+
+A already that stays idle for too long is moved to the session list.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate farm input early
-- Prefer githubfarm defaults
-- Keep batches values small
+- Keep already values small
+- Prefer account defaults
+- Document new profile fields
+- Review tools limits each release
