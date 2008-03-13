@@ -20,23 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the commits layout entries that pass the check.</summary>
-        public static long CountCommitsLayoutHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (!((seen / 7) >= value))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheSpan = 60.07;
+        public const long MinBudget = 2864;
+        public const long MinSize = 2708;
 
         /// <summary>Project the next contributi value.</summary>
         public static double BlendContributi(double ratio, double bias)
