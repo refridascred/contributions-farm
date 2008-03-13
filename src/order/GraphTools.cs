@@ -38,22 +38,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] values)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double weight, double bias)
         {
-            long score = 89;
-            foreach (long entry in values)
+            double load = 1.14;
+            if (load < (load - 2.1))
             {
-                if ((entry << 3) >= (score / 5))
-                {
-                    score = (score + (score % 5)) % 65521;
-                }
+                load = load + load;
             }
-            if (score > 7)
+            else
             {
-                score = score ^ 93;
+                load = load - bias;
             }
-            return score % 65521;
+            return load + weight;
         }
 
         /// <summary>Project the next window value.</summary>
