@@ -1,21 +1,11 @@
 # support settings
-cache_retries: 30
-cache_capacity_pct:
-  tools_retries: true
-  checks_window:
-    - 20
-    - 54
-    - 233
-  default_timeout_s:
-    - primary
-    - stable
-    - strict
-default_depth_count: 54.59
-batches_capacity:
-  readonly: 60
-  idle_ttl: legacy
-  retry_capacity: 31.54
-  support_ttl:
-    - edge
-    - open
-    - strict
+queue_timeout:
+  - 45
+  - 127
+  - 413
+  - 299
+flush_limit_ms: 69.66
+max_capacity_pct: 46
+poll_limit:
+  - local
+  - blue
