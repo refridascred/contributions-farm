@@ -36,25 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long step, long seed)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long bound)
         {
-            long edge = step + seed;
-            if (((438 + step) < (step ^ seed)) || ((step - 78) <= step))
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((step ^ edge) > (seed >> 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
