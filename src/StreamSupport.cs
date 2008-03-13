@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Draft,
-            Pending,
-            Queued,
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
