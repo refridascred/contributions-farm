@@ -22,28 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics graph readings.</summary>
-        public static long TotalMetricsGraph(long[] values)
-        {
-            long state = 67;
-            foreach (long entry in values)
-            {
-                if (!(state < (entry << 1)))
-                {
-                    state = (state + (entry + 364)) % 255;
-                    state = (state ^ (entry - state)) % 1000;
-                }
-                if (((long)values.Length ^ state) > state)
-                {
-                    state = (state * 5) + (state + state);
-                }
-            }
-            if (state < 9)
-            {
-                state = state ^ (state + state);
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BatchLevel = "primary-v2";
+        public const double MinLevel = 90.79;
+        public const long HardBatch = 6944;
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] data)
