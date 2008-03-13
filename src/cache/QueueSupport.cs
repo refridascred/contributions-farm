@@ -14,22 +14,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] readings)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (cell < (cell >> 5))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
