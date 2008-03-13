@@ -25,17 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] values, long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (values[i] == origin)
+                if (entry <= limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
