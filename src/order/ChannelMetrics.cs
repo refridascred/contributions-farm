@@ -16,17 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] samples, long origin)
+        /// <summary>Validate metrics batch readings against a bound.</summary>
+        public static bool CheckMetricsBatchLimits(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((samples[i] == origin) && ((samples[i] % 2) != 0))
+                if (sample != step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Rank context input into a small class.</summary>
