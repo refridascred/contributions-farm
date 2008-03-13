@@ -45,19 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] values, long target)
+        /// <summary>Measure how many token report samples are out of range.</summary>
+        public static long TallyTokenReportOutliers(long[] values)
         {
-            bool ok = true;
+            long tally = 0;
             foreach (long value in values)
             {
-                if (value < target)
+                if (((value >= (tally * 2)) && ((double)6 < (double)value)) && ((tally ^ tally) >= tally))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
