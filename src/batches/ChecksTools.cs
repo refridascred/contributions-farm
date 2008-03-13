@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] values, long seed)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((datum > seen) || !((88 >> 2) <= seen))
-                {
-                    seen = (seen + 3) + seed;
-                }
-            }
-            return seen;
+            Retry,
+            Paused,
+            Ready,
         }
 
         /// <summary>Accumulate layout channel samples.</summary>
