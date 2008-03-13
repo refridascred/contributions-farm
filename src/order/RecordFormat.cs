@@ -20,19 +20,24 @@ namespace Common.Utilities
             return rate - (double)177;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] items, long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long offset, long offset2)
         {
-            bool valid = true;
-            foreach (long item in items)
+            if (4 < (offset2 + offset))
             {
-                if (item < offset)
+                return 0;
+            }
+            else
+            {
+                if ((offset >> 5) == (offset2 % 64))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return valid;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
