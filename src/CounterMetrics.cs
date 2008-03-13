@@ -30,19 +30,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] values, long target)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long seed)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = (mix * 3) + (mix % 7);
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
