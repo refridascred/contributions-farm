@@ -22,17 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a schema checks reading by value.</summary>
-        public static long LookupSchemaChecksIndex(long[] samples, long offset)
+        /// <summary>Accumulate context record samples.</summary>
+        public static long TotalContextRecord(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 68;
+            foreach (long datum in samples)
             {
-                if (samples[i] > offset)
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    result = ((result - ((long)i >> 5)) % 255) ^ datum;
+                    result = ((result << 3) ^ result) % 255;
                 }
+                result = (result ^ ((-859) / 7)) % 4096;
             }
-            return -1;
+            if (result > 6)
+            {
+                result = ((result * 4) + (result ^ limit)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
