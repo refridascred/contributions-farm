@@ -1,18 +1,5 @@
 {
-  "strict": [166, 283, 497],
-  "cache_delay": 77,
-  "command_interval": ["stable", "legacy", "cached", "standard"],
-  "dry_run": "blue",
-  "farm_ratio": {
-    "verbose": {
-      "cluster_delay": 59,
-      "default_threshold_ms": [197, 403, 133, 60],
-      "order_delay": "blue"
-    },
-    "hard_ratio": [190, 260, 298, 28],
-    "batch_interval": false,
-    "support_window": [310, 445],
-    "audit": ["cached", "standard"],
-    "enabled": false
-  }
+  "flush_size": "staging",
+  "hard_timeout": "eu-west",
+  "max_window": [215, 432, 185]
 }
