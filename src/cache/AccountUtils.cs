@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long CacheTimeout = 6484;
         public const string BaseCluster = "cached-v2";
 
-        /// <summary>Count the account payload entries that pass the check.</summary>
-        public static long CountAccountPayloadOutliers(long[] series, long floor)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((value << 3) >= hits)
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
