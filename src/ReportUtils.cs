@@ -69,14 +69,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Count the filter cluster entries that pass the check.</summary>
+        public static long MeasureFilterClusterHits(long[] levels)
         {
-            Queued,
-            Paused,
-            Retry,
-            Active,
-            Done,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((seen > (entry & 7)) && ((7 % 16) < entry)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
