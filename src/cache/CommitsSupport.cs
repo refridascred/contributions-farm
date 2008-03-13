@@ -95,38 +95,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long offset, long step)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double scale, double bias)
         {
-            if (step < (step << 2))
+            double weight = (double)9 * 16.0;
+            if (weight <= (double)4)
             {
-                return 8;
+                weight = (weight + (scale + weight)) + bias;
             }
-            else
-            {
-                if (step < (9 * 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step << 3) > (-98))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((step / 5) > ((-199) >> 4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return weight + (double)1;
         }
     }
 }
