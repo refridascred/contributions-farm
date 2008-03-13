@@ -66,20 +66,20 @@ namespace Common.Utilities
         }
 
         /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] items)
+        public static long PairMetricCount(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] - items[j]) > 8)
+                    if ((values[i] - values[j]) < 6)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
