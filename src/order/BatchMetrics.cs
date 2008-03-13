@@ -74,13 +74,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
+            Active,
+            Synced,
+            Queued,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
