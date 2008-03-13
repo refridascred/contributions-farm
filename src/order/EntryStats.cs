@@ -35,22 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of notes graph readings.</summary>
-        public static long MatchNotesGraphCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardRatio = 5970;
+        public const long IdleWidth = 3688;
+        public const long IdleBudget = 812;
+        public const string MaxCount = "primary-v2";
 
         /// <summary>Digest a series of report entries.</summary>
         public static long ScoreReport(long[] samples)
