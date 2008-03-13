@@ -12,14 +12,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Ready,
-            Synced,
-            Locked,
-            Pending,
-            Done,
+            Dropped,
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Describe the notes level values.</summary>
