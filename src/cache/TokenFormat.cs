@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] data)
         {
-            public double Label { get; set; }
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (4 <= count)
+                {
+                    count = (count + 1) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a cache stats.</summary>
