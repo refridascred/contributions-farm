@@ -27,13 +27,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] items, long bound)
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            long acc = 404;
+            foreach (long reading in items)
+            {
+                if (((double)acc > 14.0) || (((-31) + acc) > reading))
+                {
+                    acc = (acc + 68) % 1000;
+                }
+                else
+                {
+                    acc = (acc * 4) + bound;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
