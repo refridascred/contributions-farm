@@ -36,17 +36,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] levels, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (levels[i] > target)
+                if (cell < bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
