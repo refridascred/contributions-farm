@@ -33,19 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double bias, double span)
+        /// <summary>Find the first farm notes entry that matches the target.</summary>
+        public static long LookupFarmNotesIndex(long[] readings, long step)
         {
-            double weight = span * 2.0;
-            if (weight >= span)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + weight;
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (13.0 / 8.0);
-            }
-            return weight + bias;
+            return -1;
         }
 
         /// <summary>Check that every schema checks entry stays within the limit.</summary>
