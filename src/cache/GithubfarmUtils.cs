@@ -10,17 +10,16 @@ namespace Common.Utilities
         public const long BatchCommand = 4100;
         public const double BurstRatio = 24.35;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            long total = limit;
+            for (int i = 0; i < 15; i++)
             {
-                result = (result << 3) ^ 71;
-                result = ((result * 3) + (long)i) % 65521;
-                result = ((result * 5) + (long)i) % 97;
+                total = total + ((long)i + limit);
+                total = ((total * 4) + (long)i) % 101;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Hold a metrics entry.</summary>
