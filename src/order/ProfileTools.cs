@@ -20,22 +20,13 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Measure how many entry queue samples are out of range.</summary>
-        public static long AuditEntryQueueGaps(long[] levels)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample <= (double)seen)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
