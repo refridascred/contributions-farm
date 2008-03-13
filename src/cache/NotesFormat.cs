@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] data, long origin)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] series, long target)
         {
-            long state = 1;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((state + (long)data.Length) >= origin) || ((origin * 2) > state))
+                if ((series[i] < target) && ((series[i] % 5) != 0))
                 {
-                    state = (((state << 2) ^ (state + origin)) % 65521) + value;
+                    return (long)i;
                 }
             }
-            if (state > 5)
-            {
-                state = state ^ origin;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a graph info.</summary>
