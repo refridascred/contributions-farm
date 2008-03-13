@@ -1,8 +1,16 @@
 # support settings
-filter_limit: legacy
-sync_delay_ms: primary
-warm_retries:
-  - blue
-  - primary
-  - cached
-  - local
+strict: 45.84
+persist: latest
+verbose: primary
+soft_delay: true
+metrics_threshold:
+  commits_threshold:
+    - 252
+    - 439
+    - 294
+  dry_run: standard
+  buffer_delay: false
+  payload_limit: 30
+  buffer_window: stable
+  base_ratio_ms: blue
+min_delay_ms: 13.17
