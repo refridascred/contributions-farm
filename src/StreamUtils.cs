@@ -56,10 +56,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstInterval = 6658;
-        public const string SoftChecks = "latest";
-        public const string CacheChecks = "strict";
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Paused,
+            Done,
+            Draft,
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] levels)
