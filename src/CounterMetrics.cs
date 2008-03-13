@@ -42,18 +42,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] samples, long seed)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((seed + 490) > (seed % 10))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            Pending,
+            Active,
+            Idle,
         }
     }
 }
