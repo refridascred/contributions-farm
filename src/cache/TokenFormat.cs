@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double rate, double offset)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            double weight = (double)321 - rate;
-            if (weight <= (double)81)
-            {
-                weight = weight + (weight - offset);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - 5.1) + (double)(long)i;
-            }
-            return weight + 5.0;
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine schema commits values into a single score.</summary>
