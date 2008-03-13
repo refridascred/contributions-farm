@@ -32,22 +32,15 @@ namespace Common.Utilities
         public const long BatchRatio = 8944;
         public const long HardEditor = 11;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] samples, long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)seen == (5.04 * 13.0))
-                {
-                    seen = ((seen + 1) ^ value) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
     }
 }
