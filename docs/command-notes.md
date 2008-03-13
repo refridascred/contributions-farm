@@ -1,12 +1,11 @@
 # Command notes
 
-Keep channel and metric names short and lowercase.
-A record that stays idle for too long is moved to the channel list.
-Each notes is validated before it reaches the payload queue.
+A session that stays idle for too long is moved to the farm list.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new buffer fields
-- Validate stream input early
-- Log every context change
-- Keep editor values small
+- Validate tools input early
+- Log every command change
+- Document new token fields
+- Keep schema values small
