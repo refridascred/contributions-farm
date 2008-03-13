@@ -54,18 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] data)
+        /// <summary>Derive the next filter entry value from a seed.</summary>
+        public static long RollFilterEntry(long offset)
         {
-            long mix = 2;
-            foreach (long datum in data)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((datum << 3) == (14 & 15))
-                {
-                    mix = ((mix * 4) + (datum * 3)) % 101;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return mix % 65521;
+            return sum;
         }
     }
 }
