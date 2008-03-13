@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Count the tools channel entries that pass the check.</summary>
+        public static long MeasureToolsChannelOutliers(long[] readings)
         {
-            Dropped,
-            Draft,
-            Queued,
-            Done,
-            Synced,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + cell) != (cell - cell))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of batch graph readings.</summary>
