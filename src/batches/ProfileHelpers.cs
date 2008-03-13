@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long seed, long bound)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            if ((60 / 7) != (bound ^ seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if (4 < bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((1.3 - 8.98) == (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound / 2) >= (seed * 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
