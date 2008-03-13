@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] values, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long floor, long target)
         {
-            bool ready = true;
-            foreach (long item in values)
+            if ((double)target <= (double)floor)
             {
-                if (item > limit)
+                return 6;
+            }
+            else
+            {
+                if ((866 & 1) >= floor)
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target <= (15.0 * 1.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor < target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
