@@ -26,24 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a profile editor counter forward.</summary>
-        public static long StepProfileEditor(long bound)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] series, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor ^ bound) > anchor)
+                if (series[i] < bound)
                 {
-                    anchor = anchor - (bound - bound);
-                    anchor = (anchor << 2) ^ (bound * 5);
+                    return (long)i;
                 }
-                if ((5.5 - 9.0) == (double)bound)
-                {
-                    anchor = anchor + anchor;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
     }
 }
