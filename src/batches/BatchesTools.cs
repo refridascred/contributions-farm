@@ -34,11 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 9978;
-        public const double SoftProfile = 35.81;
-        public const long RetryTimeout = 4432;
-        public const double HardProfile = 60.95;
-        public const string LimitSize = "standard";
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double weight, double offset)
+        {
+            double weight2 = (double)(6 - 92);
+            if (weight2 > (double)70)
+            {
+                weight2 = (weight2 + (double)3) - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 + (8.52 + 8.56)) + (double)(long)i;
+            }
+            return weight2 - weight;
+        }
     }
 }
