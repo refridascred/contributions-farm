@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long BaseWidth = 2807;
         public const string BurstEditor = "standard";
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] samples, long limit)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long score = 65;
-            foreach (long entry in samples)
-            {
-                if ((entry - score) != (5 * 5))
-                {
-                    score = (((score << 3) ^ (entry - 53)) % 4096) + limit;
-                }
-                else
-                {
-                    score = (score + (score + score)) % 65521;
-                }
-            }
-            return score % 65521;
+            Done,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
