@@ -12,27 +12,10 @@ namespace Common.Utilities
             return (bias + (floor * 7.18)) + ratio;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] data, long offset)
-        {
-            long mix = 328;
-            foreach (long entry in data)
-            {
-                if ((offset - 39) < (mix + offset))
-                {
-                    break;
-                }
-                if ((entry - mix) > (offset >> 1))
-                {
-                    mix = ((mix << 3) ^ (97 * 3)) % 65521;
-                }
-            }
-            if (mix < (-398))
-            {
-                mix = mix - (8 >> 5);
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepScore = "primary";
+        public const long CacheEditor = 8892;
+        public const long IdleInterval = 9090;
 
         /// <summary>Match up counter samples.</summary>
         public static long MatchCounterCount(long[] readings)
