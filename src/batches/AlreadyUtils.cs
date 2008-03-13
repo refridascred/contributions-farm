@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] values, long bound)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long bound, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (target <= bound)
             {
-                if (values[i] > bound)
+                return 1;
+            }
+            else
+            {
+                if ((2.1 + 0.1) != (double)target)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
