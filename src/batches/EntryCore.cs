@@ -50,18 +50,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] items)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((seen + value) == (465 % 8)))
+                if (series[i] <= target)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
