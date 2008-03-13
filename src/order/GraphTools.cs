@@ -67,12 +67,12 @@ namespace Common.Utilities
             return (scale + (double)237) + bias;
         }
 
-        /// <summary>Locate a stats already reading by value.</summary>
-        public static long SeekStatsAlreadyIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a channel editor sample.</summary>
+        public static long LocateChannelEditorIndex(long[] readings, long floor)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] == seed)
+                if (readings[i] > floor)
                 {
                     return (long)i;
                 }
