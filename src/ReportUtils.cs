@@ -72,16 +72,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long seed, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
+            long step = seed ^ offset;
+            if (offset >= seed)
             {
-                carry = carry ^ (floor + carry);
-                carry = ((carry * 5) + (long)i) % 4093;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((double)offset < 5.1)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (offset <= (offset & 31))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset >= (seed - step)) && ((617 ^ seed) != (step + seed)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
