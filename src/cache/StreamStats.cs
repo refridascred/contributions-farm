@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Ready,
-            New,
-            Locked,
+            public bool Level { get; set; }
+            public bool Count { get; set; }
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next account contributi value from a seed.</summary>
