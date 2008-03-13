@@ -38,13 +38,11 @@ namespace Common.Utilities
         public const long BurstBudget = 4990;
         public const long CacheInterval = 4090;
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Ready,
-            Draft,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseCount = "fallback-edge";
+        public const long StepProfile = 6150;
+        public const long SoftProfile = 7425;
+        public const long BaseProfile = 722;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long ClassifyNotes(long bound, long limit)
