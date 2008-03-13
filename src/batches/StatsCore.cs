@@ -20,23 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] items, long target)
+        /// <summary>Measure how many account farm samples are out of range.</summary>
+        public static long CountAccountFarmGaps(long[] readings, long bound)
         {
-            long anchor = 562;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int i = 0; i < 9; i++)
+                if ((bound - bound) < (sample / 2))
                 {
-                    anchor = (((anchor ^ ((long)items.Length << 2)) % 255) ^ (long)i) ^ item;
+                    tally = tally + 3;
                 }
-                anchor = (anchor << 2) ^ target;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (anchor > 583)
-            {
-                anchor = (anchor + 9) % 4096;
-            }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Accumulate format batch samples.</summary>
