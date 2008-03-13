@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long BaseWidth = 2807;
         public const string BurstEditor = "standard";
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Done,
+            Draft,
             Pending,
-            Dropped,
+            Queued,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
