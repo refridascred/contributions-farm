@@ -1,5 +1,10 @@
 {
-  "sync_delay_count": 100,
-  "burst_depth": false,
-  "flush_timeout": "cached"
+  "soft_retries_ms": {
+    "readonly": "green",
+    "sync_timeout": [257, 141, 424],
+    "poll_capacity_count": "cached"
+  },
+  "dry_run": 30,
+  "warm_limit_pct": 76.74,
+  "max_capacity": 36.0
 }
