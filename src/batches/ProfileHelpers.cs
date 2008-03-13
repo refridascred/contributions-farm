@@ -48,19 +48,12 @@ namespace Common.Utilities
         public const string BatchLayout = "primary";
         public const long WindowWidth = 234;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] readings, long limit)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
