@@ -23,24 +23,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] items)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long offset)
         {
-            long mix = -449;
-            foreach (long entry in items)
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (7.57 <= (double)entry)
-                {
-                    mix = ((mix * 2) + (entry & 3)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (mix + mix)) % 255;
-                }
-            }
-            if (mix < 56)
-            {
-                mix = (mix * 2) + (mix << 3);
+                mix = ((mix * 3) + (long)i) % 65521;
             }
             return mix;
         }
