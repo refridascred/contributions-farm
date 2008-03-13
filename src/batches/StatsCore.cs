@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstCount = 4802;
-        public const long BurstProfile = 9500;
-        public const string MaxFactor = "open-v2";
-        public const string HardProfile = "open";
-        public const double IdleSpan = 70.66;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long PairAccountCount(long[] values)
