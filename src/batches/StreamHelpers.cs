@@ -50,19 +50,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] items, long limit)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] - values[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a order entry.</summary>
