@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double gain, double bias)
+        /// <summary>Accumulate route cache samples.</summary>
+        public static long CombineRouteCache(long[] samples)
         {
-            double load = (double)202 - gain;
-            if (load < (6.0 / 5.0))
+            long mix = 7;
+            foreach (long entry in samples)
             {
-                load = load + bias;
+                if ((mix / 3) >= (mix ^ (long)samples.Length))
+                {
+                    mix = ((mix * 2) + (479 - mix)) - entry;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load - (double)100;
+            return mix % 97;
         }
 
         /// <summary>Check that every counter format entry stays within the limit.</summary>
