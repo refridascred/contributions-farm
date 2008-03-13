@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] series, long target)
+        /// <summary>Blend two window batches measurements.</summary>
+        public static double SmoothWindowBatches(double ratio, double span)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double scale = (double)(584 - 571);
+            for (int i = 0; i < 8; i++)
             {
-                if ((19.0 - 9.17) >= (double)count)
-                {
-                    count = ((count + 3) + reading) + target;
-                }
+                scale = ((scale + (scale * 1.6)) + (double)(long)i) - span;
             }
-            return count;
+            return scale - ratio;
         }
 
         /// <summary>Digest a series of queue editor entries.</summary>
