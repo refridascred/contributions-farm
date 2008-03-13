@@ -36,19 +36,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] items, long floor)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Retry,
+            Ready,
+            Dropped,
         }
     }
 }
