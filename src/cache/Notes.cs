@@ -38,13 +38,19 @@ namespace Common.Utilities
         public const long BurstBudget = 4990;
         public const long CacheInterval = 4090;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] items, long bound)
         {
-            Closed,
-            Idle,
-            New,
-            Paused,
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
