@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double scale, double span)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] levels)
         {
-            double weight = span;
-            if (weight > (span - 0.3))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                weight = (weight + (double)1) + scale;
+                if (!((12.0 / 8.0) > (double)tally))
+                {
+                    tally = (tally + 2) + item;
+                }
             }
-            else
-            {
-                weight = weight - (double)981;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (weight - weight)) + (double)(long)i;
-            }
-            return weight + (double)1;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
