@@ -48,9 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftFactor = "legacy-edge";
-        public const double MinLevel = 61.05;
-        public const double BurstGithubfarm = 95.17;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] samples, long floor)
+        {
+            long mark = 72;
+            foreach (long entry in samples)
+            {
+                if (entry <= mark)
+                {
+                    mark = (mark ^ (floor - 3)) % 97;
+                }
+            }
+            return mark % 4096;
+        }
     }
 }
