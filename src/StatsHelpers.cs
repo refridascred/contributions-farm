@@ -34,12 +34,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] items)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((entry * 4) < (982 - entry))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
