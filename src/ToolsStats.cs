@@ -56,11 +56,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double gain, double floor)
+        /// <summary>Adjust a commits batches reading.</summary>
+        public static double ProjectCommitsBatches(double bias, double floor)
         {
-            double mean = (double)(372 + (-5));
-            return ((mean - (double)45) + gain) + floor;
+            double mean = (bias - floor) + floor;
+            if (mean >= (double)269)
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (bias + 7.31)) - (double)(long)i;
+            }
+            return mean + bias;
         }
     }
 }
