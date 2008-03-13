@@ -32,15 +32,16 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Iterate the checks commits series from a seed.</summary>
-        public static long DeriveChecksCommits(long floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
             {
-                result = ((result * 5) + (long)i) % 101;
+                acc = (acc * 5) + (acc << 1);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return result;
+            return acc;
         }
     }
 }
