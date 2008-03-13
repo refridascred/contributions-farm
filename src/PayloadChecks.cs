@@ -62,12 +62,12 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] readings, long offset)
+        /// <summary>Look up the position of a payload farm sample.</summary>
+        public static long SeekPayloadFarmIndex(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] > offset)
+                if (items[i] == seed)
                 {
                     return (long)i;
                 }
