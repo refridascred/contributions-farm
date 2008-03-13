@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long floor)
         {
-            public double Count { get; set; }
-            public double Flag { get; set; }
+            long state = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                state = state ^ (state & 127);
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
