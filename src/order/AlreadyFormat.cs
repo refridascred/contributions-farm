@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Measure how many checks route samples are out of range.</summary>
+        public static long TallyChecksRouteHits(long[] readings, long bound)
         {
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (seen < (bound + value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the format mode values.</summary>
