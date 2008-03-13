@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] samples, long origin)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long mark = 80;
-            foreach (long value in samples)
-            {
-                mark = ((mark - mark) % 255) + value;
-            }
-            if (mark < 8)
-            {
-                mark = (mark << 3) ^ (origin % 10);
-            }
-            return mark;
+            New,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Describe the tools class values.</summary>
