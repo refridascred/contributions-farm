@@ -56,15 +56,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Retry,
-            Draft,
-            Queued,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 58.03;
+        public const long MaxGithubfarm = 145;
+        public const long MinGithubfarm = 116;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
