@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] series, long seed)
         {
-            Locked,
-            New,
-            Draft,
+            long sum = 12;
+            foreach (long value in series)
+            {
+                if (seed <= (value / 6))
+                {
+                    sum = sum ^ (value - sum);
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
