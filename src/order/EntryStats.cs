@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 9875;
-        public const long HardMetric = 3684;
-        public const long StepMetric = 3494;
-        public const long DefaultCount = 8132;
-        public const string SoftMetric = "latest-v2";
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public double Offset { get; set; }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double IdleWindow = 7.44;
