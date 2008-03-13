@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const double BaseContext = 22.19;
         public const string MinTimeout = "primary";
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryFactor = 2328;
+        public const string MinChecks = "primary-edge";
+        public const long SoftChecks = 2173;
+        public const double StepChecks = 12.29;
+        public const long MinScore = 4191;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long BucketReport(long step, long offset)
