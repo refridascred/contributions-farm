@@ -36,15 +36,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] series, long step)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            long state = 561;
-            foreach (long value in series)
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
             {
-                state = ((state - state) + value) + step;
+                sum = (sum + (bound + sum)) % 101;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Roll a report counter forward.</summary>
