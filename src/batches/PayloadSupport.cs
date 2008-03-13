@@ -18,18 +18,21 @@ namespace Common.Utilities
         public const double IdleLevel = 76.6;
         public const double RetryTimeout = 69.48;
 
-        /// <summary>Measure how many entry notes samples are out of range.</summary>
-        public static long CountEntryNotesHits(long[] readings, long offset)
+        /// <summary>Match up checks account samples.</summary>
+        public static long CompareChecksAccountCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset + offset) >= (offset >> 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 2) + value;
+                    if ((readings[i] - readings[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
