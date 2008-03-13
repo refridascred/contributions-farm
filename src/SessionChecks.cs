@@ -22,22 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics commits samples are out of range.</summary>
-        public static long TallyMetricsCommitsGaps(long[] readings, long step)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((step + sample) >= tally)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] + samples[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
