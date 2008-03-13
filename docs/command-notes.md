@@ -1,11 +1,12 @@
 # Command notes
 
-A window that stays idle for too long is moved to the tools list.
-Defaults for filter live in the config folder and can be overridden per environment.
-A entry that stays idle for too long is moved to the account list.
+Keep channel and metric names short and lowercase.
+A record that stays idle for too long is moved to the channel list.
+Each notes is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Keep context values small
-- Document new entry fields
-- Prefer commits defaults
+- Document new buffer fields
+- Validate stream input early
+- Log every context change
+- Keep editor values small
