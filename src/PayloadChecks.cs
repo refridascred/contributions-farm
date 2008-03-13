@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a payload profile sample.</summary>
-        public static long LookupPayloadProfileIndex(long[] values, long target)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Retry,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the channel status values.</summary>
