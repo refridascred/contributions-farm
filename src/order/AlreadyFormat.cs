@@ -53,21 +53,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up window contributi samples.</summary>
-        public static long PairWindowContributiCount(long[] levels)
+        /// <summary>Find the first editor route entry that matches the target.</summary>
+        public static long SeekEditorRouteIndex(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((items[i] <= limit) && ((items[i] % 3) == 0))
                 {
-                    if ((levels[i] - levels[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
