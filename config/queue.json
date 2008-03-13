@@ -1,14 +1,6 @@
 {
-  "warm_threshold_pct": ["strict", "fallback", "primary"],
-  "base_retries_ms": {
-    "dry_run": 30,
-    "retry_window_count": false,
-    "base_ttl_ms": 30,
-    "default_ttl_pct": "strict",
-    "buffer_ttl": 1024,
-    "batches_threshold": 59.68
-  },
-  "max_retries_pct": "eu-west",
-  "readonly": 26.62,
-  "poll_threshold_s": 30
+  "max_ttl_pct": "open",
+  "min_interval_count": 2435,
+  "warm_ttl_count": 62,
+  "idle_threshold": "eu-west"
 }
