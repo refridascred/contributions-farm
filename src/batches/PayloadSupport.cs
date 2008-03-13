@@ -21,13 +21,18 @@ namespace Common.Utilities
         public const double IdleLevel = 76.6;
         public const double RetryTimeout = 69.48;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Measure how many entry notes samples are out of range.</summary>
+        public static long CountEntryNotesHits(long[] readings, long offset)
         {
-            Done,
-            Synced,
-            Draft,
-            Active,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((offset + offset) >= (offset >> 2))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
     }
 }
