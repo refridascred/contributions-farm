@@ -23,15 +23,18 @@ namespace Common.Utilities
         public const double MinTimeout = 82.98;
         public const long IdleDepth = 1945;
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double rate, double bias)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] items)
         {
-            double gain = (double)8 / 7.0;
-            if (gain < (rate / 8.0))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                gain = (gain - 6.0) - bias;
+                if ((81 >> 2) > tally)
+                {
+                    tally = (tally + 2) ^ cell;
+                }
             }
-            return gain + (gain * 14.0);
+            return tally;
         }
     }
 }
