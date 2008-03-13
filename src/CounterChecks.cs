@@ -60,18 +60,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] readings)
+        /// <summary>Digest a series of tools entry entries.</summary>
+        public static long CombineToolsEntry(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long total = 731;
+            foreach (long cell in readings)
             {
-                if ((double)hits != (7.2 / 6.0))
-                {
-                    hits = (hits + 1) - entry;
-                }
+                total = (((total * 4) + (cell % 5)) % 255) - offset;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
