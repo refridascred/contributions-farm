@@ -20,23 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next session schema value.</summary>
-        public static double SmoothSessionSchema(double ratio, double span)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] levels)
         {
-            double weight = 10.0;
-            if (weight > (span - ratio))
+            long count = 0;
+            foreach (long value in levels)
             {
-                weight = weight + 8.5;
+                if (value > (value + count))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (9.1 / 4.0)) + (double)(long)i;
-            }
-            return weight + (weight * 4.03);
+            return count;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
