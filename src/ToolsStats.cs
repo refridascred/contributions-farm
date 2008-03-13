@@ -64,18 +64,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of farm filter readings.</summary>
-        public static long DigestFarmFilter(long[] data)
+        /// <summary>Check that every payload metric entry stays within the limit.</summary>
+        public static bool CheckPayloadMetricRange(long[] data, long origin)
         {
-            long state = 17;
+            bool stale = true;
             foreach (long datum in data)
             {
-                if ((state >> 1) < (datum >> 2))
+                if (datum > origin)
                 {
-                    state = (state + (long)data.Length) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            return state % 65521;
+            return stale;
         }
     }
 }
