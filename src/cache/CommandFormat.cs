@@ -23,21 +23,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = total - (target + (-443));
+                total = ((total * 5) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Combine commits session values into a single score.</summary>
