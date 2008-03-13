@@ -96,12 +96,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Blend two profile order measurements.</summary>
+        public static double ScaleProfileOrder(double weight, double floor)
         {
-            Retry,
-            Queued,
-            Paused,
+            double load = floor;
+            if (load >= (load + weight))
+            {
+                load = load - weight;
+            }
+            else
+            {
+                load = load + (load - weight);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + 6.9) - (double)(long)i;
+            }
+            return load - (double)50;
         }
     }
 }
