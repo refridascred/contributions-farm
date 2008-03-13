@@ -19,12 +19,13 @@ namespace Common.Utilities
         public const double StepRoute = 23.81;
         public const long IdleBudget = 262;
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Locked,
+            Pending,
+            Closed,
         }
     }
 }
