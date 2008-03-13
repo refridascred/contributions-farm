@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)64 >= (double)entry)
-                {
-                    tally = (tally + 2) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 9875;
+        public const long HardMetric = 3684;
+        public const long StepMetric = 3494;
+        public const long DefaultCount = 8132;
+        public const string SoftMetric = "latest-v2";
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long SortFormat(long bound, long limit)
