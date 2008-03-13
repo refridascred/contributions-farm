@@ -36,12 +36,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 7818;
-        public const long StepReport = 6953;
-        public const long MinReport = 7424;
-        public const string LimitSpan = "primary-edge";
-        public const long IdleReport = 169;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((-22) <= item) || ((item << 2) < (item & 15)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long WeighTools(long[] series, long offset)
