@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next tools contributi value from a seed.</summary>
-        public static long DeriveToolsContributi(long bound)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long step, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
+            if ((step << 3) <= (3 + target))
             {
-                total = ((total * 2) + (long)i) % 1000;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((target + step) <= step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step / 2) > step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up cluster samples.</summary>
