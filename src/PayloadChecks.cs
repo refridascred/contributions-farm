@@ -76,14 +76,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long bound)
         {
-            Locked,
-            Retry,
-            Paused,
-            New,
-            Synced,
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a payload farm sample.</summary>
