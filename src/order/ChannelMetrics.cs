@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine tools contributi values into a single score.</summary>
-        public static long ScoreToolsContributi(long[] samples)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long seed)
         {
-            long carry = 3;
-            foreach (long entry in samples)
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((carry + carry) < (carry - entry))
-                {
-                    carry = ((carry << 2) ^ (16 % 3)) % 101;
-                }
-                else
-                {
-                    carry = (carry * 4) + ((long)samples.Length + carry);
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Roll a support counter forward.</summary>
