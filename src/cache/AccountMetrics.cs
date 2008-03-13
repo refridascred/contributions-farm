@@ -74,13 +74,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Audit buffer record readings against a rule.</summary>
+        public static long CountBufferRecordOutliers(long[] series, long seed)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((seed + seed) >= (25 + count))
+                {
+                    count = (count + 3) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
