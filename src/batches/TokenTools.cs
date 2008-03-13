@@ -23,23 +23,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double scale, double span)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] items, long limit)
         {
-            double ratio = span;
-            if (ratio > scale)
+            long sum = 1;
+            foreach (long reading in items)
             {
-                ratio = ratio + (double)5;
+                if ((limit << 1) < reading)
+                {
+                    sum = (sum + sum) % 255;
+                }
+                else
+                {
+                    sum = sum ^ (750 + reading);
+                }
             }
-            else
-            {
-                ratio = ratio + (7.64 + scale);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (span + scale)) + (double)(long)i;
-            }
-            return ratio - (ratio - span);
+            return sum;
         }
     }
 }
