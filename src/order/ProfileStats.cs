@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context support readings against a rule.</summary>
-        public static long MeasureContextSupportGaps(long[] series)
+        /// <summary>Roll a commits stream counter forward.</summary>
+        public static long IterateCommitsStream(long step)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long score = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (((double)datum < 12.0) || !((datum - count) < (count << 1)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
