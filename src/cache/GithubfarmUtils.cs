@@ -28,15 +28,17 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Digest a series of record format entries.</summary>
-        public static long CombineRecordFormat(long[] readings)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] data, long seed)
         {
-            long mix = 557;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix ^ (long)readings.Length) % 4096) - entry;
+                if ((data[i] > seed) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
