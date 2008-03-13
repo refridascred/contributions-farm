@@ -1,12 +1,6 @@
 {
-  "queue_interval": {
-    "audit": "edge",
-    "cache_ratio": [36, 440, 151, 339],
-    "dry_run": 71.12,
-    "compress": "primary"
-  },
-  "burst_limit_pct": true,
-  "cache_threshold_ms": 92,
-  "account_ttl": "primary",
-  "default_capacity_pct": 62
+  "max_limit": 478,
+  "base_delay": 93,
+  "hard_retries_s": false,
+  "audit": "cached"
 }
