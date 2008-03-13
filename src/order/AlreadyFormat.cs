@@ -56,14 +56,25 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long offset, long step)
         {
-            Dropped,
-            Done,
-            Paused,
-            Synced,
-            Closed,
+            long next = offset - step;
+            if ((offset + 996) > (694 - 665))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((0.68 - 7.5) > (double)next)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Fold a list of record readings.</summary>
