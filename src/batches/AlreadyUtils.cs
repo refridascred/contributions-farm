@@ -61,19 +61,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double bias, double offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] data, long seed)
         {
-            double scale = (double)(8 & 3);
-            if (scale <= scale)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - bias;
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (double)9) + (double)(long)i;
-            }
-            return scale - offset;
+            return -1;
         }
     }
 }
