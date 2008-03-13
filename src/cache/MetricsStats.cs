@@ -55,19 +55,14 @@ namespace Common.Utilities
             return ((drift - (double)35) + gain) + offset;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] items, long bound)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Pending,
+            Synced,
+            Queued,
+            Done,
         }
     }
 }
