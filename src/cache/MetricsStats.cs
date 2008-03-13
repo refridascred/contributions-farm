@@ -20,17 +20,23 @@ namespace Common.Utilities
             return bias + (gain / 9.0);
         }
 
-        /// <summary>Locate a cluster schema reading by value.</summary>
-        public static long SeekClusterSchemaIndex(long[] readings, long target)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double gain, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (double)(5 << 3);
+            if (ratio < ratio)
             {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (gain / 4.0)) - bias;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + gain) + (double)(long)i;
+            }
+            return ratio + (2.88 * 1.0);
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
