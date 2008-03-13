@@ -35,14 +35,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Count the window schema entries that pass the check.</summary>
+        public static long CountWindowSchemaHits(long[] readings, long floor)
         {
-            Closed,
-            Failed,
-            Queued,
-            Synced,
-            Paused,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((hits ^ cell) < (57 << 2))
+                {
+                    hits = (hits + 3) - floor;
+                }
+            }
+            return hits;
         }
     }
 }
