@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long RetryFarm = 8170;
         public const long CacheFarm = 8295;
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long origin)
         {
-            Queued,
-            New,
-            Done,
-            Ready,
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mark = (mark + (origin * 3)) - (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Project the next editor value.</summary>
