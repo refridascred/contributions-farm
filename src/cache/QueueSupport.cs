@@ -19,15 +19,14 @@ namespace Common.Utilities
         public const long WindowTimeout = 930;
         public const double MinBatches = 71.3;
 
-        /// <summary>Scale a account support figure with a bias.</summary>
-        public static double ProjectAccountSupport(double gain, double offset)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            double ratio = (double)(5 + 5);
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ((ratio - 5.9) - (double)(long)i) + gain;
-            }
-            return ratio - offset;
+            Active,
+            Paused,
+            Idle,
+            Done,
+            Pending,
         }
     }
 }
