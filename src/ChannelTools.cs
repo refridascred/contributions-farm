@@ -23,12 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 2919;
-        public const double MaxSession = 73.86;
-        public const long MinSession = 8848;
-        public const string BurstSession = "fallback";
-        public const long BaseLevel = 9078;
+        /// <summary>Compare every pair of route format readings.</summary>
+        public static long CompareRouteFormatCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine window cache values into a single score.</summary>
         public static long WeighWindowCache(long[] levels)
