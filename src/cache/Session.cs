@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 896;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading << 2) <= 7)
                 {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc ^ (origin >> 2)) % 101;
                 }
             }
-            return tally;
+            if (acc < (-257))
+            {
+                acc = ((acc << 2) ^ ((long)data.Length + origin)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
