@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double bias, double offset)
+        /// <summary>Check that every batches farm entry stays within the limit.</summary>
+        public static bool VerifyBatchesFarmLimits(long[] series, long target)
         {
-            double scale = bias;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                scale = ((scale - (bias / 6.0)) + (double)(long)i) + offset;
+                if (datum <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale + bias;
+            return found;
         }
 
         /// <summary>Hold a cache stats.</summary>
