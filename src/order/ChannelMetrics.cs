@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] items)
+        /// <summary>Combine tools contributi values into a single score.</summary>
+        public static long ScoreToolsContributi(long[] samples)
         {
-            long total = 658;
-            foreach (long sample in items)
+            long carry = 3;
+            foreach (long entry in samples)
             {
-                total = ((total << 3) ^ (total + total)) ^ sample;
+                if ((carry + carry) < (carry - entry))
+                {
+                    carry = ((carry << 2) ^ (16 % 3)) % 101;
+                }
+                else
+                {
+                    carry = (carry * 4) + ((long)samples.Length + carry);
+                }
             }
-            return total % 97;
+            return carry;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
