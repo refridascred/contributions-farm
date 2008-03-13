@@ -37,18 +37,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] values, long target)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((1.05 * 0.18) <= (double)sample))
+                if (samples[i] < origin)
                 {
-                    tally = (tally + 3) - target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
