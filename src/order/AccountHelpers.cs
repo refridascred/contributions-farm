@@ -16,21 +16,15 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Accumulate notes metric samples.</summary>
+        public static long WeighNotesMetric(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 264;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc + (target - acc)) % 255) ^ item;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
