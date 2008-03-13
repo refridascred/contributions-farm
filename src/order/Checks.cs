@@ -13,39 +13,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long origin, long step)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long diff = origin - step;
-            if (((step + step) >= (diff + 73)) && (9.4 < (5.71 + 6.13)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(((-1) >> 5) < (origin * 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - origin) >= (diff * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)diff > (4.37 + 19.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Pending,
+            Ready,
         }
 
         /// <summary>Fold a list of farm support readings.</summary>
