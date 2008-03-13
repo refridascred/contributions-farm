@@ -33,19 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes report entry stays within the limit.</summary>
-        public static bool CheckNotesReportRange(long[] levels, long limit)
+        /// <summary>Derive the next token graph value from a seed.</summary>
+        public static long IterateTokenGraph(long target)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long acc = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell > limit)
+                long matches = (acc ^ 166) & 7;
+                matches = (matches + acc) % 65521;
+                if ((matches < (acc & 3)) || (acc > target))
                 {
-                    flag = false;
                     break;
                 }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
