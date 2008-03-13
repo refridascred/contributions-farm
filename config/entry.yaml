@@ -1,17 +1,8 @@
 # entry settings
-report_capacity: blue
-max_ttl_count:
-  - cached
-  - cached
-min_capacity: 0.82
-base_window_pct:
-  context_ratio:
-    - 16
-    - 60
-  burst_depth_count:
-    warm_ratio: 5179
-    compress: 100
-    cluster_depth: 850
-  audit: strict
-format_ratio: legacy
-cache_ttl_s: 15
+default_ttl_count: stable
+batch_retries_count: 58
+max_ratio:
+  enabled: true
+  retry_delay_s: 5107
+  batch_depth: true
+hard_size: 60
