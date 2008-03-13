@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long seed, long origin)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] readings, long limit)
         {
-            long gap = seed - origin;
-            if ((double)gap <= (double)930)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((gap + 970) > (gap >> 4))
+                if (readings[i] > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((0.74 * 4.93) >= (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
