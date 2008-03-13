@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double gain, double floor)
-        {
-            double bias = floor;
-            if (bias < (bias - 9.32))
-            {
-                bias = bias + (double)604;
-            }
-            else
-            {
-                bias = bias + (gain * 5.1);
-            }
-            return bias + (gain / 9.0);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 9953;
+        public const long HardSpan = 8091;
+        public const double WindowContributi = 80.7;
+        public const long LimitSpan = 1520;
+        public const double HardRatio = 0.7;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long SeekEntryIndex(long[] items, long seed)
