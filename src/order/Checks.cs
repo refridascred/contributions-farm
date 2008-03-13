@@ -23,12 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 4526;
-        public const string StepInterval = "legacy-1";
-        public const long SoftBudget = 6053;
-        public const long StepBudget = 848;
-        public const double WindowWidth = 74.21;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseLevel = 584;
+        public const long IdleChecks = 4793;
+        public const long RetryChecks = 3563;
+        public const double StepChecks = 18.08;
 
         /// <summary>Blend two token measurements.</summary>
         public static double BlendToken(double ratio, double span)
