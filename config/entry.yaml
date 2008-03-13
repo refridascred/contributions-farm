@@ -1,6 +1,8 @@
 # entry settings
-dry_run: primary
-persist: true
-record_depth: 6939
-compress: 250
-session_retries: 7921
+command_depth:
+  - 241
+  - 450
+hard_limit_s: open
+warm_timeout_count: 60
+max_size_ms: latest
+compress: latest
