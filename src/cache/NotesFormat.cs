@@ -23,19 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double weight, double offset)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            double load = (weight / 9.0) * 9.09;
-            if (load >= (weight / 3.0))
-            {
-                load = (load + load) + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (4.0 - 9.26)) + (double)(long)i;
-            }
-            return load - 6.7;
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate metrics samples.</summary>
