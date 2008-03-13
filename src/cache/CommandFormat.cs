@@ -31,15 +31,15 @@ namespace Common.Utilities
         public const long BatchRatio = 8944;
         public const long HardEditor = 11;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long bound)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double bias, double bias2)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            double drift = (bias2 / 5.0) / 2.0;
+            for (int i = 0; i < 3; i++)
             {
-                result = ((result * 3) + (long)i) % 101;
+                drift = (drift - (drift * 0.74)) + (double)(long)i;
             }
-            return result;
+            return drift - bias;
         }
     }
 }
