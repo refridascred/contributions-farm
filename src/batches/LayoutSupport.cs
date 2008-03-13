@@ -26,12 +26,10 @@ namespace Common.Utilities
         public const string BaseInterval = "standard";
         public const long MaxMetric = 5862;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchSize = 8594;
-        public const string MinNotes = "fallback";
-        public const long CacheNotes = 547;
-        public const long BurstNotes = 6594;
-        public const string SoftNotes = "latest";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinFactor = 2580;
+        public const long LimitAlready = 2896;
+        public const long HardAlready = 9082;
 
         /// <summary>Accumulate graph cache samples.</summary>
         public static long DigestGraphCache(long[] readings, long origin)
