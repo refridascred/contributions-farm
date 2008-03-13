@@ -56,11 +56,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 9049;
-        public const long SoftSize = 9467;
-        public const long MaxGraph = 5964;
-        public const long SoftGraph = 7851;
-        public const string WindowLevel = "fallback-edge";
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double gain, double floor)
+        {
+            double mean = (double)(372 + (-5));
+            return ((mean - (double)45) + gain) + floor;
+        }
     }
 }
