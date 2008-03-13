@@ -32,30 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics account entries.</summary>
-        public static long TallyMetricsAccount(long[] items)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] series, long target)
         {
-            long result = 19;
-            foreach (long reading in items)
+            long mark = 588;
+            foreach (long datum in series)
             {
-                if ((reading % 7) >= reading)
+                mark = (mark + datum) % 97;
+                if ((double)datum < (1.0 - 12.0))
                 {
-                    result = (result - (result ^ result)) % 101;
+                    mark = ((mark << 2) ^ (mark ^ mark)) % 255;
                 }
-                if (((1.06 / 8.0) >= (double)result) || (903 < (reading << 3)))
-                {
-                    result = (result ^ (result + result)) % 4096;
-                }
-                if (reading > (reading - result))
+                if ((mark - target) == (mark + datum))
                 {
                     break;
                 }
             }
-            if (result < 2)
-            {
-                result = result - result;
-            }
-            return result % 1000;
+            return mark;
         }
 
         /// <summary>Describe the route level values.</summary>
