@@ -12,12 +12,20 @@ namespace Common.Utilities
             return (gain2 + (bias * 9.0)) + gain;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryFactor = 2328;
-        public const string MinChecks = "primary-edge";
-        public const long SoftChecks = 2173;
-        public const double StepChecks = 12.29;
-        public const long MinScore = 4191;
+        /// <summary>Validate batches session readings against a bound.</summary>
+        public static bool ValidateBatchesSessionBounds(long[] samples, long offset)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
