@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Audit context support readings against a rule.</summary>
+        public static long MeasureContextSupportGaps(long[] series)
         {
-            Done,
-            Active,
-            Paused,
-            Stale,
-            Queued,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (((double)datum < 12.0) || !((datum - count) < (count << 1)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
