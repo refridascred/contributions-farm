@@ -1,18 +1,9 @@
 {
-  "default_retries_s": {
-    "min_interval_pct": "standard",
-    "layout_threshold": "standard",
-    "flush_depth": "open",
-    "idle_ttl": true,
-    "batch_retries_count": "open"
+  "cache_interval": 72.41,
+  "metric_timeout": {
+    "sync_ratio_pct": 72,
+    "persist": "standard",
+    "base_interval_pct": "eu-west"
   },
-  "session_retries": {
-    "burst_ttl": false,
-    "entry_capacity": 250,
-    "base_delay_pct": "standard"
-  },
-  "cache_ttl_pct": false,
-  "soft_size": "stable",
-  "stream_limit": "edge",
-  "persist": true
+  "verbose": "fallback"
 }
