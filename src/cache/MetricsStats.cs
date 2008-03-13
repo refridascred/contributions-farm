@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Combine account command values into a single score.</summary>
+        public static long DigestAccountCommand(long[] samples, long origin)
         {
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            long state = 80;
+            foreach (long sample in samples)
+            {
+                if ((double)sample <= 19.0)
+                {
+                    state = ((state + (state + state)) % 65521) - origin;
+                }
+                else
+                {
+                    state = (state ^ state) % 101;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
