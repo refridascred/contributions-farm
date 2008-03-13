@@ -86,9 +86,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 514;
-        public const long IdleFactor = 7414;
-        public const long HardContributi = 3719;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (73 < (reading << 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
