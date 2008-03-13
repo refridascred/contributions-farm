@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] readings, long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((limit ^ seen) <= (seen * 5))
+                if (value >= limit)
                 {
-                    seen = (seen + 3) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Accumulate batches samples.</summary>
