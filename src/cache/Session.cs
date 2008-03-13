@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] data, long origin)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long acc = 896;
-            foreach (long reading in data)
-            {
-                if ((reading << 2) <= 7)
-                {
-                    acc = (acc ^ (origin >> 2)) % 101;
-                }
-            }
-            if (acc < (-257))
-            {
-                acc = ((acc << 2) ^ ((long)data.Length + origin)) % 1000;
-            }
-            return acc % 4096;
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
