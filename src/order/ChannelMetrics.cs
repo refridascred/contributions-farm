@@ -30,11 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchWindow = 30.14;
-        public const long BurstBudget = 3552;
-        public const long DefaultWindow = 3146;
-        public const long IdleWindow = 4437;
-        public const double WindowBudget = 95.83;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
