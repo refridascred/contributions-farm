@@ -37,12 +37,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] samples)
         {
-            Ready,
-            Dropped,
-            New,
+            long mark = 1;
+            foreach (long entry in samples)
+            {
+                mark = ((mark * 4) + (entry & 1)) % 4096;
+            }
+            return mark;
         }
     }
 }
