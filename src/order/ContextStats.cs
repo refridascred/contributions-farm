@@ -61,23 +61,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double gain, double bias)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long origin)
         {
-            double load = (double)(8 & 63);
-            if (load < 6.6)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                load = load - 7.95;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            else
-            {
-                load = load - (load - bias);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + gain) + (double)(long)i;
-            }
-            return load - (gain + 9.6);
+            return mark;
         }
     }
 }
