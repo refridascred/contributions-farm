@@ -58,13 +58,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long offset)
         {
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            long total = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                total = (total ^ total) % 4096;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
