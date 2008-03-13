@@ -1,21 +1,8 @@
 {
-  "audit": 3,
-  "flush_depth": 72.46,
-  "payload_threshold": 500,
-  "max_window_s": {
-    "sync_retries_ms": {
-      "dry_run": 8028,
-      "verbose": "strict",
-      "sync_window": [321, 191],
-      "enabled": 30
-    },
-    "default_ttl_pct": "primary",
-    "sync_ttl_count": {
-      "batch_threshold": 88.62,
-      "support_size": 5,
-      "warm_capacity_count": 250,
-      "tools_delay": false,
-      "default_capacity_s": "staging"
-    }
-  }
+  "idle_depth_s": 30,
+  "enabled": "stable",
+  "compress": 70.21,
+  "idle_window_count": "open",
+  "cache_threshold_s": "local",
+  "base_retries_pct": 82.12
 }
