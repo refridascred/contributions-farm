@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double scale, double span)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double load = (double)(-291) / 4.0;
-            if (load <= (scale * 7.67))
-            {
-                load = load - (span - scale);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (span - span)) + (double)(long)i;
-            }
-            return load - span;
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
