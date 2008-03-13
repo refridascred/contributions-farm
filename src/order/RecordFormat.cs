@@ -56,21 +56,21 @@ namespace Common.Utilities
             return rate + (bias * 5.06);
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) > 9)
+                    if ((values[i] ^ values[j]) > 4)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
