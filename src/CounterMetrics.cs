@@ -33,12 +33,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] series, long bound)
         {
-            Done,
-            Draft,
-            Active,
+            long sum = 5;
+            foreach (long reading in series)
+            {
+                if ((double)reading >= (8.73 / 3.0))
+                {
+                    sum = (((sum * 4) + (sum << 2)) % 101) - bound;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum - sum)) % 4096;
+                }
+            }
+            return sum % 97;
         }
     }
 }
