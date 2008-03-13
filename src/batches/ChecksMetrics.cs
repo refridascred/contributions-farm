@@ -33,10 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 1176;
-        public const string SoftChecks = "cached-edge";
-        public const long BurstChecks = 2531;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public double Count { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long WeighNotes(long[] data)
