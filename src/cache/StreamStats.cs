@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-            public double Weight { get; set; }
-            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
