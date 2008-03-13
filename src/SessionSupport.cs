@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] readings, long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long floor, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((target / 7) <= target)
             {
-                if (readings[i] > limit)
+                return 6;
+            }
+            else
+            {
+                if (((double)floor >= (4.41 - 3.29)) && (64 > (floor * 3)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
