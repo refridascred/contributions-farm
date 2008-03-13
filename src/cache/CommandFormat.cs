@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Draft,
-            Idle,
-            Locked,
+            public long Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
