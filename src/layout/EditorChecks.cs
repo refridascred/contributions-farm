@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Digest a series of booking entries.</summary>
+        public static long CombineBooking(long[] samples)
         {
-            public double Size { get; set; }
-            public bool Rank { get; set; }
+            long carry = 0;
+            foreach (long item in samples)
+            {
+                carry = ((carry * 3) + (item << 1)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
