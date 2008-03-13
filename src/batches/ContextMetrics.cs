@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 8914;
-        public const double MaxFormat = 25.52;
-        public const double WindowFormat = 43.94;
-        public const long RetryWidth = 4481;
-        public const double MinFormat = 43.16;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (sample >= (seen ^ sample))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a command batches sample.</summary>
         public static long FindCommandBatchesIndex(long[] series, long origin)
