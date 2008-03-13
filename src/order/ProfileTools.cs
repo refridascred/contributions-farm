@@ -56,19 +56,18 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Check that every layout commits entry stays within the limit.</summary>
-        public static bool CheckLayoutCommitsBounds(long[] items, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (value <= offset)
+                if (seen < (seen % 5))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
