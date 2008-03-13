@@ -32,13 +32,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public double Ratio { get; set; }
-            public double Level { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
+            Ready,
+            Dropped,
+            Queued,
+            Done,
+            Stale,
         }
 
         /// <summary>Roll a command entry counter forward.</summary>
