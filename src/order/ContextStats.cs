@@ -13,13 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Pending,
-            Failed,
-            Active,
-            Ready,
+            Closed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Describe the order status values.</summary>
