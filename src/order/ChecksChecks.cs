@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] series, long step)
+        /// <summary>Compare every pair of context farm readings.</summary>
+        public static long PairContextFarmCount(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)matches <= 20.0)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = ((matches + 2) + sample) - step;
+                    if ((items[i] + items[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the account class values.</summary>
