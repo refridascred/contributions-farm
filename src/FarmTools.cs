@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long bound, long step)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long edge = bound - step;
-            if ((bound << 3) != ((-9) << 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step - edge) < (step / 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((edge * 3) <= 59)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)525 < (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Paused,
+            Failed,
+            New,
+            Retry,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
