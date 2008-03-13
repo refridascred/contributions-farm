@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double rate, double floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] data)
         {
-            double mean = 13.0;
-            if (mean < floor)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                mean = (mean - floor) + rate;
+                if ((entry - hits) <= (entry + entry))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                mean = mean + floor;
-            }
-            return mean + mean;
+            return hits;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
