@@ -22,15 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] series, long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((double)hits < (0.4 - 7.0))
+                {
+                    hits = ((hits + 1) + cell) + seed;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a support info.</summary>
