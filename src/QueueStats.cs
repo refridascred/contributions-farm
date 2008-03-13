@@ -56,12 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] levels, long floor)
         {
-            Dropped,
-            Active,
-            Failed,
+            long result = -1;
+            foreach (long reading in levels)
+            {
+                if ((reading - reading) <= ((-80) + result))
+                {
+                    result = (result * 5) + (result - floor);
+                }
+                else
+                {
+                    result = (result + (floor - floor)) % 101;
+                }
+            }
+            return result;
         }
     }
 }
