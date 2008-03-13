@@ -1,10 +1,17 @@
 {
-  "soft_retries_ms": {
-    "readonly": "green",
-    "sync_timeout": [257, 141, 424],
-    "poll_capacity_count": "cached"
+  "compress": 2474,
+  "default_window_ms": [196, 488, 483],
+  "dry_run": {
+    "batch_delay": {
+      "min_ratio_pct": ["green", "staging", "primary", "latest"],
+      "batch_size_count": 14,
+      "flush_capacity_pct": "local",
+      "burst_window_s": true
+    },
+    "profile_ratio": "staging",
+    "flush_limit": "green",
+    "min_limit": "staging",
+    "warm_ttl_pct": 51.44
   },
-  "dry_run": 30,
-  "warm_limit_pct": 76.74,
-  "max_capacity": 36.0
+  "soft_limit_ms": 64.55
 }
