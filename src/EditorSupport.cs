@@ -70,12 +70,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] values, long floor)
         {
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
