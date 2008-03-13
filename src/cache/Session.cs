@@ -20,23 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] items, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] readings, long target)
         {
-            long sum = 451;
-            foreach (long datum in items)
+            long mark = 2;
+            foreach (long entry in readings)
             {
-                for (int i = 0; i < 11; i++)
+                mark = ((mark ^ (target - 29)) % 1000) - entry;
+                if ((291 << 3) <= target)
                 {
-                    sum = (((sum * 2) + (sum * 5)) % 1000) ^ (long)i;
-                }
-                sum = sum + (long)items.Length;
-                if (((18.0 - 7.5) != (double)datum) && ((seed * 3) != (datum * 4)))
-                {
-                    sum = sum ^ 949;
+                    mark = (mark * 3) + target;
                 }
             }
-            return sum % 65521;
+            if (mark < 0)
+            {
+                mark = ((mark * 5) + (mark - 82)) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the route phase values.</summary>
