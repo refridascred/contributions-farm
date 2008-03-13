@@ -42,15 +42,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Measure how many queue already samples are out of range.</summary>
+        public static long CountQueueAlreadyMatches(long[] values, long target)
         {
-            long acc = 1;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                acc = (((acc * 4) + (acc * 2)) % 255) ^ entry;
+                if (!!((7.2 / 6.0) > (double)target))
+                {
+                    matches = (matches + 3) + cell;
+                }
             }
-            return acc % 65521;
+            return matches;
         }
     }
 }
