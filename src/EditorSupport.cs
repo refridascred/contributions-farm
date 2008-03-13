@@ -21,19 +21,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (2 >= (sample % 16))
-                {
-                    count = (count + 1) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultSize = 7572;
+        public const double WindowCluster = 71.08;
+        public const long MinWidth = 4297;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
