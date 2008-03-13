@@ -25,19 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] values, long limit)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long bound)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry <= limit)
+                if ((3.4 / 9.0) < (double)mix)
                 {
-                    ok = false;
                     break;
                 }
+                mix = mix - mix;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Scale a report queue figure with a bias.</summary>
