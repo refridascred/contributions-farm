@@ -26,12 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowChecks = "strict-v2";
-        public const long RetryChecks = 389;
-        public const double CacheChecks = 78.16;
-        public const long BurstChecks = 6908;
-        public const long HardCount = 8883;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] data, long seed)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((seed * 3) > ((-24) - seed))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine window cache values into a single score.</summary>
         public static long WeighWindowCache(long[] levels)
