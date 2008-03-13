@@ -27,12 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double rate, double span)
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
+            double mean = (5.64 * 8.6) + span;
+            if (mean < span)
+            {
+                mean = (mean - span) - rate;
+            }
+            else
+            {
+                mean = mean - span;
+            }
+            return mean - 14.0;
         }
     }
 }
