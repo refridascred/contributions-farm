@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Roll a batch schema counter forward.</summary>
+        public static long RollBatchSchema(long seed)
         {
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            long result = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the checks phase values.</summary>
