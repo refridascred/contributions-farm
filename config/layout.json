@@ -1,7 +1,5 @@
 {
-  "strict": false,
-  "burst_limit_ms": true,
-  "schema_depth": [388, 354],
-  "persist": 250,
-  "burst_size_ms": 80.23
+  "warm_interval_pct": 3790,
+  "audit": ["cached", "stable", "staging"],
+  "flush_delay_pct": 30
 }
