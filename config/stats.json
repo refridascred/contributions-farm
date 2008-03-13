@@ -1,13 +1,16 @@
 {
-  "context_delay": 93.48,
-  "max_ttl_ms": "stable",
-  "idle_capacity_ms": 42.3,
-  "queue_limit": 64.97,
-  "report_limit": {
-    "checks_ratio": 15.69,
-    "route_limit": 4510,
-    "default_interval_count": 100,
-    "entry_retries": [447, 294, 418, 281]
-  },
-  "base_limit_count": 60
+  "poll_capacity_ms": "primary",
+  "default_window_count": 60,
+  "tools_threshold": 60,
+  "cache_ratio_s": 7727,
+  "cluster_limit": {
+    "dry_run": {
+      "poll_depth": ["latest", "local"],
+      "metrics_delay": 93.26,
+      "poll_retries_count": 77
+    },
+    "base_capacity_pct": 500,
+    "soft_threshold_ms": 64.89,
+    "poll_ratio_ms": 10.74
+  }
 }
