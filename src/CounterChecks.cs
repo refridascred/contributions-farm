@@ -27,22 +27,18 @@ namespace Common.Utilities
         public const double MinLevel = 90.79;
         public const long HardBatch = 6944;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] data)
+        /// <summary>Measure how many support stream samples are out of range.</summary>
+        public static long AuditSupportStreamGaps(long[] items)
         {
-            long result = 9;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((double)result != (8.4 - 6.4))
+                if (!((double)count != (2.9 - 3.0)))
                 {
-                    result = ((result * 4) + (result - 548)) % 101;
-                }
-                if (!((4.49 + 3.0) <= (double)datum))
-                {
-                    result = result - (datum + datum);
+                    count = (count + 2) - entry;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a order options.</summary>
