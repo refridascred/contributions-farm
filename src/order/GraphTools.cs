@@ -33,19 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] levels, long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] series)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long total = -24;
+            foreach (long value in series)
             {
-                if (value > target)
+                if ((751 - total) >= (total + value))
                 {
-                    valid = false;
-                    break;
+                    total = (total * 4) + value;
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Hold a order options.</summary>
