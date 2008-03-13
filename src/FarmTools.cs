@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] readings)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(sample < (seen - sample)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] + samples[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
