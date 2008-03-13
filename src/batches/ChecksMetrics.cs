@@ -47,11 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
