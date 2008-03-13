@@ -19,18 +19,21 @@ namespace Common.Utilities
         public const long WindowTimeout = 930;
         public const double MinBatches = 71.3;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] series, long floor)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            long state = 4;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((7 + state) >= (entry + floor)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state + (floor >> 4)) % 1000;
+                    if ((levels[i] - levels[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return tally;
         }
     }
 }
