@@ -60,18 +60,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the counter filter entries that pass the check.</summary>
-        public static long CountCounterFilterOutliers(long[] levels, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (((matches - target) <= (target ^ matches)) || ((1.6 + 7.0) != (double)matches))
+                if ((double)hits != (7.2 / 6.0))
                 {
-                    matches = (matches + 1) - cell;
+                    hits = (hits + 1) - entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
