@@ -29,22 +29,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many schema layout samples are out of range.</summary>
-        public static long TallySchemaLayoutHits(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long result = 8;
+            foreach (long cell in series)
             {
-                if ((item & 3) <= (-4))
+                if (((step ^ step) >= step) && ((step + step) >= (result >> 3)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = (((result * 5) + result) % 4096) + cell;
                 }
             }
-            return matches;
+            if (result > 901)
+            {
+                result = (result + 3) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
