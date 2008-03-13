@@ -67,19 +67,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] values)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long mix = -437;
-            foreach (long entry in values)
-            {
-                mix = (mix - (mix & 127)) ^ entry;
-            }
-            if (mix > 281)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix % 97;
+            Draft,
+            Locked,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Hold a contributi info.</summary>
