@@ -52,19 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] readings, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long mix = 2;
+            foreach (long datum in data)
             {
-                if (cell <= target)
+                if ((datum << 3) == (14 & 15))
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix * 4) + (datum * 3)) % 101;
                 }
             }
-            return ok;
+            return mix % 65521;
         }
     }
 }
