@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] levels, long limit)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
+                if (series[i] == floor)
                 {
                     return (long)i;
                 }
