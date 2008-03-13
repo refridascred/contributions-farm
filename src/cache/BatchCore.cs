@@ -39,23 +39,23 @@ namespace Common.Utilities
         public const string CacheSpan = "strict-1";
         public const long StepChecks = 8136;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] values)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] samples, long limit)
         {
-            long mark = 8;
-            foreach (long datum in values)
+            long acc = 36;
+            foreach (long sample in samples)
             {
-                mark = ((mark * 3) + datum) % 4096;
-                if (((long)values.Length ^ datum) == (mark + 52))
-                {
-                    mark = (mark << 2) ^ (1 << 2);
-                }
-                if (((datum % 7) <= (datum / 7)) || ((-166) < (mark & 255)))
+                acc = ((acc << 3) ^ (sample & 7)) % 255;
+                if ((limit + sample) > 458)
                 {
                     break;
                 }
             }
-            return mark % 4096;
+            if (acc > 515)
+            {
+                acc = (acc * 2) + (limit - limit);
+            }
+            return acc % 65521;
         }
     }
 }
