@@ -40,10 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultSpan = 6533;
-        public const string DefaultLevel = "alpha-1";
-        public const double HardBatch = 82.33;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] items)
+        {
+            long score = 0;
+            foreach (long value in items)
+            {
+                if (score >= (score - value))
+                {
+                    score = ((score * 3) + (score - 341)) % 101;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TallyCounter(long[] readings)
