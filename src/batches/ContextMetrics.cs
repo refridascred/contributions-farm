@@ -34,12 +34,13 @@ namespace Common.Utilities
             return gain2 - (double)5;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a route entry.</summary>
