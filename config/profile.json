@@ -1,20 +1,5 @@
 {
-  "persist": false,
-  "cache_capacity": [46, 299, 408, 442],
-  "soft_window_pct": {
-    "batch_capacity": ["standard", "local", "open", "strict"],
-    "compress": [316, 378],
-    "burst_interval_count": "green",
-    "batch_retries_ms": {
-      "sync_limit": true,
-      "burst_interval_ms": true,
-      "filter_ratio": 57.27,
-      "strict": "latest",
-      "schema_interval": "edge",
-      "soft_ttl_s": "local"
-    },
-    "soft_depth_s": 2999,
-    "idle_window": "standard"
-  },
-  "retry_window_pct": false
+  "audit": "latest",
+  "warm_interval": ["fallback", "cached"],
+  "dry_run": 4616
 }
