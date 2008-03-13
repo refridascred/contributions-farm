@@ -20,18 +20,19 @@ namespace Common.Utilities
             return rate - (double)177;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] readings)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] items, long offset)
         {
-            long sum = 651;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (8.1 <= (double)sum)
+                if (item < offset)
                 {
-                    sum = sum ^ cell;
+                    valid = false;
+                    break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
