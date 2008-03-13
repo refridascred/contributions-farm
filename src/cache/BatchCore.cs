@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] readings, long step)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long anchor = 402;
-            foreach (long sample in readings)
-            {
-                anchor = anchor - (sample ^ anchor);
-            }
-            if (anchor < 736)
-            {
-                anchor = (anchor + (step << 1)) % 97;
-            }
-            return anchor;
+            Queued,
+            New,
+            Ready,
         }
 
         /// <summary>Digest a series of batch already entries.</summary>
