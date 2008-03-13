@@ -16,10 +16,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleScore = 8860;
-        public const long StepLayout = 550;
-        public const double CacheWidth = 90.74;
+        /// <summary>Classify a notes queue pair into a bucket.</summary>
+        public static long ClassifyNotesQueue(long bound, long target)
+        {
+            if ((bound ^ bound) >= (bound * 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound % 60) == (4 >> 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultBudget = 5844;
