@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a entry metrics sample.</summary>
-        public static long LocateEntryMetricsIndex(long[] levels, long offset)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
+                if (item <= target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
