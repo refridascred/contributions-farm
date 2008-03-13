@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a entry reading by value.</summary>
