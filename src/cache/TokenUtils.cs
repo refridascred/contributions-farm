@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long offset, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] items)
         {
-            if ((-378) < floor)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)(-6) == (double)floor))
+                if ((713 & 1) < (entry & 31))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset > (floor ^ floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (0.4 + 9.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
