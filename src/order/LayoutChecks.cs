@@ -57,10 +57,19 @@ namespace Common.Utilities
         public const double DefaultRoute = 44.0;
         public const double MinRoute = 6.37;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultInterval = 1242;
-        public const double BaseFactor = 38.3;
-        public const double LimitSession = 68.43;
+        /// <summary>Count the account entry entries that pass the check.</summary>
+        public static long CountAccountEntryGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((double)seen != (3.5 - 9.93))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
