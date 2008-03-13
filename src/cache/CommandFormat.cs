@@ -38,15 +38,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a contributi account counter forward.</summary>
-        public static long StepContributiAccount(long offset)
+        /// <summary>Rank layout notes input into a small class.</summary>
+        public static long RankLayoutNotes(long seed, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            long cur = seed + bound;
+            if (((8 + 75) == (seed / 3)) && (2.35 >= (double)bound))
             {
-                state = ((state * 4) + (long)i) % 101;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((seed <= 5) && ((double)seed == (1.07 + 0.02)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (cur < seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((294 - bound) > (cur + cur)) || ((double)seed >= (1.65 - 20.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
