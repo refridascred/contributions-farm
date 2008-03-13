@@ -1,5 +1,8 @@
 {
-  "order_limit": false,
-  "soft_depth_count": true,
-  "route_limit": 7242
+  "counter_interval": "strict",
+  "sync_retries_ms": "primary",
+  "cache_interval_s": ["strict", "cached", "open"],
+  "batch_ttl_s": 46.38,
+  "dry_run": 43,
+  "channel_delay": "cached"
 }
