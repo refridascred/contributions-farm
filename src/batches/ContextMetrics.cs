@@ -19,11 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitGraph = "primary";
-        public const long MinBudget = 970;
-        public const long CacheFactor = 4052;
-        public const string HardScore = "staging-edge";
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double gain, double offset)
+        {
+            double gain2 = offset;
+            if (gain2 > 7.5)
+            {
+                gain2 = gain2 + 3.0;
+            }
+            else
+            {
+                gain2 = gain2 - gain;
+            }
+            return gain2 - (double)5;
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long MatchCommandCount(long[] levels)
