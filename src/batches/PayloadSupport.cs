@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardSize = 12.86;
+        public const long CacheWidth = 3160;
+        public const double IdleInterval = 52.38;
+        public const long BurstScore = 6303;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftTimeout = 1635;
