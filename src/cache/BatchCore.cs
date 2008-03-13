@@ -35,18 +35,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] items, long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] data)
         {
-            long state = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((double)limit < (5.95 + 10.0))
+                if (3.0 < (double)tally)
                 {
-                    state = ((state + (limit - 851)) % 101) - cell;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Accumulate command samples.</summary>
