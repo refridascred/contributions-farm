@@ -25,11 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitRatio = "strict-1";
-        public const string MinRatio = "alpha-edge";
-        public const long StepRoute = 1716;
-        public const long BatchLevel = 2763;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long SortMetrics(long limit, long limit2)
