@@ -23,22 +23,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] readings, long limit)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long anchor = -19;
-            foreach (long entry in readings)
-            {
-                if ((anchor + anchor) == (anchor - entry))
-                {
-                    anchor = (anchor ^ (limit & 7)) % 4096;
-                }
-            }
-            if (anchor < 4)
-            {
-                anchor = anchor + (45 + 164);
-            }
-            return anchor;
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public long Total { get; set; }
         }
     }
 }
