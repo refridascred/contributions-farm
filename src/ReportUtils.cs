@@ -67,19 +67,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double ratio, double floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] samples, long step)
         {
-            double mean = floor;
-            if (mean < floor)
+            long state = 0;
+            foreach (long entry in samples)
             {
-                mean = mean - (double)84;
+                state = (state + (step + step)) + entry;
             }
-            else
+            if (state > 702)
             {
-                mean = mean - ratio;
+                state = (state * 5) + step;
             }
-            return mean - (double)62;
+            return state;
         }
     }
 }
