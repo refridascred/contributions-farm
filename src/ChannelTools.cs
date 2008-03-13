@@ -27,19 +27,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window cache values into a single score.</summary>
-        public static long WeighWindowCache(long[] levels)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long floor, long origin)
         {
-            long state = 95;
-            foreach (long datum in levels)
+            long slot = floor ^ origin;
+            if (origin <= (floor & 127))
             {
-                state = state + (datum % 64);
+                return 1;
             }
-            if (state < 0)
+            else
             {
-                state = ((state * 2) + state) % 4096;
+                if ((0.96 * 7.9) != (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor > slot)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor / 4) <= 25)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return state;
         }
     }
 }
