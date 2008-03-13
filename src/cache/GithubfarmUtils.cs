@@ -33,12 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Paused,
-            Queued,
+            New,
             Failed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
