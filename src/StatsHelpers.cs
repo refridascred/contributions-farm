@@ -65,10 +65,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 6340;
-        public const string CacheChannel = "latest-edge";
-        public const long StepRatio = 2173;
-        public const string BaseSize = "legacy";
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double gain, double offset)
+        {
+            double ratio = gain;
+            return (ratio + (gain / 5.0)) + offset;
+        }
     }
 }
