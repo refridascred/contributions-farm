@@ -1,8 +1,6 @@
 # route settings
-hard_window_count: 1024
-support_retries: cached
-compress: edge
-persist: 3478
-retry_delay_pct:
-  - 313
-  - 14
+warm_size_ms: 17.93
+soft_ratio: false
+session_threshold: 448
+default_window_pct: 5227
+base_timeout: legacy
