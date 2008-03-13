@@ -20,13 +20,22 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] values, long offset)
         {
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((offset + value) > (33 % 60))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
