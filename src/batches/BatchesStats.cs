@@ -50,25 +50,22 @@ namespace Common.Utilities
             return scale + (bias * 4.0);
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long bound, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] data)
         {
-            long bound2 = bound + origin;
-            if ((double)origin >= 1.01)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound2 <= origin)
+                if ((7.64 / 3.0) <= (double)hits)
                 {
-                    return 2;
+                    hits = (hits + 2) ^ sample;
                 }
                 else
                 {
-                    return 4;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the already commits series from a seed.</summary>
