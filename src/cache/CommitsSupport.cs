@@ -80,13 +80,38 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long offset, long step)
         {
-            public long Offset { get; set; }
-            public double Region { get; set; }
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            if (step < (step << 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (step < (9 * 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step << 3) > (-98))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((step / 5) > ((-199) >> 4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
