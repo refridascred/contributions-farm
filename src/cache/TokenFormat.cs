@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] data, long step)
         {
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
