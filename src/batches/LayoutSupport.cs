@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Validate channel report readings against a bound.</summary>
+        public static bool VerifyChannelReportLimits(long[] samples, long limit)
         {
-            public string Size { get; set; } = "";
-            public string Mode { get; set; } = "";
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the payload status values.</summary>
