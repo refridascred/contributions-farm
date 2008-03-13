@@ -1,16 +1,16 @@
 # entry settings
-base_threshold:
-  min_limit: latest
-  channel_window: standard
-  max_depth: 82
-  default_limit: 81
-  cache_limit:
-    soft_window_pct: latest
-    persist: 28.95
-    enabled:
-      - primary
-      - standard
-idle_threshold_pct: eu-west
-idle_capacity: false
-soft_threshold_count: true
-editor_ratio: local
+soft_ttl_s: standard
+default_window_count:
+  enabled: eu-west
+  warm_retries: fallback
+  compress: true
+  base_limit_count:
+    - 90
+    - 248
+    - 239
+  editor_window: latest
+  commits_size: 500
+poll_delay_s: green
+batch_delay_count: 1
+poll_delay: 60
+burst_timeout_pct: 1.85
