@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double gain, double floor)
         {
-            public double Owner { get; set; }
-            public long Label { get; set; }
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            double bias = floor;
+            if (bias < (bias - 9.32))
+            {
+                bias = bias + (double)604;
+            }
+            else
+            {
+                bias = bias + (gain * 5.1);
+            }
+            return bias + (gain / 9.0);
         }
 
         /// <summary>Locate a cluster schema reading by value.</summary>
