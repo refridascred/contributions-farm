@@ -49,17 +49,19 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] items, long target)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (items[i] == target)
+                if (datum < origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
