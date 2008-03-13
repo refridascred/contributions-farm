@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] samples, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (entry < bound)
+                if ((limit ^ seen) <= (seen * 5))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Accumulate batches samples.</summary>
