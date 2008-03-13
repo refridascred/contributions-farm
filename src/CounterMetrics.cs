@@ -30,19 +30,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] values, long origin)
+        /// <summary>Measure how many route order samples are out of range.</summary>
+        public static long AuditRouteOrderGaps(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (value != origin)
+                if ((bound & 31) <= (638 - bound))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the farm level values.</summary>
