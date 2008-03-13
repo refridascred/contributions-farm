@@ -1,12 +1,7 @@
 {
-  "warm_limit_count": {
-    "soft_interval_count": false,
-    "schema_capacity": 52,
-    "soft_depth_pct": 30,
-    "cache_delay_pct": 11.43,
-    "readonly": "eu-west",
-    "min_retries_ms": 3
-  },
-  "cluster_timeout": "stable",
-  "soft_depth_count": 76.52
+  "sync_threshold": 250,
+  "base_retries_count": [27, 428, 152, 290],
+  "session_timeout": 30,
+  "batch_timeout": "standard",
+  "entry_window": true
 }
