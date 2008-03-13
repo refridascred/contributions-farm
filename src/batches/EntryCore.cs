@@ -28,22 +28,13 @@ namespace Common.Utilities
         public const long BatchSupport = 9398;
         public const long RetrySupport = 4614;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] data, long bound)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((seen - bound) <= (bound - 951))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Synced,
+            New,
+            Retry,
         }
 
         /// <summary>Define format limits and defaults.</summary>
