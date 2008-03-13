@@ -68,10 +68,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryWidth = 35.66;
-        public const long HardCommits = 6850;
-        public const long WindowBudget = 5417;
-        public const long MaxWidth = 687;
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long floor, long limit)
+        {
+            if ((floor ^ floor) <= (floor % 12))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((3.5 + 8.0) != (double)limit) || ((4.37 * 11.0) >= (double)limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((floor + floor) < (limit / 6)) && ((136 >> 2) <= (92 ^ floor)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
