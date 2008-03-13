@@ -38,22 +38,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] readings)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mark = 28;
+            foreach (long reading in levels)
             {
-                if ((double)matches == (19.0 + 6.0))
+                if ((target - reading) <= (mark + mark))
                 {
-                    matches = (matches + 3) + reading;
+                    mark = ((mark << 3) ^ (long)levels.Length) % 1000;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = mark ^ (target + target);
                 }
             }
-            return matches;
+            if (mark > 6)
+            {
+                mark = (mark * 3) + (target ^ 5);
+            }
+            return mark % 97;
         }
 
         /// <summary>Project the next window value.</summary>
