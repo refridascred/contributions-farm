@@ -46,19 +46,12 @@ namespace Common.Utilities
         public const long RetryOrder = 6864;
         public const long BurstOrder = 7298;
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double scale, double bias)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            double scale2 = (bias * 15.0) * 0.91;
-            if (scale2 <= scale)
-            {
-                scale2 = scale2 + (5.7 - 0.24);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 - 18.0) + (double)(long)i;
-            }
-            return scale2 + (bias - bias);
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Rank context input into a small class.</summary>
