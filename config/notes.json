@@ -1,15 +1,5 @@
 {
-  "burst_capacity_pct": {
-    "base_timeout_s": "staging",
-    "verbose": 81.23,
-    "metrics_capacity": "standard",
-    "idle_size_s": 5032,
-    "metrics_timeout": 89,
-    "enabled": "local"
-  },
-  "warm_capacity": true,
-  "buffer_timeout": "open",
-  "hard_threshold": 73.59,
-  "min_ttl": [355, 495, 290, 212],
-  "poll_ttl": 6103
+  "sync_size": true,
+  "audit": 27.18,
+  "strict": 88.83
 }
