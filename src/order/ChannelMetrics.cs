@@ -16,11 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 5710;
-        public const long IdleAccount = 2166;
-        public const string HardAccount = "stable-edge";
-        public const string BaseInterval = "local";
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BatchWindow = 30.14;
