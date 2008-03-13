@@ -17,11 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 8023;
-        public const long WindowFormat = 3647;
-        public const long MaxFormat = 8819;
-        public const long HardCount = 8636;
+        /// <summary>Count the entry already entries that pass the check.</summary>
+        public static long MeasureEntryAlreadyMatches(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((160 - bound) < (tally * 5))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LocateEntryIndex(long[] readings, long step)
