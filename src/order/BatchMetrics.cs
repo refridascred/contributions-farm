@@ -50,22 +50,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] series, long offset)
+        /// <summary>Rank already profile input into a small class.</summary>
+        public static long BucketAlreadyProfile(long bound, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if ((-267) >= bound)
             {
-                if ((datum + datum) != (offset + count))
+                return 6;
+            }
+            else
+            {
+                if ((bound - bound) <= (bound + 816))
                 {
-                    count = count + 3;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((offset - bound) >= (offset + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((667 + bound) <= bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a cluster header.</summary>
