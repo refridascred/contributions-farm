@@ -33,19 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            long carry = 5;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry + (carry - carry)) ^ datum;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (carry > 41)
-            {
-                carry = carry - (carry - carry);
-            }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
