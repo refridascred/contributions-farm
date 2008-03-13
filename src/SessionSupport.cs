@@ -33,21 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] readings)
+        /// <summary>Validate graph profile readings against a bound.</summary>
+        public static bool ValidateGraphProfileRange(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry > target)
                 {
-                    if ((readings[i] - readings[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
