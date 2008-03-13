@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const double BatchBudget = 83.81;
         public const long WindowLayout = 6806;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] items)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] readings)
         {
             long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (43 < (seen % 97))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] + readings[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
