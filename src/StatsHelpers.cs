@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 5567;
-        public const long BatchBudget = 2756;
-        public const long BatchRoute = 379;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long limit, long origin)
+        {
+            long step = limit ^ origin;
+            if (!((origin + limit) >= limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin << 2) <= (step + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit >= 7.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step * 3) < limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MaxOrder = 1423;
