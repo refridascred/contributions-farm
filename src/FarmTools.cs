@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Idle,
-            Dropped,
-            Draft,
-            Closed,
-            Ready,
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Roll a stream counter forward.</summary>
