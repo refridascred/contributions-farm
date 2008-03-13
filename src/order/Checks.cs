@@ -35,12 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Queued,
-            Active,
-            Ready,
+            public bool Size { get; set; }
+            public double Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
