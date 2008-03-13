@@ -74,18 +74,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit queue cluster readings against a rule.</summary>
-        public static long MeasureQueueClusterMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (hits < (72 * 4))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 2537;
+        public const double DefaultFactor = 95.1;
+        public const long StepPayload = 2899;
+        public const string BatchBudget = "alpha-1";
+        public const long LimitPayload = 7811;
     }
 }
