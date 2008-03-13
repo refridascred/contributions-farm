@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleTimeout = 1722;
-        public const long SoftMetrics = 5394;
-        public const string MaxMetrics = "local-v2";
-        public const long CacheMetrics = 1829;
-        public const long DefaultCount = 3961;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((long)i * 3) <= (seed + seed))
+                {
+                    mark = ((mark << 3) ^ (mark - seed)) % 255;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long LocateChannelIndex(long[] levels, long origin)
