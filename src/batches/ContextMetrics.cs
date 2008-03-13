@@ -42,17 +42,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Look up the position of a entry support sample.</summary>
-        public static long LookupEntrySupportIndex(long[] items, long target)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
