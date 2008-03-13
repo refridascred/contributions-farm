@@ -1,14 +1,8 @@
 {
-  "warm_capacity_pct": 60,
-  "max_limit_ms": {
-    "poll_delay_pct": 88,
-    "retry_ratio": [91, 280],
-    "command_timeout": 24.15,
-    "cache_delay": 250,
-    "persist": 7162
-  },
-  "base_threshold": 30,
-  "batch_interval": 1024,
-  "readonly": 30,
-  "stats_ttl": "standard"
+  "verbose": true,
+  "poll_timeout_s": 76.54,
+  "max_ratio": 9611,
+  "profile_capacity": 69.06,
+  "default_size": 6741,
+  "compress": "strict"
 }
