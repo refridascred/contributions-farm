@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a graph commits counter forward.</summary>
-        public static long RollGraphCommits(long limit)
+        /// <summary>Derive the next format notes value from a seed.</summary>
+        public static long DeriveFormatNotes(long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
