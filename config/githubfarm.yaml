@@ -1,13 +1,8 @@
 # githubfarm settings
-max_ratio_s:
-  - staging
-  - fallback
-  - fallback
-sync_retries_pct: standard
-base_capacity_pct: 30
-poll_retries_count:
-  account_depth: 4.77
-  cache_retries_pct: primary
-  strict: eu-west
-  warm_threshold: open
-  sync_interval: 100
+dry_run:
+  hard_ratio: 75
+  account_window: legacy
+  hard_ratio_s: 827
+soft_window: 22
+hard_capacity: local
+enabled: 60
