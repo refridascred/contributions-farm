@@ -1,12 +1,20 @@
 {
-  "dry_run": {
-    "base_window": 78.04,
-    "retry_retries": 83.74,
-    "context_limit": "standard",
-    "readonly": 9
-  },
-  "strict": 79,
-  "retry_depth": 100,
-  "sync_depth_pct": "eu-west",
-  "verbose": true
+  "enabled": "primary",
+  "hard_limit_count": false,
+  "counter_size": {
+    "metric_limit": {
+      "enabled": 9602,
+      "default_size_s": "green",
+      "sync_window_s": "strict"
+    },
+    "schema_interval": [369, 368],
+    "base_window_ms": "green",
+    "min_capacity_ms": "green",
+    "support_interval": "legacy",
+    "base_depth_ms": {
+      "min_limit": "stable",
+      "cache_ratio_ms": "blue",
+      "retry_delay_count": "strict"
+    }
+  }
 }
