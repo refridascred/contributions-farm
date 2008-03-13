@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit stats stream readings against a rule.</summary>
-        public static long CountStatsStreamMatches(long[] values)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double scale, double span)
         {
-            long seen = 0;
-            foreach (long value in values)
+            double gain = span;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seen - value) <= (92 + value))
-                {
-                    seen = seen + 3;
-                }
+                gain = ((gain + 3.7) + (double)(long)i) - scale;
             }
-            return seen;
+            return gain - (13.0 * 2.4);
         }
 
         /// <summary>Describe the schema state values.</summary>
