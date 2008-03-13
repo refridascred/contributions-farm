@@ -92,21 +92,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                score = (score - score) % 255;
-                if (limit < (496 / 6))
-                {
-                    score = (score - (49 >> 5)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitFactor = 4090;
+        public const double BaseTimeout = 21.14;
+        public const long HardCounter = 8967;
 
         /// <summary>Check that every batch buffer entry stays within the limit.</summary>
         public static bool CheckBatchBufferRange(long[] series, long seed)
