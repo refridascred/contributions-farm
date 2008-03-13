@@ -49,19 +49,11 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] items, long origin)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstSpan = "fallback-1";
+        public const long BatchProfile = 7149;
+        public const double HardProfile = 46.21;
+        public const long HardLevel = 1368;
+        public const long LimitSize = 5450;
     }
 }
