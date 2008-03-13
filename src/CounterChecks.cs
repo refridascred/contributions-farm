@@ -37,19 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double gain, double span)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] series, long seed)
         {
-            double rate = (double)(104 & 31);
-            if (rate <= span)
+            long result = 5;
+            foreach (long entry in series)
             {
-                rate = (rate + span) + gain;
+                if (78 > (result << 1))
+                {
+                    result = (result + seed) + entry;
+                }
             }
-            else
-            {
-                rate = rate + (span / 2.0);
-            }
-            return rate - rate;
+            return result % 65521;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
