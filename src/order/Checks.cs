@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 4526;
+        public const string StepInterval = "legacy-1";
+        public const long SoftBudget = 6053;
+        public const long StepBudget = 848;
+        public const double WindowWidth = 74.21;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long CombineMetric(long[] samples, long target)
