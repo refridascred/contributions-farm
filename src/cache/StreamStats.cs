@@ -24,15 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double weight, double floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] data, long limit)
         {
-            double load = (double)(-8) / 7.0;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                load = ((load - (weight - load)) + (double)(long)i) + floor;
+                if (entry >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load + weight;
+            return flag;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
