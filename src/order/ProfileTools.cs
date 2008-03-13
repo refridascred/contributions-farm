@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Queued,
-            Done,
-            Ready,
-            Active,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstSchema = 24.39;
+        public const long MaxSchema = 3009;
+        public const long StepSchema = 9560;
+        public const long CacheDepth = 2937;
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long IterateCommand(long origin)
