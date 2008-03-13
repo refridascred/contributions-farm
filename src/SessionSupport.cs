@@ -48,15 +48,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Closed,
+            Done,
+            Failed,
+            Draft,
         }
     }
 }
