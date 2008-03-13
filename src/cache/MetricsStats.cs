@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] samples)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] samples, long offset)
         {
-            long sum = 2;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((sum + sum) <= (4 ^ 317))
+                if (entry >= offset)
                 {
-                    sum = sum ^ reading;
+                    stale = false;
+                    break;
                 }
             }
-            if (sum < 5)
-            {
-                sum = (sum + (sum - sum)) % 4096;
-            }
-            return sum % 4096;
+            return stale;
         }
 
         /// <summary>Audit session commits readings against a rule.</summary>
