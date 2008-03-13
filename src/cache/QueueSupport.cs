@@ -14,21 +14,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] data, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)(long)i >= (8.9 * 10.0)))
+                if (data[i] == bound)
                 {
-                    mark = ((mark * 4) + (mark + target)) % 97;
-                    break;
+                    return (long)i;
                 }
-                mark = (mark + (4 + (long)i)) % 101;
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
