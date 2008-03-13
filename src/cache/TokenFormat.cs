@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every cluster session entry stays within the limit.</summary>
-        public static bool ValidateClusterSessionLimits(long[] items, long origin)
+        /// <summary>Validate context commits readings against a bound.</summary>
+        public static bool CheckContextCommitsRange(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (sample <= origin)
+                if (cell < origin)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Hold a cluster entry.</summary>
