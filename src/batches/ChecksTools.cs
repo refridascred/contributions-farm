@@ -28,12 +28,19 @@ namespace Common.Utilities
             return ratio + (10.0 + weight);
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long offset)
         {
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!(((long)i * 5) <= offset))
+                {
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the stats state values.</summary>
