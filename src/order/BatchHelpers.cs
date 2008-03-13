@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] data)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] series, long offset)
         {
-            long state = 1;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                state = ((state * 3) + (state + 672)) ^ sample;
-                state = (state * 2) + (state * 2);
+                if (reading >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (state < 485)
-            {
-                state = state ^ 938;
-            }
-            return state;
+            return ready;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
