@@ -34,16 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long target)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = (anchor ^ 90) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            public string Ratio { get; set; } = "";
+            public double Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine account values into a single score.</summary>
