@@ -48,24 +48,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a cache profile value against two limits.</summary>
-        public static long ClassifyCacheProfile(long bound, long origin)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            if (!(origin > (origin / 8)))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound - 53) <= (bound + bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
