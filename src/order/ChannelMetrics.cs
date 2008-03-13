@@ -29,22 +29,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel queue values into a single score.</summary>
-        public static long WeighChannelQueue(long[] series, long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long bound, long step)
         {
-            long score = 993;
-            foreach (long entry in series)
+            if ((bound + bound) < (9 % 100))
             {
-                if (!((step ^ score) < (score >> 4)))
+                return 2;
+            }
+            else
+            {
+                if (bound <= (bound ^ bound))
                 {
-                    score = ((score * 2) + entry) % 1000;
+                    return 8;
                 }
                 else
                 {
-                    score = (score + (step / 4)) % 4096;
+                    return 6;
                 }
             }
-            return score % 65521;
         }
     }
 }
