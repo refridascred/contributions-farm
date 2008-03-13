@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long seed, long origin)
         {
-            Pending,
-            Locked,
-            Active,
-            Synced,
+            long gap = seed - origin;
+            if ((double)gap <= (double)930)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((gap + 970) > (gap >> 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((0.74 * 4.93) >= (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a window header.</summary>
