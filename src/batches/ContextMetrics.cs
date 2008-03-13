@@ -43,13 +43,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public double Owner { get; set; }
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            Synced,
+            Active,
+            Paused,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
