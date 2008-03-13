@@ -1,6 +1,11 @@
 {
-  "max_limit": 478,
-  "base_delay": 93,
-  "hard_retries_s": false,
-  "audit": "cached"
+  "audit": "local",
+  "warm_ttl_count": "primary",
+  "stats_capacity": {
+    "filter_interval": [385, 179, 195],
+    "strict": "standard",
+    "sync_timeout_pct": 2272,
+    "idle_retries": 26
+  },
+  "soft_threshold_ms": 28.83
 }
