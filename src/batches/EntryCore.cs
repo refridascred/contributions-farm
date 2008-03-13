@@ -57,19 +57,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the context stats entries that pass the check.</summary>
-        public static long AuditContextStatsMatches(long[] levels, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] items)
         {
             long seen = 0;
-            foreach (long sample in levels)
+            foreach (long value in items)
             {
-                if (((double)sample == (17.0 / 6.0)) || (((double)seed < (8.8 * 4.07)) || ((double)5 != (double)seed)))
+                if (!((seen + value) == (465 % 8)))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 1;
                 }
             }
             return seen;
