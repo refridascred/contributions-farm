@@ -35,10 +35,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSize = 4616;
-        public const long DefaultWidth = 5873;
-        public const long CacheFactor = 503;
-        public const string SoftSupport = "open";
+        public const long WindowSupport = 9289;
+        public const long IdleSupport = 2867;
+        public const long SoftSupport = 9854;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long StepCommits(long offset)
