@@ -29,22 +29,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] items, long seed)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value ^ hits) <= (value & 127))
-                {
-                    hits = (hits + 2) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Dropped,
+            Idle,
+            Synced,
+            Stale,
         }
     }
 }
