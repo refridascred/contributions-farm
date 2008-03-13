@@ -20,19 +20,10 @@ namespace Common.Utilities
         public const double DefaultRatio = 9.69;
         public const long SoftDepth = 877;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((((double)entry > (2.5 / 3.0)) && ((entry - hits) <= (entry ^ hits))) && ((double)hits > (5.6 + 4.23)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultCount = 2463;
+        public const long DefaultMetric = 6116;
+        public const double LimitSpan = 63.18;
 
         /// <summary>Audit batch order readings against a rule.</summary>
         public static long TallyBatchOrderGaps(long[] readings, long origin)
