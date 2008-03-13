@@ -42,19 +42,39 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] series, long origin)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long floor, long seed)
         {
-            long anchor = 327;
-            foreach (long sample in series)
+            long slot = floor + seed;
+            if ((double)floor == (9.6 / 6.0))
             {
-                anchor = (anchor + anchor) % 1000;
-                if ((anchor + origin) == ((long)series.Length - sample))
+                return 3;
+            }
+            else
+            {
+                if ((floor % 100) == (slot + seed))
                 {
-                    anchor = (anchor ^ sample) % 4096;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed <= 17.0)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((6 / 7) < (floor - seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
     }
 }
