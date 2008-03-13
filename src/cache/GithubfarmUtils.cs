@@ -33,18 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] levels)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (853 > entry)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
