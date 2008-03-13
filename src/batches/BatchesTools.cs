@@ -18,10 +18,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 2543;
-        public const double MinTimeout = 82.98;
-        public const long IdleDepth = 1945;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                total = total ^ (floor + floor);
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferHits(long[] items)
