@@ -29,19 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session contributi readings against a bound.</summary>
-        public static bool ValidateSessionContributiRange(long[] levels, long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Roll a batches checks counter forward.</summary>
