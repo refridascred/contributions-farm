@@ -32,11 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitSize = 46.04;
-        public const string BatchBatches = "primary-v2";
-        public const long BurstBudget = 4990;
-        public const long CacheInterval = 4090;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 2283;
+        public const string StepCluster = "open-1";
+        public const long LimitInterval = 1977;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string BaseCount = "fallback-edge";
