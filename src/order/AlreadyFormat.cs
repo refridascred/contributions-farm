@@ -29,11 +29,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next cache channel value.</summary>
-        public static double ProjectCacheChannel(double bias, double floor)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double bias, double span)
         {
-            double ratio = (double)732;
-            return ((ratio + 3.01) + bias) + floor;
+            double weight = span / 4.0;
+            if (weight > span)
+            {
+                weight = weight + (weight - bias);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (double)96) + (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Iterate the checks support series from a seed.</summary>
