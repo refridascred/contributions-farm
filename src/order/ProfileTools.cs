@@ -56,18 +56,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] values, long limit)
+        /// <summary>Look up the position of a record report sample.</summary>
+        public static long SeekRecordReportIndex(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((tally + limit) >= (limit + limit)) && (((double)limit != (double)datum) && ((double)datum > (double)tally)))
+                if ((values[i] <= bound) && ((values[i] % 3) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
