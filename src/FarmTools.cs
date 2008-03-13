@@ -29,18 +29,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] series)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((hits + 15) >= (253 / 6))
-                {
-                    hits = (hits + 1) - datum;
-                }
-            }
-            return hits;
+            Failed,
+            Synced,
+            Queued,
+            Locked,
+            Retry,
         }
     }
 }
