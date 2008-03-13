@@ -1,5 +1,17 @@
 # entry settings
-persist: 250
-strict: legacy
-max_size_count: false
-session_depth: 67.01
+report_capacity: blue
+max_ttl_count:
+  - cached
+  - cached
+min_capacity: 0.82
+base_window_pct:
+  context_ratio:
+    - 16
+    - 60
+  burst_depth_count:
+    warm_ratio: 5179
+    compress: 100
+    cluster_depth: 850
+  audit: strict
+format_ratio: legacy
+cache_ttl_s: 15
