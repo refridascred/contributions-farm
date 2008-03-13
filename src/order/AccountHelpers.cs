@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] samples)
+        /// <summary>Digest a series of batches account entries.</summary>
+        public static long TotalBatchesAccount(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long score = -4;
+            foreach (long datum in items)
             {
-                if (!((0 / 3) < reading) && ((hits - hits) <= reading))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((score ^ limit) % 65521) - datum;
             }
-            return hits;
+            if (score < 193)
+            {
+                score = (score ^ (limit & 31)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
