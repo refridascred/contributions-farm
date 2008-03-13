@@ -73,23 +73,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] levels, long bound)
+        /// <summary>Count the support stats entries that pass the check.</summary>
+        public static long CountSupportStatsHits(long[] readings)
         {
-            long anchor = 3;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                anchor = (((anchor << 2) ^ bound) % 255) ^ entry;
-                if ((double)bound > (1.2 + 5.9))
+                if ((729 / 3) > (sample >> 3))
                 {
-                    break;
+                    count = count + 3;
                 }
             }
-            if (anchor > 7)
-            {
-                anchor = anchor + 51;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Combine already values into a single score.</summary>
