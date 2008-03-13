@@ -1,6 +1,14 @@
 {
-  "graph_timeout": [129, 414, 138],
-  "persist": ["standard", "standard", "local"],
-  "audit": [251, 144, 469],
-  "schema_timeout": 1678
+  "order_limit": 250,
+  "hard_size": "blue",
+  "soft_ratio": 100,
+  "idle_window": true,
+  "strict": {
+    "editor_limit": false,
+    "dry_run": "cached",
+    "idle_ttl": ["latest", "standard"],
+    "sync_limit": 60,
+    "warm_interval_count": "fallback",
+    "idle_ratio_ms": 40
+  }
 }
