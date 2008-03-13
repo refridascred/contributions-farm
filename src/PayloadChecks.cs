@@ -87,17 +87,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a payload farm sample.</summary>
-        public static long SeekPayloadFarmIndex(long[] items, long seed)
+        /// <summary>Compare every pair of farm checks readings.</summary>
+        public static long MatchFarmChecksCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] == seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
