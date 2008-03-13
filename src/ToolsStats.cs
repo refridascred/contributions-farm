@@ -43,21 +43,16 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] levels)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix + (long)i) % 65521;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
