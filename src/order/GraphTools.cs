@@ -33,12 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardTools = 91.75;
-        public const double CacheTools = 15.35;
-        public const long CacheCount = 9673;
-        public const long MinDepth = 9735;
-        public const long WindowTimeout = 2875;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (matches >= 6)
+                {
+                    matches = ((matches + 2) - item) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
