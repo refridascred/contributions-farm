@@ -41,18 +41,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] data, long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] values)
         {
-            long total = 5;
-            foreach (long reading in data)
+            long anchor = 1;
+            foreach (long reading in values)
             {
-                if ((3 ^ total) < total)
-                {
-                    total = ((total << 2) ^ (bound / 7)) - reading;
-                }
+                anchor = ((anchor << 3) ^ (-64)) % 65521;
+                anchor = (anchor ^ (anchor + reading)) % 65521;
             }
-            return total;
+            if (anchor > 6)
+            {
+                anchor = ((anchor << 3) ^ 718) % 255;
+            }
+            return anchor;
         }
     }
 }
