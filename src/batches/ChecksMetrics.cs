@@ -52,15 +52,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double ratio, double bias)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] items, long origin)
         {
-            double bias2 = bias;
-            if (bias2 < (ratio * 5.4))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = bias2 - ratio;
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - ratio;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
