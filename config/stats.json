@@ -1,9 +1,13 @@
 {
-  "warm_retries_s": {
-    "audit": [160, 320, 255, 169],
-    "flush_retries_pct": "primary",
-    "stream_delay": true
+  "contributi_timeout": {
+    "sync_depth_count": 89,
+    "editor_interval": "strict",
+    "soft_depth_s": "staging",
+    "max_capacity_pct": 100,
+    "max_limit_count": 250,
+    "base_capacity_s": 9
   },
-  "profile_ratio": 8186,
-  "compress": [480, 226, 461, 15]
+  "min_capacity_count": "eu-west",
+  "idle_ratio_pct": [435, 476, 476],
+  "flush_ratio_ms": "legacy"
 }
