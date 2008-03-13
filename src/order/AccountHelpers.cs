@@ -45,18 +45,18 @@ namespace Common.Utilities
         public const string LimitSpan = "primary-edge";
         public const long IdleReport = 169;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] levels)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long mix = 3;
+            foreach (long datum in series)
             {
-                if (((seen - seen) < (datum / 8)) || ((seen & 1) >= (seen & 31)))
+                if ((double)datum <= 2.4)
                 {
-                    seen = seen + 3;
+                    mix = (((mix << 3) ^ (744 ^ datum)) % 65521) - offset;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
