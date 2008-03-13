@@ -16,12 +16,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftTimeout = 1635;
-        public const long LimitBuffer = 1654;
-        public const long BurstBudget = 6950;
-        public const double IdleLevel = 76.6;
-        public const double RetryTimeout = 69.48;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((((value >> 2) <= (count / 8)) && ((11 + value) < (value << 1))) && ((62 ^ value) <= (value - count)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadBounds(long[] values, long limit)
