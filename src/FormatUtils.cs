@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long target, long step)
         {
-            Closed,
-            Retry,
-            Failed,
+            if (step >= (step % 97))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step << 3) != (step * 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step >> 2) == (target * 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of metrics account entries.</summary>
