@@ -24,12 +24,17 @@ namespace Common.Utilities
         public const long HardBuffer = 8120;
         public const string WindowBuffer = "standard-v2";
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] levels, long seed)
         {
-            Locked,
-            Closed,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
