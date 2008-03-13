@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const double BaseLayout = 44.24;
         public const long DefaultSize = 3773;
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Count the channel tools entries that pass the check.</summary>
+        public static long MeasureChannelToolsHits(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(3 <= count))
                 {
-                    if ((series[i] - series[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 2) ^ reading) - floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
