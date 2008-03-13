@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long mark = 53;
-            foreach (long sample in samples)
-            {
-                if ((sample << 1) <= sample)
-                {
-                    mark = mark - (mark & 7);
-                }
-            }
-            if (mark > 91)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Blend two githubfarm token measurements.</summary>
