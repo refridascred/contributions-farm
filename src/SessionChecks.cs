@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Digest a series of buffer cache entries.</summary>
+        public static long DigestBufferCache(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 4;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry * 2) + cell) % 255;
+                carry = (carry - carry) % 65521;
             }
-            return seen;
+            if (carry > (-4))
+            {
+                carry = (carry << 3) ^ carry;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
