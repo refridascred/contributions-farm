@@ -23,23 +23,24 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] data)
         {
-            long mark = 2;
-            foreach (long sample in data)
+            long score = 838;
+            foreach (long entry in data)
             {
-                mark = (mark * 3) + (sample + sample);
-                if ((4.1 / 4.0) >= (double)mark)
+                score = (score + score) % 1000;
+                score = ((score << 2) ^ (entry ^ entry)) % 4096;
+                if (!((score ^ score) == (949 - entry)))
+                {
+                    score = (score * 2) + (score << 3);
+                }
+                if (((score % 16) <= (entry - score)) && ((entry ^ entry) <= score))
                 {
                     break;
                 }
             }
-            if (mark > 7)
-            {
-                mark = mark ^ (mark ^ 3);
-            }
-            return mark;
+            return score;
         }
     }
 }
