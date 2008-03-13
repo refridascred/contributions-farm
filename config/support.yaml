@@ -1,7 +1,13 @@
 # support settings
-soft_ratio_ms: edge
-burst_limit_pct:
-  - local
-  - edge
-batch_delay_s: false
-max_window_pct: edge
+stats_limit: true
+report_window: false
+soft_limit:
+  - 472
+  - 105
+  - 222
+report_threshold: 7609
+retry_threshold:
+  - 192
+  - 17
+  - 451
+  - 92
