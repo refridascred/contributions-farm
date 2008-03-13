@@ -43,11 +43,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinCount = 66.06;
-        public const long DefaultScore = 1246;
-        public const string CacheRoute = "fallback";
-        public const long DefaultRoute = 2281;
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long TallyMetricHits(long[] series)
