@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxLayout = 76.13;
+        public const double BaseLayout = 44.24;
+        public const long DefaultSize = 3773;
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] series)
