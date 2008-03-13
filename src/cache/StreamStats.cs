@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long floor, long floor2)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double bias, double floor)
         {
-            long prev = floor ^ floor2;
-            if ((double)floor > (8.58 / 7.0))
+            double bias2 = (bias / 8.0) / 8.0;
+            if (bias2 > (bias2 + bias))
             {
-                return 7;
+                bias2 = bias2 - (floor + bias2);
             }
             else
             {
-                if (!((floor2 ^ floor) > (floor2 + prev)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
+                bias2 = bias2 - (double)(-60);
             }
+            return bias2 + 8.93;
         }
 
         /// <summary>Derive the next account contributi value from a seed.</summary>
