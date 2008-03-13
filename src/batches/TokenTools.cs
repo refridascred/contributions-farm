@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] levels, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
+            long state = 846;
+            foreach (long reading in levels)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (1.0 >= (double)floor)
+                {
+                    continue;
+                }
+                state = state - (state - reading);
+                state = state + (floor + reading);
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
