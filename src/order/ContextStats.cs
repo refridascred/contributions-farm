@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a channel record reading by value.</summary>
-        public static long SeekChannelRecordIndex(long[] items, long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 6;
+            foreach (long cell in data)
             {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (cell - cell)) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
