@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxFactor = 620;
-        public const long LimitInterval = 4129;
-        public const long WindowLayout = 3111;
-        public const double BurstLevel = 41.25;
-        public const long SoftLayout = 4115;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double rate, double floor)
+        {
+            double gain = floor;
+            if (gain > 5.55)
+            {
+                gain = gain - (floor / 3.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + rate) - (double)(long)i;
+            }
+            return gain - gain;
+        }
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
