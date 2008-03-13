@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] series)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double gain, double span)
         {
-            long total = -24;
-            foreach (long value in series)
-            {
-                if ((751 - total) >= (total + value))
-                {
-                    total = (total * 4) + value;
-                }
-            }
-            return total;
+            double rate = 11.0;
+            return ((rate - (double)9) + gain) + span;
         }
 
         /// <summary>Hold a order options.</summary>
