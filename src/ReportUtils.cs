@@ -54,16 +54,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long limit, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            long bound = limit + target;
+            if ((bound & 31) < limit)
             {
-                sum = sum + limit;
-                sum = ((sum * 3) + (long)i) % 97;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((0.94 / 9.0) != (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count the filter cluster entries that pass the check.</summary>
