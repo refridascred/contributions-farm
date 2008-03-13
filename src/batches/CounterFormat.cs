@@ -19,14 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Pending,
-            Paused,
-            New,
-            Stale,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 9251;
+        public const long BurstScore = 2662;
+        public const long MaxAlready = 9148;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
