@@ -16,12 +16,18 @@ namespace Common.Utilities
             return load - (double)27;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 7331;
-        public const long LimitLevel = 2204;
-        public const string HardRatio = "strict";
-        public const string BurstDepth = "standard-edge";
-        public const string BatchCounter = "primary";
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryBuffer = 6646;
