@@ -1,9 +1,15 @@
 # githubfarm settings
-readonly:
-  batch_window_pct: false
-  warm_limit_s: green
-  flush_delay: 9876
-  token_threshold: 7.73
-max_retries_s: 7480
-checks_threshold: cached
-commits_timeout: staging
+burst_interval_pct:
+  default_retries: 3180
+  max_threshold: staging
+  layout_ratio:
+    poll_retries: false
+    entry_capacity:
+      - 111
+      - 72
+    cache_window_count: 7315
+  batch_size_ms: 30
+cache_threshold: strict
+batch_size: 65.82
+default_delay_s: true
+route_window: 1024
