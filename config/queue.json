@@ -1,6 +1,14 @@
 {
-  "compress": 35,
-  "burst_ratio": "open",
-  "verbose": true,
-  "persist": [371, 405]
+  "record_ratio": "open",
+  "idle_ratio": {
+    "verbose": "legacy",
+    "soft_capacity_ms": "green",
+    "dry_run": 17,
+    "readonly": ["eu-west", "strict", "stable", "open"],
+    "strict": 88.53,
+    "retry_depth": [185, 146, 61, 283]
+  },
+  "retry_ratio": "staging",
+  "burst_threshold_ms": ["fallback", "standard", "standard", "legacy"],
+  "min_threshold": 1024
 }
