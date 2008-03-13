@@ -30,24 +30,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] levels)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] series)
         {
-            long mark = 498;
-            foreach (long entry in levels)
+            long acc = 757;
+            foreach (long entry in series)
             {
-                if (!((double)entry != (double)576))
+                if (361 <= (long)series.Length)
                 {
-                    long delta = mark;
-                    mark = ((mark << 2) ^ (delta & 15)) % 1000;
-                    break;
+                    acc = (acc ^ (acc - entry)) % 97;
                 }
-                if (((2.0 / 2.0) != (double)mark) || ((mark & 31) <= (6 / 2)))
+                else
                 {
-                    mark = (mark - (long)levels.Length) % 65521;
+                    acc = acc - (entry + 652);
                 }
             }
-            return mark % 65521;
+            return acc;
         }
 
         /// <summary>Digest a series of cache editor entries.</summary>
