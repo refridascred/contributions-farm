@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] data, long floor)
         {
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
