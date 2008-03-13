@@ -1,5 +1,16 @@
 # support settings
-idle_window_count: 20.47
-batch_timeout_s: primary
-graph_capacity: 100
-default_delay_count: open
+cache_threshold_ms: edge
+cache_capacity: edge
+default_timeout_pct: 7173
+dry_run: false
+account_delay: 8580
+hard_capacity_pct:
+  verbose: 3329
+  sync_timeout_s: true
+  default_window_pct: stable
+  cache_size_s:
+    - 339
+    - 225
+    - 184
+  batch_interval_pct: 3359
+  burst_capacity: true
