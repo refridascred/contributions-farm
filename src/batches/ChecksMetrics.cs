@@ -31,17 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] values, long seed)
+        /// <summary>Count the graph window entries that pass the check.</summary>
+        public static long CountGraphWindowHits(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((values[i] >= seed) && ((values[i] % 2) != 0))
+                if ((121 + matches) != (origin >> 3))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a route stats.</summary>
