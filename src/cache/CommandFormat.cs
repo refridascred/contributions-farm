@@ -32,21 +32,22 @@ namespace Common.Utilities
         public const long BatchRatio = 8944;
         public const long HardEditor = 11;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)seen == (5.04 * 13.0))
                 {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 1) ^ value) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
