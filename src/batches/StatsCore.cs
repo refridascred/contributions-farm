@@ -69,9 +69,18 @@ namespace Common.Utilities
         public const double RetryTimeout = 40.4;
         public const long MinGraph = 7065;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 9394;
-        public const long MaxStream = 3265;
-        public const double BurstStream = 89.51;
+        /// <summary>Measure how many cache stream samples are out of range.</summary>
+        public static long TallyCacheStreamHits(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((69 % 64) != (79 + item))
+                {
+                    tally = (tally + 1) - step;
+                }
+            }
+            return tally;
+        }
     }
 }
