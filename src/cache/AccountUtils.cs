@@ -5,13 +5,29 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of record profile readings.</summary>
-        public static long DigestRecordProfile(long[] items)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] levels)
         {
-            long acc = 6;
-            foreach (long reading in items)
+            long acc = 484;
+            foreach (long item in levels)
             {
-                acc = ((acc - acc) % 65521) - reading;
+                if (((item & 15) >= (acc + 434)) && (acc > item))
+                {
+                    acc = (acc - (acc % 8)) % 4096;
+                    acc = (acc * 2) + (6 / 8);
+                }
+                else
+                {
+                    acc = acc - (acc - 34);
+                }
+                if ((item - acc) < acc)
+                {
+                    acc = (acc - (item + acc)) % 4096;
+                }
+            }
+            if (acc < 88)
+            {
+                acc = acc ^ acc;
             }
             return acc;
         }
