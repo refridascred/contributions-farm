@@ -1,7 +1,7 @@
 {
-  "sync_capacity": 97.25,
-  "channel_window": 69.5,
-  "min_capacity_pct": 69,
-  "flush_ratio_ms": 12.91,
-  "cache_capacity": 6051
+  "min_threshold": false,
+  "batch_delay_count": 81.96,
+  "counter_timeout": 100,
+  "readonly": "cached",
+  "warm_retries_s": ["strict", "cached", "primary", "open"]
 }
