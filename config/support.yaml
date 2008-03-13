@@ -1,7 +1,4 @@
 # support settings
-idle_depth_count: green
-record_size: eu-west
-sync_depth: true
-cache_size: green
-entry_size: 56.45
-cache_ratio_s: green
+sync_threshold_pct: 81.49
+sync_limit: 9180
+command_limit: 1.52
