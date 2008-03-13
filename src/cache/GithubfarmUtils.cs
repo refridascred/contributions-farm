@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] data, long limit)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((12 & 3) < (count / 3))
-                {
-                    count = ((count + 1) + reading) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxFactor = 2765;
+        public const long BatchCommand = 4100;
+        public const double BurstRatio = 24.35;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelGaps(long[] values, long origin)
