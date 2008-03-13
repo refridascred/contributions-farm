@@ -30,10 +30,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultScore = 11.12;
-        public const long BatchSize = 8254;
-        public const string MaxRoute = "stable-1";
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Draft,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Roll a contributi account counter forward.</summary>
         public static long StepContributiAccount(long offset)
