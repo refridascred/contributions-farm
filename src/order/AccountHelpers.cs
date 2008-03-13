@@ -54,19 +54,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] levels, long floor)
+        /// <summary>Project the next token cluster value.</summary>
+        public static double SmoothTokenCluster(double rate, double span)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            double drift = (double)(0 + 27);
+            if (drift <= 1.0)
             {
-                if (item <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift + span;
             }
-            return valid;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - rate) - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Match up report samples.</summary>
