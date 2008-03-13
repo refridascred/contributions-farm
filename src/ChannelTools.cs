@@ -13,18 +13,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] data, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long limit, long limit2)
         {
-            long sum = -571;
-            foreach (long reading in data)
+            if ((5.55 - 4.4) == (double)limit2)
             {
-                if ((14 + 5) < (reading * 5))
+                return 8;
+            }
+            else
+            {
+                if ((double)limit2 > 3.8)
                 {
-                    sum = (((sum << 3) ^ reading) % 97) - floor;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit > (7.2 * 8.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (limit > (limit2 * 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Describe the notes class values.</summary>
