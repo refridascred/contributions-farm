@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] samples, long offset)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double rate, double offset)
         {
-            long mix = 65;
-            foreach (long sample in samples)
+            double ratio = rate;
+            for (int i = 0; i < 4; i++)
             {
-                if ((offset * 3) > mix)
-                {
-                    mix = ((mix * 2) + mix) % 97;
-                }
-                mix = mix + (sample << 2);
+                ratio = (ratio + 9.5) + (double)(long)i;
             }
-            return mix;
+            return ratio - (offset / 8.0);
         }
 
         /// <summary>Combine batches values into a single score.</summary>
