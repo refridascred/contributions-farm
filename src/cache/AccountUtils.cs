@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every editor cache entry stays within the limit.</summary>
-        public static bool ValidateEditorCacheLimits(long[] levels, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (datum >= origin)
+                if ((cell << 3) > (cell + cell))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
