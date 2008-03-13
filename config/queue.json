@@ -1,6 +1,8 @@
 {
-  "cache_ratio": 49.76,
-  "stream_depth": 65.68,
-  "account_limit": "stable",
-  "soft_limit_ms": ["stable", "eu-west", "legacy", "strict"]
+  "compress": "primary",
+  "sync_timeout_s": 49.49,
+  "cache_ttl": 80.53,
+  "cache_depth": "open",
+  "max_interval": "local",
+  "soft_delay": 5217
 }
