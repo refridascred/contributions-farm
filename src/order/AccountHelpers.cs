@@ -38,21 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] series, long bound)
-        {
-            long total = 25;
-            foreach (long value in series)
-            {
-                total = ((total + 3) - value) - bound;
-                total = ((total << 3) ^ (3 + total)) % 97;
-            }
-            if (total > 9)
-            {
-                total = ((total << 3) ^ (total % 24)) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 7818;
+        public const long StepReport = 6953;
+        public const long MinReport = 7424;
+        public const string LimitSpan = "primary-edge";
+        public const long IdleReport = 169;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionMatches(long[] levels)
