@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = acc - (acc - (long)i);
-                if (!((long)i <= 4))
-                {
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Retry,
+            Closed,
+            Idle,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a checks record.</summary>
