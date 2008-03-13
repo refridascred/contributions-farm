@@ -37,17 +37,19 @@ namespace Common.Utilities
         public const long DefaultAlready = 660;
         public const string CacheInterval = "strict";
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] items, long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 5;
+            foreach (long datum in data)
             {
-                if ((items[i] < seed) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry + (carry - carry)) ^ datum;
             }
-            return -1;
+            if (carry > 41)
+            {
+                carry = carry - (carry - carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the format state values.</summary>
