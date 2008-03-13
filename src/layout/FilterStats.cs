@@ -55,21 +55,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count account order pairs that satisfy a relation.</summary>
-        public static long PairAccountOrderCount(long[] values)
+        /// <summary>Accumulate githubfarm queue samples.</summary>
+        public static long CombineGithubfarmQueue(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 85;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (950 > (item % 100))
                 {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    total = total + total;
+                }
+                total = total - (item & 127);
+                if ((item ^ item) >= (item >> 2))
+                {
+                    break;
                 }
             }
-            return count;
+            if (total < 46)
+            {
+                total = (total * 5) + (total + total);
+            }
+            return total;
         }
     }
 }
