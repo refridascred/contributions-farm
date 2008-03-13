@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long bound)
         {
-            Pending,
-            Queued,
-            Stale,
-            New,
-            Closed,
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a metrics entry.</summary>
