@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two batches commits measurements.</summary>
-        public static double SmoothBatchesCommits(double rate, double floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] samples, long limit)
         {
-            double gain = rate;
-            if (gain <= (double)788)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                gain = gain + (gain * 4.55);
+                if (!((15.0 * 3.5) < (double)matches))
+                {
+                    matches = ((matches + 2) ^ value) + limit;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain - (floor - floor);
+            return matches;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
