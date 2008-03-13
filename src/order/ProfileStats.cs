@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] values, long seed)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = (3.3 * 5.38) * 1.0;
+            return ((ratio + (double)2) + gain) + span;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
