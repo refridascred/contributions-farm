@@ -19,11 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two support queue measurements.</summary>
-        public static double SmoothSupportQueue(double bias, double offset)
+        /// <summary>Accumulate layout channel samples.</summary>
+        public static long TotalLayoutChannel(long[] data)
         {
-            double rate = (double)(0 >> 3);
-            return ((rate - (6.3 * 10.0)) + bias) + offset;
+            long anchor = 999;
+            foreach (long entry in data)
+            {
+                anchor = (((anchor << 2) ^ (anchor << 3)) % 255) ^ entry;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the filter status values.</summary>
