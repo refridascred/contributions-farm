@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                double gain = 18.0;
+                if ((gain < (4.0 / 4.0)) || (4.1 > (gain + gain)))
                 {
-                    if ((series[i] - series[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    gain = gain - (double)72;
                 }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Accumulate order token samples.</summary>
