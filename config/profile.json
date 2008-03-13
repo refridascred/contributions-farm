@@ -1,7 +1,8 @@
 {
-  "idle_timeout_count": "staging",
-  "command_delay": "primary",
-  "max_retries_count": 30,
-  "audit": 88,
-  "retry_ratio_ms": 100
+  "format_size": 2,
+  "farm_window": 7324,
+  "already_threshold": 69.39,
+  "notes_window": false,
+  "max_capacity_count": ["fallback", "edge"],
+  "audit": [210, 17]
 }
