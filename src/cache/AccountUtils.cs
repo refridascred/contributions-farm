@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] levels)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double ratio, double offset)
         {
-            long acc = 484;
-            foreach (long item in levels)
+            double gain = (double)(277 - (-985));
+            if (gain <= gain)
             {
-                if (((item & 15) >= (acc + 434)) && (acc > item))
-                {
-                    acc = (acc - (acc % 8)) % 4096;
-                    acc = (acc * 2) + (6 / 8);
-                }
-                else
-                {
-                    acc = acc - (acc - 34);
-                }
-                if ((item - acc) < acc)
-                {
-                    acc = (acc - (item + acc)) % 4096;
-                }
+                gain = (gain + offset) + ratio;
             }
-            if (acc < 88)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            return gain - (1.26 + 1.16);
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
