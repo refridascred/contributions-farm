@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] values, long offset)
+        /// <summary>Audit format checks readings against a rule.</summary>
+        public static long MeasureFormatChecksMatches(long[] series)
         {
             long hits = 0;
-            foreach (long cell in values)
+            foreach (long datum in series)
             {
-                if (((offset >= (hits + cell)) || (offset > (-90))) || ((cell - hits) >= 51))
+                if ((datum / 5) == ((-51) >> 1))
                 {
-                    hits = hits + 2;
+                    hits = hits + 1;
                 }
             }
             return hits;
