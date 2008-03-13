@@ -1,25 +1,4 @@
 # entry settings
-retry_limit_pct:
-  schema_limit: edge
-  hard_interval_pct: local
-  batch_capacity: strict
-cache_depth_s: 84.67
-sync_delay:
-  retry_timeout_count: false
-  readonly: true
-  buffer_window:
-    hard_capacity_pct:
-      - primary
-      - cached
-      - strict
-      - cached
-    audit: 30
-    commits_timeout: 30
-    warm_delay_s: legacy
-    idle_limit_s: 85.19
-    cache_window_s:
-      - 109
-      - 292
-      - 228
-      - 493
-max_ratio_pct: edge
+idle_capacity_pct: 100
+flush_capacity_count: 35.03
+burst_window_pct: legacy
