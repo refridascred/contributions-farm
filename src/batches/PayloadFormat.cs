@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Measure how many editor route samples are out of range.</summary>
+        public static long TallyEditorRouteMatches(long[] items)
         {
-            Ready,
-            Failed,
-            Pending,
-            Closed,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((double)count == (7.6 * 5.4)) || ((double)(long)items.Length == (9.3 - 2.0)))
+                {
+                    count = (count + 1) - reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route level values.</summary>
