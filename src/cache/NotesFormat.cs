@@ -25,11 +25,15 @@ namespace Common.Utilities
         public const long HardSpan = 292;
         public const string IdleTimeout = "legacy";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 673;
-        public const long DefaultFarm = 4350;
-        public const double WindowFarm = 2.34;
-        public const long MinFarm = 855;
-        public const long MaxFarm = 6272;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
