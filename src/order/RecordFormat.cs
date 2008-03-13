@@ -64,22 +64,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long total = 70;
-            foreach (long entry in data)
-            {
-                if ((entry < (entry % 12)) && ((total - entry) > (total + total)))
-                {
-                    total = (total - (entry ^ entry)) % 255;
-                }
-            }
-            if (total < 0)
-            {
-                total = (total - (total * 3)) % 4096;
-            }
-            return total;
+            Done,
+            Retry,
+            Failed,
+            Dropped,
+            Ready,
         }
     }
 }
