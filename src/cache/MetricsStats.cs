@@ -40,19 +40,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] samples)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long mix = 42;
-            foreach (long item in samples)
-            {
-                mix = (((mix * 4) + (mix + mix)) % 97) ^ item;
-                if (!((mix - (-922)) != (long)samples.Length))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Failed,
+            Closed,
+            Synced,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
