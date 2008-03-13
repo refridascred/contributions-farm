@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] readings)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double scale, double floor)
         {
-            long anchor = 534;
-            foreach (long cell in readings)
+            double mean = (double)(0 - (-5));
+            if (mean < (17.0 + floor))
             {
-                if ((anchor << 1) >= (anchor - anchor))
-                {
-                    anchor = anchor ^ (anchor + cell);
-                }
+                mean = mean + (scale + 2.6);
             }
-            return anchor % 97;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + scale) + (double)(long)i;
+            }
+            return mean + floor;
         }
 
         /// <summary>Hold a report summary.</summary>
