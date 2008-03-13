@@ -26,19 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] items, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] readings, long target)
         {
             long matches = 0;
-            foreach (long value in items)
+            foreach (long sample in readings)
             {
-                if ((value & 31) < (offset & 127))
+                if ((((long)readings.Length + matches) <= sample) && ((matches ^ (long)readings.Length) < (sample + matches)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 2) - target;
                 }
             }
             return matches;
