@@ -34,18 +34,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] items)
+        /// <summary>Look up the position of a queue stream sample.</summary>
+        public static long LocateQueueStreamIndex(long[] levels, long limit)
         {
-            long score = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (score >= (score - value))
+                if (levels[i] <= limit)
                 {
-                    score = ((score * 3) + (score - 341)) % 101;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
