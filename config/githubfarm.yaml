@@ -1,29 +1,13 @@
 # githubfarm settings
-warm_ratio:
-  flush_ttl:
-    command_interval: 12.66
-    batch_interval_count: true
-    context_timeout: 3134
-  sync_limit_count: 100
-  context_ratio: true
-base_window_ms: 25.96
-soft_limit: green
-base_window:
-  metrics_threshold: false
-  hard_retries_pct:
-    - latest
-    - latest
-    - green
-  flush_delay_pct: false
-  counter_retries:
-    burst_threshold_ms: standard
-    metric_delay: false
-    dry_run: true
-    burst_depth_s: stable
-    metric_timeout:
-      - 254
-      - 167
-      - 66
-    batch_threshold_ms: 65
-  min_delay_s: eu-west
-sync_size_ms: 807
+batch_capacity:
+  - standard
+  - cached
+sync_size_count:
+  - 98
+  - 166
+  - 330
+  - 337
+verbose:
+  - 37
+  - 221
+buffer_ttl: green
