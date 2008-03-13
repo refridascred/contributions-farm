@@ -53,13 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] series)
         {
-            Draft,
-            Queued,
-            Synced,
-            Pending,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (((7.56 + 17.0) >= (double)value) || ((double)value < (2.82 + 3.9)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next record value.</summary>
