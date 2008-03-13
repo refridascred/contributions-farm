@@ -41,25 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long target, long seed)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double bias, double floor)
         {
-            long span = target ^ seed;
-            if (seed < (target >> 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((66 - span) < (target & 255))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double gain = (double)(520 + (-996));
+            return ((gain + gain) + bias) + floor;
         }
 
         /// <summary>Match up window contributi samples.</summary>
