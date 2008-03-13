@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Measure how many graph stream samples are out of range.</summary>
+        public static long CountGraphStreamHits(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((reading >> 4) > (reading << 3)) || ((seen + (long)levels.Length) == (seen + seen)))
                 {
-                    if ((series[i] ^ series[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
