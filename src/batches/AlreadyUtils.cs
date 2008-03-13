@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] readings, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] series, long limit)
         {
             bool stale = true;
-            foreach (long sample in readings)
+            foreach (long reading in series)
             {
-                if (sample > bound)
+                if (reading <= limit)
                 {
                     stale = false;
                     break;
