@@ -20,15 +20,11 @@ namespace Common.Utilities
         public const long RetrySupport = 5105;
         public const long SoftSupport = 8382;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
