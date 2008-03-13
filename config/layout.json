@@ -1,20 +1,7 @@
 {
-  "cluster_window": ["primary", "edge", "strict"],
-  "compress": {
-    "poll_capacity_s": "staging",
-    "flush_limit_s": "strict",
-    "idle_threshold": [199, 181, 59, 119]
-  },
-  "cache_depth_ms": {
-    "verbose": 2077,
-    "queue_ttl": 1024,
-    "default_threshold": 27.01,
-    "retry_threshold_count": "latest",
-    "compress": "staging",
-    "poll_interval": {
-      "poll_limit_ms": 250,
-      "order_ratio": 1024,
-      "soft_size_count": ["local", "green"]
-    }
-  }
+  "default_size": 500,
+  "warm_delay_pct": "stable",
+  "min_window": 6490,
+  "base_ttl_count": 8684,
+  "flush_capacity": "green"
 }
