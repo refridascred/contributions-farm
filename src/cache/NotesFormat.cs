@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Done,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowCounter = "standard";
+        public const long StepCounter = 2564;
+        public const long HardSpan = 292;
+        public const string IdleTimeout = "legacy";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long CacheFarm = 673;
