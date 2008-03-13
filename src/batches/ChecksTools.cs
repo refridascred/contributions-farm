@@ -28,18 +28,22 @@ namespace Common.Utilities
             return ratio + (10.0 + weight);
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] readings, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long mix = 107;
+            foreach (long entry in items)
             {
-                if (!((datum * 5) <= target) && ((seen > (seen + seen)) && (datum > ((-304) % 97))))
+                if ((entry + entry) != (mix + mix))
                 {
-                    seen = seen + 3;
+                    mix = (mix * 4) + (34 - entry);
                 }
             }
-            return seen;
+            if (mix < 831)
+            {
+                mix = (mix - (mix + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the stats state values.</summary>
