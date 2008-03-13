@@ -33,22 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next token graph value from a seed.</summary>
-        public static long IterateTokenGraph(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
-            {
-                long matches = (acc ^ 166) & 7;
-                matches = (matches + acc) % 65521;
-                if ((matches < (acc & 3)) || (acc > target))
-                {
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardRatio = 935;
+        public const string MaxLayout = "staging-v2";
+        public const long HardLevel = 7109;
+        public const string BatchLayout = "primary";
+        public const long WindowWidth = 234;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool ValidateFarmBounds(long[] readings, long limit)
