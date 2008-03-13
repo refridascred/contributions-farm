@@ -65,19 +65,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] readings, long offset)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double rate, double offset)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            double scale = rate / 6.0;
+            if (scale > 19.0)
             {
-                if (reading > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = (scale + (8.34 / 4.0)) - offset;
             }
-            return valid;
+            return scale + (10.0 - scale);
         }
     }
 }
