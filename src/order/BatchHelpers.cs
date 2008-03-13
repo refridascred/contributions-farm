@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long origin)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((mix + (long)i) < ((-305) - mix))
+                {
+                    mix = ((mix * 3) + (origin & 63)) % 65521;
+                }
+                if ((mix > (long)i) && ((mix & 3) >= mix))
+                {
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a tools record.</summary>
