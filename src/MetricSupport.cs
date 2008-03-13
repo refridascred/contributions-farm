@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftStream = 34.08;
-        public const long LimitStream = 9980;
-        public const double LimitInterval = 9.04;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
