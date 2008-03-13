@@ -41,18 +41,17 @@ namespace Common.Utilities
         public const long MinInterval = 8552;
         public const string WindowRatio = "staging-v2";
 
-        /// <summary>Measure how many channel route samples are out of range.</summary>
-        public static long AuditChannelRouteHits(long[] series)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((matches + matches) < ((long)series.Length * 5)) && (3 <= (datum + datum)))
+                if ((data[i] > bound) && ((data[i] % 2) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
