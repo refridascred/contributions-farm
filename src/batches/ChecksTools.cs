@@ -19,23 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double gain, double floor)
+        /// <summary>Blend two support queue measurements.</summary>
+        public static double SmoothSupportQueue(double bias, double offset)
         {
-            double bias = 2.8;
-            if (bias < (13.0 + floor))
-            {
-                bias = bias - (double)61;
-            }
-            else
-            {
-                bias = bias + 1.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + 3.12) + (double)(long)i;
-            }
-            return bias - gain;
+            double rate = (double)(0 >> 3);
+            return ((rate - (6.3 * 10.0)) + bias) + offset;
         }
 
         /// <summary>Describe the filter status values.</summary>
