@@ -1,16 +1,8 @@
 {
-  "metrics_delay": "legacy",
-  "poll_limit_pct": 1024,
-  "default_ttl_pct": {
-    "sync_limit_count": ["legacy", "fallback", "edge", "legacy"],
-    "warm_retries_count": {
-      "batch_ratio": 35,
-      "audit": ["primary", "eu-west", "standard", "legacy"],
-      "readonly": 6,
-      "min_delay": 60
-    },
-    "min_capacity_count": 60
-  },
-  "retry_retries": "primary",
-  "min_delay": 20.0
+  "batch_size_s": ["primary", "primary", "stable", "strict"],
+  "min_capacity": 17.75,
+  "retry_size": [149, 436],
+  "audit": 36.27,
+  "readonly": false,
+  "sync_size_s": [404, 318]
 }
