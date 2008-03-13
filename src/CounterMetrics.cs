@@ -30,18 +30,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many route order samples are out of range.</summary>
-        public static long AuditRouteOrderGaps(long[] levels, long bound)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double scale = 7.0;
+            if (scale < (double)9)
             {
-                if ((bound & 31) <= (638 - bound))
-                {
-                    tally = (tally + 1) + datum;
-                }
+                scale = (scale + (scale - bias)) - gain;
             }
-            return tally;
+            else
+            {
+                scale = scale + (scale / 6.0);
+            }
+            return scale - scale;
         }
 
         /// <summary>Describe the counter kind values.</summary>
