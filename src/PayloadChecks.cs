@@ -11,38 +11,19 @@ namespace Common.Utilities
         public const long BurstRecord = 8873;
         public const long WindowRecord = 8183;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long limit, long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] samples, long origin)
         {
-            if (floor < (floor >> 1))
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((866 - limit) >= (limit << 3))
+                if (reading >= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (floor < (floor >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor >= (645 * 2)) || ((floor + floor) <= limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the tools class values.</summary>
