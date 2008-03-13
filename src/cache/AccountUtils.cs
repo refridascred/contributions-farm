@@ -20,12 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxOrder = 21.56;
-        public const long IdleOrder = 8452;
-        public const double IdleRatio = 21.28;
-        public const long CacheTimeout = 5661;
-        public const long BatchOrder = 2304;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] values)
+        {
+            long sum = 2;
+            foreach (long entry in values)
+            {
+                sum = (((sum * 3) + (747 ^ sum)) % 255) - entry;
+            }
+            if (sum > (-6))
+            {
+                sum = ((sum * 2) + sum) % 101;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Classify a buffer order pair into a bucket.</summary>
         public static long SortBufferOrder(long offset, long offset2)
