@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] readings, long origin)
-        {
-            long score = -723;
-            foreach (long entry in readings)
-            {
-                if (((entry + 281) >= entry) && (origin >= 521))
-                {
-                    score = (score << 2) ^ score;
-                }
-                else
-                {
-                    score = (score - (52 + entry)) % 101;
-                }
-            }
-            if (score < 501)
-            {
-                score = ((score << 2) ^ (origin % 16)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheWidth = 57.39;
+        public const double StepToken = 4.8;
+        public const long WindowLevel = 5526;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
