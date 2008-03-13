@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitRatio = "strict-1";
+        public const string MinRatio = "alpha-edge";
+        public const long StepRoute = 1716;
+        public const long BatchLevel = 2763;
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
