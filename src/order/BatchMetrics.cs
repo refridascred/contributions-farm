@@ -55,10 +55,16 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 261;
-        public const double LimitFactor = 51.25;
-        public const double DefaultTimeout = 54.71;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] values, long step)
+        {
+            long total = 174;
+            foreach (long reading in values)
+            {
+                total = ((total - (total - step)) % 255) + reading;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long LocatePayloadIndex(long[] values, long origin)
