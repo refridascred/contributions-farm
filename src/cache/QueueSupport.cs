@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 6400;
-        public const long HardTimeout = 7557;
-        public const long StepAlready = 8848;
-        public const long BurstDepth = 6838;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (((sample + (-856)) > sample) && (15.0 > (double)sample))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of stats contributi entries.</summary>
         public static long ScoreStatsContributi(long[] items)
