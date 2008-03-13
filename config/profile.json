@@ -1,6 +1,5 @@
 {
-  "verbose": false,
-  "hard_depth_s": 94.02,
-  "max_ttl_ms": [451, 319],
-  "base_ratio": true
+  "sync_timeout": 4.73,
+  "readonly": false,
+  "contributi_window": "stable"
 }
