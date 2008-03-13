@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a batch schema counter forward.</summary>
-        public static long RollBatchSchema(long seed)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the metrics tools series from a seed.</summary>
