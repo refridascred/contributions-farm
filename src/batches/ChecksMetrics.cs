@@ -60,11 +60,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetrySpan = 7633;
-        public const long CacheBudget = 8990;
-        public const long IdleAlready = 2431;
-        public const long MinAlready = 1024;
-        public const string BurstRatio = "standard-v2";
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= seed) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
