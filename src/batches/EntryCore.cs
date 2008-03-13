@@ -15,19 +15,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] levels, long limit)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Idle,
+            Pending,
+            Synced,
+            Queued,
         }
 
         /// <summary>Look up the position of a account sample.</summary>
