@@ -31,13 +31,39 @@ namespace Common.Utilities
         public const long StepRoute = 1716;
         public const long BatchLevel = 2763;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long limit, long limit2)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
+            long edge = limit ^ limit2;
+            if ((limit << 3) >= (edge << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (limit < (limit + 260))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (972 >= (limit << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((edge + limit2) > edge)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
