@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate channel report readings against a bound.</summary>
-        public static bool VerifyChannelReportLimits(long[] samples, long limit)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] readings)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long total = 429;
+            foreach (long item in readings)
             {
-                if (value <= limit)
+                total = (total << 3) ^ (item ^ item);
+                if (((double)total != (0.4 / 8.0)) || ((item * 5) <= (item + item)))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return total % 1000;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
