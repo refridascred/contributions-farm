@@ -31,15 +31,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] items, long step)
+        /// <summary>Audit token support readings against a rule.</summary>
+        public static long MeasureTokenSupportHits(long[] samples, long floor)
         {
-            long score = 30;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                score = (score ^ item) + step;
+                if ((count >> 1) < sample)
+                {
+                    count = (count + 1) - floor;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
