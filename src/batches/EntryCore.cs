@@ -16,24 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a notes queue pair into a bucket.</summary>
-        public static long ClassifyNotesQueue(long bound, long target)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            if ((bound ^ bound) >= (bound * 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound % 60) == (4 >> 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
