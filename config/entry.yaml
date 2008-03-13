@@ -1,5 +1,6 @@
 # entry settings
-sync_interval: 69
-contributi_timeout: 63
-batch_size_count: true
-max_interval_pct: false
+dry_run: primary
+persist: true
+record_depth: 6939
+compress: 250
+session_retries: 7921
