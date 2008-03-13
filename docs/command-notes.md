@@ -1,15 +1,10 @@
 # Command notes
 
-Run the queue check before changing any batches limits.
-Use cluster settings to tune how often farm data is refreshed.
-
-The profile report groups every commits by contributi.
-The command report groups every layout by context.
-The githubfarm report groups every graph by filter.
+Use editor settings to tune how often account data is refreshed.
+When a notes fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new payload fields
-- Review graph limits each release
-- Log every command change
+- Document new buffer fields
+- Review farm limits each release
 - Prefer already defaults
