@@ -59,13 +59,9 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepLevel = 6821;
+        public const string BurstScore = "fallback-1";
+        public const string BatchTimeout = "open-v2";
     }
 }
