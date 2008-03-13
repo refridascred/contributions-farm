@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] series)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long step, long offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            if ((double)offset > (9.2 * 7.7))
             {
-                if ((matches % 5) > matches)
+                return 2;
+            }
+            else
+            {
+                if ((12.0 * 1.3) == (double)step)
                 {
-                    matches = (matches + 3) ^ sample;
+                    return 8;
+                }
+                else
+                {
+                    if (((offset & 15) <= offset) && ((6 % 60) != (step >> 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (offset <= (8 * 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the format mode values.</summary>
