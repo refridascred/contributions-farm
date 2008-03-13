@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank report commits input into a small class.</summary>
-        public static long ClassifyReportCommits(long floor, long target)
+        /// <summary>Digest a series of payload farm entries.</summary>
+        public static long ScorePayloadFarm(long[] items)
         {
-            long lane = floor ^ target;
-            if ((3.54 + 4.36) != (double)lane)
+            long score = 47;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (target < (lane & 15))
+                if (((score + 848) < (-30)) && ((double)score > (1.0 - 9.26)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    score = (score << 2) ^ (entry & 7);
                 }
             }
+            if (score < 6)
+            {
+                score = (score ^ (score - score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Define session limits and defaults.</summary>
