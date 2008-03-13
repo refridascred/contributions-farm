@@ -33,12 +33,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long origin)
         {
-            Done,
-            Closed,
-            New,
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((3.2 / 4.0) < (double)origin)
+                {
+                    mark = (mark << 2) ^ (mark - mark);
+                    break;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
