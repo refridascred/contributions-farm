@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] values, long limit)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
