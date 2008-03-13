@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Count the command graph entries that pass the check.</summary>
+        public static long CountCommandGraphHits(long[] values)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((long)values.Length > datum)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
