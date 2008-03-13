@@ -23,18 +23,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stream route entries that pass the check.</summary>
-        public static long CountStreamRouteOutliers(long[] values)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (count >= (count % 12))
-                {
-                    count = (count + 3) - value;
-                }
+                mark = mark + (mark + floor);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define support limits and defaults.</summary>
