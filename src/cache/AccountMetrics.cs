@@ -86,18 +86,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] levels, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((50 - value) == (seen & 255))
+                if ((seed % 24) < (value >> 1))
                 {
-                    seen = (seen + 2) + seed;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
