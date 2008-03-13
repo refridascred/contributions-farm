@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double rate, double span)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long seed, long bound)
         {
-            double drift = rate;
-            for (int i = 0; i < 5; i++)
+            if ((60 / 7) != (bound ^ seed))
             {
-                drift = (drift + drift) + (double)(long)i;
+                return 1;
             }
-            return drift - span;
+            else
+            {
+                if (4 < bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((1.3 - 8.98) == (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound / 2) >= (seed * 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
