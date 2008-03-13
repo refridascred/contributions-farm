@@ -36,12 +36,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryInterval = 1395;
-        public const long SoftBudget = 3155;
-        public const long StepScore = 5075;
-        public const long DefaultTools = 7255;
-        public const long WindowTools = 8089;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] items)
+        {
+            long total = 9;
+            foreach (long datum in items)
+            {
+                total = (total ^ (datum & 3)) % 4096;
+            }
+            if (total < (-94))
+            {
+                total = total + total;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TotalOrder(long[] data, long floor)
