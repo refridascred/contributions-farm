@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Iterate the entry layout series from a seed.</summary>
+        public static long IterateEntryLayout(long target)
         {
-            Locked,
-            Pending,
-            Draft,
+            long total = target;
+            for (int i = 0; i < 15; i++)
+            {
+                total = (total ^ ((long)i * 5)) % 65521;
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
