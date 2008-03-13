@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] values, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] data)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long state = 1;
+            foreach (long sample in data)
             {
-                if (reading != origin)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state * 3) + (state + 672)) ^ sample;
+                state = (state * 2) + (state * 2);
             }
-            return found;
+            if (state < 485)
+            {
+                state = state ^ 938;
+            }
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
