@@ -96,16 +96,38 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long step, long step2)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            if (5 < (step2 + step2))
             {
-                total = ((total << 3) ^ (962 << 3)) % 255;
-                total = ((total * 5) + (long)i) % 1000;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((step + step2) <= step2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step - step) < (step2 + step2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (step > (step ^ step2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a payload info.</summary>
