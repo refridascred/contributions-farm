@@ -41,15 +41,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Pending,
+            Dropped,
+            Closed,
+            Retry,
         }
     }
 }
