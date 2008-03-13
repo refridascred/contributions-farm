@@ -1,8 +1,10 @@
 # entry settings
-default_ttl_count: stable
-batch_retries_count: 58
-max_ratio:
-  enabled: true
-  retry_delay_s: 5107
-  batch_depth: true
-hard_size: 60
+cache_capacity: cached
+entry_depth: 250
+max_retries_pct: 30
+idle_retries_s: fallback
+warm_limit:
+  max_delay_s: green
+  strict: cached
+  readonly: false
+strict: blue
