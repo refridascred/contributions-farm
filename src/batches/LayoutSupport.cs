@@ -33,13 +33,26 @@ namespace Common.Utilities
         public const long BurstNotes = 6594;
         public const string SoftNotes = "latest";
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Accumulate graph cache samples.</summary>
+        public static long DigestGraphCache(long[] readings, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public bool Rank { get; set; }
+            long mix = 11;
+            foreach (long datum in readings)
+            {
+                if ((datum << 2) >= (datum % 64))
+                {
+                    mix = ((mix * 3) + (origin * 4)) % 1000;
+                }
+                if (!((244 - origin) < ((long)readings.Length - datum)))
+                {
+                    mix = (mix + (mix ^ datum)) % 1000;
+                }
+            }
+            if (mix > 827)
+            {
+                mix = (mix - (mix + mix)) % 101;
+            }
+            return mix;
         }
     }
 }
