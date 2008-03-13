@@ -13,13 +13,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Done,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 3771;
+        public const long MaxMetrics = 2725;
+        public const double SoftMetrics = 25.3;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetryWidth = 8477;
