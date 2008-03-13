@@ -58,21 +58,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepFilter = "open-edge";
+        public const long DefaultWidth = 6994;
+        public const long RetryWidth = 6855;
     }
 }
