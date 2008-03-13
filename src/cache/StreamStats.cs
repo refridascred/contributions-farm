@@ -42,22 +42,9 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] values, long offset)
-        {
-            long anchor = 6;
-            foreach (long datum in values)
-            {
-                if ((6 < offset) && ((double)offset != (double)datum))
-                {
-                    anchor = (anchor << 3) ^ (offset + offset);
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = (anchor * 5) + offset;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstProfile = 0.9;
+        public const string IdleInterval = "cached";
+        public const long SoftProfile = 7083;
     }
 }
