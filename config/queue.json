@@ -1,6 +1,6 @@
 {
-  "soft_threshold_count": ["standard", "standard"],
-  "graph_delay": 30,
-  "idle_interval_ms": ["standard", "primary", "strict"],
-  "persist": "strict"
+  "graph_timeout": [129, 414, 138],
+  "persist": ["standard", "standard", "local"],
+  "audit": [251, 144, 469],
+  "schema_timeout": 1678
 }
