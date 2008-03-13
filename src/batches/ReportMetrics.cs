@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] data, long offset)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
