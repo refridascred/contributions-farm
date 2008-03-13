@@ -37,22 +37,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate channel counter samples.</summary>
-        public static long TotalChannelCounter(long[] levels, long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] levels, long origin)
         {
-            long sum = 6;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (!((27 << 1) <= cell))
+                if (sample < (matches + origin))
                 {
-                    sum = (sum ^ sum) % 1000;
+                    matches = matches + 3;
                 }
             }
-            if (sum < (-970))
-            {
-                sum = (sum + (target - sum)) % 1000;
-            }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
