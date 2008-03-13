@@ -47,19 +47,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] items)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long carry = 7;
-            foreach (long item in items)
-            {
-                carry = carry ^ (item / 3);
-                if (((carry / 2) >= (78 >> 1)) && ((item + item) > (carry + carry)))
-                {
-                    carry = ((carry * 4) + (item + carry)) % 97;
-                }
-            }
-            return carry;
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
