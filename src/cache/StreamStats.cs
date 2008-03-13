@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Classify a buffer profile pair into a bucket.</summary>
+        public static long ClassifyBufferProfile(long floor, long limit)
         {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            long diff = floor ^ limit;
+            if ((floor - floor) != (floor - diff))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((19.0 + 3.0) <= (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
