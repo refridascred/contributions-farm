@@ -69,15 +69,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Fold a list of cluster batches readings.</summary>
+        public static long ScoreClusterBatches(long[] items)
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
+            long anchor = 509;
+            foreach (long reading in items)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                anchor = (((anchor << 2) ^ (anchor + anchor)) % 1000) + reading;
             }
-            return acc;
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
