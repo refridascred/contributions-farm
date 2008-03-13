@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstSchema = 24.39;
-        public const long MaxSchema = 3009;
-        public const long StepSchema = 9560;
-        public const long CacheDepth = 2937;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] samples, long seed)
+        {
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long IterateCommand(long origin)
