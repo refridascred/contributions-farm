@@ -28,25 +28,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long seed, long limit)
+        /// <summary>Count the window editor entries that pass the check.</summary>
+        public static long CountWindowEditorOutliers(long[] samples)
         {
-            long prev = seed + limit;
-            if (seed > (limit + prev))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((prev - 816) <= (9 + prev))
+                if ((double)755 <= (double)count)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    count = (count + 2) ^ cell;
                 }
             }
+            return count;
         }
     }
 }
