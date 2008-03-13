@@ -1,5 +1,5 @@
 {
-  "flush_size": "staging",
-  "hard_timeout": "eu-west",
-  "max_window": [215, 432, 185]
+  "soft_capacity_count": 23.65,
+  "poll_retries_count": 77,
+  "max_limit_s": false
 }
