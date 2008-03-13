@@ -30,11 +30,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitRatio = "legacy-v2";
-        public const long HardTimeout = 2498;
-        public const string WindowEditor = "legacy-v2";
-        public const long StepFactor = 8977;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Done,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MinBudget = 8603;
