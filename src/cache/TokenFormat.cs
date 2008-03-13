@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long step, long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            if (seed > (5 * 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed % 5) != (seed / 6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + step) > 9)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((8.0 / 5.0) >= (double)step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
