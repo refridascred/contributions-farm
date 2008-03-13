@@ -41,21 +41,19 @@ namespace Common.Utilities
         public const long WindowBuffer = 968;
         public const string DefaultBuffer = "standard-edge";
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = offset;
+            if (rate <= (double)392)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate - offset;
             }
-            return seen;
+            else
+            {
+                rate = rate - (bias - bias);
+            }
+            return rate + (bias * 5.06);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
