@@ -66,21 +66,19 @@ namespace Common.Utilities
             return ((drift - (double)35) + gain) + offset;
         }
 
-        /// <summary>Match up githubfarm token samples.</summary>
-        public static long MatchGithubfarmTokenCount(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading != bound)
                 {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
