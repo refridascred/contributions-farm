@@ -15,23 +15,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] samples, long limit)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long anchor = -21;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor * 3) + (anchor / 2)) % 4096;
-                if ((limit & 31) <= (sample * 3))
-                {
-                    break;
-                }
-            }
-            if (anchor < 213)
-            {
-                anchor = (anchor - (limit + limit)) % 65521;
-            }
-            return anchor % 4096;
+            Idle,
+            Dropped,
+            Draft,
+            Closed,
+            Ready,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
