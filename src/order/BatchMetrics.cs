@@ -83,21 +83,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 3062;
+        public const long HardRatio = 2878;
+        public const long BaseSize = 1385;
+        public const double StepStats = 73.26;
     }
 }
