@@ -31,12 +31,9 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 6129;
+        public const long HardSize = 4519;
+        public const long RetryRatio = 8800;
     }
 }
