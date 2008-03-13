@@ -34,9 +34,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftTimeout = 2550;
-        public const long StepCount = 297;
-        public const string SoftToken = "fallback-1";
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long floor, long origin)
+        {
+            long span = floor ^ origin;
+            if (((origin & 255) < (floor * 3)) || ((3.0 + 8.23) == (double)floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((span - span) > span) && ((double)floor < 5.06))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor != (3.6 - 0.1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (origin > (span + floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
