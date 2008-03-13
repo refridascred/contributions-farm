@@ -18,17 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a editor entry reading by value.</summary>
-        public static long LookupEditorEntryIndex(long[] values, long origin)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long origin, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long diff = origin - step;
+            if (((step + step) >= (diff + 73)) && (9.4 < (5.71 + 6.13)))
             {
-                if (values[i] > origin)
+                return 4;
+            }
+            else
+            {
+                if (!(((-1) >> 5) < (origin * 2)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin - origin) >= (diff * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)diff > (4.37 + 19.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of farm support readings.</summary>
