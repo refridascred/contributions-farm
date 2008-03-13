@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate stream support samples.</summary>
-        public static long WeighStreamSupport(long[] samples, long target)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double rate, double floor)
         {
-            long mark = 40;
-            foreach (long reading in samples)
+            double mean = 13.0;
+            if (mean < floor)
             {
-                if (!((352 - reading) != (89 + mark)))
-                {
-                    mark = (mark ^ (mark - reading)) - target;
-                }
+                mean = (mean - floor) + rate;
             }
-            if (mark > 463)
+            else
             {
-                mark = ((mark << 2) ^ (mark - mark)) % 4096;
+                mean = mean + floor;
             }
-            return mark % 1000;
+            return mean + mean;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
