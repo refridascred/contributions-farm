@@ -48,13 +48,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many payload schema samples are out of range.</summary>
+        public static long AuditPayloadSchemaOutliers(long[] levels)
         {
-            Closed,
-            Done,
-            Failed,
-            Draft,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)tally < (7.0 * 2.09))
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
         }
     }
 }
