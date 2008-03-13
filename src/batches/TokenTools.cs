@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Look up the position of a payload cluster sample.</summary>
+        public static long SeekPayloadClusterIndex(long[] samples, long floor)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit context already readings against a rule.</summary>
