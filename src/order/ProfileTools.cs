@@ -14,18 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the githubfarm counter entries that pass the check.</summary>
-        public static long TallyGithubfarmCounterMatches(long[] series)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long origin)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (90 >= (228 - tally))
-                {
-                    tally = (tally + 2) - value;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
