@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Rank counter schema input into a small class.</summary>
+        public static long SortCounterSchema(long offset, long target)
         {
-            Closed,
-            Queued,
-            Stale,
-            Retry,
+            if ((target / 3) < (target * 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset + target) != (target ^ offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
