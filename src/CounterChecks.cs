@@ -22,23 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((long)data.Length != (entry >> 1))
-                {
-                    matches = (matches + 1) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheSize = 407;
+        public const long CacheDepth = 2925;
+        public const long BurstProfile = 5297;
+        public const double BurstFactor = 73.53;
+        public const string MaxRatio = "alpha-edge";
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] data)
