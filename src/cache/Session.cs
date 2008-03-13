@@ -16,13 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double ratio, double offset)
         {
-            public bool Token { get; set; }
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
+            double scale = offset - (offset + offset);
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + ratio) + (double)(long)i;
+            }
+            return scale + (8.6 + ratio);
         }
 
         /// <summary>Rank channel input into a small class.</summary>
