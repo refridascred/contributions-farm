@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] items)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((7.4 > (17.0 / 6.0)) || ((total - total) < 4))
+                if ((count - reading) >= (count * 3))
                 {
-                    total = (total ^ (origin - origin)) % 101;
-                    continue;
+                    count = count + 2;
                 }
-                else
-                {
-                    total = (total ^ total) % 97;
-                    total = (total + total) % 97;
-                }
-                total = total ^ (65 - origin);
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
