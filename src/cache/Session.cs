@@ -20,13 +20,11 @@ namespace Common.Utilities
             return gain - (floor - floor);
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double rate, double floor)
         {
-            Synced,
-            Stale,
-            Idle,
-            Draft,
+            double rate2 = (double)(666 + 641);
+            return (rate2 - (rate - rate2)) + floor;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
