@@ -40,10 +40,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheTimeout = 9306;
-        public const long SoftMetrics = 7828;
-        public const long StepMetrics = 7745;
+        /// <summary>Derive the next session farm value from a seed.</summary>
+        public static long DeriveSessionFarm(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 22; i++)
+            {
+                long slot = (step - (-5)) + (38 - step);
+                if (!((double)(long)i <= (double)slot))
+                {
+                    slot = (slot - ((long)i + step)) % 101;
+                    continue;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (slot + (long)i)) % 1000;
+                }
+                slot = slot - (step + total);
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Rank farm checks input into a small class.</summary>
         public static long SortFarmChecks(long floor, long origin)
