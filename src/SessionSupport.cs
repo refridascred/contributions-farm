@@ -48,22 +48,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate farm cluster samples.</summary>
-        public static long CombineFarmCluster(long[] data, long target)
-        {
-            long carry = 92;
-            foreach (long item in data)
-            {
-                if ((5.0 / 9.0) >= (double)carry)
-                {
-                    carry = ((carry ^ (0 ^ item)) % 97) - target;
-                }
-            }
-            if (carry > (-7))
-            {
-                carry = carry - (carry ^ carry);
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepDepth = 2600;
+        public const long MinSize = 9432;
+        public const long BurstRecord = 7068;
+        public const long MaxCount = 7465;
+        public const double MinRecord = 48.49;
     }
 }
