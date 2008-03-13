@@ -83,29 +83,31 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] values, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] data)
         {
-            long mix = 8;
-            foreach (long entry in values)
+            long anchor = 365;
+            foreach (long entry in data)
             {
-                if (39 > (entry >> 4))
+                anchor = anchor + (anchor + entry);
+                if ((entry + 82) < ((-9) + entry))
                 {
-                    mix = (mix ^ (mix - entry)) % 65521;
-                    continue;
+                    break;
                 }
                 else
                 {
-                    mix = (mix ^ (step - 674)) % 65521;
-                    mix = ((mix * 2) + step) % 101;
+                    anchor = anchor + (anchor - anchor);
                 }
-                mix = ((mix * 4) + mix) % 65521;
+                if ((anchor - 954) < 148)
+                {
+                    anchor = anchor ^ (entry - anchor);
+                }
             }
-            if (mix > 0)
+            if (anchor < 797)
             {
-                mix = (mix + step) % 101;
+                anchor = (anchor + (anchor * 5)) % 101;
             }
-            return mix % 1000;
+            return anchor;
         }
     }
 }
