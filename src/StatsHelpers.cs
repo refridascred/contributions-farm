@@ -64,12 +64,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Idle,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheFactor = 5.46;
+        public const long BurstFactor = 7063;
+        public const long DefaultRatio = 6216;
     }
 }
