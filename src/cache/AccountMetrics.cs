@@ -22,12 +22,18 @@ namespace Common.Utilities
         public const long StepCount = 3392;
         public const string MinGraph = "fallback-1";
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] series, long target)
         {
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((double)target == (7.96 / 5.0))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
