@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the tools channel entries that pass the check.</summary>
-        public static long MeasureToolsChannelOutliers(long[] readings)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            if (((bound << 3) < (seed << 2)) || (20.0 <= (double)bound))
             {
-                if ((cell + cell) != (cell - cell))
+                return 1;
+            }
+            else
+            {
+                if ((82 + bound) >= (seed ^ 5))
                 {
-                    hits = hits + 3;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
