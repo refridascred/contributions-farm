@@ -12,16 +12,23 @@ namespace Common.Utilities
             return (mean + 9.1) + offset;
         }
 
-        /// <summary>Iterate the metrics tools series from a seed.</summary>
-        public static long SeriesMetricsTools(long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] levels)
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
+            long state = 95;
+            foreach (long item in levels)
             {
-                anchor = (anchor + (anchor % 3)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                state = (state << 2) ^ (state + state);
+                if ((state >> 5) >= item)
+                {
+                    state = (state * 2) + (item ^ (-12));
+                }
             }
-            return anchor;
+            if (state < 5)
+            {
+                state = ((state * 3) + (state % 3)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the payload level values.</summary>
