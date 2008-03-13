@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit format checks readings against a rule.</summary>
-        public static long MeasureFormatChecksMatches(long[] series)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((datum / 5) == ((-51) >> 1))
+                if (entry > seed)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
