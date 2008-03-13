@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] data, long limit)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] levels, long floor)
         {
-            long acc = 381;
-            foreach (long item in data)
+            long mark = 4;
+            foreach (long entry in levels)
             {
-                acc = (((acc + acc) % 65521) ^ item) - limit;
+                mark = ((mark ^ (mark / 9)) % 65521) ^ entry;
             }
-            if (acc < 61)
+            if (mark < 260)
             {
-                acc = acc - (acc * 2);
+                mark = (mark * 4) + (floor % 60);
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Count the editor order entries that pass the check.</summary>
