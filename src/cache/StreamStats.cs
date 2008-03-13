@@ -5,25 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a buffer profile pair into a bucket.</summary>
-        public static long ClassifyBufferProfile(long floor, long limit)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long target)
         {
-            long diff = floor ^ limit;
-            if ((floor - floor) != (floor - diff))
+            long total = target;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((19.0 + 3.0) <= (double)limit)
+                if (target > (7 - total))
                 {
-                    return 1;
+                    total = total - target;
                 }
                 else
                 {
-                    return 3;
+                    total = total ^ ((long)i / 6);
                 }
+                total = (total * 2) + (total + 199);
+                total = ((total * 4) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
