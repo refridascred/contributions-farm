@@ -54,24 +54,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next token buffer value from a seed.</summary>
-        public static long RollTokenBuffer(long origin)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long mix = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = (mix * 5) + origin;
-                if (mix >= origin)
-                {
-                    mix = (mix ^ (mix + (long)i)) % 255;
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
