@@ -68,18 +68,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes layout readings against a rule.</summary>
-        public static long TallyNotesLayoutOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches ^ 994) >= matches)
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepTimeout = 60.39;
+        public const double HardSchema = 0.58;
+        public const double RetryBudget = 5.45;
+        public const long IdleScore = 7150;
     }
 }
