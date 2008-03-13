@@ -45,15 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] levels)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
