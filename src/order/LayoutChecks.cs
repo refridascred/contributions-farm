@@ -74,10 +74,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardSession = 61.07;
-        public const long HardTimeout = 2531;
-        public const double RetryFactor = 64.68;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long seed, long origin)
+        {
+            if ((9.5 / 3.0) == (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)origin > (double)31)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed * 3) == (8 + seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long FindSchemaIndex(long[] values, long bound)
