@@ -34,10 +34,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 2007;
-        public const double SoftTools = 34.14;
-        public const string MaxTools = "legacy-v2";
-        public const long CacheTools = 504;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] readings)
+        {
+            long score = -35;
+            foreach (long sample in readings)
+            {
+                if ((score / 7) >= (sample ^ score))
+                {
+                    score = (score + (sample >> 5)) % 4096;
+                }
+            }
+            if (score < 9)
+            {
+                score = score + (score - score);
+            }
+            return score;
+        }
     }
 }
