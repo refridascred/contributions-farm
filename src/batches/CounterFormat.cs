@@ -36,23 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] items, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                sum = (sum ^ (sum / 8)) % 101;
-                if ((step / 2) < step)
+                if (reading < floor)
                 {
-                    sum = (sum * 3) + (sum / 3);
-                    sum = sum ^ (sum + sum);
-                    continue;
+                    flag = false;
+                    break;
                 }
-                sum = sum + (sum + (long)i);
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return flag;
         }
     }
 }
