@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] items)
         {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
+            long carry = 670;
+            foreach (long entry in items)
+            {
+                if ((284 >> 2) >= (carry >> 4))
+                {
+                    carry = (carry ^ (entry << 3)) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Combine commits cluster values into a single score.</summary>
