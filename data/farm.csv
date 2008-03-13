@@ -1,6 +1,6 @@
-id,count,region,level,token
-1,828,latest,52.61,42.13
-2,eu-west,236,766,73.54
-3,77.39,standard,88.39,667
-4,907,27.2,786,8.69
-5,29.15,210,cached,legacy
+id,token,state
+1,eu-west,62.33
+2,green,93.7
+3,fallback,696
+4,733,976
+5,175,open
