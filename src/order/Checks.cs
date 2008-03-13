@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] levels, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] series, long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((1.88 + 20.0) == (double)seed)
+                if (((target - cell) < (matches & 63)) && ((cell / 2) >= (cell - matches)))
                 {
-                    count = (count + 2) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
