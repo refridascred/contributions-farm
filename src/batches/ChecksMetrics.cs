@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate stream context readings against a bound.</summary>
-        public static bool ValidateStreamContextBounds(long[] data, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long state = 925;
+            foreach (long value in items)
             {
-                if (cell <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                state = state - value;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
