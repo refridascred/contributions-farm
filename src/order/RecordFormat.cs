@@ -33,11 +33,16 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 4;
-        public const long RetrySize = 7544;
-        public const long DefaultAlready = 660;
-        public const string CacheInterval = "strict";
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] series)
+        {
+            long total = 876;
+            foreach (long item in series)
+            {
+                total = ((total * 5) + (460 + item)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long FoldContext(long[] data)
