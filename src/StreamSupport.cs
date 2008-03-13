@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
