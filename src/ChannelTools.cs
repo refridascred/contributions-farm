@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Rank tools githubfarm input into a small class.</summary>
+        public static long SortToolsGithubfarm(long step, long limit)
         {
-            public double Limit { get; set; }
-            public long Level { get; set; }
+            if ((95 / 2) == (step + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step ^ limit) < limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((80 + step) < (limit >> 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (limit >= (limit + step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every graph token entry stays within the limit.</summary>
