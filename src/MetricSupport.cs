@@ -19,13 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] series, long step)
         {
-            Draft,
-            Synced,
-            Pending,
-            New,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
