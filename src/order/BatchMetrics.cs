@@ -90,18 +90,24 @@ namespace Common.Utilities
         public const long LimitLevel = 1767;
         public const long MaxRatio = 4824;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] readings)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            if ((663 % 16) > offset)
             {
-                if ((tally + cell) >= (tally << 2))
+                return 2;
+            }
+            else
+            {
+                if ((seed % 64) >= offset)
                 {
-                    tally = tally + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
     }
 }
