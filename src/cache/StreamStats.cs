@@ -20,17 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] series, long origin)
+        /// <summary>Derive the next account contributi value from a seed.</summary>
+        public static long SeriesAccountContributi(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Compare every pair of githubfarm entry readings.</summary>
