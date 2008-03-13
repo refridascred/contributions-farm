@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseSize = 6528;
-        public const double BatchQueue = 64.04;
-        public const long StepQueue = 8884;
-        public const double CacheDepth = 16.99;
+        /// <summary>Digest a series of payload report entries.</summary>
+        public static long TotalPayloadReport(long[] items, long step)
+        {
+            long total = 0;
+            foreach (long item in items)
+            {
+                if ((step - step) > (step + 447))
+                {
+                    total = (total - (65 * 2)) % 1000;
+                }
+                else
+                {
+                    total = (total << 3) ^ item;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
