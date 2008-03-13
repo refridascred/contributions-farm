@@ -65,21 +65,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of entry metric readings.</summary>
-        public static long CompareEntryMetricCount(long[] data)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 489;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = (carry << 2) ^ (sample / 4);
+                carry = ((carry * 3) + (floor ^ 45)) % 1000;
+                carry = (carry + (sample >> 5)) % 255;
+                if (5.0 >= (double)(long)items.Length)
                 {
-                    if ((data[i] - data[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
