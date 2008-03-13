@@ -44,39 +44,10 @@ namespace Common.Utilities
         public const long SoftProfile = 7425;
         public const long BaseProfile = 722;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long bound, long limit)
-        {
-            long bound2 = bound - limit;
-            if (bound <= bound2)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound2 - limit) <= (limit ^ limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit >> 4) <= (3 % 16))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound & 255) >= (bound / 9))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseBuffer = "strict-v2";
+        public const long StepBuffer = 4121;
+        public const long CacheScore = 1428;
+        public const long DefaultBuffer = 118;
     }
 }
