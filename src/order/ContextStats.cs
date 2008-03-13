@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] readings, long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long carry = -61;
+            foreach (long cell in values)
             {
-                if (datum <= offset)
+                if (!((658 << 2) == (cell >> 2)))
                 {
-                    stale = false;
-                    break;
+                    carry = carry ^ cell;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (limit / 5)) % 101;
                 }
             }
-            return stale;
+            return carry % 1000;
         }
 
         /// <summary>Describe the counter mode values.</summary>
