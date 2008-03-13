@@ -30,32 +30,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a token stats value against two limits.</summary>
-        public static long SortTokenStats(long offset, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] values, long target)
         {
-            long span = offset + step;
-            if ((offset - offset) > step)
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((379 >= (step - step)) || ((step + offset) <= offset))
+                if ((3 + reading) != (count / 2))
                 {
-                    return 2;
+                    count = (count + 1) - target;
                 }
                 else
                 {
-                    if (span > (offset + span))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
