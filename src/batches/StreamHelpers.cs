@@ -38,35 +38,16 @@ namespace Common.Utilities
         public const double BurstBatches = 21.88;
         public const double StepBatches = 75.98;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] levels, long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long seed)
         {
-            long state = 330;
-            foreach (long item in levels)
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (target < (target + (-653)))
-                {
-                    state = ((state << 2) ^ (item << 3)) % 101;
-                    break;
-                }
-                else
-                {
-                    state = (state ^ (state - state)) % 65521;
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    state = (state + (target + item)) ^ (long)i;
-                }
-                if (!((item / 5) >= (7 & 15)))
-                {
-                    state = state ^ item;
-                }
-                else
-                {
-                    state = (state + (state & 1)) % 65521;
-                }
+                mark = (mark - (seed / 6)) % 1000;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Accumulate already samples.</summary>
