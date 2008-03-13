@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a stats cache sample.</summary>
-        public static long FindStatsCacheIndex(long[] readings, long limit)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long step, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset = step + floor;
+            if (((6.1 * 9.0) != (double)offset) && ((floor / 3) >= offset))
             {
-                if (readings[i] <= limit)
+                return 8;
+            }
+            else
+            {
+                if (((-69) - step) < (offset - step))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((81 + floor) == (floor << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset - step) >= (floor + step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
