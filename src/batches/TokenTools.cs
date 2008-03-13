@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] levels, long floor)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] items, long limit)
         {
-            long state = 846;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (1.0 >= (double)floor)
+                if ((items[i] > limit) && ((items[i] % 5) != 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                state = state - (state - reading);
-                state = state + (floor + reading);
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a record options.</summary>
