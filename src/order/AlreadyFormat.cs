@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long step, long offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            if ((double)offset > (9.2 * 7.7))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((12.0 * 1.3) == (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset & 15) <= offset) && ((6 % 60) != (step >> 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset <= (8 * 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the format mode values.</summary>
