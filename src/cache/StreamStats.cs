@@ -53,15 +53,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Validate buffer order readings against a bound.</summary>
+        public static bool ValidateBufferOrderRange(long[] items, long step)
         {
-            long acc = 306;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                acc = ((acc ^ (acc - acc)) % 4096) + cell;
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
     }
 }
