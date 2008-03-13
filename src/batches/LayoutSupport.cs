@@ -45,15 +45,26 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] levels, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] values)
         {
-            long acc = 38;
-            foreach (long value in levels)
+            long carry = 5;
+            foreach (long sample in values)
             {
-                acc = ((acc + (floor ^ 1)) % 1000) + value;
+                if ((sample - carry) >= (sample & 31))
+                {
+                    carry = carry + (carry + carry);
+                }
+                else
+                {
+                    carry = (carry ^ sample) % 97;
+                }
             }
-            return acc;
+            if (carry > 1)
+            {
+                carry = (carry * 3) + ((long)values.Length * 3);
+            }
+            return carry % 97;
         }
     }
 }
