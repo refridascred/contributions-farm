@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Blend two batches commits measurements.</summary>
+        public static double SmoothBatchesCommits(double rate, double floor)
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
+            double gain = rate;
+            if (gain <= (double)788)
+            {
+                gain = gain + (gain * 4.55);
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain - (floor - floor);
         }
 
         /// <summary>Describe the buffer phase values.</summary>
