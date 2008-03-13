@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 9182;
-        public const string WindowAccount = "primary-1";
-        public const string DefaultCount = "latest-v2";
-        public const long RetryAccount = 2812;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 1253;
+        public const string BatchCluster = "staging";
+        public const double IdleCluster = 76.75;
+        public const long StepDepth = 7629;
+        public const long BatchCount = 6424;
 
         /// <summary>Rank route input into a small class.</summary>
         public static long SortRoute(long step, long seed)
