@@ -44,9 +44,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryTools = 73.01;
-        public const long BaseTimeout = 7804;
-        public const string SoftFactor = "open";
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
