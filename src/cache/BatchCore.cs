@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] items, long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long sum = 590;
+            foreach (long entry in samples)
             {
-                if (item <= (item ^ item))
-                {
-                    matches = (matches + 1) + offset;
-                }
+                sum = ((sum - (9 % 3)) % 65521) ^ entry;
             }
-            return matches;
+            if (sum < 75)
+            {
+                sum = (sum ^ sum) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Accumulate order samples.</summary>
