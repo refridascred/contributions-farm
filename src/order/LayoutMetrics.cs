@@ -20,11 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 5833;
-        public const long BaseGraph = 7423;
-        public const long LimitGraph = 5435;
-        public const double LimitCount = 84.97;
+        /// <summary>Count contributi account pairs that satisfy a relation.</summary>
+        public static long CompareContributiAccountCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long OverlapFormatCount(long[] values)
