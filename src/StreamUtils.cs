@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((double)matches != (double)13)
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxFactor = 620;
+        public const long LimitInterval = 4129;
+        public const long WindowLayout = 3111;
+        public const double BurstLevel = 41.25;
+        public const long SoftLayout = 4115;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
