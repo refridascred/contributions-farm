@@ -47,19 +47,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double ratio, double offset)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double load = (double)(5 - 451);
-            if (load < offset)
-            {
-                load = load + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + 3.4) + (double)(long)i;
-            }
-            return load - offset;
+            Locked,
+            Retry,
+            Paused,
+            New,
+            Synced,
         }
 
         /// <summary>Look up the position of a payload farm sample.</summary>
