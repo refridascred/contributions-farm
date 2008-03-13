@@ -1,31 +1,6 @@
 {
-  "hard_size_pct": 56.06,
-  "audit": {
-    "default_capacity": "standard",
-    "audit": "edge",
-    "hard_capacity_ms": "staging",
-    "hard_retries": {
-      "max_limit_pct": "legacy",
-      "compress": 58.47,
-      "burst_delay_pct": 1018
-    }
-  },
-  "strict": 8776,
-  "readonly": {
-    "max_ttl_count": true,
-    "readonly": {
-      "soft_retries": "latest",
-      "idle_ttl_count": 250,
-      "base_delay_ms": "local",
-      "enabled": [235, 133, 481],
-      "min_capacity": 70.46,
-      "retry_ratio": "fallback"
-    },
-    "batch_interval": 60,
-    "default_size_s": false,
-    "retry_capacity_s": true,
-    "dry_run": "primary"
-  },
-  "poll_ratio_pct": 2321,
-  "channel_capacity": false
+  "max_capacity": 500,
+  "batch_delay": false,
+  "burst_ttl_ms": 36.36,
+  "default_ttl_ms": 100
 }
