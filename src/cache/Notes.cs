@@ -51,10 +51,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseBuffer = "strict-v2";
-        public const long StepBuffer = 4121;
-        public const long CacheScore = 1428;
-        public const long DefaultBuffer = 118;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Synced,
+            Queued,
+            Pending,
+            Paused,
+        }
     }
 }
