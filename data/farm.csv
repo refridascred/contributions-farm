@@ -1,7 +1,8 @@
-id,label,owner,token
-1,946,32,188
-2,554,620,94.79
-3,89.19,550,staging
-4,45.26,latest,54.26
-5,green,latest,strict
-6,green,4.35,legacy
+id,label,ratio
+1,787,81.83
+2,454,544
+3,34.46,10.22
+4,630,primary
+5,local,699
+6,771,952
+7,latest,11.97
