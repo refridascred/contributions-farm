@@ -1,17 +1,11 @@
 # payload settings
-enabled: staging
-poll_window_s: 53.11
-already_size:
-  retry_limit: 41.56
-  schema_ratio: 5017
-  base_timeout_count: 55
-  warm_limit:
-    max_capacity_ms:
-      - 317
-      - 6
-      - 352
-    batch_retries_ms: green
-    persist: 60
-    record_size: true
-    audit: 49.22
-    layout_depth: 100
+flush_retries: open
+persist: false
+audit: 32.61
+base_threshold_pct:
+  - 213
+  - 151
+  - 453
+  - 305
+max_threshold_count: standard
+format_size: standard
