@@ -24,19 +24,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of farm support readings.</summary>
-        public static long FoldFarmSupport(long[] data)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long seed)
         {
-            long anchor = -308;
-            foreach (long entry in data)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                anchor = (((anchor << 3) ^ (anchor & 31)) % 4096) - entry;
+                total = ((total * 3) + (long)i) % 101;
             }
-            if (anchor > 972)
-            {
-                anchor = (anchor << 2) ^ (anchor / 3);
-            }
-            return anchor % 65521;
+            return total;
         }
 
         /// <summary>Describe the channel class values.</summary>
