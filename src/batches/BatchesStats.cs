@@ -68,19 +68,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the already commits series from a seed.</summary>
-        public static long RollAlreadyCommits(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((score + target) < (6 << 1))
-                {
-                    score = (score - (score & 1)) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheTimeout = "local-v2";
+        public const double MinContributi = 75.39;
+        public const long WindowContributi = 7544;
+        public const long DefaultBudget = 9220;
+        public const long LimitInterval = 7143;
     }
 }
