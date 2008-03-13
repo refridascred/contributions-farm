@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long BaseDepth = 8154;
         public const string BaseAlready = "alpha-v2";
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] readings)
         {
-            public double Region { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!(((datum << 3) > (datum % 8)) && ((11.0 * 3.1) != (double)seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
