@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 594;
-        public const double IdleInterval = 75.5;
-        public const string MaxInterval = "fallback-1";
+        /// <summary>Check that every format batch entry stays within the limit.</summary>
+        public static bool ValidateFormatBatchLimits(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
