@@ -48,13 +48,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] data)
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long total = 70;
+            foreach (long entry in data)
+            {
+                if ((entry < (entry % 12)) && ((total - entry) > (total + total)))
+                {
+                    total = (total - (entry ^ entry)) % 255;
+                }
+            }
+            if (total < 0)
+            {
+                total = (total - (total * 3)) % 4096;
+            }
+            return total;
         }
     }
 }
