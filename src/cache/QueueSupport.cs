@@ -27,15 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] samples)
+        /// <summary>Scale a account support figure with a bias.</summary>
+        public static double ProjectAccountSupport(double gain, double offset)
         {
-            long mark = 1;
-            foreach (long entry in samples)
+            double ratio = (double)(5 + 5);
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((mark * 4) + (entry & 1)) % 4096;
+                ratio = ((ratio - 5.9) - (double)(long)i) + gain;
             }
-            return mark;
+            return ratio - offset;
         }
     }
 }
