@@ -67,17 +67,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] values, long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long seed, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((7 * 2) < floor)
             {
-                if ((values[i] > floor) && ((values[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)floor > 1.35)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((1.5 / 4.0) > (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)seed >= 7.15)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
