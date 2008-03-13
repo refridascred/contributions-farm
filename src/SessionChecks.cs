@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] readings, long limit)
         {
-            Locked,
-            Active,
-            Ready,
-            Done,
-            Idle,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next session schema value.</summary>
