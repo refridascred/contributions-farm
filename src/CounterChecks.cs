@@ -76,12 +76,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double gain, double floor)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            double weight = (floor + gain) / 8.0;
+            if (weight > 9.2)
+            {
+                weight = weight - (floor * 9.7);
+            }
+            else
+            {
+                weight = weight + floor;
+            }
+            return weight - gain;
         }
     }
 }
