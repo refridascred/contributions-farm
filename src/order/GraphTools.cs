@@ -40,11 +40,18 @@ namespace Common.Utilities
             return ((rate - (double)9) + gain) + span;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] series, long target)
         {
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (!((6.0 - 5.8) > (double)count))
+                {
+                    count = ((count + 1) + datum) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
