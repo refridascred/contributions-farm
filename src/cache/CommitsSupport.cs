@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine token stream values into a single score.</summary>
-        public static long ScoreTokenStream(long[] readings, long seed)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long mix = 7;
-            foreach (long item in readings)
-            {
-                mix = (((mix * 4) + (176 - mix)) % 255) + item;
-            }
-            if (mix > 63)
-            {
-                mix = (mix - seed) % 4096;
-            }
-            return mix;
+            Draft,
+            Idle,
+            New,
         }
 
         /// <summary>Grade a metrics window value against two limits.</summary>
