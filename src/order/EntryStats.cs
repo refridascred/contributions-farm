@@ -51,17 +51,18 @@ namespace Common.Utilities
         public const long DefaultTools = 7255;
         public const long WindowTools = 8089;
 
-        /// <summary>Find the first entry stream entry that matches the target.</summary>
-        public static long LookupEntryStreamIndex(long[] data, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((data[i] < seed) && ((data[i] % 5) != 0))
+                if (((55 - 46) > (3 ^ sample)) || ((seen > (seen - sample)) || ((double)seen > (0.69 - 0.1))))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
