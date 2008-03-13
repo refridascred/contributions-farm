@@ -52,19 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = (mark + (origin * 3)) - (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Project the next editor value.</summary>
