@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] levels, long origin)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (((double)value != (5.3 + 7.7)) && (((origin >> 2) <= ((-48) + tally)) || (origin <= tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
