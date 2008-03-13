@@ -1,6 +1,7 @@
 {
-  "soft_capacity": 30,
-  "persist": true,
-  "poll_retries_s": [458, 160],
-  "report_interval": "standard"
+  "profile_timeout": 2932,
+  "session_retries": "fallback",
+  "schema_retries": 250,
+  "strict": [348, 468, 236],
+  "graph_delay": 7273
 }
