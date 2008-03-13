@@ -49,14 +49,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitSpan = 79.02;
+        public const double MinSpan = 93.59;
+        public const long WindowToken = 1302;
+        public const long CacheCount = 3335;
+        public const long CacheToken = 1356;
 
         /// <summary>Blend two record measurements.</summary>
         public static double ProjectRecord(double weight, double bias)
