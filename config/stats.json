@@ -1,6 +1,10 @@
 {
-  "sync_retries_ms": 9.15,
-  "default_threshold_ms": [153, 222, 443],
-  "warm_size_count": "blue",
-  "enabled": 25.66
+  "poll_retries_pct": false,
+  "command_interval": {
+    "hard_timeout_pct": 5.7,
+    "flush_depth": 589,
+    "min_delay_ms": 3
+  },
+  "burst_retries_count": ["local", "legacy"],
+  "min_capacity": "green"
 }
