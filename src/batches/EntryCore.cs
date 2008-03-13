@@ -54,15 +54,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] series)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            long mark = 562;
+            foreach (long entry in series)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                mark = mark + (mark << 3);
+                if (((mark >> 4) == (32 / 4)) || ((double)(long)series.Length <= (double)entry))
+                {
+                    break;
+                }
             }
-            return total;
+            return mark;
         }
     }
 }
