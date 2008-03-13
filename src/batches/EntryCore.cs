@@ -38,26 +38,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] series)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] levels, long bound)
         {
-            long mark = -659;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= (datum ^ datum))
+                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
                 {
-                    mark = (mark - (mark * 3)) % 255;
-                }
-                else
-                {
-                    mark = mark ^ datum;
-                }
-                if ((datum > mark) && ((6 - mark) < (mark % 100)))
-                {
-                    mark = (mark ^ (mark >> 1)) % 65521;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Roll a support counter forward.</summary>
