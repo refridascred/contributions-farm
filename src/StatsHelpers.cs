@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] data, long origin)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if (datum > origin)
+                if (item >= limit)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
