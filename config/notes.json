@@ -1,5 +1,5 @@
 {
-  "max_retries_s": "edge",
-  "persist": ["fallback", "blue"],
-  "compress": true
+  "batch_delay": "fallback",
+  "metric_interval": false,
+  "sync_depth_ms": 2542
 }
