@@ -1,8 +1,9 @@
 # githubfarm settings
-dry_run:
-  hard_ratio: 75
-  account_window: legacy
-  hard_ratio_s: 827
-soft_window: 22
-hard_capacity: local
-enabled: 60
+window_interval:
+  - eu-west
+  - eu-west
+  - blue
+verbose: edge
+min_ttl_count: staging
+sync_delay_pct: true
+queue_limit: true
