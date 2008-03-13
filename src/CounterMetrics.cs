@@ -34,22 +34,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (((double)seen < 2.7) || ((sample + seen) >= seen))
+                if ((entry ^ matches) > matches)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
