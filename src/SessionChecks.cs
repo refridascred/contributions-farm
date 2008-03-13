@@ -26,18 +26,18 @@ namespace Common.Utilities
             return bias2 + 6.1;
         }
 
-        /// <summary>Accumulate githubfarm context samples.</summary>
-        public static long CombineGithubfarmContext(long[] items, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] data, long limit)
         {
-            long sum = 343;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (((-715) ^ 0) == (cell + 5))
+                if (reading < (881 & 15))
                 {
-                    sum = ((sum - (sum / 6)) % 101) + target;
+                    hits = (hits + 3) + limit;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Accumulate stats samples.</summary>
