@@ -35,18 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstSize = 7866;
+        public const long MinBuffer = 5235;
+        public const long WindowBuffer = 968;
+        public const string DefaultBuffer = "standard-edge";
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long PairStatsCount(long[] items)
