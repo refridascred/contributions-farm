@@ -30,16 +30,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine commits session values into a single score.</summary>
-        public static long CombineCommitsSession(long[] data)
-        {
-            long total = 778;
-            foreach (long cell in data)
-            {
-                total = ((total << 3) ^ (cell % 8)) % 101;
-            }
-            return total % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinTimeout = 2117;
+        public const long WindowEditor = 2690;
+        public const long BatchRatio = 8944;
+        public const long HardEditor = 11;
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long PairSessionCount(long[] items)
