@@ -12,18 +12,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate route cache samples.</summary>
-        public static long CombineRouteCache(long[] samples)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long origin)
         {
-            long mix = 7;
-            foreach (long entry in samples)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((mix / 3) >= (mix ^ (long)samples.Length))
-                {
-                    mix = ((mix * 2) + (479 - mix)) - entry;
-                }
+                anchor = ((anchor * 5) + 49) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return mix % 97;
+            return anchor;
         }
 
         /// <summary>Check that every counter format entry stays within the limit.</summary>
