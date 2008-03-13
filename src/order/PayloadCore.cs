@@ -46,38 +46,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long limit, long limit2)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double bias, double bias2)
         {
-            if ((27 ^ limit2) <= (limit2 + limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit << 2) == (limit >> 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((limit - limit) <= 84) || ((limit2 * 4) != (limit - limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit >= (limit % 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            double rate = (bias - bias) + (double)286;
+            return (rate + (2.9 * 8.6)) + bias2;
         }
     }
 }
