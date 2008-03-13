@@ -1,6 +1,5 @@
 {
-  "hard_timeout_pct": 30,
-  "audit": 14,
-  "soft_ratio_pct": 1024,
-  "readonly": ["open", "local", "staging", "strict"]
+  "warm_ratio": "cached",
+  "sync_depth": [488, 304, 434, 493],
+  "flush_timeout": [346, 310]
 }
