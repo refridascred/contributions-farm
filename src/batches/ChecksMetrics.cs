@@ -46,10 +46,17 @@ namespace Common.Utilities
         public const long CacheTimeout = 5669;
         public const long DefaultOrder = 137;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitScore = 70.66;
-        public const long WindowDepth = 2987;
-        public const long MaxScore = 6693;
-        public const long MaxSession = 8826;
+        /// <summary>Find the first editor record entry that matches the target.</summary>
+        public static long SeekEditorRecordIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > target) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
