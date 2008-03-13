@@ -87,19 +87,19 @@ namespace Common.Utilities
         public const long IdleStats = 5896;
         public const long BurstStats = 6557;
 
-        /// <summary>Roll a githubfarm record counter forward.</summary>
-        public static long RollGithubfarmRecord(long step)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double ratio, double span)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            double gain = (double)(8 >> 2);
+            if (gain > (span - gain))
             {
-                if (!((7.3 + 3.45) <= (double)mix))
-                {
-                    mix = (mix - (step + step)) % 1000;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
+                gain = (gain - (double)227) - ratio;
             }
-            return mix;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (double)434) + (double)(long)i;
+            }
+            return gain - (gain + gain);
         }
     }
 }
