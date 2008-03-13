@@ -60,13 +60,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Validate support payload readings against a bound.</summary>
+        public static bool ValidateSupportPayloadRange(long[] values, long target)
         {
-            Draft,
-            Locked,
-            Paused,
-            Dropped,
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
