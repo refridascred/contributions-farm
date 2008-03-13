@@ -1,11 +1,11 @@
 # Command notes
 
-Keep cluster and githubfarm names short and lowercase.
-The layout helpers are pure functions, so they are safe to call from any thread.
+A window that stays idle for too long is moved to the tools list.
+Defaults for filter live in the config folder and can be overridden per environment.
+A entry that stays idle for too long is moved to the account list.
 
 ## Guidelines
 
-- Validate editor input early
-- Log every graph change
-- Keep filter values small
-- Document new editor fields
+- Keep context values small
+- Document new entry fields
+- Prefer commits defaults
