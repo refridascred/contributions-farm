@@ -84,15 +84,16 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of cluster batches readings.</summary>
-        public static long ScoreClusterBatches(long[] items)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long bound)
         {
-            long anchor = 509;
-            foreach (long reading in items)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = (((anchor << 2) ^ (anchor + anchor)) % 1000) + reading;
+                total = ((total << 3) ^ (962 << 3)) % 255;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return anchor % 1000;
+            return total;
         }
 
         /// <summary>Hold a payload info.</summary>
