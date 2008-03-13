@@ -20,23 +20,12 @@ namespace Common.Utilities
             return bias + (gain / 9.0);
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double gain, double bias)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double ratio = (double)(5 << 3);
-            if (ratio < ratio)
-            {
-                ratio = (ratio + (gain / 4.0)) - bias;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + gain) + (double)(long)i;
-            }
-            return ratio + (2.88 * 1.0);
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
