@@ -1,8 +1,10 @@
 # support settings
-compress:
-  - cached
-  - latest
-  - staging
-  - strict
-min_window_s: stable
-default_capacity_ms: primary
+counter_retries:
+  farm_ratio: 56
+  audit: true
+  sync_window_pct: green
+format_window: true
+dry_run: 4751
+persist: strict
+cache_ttl_pct: 81
+strict: 2604
