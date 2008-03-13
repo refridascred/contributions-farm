@@ -47,18 +47,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] readings, long seed)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (18 >= (seed + seed))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
+            Draft,
+            Queued,
+            Synced,
+            Pending,
         }
 
         /// <summary>Project the next record value.</summary>
