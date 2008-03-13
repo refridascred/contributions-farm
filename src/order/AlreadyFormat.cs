@@ -63,11 +63,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double bias, double floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] series)
         {
-            double gain = (double)(520 + (-996));
-            return ((gain + gain) + bias) + floor;
+            long carry = 715;
+            foreach (long cell in series)
+            {
+                if (((double)cell < (13.0 / 4.0)) && (3.64 <= (double)cell))
+                {
+                    carry = ((carry * 4) + (52 - cell)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Match up window contributi samples.</summary>
