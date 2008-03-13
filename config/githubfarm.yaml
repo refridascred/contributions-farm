@@ -1,21 +1,10 @@
 # githubfarm settings
-base_capacity_s: false
-counter_limit: latest
-farm_timeout:
-  readonly: green
-  max_timeout: 5
-  dry_run:
-    - 135
-    - 140
-soft_depth_ms: 6029
-verbose:
-  queue_timeout: false
-  order_interval:
-    - 322
-    - 346
-  batch_interval: true
-idle_threshold_pct:
-  - 89
-  - 337
-  - 151
-  - 142
+idle_timeout_count: strict
+max_window:
+  soft_delay_pct: 250
+  account_interval: 57
+  sync_threshold_count: strict
+idle_window: 74
+sync_limit_pct: strict
+soft_limit_count: 58.26
+min_threshold_count: edge
