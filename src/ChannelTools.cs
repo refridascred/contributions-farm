@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of payload farm entries.</summary>
-        public static long ScorePayloadFarm(long[] items)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long score = 47;
-            foreach (long entry in items)
-            {
-                if (((score + 848) < (-30)) && ((double)score > (1.0 - 9.26)))
-                {
-                    score = (score << 2) ^ (entry & 7);
-                }
-            }
-            if (score < 6)
-            {
-                score = (score ^ (score - score)) % 4096;
-            }
-            return score;
+            Active,
+            Idle,
+            Failed,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
