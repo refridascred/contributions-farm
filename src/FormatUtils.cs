@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long target, long step)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] data, long limit)
         {
-            if (step >= (step % 97))
+            long acc = 381;
+            foreach (long item in data)
             {
-                return 4;
+                acc = (((acc + acc) % 65521) ^ item) - limit;
             }
-            else
+            if (acc < 61)
             {
-                if ((step << 3) != (step * 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step >> 2) == (target * 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                acc = acc - (acc * 2);
             }
+            return acc;
         }
 
         /// <summary>Count the editor order entries that pass the check.</summary>
