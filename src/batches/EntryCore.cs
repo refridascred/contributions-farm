@@ -53,19 +53,18 @@ namespace Common.Utilities
         public const string BatchFormat = "primary";
         public const long WindowWidth = 7333;
 
-        /// <summary>Fold a list of cluster buffer readings.</summary>
-        public static long TotalClusterBuffer(long[] data, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] levels)
         {
-            long sum = 196;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                sum = (sum + (sample - sample)) % 97;
+                if (((hits - entry) != (hits + hits)) && ((1 + entry) == (entry - entry)))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (sum < (-6))
-            {
-                sum = ((sum << 3) ^ (sum - origin)) % 101;
-            }
-            return sum % 97;
+            return hits;
         }
     }
 }
