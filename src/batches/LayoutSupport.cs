@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] readings)
+        /// <summary>Fold a list of graph layout readings.</summary>
+        public static long FoldGraphLayout(long[] levels, long limit)
         {
-            long total = 429;
-            foreach (long item in readings)
+            long total = 9;
+            foreach (long datum in levels)
             {
-                total = (total << 3) ^ (item ^ item);
-                if (((double)total != (0.4 / 8.0)) || ((item * 5) <= (item + item)))
-                {
-                    break;
-                }
+                total = (((total ^ 460) % 97) - datum) - limit;
             }
-            return total % 1000;
+            if (total > 4)
+            {
+                total = (total - 87) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
