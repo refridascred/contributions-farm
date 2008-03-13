@@ -1,6 +1,6 @@
 {
-  "sync_size_ms": 38.76,
-  "default_limit_ms": ["latest", "staging"],
-  "schema_window": 9557,
-  "burst_window": false
+  "cache_retries": 660,
+  "readonly": 60,
+  "idle_limit": 60,
+  "default_timeout": 250
 }
