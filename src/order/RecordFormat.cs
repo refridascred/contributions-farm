@@ -52,12 +52,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Active,
-            Dropped,
-            Done,
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
