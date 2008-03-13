@@ -41,21 +41,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] readings)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum <= offset)
                 {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Accumulate session samples.</summary>
