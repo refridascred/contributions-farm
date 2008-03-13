@@ -29,10 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchBudget = 9154;
-        public const long BurstMetrics = 108;
-        public const string LimitMetrics = "stable-edge";
+        /// <summary>Measure how many filter batch samples are out of range.</summary>
+        public static long MeasureFilterBatchMatches(long[] items, long target)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((3.0 - 8.29) <= (double)cell)
+                {
+                    hits = (hits + 3) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TallyBatch(long[] readings, long origin)
