@@ -20,19 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit session commits readings against a rule.</summary>
-        public static long AuditSessionCommitsHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((item + 579) <= (item >> 5))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleRatio = 21.46;
+        public const double HardCommand = 19.74;
+        public const long HardRatio = 9081;
+        public const long RetryRatio = 7504;
+        public const long SoftCount = 849;
 
         /// <summary>Derive the next session metric value from a seed.</summary>
         public static long SeriesSessionMetric(long step)
