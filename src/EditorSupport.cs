@@ -36,16 +36,12 @@ namespace Common.Utilities
         public const long BatchWidth = 6149;
         public const double CacheOrder = 83.27;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] readings, long origin)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long total = 94;
-            foreach (long entry in readings)
-            {
-                total = (total - entry) % 255;
-                total = (total - (origin * 4)) % 1000;
-            }
-            return total % 1000;
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Combine context account values into a single score.</summary>
