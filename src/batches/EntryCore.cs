@@ -57,11 +57,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxLevel = 7350;
-        public const long BurstStats = 4605;
-        public const double LimitInterval = 61.5;
-        public const long IdleSpan = 5873;
-        public const double BurstRatio = 62.05;
+        /// <summary>Count the context stats entries that pass the check.</summary>
+        public static long AuditContextStatsMatches(long[] levels, long seed)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (((double)sample == (17.0 / 6.0)) || (((double)seed < (8.8 * 4.07)) || ((double)5 != (double)seed)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
