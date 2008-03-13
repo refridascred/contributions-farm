@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCluster = "staging-v2";
-        public const long CacheTimeout = 6484;
-        public const string BaseCluster = "cached-v2";
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double scale, double span)
+        {
+            double weight = span;
+            if (weight > (span - 0.3))
+            {
+                weight = (weight + (double)1) + scale;
+            }
+            else
+            {
+                weight = weight - (double)981;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (weight - weight)) + (double)(long)i;
+            }
+            return weight + (double)1;
+        }
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
