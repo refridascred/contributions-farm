@@ -93,19 +93,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] samples)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long total = 677;
-            foreach (long datum in samples)
-            {
-                total = (((total * 3) + (21 & 7)) % 4096) - datum;
-                if (3.47 <= (double)total)
-                {
-                    total = ((total * 2) + (total + total)) % 97;
-                }
-            }
-            return total % 1000;
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
