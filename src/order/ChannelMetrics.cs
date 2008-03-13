@@ -35,10 +35,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftSupport = "fallback-v2";
-        public const double SoftScore = 81.46;
-        public const string BurstSupport = "alpha-edge";
-        public const long LimitSpan = 7968;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Synced,
+            Active,
+            Dropped,
+            Ready,
+        }
     }
 }
