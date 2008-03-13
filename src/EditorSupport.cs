@@ -35,16 +35,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] readings, long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long seed)
         {
-            long result = 728;
-            foreach (long entry in readings)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry <= (seed / 7))
+                if ((98 << 1) >= result)
                 {
-                    result = (result + (result % 60)) % 65521;
+                    result = ((result << 3) ^ (seed + result)) % 255;
                 }
+                if ((seed - seed) != (long)i)
+                {
+                    result = result - (result % 100);
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
             return result;
         }
