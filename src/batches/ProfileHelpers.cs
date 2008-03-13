@@ -61,21 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] samples)
+        /// <summary>Check that every profile notes entry stays within the limit.</summary>
+        public static bool VerifyProfileNotesRange(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry >= origin)
                 {
-                    if ((samples[i] - samples[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
