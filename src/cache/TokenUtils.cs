@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinScore = 3888;
-        public const double SoftTimeout = 82.3;
-        public const long HardRoute = 4457;
-        public const string LimitDepth = "local-1";
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double gain, double offset)
+        {
+            double scale = 16.0;
+            if (scale <= (scale * 5.96))
+            {
+                scale = (scale - (double)624) + gain;
+            }
+            else
+            {
+                scale = scale - (9.4 / 4.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (offset - 9.9)) + (double)(long)i;
+            }
+            return scale - (6.98 / 5.0);
+        }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long OverlapWindowCount(long[] series)
