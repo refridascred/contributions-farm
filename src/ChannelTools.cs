@@ -47,14 +47,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Pending,
-            Failed,
-            Stale,
-            Queued,
-            New,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftFactor = "legacy-edge";
+        public const double MinLevel = 61.05;
+        public const double BurstGithubfarm = 95.17;
     }
 }
