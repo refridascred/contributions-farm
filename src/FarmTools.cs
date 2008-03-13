@@ -33,21 +33,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of checks githubfarm readings.</summary>
-        public static long MatchChecksGithubfarmCount(long[] values)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long bound, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long span = bound + offset;
+            if ((double)bound != (8.07 - 9.0))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (bound > (bound * 2))
                 {
-                    if ((values[i] ^ values[j]) < 18)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)span < (10.0 / 6.0))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
     }
 }
