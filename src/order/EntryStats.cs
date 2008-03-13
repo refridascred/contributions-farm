@@ -51,14 +51,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Synced,
-            Retry,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryInterval = 1395;
+        public const long SoftBudget = 3155;
+        public const long StepScore = 5075;
+        public const long DefaultTools = 7255;
+        public const long WindowTools = 8089;
 
         /// <summary>Find the first entry stream entry that matches the target.</summary>
         public static long LookupEntryStreamIndex(long[] data, long seed)
