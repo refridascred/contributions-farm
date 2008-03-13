@@ -22,18 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] levels, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] data, long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((10.0 - 8.0) >= (double)origin)
+                if ((long)data.Length != (entry >> 1))
                 {
-                    count = (count + 1) + value;
+                    matches = (matches + 1) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate account samples.</summary>
