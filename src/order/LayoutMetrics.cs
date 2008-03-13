@@ -21,19 +21,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Check that every counter format entry stays within the limit.</summary>
-        public static bool GuardCounterFormatRange(long[] readings, long offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Pending,
+            Retry,
         }
     }
 }
