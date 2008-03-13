@@ -34,10 +34,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 9289;
-        public const long IdleSupport = 2867;
-        public const long SoftSupport = 9854;
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] items, long limit)
+        {
+            long state = 0;
+            foreach (long cell in items)
+            {
+                if ((double)limit < (5.95 + 10.0))
+                {
+                    state = ((state + (limit - 851)) % 101) - cell;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long StepCommits(long offset)
