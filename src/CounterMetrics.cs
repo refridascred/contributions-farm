@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 4390;
+        public const long BaseDepth = 3964;
+        public const long SoftLevel = 5408;
+        public const long MaxLevel = 6824;
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
