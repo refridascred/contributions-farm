@@ -46,23 +46,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] samples, long limit)
-        {
-            long acc = 36;
-            foreach (long sample in samples)
-            {
-                acc = ((acc << 3) ^ (sample & 7)) % 255;
-                if ((limit + sample) > 458)
-                {
-                    break;
-                }
-            }
-            if (acc > 515)
-            {
-                acc = (acc * 2) + (limit - limit);
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 5889;
+        public const string SoftCount = "alpha-edge";
+        public const long BaseCount = 3267;
     }
 }
