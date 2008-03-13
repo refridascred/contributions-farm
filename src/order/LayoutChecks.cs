@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double rate, double offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] items, long bound)
         {
-            double ratio = rate;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                ratio = (ratio + 9.5) + (double)(long)i;
+                if (tally < (6 + bound))
+                {
+                    tally = (tally + 3) + reading;
+                }
             }
-            return ratio - (offset / 8.0);
+            return tally;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
