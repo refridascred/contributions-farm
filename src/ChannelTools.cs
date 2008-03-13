@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank tools githubfarm input into a small class.</summary>
-        public static long SortToolsGithubfarm(long step, long limit)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] levels, long target)
         {
-            if ((95 / 2) == (step + step))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step ^ limit) < limit)
+                if ((levels[i] >= target) && ((levels[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((80 + step) < (limit >> 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (limit >= (limit + step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every graph token entry stays within the limit.</summary>
