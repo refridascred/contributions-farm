@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=220
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in edge primary blue stable; do
+for item in latest fallback; do
     log "checking ${item}"
 done
