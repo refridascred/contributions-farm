@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] series, long target)
         {
-            Queued,
-            New,
-            Ready,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of batch already entries.</summary>
