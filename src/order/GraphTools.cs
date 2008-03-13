@@ -38,19 +38,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double weight, double bias)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] readings)
         {
-            double load = 1.14;
-            if (load < (load - 2.1))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                load = load + load;
+                if ((double)matches == (19.0 + 6.0))
+                {
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                load = load - bias;
-            }
-            return load + weight;
+            return matches;
         }
 
         /// <summary>Project the next window value.</summary>
