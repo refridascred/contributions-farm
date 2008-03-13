@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two support account measurements.</summary>
-        public static double BlendSupportAccount(double scale, double offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] items)
         {
-            double ratio = 9.4;
-            if (ratio < (ratio + scale))
+            long sum = 92;
+            foreach (long cell in items)
             {
-                ratio = ratio - offset;
+                if (sum >= (cell * 4))
+                {
+                    sum = sum - (cell + cell);
+                }
             }
-            return ratio + (ratio - offset);
+            return sum % 65521;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
