@@ -67,31 +67,11 @@ namespace Common.Utilities
         public const double DefaultBudget = 41.71;
         public const long HardContext = 3189;
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long target, long origin)
-        {
-            if ((origin - 429) < (target * 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((target % 12) <= target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin + origin) >= (origin & 3)) || ((origin * 3) >= (8 ^ origin)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 3283;
+        public const double RetryTools = 82.61;
+        public const string IdleTools = "legacy";
+        public const string MaxTools = "standard";
+        public const double StepFactor = 13.16;
     }
 }
