@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] series, long seed)
+        /// <summary>Count the format already entries that pass the check.</summary>
+        public static long MeasureFormatAlreadyGaps(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((double)hits < (0.4 - 7.0))
+                if ((16.0 / 9.0) <= (double)tally)
                 {
-                    hits = ((hits + 1) + cell) + seed;
+                    tally = ((tally + 3) - item) + target;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a support info.</summary>
