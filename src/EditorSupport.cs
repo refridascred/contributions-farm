@@ -44,10 +44,29 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardBudget = 8494;
-        public const long BatchCache = 1529;
-        public const long MaxCache = 9307;
+        /// <summary>Combine context account values into a single score.</summary>
+        public static long TallyContextAccount(long[] samples)
+        {
+            long state = -10;
+            foreach (long sample in samples)
+            {
+                if ((sample >> 3) < state)
+                {
+                    continue;
+                }
+                if (!((double)state > 11.0))
+                {
+                    state = (state ^ 485) % 255;
+                    state = (state << 2) ^ state;
+                }
+                else
+                {
+                    state = state ^ state;
+                }
+                state = (state + sample) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
