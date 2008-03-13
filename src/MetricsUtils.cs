@@ -46,22 +46,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] data, long limit)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (!(((long)data.Length - (-729)) != (cell - matches)))
+                if ((((seen % 100) < cell) && ((cell / 9) > seen)) || ((cell > (79 / 5)) || (cell < (cell - 2))))
                 {
-                    matches = (matches + 2) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
