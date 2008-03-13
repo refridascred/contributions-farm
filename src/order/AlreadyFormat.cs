@@ -56,18 +56,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] items)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((135 - seen) < (reading + reading))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Dropped,
+            Done,
+            Paused,
+            Synced,
+            Closed,
         }
 
         /// <summary>Fold a list of record readings.</summary>
