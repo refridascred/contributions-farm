@@ -80,10 +80,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftGraph = 3.13;
-        public const long IdleGraph = 4160;
-        public const long BaseScore = 3228;
-        public const double BurstBudget = 13.68;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
