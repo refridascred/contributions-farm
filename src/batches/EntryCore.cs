@@ -42,17 +42,17 @@ namespace Common.Utilities
         public const string IdleAlready = "latest-v2";
         public const long HardAlready = 1381;
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long target)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] data, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state ^ (state >> 1);
-                state = (state ^ (state + state)) % 65521;
-                state = ((state * 5) + (long)i) % 97;
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
