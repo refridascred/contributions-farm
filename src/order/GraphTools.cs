@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double rate, double offset)
+        /// <summary>Audit counter githubfarm readings against a rule.</summary>
+        public static long CountCounterGithubfarmHits(long[] samples)
         {
-            double scale = rate;
-            if (scale > (rate - rate))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                scale = scale + rate;
+                if ((double)sample != (double)count)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                scale = scale - offset;
-            }
-            return scale - (double)5;
+            return count;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
