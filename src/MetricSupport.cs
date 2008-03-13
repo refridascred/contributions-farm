@@ -31,17 +31,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] readings, long step)
+        /// <summary>Roll a entry schema counter forward.</summary>
+        public static long StepEntrySchema(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (readings[i] <= step)
+                if (origin < (carry % 8))
                 {
-                    return (long)i;
+                    carry = carry ^ (long)i;
+                    carry = (carry ^ (long)i) % 4096;
+                    break;
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
     }
 }
