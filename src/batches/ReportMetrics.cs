@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] series, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((series[i] >= origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Combine token values into a single score.</summary>
