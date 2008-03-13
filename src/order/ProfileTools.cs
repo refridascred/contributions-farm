@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long offset)
         {
-            long acc = 82;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc + value) % 101;
-                acc = (acc ^ acc) % 4096;
-                if ((6.7 - 3.44) != (double)value)
+                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
