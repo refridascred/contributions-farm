@@ -35,12 +35,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Synced,
-            Active,
-            Dropped,
+            Idle,
+            Locked,
+            Retry,
+            Paused,
             Ready,
         }
     }
