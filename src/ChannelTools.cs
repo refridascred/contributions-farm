@@ -12,11 +12,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 898;
-        public const double HardRatio = 60.41;
-        public const double MaxSpan = 59.48;
-        public const long DefaultCount = 237;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Blend two batches checks measurements.</summary>
         public static double ScaleBatchesChecks(double scale, double floor)
