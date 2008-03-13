@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long acc = 49;
-            foreach (long reading in data)
-            {
-                if ((reading >= (acc - 16)) && ((acc & 63) < (reading / 3)))
-                {
-                    acc = acc + reading;
-                }
-            }
-            if (acc > 4)
-            {
-                acc = (acc << 2) ^ (acc + acc);
-            }
-            return acc;
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
