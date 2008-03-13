@@ -78,12 +78,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Match up route account samples.</summary>
+        public static long PairRouteAccountCount(long[] items)
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
