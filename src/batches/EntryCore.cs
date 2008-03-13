@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double scale, double bias)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] samples, long bound)
         {
-            double gain = 0.3 * 6.4;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                gain = ((gain - scale) + (double)(long)i) - bias;
+                if (entry < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return gain - 1.0;
+            return ok;
         }
 
         /// <summary>Accumulate batches samples.</summary>
