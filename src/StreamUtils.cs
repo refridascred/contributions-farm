@@ -64,13 +64,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Count the channel cache entries that pass the check.</summary>
+        public static long TallyChannelCacheOutliers(long[] data)
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample >= (6.0 + 7.08))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of session readings.</summary>
