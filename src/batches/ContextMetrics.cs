@@ -25,13 +25,21 @@ namespace Common.Utilities
         public const long CacheFactor = 4052;
         public const string HardScore = "staging-edge";
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next cache value.</summary>
