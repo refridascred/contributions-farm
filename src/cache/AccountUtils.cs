@@ -46,19 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double rate, double span)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            double mean = (5.64 * 8.6) + span;
-            if (mean < span)
-            {
-                mean = (mean - span) - rate;
-            }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean - 14.0;
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
