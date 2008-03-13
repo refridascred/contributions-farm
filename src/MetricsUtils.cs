@@ -49,13 +49,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Idle,
-            Failed,
             Retry,
-            Paused,
+            Failed,
+            Closed,
         }
 
         /// <summary>Describe the profile state values.</summary>
