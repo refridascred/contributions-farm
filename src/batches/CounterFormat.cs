@@ -33,15 +33,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double bias, double floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            double bias2 = floor - (floor / 5.0);
-            if (bias2 > (double)274)
-            {
-                bias2 = (bias2 - (double)311) - bias;
-            }
-            return bias2 + (12.0 - floor);
+            Done,
+            Closed,
+            New,
         }
     }
 }
