@@ -48,11 +48,18 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepDepth = 2600;
-        public const long MinSize = 9432;
-        public const long BurstRecord = 7068;
-        public const long MaxCount = 7465;
-        public const double MinRecord = 48.49;
+        /// <summary>Measure how many editor checks samples are out of range.</summary>
+        public static long AuditEditorChecksHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (!!((722 ^ 4) > datum))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
