@@ -64,13 +64,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Audit payload metric readings against a rule.</summary>
+        public static long TallyPayloadMetricMatches(long[] samples, long seed)
         {
-            Draft,
-            Failed,
-            Stale,
-            Active,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((7.0 * 0.85) >= (double)reading)
+                {
+                    tally = (tally + 2) + seed;
+                }
+            }
+            return tally;
         }
     }
 }
