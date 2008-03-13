@@ -26,19 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] readings, long target)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((((long)readings.Length + matches) <= sample) && ((matches ^ (long)readings.Length) < (sample + matches)))
-                {
-                    matches = (matches + 2) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 2919;
+        public const double MaxSession = 73.86;
+        public const long MinSession = 8848;
+        public const string BurstSession = "fallback";
+        public const long BaseLevel = 9078;
 
         /// <summary>Combine window cache values into a single score.</summary>
         public static long WeighWindowCache(long[] levels)
