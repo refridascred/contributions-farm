@@ -40,24 +40,11 @@ namespace Common.Utilities
         public const long MinDepth = 9735;
         public const long WindowTimeout = 2875;
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long seed)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum << 3) ^ seed) % 1000;
-                if ((sum / 9) > seed)
-                {
-                    sum = (sum + (sum + sum)) % 255;
-                }
-                else
-                {
-                    sum = (sum - seed) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
