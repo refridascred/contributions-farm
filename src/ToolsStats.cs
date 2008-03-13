@@ -12,10 +12,12 @@ namespace Common.Utilities
             return (drift - (offset / 9.0)) + weight;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 9477;
-        public const long RetryToken = 8648;
-        public const long DefaultFactor = 9807;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 7331;
+        public const long LimitLevel = 2204;
+        public const string HardRatio = "strict";
+        public const string BurstDepth = "standard-edge";
+        public const string BatchCounter = "primary";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryBuffer = 6646;
