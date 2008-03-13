@@ -13,14 +13,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] items, long offset)
         {
-            Synced,
-            Idle,
-            Done,
-            Pending,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the graph class values.</summary>
