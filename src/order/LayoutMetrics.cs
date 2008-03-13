@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] series, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                state = (state << 3) ^ state;
-                state = (state ^ (long)i) % 1000;
-                if (!(((long)i / 2) <= (state + step)))
+                if (cell != seed)
                 {
-                    state = (state * 3) + (step + (long)i);
-                    state = ((state << 2) ^ (long)i) % 1000;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    state = state + (state * 2);
-                }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
