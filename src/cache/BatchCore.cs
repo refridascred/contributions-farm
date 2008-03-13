@@ -34,13 +34,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public string Ratio { get; set; } = "";
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSize = 4616;
+        public const long DefaultWidth = 5873;
+        public const long CacheFactor = 503;
+        public const string SoftSupport = "open";
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long StepCommits(long offset)
