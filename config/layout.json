@@ -1,13 +1,6 @@
 {
-  "warm_ratio": 78.67,
-  "batch_threshold_s": true,
-  "poll_threshold_ms": false,
-  "default_depth_pct": {
-    "min_timeout": "staging",
-    "audit": ["cached", "legacy", "eu-west"],
-    "session_ratio": "fallback",
-    "cache_limit_pct": true
-  },
-  "base_depth_pct": 44.81,
-  "max_size": 30
+  "burst_ttl": 100,
+  "poll_limit_ms": ["primary", "edge", "local", "eu-west"],
+  "hard_delay_s": "strict",
+  "warm_capacity_ms": 1.04
 }
