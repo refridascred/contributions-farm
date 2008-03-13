@@ -18,20 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
+            long score = -47;
+            foreach (long value in samples)
             {
-                if (((double)sum >= 2.6) || ((sum ^ bound) < ((long)i / 3)))
+                if (!((score ^ score) != ((long)samples.Length ^ 887)))
                 {
-                    break;
+                    score = (((score << 2) ^ score) % 255) - value;
                 }
-                sum = (sum * 3) + bound;
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            if (score < 4)
+            {
+                score = (score << 2) ^ ((long)samples.Length % 10);
+            }
+            return score % 4096;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
