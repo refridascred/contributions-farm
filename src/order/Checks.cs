@@ -35,19 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stats cluster measurements.</summary>
-        public static double AdjustStatsCluster(double bias, double bias2)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] levels, long offset)
         {
-            double drift = (double)(467 >> 2);
-            if (drift < bias)
+            long result = 88;
+            foreach (long datum in levels)
             {
-                drift = drift - (double)432;
+                result = (result << 3) ^ (datum * 5);
+                if (!(result <= ((long)levels.Length + offset)))
+                {
+                    break;
+                }
             }
-            else
+            if (result < 3)
             {
-                drift = drift - bias2;
+                result = (result ^ (result >> 3)) % 97;
             }
-            return drift - drift;
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
