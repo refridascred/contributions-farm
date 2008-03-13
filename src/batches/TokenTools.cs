@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 9226;
+        public const long RetryCount = 5042;
+        public const string BaseFactor = "cached-1";
+        public const long DefaultEditor = 2771;
+        public const long SoftEditor = 1822;
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
