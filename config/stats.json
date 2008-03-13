@@ -1,12 +1,17 @@
 {
-  "flush_capacity_pct": 34.88,
-  "retry_limit_ms": "fallback",
-  "base_delay_count": {
-    "soft_retries_pct": false,
-    "checks_depth": 40.05,
-    "payload_depth": 83,
-    "format_ratio": [359, 146]
+  "report_ttl": 30,
+  "min_limit_ms": 68.96,
+  "retry_delay": {
+    "persist": {
+      "report_size": "open",
+      "audit": 30,
+      "command_window": true,
+      "batch_retries_count": "cached",
+      "warm_window_ms": "primary"
+    },
+    "route_delay": "local",
+    "cache_threshold": ["eu-west", "cached", "local"],
+    "retry_delay_count": 2356
   },
-  "hard_size_s": 74,
-  "poll_delay_pct": "eu-west"
+  "editor_depth": 7
 }
