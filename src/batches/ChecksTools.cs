@@ -22,10 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 1322;
-        public const double SoftDepth = 13.27;
-        public const long BurstCount = 3710;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelOutliers(long[] readings, long target)
