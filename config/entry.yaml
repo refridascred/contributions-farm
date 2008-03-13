@@ -1,4 +1,13 @@
 # entry settings
-compress: true
-retry_window_s: eu-west
-max_delay: green
+default_window: blue
+farm_interval:
+  - blue
+  - edge
+flush_limit: 78
+retry_capacity_s: 6.33
+context_threshold: 40.34
+soft_size_ms:
+  - 479
+  - 152
+  - 339
+  - 99
