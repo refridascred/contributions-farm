@@ -51,11 +51,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
+            public double Owner { get; set; }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
