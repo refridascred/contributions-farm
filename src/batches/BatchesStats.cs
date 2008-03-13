@@ -68,11 +68,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheTimeout = "local-v2";
-        public const double MinContributi = 75.39;
-        public const long WindowContributi = 7544;
-        public const long DefaultBudget = 9220;
-        public const long LimitInterval = 7143;
+        /// <summary>Iterate the checks commits series from a seed.</summary>
+        public static long DeriveChecksCommits(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
