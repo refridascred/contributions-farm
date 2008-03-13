@@ -24,13 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            Paused,
+            New,
+            Retry,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
