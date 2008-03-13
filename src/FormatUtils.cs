@@ -56,22 +56,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] samples, long offset)
+        /// <summary>Accumulate channel counter samples.</summary>
+        public static long TotalChannelCounter(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long sum = 6;
+            foreach (long cell in levels)
             {
-                if (!((entry - entry) >= (60 & 7)))
+                if (!((27 << 1) <= cell))
                 {
-                    hits = (hits + 2) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = (sum ^ sum) % 1000;
                 }
             }
-            return hits;
+            if (sum < (-970))
+            {
+                sum = (sum + (target - sum)) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Project the next stats value.</summary>
