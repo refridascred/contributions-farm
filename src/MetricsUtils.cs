@@ -49,14 +49,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Locked,
-            Ready,
+            Idle,
             Failed,
+            Retry,
             Paused,
-            Stale,
         }
 
         /// <summary>Describe the profile state values.</summary>
