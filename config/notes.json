@@ -1,10 +1,17 @@
 {
-  "channel_window": {
-    "batch_window": "stable",
-    "queue_interval": false,
-    "base_delay": "primary"
+  "base_retries_s": "open",
+  "cache_size_pct": {
+    "readonly": "stable",
+    "poll_retries_ms": "fallback",
+    "compress": 56,
+    "window_retries": "standard",
+    "burst_depth_ms": {
+      "layout_threshold": ["green", "fallback", "blue"],
+      "poll_ratio": "standard",
+      "burst_capacity": "cached",
+      "max_ratio_s": 90
+    },
+    "default_limit": "blue"
   },
-  "poll_ttl_count": 250,
-  "poll_threshold": 12.24,
-  "hard_timeout_ms": 100
+  "metric_capacity": "local"
 }
