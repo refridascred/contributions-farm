@@ -27,19 +27,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every counter contributi entry stays within the limit.</summary>
-        public static bool ValidateCounterContributiBounds(long[] items, long target)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
