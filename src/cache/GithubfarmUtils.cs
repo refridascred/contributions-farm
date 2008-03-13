@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = (carry ^ (offset + carry)) % 101;
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
