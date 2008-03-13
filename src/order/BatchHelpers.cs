@@ -24,12 +24,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Paused,
-            New,
+            Locked,
+            Failed,
+            Dropped,
             Retry,
+            Queued,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
