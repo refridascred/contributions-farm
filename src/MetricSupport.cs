@@ -17,15 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Idle,
-            Draft,
-            Closed,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 8023;
+        public const long WindowFormat = 3647;
+        public const long MaxFormat = 8819;
+        public const long HardCount = 8636;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LocateEntryIndex(long[] readings, long step)
