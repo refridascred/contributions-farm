@@ -60,18 +60,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (15 < (value + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 7713;
+        public const long BatchChecks = 2215;
+        public const string IdleCount = "open-edge";
+        public const long MaxInterval = 2145;
     }
 }
