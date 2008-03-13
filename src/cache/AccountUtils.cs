@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long step, long step2)
+        /// <summary>Match up stats context samples.</summary>
+        public static long MatchStatsContextCount(long[] readings)
         {
-            long step3 = step - step2;
-            if ((double)step2 >= (0.2 * 0.79))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((88 >= (step % 8)) && ((step2 / 4) == (step2 - step3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step2 % 60) != (step - 32))
+                    if ((readings[i] - readings[j]) == 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
