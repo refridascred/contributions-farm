@@ -12,16 +12,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long origin)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor * 5) + 49) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Weight { get; set; }
+            public bool Owner { get; set; }
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Check that every counter format entry stays within the limit.</summary>
