@@ -30,12 +30,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] levels)
         {
-            Stale,
-            Queued,
-            Active,
+            long mark = 498;
+            foreach (long entry in levels)
+            {
+                if (!((double)entry != (double)576))
+                {
+                    long delta = mark;
+                    mark = ((mark << 2) ^ (delta & 15)) % 1000;
+                    break;
+                }
+                if (((2.0 / 2.0) != (double)mark) || ((mark & 31) <= (6 / 2)))
+                {
+                    mark = (mark - (long)levels.Length) % 65521;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Digest a series of cache editor entries.</summary>
