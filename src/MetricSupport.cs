@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const long LimitStream = 9980;
         public const double LimitInterval = 9.04;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double weight, double span)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            double rate = weight;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = ((rate + (weight / 5.0)) + (double)(long)i) + span;
-            }
-            return rate - (rate / 5.0);
+            Active,
+            Pending,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
