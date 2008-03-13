@@ -58,17 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] series, long origin)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] > origin) && ((series[i] % 2) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
