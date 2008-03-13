@@ -1,7 +1,5 @@
 # support settings
-warm_delay_ms:
-  - 31
-  - 210
-  - 243
-min_delay_pct: 49.46
-flush_ttl: true
+stream_delay: false
+warm_limit: false
+audit: false
+sync_depth_pct: 97.17
