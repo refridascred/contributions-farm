@@ -29,19 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter batch samples are out of range.</summary>
-        public static long MeasureFilterBatchMatches(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((3.0 - 8.29) <= (double)cell)
-                {
-                    hits = (hits + 3) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 5015;
+        public const long HardWidth = 4112;
+        public const long MaxLevel = 3401;
+        public const long BatchWidth = 6149;
+        public const double CacheOrder = 83.27;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TallyBatch(long[] readings, long origin)
