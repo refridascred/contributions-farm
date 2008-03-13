@@ -40,25 +40,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long bound, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] items)
         {
-            long span = bound - origin;
-            if ((bound / 7) <= (bound - origin))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((span + span) <= (bound + origin))
+                if ((datum ^ 70) >= seen)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up contributi samples.</summary>
