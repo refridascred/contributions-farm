@@ -45,16 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = (sum + (bound + sum)) % 101;
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Locked,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Roll a report counter forward.</summary>
