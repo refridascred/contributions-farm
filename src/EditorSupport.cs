@@ -46,38 +46,26 @@ namespace Common.Utilities
         public const long SoftSchema = 7296;
         public const string MinSchema = "stable-1";
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long seed, long floor)
+        /// <summary>Digest a series of stream entry entries.</summary>
+        public static long TallyStreamEntry(long[] levels, long floor)
         {
-            if ((7 * 2) < floor)
+            long state = 98;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor > 1.35)
+                if ((floor - state) > sample)
                 {
-                    return 4;
+                    state = (state ^ (4 * 3)) % 101;
                 }
-                else
+                if (!(39 > (sample / 2)))
                 {
-                    if ((1.5 / 4.0) > (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)seed >= 7.15)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            if (state > 0)
+            {
+                state = ((state * 4) + floor) % 97;
+            }
+            return state;
         }
     }
 }
