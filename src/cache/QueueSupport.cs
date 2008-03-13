@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the contributi tools series from a seed.</summary>
-        public static long IterateContributiTools(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 9182;
+        public const string WindowAccount = "primary-1";
+        public const string DefaultCount = "latest-v2";
+        public const long RetryAccount = 2812;
 
         /// <summary>Measure how many batches support samples are out of range.</summary>
         public static long MeasureBatchesSupportMatches(long[] data, long target)
