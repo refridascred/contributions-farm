@@ -34,21 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up contributi already samples.</summary>
-        public static long CompareContributiAlreadyCount(long[] samples)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((-5) <= (seen % 24)))
                 {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) + reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the batches kind values.</summary>
