@@ -68,14 +68,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] levels, long step)
         {
-            Dropped,
-            Retry,
-            Ready,
-            Paused,
-            Closed,
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit buffer record readings against a rule.</summary>
