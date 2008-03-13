@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 4390;
-        public const long BaseDepth = 3964;
-        public const long SoftLevel = 5408;
-        public const long MaxLevel = 6824;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((582 % 7) != (sample + sample))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
