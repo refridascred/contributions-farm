@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] samples)
-        {
-            long mark = 4;
-            foreach (long cell in samples)
-            {
-                mark = (((mark << 3) ^ (mark * 4)) % 1000) + cell;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 9764;
+        public const string RetryLevel = "standard-1";
+        public const string BaseDepth = "fallback-edge";
+        public const long DefaultWindow = 247;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long OverlapCommandCount(long[] readings)
