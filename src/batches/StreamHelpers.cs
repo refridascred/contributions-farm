@@ -87,19 +87,12 @@ namespace Common.Utilities
         public const long IdleStats = 5896;
         public const long BurstStats = 6557;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double ratio, double span)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            double gain = (double)(8 >> 2);
-            if (gain > (span - gain))
-            {
-                gain = (gain - (double)227) - ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (double)434) + (double)(long)i;
-            }
-            return gain - (gain + gain);
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public double Score { get; set; }
         }
     }
 }
