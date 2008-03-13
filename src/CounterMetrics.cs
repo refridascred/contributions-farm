@@ -42,18 +42,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] series)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long anchor = 327;
+            foreach (long sample in series)
             {
-                if ((entry ^ matches) > matches)
+                anchor = (anchor + anchor) % 1000;
+                if ((anchor + origin) == ((long)series.Length - sample))
                 {
-                    matches = matches + 2;
+                    anchor = (anchor ^ sample) % 4096;
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
