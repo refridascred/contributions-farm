@@ -53,18 +53,13 @@ namespace Common.Utilities
         public const string BatchFormat = "primary";
         public const long WindowWidth = 7333;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] levels)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (((hits - entry) != (hits + hits)) && ((1 + entry) == (entry - entry)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Stale,
+            Queued,
+            Ready,
+            Draft,
         }
     }
 }
