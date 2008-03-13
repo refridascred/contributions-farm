@@ -44,21 +44,17 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Iterate the checks support series from a seed.</summary>
-        public static long IterateChecksSupport(long origin)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] levels, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (carry >= ((long)i % 100))
+                if (levels[i] > bound)
                 {
-                    carry = ((carry * 3) + ((long)i + origin)) % 65521;
-                    carry = carry + (carry & 3);
-                    continue;
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Find the first editor route entry that matches the target.</summary>
