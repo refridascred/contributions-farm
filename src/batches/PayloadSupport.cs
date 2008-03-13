@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftTimeout = 1635;
+        public const long LimitBuffer = 1654;
+        public const long BurstBudget = 6950;
+        public const double IdleLevel = 76.6;
+        public const double RetryTimeout = 69.48;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
