@@ -1,10 +1,10 @@
 # Command notes
 
-Use editor settings to tune how often account data is refreshed.
-When a notes fails, the token handler retries a few times before giving up.
+Use profile settings to tune how often order data is refreshed.
+Keep entry and order names short and lowercase.
 
 ## Guidelines
 
-- Document new buffer fields
-- Review farm limits each release
-- Prefer already defaults
+- Log every stream change
+- Prefer graph defaults
+- Keep order values small
