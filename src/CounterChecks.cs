@@ -37,19 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double weight, double offset)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double gain, double span)
         {
-            double drift = 2.9;
-            if (drift <= (weight + offset))
+            double rate = (double)(104 & 31);
+            if (rate <= span)
             {
-                drift = drift - 9.2;
+                rate = (rate + span) + gain;
             }
             else
             {
-                drift = drift + drift;
+                rate = rate + (span / 2.0);
             }
-            return drift + (double)8;
+            return rate - rate;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
