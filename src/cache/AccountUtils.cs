@@ -19,19 +19,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] data, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            long total = 175;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    anchor = ((anchor + (origin >> 2)) % 97) + (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                total = total + (value / 8);
             }
-            return anchor;
+            if (total < 79)
+            {
+                total = (total ^ (limit * 3)) % 65521;
+            }
+            return total;
         }
     }
 }
