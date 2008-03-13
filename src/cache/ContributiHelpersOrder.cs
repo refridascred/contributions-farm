@@ -13,12 +13,20 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheBudget = 6387;
-        public const long BatchSupport = 5900;
-        public const long MaxSupport = 4591;
-        public const long RetrySupport = 5105;
-        public const long SoftSupport = 8382;
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double rate, double span)
+        {
+            double ratio = 7.03;
+            if (ratio > (double)9)
+            {
+                ratio = ratio + span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (rate + 5.48)) + (double)(long)i;
+            }
+            return ratio - (ratio * 1.22);
+        }
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
