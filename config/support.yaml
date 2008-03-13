@@ -1,5 +1,10 @@
 # support settings
-stream_delay: false
-warm_limit: false
-audit: false
-sync_depth_pct: 97.17
+githubfarm_timeout: 9385
+max_threshold_s: 75
+route_ttl:
+  contributi_retries: 250
+  metrics_capacity: staging
+  burst_timeout: 53.91
+farm_threshold: standard
+compress: latest
+readonly: 19
