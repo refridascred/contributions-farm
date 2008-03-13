@@ -37,22 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepInterval = 230;
+        public const long WindowTimeout = 489;
+        public const string CacheInterval = "strict-1";
+        public const long RetryCache = 1539;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long RollFarm(long bound)
