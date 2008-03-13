@@ -23,11 +23,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] samples, long origin)
+        public static long LookupContributiIndex(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
+                if ((levels[i] == step) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
