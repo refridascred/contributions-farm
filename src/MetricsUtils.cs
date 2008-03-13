@@ -19,13 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] readings)
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
