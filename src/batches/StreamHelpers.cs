@@ -23,25 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long limit, long step)
+        /// <summary>Check that every checks token entry stays within the limit.</summary>
+        public static bool ValidateChecksTokenLimits(long[] data, long seed)
         {
-            long prev = limit + step;
-            if (((prev / 2) < step) || (limit < (step + 895)))
+            bool valid = true;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit != (double)step)
+                if (entry > seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
