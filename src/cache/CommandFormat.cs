@@ -21,13 +21,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] data)
         {
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the commits class values.</summary>
