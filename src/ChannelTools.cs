@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = (sum << 3) ^ (sum - (-189));
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            public double Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
