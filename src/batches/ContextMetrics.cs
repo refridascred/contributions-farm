@@ -51,19 +51,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double ratio, double floor)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            double load = floor;
-            if (load <= floor)
-            {
-                load = load + (double)(-531);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + 1.0) + (double)(long)i;
-            }
-            return load - ratio;
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
