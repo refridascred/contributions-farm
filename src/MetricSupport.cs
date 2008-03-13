@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] series)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (((tally < (388 * 5)) || (sample >= (tally >> 4))) && (tally < 3))
+                if (cell >= target)
                 {
-                    tally = tally + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
