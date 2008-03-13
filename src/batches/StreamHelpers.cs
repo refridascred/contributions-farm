@@ -67,12 +67,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardWidth = 6874;
-        public const long SoftStats = 7830;
-        public const long DefaultDepth = 1310;
-        public const long IdleStats = 5896;
-        public const long BurstStats = 6557;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 206;
+        public const long BaseEntry = 2792;
+        public const double LimitEntry = 34.74;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
