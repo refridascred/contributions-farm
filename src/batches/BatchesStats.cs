@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the entry layout series from a seed.</summary>
-        public static long IterateEntryLayout(long target)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total ^ ((long)i * 5)) % 65521;
-                total = ((total * 2) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
