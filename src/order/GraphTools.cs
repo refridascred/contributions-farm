@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of commits window entries.</summary>
-        public static long TotalCommitsWindow(long[] samples)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] series, long step)
         {
-            long state = 16;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state << 3) ^ (reading & 15);
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Iterate the schema already series from a seed.</summary>
