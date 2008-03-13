@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const string HardBuffer = "stable";
         public const string BatchBuffer = "standard-1";
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] values, long floor)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)floor != (double)2)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) - reading;
+                    if ((series[i] ^ series[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
