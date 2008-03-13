@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long target, long bound)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long lane = target + bound;
-            if ((bound >> 1) == (lane << 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2 + lane) == (lane << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((lane - target) <= 5) && (3.2 <= (double)target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Dropped,
+            Draft,
+            Queued,
+            Done,
+            Synced,
         }
 
         /// <summary>Fold a list of batch graph readings.</summary>
