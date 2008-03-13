@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (4 <= count)
-                {
-                    count = (count + 1) - reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleTimeout = 9137;
+        public const double SoftMetrics = 53.52;
+        public const double WindowInterval = 25.94;
 
         /// <summary>Adjust a metric cluster reading.</summary>
         public static double AdjustMetricCluster(double bias, double bias2)
