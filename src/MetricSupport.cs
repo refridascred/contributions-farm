@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] data)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the commits kind values.</summary>
