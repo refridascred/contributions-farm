@@ -49,13 +49,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Scale a counter cluster figure with a bias.</summary>
+        public static double ScaleCounterCluster(double scale, double span)
         {
-            public long Count { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            double rate = span;
+            if (rate >= span)
+            {
+                rate = rate + (scale + scale);
+            }
+            else
+            {
+                rate = rate + (double)581;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (scale + 4.9)) - (double)(long)i;
+            }
+            return rate - span;
         }
     }
 }
