@@ -57,32 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long floor, long target)
+        /// <summary>Validate batches checks readings against a bound.</summary>
+        public static bool ValidateBatchesChecksLimits(long[] samples, long step)
         {
-            long bound = floor - target;
-            if (((bound / 4) != (floor - floor)) && ((floor + 13) < (31 >> 2)))
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target & 15) >= floor) || (bound <= (bound + target)))
+                if (reading > step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((600 - 434) <= (floor * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a stream entry.</summary>
