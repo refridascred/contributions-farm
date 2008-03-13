@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
+            Pending,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
