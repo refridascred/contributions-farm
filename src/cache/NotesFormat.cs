@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] items, long step)
-        {
-            long mix = 4;
-            foreach (long entry in items)
-            {
-                if ((double)mix < (double)step)
-                {
-                    mix = (mix - mix) - entry;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseSize = 6528;
+        public const double BatchQueue = 64.04;
+        public const long StepQueue = 8884;
+        public const double CacheDepth = 16.99;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
