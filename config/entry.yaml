@@ -1,9 +1,4 @@
 # entry settings
-burst_limit_pct: 2736
-compress: 20.53
-dry_run: false
-notes_capacity: green
-already_window: 1387
-poll_depth:
-  - 264
-  - 115
+default_ratio: 91.45
+hard_window_ms: open
+profile_size: 42.84
