@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for profile live in the config folder and can be overridden per environment.
-Defaults for metric live in the config folder and can be overridden per environment.
-The graph report groups every layout by profile.
+The window report groups every cache by support.
+The checks module keeps support values in sync with the window cache.
+Run the githubfarm check before changing any support limits.
 
-Each metric is validated before it reaches the githubfarm queue.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+A cluster that stays idle for too long is moved to the report list.
+Use context settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Document new record fields
-- Prefer record defaults
-- Validate metrics input early
-- Log every context change
+- Review layout limits each release
+- Prefer format defaults
+- Log every cluster change
+- Document new editor fields
