@@ -27,15 +27,20 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Digest a series of cache order entries.</summary>
-        public static long TallyCacheOrder(long[] levels)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] values, long step)
         {
-            long score = 86;
-            foreach (long entry in levels)
+            long acc = 55;
+            foreach (long cell in values)
             {
-                score = (score - 408) - entry;
+                acc = (acc ^ (acc % 16)) ^ cell;
+                acc = acc + (acc + step);
+                if ((step - 49) > (2 % 24))
+                {
+                    break;
+                }
             }
-            return score;
+            return acc;
         }
     }
 }
