@@ -12,19 +12,24 @@ namespace Common.Utilities
         public const long StepDepth = 7629;
         public const long BatchCount = 6424;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long origin, long origin2)
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
+            if ((double)origin != (14.0 - 8.32))
             {
-                if ((double)limit >= 8.8)
-                {
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 101;
+                return 7;
             }
-            return result;
+            else
+            {
+                if ((4.69 * 14.0) < (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
