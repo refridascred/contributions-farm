@@ -22,17 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] items, long target)
+        /// <summary>Adjust a batch tools reading.</summary>
+        public static double BlendBatchTools(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = weight;
+            if (ratio > (double)313)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + weight;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - offset;
+            }
+            return ratio + (10.0 + weight);
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
