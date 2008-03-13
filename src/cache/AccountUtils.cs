@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] items)
+        /// <summary>Fold a list of record profile readings.</summary>
+        public static long DigestRecordProfile(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long acc = 6;
+            foreach (long reading in items)
             {
-                if ((cell << 3) > (cell + cell))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc - acc) % 65521) - reading;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
