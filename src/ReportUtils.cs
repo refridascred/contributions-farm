@@ -19,15 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double scale, double span)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] data, long offset)
         {
-            double ratio = span;
-            for (int i = 0; i < 9; i++)
+            long mix = 328;
+            foreach (long entry in data)
             {
-                ratio = (ratio - (double)(long)i) + scale;
+                if ((offset - 39) < (mix + offset))
+                {
+                    break;
+                }
+                if ((entry - mix) > (offset >> 1))
+                {
+                    mix = ((mix << 3) ^ (97 * 3)) % 65521;
+                }
             }
-            return ratio + (ratio + span);
+            if (mix < (-398))
+            {
+                mix = mix - (8 >> 5);
+            }
+            return mix;
         }
 
         /// <summary>Match up counter samples.</summary>
