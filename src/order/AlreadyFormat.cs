@@ -44,17 +44,14 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] levels, long bound)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Ready,
+            Stale,
+            Active,
+            Failed,
         }
 
         /// <summary>Find the first editor route entry that matches the target.</summary>
