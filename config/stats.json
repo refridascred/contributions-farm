@@ -1,5 +1,5 @@
 {
-  "burst_depth_count": false,
-  "session_size": 60,
-  "poll_limit_ms": "strict"
+  "enabled": ["edge", "green", "blue", "staging"],
+  "warm_ttl_pct": 60,
+  "batch_threshold_ms": [2, 38, 434]
 }
