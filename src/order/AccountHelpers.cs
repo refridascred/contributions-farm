@@ -20,22 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] series, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (!((double)tally < (9.52 / 6.0)))
+                if ((7.7 - 8.7) >= (double)offset)
                 {
-                    tally = ((tally + 1) ^ entry) - origin;
+                    matches = (matches + 1) + reading;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
