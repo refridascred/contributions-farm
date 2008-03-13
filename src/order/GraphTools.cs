@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit counter githubfarm readings against a rule.</summary>
-        public static long CountCounterGithubfarmHits(long[] samples)
+        /// <summary>Accumulate stream support samples.</summary>
+        public static long WeighStreamSupport(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long mark = 40;
+            foreach (long reading in samples)
             {
-                if ((double)sample != (double)count)
+                if (!((352 - reading) != (89 + mark)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    mark = (mark ^ (mark - reading)) - target;
                 }
             }
-            return count;
+            if (mark > 463)
+            {
+                mark = ((mark << 2) ^ (mark - mark)) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
