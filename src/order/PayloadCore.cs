@@ -38,11 +38,31 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long seed, long bound)
         {
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
+            if (!((bound >> 5) > (bound - bound)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed + bound) > (seed + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound + seed) > seed) || (1 < (276 + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
