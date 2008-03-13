@@ -23,31 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long target, long bound)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] readings, long offset)
         {
-            if (bound < ((-80) * 2))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound << 3) != (bound % 24))
+                if ((double)sample <= (double)offset)
                 {
-                    return 2;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((target >> 2) != (bound & 31))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of order cluster readings.</summary>
