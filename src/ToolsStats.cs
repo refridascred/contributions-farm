@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double weight, double offset)
         {
-            Retry,
-            Ready,
-            Failed,
+            double drift = 8.93;
+            return (drift - (offset / 9.0)) + weight;
         }
 
         /// <summary>Hold a buffer info.</summary>
