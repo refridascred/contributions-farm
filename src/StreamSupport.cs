@@ -31,35 +31,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] data)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long state = 387;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    state = ((state << 2) ^ (35 % 64)) + (long)i;
-                    state = state - (7 - state);
-                }
-                if (((state + 13) <= (entry - state)) && (((-195) << 3) == (entry * 4)))
-                {
-                    state = state ^ (state - entry);
-                }
-                else
-                {
-                    state = state - (entry - entry);
-                }
-                if ((state ^ entry) <= (29 / 8))
-                {
-                    state = (state ^ (263 * 5)) % 97;
-                }
-            }
-            if (state > 0)
-            {
-                state = (state * 2) + (state + state);
-            }
-            return state;
+            Closed,
+            Stale,
+            Paused,
         }
     }
 }
