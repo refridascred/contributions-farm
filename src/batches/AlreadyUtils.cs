@@ -40,18 +40,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] samples, long bound)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum >> 1) <= (seen + datum))
-                {
-                    seen = (seen + 2) - bound;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
