@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] data)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long total = 0;
-            foreach (long entry in data)
-            {
-                if ((double)total < (5.6 * 16.0))
-                {
-                    continue;
-                }
-                total = total ^ (entry - total);
-            }
-            return total % 97;
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
