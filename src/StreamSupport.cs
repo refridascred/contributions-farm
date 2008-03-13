@@ -29,31 +29,35 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long step, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] data)
         {
-            if ((20.0 * 17.0) <= (double)seed)
+            long state = 387;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (step > 551)
+                for (int i = 0; i < 11; i++)
                 {
-                    return 8;
+                    state = ((state << 2) ^ (35 % 64)) + (long)i;
+                    state = state - (7 - state);
+                }
+                if (((state + 13) <= (entry - state)) && (((-195) << 3) == (entry * 4)))
+                {
+                    state = state ^ (state - entry);
                 }
                 else
                 {
-                    if ((double)step != (double)6)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    state = state - (entry - entry);
+                }
+                if ((state ^ entry) <= (29 / 8))
+                {
+                    state = (state ^ (263 * 5)) % 97;
                 }
             }
+            if (state > 0)
+            {
+                state = (state * 2) + (state + state);
+            }
+            return state;
         }
     }
 }
