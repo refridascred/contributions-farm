@@ -1,4 +1,11 @@
 # support settings
-poll_window_ms: false
-idle_timeout: standard
-hard_threshold_s: 79
+burst_ratio: staging
+hard_depth:
+  - 499
+  - 160
+  - 89
+poll_size:
+  - legacy
+  - latest
+  - edge
+warm_depth_pct: 16.09
