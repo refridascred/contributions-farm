@@ -45,16 +45,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = (acc * 5) + (acc << 1);
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
