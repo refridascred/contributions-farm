@@ -63,21 +63,9 @@ namespace Common.Utilities
         public const double RetryTimeout = 40.4;
         public const long MinGraph = 7065;
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 9394;
+        public const long MaxStream = 3265;
+        public const double BurstStream = 89.51;
     }
 }
