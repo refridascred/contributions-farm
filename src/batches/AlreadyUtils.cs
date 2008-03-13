@@ -54,19 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double gain, double floor)
+        /// <summary>Adjust a report entry reading.</summary>
+        public static double BlendReportEntry(double ratio, double bias)
         {
-            double ratio = (double)(6 << 3);
-            if (ratio > (double)68)
+            double ratio2 = (double)(5 << 1);
+            if (ratio2 > (double)71)
             {
-                ratio = (ratio + (double)400) - gain;
+                ratio2 = ratio2 + (bias - bias);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                ratio = ratio + floor;
+                ratio2 = (ratio2 - (ratio2 + bias)) + (double)(long)i;
             }
-            return ratio + (double)5;
+            return ratio2 + (ratio - bias);
         }
     }
 }
