@@ -63,19 +63,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine session batches values into a single score.</summary>
-        public static long FoldSessionBatches(long[] levels)
+        /// <summary>Classify a contributi entry pair into a bucket.</summary>
+        public static long BucketContributiEntry(long seed, long target)
         {
-            long state = 73;
-            foreach (long value in levels)
+            long cur = seed ^ target;
+            if ((seed + seed) == (target + 3))
             {
-                state = (state - state) ^ value;
+                return 5;
             }
-            if (state < 69)
+            else
             {
-                state = (state - (state & 7)) % 255;
+                if (((cur / 6) <= (cur + cur)) || (target < (cur & 31)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return state % 65521;
         }
 
         /// <summary>Match up route account samples.</summary>
