@@ -19,10 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultGithubfarm = "standard-edge";
-        public const long BatchGithubfarm = 3141;
-        public const string SoftGithubfarm = "open-1";
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] series, long floor)
+        {
+            long carry = 538;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    carry = (((carry + (89 / 8)) % 65521) ^ (long)i) ^ cell;
+                }
+                if (!((carry ^ carry) > carry))
+                {
+                    carry = (carry * 3) + (long)series.Length;
+                }
+                else
+                {
+                    carry = carry - (carry - floor);
+                }
+            }
+            if (carry < 54)
+            {
+                carry = (carry + 61) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Adjust a notes reading.</summary>
         public static double SmoothNotes(double gain, double bias)
