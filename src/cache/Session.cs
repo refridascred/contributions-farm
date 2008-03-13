@@ -20,11 +20,18 @@ namespace Common.Utilities
             return gain - (floor - floor);
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double rate, double floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] values)
         {
-            double rate2 = (double)(666 + 641);
-            return (rate2 - (rate - rate2)) + floor;
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (hits >= cell)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
