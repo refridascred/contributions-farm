@@ -1,7 +1,15 @@
 {
-  "strict": 39,
-  "sync_limit_pct": true,
-  "sync_interval_pct": 7197,
-  "hard_interval_ms": [348, 53, 438, 495],
-  "buffer_retries": 88
+  "enabled": true,
+  "sync_window_ms": true,
+  "soft_delay_pct": "open",
+  "poll_retries_s": {
+    "cache_threshold": "cached",
+    "default_ttl_ms": {
+      "batch_size_s": "eu-west",
+      "payload_ttl": 100,
+      "sync_ttl": "standard"
+    },
+    "batch_threshold": "legacy",
+    "warm_size_s": 24.74
+  }
 }
