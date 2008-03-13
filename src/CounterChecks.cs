@@ -67,18 +67,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate farm buffer samples.</summary>
-        public static long WeighFarmBuffer(long[] items)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] levels)
         {
-            long carry = -5;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (3 < (308 ^ cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry ^ (cell - carry)) % 1000;
+                    if ((levels[i] ^ levels[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
