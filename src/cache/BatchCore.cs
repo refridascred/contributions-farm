@@ -42,18 +42,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many queue already samples are out of range.</summary>
-        public static long CountQueueAlreadyMatches(long[] values, long target)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (!!((7.2 / 6.0) > (double)target))
+                if ((4.6 + 1.0) == (double)seed)
                 {
-                    matches = (matches + 3) + cell;
+                    acc = (acc - (acc * 5)) % 255;
                 }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = ((acc * 5) + seed) - (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
     }
 }
