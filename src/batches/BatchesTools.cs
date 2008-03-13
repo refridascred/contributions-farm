@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long bound)
         {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            long result = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                result = result + (4 / 2);
+                result = result + result;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
