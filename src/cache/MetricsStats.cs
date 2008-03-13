@@ -44,11 +44,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next layout window value.</summary>
-        public static double SmoothLayoutWindow(double gain, double offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] readings)
         {
-            double drift = (double)3 / 2.0;
-            return ((drift - (double)35) + gain) + offset;
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up layout samples.</summary>
