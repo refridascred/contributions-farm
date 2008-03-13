@@ -36,13 +36,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Queued,
-            Retry,
+            Synced,
+            Closed,
+            Pending,
+            Failed,
             Ready,
-            Dropped,
         }
     }
 }
