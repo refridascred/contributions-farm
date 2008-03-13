@@ -22,20 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] series)
-        {
-            long mark = 3;
-            foreach (long reading in series)
-            {
-                mark = (mark << 3) ^ (mark - reading);
-            }
-            if (mark > 49)
-            {
-                mark = ((mark << 3) ^ (mark << 3)) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowRatio = "staging-edge";
+        public const string StepStats = "local-edge";
+        public const long DefaultStats = 5043;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long DigestMetric(long[] data, long origin)
