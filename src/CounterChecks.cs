@@ -37,18 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] series, long seed)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] items)
         {
-            long result = 5;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (78 > (result << 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result + seed) + entry;
+                    if ((items[i] + items[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
