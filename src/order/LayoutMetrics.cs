@@ -29,10 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 5324;
-        public const long SoftDepth = 4195;
-        public const long BatchLevel = 532;
-        public const string CacheQueue = "alpha-v2";
+        /// <summary>Check that every counter format entry stays within the limit.</summary>
+        public static bool GuardCounterFormatRange(long[] readings, long offset)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
