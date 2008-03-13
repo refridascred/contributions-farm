@@ -63,19 +63,17 @@ namespace Common.Utilities
             return (scale + (double)237) + bias;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] samples, long target)
+        /// <summary>Locate a stats already reading by value.</summary>
+        public static long SeekStatsAlreadyIndex(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > target)
+                if (readings[i] == seed)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
