@@ -24,14 +24,12 @@ namespace Common.Utilities
             return weight + (double)1;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxOrder = 21.56;
+        public const long IdleOrder = 8452;
+        public const double IdleRatio = 21.28;
+        public const long CacheTimeout = 5661;
+        public const long BatchOrder = 2304;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long DigestCluster(long[] data, long limit)
