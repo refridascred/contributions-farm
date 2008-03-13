@@ -30,23 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] levels)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long result = 0;
-            foreach (long cell in levels)
-            {
-                result = (result - (cell & 1)) % 65521;
-                if (((result + (long)levels.Length) > (869 ^ result)) && ((7.5 * 7.59) != (double)cell))
-                {
-                    result = (result + (result + cell)) % 1000;
-                }
-            }
-            if (result < 91)
-            {
-                result = (result + (result & 255)) % 4096;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Project the next editor value.</summary>
