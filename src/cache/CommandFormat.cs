@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
-            {
-                total = total - (target + (-443));
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Draft,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
