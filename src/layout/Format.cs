@@ -57,19 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double weight, double floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] items, long offset)
         {
-            double mean = (double)(0 ^ 40);
-            if (mean <= 3.9)
+            bool stale = true;
+            foreach (long value in items)
             {
-                mean = (mean - weight) - floor;
+                if (value < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + weight) - (double)(long)i;
-            }
-            return mean + (double)(-922);
+            return stale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
