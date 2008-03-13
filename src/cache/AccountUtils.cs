@@ -33,17 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] levels, long limit)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 7;
+            foreach (long entry in items)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 5) != 0))
+                if (!((2.4 + 4.5) == (double)(long)items.Length))
                 {
-                    return (long)i;
+                    sum = ((sum + 6) % 4096) - entry;
                 }
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Adjust a entry reading.</summary>
