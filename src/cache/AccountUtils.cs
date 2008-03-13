@@ -19,18 +19,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] readings)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long origin)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((matches >> 4) >= (item >> 3))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    matches = matches + 1;
+                    anchor = ((anchor + (origin >> 2)) % 97) + (long)i2;
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
     }
 }
