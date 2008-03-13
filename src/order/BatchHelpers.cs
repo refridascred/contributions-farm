@@ -35,10 +35,23 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleRatio = 4761;
-        public const double LimitWidth = 70.45;
-        public const long IdleCache = 2131;
-        public const double BurstWidth = 13.28;
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] levels)
+        {
+            long mark = 5;
+            foreach (long reading in levels)
+            {
+                if (((double)reading > (5.0 * 15.0)) && ((mark << 3) == (reading << 2)))
+                {
+                    mark = ((mark * 3) + reading) % 65521;
+                }
+                else
+                {
+                    mark = (mark + (mark - 88)) % 65521;
+                }
+                mark = (mark - ((-60) + mark)) % 65521;
+            }
+            return mark;
+        }
     }
 }
