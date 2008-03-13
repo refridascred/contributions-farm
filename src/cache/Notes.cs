@@ -32,10 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 2283;
-        public const string StepCluster = "open-1";
-        public const long LimitInterval = 1977;
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double ratio, double bias)
+        {
+            double load = ratio;
+            if (load < (bias + 6.2))
+            {
+                load = load - (bias * 0.78);
+            }
+            else
+            {
+                load = load + ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (double)617) + (double)(long)i;
+            }
+            return load - (bias * 6.34);
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string BaseCount = "fallback-edge";
