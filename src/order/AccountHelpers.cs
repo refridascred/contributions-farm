@@ -15,25 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] series, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry - carry) % 101;
-                if (!(3 <= (carry & 63)))
+                if (series[i] >= origin)
                 {
-                    carry = (carry - (limit % 60)) % 97;
+                    return (long)i;
                 }
-                if ((limit / 3) > ((long)i & 15))
-                {
-                    carry = ((carry * 5) + (carry ^ carry)) % 1000;
-                    carry = ((carry * 5) + (carry - carry)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
