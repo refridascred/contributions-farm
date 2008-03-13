@@ -34,13 +34,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample % 7) >= (count + sample))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
