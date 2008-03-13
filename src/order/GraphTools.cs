@@ -67,17 +67,27 @@ namespace Common.Utilities
             return (scale + (double)237) + bias;
         }
 
-        /// <summary>Look up the position of a channel editor sample.</summary>
-        public static long LocateChannelEditorIndex(long[] readings, long floor)
+        /// <summary>Digest a series of commits record entries.</summary>
+        public static long TotalCommitsRecord(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 6;
+            foreach (long reading in data)
             {
-                if (readings[i] > floor)
+                total = total ^ total;
+                if (((total & 255) == (total << 1)) && (83 > total))
                 {
-                    return (long)i;
+                    total = (total + (reading & 1)) % 65521;
+                }
+                else
+                {
+                    total = ((total * 4) + reading) % 255;
                 }
             }
-            return -1;
+            if (total > 72)
+            {
+                total = ((total * 3) + total) % 101;
+            }
+            return total;
         }
     }
 }
