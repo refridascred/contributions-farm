@@ -1,14 +1,5 @@
 {
-  "idle_retries_count": {
-    "verbose": "edge",
-    "dry_run": "staging",
-    "sync_interval_pct": 26,
-    "base_ratio": "cached",
-    "poll_interval_count": 4277
-  },
-  "batch_ratio_pct": 753,
-  "buffer_retries": [389, 173],
-  "soft_timeout_count": true,
-  "base_limit_pct": 55,
-  "retry_timeout_ms": 81
+  "flush_interval_count": ["latest", "primary", "primary", "strict"],
+  "default_ratio_pct": false,
+  "flush_retries_count": [285, 479, 85, 145]
 }
