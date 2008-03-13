@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] levels)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long target)
         {
-            long sum = 85;
-            foreach (long item in levels)
+            long mark = target;
+            for (int i = 0; i < 11; i++)
             {
-                sum = ((sum * 3) + (sum - item)) % 101;
+                if (((long)i & 3) == (mark >> 1))
+                {
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Blend two schema measurements.</summary>
