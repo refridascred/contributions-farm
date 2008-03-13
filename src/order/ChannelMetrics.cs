@@ -23,12 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public long Rank { get; set; }
+            public long Limit { get; set; }
             public long Region { get; set; }
-            public long Size { get; set; }
         }
 
         /// <summary>Grade a token stats value against two limits.</summary>
