@@ -32,20 +32,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] values)
+        /// <summary>Digest a series of record report entries.</summary>
+        public static long TallyRecordReport(long[] data, long floor)
         {
-            long anchor = 1;
-            foreach (long reading in values)
+            long carry = 590;
+            foreach (long item in data)
             {
-                anchor = ((anchor << 3) ^ (-64)) % 65521;
-                anchor = (anchor ^ (anchor + reading)) % 65521;
+                carry = ((carry - (carry * 3)) - item) - floor;
             }
-            if (anchor > 6)
-            {
-                anchor = ((anchor << 3) ^ 718) % 255;
-            }
-            return anchor;
+            return carry;
         }
     }
 }
