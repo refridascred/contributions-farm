@@ -56,19 +56,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate window profile readings against a bound.</summary>
-        public static bool ValidateWindowProfileLimits(long[] samples, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (value != limit)
+                if ((644 < (count / 9)) || (((count % 16) > (sample ^ sample)) || ((count - count) > count)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
