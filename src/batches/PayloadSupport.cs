@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next format notes value from a seed.</summary>
-        public static long DeriveFormatNotes(long limit)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
