@@ -14,12 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 3909;
-        public const long MaxBuffer = 9426;
-        public const long SoftFactor = 5034;
-        public const string IdleBuffer = "local-v2";
-        public const double LimitBuffer = 79.08;
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long LookupCommitsIndex(long[] values, long seed)
