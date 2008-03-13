@@ -48,21 +48,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] samples)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(((tally >> 3) <= (reading + bound)) || ((double)(-8) > (double)reading)))
                 {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
