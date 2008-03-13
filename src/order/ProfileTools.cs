@@ -41,19 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double rate, double span)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] values, long target)
         {
-            double rate2 = rate;
-            if (rate2 > 1.0)
+            bool ok = true;
+            foreach (long value in values)
             {
-                rate2 = (rate2 + rate2) - span;
+                if (value < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 + rate2;
-            }
-            return rate2 - rate;
+            return ok;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
