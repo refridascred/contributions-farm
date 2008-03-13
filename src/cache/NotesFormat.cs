@@ -25,23 +25,19 @@ namespace Common.Utilities
         public const long HardSpan = 292;
         public const string IdleTimeout = "legacy";
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] data)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] levels, long target)
         {
-            long result = 498;
-            foreach (long cell in data)
+            long acc = -63;
+            foreach (long datum in levels)
             {
-                result = (result - (6 / 7)) % 65521;
-                if (((double)cell < (3.0 + 2.1)) && ((cell << 1) >= result))
+                acc = ((acc * 5) + (datum ^ acc)) % 255;
+                if (datum >= (datum - 8))
                 {
-                    break;
+                    acc = ((acc << 2) ^ (target * 3)) % 255;
                 }
             }
-            if (result < 235)
-            {
-                result = (result + result) % 4096;
-            }
-            return result % 97;
+            return acc % 1000;
         }
     }
 }
