@@ -25,11 +25,23 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultBudget = 5844;
-        public const long WindowAlready = 9132;
-        public const string IdleAlready = "latest-v2";
-        public const long HardAlready = 1381;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen - bound) <= (bound - 951))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long FoldEntry(long[] data)
