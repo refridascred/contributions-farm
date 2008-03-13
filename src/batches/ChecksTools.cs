@@ -34,39 +34,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long floor, long origin)
-        {
-            long span = floor ^ origin;
-            if (((origin & 255) < (floor * 3)) || ((3.0 + 8.23) == (double)floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((span - span) > span) && ((double)floor < 5.06))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor != (3.6 - 0.1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin > (span + floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitRatio = 51.56;
+        public const long BaseBudget = 5956;
+        public const string LimitSpan = "staging-v2";
+        public const string HardFilter = "staging-v2";
     }
 }
