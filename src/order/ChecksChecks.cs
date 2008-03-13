@@ -30,11 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 5072;
-        public const double BatchLevel = 89.07;
-        public const long HardBatches = 2332;
-        public const long MinCount = 6509;
-        public const double DefaultBatches = 69.09;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultWidth = 6546;
+        public const long HardInterval = 9017;
+        public const double MinBatch = 23.63;
+        public const long DefaultBudget = 4633;
+        public const long BatchWidth = 1200;
     }
 }
