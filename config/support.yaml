@@ -1,58 +1,12 @@
 # support settings
-persist:
-  metrics_size: 38.86
-  soft_delay_count: false
-  max_interval: cached
-  default_delay_ms: 500
-  verbose:
-    - green
-    - local
-    - eu-west
-    - staging
-max_depth:
-  hard_interval: green
-  soft_retries_count:
-    poll_retries_ms:
-      - 269
-      - 124
-      - 186
-    enabled: 30
-    warm_size_pct: 55.88
-    warm_size: cached
-    checks_threshold: green
-    metric_timeout: 72
-  batch_capacity_ms:
-    cache_size_ms: staging
-    persist: 3722
-    poll_window: 250
-    base_ratio_pct: 4
-    max_interval: 46.35
-    default_retries: latest
-filter_timeout:
-  strict: blue
-  default_limit: cached
-  cache_retries: 44
-  retry_limit_pct:
-    warm_ratio_pct: false
-    account_interval: green
-    warm_threshold:
-      - primary
-      - latest
-      - primary
-      - legacy
-  record_capacity: open
-  warm_delay_s:
-    idle_capacity_s: 85.1
-    persist: 250
-    cache_timeout_s: 3339
-    poll_interval:
-      - 483
-      - 415
-      - 422
-      - 129
-    idle_timeout_count: 76.88
-cache_depth_ms:
-  readonly: 27.31
-  compress: primary
-  soft_depth: 1716
-  poll_delay_ms: 500
+batch_interval_count:
+  - open
+  - legacy
+  - staging
+  - eu-west
+warm_ratio_pct: 84.94
+cluster_ttl:
+  - primary
+  - green
+idle_ttl_pct: edge
+compress: 2398
