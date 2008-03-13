@@ -36,19 +36,32 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] readings, long bound)
+        /// <summary>Classify a token format pair into a bucket.</summary>
+        public static long SortTokenFormat(long bound, long floor)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long slot = bound - floor;
+            if ((bound + slot) != (slot ^ bound))
             {
-                if (cell < bound)
+                return 7;
+            }
+            else
+            {
+                if (!((693 / 3) > (39 + slot)))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((slot ^ slot) <= bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
