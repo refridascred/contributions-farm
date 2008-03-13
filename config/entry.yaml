@@ -1,16 +1,7 @@
 # entry settings
-soft_ttl_s: standard
-default_window_count:
-  enabled: eu-west
-  warm_retries: fallback
-  compress: true
-  base_limit_count:
-    - 90
-    - 248
-    - 239
-  editor_window: latest
-  commits_size: 500
-poll_delay_s: green
-batch_delay_count: 1
-poll_delay: 60
-burst_timeout_pct: 1.85
+readonly: true
+max_delay_pct: stable
+sync_capacity_s:
+  - 40
+  - 177
+  - 354
