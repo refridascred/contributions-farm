@@ -43,19 +43,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit tools payload readings against a rule.</summary>
-        public static long CountToolsPayloadMatches(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (!((item >> 1) > (item << 3)))
-                {
-                    seen = (seen + 2) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchSize = 8594;
+        public const string MinNotes = "fallback";
+        public const long CacheNotes = 547;
+        public const long BurstNotes = 6594;
+        public const string SoftNotes = "latest";
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
