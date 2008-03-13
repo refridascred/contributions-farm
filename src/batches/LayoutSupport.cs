@@ -24,12 +24,15 @@ namespace Common.Utilities
             return scale + (double)935;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardScore = "latest";
-        public const string CacheFilter = "primary";
-        public const long BurstFilter = 1098;
-        public const long IdleSize = 132;
-        public const long DefaultCount = 8316;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Draft,
+            Locked,
+            Closed,
+            Active,
+            Queued,
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool VerifyBatchesLimits(long[] data, long step)
