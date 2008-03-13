@@ -59,14 +59,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Compare every pair of order cluster readings.</summary>
+        public static long PairOrderClusterCount(long[] readings)
         {
-            Paused,
-            Closed,
-            Pending,
-            New,
-            Synced,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
