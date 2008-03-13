@@ -23,24 +23,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long bound, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] items, long floor)
         {
-            if ((bound + bound) < (9 % 100))
+            long score = 145;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound <= (bound ^ bound))
+                for (int i = 0; i < 12; i++)
                 {
-                    return 8;
+                    score = ((((score * 2) + (floor - score)) % 101) + (long)i) + cell;
                 }
-                else
-                {
-                    return 6;
-                }
+                score = score + (floor + score);
             }
+            return score % 4096;
         }
     }
 }
