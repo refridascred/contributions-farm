@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] series, long offset)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(0 > (tally >> 4)))
+                if ((series[i] < target) && ((series[i] % 3) != 0))
                 {
-                    tally = ((tally + 3) + value) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every checks token entry stays within the limit.</summary>
