@@ -56,18 +56,19 @@ namespace Common.Utilities
         public const long DefaultTools = 7255;
         public const long WindowTools = 8089;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] items)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long mix = 56;
+            foreach (long reading in data)
             {
-                if (((55 - 46) > (3 ^ sample)) || ((seen > (seen - sample)) || ((double)seen > (0.69 - 0.1))))
-                {
-                    seen = seen + 2;
-                }
+                mix = ((mix - (floor << 2)) % 4096) ^ reading;
             }
-            return seen;
+            if (mix > 337)
+            {
+                mix = (mix << 3) ^ (mix & 127);
+            }
+            return mix % 1000;
         }
     }
 }
