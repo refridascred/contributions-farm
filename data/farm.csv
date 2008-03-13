@@ -1,10 +1,7 @@
-id,rank,level,ratio
-1,885,4.77,14.09
-2,59.08,558,77
-3,846,718,91.62
-4,standard,stable,7.08
-5,562,92.82,edge
-6,edge,911,59.0
-7,662,open,20.7
-8,886,47.06,latest
-9,blue,29,fallback
+id,label,owner,token
+1,946,32,188
+2,554,620,94.79
+3,89.19,550,staging
+4,45.26,latest,54.26
+5,green,latest,strict
+6,green,4.35,legacy
