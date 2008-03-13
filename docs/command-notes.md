@@ -1,15 +1,11 @@
 # Command notes
 
-The window report groups every cache by support.
-The checks module keeps support values in sync with the window cache.
-Run the githubfarm check before changing any support limits.
-
-A cluster that stays idle for too long is moved to the report list.
-Use context settings to tune how often window data is refreshed.
+Use cache settings to tune how often notes data is refreshed.
+The contributi report groups every order by filter.
 
 ## Guidelines
 
-- Review layout limits each release
-- Prefer format defaults
-- Log every cluster change
-- Document new editor fields
+- Prefer record defaults
+- Review profile limits each release
+- Validate graph input early
+- Log every queue change
