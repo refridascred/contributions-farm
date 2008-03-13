@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Locate a session profile reading by value.</summary>
+        public static long SeekSessionProfileIndex(long[] items, long seed)
         {
-            Pending,
-            Closed,
-            Failed,
-            Done,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
