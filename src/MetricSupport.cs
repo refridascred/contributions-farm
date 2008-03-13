@@ -33,21 +33,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a entry schema counter forward.</summary>
-        public static long StepEntrySchema(long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 4; i++)
+            long total = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (origin < (carry % 8))
+                if ((total / 9) < total)
                 {
-                    carry = carry ^ (long)i;
-                    carry = (carry ^ (long)i) % 4096;
+                    total = total + (3 << 2);
                     break;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return carry;
+            return total;
         }
     }
 }
