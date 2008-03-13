@@ -22,14 +22,11 @@ namespace Common.Utilities
         public const string HardAccount = "stable-edge";
         public const string BaseInterval = "local";
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Synced,
-            Done,
-            Idle,
-            Active,
-            Ready,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchWindow = 30.14;
+        public const long BurstBudget = 3552;
+        public const long DefaultWindow = 3146;
+        public const long IdleWindow = 4437;
+        public const double WindowBudget = 95.83;
     }
 }
