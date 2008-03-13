@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] series, long target)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (entry != target)
+                if (value > seed)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
