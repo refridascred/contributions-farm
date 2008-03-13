@@ -30,19 +30,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] values, long floor)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading > floor)
+                if (series[i] == floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Roll a support counter forward.</summary>
