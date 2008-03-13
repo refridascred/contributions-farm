@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] values, long target)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long item in values)
+            double drift = (double)(23 - 105);
+            if (drift < (double)6)
             {
-                if (item <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift - bias;
             }
-            return ready;
+            else
+            {
+                drift = drift - (bias + gain);
+            }
+            return drift - 6.6;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
