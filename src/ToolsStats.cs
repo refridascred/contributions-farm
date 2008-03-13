@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double weight, double offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double weight, double floor)
         {
-            double drift = 8.93;
-            return (drift - (offset / 9.0)) + weight;
+            double load = (4.18 / 3.0) - 9.88;
+            if (load > (0.1 + 6.6))
+            {
+                load = (load + (floor * 0.16)) + weight;
+            }
+            return load - (double)27;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
