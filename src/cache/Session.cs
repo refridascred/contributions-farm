@@ -50,9 +50,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxProfile = "stable-v2";
-        public const string DefaultProfile = "legacy-v2";
-        public const long BatchTimeout = 378;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public string Weight { get; set; } = "";
+            public bool Level { get; set; }
+        }
     }
 }
