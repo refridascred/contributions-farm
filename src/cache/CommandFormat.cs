@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] readings)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] levels, long limit)
         {
-            long result = 6;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result + result) >= 69)
+                if (levels[i] <= limit)
                 {
-                    result = ((result - (result / 9)) % 1000) - datum;
+                    return (long)i;
                 }
             }
-            if (result > 4)
-            {
-                result = ((result << 3) ^ result) % 101;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
