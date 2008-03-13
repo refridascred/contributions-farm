@@ -1,4 +1,17 @@
 # entry settings
-default_ratio: 91.45
-hard_window_ms: open
-profile_size: 42.84
+retry_threshold_s: 3130
+min_limit:
+  default_interval_count: edge
+  readonly:
+    - 306
+    - 329
+    - 257
+    - 377
+  min_capacity: false
+  cache_size: 20.11
+strict:
+  - eu-west
+  - staging
+  - stable
+  - open
+hard_capacity_pct: 250
