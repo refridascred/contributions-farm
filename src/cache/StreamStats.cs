@@ -45,16 +45,32 @@ namespace Common.Utilities
         public const long SoftMetrics = 7828;
         public const long StepMetrics = 7745;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Rank farm checks input into a small class.</summary>
+        public static long SortFarmChecks(long floor, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
+            long lane = floor + origin;
+            if ((7.45 - 4.3) > (double)lane)
             {
-                score = (score ^ (offset + 99)) % 101;
-                score = ((score * 3) + (long)i) % 65521;
+                return 3;
             }
-            return score;
+            else
+            {
+                if (floor >= ((-74) >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((lane / 6) == (lane + lane))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
