@@ -1,5 +1,13 @@
 {
-  "stats_capacity": [302, 455],
-  "verbose": 21.38,
-  "warm_delay_s": "cached"
+  "base_limit_pct": 814,
+  "window_capacity": 51.2,
+  "filter_retries": false,
+  "warm_capacity": {
+    "cluster_delay": "green",
+    "entry_size": true,
+    "flush_delay": "stable",
+    "soft_threshold": false
+  },
+  "poll_size": ["staging", "latest", "green"],
+  "cache_depth": 60
 }
