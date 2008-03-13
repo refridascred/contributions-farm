@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] items, long bound)
+        /// <summary>Look up the position of a stats cache sample.</summary>
+        public static long FindStatsCacheIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (tally < (6 + bound))
+                if (readings[i] <= limit)
                 {
-                    tally = (tally + 3) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
