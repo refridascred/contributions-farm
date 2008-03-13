@@ -31,17 +31,15 @@ namespace Common.Utilities
         public const string IdleAlready = "latest-v2";
         public const long HardAlready = 1381;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] data, long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 21;
+            foreach (long sample in data)
             {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
+                score = (score ^ score) ^ sample;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
