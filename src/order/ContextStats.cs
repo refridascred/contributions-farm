@@ -27,13 +27,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] samples, long origin)
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public bool Level { get; set; }
-            public bool Score { get; set; }
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a token format pair into a bucket.</summary>
