@@ -19,19 +19,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine commits cluster values into a single score.</summary>
-        public static long DigestCommitsCluster(long[] values)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long bound, long limit)
         {
-            long total = 925;
-            foreach (long item in values)
+            if ((((-6) ^ limit) > 6) || ((limit & 63) >= (limit << 1)))
             {
-                total = total - total;
-                if (((long)values.Length != (6 + item)) && ((total - 780) <= (total - (-346))))
+                return 4;
+            }
+            else
+            {
+                if (bound >= (bound ^ bound))
                 {
-                    total = (total * 3) + (total - item);
+                    return 7;
+                }
+                else
+                {
+                    if (((limit % 100) < bound) || ((double)bound > 1.12))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit * 4) < bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
