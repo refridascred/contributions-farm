@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every route notes entry stays within the limit.</summary>
-        public static bool GuardRouteNotesBounds(long[] levels, long limit)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Locked,
+            Done,
+            Pending,
         }
 
         /// <summary>Derive the next account contributi value from a seed.</summary>
