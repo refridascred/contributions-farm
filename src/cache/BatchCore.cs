@@ -49,13 +49,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] samples, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long anchor = 3;
+            foreach (long value in samples)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                anchor = (anchor ^ value) - step;
+            }
+            if (anchor > 44)
+            {
+                anchor = (anchor ^ (45 << 1)) % 65521;
             }
             return anchor;
         }
