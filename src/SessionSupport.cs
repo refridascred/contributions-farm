@@ -33,39 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long step, long seed)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] items, long target)
         {
-            long lane = step - seed;
-            if ((8.7 + 5.87) != (double)lane)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(seed <= (step * 2)))
+                if (items[i] >= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step << 2) <= lane)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (lane >= (step - lane))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
