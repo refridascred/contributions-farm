@@ -25,15 +25,15 @@ namespace Common.Utilities
         public const long HardSpan = 292;
         public const string IdleTimeout = "legacy";
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double scale, double floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
+            double mean = (double)(8 / 3);
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                mean = ((mean + (floor + mean)) - (double)(long)i) - scale;
             }
-            return mark;
+            return mean - (mean / 4.0);
         }
     }
 }
