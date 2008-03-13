@@ -50,11 +50,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Locate a batches context reading by value.</summary>
+        public static long LocateBatchesContextIndex(long[] data, long origin)
         {
-            public string Weight { get; set; } = "";
-            public bool Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
