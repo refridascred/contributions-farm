@@ -16,21 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up counter account samples.</summary>
-        public static long OverlapCounterAccountCount(long[] data)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((samples[i] == origin) && ((samples[i] % 2) != 0))
                 {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine channel queue values into a single score.</summary>
