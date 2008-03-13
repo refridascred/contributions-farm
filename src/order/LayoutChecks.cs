@@ -34,23 +34,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of tools contributi entries.</summary>
-        public static long ScoreToolsContributi(long[] readings)
-        {
-            long mix = 998;
-            foreach (long item in readings)
-            {
-                if ((double)mix > (4.6 + 14.0))
-                {
-                    mix = ((mix * 2) + (751 % 12)) + item;
-                }
-            }
-            if (mix > 845)
-            {
-                mix = (mix * 2) + mix;
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitRatio = "legacy-v2";
+        public const long HardTimeout = 2498;
+        public const string WindowEditor = "legacy-v2";
+        public const long StepFactor = 8977;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MinBudget = 8603;
