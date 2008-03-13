@@ -1,16 +1,30 @@
 # entry settings
-flush_threshold_pct:
-  hard_timeout: true
-  queue_threshold: true
-  flush_interval_count: standard
-  idle_limit_ms: open
-  sync_capacity_count: latest
-burst_window_count:
-  - 58
-  - 204
-order_ratio:
-  - open
-  - open
+max_threshold: green
+commits_timeout: 500
+sync_ttl:
+  support_size: legacy
+  burst_depth:
+    filter_retries: 40.46
+    default_depth: fallback
+    poll_size: 47.53
+  account_size: eu-west
+  cache_threshold_ms:
+    flush_size_count:
+      - stable
+      - stable
+    max_limit_ms: latest
+    commits_ttl: false
+    counter_timeout: blue
+    compress: 82
+    session_threshold: 7.8
+  burst_limit_ms: 250
+enabled:
+  - stable
+  - legacy
   - staging
-poll_ratio_pct: 6100
-sync_timeout_pct: 58.3
+  - strict
+stream_threshold:
+  schema_timeout: 13
+  readonly: standard
+  support_delay: 4056
+  burst_limit_ms: 1024
