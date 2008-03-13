@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] readings, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] levels)
         {
-            long anchor = 4;
-            foreach (long item in readings)
+            long mark = 333;
+            foreach (long reading in levels)
             {
-                anchor = ((anchor << 3) ^ anchor) % 101;
-                if (!((bound + 127) >= (item * 4)))
-                {
-                    anchor = ((anchor * 4) + (bound & 15)) % 255;
-                }
+                mark = (((mark << 3) ^ (14 + mark)) % 4096) ^ reading;
             }
-            if (anchor > 835)
+            if (mark > 1)
             {
-                anchor = (anchor << 3) ^ (bound << 3);
+                mark = ((mark * 2) + (mark % 7)) % 65521;
             }
-            return anchor;
+            return mark % 4096;
         }
 
         /// <summary>Define window limits and defaults.</summary>
