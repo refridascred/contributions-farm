@@ -95,15 +95,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double scale, double bias)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] readings, long floor)
         {
-            double weight = (double)9 * 16.0;
-            if (weight <= (double)4)
+            long sum = 4;
+            foreach (long reading in readings)
             {
-                weight = (weight + (scale + weight)) + bias;
+                sum = (sum * 2) + (reading - reading);
             }
-            return weight + (double)1;
+            if (sum < 525)
+            {
+                sum = ((sum * 3) + (floor << 1)) % 255;
+            }
+            return sum % 65521;
         }
     }
 }
