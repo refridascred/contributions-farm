@@ -1,11 +1,6 @@
-id,label,ratio,count
-1,431,27.38,blue
-2,cached,30.72,72.62
-3,20.04,18.2,27.08
-4,787,32.33,524
-5,34.02,755,73.26
-6,409,24.63,51.2
-7,46.29,592,68.2
-8,green,618,standard
-9,757,blue,31.22
-10,cached,3.78,920
+id,count,state,ratio
+1,535,58.31,419
+2,cached,strict,9.99
+3,strict,stable,cached
+4,184,20.58,stable
+5,629,eu-west,latest
