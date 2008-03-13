@@ -1,7 +1,7 @@
 {
-  "min_threshold": false,
-  "batch_delay_count": 81.96,
-  "counter_timeout": 100,
-  "readonly": "cached",
-  "warm_retries_s": ["strict", "cached", "primary", "open"]
+  "base_limit": "blue",
+  "soft_limit": 19,
+  "enabled": 100,
+  "batch_limit": [157, 91, 270],
+  "flush_depth_s": 90
 }
