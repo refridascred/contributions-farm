@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinContext = "open";
-        public const string BurstContext = "alpha-v2";
-        public const long BatchContext = 2579;
-        public const double WindowContext = 35.83;
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double scale, double floor)
+        {
+            double scale2 = scale;
+            if (scale2 <= (1.34 + scale2))
+            {
+                scale2 = (scale2 - scale2) + floor;
+            }
+            return scale2 + (double)63;
+        }
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
