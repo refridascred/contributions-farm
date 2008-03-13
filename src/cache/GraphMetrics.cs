@@ -45,32 +45,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a schema editor pair into a bucket.</summary>
-        public static long BucketSchemaEditor(long seed, long step)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] series, long origin)
         {
-            long diff = seed - step;
-            if ((seed * 5) >= (step + seed))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3 << 2) > diff)
+                if ((series[i] > origin) && ((series[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.7 / 8.0) > (double)diff)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
