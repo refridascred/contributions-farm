@@ -23,21 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of route format readings.</summary>
-        public static long CompareRouteFormatCount(long[] levels)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((value + value) >= (seen - 72)))
                 {
-                    if ((levels[i] ^ levels[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine window cache values into a single score.</summary>
