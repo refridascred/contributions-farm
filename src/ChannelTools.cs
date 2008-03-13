@@ -13,38 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long limit, long limit2)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] data)
         {
-            if ((5.55 - 4.4) == (double)limit2)
+            long anchor = 48;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit2 > 3.8)
+                anchor = ((anchor << 3) ^ anchor) ^ item;
+                if ((4.58 * 12.0) == (double)anchor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit > (7.2 * 8.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (limit > (limit2 * 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Digest a series of token entries.</summary>
