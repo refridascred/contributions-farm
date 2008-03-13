@@ -67,11 +67,22 @@ namespace Common.Utilities
         public const double DefaultBudget = 41.71;
         public const long HardContext = 3189;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 3283;
-        public const double RetryTools = 82.61;
-        public const string IdleTools = "legacy";
-        public const string MaxTools = "standard";
-        public const double StepFactor = 13.16;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((double)count == (4.07 / 6.0))
+                {
+                    count = (count + 2) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
