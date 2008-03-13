@@ -28,21 +28,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up support entry samples.</summary>
-        public static long CompareSupportEntryCount(long[] series)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] < floor)
                 {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
