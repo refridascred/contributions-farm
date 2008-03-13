@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up queue metrics samples.</summary>
-        public static long MatchQueueMetricsCount(long[] items)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Locked,
+            New,
         }
 
         /// <summary>Check that every graph token entry stays within the limit.</summary>
