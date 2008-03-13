@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 4689;
-        public const double MinWidth = 48.17;
-        public const string SoftChannel = "legacy";
-        public const long IdleBudget = 2561;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (((15.0 / 9.0) <= (double)(long)items.Length) && (hits <= (hits ^ 3)))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long SortGithubfarm(long bound, long limit)
