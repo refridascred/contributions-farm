@@ -34,15 +34,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a batches checks counter forward.</summary>
-        public static long IterateBatchesChecks(long floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
