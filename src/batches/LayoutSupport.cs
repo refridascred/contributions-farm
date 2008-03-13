@@ -21,22 +21,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 9160;
+        public const string BaseInterval = "standard";
+        public const long MaxMetric = 5862;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BatchSize = 8594;
