@@ -17,22 +17,19 @@ namespace Common.Utilities
         public const long BatchOrder = 5005;
         public const double DefaultSpan = 69.65;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double scale, double offset)
         {
-            long sum = 57;
-            foreach (long datum in samples)
+            double rate = offset;
+            if (rate > 9.5)
             {
-                if ((datum & 127) == (datum & 3))
-                {
-                    sum = sum ^ datum;
-                }
+                rate = (rate + 1.2) - scale;
             }
-            if (sum > (-745))
+            else
             {
-                sum = (sum ^ (sum & 255)) % 65521;
+                rate = rate - 1.3;
             }
-            return sum % 4096;
+            return rate - (rate - 5.0);
         }
 
         /// <summary>Grade a window value against two limits.</summary>
