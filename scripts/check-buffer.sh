@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest open; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in edge standard legacy cached; do
     log "checking ${item}"
 done
-
-mode="${1:-latest}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=316
-log "limit is ${BUFFER_LIMIT}"
