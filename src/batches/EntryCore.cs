@@ -24,18 +24,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultBudget = 5844;
+        public const long WindowAlready = 9132;
+        public const string IdleAlready = "latest-v2";
+        public const long HardAlready = 1381;
 
         /// <summary>Roll a support counter forward.</summary>
         public static long RollSupport(long offset)
