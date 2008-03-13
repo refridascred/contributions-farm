@@ -1,16 +1,5 @@
 {
-  "poll_capacity_ms": "primary",
-  "default_window_count": 60,
-  "tools_threshold": 60,
-  "cache_ratio_s": 7727,
-  "cluster_limit": {
-    "dry_run": {
-      "poll_depth": ["latest", "local"],
-      "metrics_delay": 93.26,
-      "poll_retries_count": 77
-    },
-    "base_capacity_pct": 500,
-    "soft_threshold_ms": 64.89,
-    "poll_ratio_ms": 10.74
-  }
+  "burst_depth_count": false,
+  "session_size": 60,
+  "poll_limit_ms": "strict"
 }
