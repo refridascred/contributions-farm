@@ -78,18 +78,14 @@ namespace Common.Utilities
             return mean - (bias * 0.15);
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] series)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((long)series.Length < (hits << 1))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-            }
-            return hits;
+            Dropped,
+            Active,
+            Done,
+            Stale,
+            Pending,
         }
     }
 }
