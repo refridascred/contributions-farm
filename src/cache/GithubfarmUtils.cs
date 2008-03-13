@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const long IdleWidth = 1200;
         public const long BaseSession = 32;
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double gain, double floor)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            double weight = floor;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight - (floor + weight)) + (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight - gain;
+            return count;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
