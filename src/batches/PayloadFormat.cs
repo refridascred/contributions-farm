@@ -34,20 +34,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long seed)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long step, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
+            long slot = step + offset;
+            if (((double)offset == (6.88 * 3.7)) && ((slot - slot) <= (offset + slot)))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = ((mark + (seed ^ mark)) % 255) ^ (long)i2;
-                }
-                mark = mark ^ (mark ^ seed);
-                mark = ((mark * 5) + (long)i) % 97;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((double)step >= (2.0 / 9.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((slot & 127) >= (slot + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate token samples.</summary>
