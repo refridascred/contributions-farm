@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 4695;
-        public const string CacheWidth = "alpha-edge";
-        public const long BurstRecord = 8873;
-        public const long WindowRecord = 8183;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] data)
+        {
+            long acc = 49;
+            foreach (long reading in data)
+            {
+                if ((reading >= (acc - 16)) && ((acc & 63) < (reading / 3)))
+                {
+                    acc = acc + reading;
+                }
+            }
+            if (acc > 4)
+            {
+                acc = (acc << 2) ^ (acc + acc);
+            }
+            return acc;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmBounds(long[] samples, long origin)
