@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string SoftBudget = "alpha";
         public const string HardBuffer = "local-1";
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] samples)
+        /// <summary>Count the githubfarm counter entries that pass the check.</summary>
+        public static long TallyGithubfarmCounterMatches(long[] series)
         {
-            long anchor = -59;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((43 <= anchor) && ((double)datum != (double)anchor))
+                if (90 >= (228 - tally))
                 {
-                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 255;
+                    tally = (tally + 2) - value;
                 }
             }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
