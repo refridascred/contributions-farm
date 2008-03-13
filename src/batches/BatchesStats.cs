@@ -39,19 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double weight, double span)
+        /// <summary>Adjust a counter route reading.</summary>
+        public static double AdjustCounterRoute(double bias, double offset)
         {
-            double scale = span * 8.0;
-            if (scale < weight)
+            double scale = (offset - bias) / 5.0;
+            if (scale > (double)38)
             {
-                scale = scale + 9.8;
+                scale = scale + bias;
             }
-            else
-            {
-                scale = scale - (7.7 / 3.0);
-            }
-            return scale - 1.52;
+            return scale + (bias * 4.0);
         }
 
         /// <summary>Grade a route value against two limits.</summary>
