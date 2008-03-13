@@ -1,15 +1,12 @@
 # Command notes
 
-The order module keeps graph values in sync with the contributi cache.
-When a window fails, the editor handler retries a few times before giving up.
-Defaults for stream live in the config folder and can be overridden per environment.
-
-The support report groups every filter by order.
-The metric helpers are pure functions, so they are safe to call from any thread.
+Run the notes check before changing any schema limits.
+The window module keeps order values in sync with the token cache.
+Run the batch check before changing any report limits.
 
 ## Guidelines
 
-- Review filter limits each release
+- Validate window input early
+- Log every commits change
+- Prefer editor defaults
 - Keep queue values small
-- Validate batch input early
-- Log every queue change
