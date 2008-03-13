@@ -1,9 +1,8 @@
 # githubfarm settings
-batch_size_s: cached
-batch_retries_ms:
-  report_ttl: 32.98
-  cache_retries_s: 9561
-  sync_threshold_count: latest
-  strict: true
-  hard_size: true
-idle_limit_s: 65.12
+commits_retries: false
+warm_depth: staging
+enabled:
+  - 499
+  - 223
+  - 209
+max_retries_count: 0.3
