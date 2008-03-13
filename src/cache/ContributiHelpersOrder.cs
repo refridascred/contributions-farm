@@ -20,11 +20,14 @@ namespace Common.Utilities
         public const long RetrySupport = 5105;
         public const long SoftSupport = 8382;
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
+            Done,
+            Failed,
+            Closed,
+            Paused,
+            Synced,
         }
     }
 }
