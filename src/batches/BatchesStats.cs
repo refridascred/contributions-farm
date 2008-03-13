@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a record stats value against two limits.</summary>
-        public static long RankRecordStats(long origin, long floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            if ((floor & 127) == (origin + origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((floor * 5) > (floor + origin)) || ((origin ^ 3) >= (origin + floor)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            Pending,
+            Draft,
         }
 
         /// <summary>Define report limits and defaults.</summary>
