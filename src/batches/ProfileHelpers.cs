@@ -87,27 +87,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] data)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long acc = 1;
-            foreach (long datum in data)
-            {
-                acc = acc ^ (acc >> 1);
-                if (acc > datum)
-                {
-                    acc = (acc + acc) % 1000;
-                }
-                else
-                {
-                    acc = (acc - (datum << 2)) % 4096;
-                }
-            }
-            if (acc > 6)
-            {
-                acc = acc ^ 863;
-            }
-            return acc % 4096;
+            Retry,
+            Queued,
+            Paused,
         }
     }
 }
