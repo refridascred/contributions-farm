@@ -1,8 +1,5 @@
 {
-  "batch_size_s": ["primary", "primary", "stable", "strict"],
-  "min_capacity": 17.75,
-  "retry_size": [149, 436],
-  "audit": 36.27,
-  "readonly": false,
-  "sync_size_s": [404, 318]
+  "max_retries_s": "edge",
+  "persist": ["fallback", "blue"],
+  "compress": true
 }
