@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] levels, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] values, long target)
         {
-            long acc = 23;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                acc = ((acc + acc) % 97) ^ cell;
-                acc = (acc << 2) ^ (bound / 5);
+                if (cell >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (acc < 33)
-            {
-                acc = ((acc * 4) + (bound ^ bound)) % 4096;
-            }
-            return acc;
+            return flag;
         }
 
         /// <summary>Fold a list of metric format readings.</summary>
