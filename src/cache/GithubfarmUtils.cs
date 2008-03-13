@@ -21,16 +21,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double weight, double offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
+            double scale = (8.0 + weight) + (weight / 6.0);
+            if (scale < (offset * 18.0))
             {
-                acc = (acc + origin) % 1000;
-                acc = ((acc * 4) + (long)i) % 65521;
+                scale = scale + (double)69;
             }
-            return acc;
+            return scale + scale;
         }
 
         /// <summary>Hold a queue summary.</summary>
