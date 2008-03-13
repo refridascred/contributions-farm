@@ -38,30 +38,16 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] series)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long origin)
         {
-            long total = 3;
-            foreach (long sample in series)
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)sample < (4.5 - 1.97))
-                {
-                    total = (total << 2) ^ (sample >> 2);
-                }
-                else
-                {
-                    total = (total - (total << 3)) % 255;
-                }
-                if ((total + sample) > 452)
-                {
-                    break;
-                }
+                mark = mark - (mark + (long)i);
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            if (total < 515)
-            {
-                total = total ^ (total ^ total);
-            }
-            return total;
+            return mark;
         }
     }
 }
