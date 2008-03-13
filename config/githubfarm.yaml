@@ -1,13 +1,10 @@
 # githubfarm settings
-batch_capacity:
-  - standard
+cache_limit_pct: true
+burst_depth_count: 668
+strict: 68.95
+min_window_pct:
+  - fallback
+  - strict
+  - local
   - cached
-sync_size_count:
-  - 98
-  - 166
-  - 330
-  - 337
-verbose:
-  - 37
-  - 221
-buffer_ttl: green
+batch_threshold_s: 5157
