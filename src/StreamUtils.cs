@@ -64,15 +64,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long mark = 8;
-            foreach (long value in levels)
-            {
-                mark = (mark + (mark + mark)) + value;
-            }
-            return mark;
+            Ready,
+            Synced,
+            Stale,
+            Dropped,
         }
     }
 }
