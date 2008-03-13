@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] samples)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            double load = scale + scale;
+            if (load < scale)
             {
-                if ((value * 3) < ((long)samples.Length << 1))
-                {
-                    seen = seen + 2;
-                }
+                load = (load + load) + offset;
             }
-            return seen;
+            return load + scale;
         }
 
         /// <summary>Count support account pairs that satisfy a relation.</summary>
