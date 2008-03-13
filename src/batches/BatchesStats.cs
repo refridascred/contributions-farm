@@ -39,16 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a counter route reading.</summary>
-        public static double AdjustCounterRoute(double bias, double offset)
-        {
-            double scale = (offset - bias) / 5.0;
-            if (scale > (double)38)
-            {
-                scale = scale + bias;
-            }
-            return scale + (bias * 4.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstInterval = 8272;
+        public const long LimitEditor = 5369;
+        public const string BurstCount = "standard-1";
+        public const long MaxEditor = 2252;
+        public const string BaseFactor = "latest-1";
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordHits(long[] data)
