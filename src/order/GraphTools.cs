@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] samples, long step)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (matches >= 6)
+                if (value > target)
                 {
-                    matches = ((matches + 2) - item) - step;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a order options.</summary>
