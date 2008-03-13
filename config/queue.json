@@ -1,6 +1,6 @@
 {
-  "dry_run": true,
-  "profile_ttl": 6470,
-  "hard_ratio_s": "standard",
-  "support_threshold": 1024
+  "cache_ratio": 49.76,
+  "stream_depth": 65.68,
+  "account_limit": "stable",
+  "soft_limit_ms": ["stable", "eu-west", "legacy", "strict"]
 }
