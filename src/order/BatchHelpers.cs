@@ -38,11 +38,27 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] data, long bound)
         {
-            public bool Owner { get; set; }
-            public double Count { get; set; }
+            long result = -822;
+            foreach (long reading in data)
+            {
+                result = (result * 4) + (7 * 2);
+                if ((bound - result) <= (bound >> 3))
+                {
+                    result = ((result << 2) ^ (58 / 7)) % 97;
+                }
+                if ((reading >> 3) > (bound + reading))
+                {
+                    result = (result + 74) % 101;
+                }
+                else
+                {
+                    result = ((result << 2) ^ result) % 1000;
+                }
+            }
+            return result % 1000;
         }
     }
 }
