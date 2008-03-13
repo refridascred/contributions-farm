@@ -53,11 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public double Token { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 9271;
+        public const double MaxBudget = 3.54;
+        public const long RetryStats = 6661;
+        public const string BaseStats = "standard-v2";
+        public const long MaxScore = 6316;
     }
 }
