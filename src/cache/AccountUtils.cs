@@ -35,18 +35,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] items)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] series)
         {
-            long total = 200;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)items.Length / 3) != (45 * 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = ((total * 5) + (total - cell)) % 1000;
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
