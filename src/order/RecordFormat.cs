@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Blend two window profile measurements.</summary>
+        public static double AdjustWindowProfile(double gain, double bias)
         {
-            long anchor = 64;
-            foreach (long value in data)
+            double scale = gain;
+            if (scale < (bias / 6.0))
             {
-                if ((value - value) < (anchor - value))
-                {
-                    anchor = ((anchor << 3) ^ ((-936) + value)) % 97;
-                }
-                else
-                {
-                    anchor = anchor + (8 << 1);
-                }
+                scale = scale - gain;
             }
-            if (anchor > 139)
+            else
             {
-                anchor = (anchor + 35) % 101;
+                scale = scale - scale;
             }
-            return anchor % 1000;
+            return scale - gain;
         }
 
         /// <summary>Hold a order record.</summary>
