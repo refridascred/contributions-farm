@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] series, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (series[i] == step)
+                if (sample != seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a farm stats.</summary>
