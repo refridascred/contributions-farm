@@ -20,23 +20,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] series)
-        {
-            long acc = 757;
-            foreach (long entry in series)
-            {
-                if (361 <= (long)series.Length)
-                {
-                    acc = (acc ^ (acc - entry)) % 97;
-                }
-                else
-                {
-                    acc = acc - (entry + 652);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstRatio = 58.22;
+        public const long HardAccount = 2750;
+        public const string MinAccount = "standard-1";
+        public const long CacheAccount = 9122;
 
         /// <summary>Digest a series of cache editor entries.</summary>
         public static long TotalCacheEditor(long[] samples, long step)
