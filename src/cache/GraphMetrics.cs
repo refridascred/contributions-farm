@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long seed)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double bias, double floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            double rate = 5.5 / 2.0;
+            if (rate < (rate * 2.0))
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                rate = ((rate - (double)19) + bias) + floor;
             }
-            return mark;
+            return rate + rate;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
