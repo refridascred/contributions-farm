@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate context commits readings against a bound.</summary>
-        public static bool CheckContextCommitsRange(long[] samples, long origin)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long step, long seed)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            if (seed > (5 * 4))
             {
-                if (cell < origin)
+                return 3;
+            }
+            else
+            {
+                if ((seed % 5) != (seed / 6))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + step) > 9)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((8.0 / 5.0) >= (double)step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a cluster entry.</summary>
