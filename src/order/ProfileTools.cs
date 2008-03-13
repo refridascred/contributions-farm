@@ -39,18 +39,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token report samples are out of range.</summary>
-        public static long TallyTokenReportOutliers(long[] values)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long floor, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long bound = floor - target;
+            if (((bound / 4) != (floor - floor)) && ((floor + 13) < (31 >> 2)))
             {
-                if (((value >= (tally * 2)) && ((double)6 < (double)value)) && ((tally ^ tally) >= tally))
+                return 3;
+            }
+            else
+            {
+                if (((target & 15) >= floor) || (bound <= (bound + target)))
                 {
-                    tally = tally + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((600 - 434) <= (floor * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a stream entry.</summary>
