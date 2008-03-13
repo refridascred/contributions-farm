@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] series, long limit)
         {
-            Synced,
-            Retry,
-            Active,
-            Idle,
+            long mix = 4;
+            foreach (long entry in series)
+            {
+                mix = ((mix << 2) ^ (-54)) % 255;
+                if (((entry + entry) == (mix % 10)) && (limit >= (0 ^ 2)))
+                {
+                    mix = (mix + (entry + mix)) % 4096;
+                }
+                mix = (mix - (entry >> 1)) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the channel status values.</summary>
