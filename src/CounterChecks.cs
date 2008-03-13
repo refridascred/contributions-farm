@@ -52,26 +52,19 @@ namespace Common.Utilities
             return drift + (double)8;
         }
 
-        /// <summary>Fold a list of cache metrics readings.</summary>
-        public static long DigestCacheMetrics(long[] readings)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long bound)
         {
-            long sum = 187;
-            foreach (long item in readings)
+            long state = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((2.05 * 9.1) == (double)item)
+                if (!((((long)i ^ state) != ((-800) / 7)) || ((double)bound < (double)(long)i)))
                 {
-                    sum = (sum + sum) % 255;
+                    state = (state - (bound ^ bound)) % 97;
                 }
-                else
-                {
-                    sum = (sum ^ (734 - item)) % 1000;
-                }
-                if ((double)sum <= (6.58 / 7.0))
-                {
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Describe the token phase values.</summary>
