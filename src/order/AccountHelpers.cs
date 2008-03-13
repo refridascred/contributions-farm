@@ -27,18 +27,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] levels, long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long total = 25;
+            foreach (long value in series)
             {
-                if (sample < seed)
-                {
-                    count = count + 2;
-                }
+                total = ((total + 3) - value) - bound;
+                total = ((total << 3) ^ (3 + total)) % 97;
             }
-            return count;
+            if (total > 9)
+            {
+                total = ((total << 3) ^ (total % 24)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Iterate the tools context series from a seed.</summary>
