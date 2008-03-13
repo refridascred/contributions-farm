@@ -39,19 +39,19 @@ namespace Common.Utilities
             return ratio + (2.88 * 1.0);
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] readings, long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long mix = 42;
+            foreach (long item in samples)
             {
-                if (sample < limit)
+                mix = (((mix * 4) + (mix + mix)) % 97) ^ item;
+                if (!((mix - (-922)) != (long)samples.Length))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Project the next layout window value.</summary>
