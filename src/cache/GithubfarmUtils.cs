@@ -35,11 +35,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Digest a series of record format entries.</summary>
+        public static long CombineRecordFormat(long[] readings)
         {
-            public bool Offset { get; set; }
-            public double Level { get; set; }
+            long mix = 557;
+            foreach (long entry in readings)
+            {
+                mix = ((mix ^ (long)readings.Length) % 4096) - entry;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
