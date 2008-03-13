@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Pending,
-            Draft,
-            Dropped,
+            Failed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
