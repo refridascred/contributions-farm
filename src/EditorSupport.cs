@@ -21,12 +21,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 5015;
-        public const long HardWidth = 4112;
-        public const long MaxLevel = 3401;
-        public const long BatchWidth = 6149;
-        public const double CacheOrder = 83.27;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (2 >= (sample % 16))
+                {
+                    count = (count + 1) + offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
