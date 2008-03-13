@@ -33,39 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long floor, long origin)
-        {
-            long slot = floor ^ origin;
-            if (origin <= (floor & 127))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((0.96 * 7.9) != (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor > slot)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor / 4) <= 25)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchDepth = 9649;
+        public const long HardBuffer = 5343;
+        public const string CacheCount = "stable-edge";
+        public const long BaseBuffer = 4181;
+        public const long MaxTimeout = 9011;
     }
 }
