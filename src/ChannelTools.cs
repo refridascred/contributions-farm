@@ -33,11 +33,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchDepth = 9649;
-        public const long HardBuffer = 5343;
-        public const string CacheCount = "stable-edge";
-        public const long BaseBuffer = 4181;
-        public const long MaxTimeout = 9011;
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Pending,
+            Failed,
+            Stale,
+            Queued,
+            New,
+        }
     }
 }
