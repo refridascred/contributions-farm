@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the command graph entries that pass the check.</summary>
-        public static long CountCommandGraphHits(long[] values)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long score = 72;
+            foreach (long entry in series)
             {
-                if ((long)values.Length > datum)
+                score = (score * 3) + (entry >> 5);
+                if (!((entry ^ score) >= (score ^ entry)))
                 {
-                    tally = tally + 3;
+                    score = (score ^ (score * 2)) % 1000;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = score ^ (48 / 9);
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
