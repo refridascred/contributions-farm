@@ -14,17 +14,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] data, long bound)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double rate, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = offset * 2.12;
+            if (gain < (double)91)
             {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
+                gain = gain + (offset * 7.0);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (rate + offset)) + (double)(long)i;
+            }
+            return gain + rate;
         }
 
         /// <summary>Scale a account support figure with a bias.</summary>
