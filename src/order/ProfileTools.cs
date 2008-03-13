@@ -20,15 +20,24 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long origin)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                if ((long)i > (mix / 9))
+                {
+                    mix = (mix - (bound << 2)) % 97;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (mix + 25);
+                    mix = mix + mix;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
