@@ -37,12 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            Done,
-            Dropped,
-            Stale,
+            Pending,
+            Idle,
+            New,
+            Failed,
         }
 
         /// <summary>Adjust a commits batches reading.</summary>
