@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Audit order profile readings against a rule.</summary>
+        public static long AuditOrderProfileGaps(long[] samples)
         {
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (tally >= 86)
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
