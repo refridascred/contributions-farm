@@ -52,18 +52,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] items)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double load = (double)(8 & 63);
+            if (load < 6.6)
             {
-                if ((reading + matches) <= (reading / 4))
-                {
-                    matches = matches + 3;
-                }
+                load = load - 7.95;
             }
-            return matches;
+            else
+            {
+                load = load - (load - bias);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + gain) + (double)(long)i;
+            }
+            return load - (gain + 9.6);
         }
     }
 }
