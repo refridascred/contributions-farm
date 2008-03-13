@@ -93,10 +93,18 @@ namespace Common.Utilities
         public const long LimitLevel = 1767;
         public const long MaxRatio = 4824;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 3062;
-        public const long HardRatio = 2878;
-        public const long BaseSize = 1385;
-        public const double StepStats = 73.26;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally + cell) >= (tally << 2))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
