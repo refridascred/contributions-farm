@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a stream record pair into a bucket.</summary>
-        public static long BucketStreamRecord(long limit, long limit2)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            if (limit > (limit ^ limit2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((96 + limit2) == (limit - limit2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the format class values.</summary>
