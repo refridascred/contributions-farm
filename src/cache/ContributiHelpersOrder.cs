@@ -13,19 +13,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double rate, double span)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] readings)
         {
-            double ratio = 7.03;
-            if (ratio > (double)9)
+            long acc = 7;
+            foreach (long value in readings)
             {
-                ratio = ratio + span;
+                if (((acc + 71) <= value) && ((acc * 2) >= (acc >> 2)))
+                {
+                    acc = ((acc * 2) + (193 - value)) % 65521;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (rate + 5.48)) + (double)(long)i;
-            }
-            return ratio - (ratio * 1.22);
+            return acc;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
