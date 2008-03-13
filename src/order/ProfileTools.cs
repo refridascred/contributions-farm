@@ -58,19 +58,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate batches checks readings against a bound.</summary>
-        public static bool ValidateBatchesChecksLimits(long[] samples, long step)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
