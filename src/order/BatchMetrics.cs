@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 6612;
-        public const double BaseGraph = 8.77;
-        public const string HardSpan = "standard-v2";
-        public const long BurstLevel = 9309;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long limit, long seed)
+        {
+            if ((double)limit >= (8.0 * 7.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed >> 2) > (seed - 307))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileHits(long[] data)
