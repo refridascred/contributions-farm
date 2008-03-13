@@ -1,6 +1,6 @@
-id,state,count,region,level
-1,91.33,391,primary,631
-2,417,270,local,primary
-3,726,54.34,fallback,57.23
-4,legacy,open,4,4.0
-5,757,124,strict,61.29
+id,active,ratio,score
+1,stable,green,169
+2,800,22.82,874
+3,764,4.2,edge
+4,438,297,green
+5,744,3.1,427
