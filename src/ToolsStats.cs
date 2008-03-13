@@ -13,21 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                long matches = (long)i;
-                if ((matches - bound) < ((long)i - state))
-                {
-                    continue;
-                }
-                state = (state << 3) ^ (2 + bound);
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
