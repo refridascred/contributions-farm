@@ -16,24 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Audit session githubfarm readings against a rule.</summary>
+        public static long CountSessionGithubfarmGaps(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (!((719 - total) >= ((long)i + bound)))
+                if (((2.0 - 9.1) == (double)reading) || ((6.6 + 6.77) < (double)matches))
                 {
-                    total = ((total << 3) ^ bound) % 4096;
+                    matches = matches + 3;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = (((total << 3) ^ (total / 4)) % 101) ^ (long)i2;
-                }
-                total = ((total * 2) + ((long)i / 2)) % 255;
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
