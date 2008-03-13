@@ -54,21 +54,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 78;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((total >> 5) > (sample - sample))
                 {
-                    if ((values[i] + values[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total * 2) + 113) % 65521;
+                }
+                if ((sample <= 96) && ((total + sample) <= total))
+                {
+                    total = (total ^ 34) % 65521;
                 }
             }
-            return hits;
+            if (total > 269)
+            {
+                total = (total + (total % 8)) % 97;
+            }
+            return total;
         }
     }
 }
