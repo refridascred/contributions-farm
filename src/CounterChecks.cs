@@ -60,19 +60,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate support payload readings against a bound.</summary>
-        public static bool ValidateSupportPayloadRange(long[] values, long target)
+        /// <summary>Count the counter filter entries that pass the check.</summary>
+        public static long CountCounterFilterOutliers(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (entry <= target)
+                if (((matches - target) <= (target ^ matches)) || ((1.6 + 7.0) != (double)matches))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) - cell;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
