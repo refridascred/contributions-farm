@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double ratio, double bias)
+        /// <summary>Classify a stream record pair into a bucket.</summary>
+        public static long BucketStreamRecord(long limit, long limit2)
         {
-            double scale = ratio;
-            if (scale <= (bias + ratio))
+            if (limit > (limit ^ limit2))
             {
-                scale = scale - (ratio / 3.0);
+                return 4;
             }
             else
             {
-                scale = scale + (double)370;
+                if ((96 + limit2) == (limit - limit2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + (double)935;
         }
 
         /// <summary>Describe the format class values.</summary>
