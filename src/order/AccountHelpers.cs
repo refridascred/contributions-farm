@@ -69,16 +69,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] samples)
         {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = total ^ (bound + (-13));
-                total = ((total * 3) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
