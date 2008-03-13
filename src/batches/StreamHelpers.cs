@@ -40,19 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] data, long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long limit, long step)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long prev = limit + step;
+            if (((prev / 2) < step) || (limit < (step + 895)))
             {
-                if (sample != seed)
+                return 7;
+            }
+            else
+            {
+                if ((double)limit != (double)step)
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
