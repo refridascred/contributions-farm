@@ -61,21 +61,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of account metrics readings.</summary>
-        public static long PairAccountMetricsCount(long[] items)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] items, long bound)
         {
-            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((items[i] == bound) && ((items[i] % 3) == 0))
                 {
-                    if ((items[i] - items[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
