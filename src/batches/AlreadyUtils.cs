@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the graph already entries that pass the check.</summary>
-        public static long CountGraphAlreadyGaps(long[] readings)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((item & 7) < count)
+                if (sample > bound)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Match up editor queue samples.</summary>
