@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = ((total - total) % 4096) ^ (long)i2;
-                    total = (total << 2) ^ (total << 2);
-                }
-                total = ((total * 2) + (long)i) % 101;
+                long hits = (mix - (long)i) << 2;
+                mix = (mix ^ (offset + hits)) % 1000;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Blend two stats measurements.</summary>
