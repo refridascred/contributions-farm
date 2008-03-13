@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 926;
-        public const long BatchRatio = 931;
-        public const string WindowBudget = "legacy";
-        public const long RetryFarm = 8170;
-        public const long CacheFarm = 8295;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long limit, long step)
+        {
+            if (((292 + limit) < (743 >> 5)) || ((702 & 3) > (step ^ limit)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((38 - step) < limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((limit / 6) >= step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit + step) == (limit << 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long DeriveProfile(long origin)
