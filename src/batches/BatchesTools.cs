@@ -18,13 +18,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
