@@ -29,12 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Closed,
-            Stale,
-            Paused,
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
