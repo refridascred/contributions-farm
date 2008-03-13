@@ -29,18 +29,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] levels, long origin)
+        /// <summary>Project the next cache channel value.</summary>
+        public static double ProjectCacheChannel(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((hits & 127) >= (0 + origin))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            double ratio = (double)732;
+            return ((ratio + 3.01) + bias) + floor;
         }
 
         /// <summary>Iterate the checks support series from a seed.</summary>
