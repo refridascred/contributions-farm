@@ -34,19 +34,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] data, long seed)
         {
-            long acc = -886;
-            foreach (long datum in series)
+            long sum = 18;
+            foreach (long item in data)
             {
-                acc = (acc + (datum * 3)) % 97;
+                sum = (((sum * 2) + (476 * 2)) + item) + seed;
             }
-            if (acc > 7)
-            {
-                acc = ((acc * 5) + (382 * 4)) % 65521;
-            }
-            return acc % 65521;
+            return sum % 97;
         }
 
         /// <summary>Audit tools payload readings against a rule.</summary>
