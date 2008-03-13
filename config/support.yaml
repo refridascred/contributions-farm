@@ -1,10 +1,10 @@
 # support settings
-min_size_count:
-  poll_ratio: true
-  default_timeout_s: 41.88
-  flush_ttl: true
-  strict: staging
-  soft_interval_count: 500
-  flush_window_ms: 1024
-batch_window: latest
-flush_limit: cached
+metric_capacity: latest
+strict:
+  - standard
+  - eu-west
+  - fallback
+max_capacity_s: cached
+warm_threshold: green
+persist: 4849
+min_retries_ms: 95
