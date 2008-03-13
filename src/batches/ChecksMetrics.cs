@@ -13,21 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count session schema pairs that satisfy a relation.</summary>
-        public static long MatchSessionSchemaCount(long[] values)
+        /// <summary>Count the counter editor entries that pass the check.</summary>
+        public static long AuditCounterEditorHits(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((target ^ item) > (item + matches))
                 {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the graph window entries that pass the check.</summary>
