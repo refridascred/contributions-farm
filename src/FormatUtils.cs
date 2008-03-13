@@ -58,12 +58,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Done,
-            Failed,
+            Synced,
+            Paused,
+            Stale,
             Draft,
+            Pending,
         }
 
         /// <summary>Audit record window readings against a rule.</summary>
