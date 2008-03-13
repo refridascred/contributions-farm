@@ -28,24 +28,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long offset, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] values, long offset)
         {
-            if ((offset >> 4) >= (target ^ 2))
+            long hits = 0;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + offset) >= (offset - offset))
+                if (offset > ((long)values.Length & 127))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 3) + reading;
                 }
             }
+            return hits;
         }
     }
 }
