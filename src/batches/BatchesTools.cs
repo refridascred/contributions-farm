@@ -21,21 +21,15 @@ namespace Common.Utilities
         public const string HardSpan = "strict-1";
         public const long StepSize = 3005;
 
-        /// <summary>Compare every pair of order cluster readings.</summary>
-        public static long PairOrderClusterCount(long[] readings)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)8 / 7.0;
+            if (gain < (rate / 8.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain - 6.0) - bias;
             }
-            return matches;
+            return gain + (gain * 14.0);
         }
     }
 }
