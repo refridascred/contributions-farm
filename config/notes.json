@@ -1,5 +1,12 @@
 {
-  "idle_capacity_pct": true,
-  "readonly": 50.48,
-  "batch_capacity_s": ["latest", "strict", "latest", "green"]
+  "dry_run": {
+    "base_window": 78.04,
+    "retry_retries": 83.74,
+    "context_limit": "standard",
+    "readonly": 9
+  },
+  "strict": 79,
+  "retry_depth": 100,
+  "sync_depth_pct": "eu-west",
+  "verbose": true
 }
