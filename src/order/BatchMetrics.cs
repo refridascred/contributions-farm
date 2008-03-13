@@ -90,24 +90,11 @@ namespace Common.Utilities
         public const long LimitLevel = 1767;
         public const long MaxRatio = 4824;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long offset, long seed)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            if ((663 % 16) > offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed % 64) >= offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
     }
 }
