@@ -1,6 +1,12 @@
 {
-  "context_window": 79.51,
-  "tools_ttl": "open",
-  "max_delay_ms": 62.79,
-  "sync_capacity": [324, 199]
+  "verbose": "edge",
+  "context_threshold": {
+    "cache_depth": "blue",
+    "enabled": ["local", "blue"],
+    "compress": 44,
+    "verbose": [436, 480],
+    "batch_capacity": 13,
+    "cache_timeout_ms": 17
+  },
+  "retry_ratio": false
 }
