@@ -1,17 +1,27 @@
 # entry settings
-retry_threshold_s: 3130
-min_limit:
-  default_interval_count: edge
-  readonly:
-    - 306
-    - 329
-    - 257
-    - 377
-  min_capacity: false
-  cache_size: 20.11
-strict:
-  - eu-west
-  - staging
-  - stable
-  - open
-hard_capacity_pct: 250
+readonly: false
+hard_delay_ms:
+  - edge
+  - fallback
+  - green
+  - blue
+cache_depth_ms:
+  retry_interval_count:
+    - 425
+    - 98
+    - 199
+  compress:
+    - 19
+    - 134
+    - 466
+    - 289
+  default_size:
+    - 211
+    - 481
+    - 422
+    - 282
+  poll_ratio_pct: true
+  retry_size_ms: 5700
+  strict: false
+max_retries: green
+base_window_count: blue
