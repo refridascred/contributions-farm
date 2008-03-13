@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] levels, long floor)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] levels, long seed)
         {
-            long mark = 4;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark ^ (mark / 9)) % 65521) ^ entry;
+                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 260)
-            {
-                mark = (mark * 4) + (floor % 60);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count the editor order entries that pass the check.</summary>
