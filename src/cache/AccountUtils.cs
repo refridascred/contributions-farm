@@ -33,18 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] items)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] levels, long target)
         {
-            long sum = 7;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((2.4 + 4.5) == (double)(long)items.Length))
+                if ((levels[i] == target) && ((levels[i] % 3) == 0))
                 {
-                    sum = ((sum + 6) % 4096) - entry;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Adjust a entry reading.</summary>
