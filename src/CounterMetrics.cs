@@ -20,14 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Ready,
-            Draft,
-            Done,
-            Dropped,
-            Locked,
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a notes reading.</summary>
