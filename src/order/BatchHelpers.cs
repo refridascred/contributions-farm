@@ -35,23 +35,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] levels)
+        /// <summary>Accumulate metric queue samples.</summary>
+        public static long FoldMetricQueue(long[] items)
         {
-            long mark = 5;
-            foreach (long reading in levels)
+            long score = -9;
+            foreach (long reading in items)
             {
-                if (((double)reading > (5.0 * 15.0)) && ((mark << 3) == (reading << 2)))
-                {
-                    mark = ((mark * 3) + reading) % 65521;
-                }
-                else
-                {
-                    mark = (mark + (mark - 88)) % 65521;
-                }
-                mark = (mark - ((-60) + mark)) % 65521;
+                score = ((score ^ 903) % 4096) ^ reading;
             }
-            return mark;
+            return score;
         }
     }
 }
