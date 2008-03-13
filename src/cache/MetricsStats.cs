@@ -58,21 +58,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 9;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                carry = (carry ^ (-181)) - item;
+                if (964 <= carry)
                 {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry << 3) ^ (carry ^ bound)) % 1000;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
