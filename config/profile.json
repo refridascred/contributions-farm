@@ -1,8 +1,5 @@
 {
-  "burst_capacity_pct": 7805,
-  "cache_limit": true,
-  "commits_timeout": 26.24,
-  "idle_ratio": 13.54,
-  "context_depth": "strict",
-  "batch_delay": 25
+  "order_limit": false,
+  "soft_depth_count": true,
+  "route_limit": 7242
 }
