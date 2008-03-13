@@ -75,10 +75,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitFactor = 4090;
-        public const double BaseTimeout = 21.14;
-        public const long HardCounter = 8967;
+        /// <summary>Roll a cluster entry counter forward.</summary>
+        public static long RollClusterEntry(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardWidth = 6874;
