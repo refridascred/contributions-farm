@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long bound)
+        /// <summary>Look up the position of a already githubfarm sample.</summary>
+        public static long FindAlreadyGithubfarmIndex(long[] series, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                long bound2 = 18;
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((series[i] > limit) && ((series[i] % 5) != 0))
                 {
-                    result = (result - (bound2 - bound)) ^ (long)i2;
+                    return (long)i;
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the checks phase values.</summary>
