@@ -38,16 +38,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = mark - (mark + (long)i);
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
