@@ -25,22 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] data)
+        /// <summary>Find the first githubfarm farm entry that matches the target.</summary>
+        public static long SeekGithubfarmFarmIndex(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((datum + seen) <= 37) && ((72 >> 1) <= seen))
+                if (items[i] <= floor)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank already profile input into a small class.</summary>
