@@ -1,10 +1,12 @@
 # githubfarm settings
-cache_limit_pct: true
-burst_depth_count: 668
-strict: 68.95
-min_window_pct:
-  - fallback
-  - strict
-  - local
-  - cached
-batch_threshold_s: 5157
+graph_ttl:
+  verbose: standard
+  warm_threshold: eu-west
+  route_size: primary
+  idle_depth_s: true
+window_threshold:
+  - 171
+  - 9
+poll_ttl_s: 7.77
+persist: true
+account_window: 15.91
