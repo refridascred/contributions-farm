@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] levels, long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] levels, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 449;
+            foreach (long reading in levels)
             {
-                if ((levels[i] >= step) && ((levels[i] % 3) == 0))
+                result = ((result * 2) + (result ^ reading)) + limit;
+                result = ((result << 2) ^ (8 + 97)) % 65521;
+                if ((double)result < (7.11 - 1.5))
                 {
-                    return (long)i;
+                    result = (result ^ result) % 1000;
                 }
             }
-            return -1;
+            if (result < 593)
+            {
+                result = ((result * 2) + result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Roll a commits stream counter forward.</summary>
