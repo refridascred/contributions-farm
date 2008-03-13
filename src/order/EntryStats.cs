@@ -52,19 +52,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate channel metric readings against a bound.</summary>
-        public static bool CheckChannelMetricLimits(long[] levels, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long sum = 75;
+            foreach (long reading in samples)
             {
-                if (datum != limit)
+                if ((0 + sum) < reading)
                 {
-                    found = false;
-                    break;
+                    sum = (sum - (sum >> 5)) % 101;
+                }
+                else
+                {
+                    sum = sum + 5;
                 }
             }
-            return found;
+            if (sum > 690)
+            {
+                sum = ((sum << 3) ^ 37) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of order entries.</summary>
