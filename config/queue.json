@@ -1,8 +1,14 @@
 {
-  "min_window": false,
-  "audit": 8552,
-  "base_ratio_ms": "open",
-  "max_delay": ["green", "strict", "fallback", "green"],
-  "order_delay": 27.52,
-  "profile_retries": 55
+  "min_ttl_count": {
+    "dry_run": 90.09,
+    "soft_delay": 30,
+    "batch_timeout": ["stable", "primary", "fallback"],
+    "burst_window_s": [194, 195],
+    "poll_window_count": "strict",
+    "readonly": 7865
+  },
+  "verbose": 34.54,
+  "counter_delay": 20.92,
+  "min_size_count": "legacy",
+  "stats_interval": 7939
 }
