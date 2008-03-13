@@ -42,19 +42,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every route record entry stays within the limit.</summary>
-        public static bool ValidateRouteRecordBounds(long[] samples, long origin)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long mark = 330;
+            foreach (long sample in items)
             {
-                if (sample >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark * 3) + sample) % 65521;
+                mark = (mark - mark) % 4096;
+                mark = (mark - mark) % 65521;
             }
-            return found;
+            if (mark < 4)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark;
         }
     }
 }
