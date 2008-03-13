@@ -26,18 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] data, long seed)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed * 3) > ((-24) - seed))
+                if (levels[i] < bound)
                 {
-                    hits = (hits + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine window cache values into a single score.</summary>
