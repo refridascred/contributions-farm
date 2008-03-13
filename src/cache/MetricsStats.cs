@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleRatio = 21.46;
-        public const double HardCommand = 19.74;
-        public const long HardRatio = 9081;
-        public const long RetryRatio = 7504;
-        public const long SoftCount = 849;
+        /// <summary>Locate a cluster schema reading by value.</summary>
+        public static long SeekClusterSchemaIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next session metric value from a seed.</summary>
         public static long SeriesSessionMetric(long step)
