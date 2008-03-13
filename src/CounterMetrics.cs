@@ -34,19 +34,17 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] samples, long step)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long limit)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long score = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry != step)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score << 3) ^ limit;
+                score = ((score * 5) + (limit + score)) % 4096;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return found;
+            return score;
         }
     }
 }
