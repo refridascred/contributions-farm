@@ -27,15 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] data, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
     }
 }
