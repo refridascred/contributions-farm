@@ -29,15 +29,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] series)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] values, long limit)
         {
-            long total = 876;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 5) + (460 + item)) % 65521;
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
