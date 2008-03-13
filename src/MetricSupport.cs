@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] levels)
+        /// <summary>Classify a contributi command pair into a bucket.</summary>
+        public static long GradeContributiCommand(long limit, long bound)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            if (limit <= (limit + (-703)))
             {
-                if (!(((8.3 * 3.99) == (double)entry) || ((7.01 / 5.0) < (double)entry)))
+                return 8;
+            }
+            else
+            {
+                if ((bound * 4) >= (8 / 8))
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    if (((bound + 585) < limit) || (3.13 >= (double)limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound + bound) == (bound / 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the entry already entries that pass the check.</summary>
