@@ -25,17 +25,11 @@ namespace Common.Utilities
         public const double DefaultLevel = 71.9;
         public const long SoftContributi = 4389;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 4976;
+        public const long WindowMetric = 1590;
+        public const long HardLevel = 930;
+        public const string StepLevel = "open-edge";
+        public const string StepMetric = "fallback-1";
     }
 }
