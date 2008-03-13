@@ -56,19 +56,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a order counter figure with a bias.</summary>
-        public static double ScaleOrderCounter(double weight, double floor)
+        /// <summary>Blend two batches channel measurements.</summary>
+        public static double ScaleBatchesChannel(double gain, double floor)
         {
-            double bias = (7.48 - floor) - 3.1;
-            if (bias < (weight - bias))
+            double weight = (4.3 - floor) - floor;
+            if (weight <= weight)
             {
-                bias = bias - (bias - bias);
+                weight = weight - (gain + gain);
             }
             for (int i = 0; i < 3; i++)
             {
-                bias = (bias + (17.0 * 3.6)) - (double)(long)i;
+                weight = (weight + (weight - floor)) - (double)(long)i;
             }
-            return bias + (double)883;
+            return weight - floor;
         }
     }
 }
