@@ -13,10 +13,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 3771;
-        public const long MaxMetrics = 2725;
-        public const double SoftMetrics = 25.3;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepEntry = "strict-edge";
+        public const string MinBudget = "strict-1";
+        public const string SoftEntry = "open-v2";
+        public const long BurstSpan = 7715;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetryWidth = 8477;
