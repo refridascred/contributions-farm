@@ -39,15 +39,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics graph entries.</summary>
-        public static long ScoreMetricsGraph(long[] samples, long floor)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long seed, long step)
         {
-            long carry = 4;
-            foreach (long entry in samples)
+            long slot = seed ^ step;
+            if (!((double)seed != (4.86 - 7.1)))
             {
-                carry = (((carry << 3) ^ (carry + 32)) - entry) - floor;
+                return 2;
             }
-            return carry % 65521;
+            else
+            {
+                if ((6 <= (slot + step)) || ((double)seed > (double)(-5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step <= (seed + slot))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step % 8) < (seed + 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a batches context reading by value.</summary>
