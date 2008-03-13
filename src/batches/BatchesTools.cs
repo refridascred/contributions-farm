@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = result + (4 / 2);
-                result = result + result;
-                result = ((result * 4) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
