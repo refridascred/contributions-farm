@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] levels)
+        /// <summary>Project the next order stream value.</summary>
+        public static double ScaleOrderStream(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (double)9;
+            if (mean > (double)174)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean + (scale / 5.0);
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (0.2 - offset)) + (double)(long)i;
+            }
+            return mean + scale;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
