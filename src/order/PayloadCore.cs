@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                state = (state - state) % 65521;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public double Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
