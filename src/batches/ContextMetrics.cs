@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long RetryWidth = 4481;
         public const double MinFormat = 43.16;
 
-        /// <summary>Look up the position of a stats token sample.</summary>
-        public static long FindStatsTokenIndex(long[] levels, long offset)
+        /// <summary>Look up the position of a command batches sample.</summary>
+        public static long FindCommandBatchesIndex(long[] series, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 3) == 0))
+                if ((series[i] >= origin) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
