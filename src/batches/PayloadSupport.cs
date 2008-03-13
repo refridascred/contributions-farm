@@ -23,39 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long offset, long origin)
-        {
-            if ((171 - offset) > origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(origin <= (6 >> 4)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((8.3 * 9.99) <= (double)offset) && ((10.0 / 7.0) > (double)origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (21 < (offset + origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseLevel = "stable-edge";
+        public const long MaxLevel = 7420;
+        public const double BatchFactor = 17.26;
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
