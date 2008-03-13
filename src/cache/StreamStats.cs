@@ -40,22 +40,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of cluster already readings.</summary>
-        public static long CompareClusterAlreadyCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheTimeout = 9306;
+        public const long SoftMetrics = 7828;
+        public const long StepMetrics = 7745;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long IterateChannel(long offset)
