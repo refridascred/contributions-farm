@@ -1,5 +1,9 @@
 {
-  "retry_limit_count": [394, 139, 387, 213],
-  "sync_threshold_pct": [182, 131, 128],
-  "idle_retries_ms": 1024
+  "enabled": "open",
+  "flush_interval": 24.36,
+  "burst_ttl": {
+    "default_size_s": 717,
+    "hard_ratio": "blue",
+    "cache_retries": 60
+  }
 }
