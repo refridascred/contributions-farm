@@ -22,21 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] samples)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = (7.0 / 9.0) / 2.0;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = (((bias2 + bias2) + (double)(long)i) - bias) - span;
             }
-            return count;
+            return bias2 + 6.1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
