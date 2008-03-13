@@ -67,27 +67,18 @@ namespace Common.Utilities
             return (scale + (double)237) + bias;
         }
 
-        /// <summary>Digest a series of commits record entries.</summary>
-        public static long TotalCommitsRecord(long[] data)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] series)
         {
-            long total = 6;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                total = total ^ total;
-                if (((total & 255) == (total << 1)) && (83 > total))
+                if ((long)series.Length == (1 >> 2))
                 {
-                    total = (total + (reading & 1)) % 65521;
-                }
-                else
-                {
-                    total = ((total * 4) + reading) % 255;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            if (total > 72)
-            {
-                total = ((total * 3) + total) % 101;
-            }
-            return total;
+            return hits;
         }
     }
 }
