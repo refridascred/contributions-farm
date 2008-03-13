@@ -26,19 +26,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window payload entry stays within the limit.</summary>
-        public static bool CheckWindowPayloadRange(long[] series, long offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long limit, long limit2)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long step = limit + limit2;
+            if (((limit2 ^ step) < (limit2 * 4)) && (limit < (step % 60)))
             {
-                if (datum < offset)
+                return 3;
+            }
+            else
+            {
+                if ((limit2 <= (92 << 2)) || (step < limit2))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (step < (step + step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)limit2 == (double)step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
