@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] levels, long seed)
         {
-            long result = 6;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 2) + (cell - cell)) % 101;
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
