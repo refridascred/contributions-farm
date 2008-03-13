@@ -48,14 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long target)
         {
-            Pending,
-            Draft,
-            Synced,
-            Retry,
-            Done,
+            long result = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if (result < (result & 255))
+                {
+                    break;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
