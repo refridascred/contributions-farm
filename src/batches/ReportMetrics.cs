@@ -33,11 +33,14 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
+            Locked,
+            Dropped,
+            Draft,
+            Paused,
+            Stale,
         }
     }
 }
