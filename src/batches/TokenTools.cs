@@ -13,19 +13,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] levels, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (!((bound >> 4) <= (bound >> 2)))
                 {
-                    acc = ((acc + acc) % 97) ^ (long)i2;
+                    count = (count + 1) ^ datum;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a entry options.</summary>
