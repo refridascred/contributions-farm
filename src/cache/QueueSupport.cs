@@ -11,18 +11,31 @@ namespace Common.Utilities
         public const string DefaultCount = "latest-v2";
         public const long RetryAccount = 2812;
 
-        /// <summary>Measure how many batches support samples are out of range.</summary>
-        public static long MeasureBatchesSupportMatches(long[] data, long target)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long step, long seed)
         {
-            long matches = 0;
-            foreach (long item in data)
+            if (((step & 31) == (step * 5)) && ((7.8 * 1.5) <= (double)step))
             {
-                if (!((target * 3) <= (87 * 2)))
+                return 0;
+            }
+            else
+            {
+                if ((seed + step) != (seed >> 2))
                 {
-                    matches = (matches + 1) + item;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + step) >= (step << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the editor kind values.</summary>
