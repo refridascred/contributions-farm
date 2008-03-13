@@ -1,18 +1,5 @@
 {
-  "graph_threshold": 2424,
-  "soft_depth_s": 8537,
-  "max_depth_s": {
-    "poll_ttl_s": 250,
-    "enabled": 74.88,
-    "strict": "edge",
-    "poll_retries_pct": {
-      "notes_depth": [445, 122],
-      "soft_window_count": "stable",
-      "strict": 3704,
-      "queue_timeout": 1024,
-      "readonly": ["staging", "blue"]
-    }
-  },
-  "poll_ttl": 833,
-  "compress": 4.47
+  "enabled": "strict",
+  "base_ratio": 30,
+  "burst_ttl_pct": 76.35
 }
