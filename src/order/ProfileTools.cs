@@ -56,15 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                if (!((matches >= (entry << 1)) || (entry < matches)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
