@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] readings, long bound)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryBudget = 3985;
+        public const long BurstDepth = 4451;
+        public const double DefaultCache = 86.97;
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
