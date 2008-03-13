@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a checks account sample.</summary>
-        public static long LocateChecksAccountIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstCount = 4802;
+        public const long BurstProfile = 9500;
+        public const string MaxFactor = "open-v2";
+        public const string HardProfile = "open";
+        public const double IdleSpan = 70.66;
 
         /// <summary>Accumulate format batch samples.</summary>
         public static long DigestFormatBatch(long[] values)
