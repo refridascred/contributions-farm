@@ -31,22 +31,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double rate, double span)
         {
-            long score = -35;
-            foreach (long sample in readings)
+            double ratio = rate;
+            if (ratio > (double)289)
             {
-                if ((score / 7) >= (sample ^ score))
-                {
-                    score = (score + (sample >> 5)) % 4096;
-                }
+                ratio = (ratio + (double)8) - span;
             }
-            if (score < 9)
-            {
-                score = score + (score - score);
-            }
-            return score;
+            return ratio + (rate / 3.0);
         }
     }
 }
