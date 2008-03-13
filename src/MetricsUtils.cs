@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] samples)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
