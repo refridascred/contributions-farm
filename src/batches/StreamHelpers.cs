@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] series, long target)
+        /// <summary>Grade a metric token value against two limits.</summary>
+        public static long SortMetricToken(long limit, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (limit >= (limit + seed))
             {
-                if ((series[i] < target) && ((series[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((9 < (seed << 3)) && ((seed & 127) >= (seed + seed)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((2 ^ limit) >= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every checks token entry stays within the limit.</summary>
