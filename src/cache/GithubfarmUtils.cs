@@ -24,17 +24,18 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] data, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((data[i] > seed) && ((data[i] % 5) != 0))
+                if (853 > entry)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
