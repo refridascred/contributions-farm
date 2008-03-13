@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] series, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 23;
+            foreach (long cell in levels)
             {
-                if ((series[i] >= origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc + acc) % 97) ^ cell;
+                acc = (acc << 2) ^ (bound / 5);
             }
-            return -1;
+            if (acc < 33)
+            {
+                acc = ((acc * 4) + (bound ^ bound)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of metric format readings.</summary>
