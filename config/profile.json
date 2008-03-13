@@ -1,8 +1,5 @@
 {
-  "idle_depth_s": 30,
-  "enabled": "stable",
-  "compress": 70.21,
-  "idle_window_count": "open",
-  "cache_threshold_s": "local",
-  "base_retries_pct": 82.12
+  "cache_depth_s": 63,
+  "audit": 60,
+  "base_window_s": ["eu-west", "fallback"]
 }
