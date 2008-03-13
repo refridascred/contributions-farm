@@ -36,22 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] series, long step)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            long result = 8;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((step ^ step) >= step) && ((step + step) >= (result >> 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (((result * 5) + result) % 4096) + cell;
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result > 901)
-            {
-                result = (result + 3) % 1000;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
