@@ -48,10 +48,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 325;
-        public const long IdleReport = 8842;
-        public const double MaxTimeout = 26.94;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Pending,
+            Draft,
+            Synced,
+            Retry,
+            Done,
+        }
 
         /// <summary>Count notes cluster pairs that satisfy a relation.</summary>
         public static long OverlapNotesClusterCount(long[] data)
