@@ -61,20 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] readings, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (total >= ((long)i % 2))
+                if (step >= (step ^ (-73)))
                 {
-                    total = ((total * 2) + total) % 101;
+                    count = (count + 3) + reading;
                 }
-                total = (total ^ ((long)i + origin)) % 97;
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
