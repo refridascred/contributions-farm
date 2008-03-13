@@ -1,7 +1,11 @@
 # support settings
-verbose: edge
-support_threshold: open
-warm_timeout_count: 7536
-audit: local
-compress: 9433
-flush_interval: 250
+enabled: 30.34
+poll_ratio_ms: standard
+batches_ttl:
+  idle_ttl_s: green
+  flush_size_count: 31.86
+  account_threshold:
+    min_delay_pct: true
+    format_retries: 14
+    min_window_count: 887
+  poll_retries: legacy
