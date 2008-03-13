@@ -1,16 +1,6 @@
 {
-  "idle_retries_s": {
-    "route_threshold": 64,
-    "warm_ratio": "eu-west",
-    "metric_window": "standard",
-    "hard_delay": {
-      "default_retries": true,
-      "editor_retries": "standard",
-      "window_capacity": [496, 466, 357, 75],
-      "payload_threshold": 9471
-    }
-  },
-  "hard_window": 4,
-  "max_timeout_s": "local",
-  "editor_limit": 1478
+  "flush_retries_ms": ["green", "strict", "edge"],
+  "readonly": ["local", "cached", "local"],
+  "cache_limit_ms": 56,
+  "idle_timeout": "green"
 }
