@@ -44,19 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Validate channel metric readings against a bound.</summary>
+        public static bool CheckChannelMetricLimits(long[] levels, long limit)
         {
-            long total = 9;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                total = (total ^ (datum & 3)) % 4096;
+                if (datum != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total < (-94))
-            {
-                total = total + total;
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Digest a series of order entries.</summary>
