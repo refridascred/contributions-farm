@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const long StepBudget = 848;
         public const double WindowWidth = 74.21;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] samples, long target)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double ratio, double span)
         {
-            long result = 186;
-            foreach (long datum in samples)
+            double weight = ratio;
+            if (weight < (5.0 + 9.4))
             {
-                if ((datum + result) != ((-8) - datum))
-                {
-                    result = ((result - (7 ^ result)) % 65521) - target;
-                }
+                weight = (weight + weight) + span;
             }
-            return result;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (ratio - weight)) + (double)(long)i;
+            }
+            return weight - (7.48 - 1.0);
         }
 
         /// <summary>Match up githubfarm samples.</summary>
