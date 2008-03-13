@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Stale,
-            Dropped,
-            Pending,
-            Closed,
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Adjust a token reading.</summary>
