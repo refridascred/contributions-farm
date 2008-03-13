@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] samples, long seed)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double scale, double span)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            double load = (double)(-291) / 4.0;
+            if (load <= (scale * 7.67))
             {
-                if (reading <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load - (span - scale);
             }
-            return ready;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (span - span)) + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
