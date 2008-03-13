@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] series, long floor)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Locate a queue profile reading by value.</summary>
