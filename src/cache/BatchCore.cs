@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of batch already entries.</summary>
-        public static long DigestBatchAlready(long[] series)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] items, long offset)
         {
-            long total = 1;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (((4.0 / 8.0) != (double)datum) || (datum <= (695 % 97)))
+                if (item <= (item ^ item))
                 {
-                    total = ((total << 2) ^ datum) % 4096;
+                    matches = (matches + 1) + offset;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Accumulate order samples.</summary>
