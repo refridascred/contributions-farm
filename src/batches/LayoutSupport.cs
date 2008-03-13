@@ -31,26 +31,15 @@ namespace Common.Utilities
         public const long LimitAlready = 2896;
         public const long HardAlready = 9082;
 
-        /// <summary>Accumulate graph cache samples.</summary>
-        public static long DigestGraphCache(long[] readings, long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] levels, long floor)
         {
-            long mix = 11;
-            foreach (long datum in readings)
+            long acc = 38;
+            foreach (long value in levels)
             {
-                if ((datum << 2) >= (datum % 64))
-                {
-                    mix = ((mix * 3) + (origin * 4)) % 1000;
-                }
-                if (!((244 - origin) < ((long)readings.Length - datum)))
-                {
-                    mix = (mix + (mix ^ datum)) % 1000;
-                }
+                acc = ((acc + (floor ^ 1)) % 1000) + value;
             }
-            if (mix > 827)
-            {
-                mix = (mix - (mix + mix)) % 101;
-            }
-            return mix;
+            return acc;
         }
     }
 }
