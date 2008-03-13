@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long limit, long origin)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long step = limit ^ origin;
-            if (!((origin + limit) >= limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin << 2) <= (step + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit >= 7.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step * 3) < limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            New,
+            Done,
+            Draft,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
