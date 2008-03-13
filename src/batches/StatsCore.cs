@@ -54,12 +54,16 @@ namespace Common.Utilities
         public const long WindowWidth = 6509;
         public const string DefaultAlready = "latest";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 1477;
-        public const long CacheBudget = 5930;
-        public const long WindowDepth = 9051;
-        public const double RetryTimeout = 40.4;
-        public const long MinGraph = 7065;
+        /// <summary>Digest a series of stream session entries.</summary>
+        public static long TallyStreamSession(long[] levels)
+        {
+            long anchor = 2;
+            foreach (long item in levels)
+            {
+                anchor = anchor ^ (anchor + item);
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many cache stream samples are out of range.</summary>
         public static long TallyCacheStreamHits(long[] series, long step)
