@@ -1,12 +1,10 @@
 # support settings
-idle_capacity_ms:
-  - 67
-  - 490
-  - 445
-  - 151
-entry_size: 7104
-verbose:
-  - 253
-  - 264
-  - 224
-  - 449
+min_size_count:
+  poll_ratio: true
+  default_timeout_s: 41.88
+  flush_ttl: true
+  strict: staging
+  soft_interval_count: 500
+  flush_window_ms: 1024
+batch_window: latest
+flush_limit: cached
