@@ -23,12 +23,19 @@ namespace Common.Utilities
         public const double IdleLevel = 76.6;
         public const double RetryTimeout = 69.48;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] values, long limit)
         {
-            Failed,
-            Pending,
-            Done,
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
