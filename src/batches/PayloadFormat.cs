@@ -34,22 +34,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] levels, long seed)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long seed)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((seen - datum) >= seed)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    seen = seen + 1;
+                    mark = ((mark + (seed ^ mark)) % 255) ^ (long)i2;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = mark ^ (mark ^ seed);
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Accumulate token samples.</summary>
