@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long bound, long floor)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double rate, double span)
         {
-            long cur = bound + floor;
-            if ((bound ^ floor) > (cur & 15))
+            double drift = rate;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
+                drift = (drift + drift) + (double)(long)i;
             }
-            else
-            {
-                if (bound < (bound * 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return drift - span;
         }
 
         /// <summary>Rank already input into a small class.</summary>
