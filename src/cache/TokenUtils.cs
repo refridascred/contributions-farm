@@ -19,15 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long origin)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long limit, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
+            long next = limit - step;
+            if ((37 & 15) != (limit + limit))
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if (((double)next >= (9.0 * 9.24)) || (limit >= (next - step)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((9.2 - 2.9) <= (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
