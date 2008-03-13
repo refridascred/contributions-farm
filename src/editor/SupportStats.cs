@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long IdleInterval = 3454;
         public const long StepBuffer = 1338;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] data, long floor)
         {
-            Synced,
-            Draft,
-            Dropped,
-            Pending,
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
