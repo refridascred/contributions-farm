@@ -21,22 +21,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate order token samples.</summary>
-        public static long DigestOrderToken(long[] levels)
+        /// <summary>Locate a schema checks reading by value.</summary>
+        public static long LookupSchemaChecksIndex(long[] samples, long offset)
         {
-            long sum = 520;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(50 < (value * 5)))
+                if (samples[i] > offset)
                 {
-                    sum = (sum * 3) + (sum >> 3);
-                }
-                else
-                {
-                    sum = sum ^ sum;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
