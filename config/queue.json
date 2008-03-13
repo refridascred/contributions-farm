@@ -1,5 +1,7 @@
 {
-  "max_limit_pct": 2551,
-  "cache_threshold_count": ["local", "blue"],
-  "flush_timeout": ["primary", "fallback", "green"]
+  "max_timeout_ms": 60,
+  "cache_threshold_s": 5532,
+  "readonly": false,
+  "hard_timeout": ["edge", "fallback"],
+  "min_depth_s": ["eu-west", "green"]
 }
