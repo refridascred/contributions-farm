@@ -22,14 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 74.71;
+        public const string HardSupport = "stable-v2";
+        public const long BatchSupport = 9398;
+        public const long RetrySupport = 4614;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheGaps(long[] data, long bound)
