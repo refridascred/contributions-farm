@@ -25,16 +25,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine entry queue values into a single score.</summary>
-        public static long WeighEntryQueue(long[] items)
-        {
-            long mark = -8;
-            foreach (long sample in items)
-            {
-                mark = (mark + sample) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardTimeout = 5113;
+        public const long BurstFormat = 6759;
+        public const string BatchFormat = "fallback-v2";
+        public const string BurstWidth = "cached-edge";
 
         /// <summary>Derive the next session farm value from a seed.</summary>
         public static long DeriveSessionFarm(long step)
