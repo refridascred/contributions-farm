@@ -28,13 +28,16 @@ namespace Common.Utilities
         public const long BurstMetrics = 108;
         public const string LimitMetrics = "stable-edge";
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] readings, long origin)
         {
-            Ready,
-            Closed,
-            Synced,
-            Done,
+            long total = 94;
+            foreach (long entry in readings)
+            {
+                total = (total - entry) % 255;
+                total = (total - (origin * 4)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
