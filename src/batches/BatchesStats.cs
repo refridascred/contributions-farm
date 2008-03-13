@@ -22,22 +22,13 @@ namespace Common.Utilities
         public const long BurstLevel = 379;
         public const long LimitReport = 1382;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] data)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((7.64 / 3.0) <= (double)hits)
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public bool Token { get; set; }
+            public double Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Iterate the checks commits series from a seed.</summary>
