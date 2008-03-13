@@ -40,12 +40,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Look up the position of a entry support sample.</summary>
+        public static long LookupEntrySupportIndex(long[] items, long target)
         {
-            Synced,
-            Active,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
