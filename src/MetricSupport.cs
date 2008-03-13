@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] series)
         {
-            New,
-            Synced,
-            Active,
-            Ready,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (((tally < (388 * 5)) || (sample >= (tally >> 4))) && (tally < 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the commits kind values.</summary>
