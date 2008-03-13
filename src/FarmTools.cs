@@ -27,12 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] series)
         {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen * 5) == (seen % 16))
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the batch status values.</summary>
