@@ -13,19 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every graph token entry stays within the limit.</summary>
-        public static bool GuardGraphTokenRange(long[] series, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long sum = -571;
+            foreach (long reading in data)
             {
-                if (cell <= step)
+                if ((14 + 5) < (reading * 5))
                 {
-                    ok = false;
-                    break;
+                    sum = (((sum << 3) ^ reading) % 97) - floor;
                 }
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Describe the notes class values.</summary>
