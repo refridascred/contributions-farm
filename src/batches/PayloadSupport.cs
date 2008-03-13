@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] data, long floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (data[i] > floor)
+                if (datum >= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the queue kind values.</summary>
