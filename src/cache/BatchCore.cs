@@ -17,30 +17,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] levels)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            long score = 4;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry < 15.0)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score ^ (long)levels.Length) % 97;
-                }
-                else
-                {
-                    score = ((score * 3) + (803 - score)) % 4096;
-                }
-                if ((long)levels.Length > entry)
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score < 4)
-            {
-                score = score ^ (score << 1);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
