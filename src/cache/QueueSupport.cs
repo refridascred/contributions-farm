@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 1253;
-        public const string BatchCluster = "staging";
-        public const double IdleCluster = 76.75;
-        public const long StepDepth = 7629;
-        public const long BatchCount = 6424;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long GradeBuffer(long origin, long origin2)
