@@ -62,16 +62,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double bias, double span)
-        {
-            double bias2 = (double)(73 >> 2);
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = ((bias2 - bias2) + (double)(long)i) + span;
-            }
-            return bias2 - (bias - bias2);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheTimeout = 9431;
+        public const double DefaultBudget = 41.71;
+        public const long HardContext = 3189;
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long GradeCache(long target, long origin)
