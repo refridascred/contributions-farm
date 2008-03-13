@@ -74,19 +74,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] items, long seed)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double bias, double span)
         {
-            bool ok = true;
-            foreach (long item in items)
+            double bias2 = (double)(73 >> 2);
+            for (int i = 0; i < 8; i++)
             {
-                if (item > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                bias2 = ((bias2 - bias2) + (double)(long)i) + span;
             }
-            return ok;
+            return bias2 - (bias - bias2);
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
