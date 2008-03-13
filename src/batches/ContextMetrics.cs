@@ -53,11 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstSpan = "fallback-1";
-        public const long BatchProfile = 7149;
-        public const double HardProfile = 46.21;
-        public const long HardLevel = 1368;
-        public const long LimitSize = 5450;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] readings, long seed)
+        {
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
