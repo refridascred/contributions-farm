@@ -29,19 +29,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double ratio, double bias)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long step)
         {
-            double ratio2 = (double)(4 / 4);
-            if (ratio2 <= (double)17)
+            long total = step;
+            for (int i = 0; i < 20; i++)
             {
-                ratio2 = ratio2 - bias;
+                total = ((total * 3) + (step << 2)) % 101;
+                if (((28 / 2) < ((long)i - (long)i)) || ((total + 55) < ((long)i / 9)))
+                {
+                    total = (total * 2) + 912;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = (total ^ (total >> 4)) - (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = ratio2 + (double)(long)i;
-            }
-            return ratio2 - (ratio + bias);
+            return total;
         }
     }
 }
