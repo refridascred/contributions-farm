@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long limit, long seed)
+        /// <summary>Validate tools route readings against a bound.</summary>
+        public static bool GuardToolsRouteBounds(long[] data, long origin)
         {
-            if ((double)limit >= (8.0 * 7.0))
+            bool ok = true;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed >> 2) > (seed - 307))
+                if (reading >= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Blend two context measurements.</summary>
