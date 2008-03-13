@@ -1,7 +1,5 @@
 # support settings
-checks_ratio:
-  - 364
-  - 458
-  - 489
-profile_limit: 3434
-buffer_ratio: 74.6
+idle_window_count: 20.47
+batch_timeout_s: primary
+graph_capacity: 100
+default_delay_count: open
