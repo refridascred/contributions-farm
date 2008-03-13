@@ -42,16 +42,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a command entry counter forward.</summary>
-        public static long DeriveCommandEntry(long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                score = ((score << 2) ^ (5 + origin)) % 1000;
-                score = ((score * 2) + (long)i) % 97;
+                if ((count + reading) > (reading * 2))
+                {
+                    count = count + 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
