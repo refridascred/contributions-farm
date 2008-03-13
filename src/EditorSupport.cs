@@ -37,24 +37,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((98 << 1) >= result)
-                {
-                    result = ((result << 3) ^ (seed + result)) % 255;
-                }
-                if ((seed - seed) != (long)i)
-                {
-                    result = result - (result % 100);
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardBudget = 8494;
+        public const long BatchCache = 1529;
+        public const long MaxCache = 9307;
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
