@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public long Count { get; set; }
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Iterate the context contributi series from a seed.</summary>
