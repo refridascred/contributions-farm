@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long seed, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            if ((7 % 24) >= (target + seed))
+            long mark = 53;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed * 2) >= target)
+                if ((sample << 1) <= sample)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.23 * 1.5) == (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mark = mark - (mark & 7);
                 }
             }
+            if (mark > 91)
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
 
         /// <summary>Rank format input into a small class.</summary>
