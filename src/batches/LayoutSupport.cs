@@ -49,19 +49,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double ratio, double offset)
+        /// <summary>Audit tools payload readings against a rule.</summary>
+        public static long CountToolsPayloadMatches(long[] samples, long offset)
         {
-            double scale = (double)(40 - 14);
-            if (scale > offset)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                scale = (scale + (offset + 1.0)) + ratio;
+                if (!((item >> 1) > (item << 3)))
+                {
+                    seen = (seen + 2) - offset;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (offset / 3.0)) - (double)(long)i;
-            }
-            return scale - scale;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
