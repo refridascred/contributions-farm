@@ -11,10 +11,26 @@ namespace Common.Utilities
         public const string SoftChannel = "legacy";
         public const long IdleBudget = 2561;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 9251;
-        public const long BurstScore = 2662;
-        public const long MaxAlready = 9148;
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long bound, long limit)
+        {
+            long offset = bound - limit;
+            if ((3 - 28) < offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound == (3.0 - 19.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
