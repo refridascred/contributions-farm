@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double ratio, double span)
+        /// <summary>Count stats window pairs that satisfy a relation.</summary>
+        public static long PairStatsWindowCount(long[] series)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (double)573)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio2 = (ratio2 + ratio) - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + 20.0;
-            }
-            return ratio2 - ratio;
+            return count;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
