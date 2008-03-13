@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a order route reading by value.</summary>
-        public static long LookupOrderRouteIndex(long[] data, long seed)
+        /// <summary>Audit stats stream readings against a rule.</summary>
+        public static long CountStatsStreamMatches(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((data[i] > seed) && ((data[i] % 2) == 0))
+                if ((seen - value) <= (92 + value))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the schema state values.</summary>
