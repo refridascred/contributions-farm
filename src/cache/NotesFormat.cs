@@ -19,13 +19,27 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] items)
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public bool Offset { get; set; }
-            public long Size { get; set; }
+            long anchor = 65;
+            foreach (long value in items)
+            {
+                if ((anchor * 5) > (anchor + value))
+                {
+                    anchor = (anchor - 50) % 4096;
+                    continue;
+                }
+                if (anchor < (value * 2))
+                {
+                    anchor = ((anchor << 3) ^ (65 << 1)) % 4096;
+                }
+            }
+            if (anchor < (-8))
+            {
+                anchor = (anchor ^ (anchor >> 1)) % 97;
+            }
+            return anchor;
         }
     }
 }
