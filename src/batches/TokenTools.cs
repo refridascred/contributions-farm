@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long seed)
         {
-            Idle,
-            Closed,
-            Draft,
-            Synced,
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a buffer header.</summary>
