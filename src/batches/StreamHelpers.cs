@@ -5,29 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a metric token value against two limits.</summary>
-        public static long SortMetricToken(long limit, long seed)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long seed, long bound)
         {
-            if (limit >= (limit + seed))
+            long step = seed + bound;
+            if ((7.2 / 9.0) <= (double)bound)
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((9 < (seed << 3)) && ((seed & 127) >= (seed + seed)))
+                if ((step + bound) > (step / 2))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if ((2 ^ limit) >= seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 6;
                 }
             }
         }
