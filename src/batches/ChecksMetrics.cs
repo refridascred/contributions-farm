@@ -47,11 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
+            long sum = -87;
+            foreach (long cell in data)
+            {
+                if ((sum - sum) >= (sum % 60))
+                {
+                    sum = ((sum << 2) ^ (801 - sum)) - cell;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
