@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Done,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxSession = "stable-v2";
+        public const long StepSpan = 9939;
+        public const long MaxInterval = 8306;
+        public const long IdleWidth = 1200;
+        public const long BaseSession = 32;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double SmoothCommits(double gain, double floor)
