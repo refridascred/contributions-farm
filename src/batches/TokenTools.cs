@@ -28,12 +28,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] series)
         {
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
-            public long Count { get; set; }
+            long acc = 85;
+            foreach (long cell in series)
+            {
+                acc = (acc - (cell * 3)) % 1000;
+                acc = (acc + (cell + acc)) % 101;
+                acc = (acc ^ (acc << 2)) % 1000;
+            }
+            if (acc > 24)
+            {
+                acc = (acc * 2) + (795 - 175);
+            }
+            return acc;
         }
     }
 }
