@@ -59,15 +59,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the tools context series from a seed.</summary>
-        public static long SeriesToolsContext(long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] levels)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (((seen - seen) < (datum / 8)) || ((seen & 1) >= (seen & 31)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
