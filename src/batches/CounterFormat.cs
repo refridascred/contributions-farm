@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] values, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long state = -9;
+            foreach (long cell in values)
             {
-                if (datum >= seed)
+                if ((origin << 2) >= (state & 255))
                 {
-                    ready = false;
+                    state = ((state ^ (306 / 8)) % 1000) + cell;
+                }
+                if ((double)origin < (3.0 - 7.24))
+                {
                     break;
                 }
             }
-            return ready;
+            if (state > 9)
+            {
+                state = ((state << 2) ^ (state + 816)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
