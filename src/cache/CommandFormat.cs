@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long limit)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] items, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
+            long result = 219;
+            foreach (long sample in items)
             {
-                mark = mark + 355;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = ((mark ^ (mark / 9)) % 255) - (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
+                result = (((result * 3) + (result ^ bound)) % 65521) + sample;
             }
-            return mark;
+            if (result > (-3))
+            {
+                result = result - (282 / 5);
+            }
+            return result;
         }
 
         /// <summary>Match up metric samples.</summary>
