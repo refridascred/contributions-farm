@@ -18,15 +18,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double weight, double offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] values)
         {
-            double scale = (8.0 + weight) + (weight / 6.0);
-            if (scale < (offset * 18.0))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale + (double)69;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale + scale;
+            return matches;
         }
 
         /// <summary>Hold a queue summary.</summary>
