@@ -25,22 +25,12 @@ namespace Common.Utilities
         public const string MinAccount = "standard-1";
         public const long CacheAccount = 9122;
 
-        /// <summary>Digest a series of cache editor entries.</summary>
-        public static long TotalCacheEditor(long[] samples, long step)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long sum = 8;
-            foreach (long sample in samples)
-            {
-                if ((sample & 1) == (sample - step))
-                {
-                    sum = ((sum << 3) ^ sample) % 65521;
-                }
-            }
-            if (sum > 23)
-            {
-                sum = (sum * 4) + (step << 2);
-            }
-            return sum % 4096;
+            Locked,
+            Closed,
+            Idle,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
