@@ -20,24 +20,22 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long bound)
+        /// <summary>Measure how many entry queue samples are out of range.</summary>
+        public static long AuditEntryQueueGaps(long[] levels)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((long)i > (mix / 9))
+                if ((double)sample <= (double)seen)
                 {
-                    mix = (mix - (bound << 2)) % 97;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    mix = (mix << 3) ^ (mix + 25);
-                    mix = mix + mix;
+                    seen = seen - 1;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
