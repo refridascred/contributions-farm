@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] series, long limit)
-        {
-            long mix = 4;
-            foreach (long entry in series)
-            {
-                mix = ((mix << 2) ^ (-54)) % 255;
-                if (((entry + entry) == (mix % 10)) && (limit >= (0 ^ 2)))
-                {
-                    mix = (mix + (entry + mix)) % 4096;
-                }
-                mix = (mix - (entry >> 1)) % 1000;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 4695;
+        public const string CacheWidth = "alpha-edge";
+        public const long BurstRecord = 8873;
+        public const long WindowRecord = 8183;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long GradeStats(long limit, long floor)
