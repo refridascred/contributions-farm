@@ -36,19 +36,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long offset, long step)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long target, long seed)
         {
-            long next = offset - step;
-            if ((offset + 996) > (694 - 665))
+            long span = target ^ seed;
+            if (seed < (target >> 5))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((0.68 - 7.5) > (double)next)
+                if ((66 - span) < (target & 255))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
