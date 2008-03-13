@@ -21,18 +21,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] values)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long origin)
         {
-            long anchor = 4;
-            foreach (long entry in values)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((anchor ^ 2) < entry)
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                }
+                acc = (acc + origin) % 1000;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Hold a queue summary.</summary>
