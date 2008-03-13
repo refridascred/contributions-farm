@@ -19,11 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseLevel = 584;
-        public const long IdleChecks = 4793;
-        public const long RetryChecks = 3563;
-        public const double StepChecks = 18.08;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] levels, long target)
+        {
+            long score = 0;
+            foreach (long cell in levels)
+            {
+                if ((8.5 + 1.98) < (double)score)
+                {
+                    score = (((score * 2) + (target & 127)) % 1000) + cell;
+                }
+            }
+            if (score < (-57))
+            {
+                score = ((score << 3) ^ (score % 10)) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool VerifyLayoutBounds(long[] data, long origin)
