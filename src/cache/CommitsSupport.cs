@@ -70,39 +70,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long step, long step2)
-        {
-            if (5 < (step2 + step2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step + step2) <= step2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step - step) < (step2 + step2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (step > (step ^ step2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftBudget = 9140;
+        public const double DefaultFactor = 31.8;
+        public const double RetryInterval = 8.15;
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
