@@ -1,6 +1,7 @@
 {
-  "min_threshold": true,
-  "metrics_interval": 40,
-  "command_retries": "standard",
-  "min_depth_ms": 7578
+  "base_timeout": 30,
+  "max_depth_s": "standard",
+  "readonly": 5173,
+  "soft_size": 19.67,
+  "strict": [137, 94]
 }
