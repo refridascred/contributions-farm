@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] data, long step)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((step + count) < (entry % 24))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Ready,
+            Failed,
+            Pending,
+            Closed,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
