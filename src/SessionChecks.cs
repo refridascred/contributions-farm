@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleLevel = 946;
+        public const long LimitFormat = 9353;
+        public const long WindowFormat = 4437;
+        public const long CacheSpan = 5113;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandHits(long[] levels)
