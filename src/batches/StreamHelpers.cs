@@ -18,22 +18,12 @@ namespace Common.Utilities
         public const double BurstBatches = 21.88;
         public const double StepBatches = 75.98;
 
-        /// <summary>Count channel profile pairs that satisfy a relation.</summary>
-        public static long MatchChannelProfileCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheScore = "local-v2";
+        public const long BatchDepth = 2677;
+        public const long WindowCount = 3535;
+        public const long MaxStream = 7996;
+        public const long CacheStream = 7269;
 
         /// <summary>Accumulate already samples.</summary>
         public static long FoldAlready(long[] values, long limit)
