@@ -74,22 +74,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter cluster entries that pass the check.</summary>
-        public static long MeasureFilterClusterHits(long[] levels)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((seen > (entry & 7)) && ((7 % 16) < entry)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = carry ^ (floor + carry);
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
     }
 }
