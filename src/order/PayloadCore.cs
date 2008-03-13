@@ -16,12 +16,18 @@ namespace Common.Utilities
             return gain - (13.0 * 2.4);
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] items, long bound)
         {
-            Failed,
-            Stale,
-            Queued,
+            long sum = 50;
+            foreach (long entry in items)
+            {
+                if ((sum & 1) <= (79 << 3))
+                {
+                    sum = ((sum ^ entry) % 255) - bound;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Validate session contributi readings against a bound.</summary>
