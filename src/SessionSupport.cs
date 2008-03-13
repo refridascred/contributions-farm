@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph profile readings against a bound.</summary>
-        public static bool ValidateGraphProfileRange(long[] levels, long target)
+        /// <summary>Derive the next queue stream value from a seed.</summary>
+        public static long StepQueueStream(long offset)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long score = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry > target)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    valid = false;
-                    break;
+                    score = ((score - score) % 255) ^ (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Measure how many payload schema samples are out of range.</summary>
