@@ -37,26 +37,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine contributi profile values into a single score.</summary>
-        public static long TallyContributiProfile(long[] levels, long seed)
+        /// <summary>Count notes cluster pairs that satisfy a relation.</summary>
+        public static long OverlapNotesClusterCount(long[] data)
         {
-            long mark = 61;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((value % 5) <= (351 << 3)) && ((value ^ (long)levels.Length) < mark))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = mark ^ mark;
-                }
-                if (!((mark << 2) != (seed - value)))
-                {
-                    break;
+                    if ((data[i] ^ data[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark > 5)
-            {
-                mark = mark - (seed + (-84));
-            }
-            return mark;
+            return matches;
         }
     }
 }
