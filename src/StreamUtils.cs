@@ -56,19 +56,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the channel cache entries that pass the check.</summary>
-        public static long TallyChannelCacheOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample >= (6.0 + 7.08))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstInterval = 6658;
+        public const string SoftChecks = "latest";
+        public const string CacheChecks = "strict";
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] levels)
