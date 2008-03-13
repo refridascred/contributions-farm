@@ -76,19 +76,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] series)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] series)
         {
-            long state = 99;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = state - (value & 7);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (state < 9)
-            {
-                state = (state ^ (state << 3)) % 255;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Blend two profile order measurements.</summary>
