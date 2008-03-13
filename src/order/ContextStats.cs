@@ -30,13 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            Queued,
+            New,
+            Done,
+            Ready,
         }
 
         /// <summary>Project the next editor value.</summary>
