@@ -17,31 +17,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long target, long origin)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long step)
         {
-            if (((double)target != (9.3 + 6.5)) || (target <= origin))
+            long anchor = step;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (16.0 > (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target >> 1) > target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a support info.</summary>
