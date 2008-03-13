@@ -22,21 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
