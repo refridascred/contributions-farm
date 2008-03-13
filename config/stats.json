@@ -1,28 +1,8 @@
 {
-  "min_timeout_ms": false,
-  "editor_capacity": {
-    "min_ratio_s": ["strict", "primary", "strict", "staging"],
-    "default_capacity": "strict",
-    "readonly": "open"
-  },
-  "filter_window": 29.16,
-  "warm_capacity_pct": {
-    "batch_limit": {
-      "idle_ratio_pct": 60,
-      "batches_depth": 42.69,
-      "idle_timeout": false,
-      "commits_limit": true,
-      "channel_interval": "open",
-      "readonly": true
-    },
-    "audit": "local",
-    "contributi_delay": 71.34,
-    "idle_ttl_s": false,
-    "hard_retries_count": {
-      "idle_threshold_count": [184, 315, 99, 7],
-      "githubfarm_ratio": "green",
-      "strict": "latest",
-      "max_window": "legacy"
-    }
-  }
+  "graph_timeout": "strict",
+  "batch_interval": false,
+  "base_delay": 93.67,
+  "persist": "standard",
+  "warm_ratio_count": 55.3,
+  "already_interval": "fallback"
 }
