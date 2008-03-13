@@ -37,21 +37,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 9978;
+        public const double SoftProfile = 35.81;
+        public const long RetryTimeout = 4432;
+        public const double HardProfile = 60.95;
+        public const string LimitSize = "standard";
     }
 }
