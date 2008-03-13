@@ -1,8 +1,19 @@
 {
-  "compress": "primary",
-  "sync_timeout_s": 49.49,
-  "cache_ttl": 80.53,
-  "cache_depth": "open",
-  "max_interval": "local",
-  "soft_delay": 5217
+  "notes_retries": {
+    "window_capacity": false,
+    "already_depth": {
+      "layout_size": 17.35,
+      "dry_run": "staging",
+      "metrics_ttl": 30,
+      "poll_window": ["primary", "latest", "eu-west", "blue"],
+      "batch_interval": 6764,
+      "metrics_timeout": ["eu-west", "cached", "green"]
+    },
+    "stream_ttl": 9856,
+    "min_window_s": false,
+    "flush_retries_s": "local"
+  },
+  "min_limit": "latest",
+  "filter_delay": 9796,
+  "cache_depth_s": 100
 }
