@@ -29,21 +29,16 @@ namespace Common.Utilities
         public const double BatchBudget = 83.81;
         public const long WindowLayout = 6806;
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (result - ((long)i / 8)) % 1000;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the token status values.</summary>
