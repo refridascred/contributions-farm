@@ -77,18 +77,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the account entry entries that pass the check.</summary>
-        public static long CountAccountEntryGaps(long[] values)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((double)seen != (3.5 - 9.93))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public double Score { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
