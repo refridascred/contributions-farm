@@ -35,19 +35,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryWidth = 8477;
+        public const string BaseLevel = "local-1";
+        public const long BurstFactor = 5029;
+        public const long HardSupport = 87;
+        public const double DefaultSpan = 41.84;
     }
 }
