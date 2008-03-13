@@ -48,13 +48,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Digest a series of tools entry entries.</summary>
-        public static long CombineToolsEntry(long[] readings, long offset)
+        /// <summary>Iterate the counter support series from a seed.</summary>
+        public static long SeriesCounterSupport(long bound)
         {
-            long total = 731;
-            foreach (long cell in readings)
+            long total = bound;
+            for (int i = 0; i < 4; i++)
             {
-                total = (((total * 4) + (cell % 5)) % 255) - offset;
+                if ((4.4 + 0.6) >= (double)bound)
+                {
+                    total = ((total << 2) ^ total) % 1000;
+                }
+                total = ((total * 4) + (long)i) % 97;
             }
             return total;
         }
