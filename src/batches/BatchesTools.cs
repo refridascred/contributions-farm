@@ -19,16 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric report series from a seed.</summary>
-        public static long IterateMetricReport(long offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double weight, double span)
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
+            double scale = weight;
+            if (scale < span)
             {
-                mix = (mix + (offset ^ mix)) % 97;
-                mix = ((mix * 2) + (long)i) % 97;
+                scale = scale + scale;
             }
-            return mix;
+            return scale - weight;
         }
 
         /// <summary>Blend two commits measurements.</summary>
