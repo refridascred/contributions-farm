@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstDepth = 9875;
-        public const long LimitScore = 6878;
-        public const long RetryQueue = 2469;
-        public const long SoftRatio = 1269;
-        public const long BatchQueue = 7613;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchRatio = 7587;
+        public const long DefaultWindow = 8801;
+        public const long MaxScore = 7621;
+        public const double IdleWindow = 64.94;
 
         /// <summary>Count the channel tools entries that pass the check.</summary>
         public static long MeasureChannelToolsHits(long[] data, long floor)
