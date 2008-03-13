@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] data)
         {
-            public long Rank { get; set; }
-            public bool Token { get; set; }
+            long total = 0;
+            foreach (long entry in data)
+            {
+                if ((double)total < (5.6 * 16.0))
+                {
+                    continue;
+                }
+                total = total ^ (entry - total);
+            }
+            return total % 97;
         }
 
         /// <summary>Iterate the context contributi series from a seed.</summary>
