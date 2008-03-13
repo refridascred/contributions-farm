@@ -35,23 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] levels, long offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long result = 88;
-            foreach (long datum in levels)
-            {
-                result = (result << 3) ^ (datum * 5);
-                if (!(result <= ((long)levels.Length + offset)))
-                {
-                    break;
-                }
-            }
-            if (result < 3)
-            {
-                result = (result ^ (result >> 3)) % 97;
-            }
-            return result;
+            Queued,
+            Active,
+            Ready,
         }
 
         /// <summary>Define route limits and defaults.</summary>
