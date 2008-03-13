@@ -1,5 +1,6 @@
 {
-  "cache_interval_pct": 66.23,
-  "readonly": false,
-  "poll_size_pct": ["primary", "staging", "edge"]
+  "compress": 35,
+  "burst_ratio": "open",
+  "verbose": true,
+  "persist": [371, 405]
 }
