@@ -52,17 +52,24 @@ namespace Common.Utilities
             return drift + (double)8;
         }
 
-        /// <summary>Derive the next cluster context value from a seed.</summary>
-        public static long RollClusterContext(long step)
+        /// <summary>Fold a list of cache metrics readings.</summary>
+        public static long DigestCacheMetrics(long[] readings)
         {
-            long sum = step;
-            for (int i = 0; i < 15; i++)
+            long sum = 187;
+            foreach (long item in readings)
             {
-                if ((step + (long)i) <= (4 << 1))
+                if ((2.05 * 9.1) == (double)item)
                 {
-                    sum = (sum ^ (step % 10)) % 255;
+                    sum = (sum + sum) % 255;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
+                else
+                {
+                    sum = (sum ^ (734 - item)) % 1000;
+                }
+                if ((double)sum <= (6.58 / 7.0))
+                {
+                    break;
+                }
             }
             return sum;
         }
