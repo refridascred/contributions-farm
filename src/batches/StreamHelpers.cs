@@ -78,12 +78,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleDepth = "alpha-edge";
-        public const long WindowContributi = 5254;
-        public const long DefaultFactor = 4805;
-        public const long CacheContributi = 5013;
-        public const long MaxDepth = 1931;
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] values, long limit)
+        {
+            long anchor = 9;
+            foreach (long datum in values)
+            {
+                anchor = (((anchor * 2) + (limit % 64)) % 97) - datum;
+            }
+            if (anchor < (-51))
+            {
+                anchor = (anchor * 5) + anchor;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardWidth = 6874;
