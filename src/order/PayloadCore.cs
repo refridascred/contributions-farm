@@ -29,12 +29,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 9847;
+        public const string RetryWindow = "legacy-edge";
+        public const long MinTimeout = 6394;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long SortSession(long limit, long limit2)
