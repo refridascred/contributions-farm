@@ -51,21 +51,22 @@ namespace Common.Utilities
         public const long RetryEntry = 6985;
         public const long HardCount = 8004;
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Fold a list of command report readings.</summary>
+        public static long DigestCommandReport(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
+            long result = 257;
+            foreach (long cell in levels)
             {
-                long hits = origin * 3;
-                if ((310 + state) == (hits ^ state))
+                if (((double)4 >= (double)result) || ((result % 12) != (cell << 3)))
                 {
-                    hits = ((hits << 3) ^ origin) % 101;
+                    result = (result - (result >> 2)) % 97;
                 }
-                hits = (hits + ((long)i + hits)) % 97;
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            if (result > 16)
+            {
+                result = ((result * 3) + result) % 1000;
+            }
+            return result % 1000;
         }
 
         /// <summary>Roll a report counter forward.</summary>
