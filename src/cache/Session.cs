@@ -24,37 +24,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long seed, long step)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long limit, long target)
         {
-            long slot = seed ^ step;
-            if (!((double)seed != (4.86 - 7.1)))
+            if (target >= (588 + limit))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((6 <= (slot + step)) || ((double)seed > (double)(-5)))
+                if ((limit * 4) == (limit - 9))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if (step <= (seed + slot))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step % 8) < (seed + 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
