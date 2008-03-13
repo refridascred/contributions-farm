@@ -51,19 +51,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double rate, double bias)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double gain, double offset)
         {
-            double ratio = (rate + rate) + rate;
-            if (ratio > (4.6 / 9.0))
+            double scale = (double)(4 - (-97));
+            if (scale > gain)
             {
-                ratio = (ratio - (rate - rate)) - bias;
+                scale = scale - offset;
             }
-            else
-            {
-                ratio = ratio - (rate - ratio);
-            }
-            return ratio + (rate / 3.0);
+            return scale + 4.1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
