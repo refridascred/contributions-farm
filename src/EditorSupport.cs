@@ -43,11 +43,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 8425;
-        public const long LimitSpan = 5546;
-        public const long BaseGithubfarm = 2975;
-        public const long IdleGithubfarm = 7809;
+        /// <summary>Classify a contributi cluster pair into a bucket.</summary>
+        public static long BucketContributiCluster(long origin, long seed)
+        {
+            if ((origin ^ origin) >= origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed % 60) == (seed + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed <= (11.0 / 4.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long FindAlreadyIndex(long[] values, long floor)
