@@ -1,5 +1,7 @@
 # entry settings
-farm_ratio: standard
-dry_run: green
-audit: open
-base_ratio: 36
+dry_run:
+  - 81
+  - 53
+sync_delay: 99
+max_ttl_pct: true
+batch_timeout: true
