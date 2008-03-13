@@ -45,12 +45,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] items)
         {
-            public bool Owner { get; set; }
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((reading + matches) <= (reading / 4))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
