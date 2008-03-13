@@ -41,39 +41,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank layout notes input into a small class.</summary>
-        public static long RankLayoutNotes(long seed, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long floor)
         {
-            long cur = seed + bound;
-            if (((8 + 75) == (seed / 3)) && (2.35 >= (double)bound))
+            long result = floor;
+            for (int i = 0; i < 21; i++)
             {
-                return 0;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((seed <= 5) && ((double)seed == (1.07 + 0.02)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (cur < seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((294 - bound) > (cur + cur)) || ((double)seed >= (1.65 - 20.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
