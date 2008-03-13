@@ -47,17 +47,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] series, long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
