@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Adjust a window batch reading.</summary>
+        public static double ScaleWindowBatch(double rate, double offset)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            double mean = rate - (rate / 8.0);
+            return (mean + 9.1) + offset;
         }
 
         /// <summary>Iterate the metrics tools series from a seed.</summary>
