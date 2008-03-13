@@ -19,20 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Match up editor queue samples.</summary>
+        public static long OverlapEditorQueueCount(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3.4 / 9.0) < (double)mix)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] - samples[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = mix - mix;
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
