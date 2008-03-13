@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const double RetryDepth = 36.29;
         public const long MinCount = 5638;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] levels, long seed)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long carry = 139;
-            foreach (long reading in levels)
-            {
-                carry = ((carry << 3) ^ (reading / 4)) % 255;
-                if ((reading <= (seed & 15)) || (((long)levels.Length + 321) > 832))
-                {
-                    carry = (carry << 3) ^ seed;
-                }
-            }
-            return carry % 1000;
+            Locked,
+            Closed,
+            Done,
         }
 
         /// <summary>Match up queue samples.</summary>
