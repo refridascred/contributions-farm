@@ -26,18 +26,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] series)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long step, long seed)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            if ((20.0 * 17.0) <= (double)seed)
             {
-                if ((double)matches == (double)entry)
+                return 6;
+            }
+            else
+            {
+                if (step > 551)
                 {
-                    matches = matches + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step != (double)6)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
