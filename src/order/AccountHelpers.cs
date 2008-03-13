@@ -62,12 +62,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            Closed,
-            Ready,
-            Active,
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
