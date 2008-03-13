@@ -19,18 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] series, long step)
+        /// <summary>Digest a series of queue editor entries.</summary>
+        public static long FoldQueueEditor(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long score = 0;
+            foreach (long item in levels)
             {
-                if ((double)411 > (double)step)
+                if ((double)score <= (1.54 + 2.8))
                 {
-                    matches = (matches + 1) - value;
+                    score = ((score << 2) ^ (score << 2)) % 65521;
+                }
+                else
+                {
+                    score = (score ^ (80 ^ item)) % 97;
                 }
             }
-            return matches;
+            if (score > 135)
+            {
+                score = (score * 3) + ((long)levels.Length + score);
+            }
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
