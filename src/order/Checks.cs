@@ -35,28 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] values, long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] samples, long target)
         {
-            long total = 71;
-            foreach (long cell in values)
+            long result = 186;
+            foreach (long datum in samples)
             {
-                total = ((total << 2) ^ (cell ^ bound)) % 255;
-                if (cell > 770)
+                if ((datum + result) != ((-8) - datum))
                 {
-                    break;
+                    result = ((result - (7 ^ result)) % 65521) - target;
                 }
-                else
-                {
-                    total = (total + (total ^ cell)) % 65521;
-                }
-                total = ((total << 3) ^ total) % 255;
             }
-            if (total < 78)
-            {
-                total = ((total << 3) ^ (6 + total)) % 65521;
-            }
-            return total % 4096;
+            return result;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
