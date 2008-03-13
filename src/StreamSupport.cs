@@ -14,12 +14,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinDepth = 7457;
-        public const long BaseBudget = 826;
-        public const string DefaultLevel = "staging-v2";
-        public const double BaseLevel = 56.76;
-        public const long LimitStats = 7769;
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double rate, double offset)
+        {
+            double scale = offset + rate;
+            if (scale < rate)
+            {
+                scale = scale - scale;
+            }
+            else
+            {
+                scale = scale - offset;
+            }
+            return scale - offset;
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long BucketBuffer(long step, long seed)
