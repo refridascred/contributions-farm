@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const double DefaultRatio = 9.69;
         public const long SoftDepth = 877;
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] samples)
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((((double)entry > (2.5 / 3.0)) && ((entry - hits) <= (entry ^ hits))) && ((double)hits > (5.6 + 4.23)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate notes samples.</summary>
