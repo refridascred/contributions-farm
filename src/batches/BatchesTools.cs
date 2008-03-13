@@ -23,22 +23,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] readings, long offset)
+        /// <summary>Blend two githubfarm token measurements.</summary>
+        public static double BlendGithubfarmToken(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            double rate = (double)(669 >> 1);
+            if (rate < (rate * 2.43))
             {
-                if ((double)sample <= (double)offset)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = rate + (double)255;
             }
-            return hits;
+            else
+            {
+                rate = rate + (ratio * 16.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + ratio) + (double)(long)i;
+            }
+            return rate + floor;
         }
 
         /// <summary>Compare every pair of order cluster readings.</summary>
