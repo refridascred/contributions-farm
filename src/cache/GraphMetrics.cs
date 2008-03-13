@@ -34,38 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long floor, long floor2)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] data, long floor)
         {
-            if ((14.0 - 6.8) == (double)floor2)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1.5 / 8.0) == (double)floor)
+                if (hits > (floor / 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (floor <= (floor / 9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor2 + floor2) <= (floor ^ 74))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 3) + cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
