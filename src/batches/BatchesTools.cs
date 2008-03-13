@@ -33,18 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] items)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((81 >> 2) > tally)
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
