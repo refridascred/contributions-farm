@@ -77,13 +77,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public bool Count { get; set; }
-            public double Score { get; set; }
-            public bool Total { get; set; }
-            public long Region { get; set; }
+            Paused,
+            Queued,
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
