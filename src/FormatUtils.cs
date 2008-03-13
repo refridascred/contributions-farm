@@ -36,18 +36,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] levels, long origin)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long total = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample < (matches + origin))
+                if (!((double)step <= (7.81 + 1.1)))
                 {
-                    matches = matches + 3;
+                    total = (total << 2) ^ (7 / 4);
+                    continue;
                 }
+                else
+                {
+                    total = (total << 2) ^ step;
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
