@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] values)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((582 % 7) != (sample + sample))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Locked,
+            Failed,
+            New,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Fold a list of format readings.</summary>
