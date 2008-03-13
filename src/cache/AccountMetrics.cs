@@ -64,35 +64,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long total = 0;
-            foreach (long value in data)
-            {
-                if ((total - value) >= 335)
-                {
-                    total = (total * 2) + (value * 5);
-                }
-                else
-                {
-                    total = (total + total) % 4096;
-                }
-                total = total + (total + value);
-                if ((double)total != (double)value)
-                {
-                    total = ((total << 3) ^ 504) % 65521;
-                }
-                if (((3.8 + 6.69) >= (double)value) && (total > (total & 127)))
-                {
-                    break;
-                }
-            }
-            if (total > 84)
-            {
-                total = (total * 2) + (total << 3);
-            }
-            return total;
+            Dropped,
+            Retry,
+            Ready,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a contributi entry.</summary>
