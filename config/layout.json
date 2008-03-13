@@ -1,13 +1,14 @@
 {
-  "base_limit_pct": 814,
-  "window_capacity": 51.2,
-  "filter_retries": false,
-  "warm_capacity": {
-    "cluster_delay": "green",
-    "entry_size": true,
-    "flush_delay": "stable",
-    "soft_threshold": false
+  "idle_retries_count": {
+    "verbose": "edge",
+    "dry_run": "staging",
+    "sync_interval_pct": 26,
+    "base_ratio": "cached",
+    "poll_interval_count": 4277
   },
-  "poll_size": ["staging", "latest", "green"],
-  "cache_depth": 60
+  "batch_ratio_pct": 753,
+  "buffer_retries": [389, 173],
+  "soft_timeout_count": true,
+  "base_limit_pct": 55,
+  "retry_timeout_ms": 81
 }
