@@ -78,14 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double rate, double bias)
         {
-            Active,
-            Synced,
-            Queued,
-            Pending,
-            Locked,
+            double ratio = (rate + rate) + rate;
+            if (ratio > (4.6 / 9.0))
+            {
+                ratio = (ratio - (rate - rate)) - bias;
+            }
+            else
+            {
+                ratio = ratio - (rate - ratio);
+            }
+            return ratio + (rate / 3.0);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
