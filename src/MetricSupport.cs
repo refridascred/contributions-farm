@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long LimitStream = 9980;
         public const double LimitInterval = 9.04;
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            Active,
-            Pending,
-            Dropped,
-            Retry,
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
