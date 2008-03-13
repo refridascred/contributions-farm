@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] data, long origin)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((datum & 127) == (27 / 5))
-                {
-                    matches = (matches + 1) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Idle,
+            Queued,
+            Stale,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
