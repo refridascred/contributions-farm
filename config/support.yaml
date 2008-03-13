@@ -1,11 +1,5 @@
 # support settings
-queue_timeout:
-  - 45
-  - 127
-  - 413
-  - 299
-flush_limit_ms: 69.66
-max_capacity_pct: 46
-poll_limit:
-  - local
-  - blue
+persist: green
+max_retries_pct: 32.44
+flush_timeout_pct: 85
+max_depth: true
