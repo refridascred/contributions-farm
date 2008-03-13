@@ -31,12 +31,31 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long target, long floor)
         {
-            Stale,
-            Dropped,
-            Closed,
+            if ((303 ^ floor) >= (75 + target))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((8.4 - 7.42) <= (double)target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)target != (8.43 / 8.0)) && ((target ^ 64) >= (floor + target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
