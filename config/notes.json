@@ -1,12 +1,5 @@
 {
-  "metric_depth": 8901,
-  "channel_interval": 61.38,
-  "flush_window": {
-    "min_ttl_ms": "stable",
-    "farm_retries": [422, 489, 403, 247],
-    "soft_delay_s": "primary"
-  },
-  "default_ratio_pct": "local",
-  "audit": 76,
-  "hard_window_ms": false
+  "idle_capacity_pct": true,
+  "readonly": 50.48,
+  "batch_capacity_s": ["latest", "strict", "latest", "green"]
 }
