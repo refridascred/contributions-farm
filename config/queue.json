@@ -1,14 +1,11 @@
 {
-  "order_limit": 250,
-  "hard_size": "blue",
-  "soft_ratio": 100,
-  "idle_window": true,
-  "strict": {
-    "editor_limit": false,
-    "dry_run": "cached",
-    "idle_ttl": ["latest", "standard"],
-    "sync_limit": 60,
-    "warm_interval_count": "fallback",
-    "idle_ratio_ms": 40
+  "min_timeout_pct": true,
+  "burst_delay_s": 49.63,
+  "layout_threshold": 1024,
+  "readonly": {
+    "metric_depth": [251, 368],
+    "report_capacity": false,
+    "enabled": ["edge", "local"],
+    "window_interval": true
   }
 }
