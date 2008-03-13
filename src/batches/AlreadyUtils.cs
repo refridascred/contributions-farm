@@ -35,22 +35,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinWidth = 3925;
+        public const long MaxDepth = 820;
+        public const long HardProfile = 9432;
+        public const long CacheProfile = 3427;
+        public const long BatchInterval = 1741;
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
