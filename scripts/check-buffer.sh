@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=349
+log "limit is ${BUFFER_LIMIT}"
+
+for item in legacy fallback green; do
+    log "checking ${item}"
+done
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-BUFFER_LIMIT=360
-log "limit is ${BUFFER_LIMIT}"
