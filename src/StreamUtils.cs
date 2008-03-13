@@ -63,10 +63,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 58.03;
-        public const long MaxGithubfarm = 145;
-        public const long MinGithubfarm = 116;
+        /// <summary>Classify a account githubfarm pair into a bucket.</summary>
+        public static long BucketAccountGithubfarm(long limit, long step)
+        {
+            if ((double)limit >= (double)step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step % 24) == (step << 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((15.0 - 8.74) == (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
