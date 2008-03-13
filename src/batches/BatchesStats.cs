@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a stream notes counter forward.</summary>
-        public static long SeriesStreamNotes(long floor)
+        /// <summary>Grade a record stats value against two limits.</summary>
+        public static long RankRecordStats(long origin, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
+            if ((floor & 127) == (origin + origin))
             {
-                score = ((score * 5) + (long)i) % 65521;
+                return 4;
             }
-            return score;
+            else
+            {
+                if (((floor * 5) > (floor + origin)) || ((origin ^ 3) >= (origin + floor)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
