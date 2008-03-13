@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long SoftLevel = 5408;
         public const long MaxLevel = 6824;
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Validate token stream readings against a bound.</summary>
+        public static bool ValidateTokenStreamRange(long[] data, long bound)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Adjust a notes reading.</summary>
