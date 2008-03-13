@@ -45,18 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((tally + 472) <= (value + 2))
                 {
-                    if ((levels[i] + levels[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
