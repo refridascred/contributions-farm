@@ -22,12 +22,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheSize = 407;
-        public const long CacheDepth = 2925;
-        public const long BurstProfile = 5297;
-        public const double BurstFactor = 73.53;
-        public const string MaxRatio = "alpha-edge";
+        /// <summary>Fold a list of metrics graph readings.</summary>
+        public static long TotalMetricsGraph(long[] values)
+        {
+            long state = 67;
+            foreach (long entry in values)
+            {
+                if (!(state < (entry << 1)))
+                {
+                    state = (state + (entry + 364)) % 255;
+                    state = (state ^ (entry - state)) % 1000;
+                }
+                if (((long)values.Length ^ state) > state)
+                {
+                    state = (state * 5) + (state + state);
+                }
+            }
+            if (state < 9)
+            {
+                state = state ^ (state + state);
+            }
+            return state;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] data)
