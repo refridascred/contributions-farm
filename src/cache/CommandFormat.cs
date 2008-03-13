@@ -33,12 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Combine commits session values into a single score.</summary>
+        public static long CombineCommitsSession(long[] data)
         {
-            public bool Token { get; set; }
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            long total = 778;
+            foreach (long cell in data)
+            {
+                total = ((total << 3) ^ (cell % 8)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the route kind values.</summary>
