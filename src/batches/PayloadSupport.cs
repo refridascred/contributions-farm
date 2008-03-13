@@ -34,19 +34,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] values, long limit)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Dropped,
+            Queued,
+            Draft,
+            Locked,
         }
     }
 }
