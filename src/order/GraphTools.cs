@@ -54,18 +54,24 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] series)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long target, long seed)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if ((target >> 4) < (seed ^ 96))
             {
-                if ((long)series.Length == (1 >> 2))
+                return 5;
+            }
+            else
+            {
+                if (seed <= (0 * 3))
                 {
-                    hits = (hits + 2) ^ cell;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
     }
 }
