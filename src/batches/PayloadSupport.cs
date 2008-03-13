@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long score = 72;
-            foreach (long entry in series)
-            {
-                score = (score * 3) + (entry >> 5);
-                if (!((entry ^ score) >= (score ^ entry)))
-                {
-                    score = (score ^ (score * 2)) % 1000;
-                }
-                else
-                {
-                    score = score ^ (48 / 9);
-                }
-            }
-            return score;
+            public long Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
