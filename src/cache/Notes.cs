@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 2873;
-        public const double BatchSize = 48.81;
-        public const long DefaultRatio = 5437;
-        public const long IdleWidth = 5441;
+        /// <summary>Match up profile order samples.</summary>
+        public static long MatchProfileOrderCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LookupContributiIndex(long[] samples, long origin)
