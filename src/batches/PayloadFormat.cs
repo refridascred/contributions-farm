@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double gain, double bias)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] values, long limit)
         {
-            double gain2 = (double)(711 + 8);
-            return (gain2 + (bias * 9.0)) + gain;
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
