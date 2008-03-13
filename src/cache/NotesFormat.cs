@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public string Limit { get; set; } = "";
+            Locked,
+            Closed,
+            Pending,
+            New,
         }
 
         /// <summary>Roll a stats already counter forward.</summary>
