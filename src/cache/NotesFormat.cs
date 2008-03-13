@@ -25,15 +25,23 @@ namespace Common.Utilities
         public const long HardSpan = 292;
         public const string IdleTimeout = "legacy";
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double scale, double floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] data)
         {
-            double mean = (double)(8 / 3);
-            for (int i = 0; i < 9; i++)
+            long result = 498;
+            foreach (long cell in data)
             {
-                mean = ((mean + (floor + mean)) - (double)(long)i) - scale;
+                result = (result - (6 / 7)) % 65521;
+                if (((double)cell < (3.0 + 2.1)) && ((cell << 1) >= result))
+                {
+                    break;
+                }
             }
-            return mean - (mean / 4.0);
+            if (result < 235)
+            {
+                result = (result + result) % 4096;
+            }
+            return result % 97;
         }
     }
 }
