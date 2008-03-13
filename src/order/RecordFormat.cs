@@ -22,11 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
