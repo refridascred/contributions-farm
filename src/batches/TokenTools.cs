@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context already readings against a rule.</summary>
-        public static long AuditContextAlreadyHits(long[] samples)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] data)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long anchor = 6;
+            foreach (long datum in data)
             {
-                if ((item & 3) <= item)
+                anchor = anchor - (datum % 64);
+                if ((double)anchor == (double)0)
                 {
-                    count = count + 2;
+                    anchor = ((anchor * 5) + (anchor * 2)) % 4096;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
