@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine account command values into a single score.</summary>
-        public static long DigestAccountCommand(long[] samples, long origin)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long state = 80;
-            foreach (long sample in samples)
-            {
-                if ((double)sample <= 19.0)
-                {
-                    state = ((state + (state + state)) % 65521) - origin;
-                }
-                else
-                {
-                    state = (state ^ state) % 101;
-                }
-            }
-            return state % 97;
+            Synced,
+            New,
+            Done,
+            Pending,
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
