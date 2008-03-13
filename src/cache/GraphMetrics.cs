@@ -31,18 +31,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the already account entries that pass the check.</summary>
-        public static long TallyAlreadyAccountMatches(long[] data)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((count ^ count) == (8 / 8))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            Stale,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Locate a tools reading by value.</summary>
