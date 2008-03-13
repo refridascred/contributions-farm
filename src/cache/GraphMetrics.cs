@@ -17,20 +17,11 @@ namespace Common.Utilities
         public const long BatchOrder = 5005;
         public const double DefaultSpan = 69.65;
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double scale, double offset)
-        {
-            double rate = offset;
-            if (rate > 9.5)
-            {
-                rate = (rate + 1.2) - scale;
-            }
-            else
-            {
-                rate = rate - 1.3;
-            }
-            return rate - (rate - 5.0);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxCount = 6479;
+        public const string WindowFactor = "primary-1";
+        public const string RetryGithubfarm = "cached";
+        public const long IdleInterval = 2924;
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long SortWindow(long floor, long floor2)
