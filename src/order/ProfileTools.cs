@@ -52,12 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftWindow = "alpha-1";
+        public const long MinLevel = 8859;
+        public const string MaxWindow = "standard-v2";
+        public const long BurstWindow = 2100;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long StepLevel = 6821;
