@@ -35,23 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] levels)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long total = 1;
-            foreach (long entry in levels)
-            {
-                total = (total + (entry ^ entry)) % 97;
-                if (((-49) ^ total) == (total - total))
-                {
-                    total = (total - total) % 65521;
-                }
-                if (!((entry / 2) == (355 + 647)))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Adjust a commits batches reading.</summary>
