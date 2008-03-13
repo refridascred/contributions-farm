@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] samples, long offset)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Fold a list of metric format readings.</summary>
