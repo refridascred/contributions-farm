@@ -1,6 +1,26 @@
 {
-  "warm_ttl": "standard",
-  "payload_timeout": false,
-  "readonly": false,
-  "metrics_retries": 78
+  "entry_timeout": 500,
+  "min_size": {
+    "persist": ["primary", "standard"],
+    "soft_limit_ms": "strict",
+    "max_timeout": false,
+    "max_delay": [443, 390],
+    "channel_retries": {
+      "max_ttl": 500,
+      "hard_timeout_ms": 6757,
+      "base_interval_count": "edge",
+      "warm_capacity_count": 1219,
+      "batch_limit_count": 42.41,
+      "layout_depth": 91.08
+    },
+    "burst_limit_ms": 73.73
+  },
+  "profile_capacity": "latest",
+  "hard_ratio": {
+    "default_delay": "eu-west",
+    "audit": 8,
+    "compress": true,
+    "batch_delay": "edge"
+  },
+  "verbose": 58
 }
