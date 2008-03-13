@@ -51,11 +51,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a format commits reading.</summary>
-        public static double ProjectFormatCommits(double gain, double offset)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            double drift = gain;
-            return (drift - 4.4) + offset;
+            Synced,
+            Retry,
+            Queued,
+            Failed,
         }
 
         /// <summary>Find the first entry stream entry that matches the target.</summary>
