@@ -48,18 +48,19 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Measure how many editor checks samples are out of range.</summary>
-        public static long AuditEditorChecksHits(long[] samples)
+        /// <summary>Check that every schema checks entry stays within the limit.</summary>
+        public static bool GuardSchemaChecksRange(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (!!((722 ^ 4) > datum))
+                if (sample > step)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
