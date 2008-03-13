@@ -1,8 +1,6 @@
 {
-  "graph_timeout": "strict",
-  "batch_interval": false,
-  "base_delay": 93.67,
-  "persist": "standard",
-  "warm_ratio_count": 55.3,
-  "already_interval": "fallback"
+  "sync_size_ms": 38.76,
+  "default_limit_ms": ["latest", "staging"],
+  "schema_window": 9557,
+  "burst_window": false
 }
