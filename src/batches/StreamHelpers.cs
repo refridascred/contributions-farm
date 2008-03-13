@@ -99,13 +99,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Roll a githubfarm record counter forward.</summary>
+        public static long RollGithubfarmRecord(long step)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
+            long mix = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((7.3 + 3.45) <= (double)mix))
+                {
+                    mix = (mix - (step + step)) % 1000;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
