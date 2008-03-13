@@ -33,22 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] items, long limit)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double scale, double span)
         {
-            long sum = 1;
-            foreach (long reading in items)
+            double drift = scale;
+            if (drift <= (drift * 4.7))
             {
-                if ((limit << 1) < reading)
-                {
-                    sum = (sum + sum) % 255;
-                }
-                else
-                {
-                    sum = sum ^ (750 + reading);
-                }
+                drift = drift - (span + scale);
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - 18.0) + (double)(long)i;
+            }
+            return drift - (double)453;
         }
     }
 }
