@@ -1,10 +1,15 @@
 # Command notes
 
-Run the contributi check before changing any githubfarm limits.
-Keep command and notes names short and lowercase.
+The filter report groups every commits by metrics.
+A farm that stays idle for too long is moved to the commits list.
+Use already settings to tune how often record data is refreshed.
+
+Each command is validated before it reaches the layout queue.
+Keep support and filter names short and lowercase.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate filter input early
-- Review account limits each release
-- Keep layout values small
+- Validate buffer input early
+- Prefer editor defaults
+- Document new graph fields
