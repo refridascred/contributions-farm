@@ -13,15 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate layout channel samples.</summary>
-        public static long TotalLayoutChannel(long[] data)
+        /// <summary>Audit cluster graph readings against a rule.</summary>
+        public static long CountClusterGraphGaps(long[] samples)
         {
-            long anchor = 999;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                anchor = (((anchor << 2) ^ (anchor << 3)) % 255) ^ entry;
+                if (hits > sample)
+                {
+                    hits = hits + 2;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the filter status values.</summary>
