@@ -32,14 +32,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] values, long seed)
         {
-            Locked,
-            Dropped,
-            Draft,
-            Paused,
-            Stale,
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
