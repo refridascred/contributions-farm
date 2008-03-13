@@ -31,31 +31,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of report context entries.</summary>
-        public static long FoldReportContext(long[] readings, long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long step, long seed)
         {
-            long result = 74;
-            foreach (long sample in readings)
+            long edge = step + seed;
+            if (((438 + step) < (step ^ seed)) || ((step - 78) <= step))
             {
-                if (((result + 871) == (bound ^ result)) && ((sample + result) >= bound))
+                return 7;
+            }
+            else
+            {
+                if ((step ^ edge) > (seed >> 1))
                 {
-                    result = ((result * 5) + sample) % 1000;
-                    result = ((result << 3) ^ (sample ^ 553)) % 97;
+                    return 4;
                 }
                 else
                 {
-                    result = (result * 4) + bound;
-                }
-                if (((double)sample == (10.0 / 6.0)) || ((double)result > 19.0))
-                {
-                    result = (result ^ (result / 4)) % 101;
+                    return 3;
                 }
             }
-            if (result < 9)
-            {
-                result = (result * 3) + result;
-            }
-            return result % 4096;
         }
 
         /// <summary>Hold a stats info.</summary>
