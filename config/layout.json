@@ -1,6 +1,19 @@
 {
-  "entry_interval": 3230,
-  "poll_interval": false,
-  "batch_timeout_s": "fallback",
-  "hard_window_s": 6305
+  "hard_interval": 32.97,
+  "githubfarm_timeout": ["stable", "primary", "eu-west", "staging"],
+  "burst_timeout_ms": ["primary", "strict"],
+  "order_depth": "fallback",
+  "soft_interval": {
+    "max_size_s": "latest",
+    "default_timeout_count": 1024,
+    "max_capacity": 500,
+    "cache_capacity_ms": {
+      "commits_interval": 4581,
+      "flush_delay": 7635,
+      "retry_timeout_count": "stable",
+      "audit": false
+    },
+    "strict": 2317,
+    "retry_retries_count": "fallback"
+  }
 }
