@@ -29,39 +29,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long step, long offset)
+        /// <summary>Check that every record format entry stays within the limit.</summary>
+        public static bool CheckRecordFormatRange(long[] levels, long target)
         {
-            long step2 = step + offset;
-            if ((double)step2 == (double)597)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step <= 5.8)
+                if (sample >= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step2 / 7) > (8 - step2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step2 - 971) < step2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
