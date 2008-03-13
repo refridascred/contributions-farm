@@ -59,10 +59,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitRatio = 51.56;
-        public const long BaseBudget = 5956;
-        public const string LimitSpan = "staging-v2";
-        public const string HardFilter = "staging-v2";
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public bool Total { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
