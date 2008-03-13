@@ -35,12 +35,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] readings, long origin)
         {
-            public bool Level { get; set; }
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (reading > (seen + seen))
+                {
+                    seen = (seen + 2) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
