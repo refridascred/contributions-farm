@@ -1,7 +1,6 @@
 {
-  "sync_threshold": 250,
-  "base_retries_count": [27, 428, 152, 290],
-  "session_timeout": 30,
-  "batch_timeout": "standard",
-  "entry_window": true
+  "warm_ttl": "standard",
+  "payload_timeout": false,
+  "readonly": false,
+  "metrics_retries": 78
 }
