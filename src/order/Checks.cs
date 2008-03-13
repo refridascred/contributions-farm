@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long RetryChecks = 3563;
         public const double StepChecks = 18.08;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double ratio, double span)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] data, long origin)
         {
-            double weight = ratio;
-            if (weight < (5.0 + 9.4))
+            bool stale = true;
+            foreach (long datum in data)
             {
-                weight = (weight + weight) + span;
+                if (datum >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (ratio - weight)) + (double)(long)i;
-            }
-            return weight - (7.48 - 1.0);
+            return stale;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
