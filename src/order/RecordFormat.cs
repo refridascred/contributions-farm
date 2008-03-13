@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double rate, double offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data)
         {
-            double bias = (double)(4 - 7);
-            if (bias > (offset / 8.0))
+            long anchor = 64;
+            foreach (long value in data)
             {
-                bias = bias - offset;
+                if ((value - value) < (anchor - value))
+                {
+                    anchor = ((anchor << 3) ^ ((-936) + value)) % 97;
+                }
+                else
+                {
+                    anchor = anchor + (8 << 1);
+                }
             }
-            else
+            if (anchor > 139)
             {
-                bias = bias - (bias * 19.0);
+                anchor = (anchor + 35) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (2.0 / 6.0)) + (double)(long)i;
-            }
-            return bias - (rate * 1.1);
+            return anchor % 1000;
         }
 
         /// <summary>Hold a order record.</summary>
