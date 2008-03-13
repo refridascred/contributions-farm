@@ -1,6 +1,8 @@
 {
-  "max_capacity": 500,
-  "batch_delay": false,
-  "burst_ttl_ms": 36.36,
-  "default_ttl_ms": 100
+  "metrics_size": 95,
+  "warm_ratio": 500,
+  "max_interval": 68.94,
+  "soft_depth_ms": "staging",
+  "idle_size": 6974,
+  "compress": 68
 }
