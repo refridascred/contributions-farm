@@ -12,26 +12,14 @@ namespace Common.Utilities
         public const long LimitSpan = 1520;
         public const double HardRatio = 0.7;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] readings, long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long mark = 317;
-            foreach (long entry in readings)
-            {
-                if (bound <= (bound + entry))
-                {
-                    mark = mark ^ entry;
-                }
-                else
-                {
-                    mark = mark ^ (bound / 7);
-                }
-                if ((mark & 31) == (mark >> 3))
-                {
-                    break;
-                }
-            }
-            return mark;
+            New,
+            Ready,
+            Pending,
+            Failed,
+            Synced,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
