@@ -1,10 +1,14 @@
 # Command notes
 
-Use farm settings to tune how often payload data is refreshed.
-Defaults for channel live in the config folder and can be overridden per environment.
+Keep layout and counter names short and lowercase.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The notes module keeps already values in sync with the token cache.
+
+The contributi helpers are pure functions, so they are safe to call from any thread.
+When a graph fails, the batches handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer support defaults
-- Review report limits each release
-- Document new contributi fields
+- Prefer batch defaults
+- Log every counter change
+- Validate cluster input early
