@@ -56,9 +56,21 @@ namespace Common.Utilities
             return rate + (bias * 5.06);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepFilter = "open-edge";
-        public const long DefaultWidth = 6994;
-        public const long RetryWidth = 6855;
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
