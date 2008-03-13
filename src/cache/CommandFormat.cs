@@ -37,12 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Draft,
-            Idle,
-            Failed,
+            public bool Token { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank layout notes input into a small class.</summary>
