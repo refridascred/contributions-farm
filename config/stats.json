@@ -1,7 +1,20 @@
 {
-  "checks_window": 22,
-  "poll_limit_ms": 79,
-  "notes_interval": "staging",
-  "sync_limit_pct": 61.02,
-  "report_size": [186, 108, 485, 424]
+  "readonly": 28.22,
+  "cache_timeout": 11,
+  "verbose": 500,
+  "burst_ttl": 2.81,
+  "base_capacity_ms": 4531,
+  "hard_ratio_pct": {
+    "flush_interval_s": {
+      "verbose": 1964,
+      "min_delay_pct": true,
+      "warm_ttl_s": 55.4,
+      "hard_retries_ms": "open",
+      "dry_run": 77,
+      "warm_delay_count": "local"
+    },
+    "persist": false,
+    "dry_run": 500,
+    "poll_interval_pct": true
+  }
 }
