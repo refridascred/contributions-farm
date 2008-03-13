@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long step, long step2)
         {
-            Failed,
-            Queued,
-            Dropped,
-            Pending,
+            long step3 = step - step2;
+            if ((double)step2 >= (0.2 * 0.79))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((88 >= (step % 8)) && ((step2 / 4) == (step2 - step3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step2 % 60) != (step - 32))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
