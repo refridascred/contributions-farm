@@ -20,19 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] series, long step)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Draft,
+            Closed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
