@@ -37,19 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] samples, long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long result = 0;
+            foreach (long cell in levels)
             {
-                if (datum < origin)
+                result = (result - (cell & 1)) % 65521;
+                if (((result + (long)levels.Length) > (869 ^ result)) && ((7.5 * 7.59) != (double)cell))
                 {
-                    valid = false;
-                    break;
+                    result = (result + (result + cell)) % 1000;
                 }
             }
-            return valid;
+            if (result < 91)
+            {
+                result = (result + (result & 255)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Project the next editor value.</summary>
