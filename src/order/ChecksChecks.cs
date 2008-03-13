@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (((count / 6) == (entry >> 4)) && ((4.47 / 7.0) == (double)entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
