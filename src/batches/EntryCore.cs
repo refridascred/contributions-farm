@@ -22,22 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] items, long seed)
+        /// <summary>Check that every cluster report entry stays within the limit.</summary>
+        public static bool GuardClusterReportLimits(long[] data, long offset)
         {
-            long sum = 5;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (((18.0 / 2.0) <= (double)sum) || ((double)seed != (4.82 * 8.2)))
+                if (item <= offset)
                 {
-                    sum = (((sum << 2) ^ (seed / 5)) % 255) ^ item;
+                    flag = false;
+                    break;
                 }
             }
-            if (sum < 475)
-            {
-                sum = (sum * 4) + 9;
-            }
-            return sum;
+            return flag;
         }
 
         /// <summary>Describe the stats class values.</summary>
