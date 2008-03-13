@@ -27,21 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] series)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Paused,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a cluster entry.</summary>
