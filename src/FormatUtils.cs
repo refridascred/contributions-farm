@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] samples, long floor)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] series)
         {
-            long result = 2;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((floor <= 58) || ((0.7 - 15.0) != (double)result))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result + floor) % 4096) - value;
+                    if ((series[i] + series[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result < (-64))
-            {
-                result = (result * 3) + (result + floor);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the channel mode values.</summary>
