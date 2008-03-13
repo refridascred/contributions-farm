@@ -1,24 +1,6 @@
 {
-  "retry_threshold_s": {
-    "token_depth": "legacy",
-    "base_depth": "eu-west",
-    "sync_threshold": 30.68
-  },
-  "sync_limit_count": {
-    "layout_threshold": [119, 291, 483, 270],
-    "stats_depth": 78,
-    "retry_limit_count": 250,
-    "warm_ttl_count": {
-      "audit": 1024,
-      "compress": "staging",
-      "idle_timeout": "eu-west",
-      "cache_ratio": 5654
-    },
-    "soft_window_pct": 60,
-    "channel_timeout": 24.91
-  },
-  "sync_ttl": "strict",
-  "verbose": 1024,
-  "metric_capacity": "staging",
-  "persist": ["standard", "strict", "latest", "primary"]
+  "entry_interval": 3230,
+  "poll_interval": false,
+  "batch_timeout_s": "fallback",
+  "hard_window_s": 6305
 }
