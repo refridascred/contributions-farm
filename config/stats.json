@@ -1,5 +1,7 @@
 {
-  "enabled": ["edge", "green", "blue", "staging"],
-  "warm_ttl_pct": 60,
-  "batch_threshold_ms": [2, 38, 434]
+  "checks_window": 22,
+  "poll_limit_ms": 79,
+  "notes_interval": "staging",
+  "sync_limit_pct": 61.02,
+  "report_size": [186, 108, 485, 424]
 }
