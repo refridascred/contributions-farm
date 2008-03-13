@@ -1,6 +1,12 @@
 {
-  "strict": 56.34,
-  "window_size": true,
-  "default_capacity_s": "blue",
-  "idle_window_count": 52
+  "flush_capacity_pct": 34.88,
+  "retry_limit_ms": "fallback",
+  "base_delay_count": {
+    "soft_retries_pct": false,
+    "checks_depth": 40.05,
+    "payload_depth": 83,
+    "format_ratio": [359, 146]
+  },
+  "hard_size_s": 74,
+  "poll_delay_pct": "eu-west"
 }
