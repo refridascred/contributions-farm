@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=487
+CHANNEL_LIMIT=363
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-open}"
+mode="${1:-edge}"
 case "${mode}" in
-    latest)
+    open)
         log "fast path"
         ;;
     *)
