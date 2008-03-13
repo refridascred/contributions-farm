@@ -80,18 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry <= (795 - count)) || (834 < ((long)series.Length / 6)))
                 {
-                    if ((values[i] + values[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
