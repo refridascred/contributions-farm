@@ -19,11 +19,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 7249;
-        public const long StepScore = 8536;
-        public const long WindowProfile = 7140;
-        public const string IdleProfile = "strict-edge";
-        public const long StepProfile = 6001;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((double)matches == (double)entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
