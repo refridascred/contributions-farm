@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Dropped,
-            Locked,
-            New,
+            public string Flag { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
