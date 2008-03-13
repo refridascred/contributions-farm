@@ -1,9 +1,7 @@
 {
-  "cache_interval": 72.41,
-  "metric_timeout": {
-    "sync_ratio_pct": 72,
-    "persist": "standard",
-    "base_interval_pct": "eu-west"
-  },
-  "verbose": "fallback"
+  "flush_retries": 56.3,
+  "tools_timeout": 100,
+  "default_window_count": "open",
+  "retry_depth_pct": 7073,
+  "soft_size_pct": 3486
 }
