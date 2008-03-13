@@ -23,22 +23,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] items)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long offset, long origin)
         {
-            long count = 0;
-            foreach (long value in items)
+            if ((171 - offset) > origin)
             {
-                if ((((value >> 2) <= (count / 8)) && ((11 + value) < (value << 1))) && ((62 ^ value) <= (value - count)))
+                return 8;
+            }
+            else
+            {
+                if (!(origin <= (6 >> 4)))
                 {
-                    count = count + 1;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((8.3 * 9.99) <= (double)offset) && ((10.0 / 7.0) > (double)origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (21 < (offset + origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a buffer entry.</summary>
