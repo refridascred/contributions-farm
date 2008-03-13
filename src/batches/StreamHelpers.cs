@@ -61,18 +61,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] data, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long state = 330;
+            foreach (long item in levels)
             {
-                if ((hits << 2) > hits)
+                if (target < (target + (-653)))
                 {
-                    hits = ((hits + 1) + entry) - offset;
+                    state = ((state << 2) ^ (item << 3)) % 101;
+                    break;
+                }
+                else
+                {
+                    state = (state ^ (state - state)) % 65521;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    state = (state + (target + item)) ^ (long)i;
+                }
+                if (!((item / 5) >= (7 & 15)))
+                {
+                    state = state ^ item;
+                }
+                else
+                {
+                    state = (state + (state & 1)) % 65521;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
