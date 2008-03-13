@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double ratio, double floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] series)
         {
-            double bias = 3.5;
-            return (bias + (floor * 7.18)) + ratio;
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((double)value >= (10.0 * 2.32))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
