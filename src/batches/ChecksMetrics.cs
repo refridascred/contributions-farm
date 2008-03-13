@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 5783;
-        public const string StepBudget = "stable-v2";
-        public const string MinSize = "local-edge";
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Done,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Count session schema pairs that satisfy a relation.</summary>
         public static long MatchSessionSchemaCount(long[] values)
