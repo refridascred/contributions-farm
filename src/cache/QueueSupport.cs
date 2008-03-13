@@ -12,31 +12,19 @@ namespace Common.Utilities
         public const long StepDepth = 7629;
         public const long BatchCount = 6424;
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long step, long seed)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long limit)
         {
-            if (((step & 31) == (step * 5)) && ((7.8 * 1.5) <= (double)step))
+            long result = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + step) != (seed >> 2))
+                if ((double)limit >= 8.8)
                 {
-                    return 4;
+                    continue;
                 }
-                else
-                {
-                    if ((seed + step) >= (step << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
