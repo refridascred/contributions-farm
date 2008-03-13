@@ -36,31 +36,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long seed, long bound)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            if (!((bound >> 5) > (bound - bound)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed + bound) > (seed + seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound + seed) > seed) || (1 < (276 + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
     }
 }
