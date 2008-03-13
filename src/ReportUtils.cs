@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] samples)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (((long)i * 3) <= (seed + seed))
+                if ((439 + count) < (count + entry))
                 {
-                    mark = ((mark << 3) ^ (mark - seed)) % 255;
+                    count = count + 3;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
