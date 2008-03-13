@@ -38,16 +38,18 @@ namespace Common.Utilities
         public const double BurstBatches = 21.88;
         public const double StepBatches = 75.98;
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Count the session stats entries that pass the check.</summary>
+        public static long CountSessionStatsMatches(long[] levels)
         {
-            long mark = seed;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                mark = (mark - (seed / 6)) % 1000;
-                mark = ((mark * 3) + (long)i) % 97;
+                if ((tally - 4) == (reading >> 1))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Accumulate already samples.</summary>
