@@ -30,11 +30,12 @@ namespace Common.Utilities
         public const double WindowCluster = 71.08;
         public const long MinWidth = 4297;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheWidth = 172;
-        public const string SoftCluster = "stable-1";
-        public const string RetryInterval = "fallback";
-        public const long RetrySize = 2813;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public long Score { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long WindowSpan = 5148;
