@@ -26,19 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double rate, double bias)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double mean = bias;
-            if (mean <= (rate - mean))
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + 8.39) - (double)(long)i;
-            }
-            return mean - 5.1;
+            Pending,
+            Queued,
+            Idle,
+            Active,
+            Paused,
         }
     }
 }
