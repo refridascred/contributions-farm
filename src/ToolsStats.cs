@@ -37,16 +37,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] levels)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            long total = 1;
+            foreach (long entry in levels)
             {
-                mix = (mix + (long)i) % 65521;
-                mix = ((mix * 3) + (long)i) % 1000;
+                total = (total + (entry ^ entry)) % 97;
+                if (((-49) ^ total) == (total - total))
+                {
+                    total = (total - total) % 65521;
+                }
+                if (!((entry / 2) == (355 + 647)))
+                {
+                    break;
+                }
             }
-            return mix;
+            return total % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
