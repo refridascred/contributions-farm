@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double bias, double offset)
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            double scale = bias;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = ((scale - (bias / 6.0)) + (double)(long)i) + offset;
+            }
+            return scale + bias;
         }
 
         /// <summary>Hold a cache stats.</summary>
