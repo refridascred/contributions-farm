@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] series, long seed)
+        /// <summary>Scale a format farm figure with a bias.</summary>
+        public static double ProjectFormatFarm(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = scale;
+            if (rate < (scale - scale))
             {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
+                rate = rate - (bias / 2.0);
             }
-            return -1;
+            else
+            {
+                rate = rate + (scale / 3.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - (double)57;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
