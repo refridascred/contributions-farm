@@ -1,7 +1,5 @@
 {
-  "base_timeout": 30,
-  "max_depth_s": "standard",
-  "readonly": 5173,
-  "soft_size": 19.67,
-  "strict": [137, 94]
+  "retry_limit_count": [394, 139, 387, 213],
+  "sync_threshold_pct": [182, 131, 128],
+  "idle_retries_ms": 1024
 }
