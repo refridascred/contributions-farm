@@ -55,12 +55,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] data, long offset)
         {
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits << 2) > hits)
+                {
+                    hits = ((hits + 1) + entry) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
