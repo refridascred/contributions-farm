@@ -13,26 +13,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] values, long step)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long sum = 700;
-            foreach (long cell in values)
-            {
-                if ((sum < cell) && ((step / 3) < (sum + 956)))
-                {
-                    sum = (sum * 4) + (step + 0);
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (sum ^ (-76));
-                }
-            }
-            if (sum < 654)
-            {
-                sum = (sum << 2) ^ (4 % 5);
-            }
-            return sum % 4096;
+            public double Label { get; set; }
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
