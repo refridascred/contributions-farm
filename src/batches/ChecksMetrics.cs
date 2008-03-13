@@ -13,22 +13,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the counter editor entries that pass the check.</summary>
-        public static long AuditCounterEditorHits(long[] readings, long target)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target ^ item) > (item + matches))
+                if (levels[i] >= seed)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the graph window entries that pass the check.</summary>
