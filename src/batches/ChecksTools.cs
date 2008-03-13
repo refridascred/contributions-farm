@@ -47,17 +47,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a contributi batches sample.</summary>
-        public static long FindContributiBatchesIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftTimeout = 2550;
+        public const long StepCount = 297;
+        public const string SoftToken = "fallback-1";
     }
 }
