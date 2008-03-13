@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long limit)
         {
-            Active,
-            Idle,
-            Failed,
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = (sum << 3) ^ (sum - (-189));
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
