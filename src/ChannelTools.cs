@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] series, long bound)
         {
-            public string Flag { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Ratio { get; set; }
+            long state = 156;
+            foreach (long datum in series)
+            {
+                state = ((state - state) ^ datum) - bound;
+            }
+            if (state > 28)
+            {
+                state = state ^ (state * 3);
+            }
+            return state % 97;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
