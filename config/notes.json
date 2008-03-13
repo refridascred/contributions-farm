@@ -1,5 +1,7 @@
 {
-  "sync_size": true,
-  "audit": 27.18,
-  "strict": 88.83
+  "strict": 39,
+  "sync_limit_pct": true,
+  "sync_interval_pct": 7197,
+  "hard_interval_ms": [348, 53, 438, 495],
+  "buffer_retries": 88
 }
