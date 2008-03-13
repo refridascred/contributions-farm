@@ -17,21 +17,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Scale a command tools figure with a bias.</summary>
+        public static double SmoothCommandTools(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = 8.0;
+            if (gain < (gain / 4.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = (gain - bias) - offset;
             }
-            return count;
+            else
+            {
+                gain = gain + 9.9;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - bias) - (double)(long)i;
+            }
+            return gain - (double)622;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
