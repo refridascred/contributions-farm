@@ -1,6 +1,11 @@
-id,count,state,ratio
-1,535,58.31,419
-2,cached,strict,9.99
-3,strict,stable,cached
-4,184,20.58,stable
-5,629,eu-west,latest
+id,score,ratio,region,active
+1,50.56,58.0,primary,9.78
+2,33.03,855,659,960
+3,87.79,cached,3.76,71
+4,7.45,631,standard,primary
+5,primary,576,open,49.0
+6,latest,437,78.48,58.64
+7,green,cached,fallback,strict
+8,445,primary,green,225
+9,green,665,225,788
+10,64.26,83.36,legacy,763
