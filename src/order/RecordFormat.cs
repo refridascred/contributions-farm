@@ -23,15 +23,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long limit)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
