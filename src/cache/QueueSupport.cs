@@ -26,21 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] levels)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = bias;
+            if (mean <= (rate - mean))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean + mean;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + 8.39) - (double)(long)i;
+            }
+            return mean - 5.1;
         }
     }
 }
