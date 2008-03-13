@@ -35,15 +35,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a report queue figure with a bias.</summary>
-        public static double ProjectReportQueue(double scale, double span)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] samples)
         {
-            double scale2 = span + (double)8;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale2 = (scale2 - (scale * 9.9)) + (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale2 - 0.94;
+            return seen;
         }
 
         /// <summary>Describe the profile state values.</summary>
