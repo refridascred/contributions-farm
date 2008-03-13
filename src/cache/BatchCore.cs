@@ -46,9 +46,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 5889;
-        public const string SoftCount = "alpha-edge";
-        public const long BaseCount = 3267;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] series)
+        {
+            long acc = 1;
+            foreach (long entry in series)
+            {
+                acc = (((acc * 4) + (acc * 2)) % 255) ^ entry;
+            }
+            return acc % 65521;
+        }
     }
 }
