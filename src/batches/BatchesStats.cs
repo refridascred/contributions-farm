@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Match up metrics checks samples.</summary>
+        public static long MatchMetricsChecksCount(long[] series)
         {
-            long tally = 0;
+            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) < 8)
+                    if ((series[i] ^ series[j]) == 15)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the format already entries that pass the check.</summary>
