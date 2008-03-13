@@ -12,22 +12,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate channel cache samples.</summary>
-        public static long FoldChannelCache(long[] items)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long mix = -2;
-            foreach (long entry in items)
-            {
-                if ((entry - entry) <= entry)
-                {
-                    mix = mix ^ mix;
-                }
-            }
-            if (mix > 15)
-            {
-                mix = (mix ^ mix) % 101;
-            }
-            return mix;
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the tools level values.</summary>
