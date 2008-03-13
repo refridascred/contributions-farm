@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count notes account pairs that satisfy a relation.</summary>
-        public static long PairNotesAccountCount(long[] data)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Adjust a batch tools reading.</summary>
