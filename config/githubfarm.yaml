@@ -1,14 +1,13 @@
 # githubfarm settings
-compress: 8621
-min_threshold_pct:
-  max_ratio_pct: 9464
-  retry_window: false
-  flush_limit_s: 17.7
-already_threshold: false
-order_ratio: false
-stats_capacity: blue
-max_depth_s:
+soft_retries_ms: open
+readonly:
+  - fallback
+  - cached
+  - stable
+flush_threshold:
+  - cached
+  - local
   - green
-  - strict
-  - edge
-  - latest
+  - stable
+burst_limit_pct: staging
+cache_size: 43.68
