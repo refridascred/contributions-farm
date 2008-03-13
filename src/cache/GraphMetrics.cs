@@ -23,12 +23,22 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] samples)
         {
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long sum = 57;
+            foreach (long datum in samples)
+            {
+                if ((datum & 127) == (datum & 3))
+                {
+                    sum = sum ^ datum;
+                }
+            }
+            if (sum > (-745))
+            {
+                sum = (sum ^ (sum & 255)) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
