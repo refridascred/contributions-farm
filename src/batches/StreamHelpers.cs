@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long step, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] series, long offset)
         {
-            long gap = step ^ offset;
-            if ((gap > ((-8) * 4)) && ((gap + gap) < gap))
+            long tally = 0;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (gap <= (gap % 2))
+                if (!(0 > (tally >> 4)))
                 {
-                    return 5;
+                    tally = ((tally + 3) + value) + offset;
                 }
                 else
                 {
-                    if (((step & 3) > (offset / 7)) && ((gap * 5) >= 70))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((-42) % 12) >= (offset << 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank record input into a small class.</summary>
