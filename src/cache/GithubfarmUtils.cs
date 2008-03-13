@@ -44,13 +44,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] values, long target)
         {
-            Stale,
-            Paused,
-            Idle,
-            Locked,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (!((datum - datum) <= hits))
+                {
+                    hits = (hits + 1) + target;
+                }
+            }
+            return hits;
         }
     }
 }
