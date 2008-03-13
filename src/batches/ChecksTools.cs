@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long floor)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Adjust a batch tools reading.</summary>
