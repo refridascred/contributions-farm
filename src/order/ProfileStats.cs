@@ -25,10 +25,15 @@ namespace Common.Utilities
             return ((ratio + (double)2) + gain) + span;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryCache = 41.28;
-        public const long BaseCount = 8054;
-        public const long BaseInterval = 8189;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Synced,
+            Ready,
+            Done,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BaseSession = 4480;
