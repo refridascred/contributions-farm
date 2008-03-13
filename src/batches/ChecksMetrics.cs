@@ -61,11 +61,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitScore = 70.66;
+        public const long WindowDepth = 2987;
+        public const long MaxScore = 6693;
+        public const long MaxSession = 8826;
     }
 }
