@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepCluster = "staging-v2";
+        public const long CacheTimeout = 6484;
+        public const string BaseCluster = "cached-v2";
 
         /// <summary>Count the account payload entries that pass the check.</summary>
         public static long CountAccountPayloadOutliers(long[] series, long floor)
