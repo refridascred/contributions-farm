@@ -62,31 +62,17 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long floor, long limit)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] readings, long offset)
         {
-            if ((floor ^ floor) <= (floor % 12))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((3.5 + 8.0) != (double)limit) || ((4.37 * 11.0) >= (double)limit))
+                if (readings[i] > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor + floor) < (limit / 6)) && ((136 >> 2) <= (92 ^ floor)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
