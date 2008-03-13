@@ -1,7 +1,5 @@
 {
-  "min_limit": 500,
-  "payload_threshold": "legacy",
-  "githubfarm_limit": "local",
-  "hard_ttl_ms": 500,
-  "verbose": 68.27
+  "cache_interval_pct": 66.23,
+  "readonly": false,
+  "poll_size_pct": ["primary", "staging", "edge"]
 }
