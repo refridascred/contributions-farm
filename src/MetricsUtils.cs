@@ -23,11 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchLayout = "fallback";
-        public const long BurstLayout = 7465;
-        public const double BatchBudget = 83.81;
-        public const long WindowLayout = 6806;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (((double)value != (5.3 + 7.7)) && (((origin >> 2) <= ((-48) + tally)) || (origin <= tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long IterateTools(long limit)
