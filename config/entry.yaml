@@ -1,8 +1,16 @@
 # entry settings
-command_depth:
-  - 241
-  - 450
-hard_limit_s: open
-warm_timeout_count: 60
-max_size_ms: latest
-compress: latest
+flush_threshold_pct:
+  hard_timeout: true
+  queue_threshold: true
+  flush_interval_count: standard
+  idle_limit_ms: open
+  sync_capacity_count: latest
+burst_window_count:
+  - 58
+  - 204
+order_ratio:
+  - open
+  - open
+  - staging
+poll_ratio_pct: 6100
+sync_timeout_pct: 58.3
