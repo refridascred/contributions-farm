@@ -1,14 +1,15 @@
 # Command notes
 
-Keep layout and counter names short and lowercase.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-The notes module keeps already values in sync with the token cache.
+Run the queue check before changing any batches limits.
+Use cluster settings to tune how often farm data is refreshed.
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-When a graph fails, the batches handler retries a few times before giving up.
+The profile report groups every commits by contributi.
+The command report groups every layout by context.
+The githubfarm report groups every graph by filter.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Log every counter change
-- Validate cluster input early
+- Document new payload fields
+- Review graph limits each release
+- Log every command change
+- Prefer already defaults
