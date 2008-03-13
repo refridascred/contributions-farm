@@ -35,32 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a token format pair into a bucket.</summary>
-        public static long SortTokenFormat(long bound, long floor)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long slot = bound - floor;
-            if ((bound + slot) != (slot ^ bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((693 / 3) > (39 + slot)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((slot ^ slot) <= bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
