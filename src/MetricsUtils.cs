@@ -42,15 +42,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long limit)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double gain, double floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
+            double gain2 = floor;
+            if (gain2 >= (floor - floor))
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                gain2 = gain2 - (double)88;
             }
-            return acc;
+            return gain2 - gain;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
