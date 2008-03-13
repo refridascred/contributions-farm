@@ -17,21 +17,12 @@ namespace Common.Utilities
         public const long BatchOrder = 5005;
         public const double DefaultSpan = 69.65;
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Rank tools record input into a small class.</summary>
