@@ -22,12 +22,12 @@ namespace Common.Utilities
         public const long StepCount = 3392;
         public const string MinGraph = "fallback-1";
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Closed,
-            Idle,
-            Done,
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
