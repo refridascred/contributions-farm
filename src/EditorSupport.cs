@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const long BatchWidth = 6149;
         public const double CacheOrder = 83.27;
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
             public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
