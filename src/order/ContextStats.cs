@@ -67,15 +67,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] readings)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
