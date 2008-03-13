@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double scale, double span)
-        {
-            double gain = span;
-            for (int i = 0; i < 5; i++)
-            {
-                gain = ((gain + 3.7) + (double)(long)i) - scale;
-            }
-            return gain - (13.0 * 2.4);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 1550;
+        public const long StepWindow = 2962;
+        public const long SoftWindow = 7367;
+        public const long BaseTimeout = 6076;
 
         /// <summary>Locate a queue profile reading by value.</summary>
         public static long LookupQueueProfileIndex(long[] samples, long bound)
