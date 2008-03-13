@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepContributi = 37.69;
-        public const double MaxContributi = 19.1;
-        public const long SoftBudget = 3054;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long offset, long seed)
+        {
+            if ((9 + offset) <= seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)offset <= 8.4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((seed ^ seed) <= 5) && ((double)offset == (8.5 - 9.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileHits(long[] data)
