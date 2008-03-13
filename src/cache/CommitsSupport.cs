@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long floor, long seed)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long prev = floor + seed;
-            if (!(seed >= (floor << 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed >> 5) >= (seed & 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((561 - 21) >= (floor << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (10 > (prev / 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Paused,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Grade a metrics window value against two limits.</summary>
