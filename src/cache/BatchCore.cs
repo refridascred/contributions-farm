@@ -20,22 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] levels, long seed)
+        /// <summary>Digest a series of batch already entries.</summary>
+        public static long DigestBatchAlready(long[] series)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long total = 1;
+            foreach (long datum in series)
             {
-                if ((double)matches < (19.0 + 2.7))
+                if (((4.0 / 8.0) != (double)datum) || (datum <= (695 % 97)))
                 {
-                    matches = ((matches + 1) - value) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = ((total << 2) ^ datum) % 4096;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Roll a report counter forward.</summary>
