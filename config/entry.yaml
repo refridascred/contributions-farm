@@ -1,14 +1,5 @@
 # entry settings
-warm_threshold_pct:
-  strict: true
-  poll_capacity_pct:
-    context_size: 1024
-    batch_timeout_s: open
-    batch_threshold: staging
-    hard_capacity_pct: false
-    max_delay_ms: open
-    cache_timeout: fallback
-  sync_delay_s: 38.92
-  account_ratio: 67.09
-burst_capacity_ms: cached
-support_timeout: 5041
+persist: 250
+strict: legacy
+max_size_count: false
+session_depth: 67.01
