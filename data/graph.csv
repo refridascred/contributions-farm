@@ -1,6 +1,8 @@
-id,region,score
-1,8.61,554
-2,572,767
-3,green,0.59
-4,staging,latest
-5,830,800
+id,weight,region
+1,eu-west,71.67
+2,legacy,780
+3,68.28,47.69
+4,96.16,legacy
+5,green,blue
+6,670,38.78
+7,134,standard
