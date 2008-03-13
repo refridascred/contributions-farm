@@ -66,13 +66,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheCount = 9667;
+        public const long MaxAlready = 3458;
+        public const double DefaultAlready = 56.47;
+        public const long BurstAlready = 8666;
 
         /// <summary>Check that every payload metric entry stays within the limit.</summary>
         public static bool CheckPayloadMetricRange(long[] data, long origin)
