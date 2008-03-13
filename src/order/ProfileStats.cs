@@ -25,14 +25,19 @@ namespace Common.Utilities
             return ((ratio + (double)2) + gain) + span;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Roll a record format counter forward.</summary>
+        public static long RollRecordFormat(long limit)
         {
-            Synced,
-            Ready,
-            Done,
-            Draft,
-            Pending,
+            long result = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = (result - limit) - (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
