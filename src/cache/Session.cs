@@ -16,18 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] values)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (hits >= cell)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Rank channel input into a small class.</summary>
