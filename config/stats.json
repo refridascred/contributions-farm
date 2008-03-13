@@ -1,8 +1,6 @@
 {
-  "min_timeout": "green",
-  "readonly": 7456,
-  "farm_retries": 2,
-  "batch_delay_ms": [247, 31],
-  "strict": false,
-  "batch_size_pct": "green"
+  "sync_retries_ms": 9.15,
+  "default_threshold_ms": [153, 222, 443],
+  "warm_size_count": "blue",
+  "enabled": 25.66
 }
