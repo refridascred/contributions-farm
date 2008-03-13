@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up record entry samples.</summary>
-        public static long OverlapRecordEntryCount(long[] levels)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] items, long floor)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading <= (reading % 5))
                 {
-                    if ((levels[i] - levels[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
