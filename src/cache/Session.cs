@@ -13,15 +13,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Digest a series of context channel entries.</summary>
+        public static long TallyContextChannel(long[] values)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            long mark = 268;
+            foreach (long sample in values)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                mark = (mark << 3) ^ (mark + sample);
+                mark = mark - (sample ^ sample);
+                mark = (mark * 2) + (mark - sample);
             }
-            return score;
+            if (mark > 68)
+            {
+                mark = ((mark << 2) ^ ((-5) + mark)) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
