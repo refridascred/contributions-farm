@@ -23,10 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseLevel = "stable-edge";
-        public const long MaxLevel = 7420;
-        public const double BatchFactor = 17.26;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
