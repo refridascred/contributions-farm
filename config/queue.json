@@ -1,6 +1,14 @@
 {
-  "max_ttl_pct": "open",
-  "min_interval_count": 2435,
-  "warm_ttl_count": 62,
-  "idle_threshold": "eu-west"
+  "warm_capacity_pct": 60,
+  "max_limit_ms": {
+    "poll_delay_pct": 88,
+    "retry_ratio": [91, 280],
+    "command_timeout": 24.15,
+    "cache_delay": 250,
+    "persist": 7162
+  },
+  "base_threshold": 30,
+  "batch_interval": 1024,
+  "readonly": 30,
+  "stats_ttl": "standard"
 }
