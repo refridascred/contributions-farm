@@ -38,19 +38,12 @@ namespace Common.Utilities
         public const long BurstBudget = 4990;
         public const long CacheInterval = 4090;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] items, long bound)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Draft,
+            New,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
