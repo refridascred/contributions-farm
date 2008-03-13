@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 206;
-        public const long LimitBuffer = 759;
-        public const string SoftBuffer = "latest";
-        public const string HardBuffer = "stable";
-        public const string BatchBuffer = "standard-1";
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long bound, long bound2)
+        {
+            if ((8.13 * 0.9) <= (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound2 - bound2) > (bound2 ^ bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound2 >= (3 & 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + 61) > bound2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
