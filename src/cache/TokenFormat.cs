@@ -20,11 +20,23 @@ namespace Common.Utilities
             return weight + 5.0;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Combine schema commits values into a single score.</summary>
+        public static long CombineSchemaCommits(long[] samples)
         {
-            public double Count { get; set; }
-            public bool Total { get; set; }
+            long score = 112;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    score = (((score << 2) ^ (long)i) % 101) + reading;
+                }
+                score = (score + score) % 255;
+                if ((7 / 8) <= score)
+                {
+                    break;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
