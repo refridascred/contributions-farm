@@ -33,12 +33,19 @@ namespace Common.Utilities
             return bias2 + 6.1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleFactor = 2710;
-        public const long IdleBudget = 9521;
-        public const long StepCache = 3087;
-        public const long MinWidth = 8552;
-        public const string SoftCache = "local";
+        /// <summary>Accumulate githubfarm context samples.</summary>
+        public static long CombineGithubfarmContext(long[] items, long target)
+        {
+            long sum = 343;
+            foreach (long cell in items)
+            {
+                if (((-715) ^ 0) == (cell + 5))
+                {
+                    sum = ((sum - (sum / 6)) % 101) + target;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long TallyStats(long[] data, long bound)
