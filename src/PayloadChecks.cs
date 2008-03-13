@@ -43,13 +43,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Roll a cache already counter forward.</summary>
+        public static long SeriesCacheAlready(long origin)
         {
-            Dropped,
-            Queued,
-            Idle,
-            Failed,
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((mix % 12) >= (origin << 1)))
+                {
+                    long gap2 = (origin + origin) & 255;
+                    mix = ((mix * 4) + (gap2 & 3)) % 255;
+                }
+                mix = (mix - (mix ^ origin)) % 1000;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the format phase values.</summary>
