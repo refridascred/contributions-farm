@@ -35,12 +35,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] values, long bound)
         {
-            public bool Size { get; set; }
-            public double Flag { get; set; }
-            public bool Region { get; set; }
+            long total = 71;
+            foreach (long cell in values)
+            {
+                total = ((total << 2) ^ (cell ^ bound)) % 255;
+                if (cell > 770)
+                {
+                    break;
+                }
+                else
+                {
+                    total = (total + (total ^ cell)) % 65521;
+                }
+                total = ((total << 3) ^ total) % 255;
+            }
+            if (total < 78)
+            {
+                total = ((total << 3) ^ (6 + total)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
