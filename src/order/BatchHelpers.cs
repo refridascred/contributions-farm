@@ -34,27 +34,9 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] data, long bound)
-        {
-            long result = -822;
-            foreach (long reading in data)
-            {
-                result = (result * 4) + (7 * 2);
-                if ((bound - result) <= (bound >> 3))
-                {
-                    result = ((result << 2) ^ (58 / 7)) % 97;
-                }
-                if ((reading >> 3) > (bound + reading))
-                {
-                    result = (result + 74) % 101;
-                }
-                else
-                {
-                    result = ((result << 2) ^ result) % 1000;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 9221;
+        public const double DefaultWidth = 25.41;
+        public const long RetryDepth = 3409;
     }
 }
