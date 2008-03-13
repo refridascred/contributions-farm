@@ -22,11 +22,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
