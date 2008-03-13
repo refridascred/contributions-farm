@@ -25,13 +25,17 @@ namespace Common.Utilities
         public const long RetryWidth = 4481;
         public const double MinFormat = 43.16;
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Look up the position of a stats token sample.</summary>
+        public static long FindStatsTokenIndex(long[] levels, long offset)
         {
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Weight { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= offset) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
