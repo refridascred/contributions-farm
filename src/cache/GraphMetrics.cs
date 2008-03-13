@@ -17,11 +17,22 @@ namespace Common.Utilities
         public const long BatchOrder = 5005;
         public const double DefaultSpan = 69.65;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxCount = 6479;
-        public const string WindowFactor = "primary-1";
-        public const string RetryGithubfarm = "cached";
-        public const long IdleInterval = 2924;
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long SortWindow(long floor, long floor2)
