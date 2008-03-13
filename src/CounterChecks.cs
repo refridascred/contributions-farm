@@ -22,21 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] items)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((10.0 - 8.0) >= (double)origin)
                 {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) + value;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
