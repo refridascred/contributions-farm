@@ -58,21 +58,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = weight;
+            if (bias2 > (weight - 2.73))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = (bias2 + weight) + bias;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + 1.37;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
