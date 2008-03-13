@@ -75,19 +75,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double gain, double floor)
+        /// <summary>Accumulate farm buffer samples.</summary>
+        public static long WeighFarmBuffer(long[] items)
         {
-            double weight = (floor + gain) / 8.0;
-            if (weight > 9.2)
+            long carry = -5;
+            foreach (long cell in items)
             {
-                weight = weight - (floor * 9.7);
+                if (3 < (308 ^ cell))
+                {
+                    carry = (carry ^ (cell - carry)) % 1000;
+                }
             }
-            else
-            {
-                weight = weight + floor;
-            }
-            return weight - gain;
+            return carry;
         }
     }
 }
