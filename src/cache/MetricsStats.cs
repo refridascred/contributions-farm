@@ -56,19 +56,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] items, long bound)
+        /// <summary>Scale a order counter figure with a bias.</summary>
+        public static double ScaleOrderCounter(double weight, double floor)
         {
-            long carry = 9;
-            foreach (long item in items)
+            double bias = (7.48 - floor) - 3.1;
+            if (bias < (weight - bias))
             {
-                carry = (carry ^ (-181)) - item;
-                if (964 <= carry)
-                {
-                    carry = ((carry << 3) ^ (carry ^ bound)) % 1000;
-                }
+                bias = bias - (bias - bias);
             }
-            return carry;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (17.0 * 3.6)) - (double)(long)i;
+            }
+            return bias + (double)883;
         }
     }
 }
