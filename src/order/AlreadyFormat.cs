@@ -77,18 +77,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] levels)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] readings)
         {
-            long carry = -25;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((carry & 31) < (value - value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry * 3) + (value ^ 367)) % 255;
+                    if ((readings[i] ^ readings[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
     }
 }
