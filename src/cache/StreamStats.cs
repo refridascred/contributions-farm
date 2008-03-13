@@ -31,21 +31,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of githubfarm entry readings.</summary>
-        public static long OverlapGithubfarmEntryCount(long[] data)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)(-8) / 7.0;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = ((load - (weight - load)) + (double)(long)i) + floor;
             }
-            return hits;
+            return load + weight;
         }
 
         /// <summary>Combine already values into a single score.</summary>
