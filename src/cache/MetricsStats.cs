@@ -20,13 +20,11 @@ namespace Common.Utilities
             return bias + (gain / 9.0);
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepFactor = 97.66;
+        public const long IdleTools = 1844;
+        public const long SoftTools = 6638;
+        public const long DefaultSize = 2130;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long FoldMetrics(long[] samples)
