@@ -48,19 +48,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile tools entry stays within the limit.</summary>
-        public static bool GuardProfileToolsBounds(long[] data, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] data, long origin)
         {
-            bool ok = true;
+            long total = -994;
             foreach (long item in data)
             {
-                if (item != bound)
+                if (!((total % 16) >= total))
                 {
-                    ok = false;
-                    break;
+                    total = ((total - (total + total)) + item) - origin;
+                }
+                else
+                {
+                    total = total ^ (89 & 7);
                 }
             }
-            return ok;
+            if (total < 0)
+            {
+                total = (total + (261 - total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of command report readings.</summary>
