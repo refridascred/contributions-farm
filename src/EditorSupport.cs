@@ -40,32 +40,11 @@ namespace Common.Utilities
         public const string RetryInterval = "fallback";
         public const long RetrySize = 2813;
 
-        /// <summary>Classify a contributi cluster pair into a bucket.</summary>
-        public static long BucketContributiCluster(long origin, long seed)
-        {
-            if ((origin ^ origin) >= origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed % 60) == (seed + origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed <= (11.0 / 4.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSpan = 5148;
+        public const string BurstSchema = "strict-edge";
+        public const long SoftSchema = 7296;
+        public const string MinSchema = "stable-1";
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long RankPayload(long seed, long floor)
