@@ -38,18 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryFactor = "standard-edge";
+        public const long StepRatio = 6848;
+        public const long BurstOrder = 9475;
+        public const long CacheTimeout = 5669;
+        public const long DefaultOrder = 137;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double LimitScore = 70.66;
