@@ -33,14 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Match up record contributi samples.</summary>
+        public static long CompareRecordContributiCount(long[] samples)
         {
-            New,
-            Locked,
-            Draft,
-            Stale,
-            Idle,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
