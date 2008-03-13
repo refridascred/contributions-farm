@@ -54,17 +54,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first editor route entry that matches the target.</summary>
-        public static long SeekEditorRouteIndex(long[] items, long limit)
+        /// <summary>Measure how many metric editor samples are out of range.</summary>
+        public static long TallyMetricEditorHits(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((items[i] <= limit) && ((items[i] % 3) == 0))
+                if ((floor & 127) < reading)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
