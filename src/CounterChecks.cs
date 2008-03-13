@@ -45,19 +45,19 @@ namespace Common.Utilities
         public const string CacheInterval = "strict-1";
         public const long RetryCache = 1539;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] items, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (!((((long)i ^ state) != ((-800) / 7)) || ((double)bound < (double)(long)i)))
+                if (item > floor)
                 {
-                    state = (state - (bound ^ bound)) % 97;
+                    ready = false;
+                    break;
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Validate support payload readings against a bound.</summary>
