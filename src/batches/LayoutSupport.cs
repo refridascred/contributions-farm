@@ -34,15 +34,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] data, long seed)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long sum = 18;
-            foreach (long item in data)
-            {
-                sum = (((sum * 2) + (476 * 2)) + item) + seed;
-            }
-            return sum % 97;
+            public string Total { get; set; } = "";
+            public bool Size { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit tools payload readings against a rule.</summary>
