@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long target)
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
+            long state = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((score - origin) == (31 - score)))
-                {
-                    score = (score + ((-7) << 3)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Define account limits and defaults.</summary>
