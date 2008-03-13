@@ -10,16 +10,19 @@ namespace Common.Utilities
         public const long BatchCommand = 4100;
         public const double BurstRatio = 24.35;
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long limit)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double weight, double bias)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            double rate = (weight / 3.0) / 4.0;
+            if (rate >= (double)17)
             {
-                total = total + ((long)i + limit);
-                total = ((total * 4) + (long)i) % 101;
+                rate = (rate - (rate / 6.0)) - bias;
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (rate + 19.0)) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Hold a queue summary.</summary>
