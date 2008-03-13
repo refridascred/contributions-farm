@@ -49,12 +49,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long limit)
         {
-            Retry,
-            Failed,
-            Closed,
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the profile state values.</summary>
