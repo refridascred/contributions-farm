@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchEditor = "fallback-edge";
-        public const double MaxEditor = 7.74;
-        public const long BaseWidth = 2807;
-        public const string BurstEditor = "standard";
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                long bound2 = 18;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = (result - (bound2 - bound)) ^ (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
