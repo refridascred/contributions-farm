@@ -1,13 +1,22 @@
 # githubfarm settings
-soft_retries_ms: open
-readonly:
-  - fallback
-  - cached
-  - stable
-flush_threshold:
-  - cached
-  - local
-  - green
-  - stable
-burst_limit_pct: staging
-cache_size: 43.68
+flush_capacity:
+  enabled: strict
+  contributi_ratio: primary
+  soft_threshold: 60
+sync_retries: blue
+batch_ttl_count: strict
+cache_interval: 48
+burst_timeout_ms:
+  stream_threshold: 87
+  base_delay_pct:
+    already_ratio:
+      - 499
+      - 114
+      - 111
+      - 201
+    persist: 44.14
+    graph_ratio: standard
+  default_capacity_pct:
+    - strict
+    - edge
+  poll_limit_s: 12.37
