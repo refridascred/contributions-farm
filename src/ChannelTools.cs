@@ -12,20 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] data)
-        {
-            long anchor = 48;
-            foreach (long item in data)
-            {
-                anchor = ((anchor << 3) ^ anchor) ^ item;
-                if ((4.58 * 12.0) == (double)anchor)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 898;
+        public const double HardRatio = 60.41;
+        public const double MaxSpan = 59.48;
+        public const long DefaultCount = 237;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long ScoreToken(long[] samples, long floor)
