@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const long HardRoute = 4457;
         public const string LimitDepth = "local-1";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitInterval = 9550;
-        public const long IdleScore = 4967;
-        public const long SoftInterval = 3904;
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryHits(long[] series)
