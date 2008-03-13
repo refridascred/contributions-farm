@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=428
+CHANNEL_LIMIT=110
 log "limit is ${CHANNEL_LIMIT}"
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-for item in fallback primary cached; do
-    log "checking ${item}"
-done
+mode="${1:-open}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
