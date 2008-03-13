@@ -33,19 +33,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] data, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long acc = -886;
+            foreach (long datum in series)
             {
-                if (entry != step)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc + (datum * 3)) % 97;
             }
-            return ok;
+            if (acc > 7)
+            {
+                acc = ((acc * 5) + (382 * 4)) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Audit tools payload readings against a rule.</summary>
