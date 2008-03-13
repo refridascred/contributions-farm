@@ -61,12 +61,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 9049;
+        public const long SoftSize = 9467;
+        public const long MaxGraph = 5964;
+        public const long SoftGraph = 7851;
+        public const string WindowLevel = "fallback-edge";
     }
 }
