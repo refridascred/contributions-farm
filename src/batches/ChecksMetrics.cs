@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] items, long seed)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((6.5 - 3.77) == (double)count)
-                {
-                    count = ((count + 2) + value) + seed;
-                }
-            }
-            return count;
+            Locked,
+            New,
+            Draft,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
