@@ -25,15 +25,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a commits stream counter forward.</summary>
-        public static long IterateCommitsStream(long step)
+        /// <summary>Derive the next metric window value from a seed.</summary>
+        public static long IterateMetricWindow(long origin)
         {
-            long score = step;
-            for (int i = 0; i < 11; i++)
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                if (((long)i > ((long)i << 2)) || (5 <= (carry + origin)))
+                {
+                    carry = (carry ^ ((long)i + origin)) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
