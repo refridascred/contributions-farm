@@ -49,12 +49,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFormat = 21.89;
-        public const string HardFactor = "fallback";
-        public const long DefaultFormat = 2429;
-        public const string BatchFormat = "primary";
-        public const long WindowWidth = 7333;
+        /// <summary>Locate a account metrics reading by value.</summary>
+        public static long FindAccountMetricsIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double BurstPayload = 94.9;
