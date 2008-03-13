@@ -36,16 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long limit)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                result = (result - ((long)i / 8)) % 1000;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
