@@ -42,23 +42,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long seed)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((4.6 + 1.0) == (double)seed)
-                {
-                    acc = (acc - (acc * 5)) % 255;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = ((acc * 5) + seed) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return acc;
+            return anchor;
         }
     }
 }
