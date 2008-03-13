@@ -18,18 +18,11 @@ namespace Common.Utilities
         public const double MaxSpan = 59.48;
         public const long DefaultCount = 237;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] samples, long floor)
+        /// <summary>Blend two batches checks measurements.</summary>
+        public static double ScaleBatchesChecks(double scale, double floor)
         {
-            long mark = 72;
-            foreach (long entry in samples)
-            {
-                if (entry <= mark)
-                {
-                    mark = (mark ^ (floor - 3)) % 97;
-                }
-            }
-            return mark % 4096;
+            double ratio = (double)(-470) / 8.0;
+            return (ratio + (ratio + scale)) + floor;
         }
     }
 }
