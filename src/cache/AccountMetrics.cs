@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] series)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long total = 878;
+            foreach (long entry in data)
             {
-                if (!((hits << 3) == (hits - datum)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = (total + total) % 97;
+                total = (total - (entry & 127)) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
