@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] data, long bound)
         {
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
