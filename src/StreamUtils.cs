@@ -56,12 +56,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Paused,
-            Done,
+            Retry,
             Draft,
+            Queued,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the queue phase values.</summary>
