@@ -36,11 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public string Offset { get; set; } = "";
-            public double Level { get; set; }
+            Synced,
+            Idle,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Roll a profile counter forward.</summary>
