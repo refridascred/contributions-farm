@@ -25,11 +25,15 @@ namespace Common.Utilities
         public const long MinBudget = 2864;
         public const long MinSize = 2708;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double ratio, double bias)
+        /// <summary>Derive the next commits metrics value from a seed.</summary>
+        public static long RollCommitsMetrics(long step)
         {
-            double rate = (double)(2 ^ (-86));
-            return ((rate + (4.73 - 1.1)) + ratio) + bias;
+            long acc = step;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
