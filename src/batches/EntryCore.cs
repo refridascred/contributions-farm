@@ -54,19 +54,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] series)
+        /// <summary>Fold a list of cluster buffer readings.</summary>
+        public static long TotalClusterBuffer(long[] data, long origin)
         {
-            long mark = 562;
-            foreach (long entry in series)
+            long sum = 196;
+            foreach (long sample in data)
             {
-                mark = mark + (mark << 3);
-                if (((mark >> 4) == (32 / 4)) || ((double)(long)series.Length <= (double)entry))
-                {
-                    break;
-                }
+                sum = (sum + (sample - sample)) % 97;
             }
-            return mark;
+            if (sum < (-6))
+            {
+                sum = ((sum << 3) ^ (sum - origin)) % 101;
+            }
+            return sum % 97;
         }
     }
 }
