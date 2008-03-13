@@ -1,13 +1,6 @@
 {
-  "contributi_timeout": {
-    "sync_depth_count": 89,
-    "editor_interval": "strict",
-    "soft_depth_s": "staging",
-    "max_capacity_pct": 100,
-    "max_limit_count": 250,
-    "base_capacity_s": 9
-  },
-  "min_capacity_count": "eu-west",
-  "idle_ratio_pct": [435, 476, 476],
-  "flush_ratio_ms": "legacy"
+  "min_threshold": true,
+  "metrics_interval": 40,
+  "command_retries": "standard",
+  "min_depth_ms": 7578
 }
