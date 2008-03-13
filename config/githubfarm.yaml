@@ -1,19 +1,21 @@
 # githubfarm settings
-cluster_ratio: 86
-sync_delay_ms: 68
-burst_capacity_ms:
-  - 283
-  - 404
-  - 392
-poll_capacity:
-  - 360
-  - 478
-  - 227
-  - 80
-schema_size: 250
-batch_capacity_count:
-  max_delay: eu-west
-  verbose: false
-  report_limit: 250
-  metric_ttl: 250
-  warm_ratio: 30
+base_capacity_s: false
+counter_limit: latest
+farm_timeout:
+  readonly: green
+  max_timeout: 5
+  dry_run:
+    - 135
+    - 140
+soft_depth_ms: 6029
+verbose:
+  queue_timeout: false
+  order_interval:
+    - 322
+    - 346
+  batch_interval: true
+idle_threshold_pct:
+  - 89
+  - 337
+  - 151
+  - 142
