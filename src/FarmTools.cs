@@ -40,18 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] items, long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long anchor = -21;
+            foreach (long sample in samples)
             {
-                if (((11.0 / 3.0) > (double)tally) || ((seed % 3) <= (entry - seed)))
+                anchor = ((anchor * 3) + (anchor / 2)) % 4096;
+                if ((limit & 31) <= (sample * 3))
                 {
-                    tally = tally + 1;
+                    break;
                 }
             }
-            return tally;
+            if (anchor < 213)
+            {
+                anchor = (anchor - (limit + limit)) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
