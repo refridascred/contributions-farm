@@ -1,12 +1,13 @@
 {
-  "idle_window_s": false,
-  "commits_retries": ["local", "stable", "local"],
-  "dry_run": "legacy",
-  "flush_depth_count": 13,
-  "batch_delay": {
-    "idle_ttl_ms": 10,
-    "hard_timeout_ms": "edge",
-    "burst_delay_pct": [405, 276, 388, 323]
+  "profile_ttl": "fallback",
+  "dry_run": 500,
+  "window_threshold": 500,
+  "githubfarm_size": {
+    "account_window": [356, 280, 101],
+    "sync_threshold_count": ["edge", "cached", "latest"],
+    "cache_retries_count": true,
+    "warm_capacity_pct": "edge",
+    "burst_capacity": "latest"
   },
-  "base_size": ["primary", "blue", "local"]
+  "counter_timeout": ["cached", "primary", "fallback"]
 }
