@@ -39,13 +39,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Digest a series of metrics graph entries.</summary>
+        public static long ScoreMetricsGraph(long[] samples, long floor)
         {
-            Closed,
-            Idle,
-            Retry,
-            Failed,
+            long carry = 4;
+            foreach (long entry in samples)
+            {
+                carry = (((carry << 3) ^ (carry + 32)) - entry) - floor;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
