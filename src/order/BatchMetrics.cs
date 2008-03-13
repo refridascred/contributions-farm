@@ -57,12 +57,13 @@ namespace Common.Utilities
             return scale + 4.1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheSize = 9077;
-        public const long IdleTimeout = 7047;
-        public const double BatchDepth = 51.1;
-        public const long LimitLevel = 1767;
-        public const long MaxRatio = 4824;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Closed,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Compare every pair of entry metric readings.</summary>
         public static long CompareEntryMetricCount(long[] data)
