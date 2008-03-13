@@ -1,7 +1,18 @@
 # entry settings
-readonly: true
-max_delay_pct: stable
-sync_capacity_s:
-  - 40
-  - 177
-  - 354
+flush_size_pct: 2069
+audit:
+  max_threshold_pct:
+    - legacy
+    - primary
+    - eu-west
+  batch_size: 30.2
+  route_depth: 1024
+hard_threshold_pct:
+  - local
+  - eu-west
+  - standard
+burst_ratio_pct:
+  - staging
+  - fallback
+  - green
+  - open
