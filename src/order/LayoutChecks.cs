@@ -78,14 +78,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Paused,
-            Queued,
-            Synced,
-            Locked,
-            Idle,
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
