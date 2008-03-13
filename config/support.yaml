@@ -1,27 +1,7 @@
 # support settings
-counter_ratio:
-  max_delay: blue
-  idle_capacity:
-    warm_delay_ms: 25
-    retry_ratio_count:
-      - primary
-      - open
-      - edge
-    idle_timeout_count: 35.4
-    queue_window: strict
-  default_ratio_count: 51.52
-  max_capacity:
-    - open
-    - staging
-    - local
-  flush_retries:
-    - latest
-    - latest
-    - green
-poll_ttl_count:
-  - 371
-  - 459
-  - 53
-min_threshold_ms: 97.3
-persist: true
-strict: 81
+warm_delay_ms:
+  - 31
+  - 210
+  - 243
+min_delay_pct: 49.46
+flush_ttl: true
