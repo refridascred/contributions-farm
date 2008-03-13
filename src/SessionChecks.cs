@@ -45,15 +45,18 @@ namespace Common.Utilities
         public const string StepDepth = "fallback";
         public const long MinWindow = 7400;
 
-        /// <summary>Digest a series of record report entries.</summary>
-        public static long TallyRecordReport(long[] data, long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] readings)
         {
-            long carry = 590;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                carry = ((carry - (carry * 3)) - item) - floor;
+                if ((double)datum == (5.9 + 5.0))
+                {
+                    seen = seen + 1;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
