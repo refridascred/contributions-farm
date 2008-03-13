@@ -29,19 +29,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Check that every record format entry stays within the limit.</summary>
-        public static bool CheckRecordFormatRange(long[] levels, long target)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine contributi profile values into a single score.</summary>
