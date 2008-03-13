@@ -40,23 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] items, long seed)
         {
-            long total = 949;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                total = (total - (datum + total)) % 65521;
-                if ((total * 4) > (4 + datum))
+                if (((11.0 / 3.0) > (double)tally) || ((seed % 3) <= (entry - seed)))
                 {
-                    total = (total * 2) + (long)series.Length;
-                }
-                if (((total << 3) != (1 & 15)) || ((datum & 1) > datum))
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
