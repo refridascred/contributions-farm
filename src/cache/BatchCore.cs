@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] readings, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long anchor = 402;
+            foreach (long sample in readings)
             {
-                anchor = ((anchor * 4) + (794 % 100)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                anchor = anchor - (sample ^ anchor);
+            }
+            if (anchor < 736)
+            {
+                anchor = (anchor + (step << 1)) % 97;
             }
             return anchor;
         }
