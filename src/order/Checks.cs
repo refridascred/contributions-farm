@@ -31,19 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] data, long origin)
+        /// <summary>Fold a list of farm support readings.</summary>
+        public static long FoldFarmSupport(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long anchor = -308;
+            foreach (long entry in data)
             {
-                if (datum >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (((anchor << 3) ^ (anchor & 31)) % 4096) - entry;
             }
-            return stale;
+            if (anchor > 972)
+            {
+                anchor = (anchor << 2) ^ (anchor / 3);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
