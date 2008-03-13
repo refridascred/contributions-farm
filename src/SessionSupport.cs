@@ -25,18 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] levels, long limit)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((38 ^ limit) >= (seen + seen))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a notes stats.</summary>
