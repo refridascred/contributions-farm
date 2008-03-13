@@ -28,15 +28,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            Active,
+            Queued,
+            Stale,
+            Locked,
+            Idle,
         }
 
         /// <summary>Describe the channel class values.</summary>
