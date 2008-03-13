@@ -12,18 +12,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultCount = 2282;
+        public const long BurstLevel = 8166;
+        public const long HardRoute = 8137;
+        public const double StepRoute = 23.81;
+        public const long IdleBudget = 262;
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
