@@ -29,13 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Locate a farm already reading by value.</summary>
+        public static long LocateFarmAlreadyIndex(long[] series, long limit)
         {
-            Dropped,
-            New,
-            Stale,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a batches checks counter forward.</summary>
