@@ -26,12 +26,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 5072;
+        public const double BatchLevel = 89.07;
+        public const long HardBatches = 2332;
+        public const long MinCount = 6509;
+        public const double DefaultBatches = 69.09;
     }
 }
