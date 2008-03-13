@@ -16,15 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next report metrics value from a seed.</summary>
-        public static long DeriveReportMetrics(long step)
+        /// <summary>Match up counter account samples.</summary>
+        public static long OverlapCounterAccountCount(long[] data)
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Combine channel queue values into a single score.</summary>
