@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public bool Ratio { get; set; }
+            public long Token { get; set; }
             public bool Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
