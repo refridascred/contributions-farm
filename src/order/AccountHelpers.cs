@@ -15,23 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] series, long offset)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((7.7 - 8.7) >= (double)offset)
-                {
-                    matches = (matches + 1) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowDepth = 5012;
+        public const long BurstScore = 8072;
+        public const long DefaultQueue = 6583;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long SoftReport = 7818;
