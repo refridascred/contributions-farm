@@ -1,12 +1,9 @@
 # githubfarm settings
-graph_ttl:
-  verbose: standard
-  warm_threshold: eu-west
-  route_size: primary
-  idle_depth_s: true
-window_threshold:
-  - 171
-  - 9
-poll_ttl_s: 7.77
-persist: true
-account_window: 15.91
+session_timeout: 7086
+audit: 70.48
+burst_delay: edge
+cluster_capacity: edge
+warm_retries: 64.81
+strict:
+  - 409
+  - 140
