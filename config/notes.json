@@ -1,17 +1,12 @@
 {
-  "compress": 2474,
-  "default_window_ms": [196, 488, 483],
-  "dry_run": {
-    "batch_delay": {
-      "min_ratio_pct": ["green", "staging", "primary", "latest"],
-      "batch_size_count": 14,
-      "flush_capacity_pct": "local",
-      "burst_window_s": true
-    },
-    "profile_ratio": "staging",
-    "flush_limit": "green",
-    "min_limit": "staging",
-    "warm_ttl_pct": 51.44
+  "warm_limit_count": {
+    "soft_interval_count": false,
+    "schema_capacity": 52,
+    "soft_depth_pct": 30,
+    "cache_delay_pct": 11.43,
+    "readonly": "eu-west",
+    "min_retries_ms": 3
   },
-  "soft_limit_ms": 64.55
+  "cluster_timeout": "stable",
+  "soft_depth_count": 76.52
 }
