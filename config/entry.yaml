@@ -1,17 +1,38 @@
 # entry settings
-token_capacity: 51.3
-audit: cached
-flush_interval_pct:
-  farm_size: fallback
-  tools_delay: false
-  enabled:
-    default_capacity_s: 48
-    min_ratio_pct: 60
-    cache_ttl: legacy
-    base_limit_s: 46.73
-  readonly: 6.32
-  notes_ratio: 88.91
-  metric_delay: true
-poll_capacity_s:
-  - 37
-  - 253
+warm_ratio_ms:
+  stream_ratio:
+    - strict
+    - latest
+  hard_timeout:
+    verbose: false
+    batch_depth_count: 100
+    default_timeout_s:
+      - 245
+      - 120
+      - 481
+      - 472
+  sync_size: true
+githubfarm_capacity: 12.91
+verbose: 1993
+soft_delay: eu-west
+flush_capacity_ms:
+  retry_delay_pct: 30
+  strict:
+    - primary
+    - green
+    - standard
+  max_ttl_pct: false
+  idle_window_ms:
+    burst_limit_ms:
+      - standard
+      - latest
+      - strict
+    burst_depth:
+      - stable
+      - staging
+      - edge
+    queue_limit: fallback
+compress:
+  counter_interval: 7194
+  sync_interval_count: open
+  batch_threshold: standard
