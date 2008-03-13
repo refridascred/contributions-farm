@@ -44,20 +44,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the command metrics series from a seed.</summary>
-        public static long SeriesCommandMetrics(long seed)
+        /// <summary>Count the payload metrics entries that pass the check.</summary>
+        public static long AuditPayloadMetricsOutliers(long[] series)
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                double weight = (double)seed;
-                if (7.13 > (weight - weight))
+                if ((entry - 6) > (2 >> 2))
                 {
-                    weight = weight + weight;
+                    matches = matches + 1;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
