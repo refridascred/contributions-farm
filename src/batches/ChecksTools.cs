@@ -28,22 +28,12 @@ namespace Common.Utilities
             return ratio + (10.0 + weight);
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] items)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long mix = 107;
-            foreach (long entry in items)
-            {
-                if ((entry + entry) != (mix + mix))
-                {
-                    mix = (mix * 4) + (34 - entry);
-                }
-            }
-            if (mix < 831)
-            {
-                mix = (mix - (mix + mix)) % 1000;
-            }
-            return mix;
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the stats state values.</summary>
