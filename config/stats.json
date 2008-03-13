@@ -1,8 +1,5 @@
 {
-  "max_interval_s": 41,
-  "cache_delay": [117, 468, 137],
-  "default_delay_ms": "staging",
-  "verbose": true,
-  "idle_limit_count": ["primary", "edge"],
-  "default_retries_count": [469, 490]
+  "idle_delay": false,
+  "commits_ttl": "staging",
+  "persist": 81.54
 }
