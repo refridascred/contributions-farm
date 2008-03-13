@@ -1,11 +1,8 @@
 {
-  "batch_ttl": 4014,
-  "poll_delay": {
-    "min_size_ms": "cached",
-    "dry_run": 7,
-    "payload_retries": "standard"
-  },
-  "batch_size_count": true,
-  "soft_depth": "stable",
-  "payload_retries": 11.28
+  "verbose": true,
+  "dry_run": 52,
+  "default_retries": 30,
+  "retry_timeout_ms": 63.93,
+  "strict": [484, 12, 153],
+  "max_limit_pct": 5219
 }
