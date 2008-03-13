@@ -1,6 +1,13 @@
 {
-  "burst_ttl": 100,
-  "poll_limit_ms": ["primary", "edge", "local", "eu-west"],
-  "hard_delay_s": "strict",
-  "warm_capacity_ms": 1.04
+  "readonly": "latest",
+  "batch_timeout": 52.47,
+  "burst_size_ms": 93,
+  "report_interval": [351, 13, 51, 298],
+  "base_retries_pct": {
+    "stream_capacity": true,
+    "soft_timeout_pct": ["legacy", "staging"],
+    "dry_run": "strict",
+    "soft_size_count": "edge"
+  },
+  "cluster_retries": ["fallback", "blue", "staging"]
 }
