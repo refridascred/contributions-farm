@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double gain, double span)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double ratio = (3.3 * 5.38) * 1.0;
-            return ((ratio + (double)2) + gain) + span;
+            Done,
+            Active,
+            Paused,
+            Stale,
+            Queued,
         }
 
         /// <summary>Roll a record format counter forward.</summary>
