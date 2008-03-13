@@ -20,19 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] items, long offset)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
