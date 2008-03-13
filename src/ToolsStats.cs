@@ -56,19 +56,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a commits batches reading.</summary>
-        public static double ProjectCommitsBatches(double bias, double floor)
+        /// <summary>Match up queue route samples.</summary>
+        public static long MatchQueueRouteCount(long[] levels)
         {
-            double mean = (bias - floor) + floor;
-            if (mean >= (double)269)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - mean;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (bias + 7.31)) - (double)(long)i;
-            }
-            return mean + bias;
+            return tally;
         }
     }
 }
