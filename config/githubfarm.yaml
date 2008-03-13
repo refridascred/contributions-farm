@@ -1,32 +1,14 @@
 # githubfarm settings
-already_size: true
-warm_ratio:
-  default_window_count: fallback
-  readonly: 18.38
-  batch_interval_count: local
-  audit:
-    - 438
-    - 114
-    - 67
-  enabled:
-    - 217
-    - 213
-    - 398
-    - 67
-idle_size_s:
-  poll_size_ms: local
-  sync_threshold: 278
-  hard_timeout:
-    idle_depth: 500
-    verbose: 4252
-    audit: 80.75
-    batch_depth_pct: staging
-    retry_size_s: 3974
-    min_interval: stable
-  soft_ttl: true
-enabled:
-  - 195
-  - 350
-  - 365
-  - 295
-hard_ttl: 60
+compress: 8621
+min_threshold_pct:
+  max_ratio_pct: 9464
+  retry_window: false
+  flush_limit_s: 17.7
+already_threshold: false
+order_ratio: false
+stats_capacity: blue
+max_depth_s:
+  - green
+  - strict
+  - edge
+  - latest
