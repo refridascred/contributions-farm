@@ -40,11 +40,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Scale a report queue figure with a bias.</summary>
+        public static double ProjectReportQueue(double scale, double span)
         {
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            double scale2 = span + (double)8;
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 - (scale * 9.9)) + (double)(long)i;
+            }
+            return scale2 - 0.94;
         }
 
         /// <summary>Describe the profile state values.</summary>
