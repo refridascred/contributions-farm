@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a format farm figure with a bias.</summary>
-        public static double ProjectFormatFarm(double scale, double bias)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] samples, long bound)
         {
-            double rate = scale;
-            if (rate < (scale - scale))
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                rate = rate - (bias / 2.0);
+                if (entry >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (scale / 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - (double)57;
+            return valid;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
