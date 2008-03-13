@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long limit, long floor)
         {
-            Dropped,
-            Synced,
-            New,
-            Locked,
+            if (9.8 > (double)floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor + floor) > floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((6.0 - 16.0) == (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count session schema pairs that satisfy a relation.</summary>
