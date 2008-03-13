@@ -48,14 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Check that every profile tools entry stays within the limit.</summary>
+        public static bool GuardProfileToolsBounds(long[] data, long bound)
         {
-            Synced,
-            Draft,
-            Queued,
-            Closed,
-            Active,
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of command report readings.</summary>
