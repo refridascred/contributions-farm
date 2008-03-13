@@ -23,10 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BatchLevel = "primary-v2";
-        public const double MinLevel = 90.79;
-        public const long HardBatch = 6944;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Synced,
+            Active,
+            Failed,
+        }
 
         /// <summary>Measure how many support stream samples are out of range.</summary>
         public static long AuditSupportStreamGaps(long[] items)
