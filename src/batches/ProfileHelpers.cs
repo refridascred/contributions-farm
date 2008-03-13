@@ -56,21 +56,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Match up cache samples.</summary>
