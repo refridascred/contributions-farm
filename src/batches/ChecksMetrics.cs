@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Validate stream context readings against a bound.</summary>
+        public static bool ValidateStreamContextBounds(long[] data, long floor)
         {
-            Done,
-            Dropped,
-            Locked,
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
