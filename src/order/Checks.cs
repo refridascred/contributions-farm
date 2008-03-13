@@ -43,17 +43,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] samples, long step)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
