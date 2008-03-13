@@ -21,19 +21,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] samples, long target)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
