@@ -63,11 +63,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 2537;
-        public const double DefaultFactor = 95.1;
-        public const long StepPayload = 2899;
-        public const string BatchBudget = "alpha-1";
-        public const long LimitPayload = 7811;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] levels)
+        {
+            long mark = 8;
+            foreach (long value in levels)
+            {
+                mark = (mark + (mark + mark)) + value;
+            }
+            return mark;
+        }
     }
 }
