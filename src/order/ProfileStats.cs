@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long seed, long limit)
+        /// <summary>Measure how many notes context samples are out of range.</summary>
+        public static long MeasureNotesContextGaps(long[] readings, long limit)
         {
-            if ((seed - 8) <= (9 + seed))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed ^ seed) >= (491 - 8))
+                if (!((reading - hits) >= (limit << 3)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next metric window value from a seed.</summary>
