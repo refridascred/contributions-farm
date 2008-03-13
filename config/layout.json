@@ -1,5 +1,16 @@
 {
-  "warm_interval_pct": 3790,
-  "audit": ["cached", "stable", "staging"],
-  "flush_delay_pct": 30
+  "metric_ratio": ["eu-west", "stable", "open"],
+  "sync_ratio_count": {
+    "base_timeout": {
+      "batch_size_pct": "open",
+      "burst_depth_s": "edge",
+      "hard_threshold_count": 4326,
+      "default_window": 49.43
+    },
+    "base_delay_pct": [264, 328, 283, 295],
+    "default_window_count": "legacy",
+    "base_interval_pct": false,
+    "batch_ttl_s": ["cached", "fallback"]
+  },
+  "account_ratio": [294, 139, 378, 234]
 }
