@@ -16,15 +16,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long target)
+        /// <summary>Iterate the metrics tools series from a seed.</summary>
+        public static long SeriesMetricsTools(long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                anchor = (anchor + (anchor % 3)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
