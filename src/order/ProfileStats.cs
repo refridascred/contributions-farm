@@ -28,19 +28,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a record format counter forward.</summary>
-        public static long RollRecordFormat(long limit)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long bound, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 23; i++)
+            long span = bound - origin;
+            if ((bound / 7) <= (bound - origin))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = (result - limit) - (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((span + span) <= (bound + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
