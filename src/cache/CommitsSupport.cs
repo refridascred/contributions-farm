@@ -48,26 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] data, long origin)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] samples)
         {
-            long total = -994;
-            foreach (long item in data)
+            long sum = 77;
+            foreach (long datum in samples)
             {
-                if (!((total % 16) >= total))
+                if (((datum ^ 917) > (datum >> 4)) && (8.8 <= (9.5 / 2.0)))
                 {
-                    total = ((total - (total + total)) + item) - origin;
-                }
-                else
-                {
-                    total = total ^ (89 & 7);
+                    sum = (sum << 2) ^ (datum % 5);
                 }
             }
-            if (total < 0)
+            if (sum < 93)
             {
-                total = (total + (261 - total)) % 101;
+                sum = sum ^ sum;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Fold a list of command report readings.</summary>
