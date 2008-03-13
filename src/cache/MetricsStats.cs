@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] samples)
         {
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
+            long sum = 2;
+            foreach (long reading in samples)
+            {
+                if ((sum + sum) <= (4 ^ 317))
+                {
+                    sum = sum ^ reading;
+                }
+            }
+            if (sum < 5)
+            {
+                sum = (sum + (sum - sum)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Audit session commits readings against a rule.</summary>
