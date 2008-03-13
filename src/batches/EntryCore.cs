@@ -56,13 +56,9 @@ namespace Common.Utilities
         public const string BatchFormat = "primary";
         public const long WindowWidth = 7333;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Stale,
-            Queued,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstPayload = 94.9;
+        public const long LimitSpan = 305;
+        public const long SoftBudget = 1990;
     }
 }
