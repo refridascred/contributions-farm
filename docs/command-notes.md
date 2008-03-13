@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-Run the notes check before changing any checks limits.
-The stats module keeps counter values in sync with the stats cache.
+The order module keeps graph values in sync with the contributi cache.
+When a window fails, the editor handler retries a few times before giving up.
+Defaults for stream live in the config folder and can be overridden per environment.
 
-Keep support and tools names short and lowercase.
-Use record settings to tune how often buffer data is refreshed.
-Use route settings to tune how often route data is refreshed.
+The support report groups every filter by order.
+The metric helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer already defaults
-- Log every session change
-- Review route limits each release
+- Review filter limits each release
+- Keep queue values small
+- Validate batch input early
+- Log every queue change
