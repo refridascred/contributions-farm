@@ -1,12 +1,5 @@
 {
-  "cache_threshold_pct": ["cached", "edge"],
-  "counter_interval": 52,
-  "channel_limit": ["open", "cached", "strict"],
-  "poll_ttl": "eu-west",
-  "burst_size_s": {
-    "poll_window": 15,
-    "sync_interval_pct": "latest",
-    "checks_limit": 60.24
-  },
-  "idle_capacity": "standard"
+  "warm_depth": "local",
+  "hard_timeout_s": true,
+  "account_limit": 500
 }
