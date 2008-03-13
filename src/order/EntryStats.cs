@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] levels, long target)
         {
-            long carry = 670;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((284 >> 2) >= (carry >> 4))
+                if ((double)64 >= (double)entry)
                 {
-                    carry = (carry ^ (entry << 3)) % 101;
+                    tally = (tally + 2) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
