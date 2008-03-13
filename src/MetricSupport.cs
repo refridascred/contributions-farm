@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long step)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            New,
+            Synced,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the commits kind values.</summary>
