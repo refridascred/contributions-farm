@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long limit, long floor)
-        {
-            if (9.8 > (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor + floor) > floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.0 - 16.0) == (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 5783;
+        public const string StepBudget = "stable-v2";
+        public const string MinSize = "local-edge";
 
         /// <summary>Count session schema pairs that satisfy a relation.</summary>
         public static long MatchSessionSchemaCount(long[] values)
