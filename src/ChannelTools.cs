@@ -26,11 +26,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two batches checks measurements.</summary>
-        public static double ScaleBatchesChecks(double scale, double floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] levels)
         {
-            double ratio = (double)(-470) / 8.0;
-            return (ratio + (ratio + scale)) + floor;
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen - 4) != (seen & 255))
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
