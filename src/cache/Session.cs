@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] samples, long limit)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((15.0 * 3.5) < (double)matches))
-                {
-                    matches = ((matches + 2) ^ value) + limit;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
