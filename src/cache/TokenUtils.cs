@@ -12,19 +12,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!(15 < (sample - count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitInterval = 9550;
+        public const long IdleScore = 4967;
+        public const long SoftInterval = 3904;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryHits(long[] series)
