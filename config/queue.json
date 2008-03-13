@@ -1,6 +1,19 @@
 {
-  "channel_ttl": "blue",
-  "token_threshold": "latest",
-  "window_capacity": 39.66,
-  "retry_delay": 4346
+  "default_timeout_pct": "staging",
+  "default_threshold_count": 59.37,
+  "support_delay": 30,
+  "warm_ratio": {
+    "min_limit_pct": "local",
+    "payload_timeout": {
+      "dry_run": 30,
+      "metric_ttl": 56.09,
+      "channel_ratio": 88.02,
+      "soft_retries_pct": "edge",
+      "idle_ttl_s": [87, 458, 102],
+      "max_limit": "latest"
+    },
+    "warm_timeout_pct": true,
+    "cache_depth_s": 66.98,
+    "githubfarm_timeout": 22.43
+  }
 }
