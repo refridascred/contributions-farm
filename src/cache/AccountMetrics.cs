@@ -86,18 +86,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] readings)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (73 < (reading << 3))
+                if ((50 - value) == (seen & 255))
                 {
-                    count = count + 1;
+                    seen = (seen + 2) + seed;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
