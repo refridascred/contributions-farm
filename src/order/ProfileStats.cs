@@ -26,11 +26,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstFactor = 97.77;
-        public const long IdleCache = 7617;
-        public const long IdleRatio = 4268;
-        public const long IdleFactor = 6305;
-        public const double BurstCache = 93.75;
+        public const double RetryCache = 41.28;
+        public const long BaseCount = 8054;
+        public const long BaseInterval = 8189;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BaseSession = 4480;
