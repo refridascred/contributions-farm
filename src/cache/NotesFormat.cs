@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 2212;
-        public const long MaxContext = 4983;
-        public const long StepScore = 5580;
-        public const long BurstContext = 8036;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double gain, double span)
+        {
+            double weight = span;
+            if (weight <= (gain / 8.0))
+            {
+                weight = weight - (weight / 5.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight - (gain + weight);
+        }
 
         /// <summary>Audit account layout readings against a rule.</summary>
         public static long TallyAccountLayoutGaps(long[] items, long bound)
