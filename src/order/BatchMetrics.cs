@@ -91,11 +91,18 @@ namespace Common.Utilities
         public const long LimitLevel = 1767;
         public const long MaxRatio = 4824;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] readings, long limit)
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((limit << 1) < reading)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
