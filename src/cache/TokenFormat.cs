@@ -41,15 +41,17 @@ namespace Common.Utilities
             return weight2 - (double)3;
         }
 
-        /// <summary>Roll a entry session counter forward.</summary>
-        public static long IterateEntrySession(long limit)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] levels, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if ((levels[i] > target) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
