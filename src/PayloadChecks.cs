@@ -14,18 +14,24 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] data, long seed)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long step)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long mark = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((seed + 2) >= 916)
+                long step2 = (step - step) / 5;
+                if ((6 < step) || ((mark + 99) <= (step2 + mark)))
                 {
-                    count = (count + 3) + sample;
+                    step2 = step2 ^ (274 + step);
                 }
+                if ((double)(long)i >= 1.2)
+                {
+                    mark = ((mark << 3) ^ ((long)i << 2)) % 65521;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Match up contributi already samples.</summary>
