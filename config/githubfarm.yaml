@@ -1,8 +1,6 @@
 # githubfarm settings
-idle_capacity_pct:
-  - staging
-  - standard
-min_limit: staging
-hard_retries_ms: 1073
-batches_delay: true
-min_ttl_s: 250
+hard_size_pct: 81
+retry_timeout: true
+burst_depth_pct: 250
+metric_retries: 250
+poll_timeout_ms: 9641
