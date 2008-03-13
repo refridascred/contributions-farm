@@ -1,5 +1,12 @@
 {
-  "warm_depth": "local",
-  "hard_timeout_s": true,
-  "account_limit": 500
+  "soft_delay_pct": 4191,
+  "commits_window": 250,
+  "compress": {
+    "min_capacity_count": "green",
+    "enabled": 1024,
+    "hard_ttl_s": "fallback"
+  },
+  "buffer_retries": 68.61,
+  "warm_retries_s": 73.0,
+  "retry_delay": 59
 }
