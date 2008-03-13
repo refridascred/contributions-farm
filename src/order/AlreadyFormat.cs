@@ -63,16 +63,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] series)
+        /// <summary>Iterate the checks support series from a seed.</summary>
+        public static long IterateChecksSupport(long origin)
         {
-            long carry = 715;
-            foreach (long cell in series)
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (((double)cell < (13.0 / 4.0)) && (3.64 <= (double)cell))
+                if (carry >= ((long)i % 100))
                 {
-                    carry = ((carry * 4) + (52 - cell)) % 97;
+                    carry = ((carry * 3) + ((long)i + origin)) % 65521;
+                    carry = carry + (carry & 3);
+                    continue;
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
             return carry;
         }
