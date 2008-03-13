@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached green; do
+for item in legacy open; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=266
+COMMAND_LIMIT=483
 log "limit is ${COMMAND_LIMIT}"
