@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] levels)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio2 = span;
+            if (ratio2 >= (double)444)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio2 = ratio2 + ratio;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
+            }
+            return ratio2 + (double)581;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
