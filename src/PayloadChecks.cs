@@ -68,39 +68,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long bound, long step)
-        {
-            long gap = bound + step;
-            if ((gap % 2) < (step % 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound >= (step * 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound >> 5) > gap)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (gap < (step ^ bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryWidth = 35.66;
+        public const long HardCommits = 6850;
+        public const long WindowBudget = 5417;
+        public const long MaxWidth = 687;
     }
 }
