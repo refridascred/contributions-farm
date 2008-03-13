@@ -29,26 +29,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                long edge = (result + offset) ^ (offset % 24);
-                edge = (edge - (offset ^ 54)) % 101;
-                if ((edge + edge) >= result)
-                {
-                    result = (result + (offset ^ edge)) % 101;
-                }
-                else
-                {
-                    result = (result - (edge + 305)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 4;
+        public const long RetrySize = 7544;
+        public const long DefaultAlready = 660;
+        public const string CacheInterval = "strict";
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long SeekStreamIndex(long[] items, long seed)
