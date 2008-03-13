@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleSize = 42.97;
-        public const long LimitInterval = 78;
-        public const double SoftCache = 9.69;
-        public const string RetryCount = "standard-v2";
-        public const long BatchWidth = 4881;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 4689;
+        public const double MinWidth = 48.17;
+        public const string SoftChannel = "legacy";
+        public const long IdleBudget = 2561;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MinAlready = 9251;
