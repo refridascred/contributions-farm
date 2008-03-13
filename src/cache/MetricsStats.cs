@@ -12,21 +12,26 @@ namespace Common.Utilities
         public const long LimitSpan = 1520;
         public const double HardRatio = 0.7;
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 317;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (bound <= (bound + entry))
                 {
-                    if ((values[i] ^ values[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark ^ entry;
+                }
+                else
+                {
+                    mark = mark ^ (bound / 7);
+                }
+                if ((mark & 31) == (mark >> 3))
+                {
+                    break;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
