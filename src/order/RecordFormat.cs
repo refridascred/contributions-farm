@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BaseDepth = 8154;
         public const string BaseAlready = "alpha-v2";
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] readings)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long sum = 651;
+            foreach (long cell in readings)
             {
-                if (!(((datum << 3) > (datum % 8)) && ((11.0 * 3.1) != (double)seen)))
+                if (8.1 <= (double)sum)
                 {
-                    seen = seen + 2;
+                    sum = sum ^ cell;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
