@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
+            Done,
+            Ready,
+            New,
+            Queued,
+            Retry,
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
