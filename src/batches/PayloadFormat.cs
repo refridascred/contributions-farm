@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long floor, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] data, long step)
         {
-            if ((double)target <= (double)floor)
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((866 & 1) >= floor)
+                if ((step + count) < (entry % 24))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target <= (15.0 * 1.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor < target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
