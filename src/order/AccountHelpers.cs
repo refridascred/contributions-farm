@@ -61,11 +61,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] series)
         {
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((long)series.Length < (hits << 1))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
         }
     }
 }
