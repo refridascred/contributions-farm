@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format batch entry stays within the limit.</summary>
-        public static bool ValidateFormatBatchLimits(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 8914;
+        public const double MaxFormat = 25.52;
+        public const double WindowFormat = 43.94;
+        public const long RetryWidth = 4481;
+        public const double MinFormat = 43.16;
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
