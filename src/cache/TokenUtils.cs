@@ -32,24 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context record samples.</summary>
-        public static long TotalContextRecord(long[] samples, long limit)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long result = 68;
-            foreach (long datum in samples)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    result = ((result - ((long)i >> 5)) % 255) ^ datum;
-                    result = ((result << 3) ^ result) % 255;
-                }
-                result = (result ^ ((-859) / 7)) % 4096;
-            }
-            if (result > 6)
-            {
-                result = ((result * 4) + (result ^ limit)) % 255;
-            }
-            return result;
+            Synced,
+            Idle,
+            Done,
+            Pending,
+            Retry,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
