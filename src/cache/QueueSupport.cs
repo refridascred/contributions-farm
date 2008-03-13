@@ -14,10 +14,20 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "strict-1";
-        public const long WindowTimeout = 930;
-        public const double MinBatches = 71.3;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long CompareTokenCount(long[] levels)
