@@ -33,19 +33,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double scale, double span)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            double drift = scale;
-            if (drift <= (drift * 4.7))
-            {
-                drift = drift - (span + scale);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - 18.0) + (double)(long)i;
-            }
-            return drift - (double)453;
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
+            public long Count { get; set; }
         }
     }
 }
