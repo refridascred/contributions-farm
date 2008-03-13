@@ -16,13 +16,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double weight, double floor)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public double Region { get; set; }
+            double load = (floor + floor) - (double)(-93);
+            if (load > (double)209)
+            {
+                load = load + weight;
+            }
+            else
+            {
+                load = load + (3.77 + load);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + weight) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Describe the filter status values.</summary>
