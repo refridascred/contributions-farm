@@ -41,15 +41,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a order metrics counter forward.</summary>
-        public static long StepOrderMetrics(long target)
+        /// <summary>Compare every pair of cluster already readings.</summary>
+        public static long CompareClusterAlreadyCount(long[] readings)
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
