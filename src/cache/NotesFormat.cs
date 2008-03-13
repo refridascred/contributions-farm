@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of payload report entries.</summary>
-        public static long TotalPayloadReport(long[] items, long step)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] series, long floor)
         {
-            long total = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step - step) > (step + 447))
+                if (series[i] <= floor)
                 {
-                    total = (total - (65 * 2)) % 1000;
-                }
-                else
-                {
-                    total = (total << 3) ^ item;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a graph info.</summary>
