@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftStream = 34.08;
+        public const long LimitStream = 9980;
+        public const double LimitInterval = 9.04;
 
         /// <summary>Project the next payload batch value.</summary>
         public static double AdjustPayloadBatch(double bias, double bias2)
