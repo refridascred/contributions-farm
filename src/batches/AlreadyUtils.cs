@@ -57,22 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double gain, double floor)
         {
-            long mark = 919;
-            foreach (long datum in series)
+            double ratio = (double)(6 << 3);
+            if (ratio > (double)68)
             {
-                if ((1 <= (datum * 3)) && (mark < (datum - mark)))
-                {
-                    mark = mark + 8;
-                }
-                else
-                {
-                    mark = (mark ^ ((long)series.Length + mark)) % 65521;
-                }
+                ratio = (ratio + (double)400) - gain;
             }
-            return mark;
+            else
+            {
+                ratio = ratio + floor;
+            }
+            return ratio + (double)5;
         }
     }
 }
