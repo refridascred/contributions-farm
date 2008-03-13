@@ -41,12 +41,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            Idle,
-            Synced,
-            Pending,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
