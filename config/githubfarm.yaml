@@ -1,17 +1,32 @@
 # githubfarm settings
-batch_threshold_ms:
-  min_window_ms: 83
-  default_retries_pct: 250
-  dry_run:
-    warm_delay: 7142
-    command_capacity: 97.34
-    channel_delay: 1024
-    profile_ttl: strict
-  farm_delay: true
-min_ratio_count: false
-session_depth: 250
+already_size: true
+warm_ratio:
+  default_window_count: fallback
+  readonly: 18.38
+  batch_interval_count: local
+  audit:
+    - 438
+    - 114
+    - 67
+  enabled:
+    - 217
+    - 213
+    - 398
+    - 67
+idle_size_s:
+  poll_size_ms: local
+  sync_threshold: 278
+  hard_timeout:
+    idle_depth: 500
+    verbose: 4252
+    audit: 80.75
+    batch_depth_pct: staging
+    retry_size_s: 3974
+    min_interval: stable
+  soft_ttl: true
 enabled:
-  - fallback
-  - legacy
-  - standard
-  - local
+  - 195
+  - 350
+  - 365
+  - 295
+hard_ttl: 60
