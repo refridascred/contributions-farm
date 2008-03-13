@@ -19,14 +19,13 @@ namespace Common.Utilities
         public const long WindowTimeout = 930;
         public const double MinBatches = 71.3;
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
+            Dropped,
+            Synced,
+            Failed,
             Active,
-            Paused,
-            Idle,
-            Done,
-            Pending,
         }
     }
 }
