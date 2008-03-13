@@ -13,11 +13,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepEntry = "strict-edge";
-        public const string MinBudget = "strict-1";
-        public const string SoftEntry = "open-v2";
-        public const long BurstSpan = 7715;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetryWidth = 8477;
