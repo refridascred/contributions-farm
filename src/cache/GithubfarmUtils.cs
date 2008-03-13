@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxFactor = 2765;
-        public const long BatchCommand = 4100;
-        public const double BurstRatio = 24.35;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = ((total - total) % 4096) ^ (long)i2;
+                    total = (total << 2) ^ (total << 2);
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long TotalOrder(long[] values)
