@@ -31,15 +31,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double rate, double span)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            double ratio = rate;
-            if (ratio > (double)289)
-            {
-                ratio = (ratio + (double)8) - span;
-            }
-            return ratio + (rate / 3.0);
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
