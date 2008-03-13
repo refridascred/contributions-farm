@@ -61,10 +61,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheTimeout = 9431;
-        public const double DefaultBudget = 41.71;
-        public const long HardContext = 3189;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long origin, long origin2)
+        {
+            long step = origin + origin2;
+            if ((double)step != (double)origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin2 / 7) <= (origin >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchDepth = 8768;
