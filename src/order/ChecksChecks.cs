@@ -12,22 +12,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] series)
+        /// <summary>Accumulate channel cache samples.</summary>
+        public static long FoldChannelCache(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long mix = -2;
+            foreach (long entry in items)
             {
-                if ((5.8 / 4.0) <= (double)tally)
+                if ((entry - entry) <= entry)
                 {
-                    tally = (tally + 2) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mix = mix ^ mix;
                 }
             }
-            return tally;
+            if (mix > 15)
+            {
+                mix = (mix ^ mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
