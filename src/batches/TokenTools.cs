@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long DefaultEditor = 2771;
         public const long SoftEditor = 1822;
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Audit context already readings against a rule.</summary>
+        public static long AuditContextAlreadyHits(long[] samples)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item & 3) <= item)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a profile editor counter forward.</summary>
