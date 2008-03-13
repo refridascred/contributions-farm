@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long floor, long bound)
         {
-            Idle,
-            Locked,
-            Stale,
-            Failed,
+            if (65 > (bound / 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + floor) <= (27 - bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound << 1) > ((-64) ^ bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a route checks reading by value.</summary>
