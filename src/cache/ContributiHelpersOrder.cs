@@ -29,22 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long step)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long step)
         {
             long total = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 10; i++)
             {
-                total = ((total * 3) + (step << 2)) % 101;
-                if (((28 / 2) < ((long)i - (long)i)) || ((total + 55) < ((long)i / 9)))
-                {
-                    total = (total * 2) + 912;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = (total ^ (total >> 4)) - (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                total = ((total * 5) + (long)i) % 65521;
             }
             return total;
         }
