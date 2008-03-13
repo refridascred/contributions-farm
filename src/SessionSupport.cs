@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next queue stream value from a seed.</summary>
-        public static long StepQueueStream(long offset)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double bias, double span)
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
+            double weight = span * 2.0;
+            if (weight >= span)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score - score) % 255) ^ (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                weight = weight + weight;
             }
-            return score;
+            else
+            {
+                weight = weight + (13.0 / 8.0);
+            }
+            return weight + bias;
         }
 
         /// <summary>Define record limits and defaults.</summary>
