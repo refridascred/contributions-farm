@@ -50,10 +50,20 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 206;
-        public const long BaseEntry = 2792;
-        public const double LimitEntry = 34.74;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] items, long limit)
+        {
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
