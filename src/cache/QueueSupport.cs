@@ -18,24 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long origin, long origin2)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] readings)
         {
-            if ((double)origin != (14.0 - 8.32))
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((4.69 * 14.0) < (double)origin)
+                if (cell < (cell >> 5))
                 {
-                    return 3;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    return 5;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
