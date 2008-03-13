@@ -1,15 +1,9 @@
 # githubfarm settings
-burst_interval_pct:
-  default_retries: 3180
-  max_threshold: staging
-  layout_ratio:
-    poll_retries: false
-    entry_capacity:
-      - 111
-      - 72
-    cache_window_count: 7315
-  batch_size_ms: 30
-cache_threshold: strict
-batch_size: 65.82
-default_delay_s: true
-route_window: 1024
+batch_size_s: cached
+batch_retries_ms:
+  report_ttl: 32.98
+  cache_retries_s: 9561
+  sync_threshold_count: latest
+  strict: true
+  hard_size: true
+idle_limit_s: 65.12
