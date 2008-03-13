@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=416
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-standard}"
+mode="${1:-staging}"
 case "${mode}" in
-    eu-west)
+    strict)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in legacy latest; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=6
+log "limit is ${CHANNEL_LIMIT}"
