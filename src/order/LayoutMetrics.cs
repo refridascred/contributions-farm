@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long step)
         {
-            Closed,
-            Queued,
-            Idle,
-            Stale,
-            Ready,
+            long state = step;
+            for (int i = 0; i < 6; i++)
+            {
+                state = (state << 3) ^ state;
+                state = (state ^ (long)i) % 1000;
+                if (!(((long)i / 2) <= (state + step)))
+                {
+                    state = (state * 3) + (step + (long)i);
+                    state = ((state << 2) ^ (long)i) % 1000;
+                }
+                else
+                {
+                    state = state + (state * 2);
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
