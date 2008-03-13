@@ -34,14 +34,11 @@ namespace Common.Utilities
         public const double WindowCluster = 71.08;
         public const long MinWidth = 4297;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Draft,
-            Synced,
-            Locked,
-            Active,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheWidth = 172;
+        public const string SoftCluster = "stable-1";
+        public const string RetryInterval = "fallback";
+        public const long RetrySize = 2813;
 
         /// <summary>Classify a contributi cluster pair into a bucket.</summary>
         public static long BucketContributiCluster(long origin, long seed)
