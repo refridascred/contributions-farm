@@ -53,17 +53,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a record report sample.</summary>
-        public static long SeekRecordReportIndex(long[] values, long bound)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
