@@ -20,23 +20,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double weight, double floor)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double gain, double floor)
         {
-            double load = (floor + floor) - (double)(-93);
-            if (load > (double)209)
+            double bias = 2.8;
+            if (bias < (13.0 + floor))
             {
-                load = load + weight;
+                bias = bias - (double)61;
             }
             else
             {
-                load = load + (3.77 + load);
+                bias = bias + 1.0;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
-                load = (load + weight) + (double)(long)i;
+                bias = (bias + 3.12) + (double)(long)i;
             }
-            return load - load;
+            return bias - gain;
         }
 
         /// <summary>Describe the filter status values.</summary>
