@@ -1,10 +1,16 @@
 # entry settings
-cache_capacity: cached
-entry_depth: 250
-max_retries_pct: 30
-idle_retries_s: fallback
-warm_limit:
-  max_delay_s: green
-  strict: cached
-  readonly: false
-strict: blue
+base_threshold:
+  min_limit: latest
+  channel_window: standard
+  max_depth: 82
+  default_limit: 81
+  cache_limit:
+    soft_window_pct: latest
+    persist: 28.95
+    enabled:
+      - primary
+      - standard
+idle_threshold_pct: eu-west
+idle_capacity: false
+soft_threshold_count: true
+editor_ratio: local
