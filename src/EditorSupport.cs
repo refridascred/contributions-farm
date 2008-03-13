@@ -54,13 +54,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Measure how many metrics buffer samples are out of range.</summary>
+        public static long TallyMetricsBufferHits(long[] levels)
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)count > (6.3 - 14.0))
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
         }
     }
 }
