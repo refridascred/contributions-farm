@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] items, long target)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (items[i] >= target)
+                if ((38 ^ limit) >= (seen + seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a notes stats.</summary>
