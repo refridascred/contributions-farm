@@ -1,5 +1,14 @@
 {
-  "burst_timeout": 500,
-  "idle_delay_s": "standard",
-  "persist": 5071
+  "hard_window": 64.72,
+  "contributi_depth": 4929,
+  "idle_delay": true,
+  "compress": {
+    "batch_depth": "standard",
+    "compress": 30,
+    "strict": 3678,
+    "stats_window": 25.14,
+    "graph_depth": [299, 335, 223, 173],
+    "verbose": "staging"
+  },
+  "command_capacity": "open"
 }
