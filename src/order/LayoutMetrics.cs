@@ -15,18 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of githubfarm cache entries.</summary>
-        public static long WeighGithubfarmCache(long[] data)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double weight, double floor)
         {
-            long acc = 194;
-            foreach (long value in data)
+            double ratio = weight;
+            if (ratio < (double)(-18))
             {
-                if ((value + acc) > value)
-                {
-                    acc = ((acc << 2) ^ 95) % 97;
-                }
+                ratio = ratio + ratio;
             }
-            return acc % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (floor + floor)) + (double)(long)i;
+            }
+            return ratio + (double)703;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
