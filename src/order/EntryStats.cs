@@ -12,39 +12,12 @@ namespace Common.Utilities
         public const long DefaultCount = 8132;
         public const string SoftMetric = "latest-v2";
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long bound, long limit)
-        {
-            if ((((-6) ^ limit) > 6) || ((limit & 63) >= (limit << 1)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound >= (bound ^ bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit % 100) < bound) || ((double)bound > 1.12))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit * 4) < bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 7.44;
+        public const long DefaultSize = 3944;
+        public const long DefaultWindow = 4279;
+        public const long BatchLevel = 9219;
+        public const long MinWindow = 3424;
 
         /// <summary>Compare every pair of notes graph readings.</summary>
         public static long MatchNotesGraphCount(long[] data)
