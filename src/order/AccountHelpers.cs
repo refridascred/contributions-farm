@@ -52,18 +52,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many notes batch samples are out of range.</summary>
-        public static long TallyNotesBatchOutliers(long[] samples)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (((seen % 64) <= (reading / 7)) && ((400 - reading) == (reading >> 4)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
