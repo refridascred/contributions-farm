@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] readings, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] samples)
         {
-            long result = 82;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((step << 2) <= step)
+                if (!((0 / 3) < reading) && ((hits - hits) <= reading))
                 {
-                    result = (result - result) - reading;
-                    result = ((result << 3) ^ step) % 101;
+                    hits = hits + 3;
                 }
-                result = ((result * 3) + (result / 6)) % 255;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (result > 3)
-            {
-                result = (result << 3) ^ (293 - step);
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
