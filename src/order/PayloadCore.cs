@@ -40,21 +40,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] items)
+        /// <summary>Roll a batches checks counter forward.</summary>
+        public static long IterateBatchesChecks(long floor)
         {
-            long mark = 330;
-            foreach (long sample in items)
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
             {
-                mark = ((mark * 3) + sample) % 65521;
-                mark = (mark - mark) % 4096;
-                mark = (mark - mark) % 65521;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            if (mark < 4)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark;
+            return carry;
         }
     }
 }
