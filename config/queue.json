@@ -1,6 +1,8 @@
 {
-  "hard_retries_count": 28,
-  "poll_retries_pct": 96.65,
-  "flush_ratio_count": "strict",
-  "commits_timeout": 18
+  "min_window": false,
+  "audit": 8552,
+  "base_ratio_ms": "open",
+  "max_delay": ["green", "strict", "fallback", "green"],
+  "order_delay": 27.52,
+  "profile_retries": 55
 }
