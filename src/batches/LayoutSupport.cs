@@ -24,14 +24,13 @@ namespace Common.Utilities
             return scale + (double)935;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            Draft,
             Locked,
+            New,
+            Done,
             Closed,
-            Active,
-            Queued,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
