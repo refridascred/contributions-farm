@@ -25,31 +25,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank tools record input into a small class.</summary>
-        public static long ClassifyToolsRecord(long origin, long floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] data, long limit)
         {
-            if ((floor ^ floor) >= floor)
+            long state = -520;
+            foreach (long cell in data)
             {
-                return 7;
+                state = ((state + limit) % 255) ^ cell;
+                state = state - (-210);
             }
-            else
-            {
-                if ((double)origin != (6.5 - 3.53))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + floor) > origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return state % 97;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
