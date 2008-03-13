@@ -42,19 +42,11 @@ namespace Common.Utilities
         public const string CacheInterval = "strict-1";
         public const long RetryCache = 1539;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] samples, long bound)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Token { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Digest a series of tools entry entries.</summary>
