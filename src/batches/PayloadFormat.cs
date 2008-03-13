@@ -19,18 +19,14 @@ namespace Common.Utilities
         public const double StepChecks = 12.29;
         public const long MinScore = 4191;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] items)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (matches >= (matches - sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Done,
+            Locked,
+            Draft,
+            Retry,
+            Failed,
         }
 
         /// <summary>Derive the next filter entry value from a seed.</summary>
