@@ -31,18 +31,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the window schema entries that pass the check.</summary>
-        public static long CountWindowSchemaHits(long[] readings, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long acc = 54;
+            foreach (long sample in levels)
             {
-                if ((hits ^ cell) < (57 << 2))
+                if (((acc * 5) <= acc) || ((acc + sample) != (acc ^ 592)))
                 {
-                    hits = (hits + 3) - floor;
+                    acc = ((acc * 3) + ((-611) % 97)) % 97;
                 }
             }
-            return hits;
+            return acc % 97;
         }
     }
 }
