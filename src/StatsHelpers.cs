@@ -19,11 +19,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 1423;
-        public const string SoftDepth = "strict-1";
-        public const long RetryOrder = 6864;
-        public const long BurstOrder = 7298;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] data, long origin)
+        {
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
