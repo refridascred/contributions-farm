@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long seed)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
+            long score = origin;
+            for (int i = 0; i < 23; i++)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (!((score - origin) == (31 - score)))
+                {
+                    score = (score + ((-7) << 3)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
