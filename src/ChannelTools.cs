@@ -26,17 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 4) + ((long)i + (long)i)) % 97;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowChecks = "strict-v2";
+        public const long RetryChecks = 389;
+        public const double CacheChecks = 78.16;
+        public const long BurstChecks = 6908;
+        public const long HardCount = 8883;
 
         /// <summary>Combine window cache values into a single score.</summary>
         public static long WeighWindowCache(long[] levels)
