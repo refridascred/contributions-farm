@@ -24,13 +24,13 @@ namespace Common.Utilities
             return bias - (rate * 1.1);
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
