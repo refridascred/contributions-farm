@@ -48,18 +48,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many payload schema samples are out of range.</summary>
-        public static long AuditPayloadSchemaOutliers(long[] levels)
+        /// <summary>Accumulate farm cluster samples.</summary>
+        public static long CombineFarmCluster(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long carry = 92;
+            foreach (long item in data)
             {
-                if ((double)tally < (7.0 * 2.09))
+                if ((5.0 / 9.0) >= (double)carry)
                 {
-                    tally = (tally + 3) - sample;
+                    carry = ((carry ^ (0 ^ item)) % 97) - target;
                 }
             }
-            return tally;
+            if (carry > (-7))
+            {
+                carry = carry - (carry ^ carry);
+            }
+            return carry;
         }
     }
 }
