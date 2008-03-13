@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green standard open eu-west; do
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in primary open local; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=310
-log "limit is ${CHANNEL_LIMIT}"
