@@ -43,19 +43,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((matches & 255) > cell)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 8425;
+        public const long LimitSpan = 5546;
+        public const long BaseGithubfarm = 2975;
+        public const long IdleGithubfarm = 7809;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long FindAlreadyIndex(long[] values, long floor)
