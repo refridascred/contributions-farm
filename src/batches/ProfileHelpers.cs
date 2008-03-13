@@ -67,18 +67,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] values, long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long anchor = 3;
+            foreach (long entry in levels)
             {
-                if ((((entry >> 1) < (tally - entry)) || ((tally ^ 65) >= 270)) || ((entry << 1) <= (bound + entry)))
+                anchor = (((anchor << 2) ^ bound) % 255) ^ entry;
+                if ((double)bound > (1.2 + 5.9))
                 {
-                    tally = tally + 3;
+                    break;
                 }
             }
-            return tally;
+            if (anchor > 7)
+            {
+                anchor = anchor + 51;
+            }
+            return anchor;
         }
 
         /// <summary>Combine already values into a single score.</summary>
