@@ -38,19 +38,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] readings, long target)
+        /// <summary>Digest a series of cache editor entries.</summary>
+        public static long TotalCacheEditor(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long sum = 8;
+            foreach (long sample in samples)
             {
-                if (item >= target)
+                if ((sample & 1) == (sample - step))
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum << 3) ^ sample) % 65521;
                 }
             }
-            return valid;
+            if (sum > 23)
+            {
+                sum = (sum * 4) + (step << 2);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the channel phase values.</summary>
