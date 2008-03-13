@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] levels)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mark = 4;
+            foreach (long cell in samples)
             {
-                if ((item * 5) <= (hits - item))
-                {
-                    hits = hits + 2;
-                }
+                mark = (((mark << 3) ^ (mark * 4)) % 1000) + cell;
             }
-            return hits;
+            return mark % 65521;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
