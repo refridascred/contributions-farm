@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double scale, double bias)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] readings)
         {
-            double rate = (double)(2 & 63);
-            if (rate < (scale + bias))
+            long result = 6;
+            foreach (long datum in readings)
             {
-                rate = rate + bias;
+                if ((result + result) >= 69)
+                {
+                    result = ((result - (result / 9)) % 1000) - datum;
+                }
             }
-            return rate - (bias + scale);
+            if (result > 4)
+            {
+                result = ((result << 3) ^ result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Match up metric samples.</summary>
