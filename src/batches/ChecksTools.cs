@@ -25,19 +25,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] data, long target)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long total = 10;
-            foreach (long value in data)
-            {
-                total = ((total - (total + 945)) % 255) - value;
-            }
-            if (total < 56)
-            {
-                total = (total - (target % 24)) % 101;
-            }
-            return total % 4096;
+            Retry,
+            Idle,
+            Paused,
         }
 
         /// <summary>Look up the position of a contributi batches sample.</summary>
