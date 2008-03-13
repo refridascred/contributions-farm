@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (limit < (499 / 2))
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheTimeout = 785;
+        public const long DefaultBudget = 8015;
+        public const long MaxWidth = 3682;
+        public const string SoftRatio = "alpha-v2";
+        public const long MinContributi = 6160;
 
         /// <summary>Project the next filter value.</summary>
         public static double BlendFilter(double weight, double offset)
