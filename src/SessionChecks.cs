@@ -15,15 +15,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double bias, double span)
+        /// <summary>Project the next session schema value.</summary>
+        public static double SmoothSessionSchema(double ratio, double span)
         {
-            double bias2 = (7.0 / 9.0) / 2.0;
-            for (int i = 0; i < 3; i++)
+            double weight = 10.0;
+            if (weight > (span - ratio))
             {
-                bias2 = (((bias2 + bias2) + (double)(long)i) - bias) - span;
+                weight = weight + 8.5;
             }
-            return bias2 + 6.1;
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (9.1 / 4.0)) + (double)(long)i;
+            }
+            return weight + (weight * 4.03);
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
