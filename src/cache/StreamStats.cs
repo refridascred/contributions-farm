@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long floor, long floor2)
         {
-            Closed,
-            Locked,
-            Done,
-            Pending,
+            long prev = floor ^ floor2;
+            if ((double)floor > (8.58 / 7.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((floor2 ^ floor) > (floor2 + prev)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Derive the next account contributi value from a seed.</summary>
