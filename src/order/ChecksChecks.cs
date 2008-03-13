@@ -30,11 +30,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultWidth = 6546;
-        public const long HardInterval = 9017;
-        public const double MinBatch = 23.63;
-        public const long DefaultBudget = 4633;
-        public const long BatchWidth = 1200;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long limit, long offset)
+        {
+            if ((offset - offset) > (offset / 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit < 68) && ((2 % 5) < (limit & 7)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit >> 5) <= (offset - offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset << 3) != (offset / 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
