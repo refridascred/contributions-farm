@@ -16,19 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate metrics batch readings against a bound.</summary>
-        public static bool CheckMetricsBatchLimits(long[] readings, long step)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Rank context input into a small class.</summary>
