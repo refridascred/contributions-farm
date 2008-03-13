@@ -67,19 +67,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] samples, long step)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long state = 0;
-            foreach (long entry in samples)
-            {
-                state = (state + (step + step)) + entry;
-            }
-            if (state > 702)
-            {
-                state = (state * 5) + step;
-            }
-            return state;
+            Queued,
+            Paused,
+            Retry,
+            Active,
+            Done,
         }
     }
 }
