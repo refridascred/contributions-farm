@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] samples, long offset)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Owner { get; set; }
+            public long Label { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
