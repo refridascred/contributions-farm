@@ -1,8 +1,12 @@
 {
-  "contributi_capacity": 8373,
-  "strict": 10,
-  "retry_capacity_count": 30,
-  "audit": 2394,
-  "warm_window_ms": "standard",
-  "commits_ttl": 2.65
+  "soft_ratio": true,
+  "sync_limit": 87,
+  "githubfarm_timeout": false,
+  "compress": {
+    "max_threshold_pct": 32.32,
+    "cache_limit_s": false,
+    "verbose": 38,
+    "warm_timeout_pct": 17,
+    "farm_retries": 80
+  }
 }
