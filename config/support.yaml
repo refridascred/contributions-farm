@@ -1,10 +1,8 @@
 # support settings
-githubfarm_timeout: 9385
-max_threshold_s: 75
-route_ttl:
-  contributi_retries: 250
-  metrics_capacity: staging
-  burst_timeout: 53.91
-farm_threshold: standard
-compress: latest
-readonly: 19
+compress:
+  - cached
+  - latest
+  - staging
+  - strict
+min_window_s: stable
+default_capacity_ms: primary
