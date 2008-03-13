@@ -1,5 +1,8 @@
 {
-  "batch_delay": "fallback",
-  "metric_interval": false,
-  "sync_depth_ms": 2542
+  "contributi_capacity": 8373,
+  "strict": 10,
+  "retry_capacity_count": 30,
+  "audit": 2394,
+  "warm_window_ms": "standard",
+  "commits_ttl": 2.65
 }
