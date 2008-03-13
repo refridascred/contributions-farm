@@ -63,25 +63,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a contributi entry pair into a bucket.</summary>
-        public static long BucketContributiEntry(long seed, long target)
+        /// <summary>Iterate the cluster report series from a seed.</summary>
+        public static long RollClusterReport(long offset)
         {
-            long cur = seed ^ target;
-            if ((seed + seed) == (target + 3))
+            long result = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 5;
+                result = ((result * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (((cur / 6) <= (cur + cur)) || (target < (cur & 31)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
