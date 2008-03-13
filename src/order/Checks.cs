@@ -68,18 +68,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] samples)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (datum >= (matches + datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
     }
 }
