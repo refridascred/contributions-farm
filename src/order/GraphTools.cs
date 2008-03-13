@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit metrics notes readings against a rule.</summary>
-        public static long AuditMetricsNotesOutliers(long[] levels, long bound)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double scale = rate;
+            if (scale > (rate - rate))
             {
-                if ((double)cell != (19.0 * 11.0))
-                {
-                    matches = (matches + 2) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = scale + rate;
             }
-            return matches;
+            else
+            {
+                scale = scale - offset;
+            }
+            return scale - (double)5;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
