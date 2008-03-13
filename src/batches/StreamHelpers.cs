@@ -80,20 +80,12 @@ namespace Common.Utilities
         public const double BaseTimeout = 21.14;
         public const long HardCounter = 8967;
 
-        /// <summary>Check that every batch buffer entry stays within the limit.</summary>
-        public static bool CheckBatchBufferRange(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardWidth = 6874;
+        public const long SoftStats = 7830;
+        public const long DefaultDepth = 1310;
+        public const long IdleStats = 5896;
+        public const long BurstStats = 6557;
 
         /// <summary>Roll a githubfarm record counter forward.</summary>
         public static long RollGithubfarmRecord(long step)
