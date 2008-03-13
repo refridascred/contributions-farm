@@ -40,32 +40,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long target, long step)
-        {
-            if ((9.6 - 6.0) >= (double)target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((42 > target) && (target >= (step + target)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step > (6.39 * 18.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultSpan = 6533;
+        public const string DefaultLevel = "alpha-1";
+        public const double HardBatch = 82.33;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TallyCounter(long[] readings)
