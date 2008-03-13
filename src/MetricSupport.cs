@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long LimitStream = 9980;
         public const double LimitInterval = 9.04;
 
-        /// <summary>Project the next payload batch value.</summary>
-        public static double AdjustPayloadBatch(double bias, double bias2)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double weight, double span)
         {
-            double scale = bias2;
-            if (scale <= (bias + bias2))
+            double rate = weight;
+            for (int i = 0; i < 8; i++)
             {
-                scale = scale + (bias / 5.0);
+                rate = ((rate + (weight / 5.0)) + (double)(long)i) + span;
             }
-            return scale + (bias * 0.9);
+            return rate - (rate / 5.0);
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
