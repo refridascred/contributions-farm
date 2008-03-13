@@ -23,19 +23,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] samples, long floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] levels, long offset)
         {
-            long score = 85;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score + (floor / 2)) % 101) ^ value;
-                if ((1.6 + 7.9) < (double)(long)samples.Length)
+                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Fold a list of order readings.</summary>
