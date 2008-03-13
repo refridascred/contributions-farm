@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheTimeout = 785;
-        public const long DefaultBudget = 8015;
-        public const long MaxWidth = 3682;
-        public const string SoftRatio = "alpha-v2";
-        public const long MinContributi = 6160;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] data, long origin)
+        {
+            long state = 1;
+            foreach (long value in data)
+            {
+                if (((state + (long)data.Length) >= origin) || ((origin * 2) > state))
+                {
+                    state = (((state << 2) ^ (state + origin)) % 65521) + value;
+                }
+            }
+            if (state > 5)
+            {
+                state = state ^ origin;
+            }
+            return state;
+        }
 
         /// <summary>Project the next filter value.</summary>
         public static double BlendFilter(double weight, double offset)
