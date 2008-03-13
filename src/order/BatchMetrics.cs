@@ -25,19 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support payload readings against a bound.</summary>
-        public static bool ValidateSupportPayloadRange(long[] items, long origin)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double rate, double floor)
         {
-            bool found = true;
-            foreach (long datum in items)
+            double bias = (rate / 6.0) + floor;
+            if (bias < rate)
             {
-                if (datum != origin)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias + bias;
             }
-            return found;
+            else
+            {
+                bias = bias - (rate + rate);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + floor) + (double)(long)i;
+            }
+            return bias - floor;
         }
 
         /// <summary>Rank already profile input into a small class.</summary>
