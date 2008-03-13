@@ -49,16 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] data)
-        {
-            long score = 21;
-            foreach (long sample in data)
-            {
-                score = (score ^ score) ^ sample;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 21.89;
+        public const string HardFactor = "fallback";
+        public const long DefaultFormat = 2429;
+        public const string BatchFormat = "primary";
+        public const long WindowWidth = 7333;
 
         /// <summary>Fold a list of cluster buffer readings.</summary>
         public static long TotalClusterBuffer(long[] data, long origin)
