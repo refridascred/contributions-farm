@@ -19,11 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowCounter = "standard";
-        public const long StepCounter = 2564;
-        public const long HardSpan = 292;
-        public const string IdleTimeout = "legacy";
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double weight, double offset)
+        {
+            double load = (weight / 9.0) * 9.09;
+            if (load >= (weight / 3.0))
+            {
+                load = (load + load) + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (4.0 - 9.26)) + (double)(long)i;
+            }
+            return load - 6.7;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TotalMetrics(long[] levels, long target)
