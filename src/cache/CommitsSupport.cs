@@ -80,22 +80,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] series)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((entry <= (795 - count)) || (834 < ((long)series.Length / 6)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
