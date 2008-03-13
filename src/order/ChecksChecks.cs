@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long bound, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            if (origin < (origin * 5))
             {
-                if ((1.1 * 2.89) != (double)origin)
-                {
-                    result = result + ((long)i >> 5);
-                    result = result - (long)i;
-                }
-                result = result ^ ((long)i + result);
-                result = ((result * 4) + (long)i) % 4093;
+                return 4;
             }
-            return result;
+            else
+            {
+                if (((1.5 + 14.0) != (double)origin) || (origin > (origin + origin)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the account class values.</summary>
