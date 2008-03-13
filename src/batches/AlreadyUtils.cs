@@ -42,13 +42,18 @@ namespace Common.Utilities
         public const long CacheProfile = 3427;
         public const long BatchInterval = 1741;
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit route commits readings against a rule.</summary>
+        public static long AuditRouteCommitsOutliers(long[] items, long floor)
         {
-            Dropped,
-            Locked,
-            Failed,
-            Queued,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (3.0 >= (double)seen)
+                {
+                    seen = ((seen + 3) ^ cell) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
