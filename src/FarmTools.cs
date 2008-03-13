@@ -25,38 +25,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long target, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] series)
         {
-            if (!((0 ^ target) != (target / 9)))
+            long hits = 0;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)target < (19.0 * 3.61)) || ((3.2 - 4.0) < (double)bound))
+                if ((hits + 15) >= (253 / 6))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target & 31) <= (bound ^ 499))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound ^ 23) != (bound / 6))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 1) - datum;
                 }
             }
+            return hits;
         }
     }
 }
