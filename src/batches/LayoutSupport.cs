@@ -63,9 +63,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 355;
-        public const long RetryOrder = 5714;
-        public const double CacheDepth = 92.71;
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
