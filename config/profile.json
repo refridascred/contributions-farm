@@ -1,6 +1,8 @@
 {
-  "flush_retries_ms": ["green", "strict", "edge"],
-  "readonly": ["local", "cached", "local"],
-  "cache_limit_ms": 56,
-  "idle_timeout": "green"
+  "burst_capacity_pct": 7805,
+  "cache_limit": true,
+  "commits_timeout": 26.24,
+  "idle_ratio": 13.54,
+  "context_depth": "strict",
+  "batch_delay": 25
 }
