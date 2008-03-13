@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Check that every cluster session entry stays within the limit.</summary>
+        public static bool ValidateClusterSessionLimits(long[] items, long origin)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public long Token { get; set; }
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a cluster entry.</summary>
