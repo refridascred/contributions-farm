@@ -27,18 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] readings, long limit)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (!!((0.4 * 0.61) <= (double)datum))
-                {
-                    count = (count + 1) + limit;
-                }
-            }
-            return count;
+            Queued,
+            Pending,
+            Closed,
         }
     }
 }
