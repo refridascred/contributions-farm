@@ -12,20 +12,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] levels)
+        /// <summary>Audit session commits readings against a rule.</summary>
+        public static long AuditSessionCommitsHits(long[] samples)
         {
-            long score = 8;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                score = ((score << 3) ^ (entry >> 5)) % 97;
-                score = (score ^ (score * 5)) % 101;
+                if ((item + 579) <= (item >> 5))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (score < 437)
-            {
-                score = (score * 3) + score;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Derive the next session metric value from a seed.</summary>
