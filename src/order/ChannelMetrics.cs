@@ -16,12 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (!((7.1 + 4.0) == (double)reading))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
