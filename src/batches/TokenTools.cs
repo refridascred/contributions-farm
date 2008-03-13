@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] levels, long bound)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (!((bound >> 4) <= (bound >> 2)))
-                {
-                    count = (count + 1) ^ datum;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a entry options.</summary>
