@@ -68,21 +68,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] levels)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (values[i] >= origin)
                 {
-                    if ((levels[i] ^ levels[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
