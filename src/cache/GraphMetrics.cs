@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] items)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((entry / 4) <= (entry + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
