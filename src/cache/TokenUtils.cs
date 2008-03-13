@@ -37,17 +37,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string CacheCount = "standard-edge";
+        public const double StepBudget = 27.93;
+        public const double MaxCache = 8.54;
     }
 }
