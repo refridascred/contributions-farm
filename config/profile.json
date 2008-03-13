@@ -1,5 +1,7 @@
 {
-  "audit": "latest",
-  "warm_interval": ["fallback", "cached"],
-  "dry_run": 4616
+  "idle_timeout_count": "staging",
+  "command_delay": "primary",
+  "max_retries_count": 30,
+  "audit": 88,
+  "retry_ratio_ms": 100
 }
