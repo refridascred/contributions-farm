@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry already entries that pass the check.</summary>
-        public static long MeasureEntryAlreadyMatches(long[] items, long bound)
+        /// <summary>Fold a list of payload context readings.</summary>
+        public static long TallyPayloadContext(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long total = 33;
+            foreach (long reading in levels)
             {
-                if ((160 - bound) < (tally * 5))
+                if (((reading << 3) >= (76 ^ reading)) && ((7.0 * 13.0) > (double)total))
                 {
-                    tally = (tally + 3) ^ cell;
+                    total = ((total + (total >> 4)) % 65521) + floor;
                 }
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Project the next stream editor value.</summary>
