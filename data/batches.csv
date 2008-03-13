@@ -1,7 +1,10 @@
-id,count,score,ratio
-1,602,202,575
-2,stable,74.76,81.55
-3,789,1.33,70.14
-4,85.08,663,978
-5,legacy,559,29.71
-6,stable,staging,96.11
+id,rank,region,weight,count
+1,blue,stable,primary,eu-west
+2,legacy,eu-west,41.42,blue
+3,616,180,720,3.75
+4,104,318,306,522
+5,green,green,94,fallback
+6,green,97.06,40.12,latest
+7,edge,blue,standard,558
+8,1.58,59,95.32,947
+9,latest,65.17,34.83,787
