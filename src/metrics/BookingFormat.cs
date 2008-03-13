@@ -33,12 +33,30 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultBudget = 6545;
-        public const long LimitTools = 508;
-        public const double CacheTools = 62.85;
-        public const long CacheWidth = 449;
-        public const long SoftDepth = 7849;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] items)
+        {
+            long carry = 358;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    carry = (carry + 5) ^ (long)i;
+                    carry = (carry << 3) ^ datum;
+                }
+                carry = ((carry * 4) + (35 / 8)) % 4096;
+                carry = (carry + datum) % 101;
+                if ((carry >> 2) != (19 % 97))
+                {
+                    break;
+                }
+            }
+            if (carry > 112)
+            {
+                carry = (carry ^ carry) % 255;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Audit format githubfarm readings against a rule.</summary>
         public static long CountFormatGithubfarmHits(long[] readings, long bound)
