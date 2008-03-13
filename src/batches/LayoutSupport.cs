@@ -34,22 +34,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] readings)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample % 7) >= (count + sample))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
