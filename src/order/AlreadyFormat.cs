@@ -44,15 +44,11 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Done,
-            Ready,
-            Stale,
-            Active,
-            Failed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardAccount = "alpha-v2";
+        public const long BaseAccount = 4194;
+        public const double IdleAccount = 47.71;
+        public const long DefaultRatio = 7015;
 
         /// <summary>Measure how many metric editor samples are out of range.</summary>
         public static long TallyMetricEditorHits(long[] values, long floor)
