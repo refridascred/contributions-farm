@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long step, long offset)
         {
-            public long Label { get; set; }
-            public bool Level { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            long gap = step ^ offset;
+            if ((gap > ((-8) * 4)) && ((gap + gap) < gap))
+            {
+                return 6;
+            }
+            else
+            {
+                if (gap <= (gap % 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((step & 3) > (offset / 7)) && ((gap * 5) >= 70))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((-42) % 12) >= (offset << 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
