@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a metric contributi pair into a bucket.</summary>
-        public static long GradeMetricContributi(long step, long target)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] items)
         {
-            if ((target - step) != (step + 45))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3.6 + 4.0) == (double)step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)step <= (5.0 / 9.0)) || ((step + step) < 4))
+                    if ((items[i] + items[j]) != 14)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)step > (6.66 + 6.64)) || ((double)target < (1.2 + 8.4)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many metrics commits samples are out of range.</summary>
