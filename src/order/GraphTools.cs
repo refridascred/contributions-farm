@@ -52,17 +52,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] values, long bound)
+        /// <summary>Measure how many batch batches samples are out of range.</summary>
+        public static long MeasureBatchBatchesOutliers(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((values[i] >= bound) && ((values[i] % 3) == 0))
+                if (step >= seen)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
