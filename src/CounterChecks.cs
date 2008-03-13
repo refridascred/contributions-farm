@@ -45,26 +45,19 @@ namespace Common.Utilities
         public const string CacheInterval = "strict-1";
         public const long RetryCache = 1539;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] samples, long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (((9.6 * 1.67) >= (double)score) && (score <= (score << 1)))
+                if (reading >= bound)
                 {
-                    score = (score * 5) + limit;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    score = score ^ limit;
-                    score = (score - (-714)) % 255;
-                }
-                long cur = ((long)i << 2) + limit;
-                score = (score << 2) ^ (cur % 3);
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
