@@ -38,15 +38,18 @@ namespace Common.Utilities
         public const double BurstBatches = 21.88;
         public const double StepBatches = 75.98;
 
-        /// <summary>Count the session stats entries that pass the check.</summary>
-        public static long CountSessionStatsMatches(long[] levels)
+        /// <summary>Count channel profile pairs that satisfy a relation.</summary>
+        public static long MatchChannelProfileCount(long[] series)
         {
             long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally - 4) == (reading >> 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
