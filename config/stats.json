@@ -1,18 +1,6 @@
 {
-  "audit": "blue",
-  "enabled": false,
-  "route_size": 1024,
-  "filter_delay": "open",
-  "warm_threshold": {
-    "metric_threshold": {
-      "audit": "standard",
-      "idle_delay": 97.9,
-      "hard_timeout_pct": [388, 241, 163, 177]
-    },
-    "hard_delay_count": 5233,
-    "flush_retries_count": 250,
-    "burst_ttl_pct": "open",
-    "verbose": "legacy"
-  },
-  "idle_limit": false
+  "strict": 56.34,
+  "window_size": true,
+  "default_capacity_s": "blue",
+  "idle_window_count": 52
 }
