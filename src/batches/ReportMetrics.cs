@@ -13,18 +13,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metric format readings.</summary>
-        public static long TotalMetricFormat(long[] values, long offset)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long result = 9;
-            foreach (long sample in values)
-            {
-                if ((sample + result) <= (offset + offset))
-                {
-                    result = (result + (offset & 255)) % 4096;
-                }
-            }
-            return result % 1000;
+            Done,
+            Pending,
+            Retry,
         }
 
         /// <summary>Define support limits and defaults.</summary>
