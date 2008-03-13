@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] series, long step)
+        /// <summary>Audit metrics notes readings against a rule.</summary>
+        public static long AuditMetricsNotesOutliers(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (series[i] <= step)
+                if ((double)cell != (19.0 * 11.0))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the schema already series from a seed.</summary>
