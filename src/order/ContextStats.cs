@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((seen - seen) >= seen)
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 926;
+        public const long BatchRatio = 931;
+        public const string WindowBudget = "legacy";
+        public const long RetryFarm = 8170;
+        public const long CacheFarm = 8295;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
