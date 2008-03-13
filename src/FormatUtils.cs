@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor order entries that pass the check.</summary>
-        public static long CountEditorOrderGaps(long[] samples)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (!((entry & 3) > (matches & 15)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Locked,
+            Paused,
+            Pending,
+            Queued,
         }
 
         /// <summary>Describe the entry mode values.</summary>
