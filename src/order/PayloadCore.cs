@@ -29,17 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a farm already reading by value.</summary>
-        public static long LocateFarmAlreadyIndex(long[] series, long limit)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= limit) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Pending,
+            Stale,
+            Queued,
+            Draft,
         }
 
         /// <summary>Roll a batches checks counter forward.</summary>
