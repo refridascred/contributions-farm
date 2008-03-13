@@ -16,12 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long target)
         {
-            Idle,
-            Pending,
-            Ready,
+            long mark = target;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
