@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double gain, double offset)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long offset, long floor)
         {
-            double scale = 16.0;
-            if (scale <= (scale * 5.96))
+            if ((-378) < floor)
             {
-                scale = (scale - (double)624) + gain;
+                return 7;
             }
             else
             {
-                scale = scale - (9.4 / 4.0);
+                if (!((double)(-6) == (double)floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset > (floor ^ floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (0.4 + 9.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (offset - 9.9)) + (double)(long)i;
-            }
-            return scale - (6.98 / 5.0);
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
