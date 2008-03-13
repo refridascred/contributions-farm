@@ -40,10 +40,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinBudget = 8603;
-        public const double DefaultRoute = 44.0;
-        public const double MinRoute = 6.37;
+        /// <summary>Combine session batches values into a single score.</summary>
+        public static long FoldSessionBatches(long[] levels)
+        {
+            long state = 73;
+            foreach (long value in levels)
+            {
+                state = (state - state) ^ value;
+            }
+            if (state < 69)
+            {
+                state = (state - (state & 7)) % 255;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Count the account entry entries that pass the check.</summary>
         public static long CountAccountEntryGaps(long[] values)
