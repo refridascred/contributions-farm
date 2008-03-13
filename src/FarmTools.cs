@@ -28,18 +28,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the window editor entries that pass the check.</summary>
-        public static long CountWindowEditorOutliers(long[] samples)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)755 <= (double)count)
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
