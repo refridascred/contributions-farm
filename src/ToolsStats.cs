@@ -12,12 +12,10 @@ namespace Common.Utilities
             return (drift - (offset / 9.0)) + weight;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 9477;
+        public const long RetryToken = 8648;
+        public const long DefaultFactor = 9807;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryBuffer = 6646;
