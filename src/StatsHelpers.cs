@@ -58,21 +58,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count notes cluster pairs that satisfy a relation.</summary>
-        public static long OverlapNotesClusterCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 6340;
+        public const string CacheChannel = "latest-edge";
+        public const long StepRatio = 2173;
+        public const string BaseSize = "legacy";
     }
 }
