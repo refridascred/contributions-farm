@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Compare every pair of batch context readings.</summary>
+        public static long PairBatchContextCount(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a cluster stats.</summary>
