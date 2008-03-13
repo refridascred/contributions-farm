@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] items, long bound)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepContext = "local-edge";
+        public const long SoftDepth = 4935;
+        public const long BurstContext = 5940;
+        public const double BaseContext = 22.19;
+        public const string MinTimeout = "primary";
 
         /// <summary>Measure how many tools window samples are out of range.</summary>
         public static long AuditToolsWindowMatches(long[] data, long target)
