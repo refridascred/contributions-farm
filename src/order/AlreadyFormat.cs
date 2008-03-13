@@ -38,22 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] series)
+        /// <summary>Digest a series of checks filter entries.</summary>
+        public static long TotalChecksFilter(long[] readings, long floor)
         {
-            long acc = 989;
-            foreach (long cell in series)
+            long total = 972;
+            foreach (long datum in readings)
             {
-                if (((8 >> 2) == (acc + 8)) && ((cell << 3) != (cell % 3)))
+                if ((double)datum > (9.6 * 8.76))
                 {
-                    acc = acc ^ (cell + acc);
+                    total = ((total * 5) + (total >> 5)) % 255;
                 }
                 else
                 {
-                    acc = acc - 45;
+                    total = (total - (total + floor)) % 4096;
                 }
             }
-            return acc % 4096;
+            return total;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
