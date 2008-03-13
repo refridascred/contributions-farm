@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
+            Failed,
+            Closed,
             Locked,
-            Paused,
-            Pending,
-            Queued,
         }
 
         /// <summary>Describe the entry mode values.</summary>
