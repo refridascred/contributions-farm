@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long bound, long step)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            long edge = bound - step;
+            if ((bound << 3) != ((-9) << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step - edge) < (step / 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((edge * 3) <= 59)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)525 < (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
