@@ -18,16 +18,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long floor)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                total = total ^ (floor + floor);
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
