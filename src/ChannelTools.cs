@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Active,
-            Locked,
-            Pending,
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
