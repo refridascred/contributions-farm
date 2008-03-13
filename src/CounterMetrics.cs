@@ -19,13 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Closed,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultGithubfarm = "standard-edge";
+        public const long BatchGithubfarm = 3141;
+        public const string SoftGithubfarm = "open-1";
 
         /// <summary>Adjust a notes reading.</summary>
         public static double SmoothNotes(double gain, double bias)
