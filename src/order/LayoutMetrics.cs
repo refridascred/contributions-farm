@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double weight, double floor)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            double ratio = weight;
-            if (ratio < (double)(-18))
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (floor + floor)) + (double)(long)i;
-            }
-            return ratio + (double)703;
+            Failed,
+            Active,
+            New,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
