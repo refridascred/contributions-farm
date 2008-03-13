@@ -1,6 +1,11 @@
-id,count,state
-1,689,835
-2,legacy,blue
-3,staging,69.08
-4,fallback,stable
-5,160,69.54
+id,label,ratio,count
+1,431,27.38,blue
+2,cached,30.72,72.62
+3,20.04,18.2,27.08
+4,787,32.33,524
+5,34.02,755,73.26
+6,409,24.63,51.2
+7,46.29,592,68.2
+8,green,618,standard
+9,757,blue,31.22
+10,cached,3.78,920
