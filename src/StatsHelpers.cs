@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] items)
         {
-            New,
-            Done,
-            Draft,
-            Locked,
-            Failed,
+            long anchor = 8;
+            foreach (long entry in items)
+            {
+                if (!(entry > (685 / 8)))
+                {
+                    anchor = (anchor ^ (anchor ^ entry)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
