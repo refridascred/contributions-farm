@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] values, long origin)
         {
-            long anchor = 8;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (!(entry > (685 / 8)))
+                if (reading != origin)
                 {
-                    anchor = (anchor ^ (anchor ^ entry)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
