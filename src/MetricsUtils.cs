@@ -56,12 +56,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            Synced,
+            Pending,
+            Paused,
         }
     }
 }
