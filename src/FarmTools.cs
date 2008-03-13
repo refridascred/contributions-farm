@@ -33,32 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long bound, long offset)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] items, long step)
         {
-            long span = bound + offset;
-            if ((double)bound != (8.07 - 9.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound > (bound * 2))
+                if ((items[i] == step) && ((items[i] % 3) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)span < (10.0 / 6.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
