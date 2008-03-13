@@ -100,18 +100,21 @@ namespace Common.Utilities
         public const long LimitLevel = 1767;
         public const long MaxRatio = 4824;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] readings, long limit)
+        /// <summary>Compare every pair of entry metric readings.</summary>
+        public static long CompareEntryMetricCount(long[] data)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((limit << 1) < reading)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] - data[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
