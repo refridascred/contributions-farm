@@ -48,19 +48,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] samples, long step)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)count <= (3.8 / 4.0))
-                {
-                    count = ((count + 2) - entry) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchInterval = 8729;
+        public const double SoftAlready = 81.92;
+        public const long WindowWidth = 6509;
+        public const string DefaultAlready = "latest";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long IdleGraph = 1477;
