@@ -40,18 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] data)
+        /// <summary>Audit batch order readings against a rule.</summary>
+        public static long TallyBatchOrderGaps(long[] readings, long origin)
         {
-            long sum = -87;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((sum - sum) >= (sum % 60))
+                if (((39 + 556) <= ((long)readings.Length * 4)) && ((sample + seen) <= origin))
                 {
-                    sum = ((sum << 2) ^ (801 - sum)) - cell;
+                    seen = seen + 1;
                 }
             }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
