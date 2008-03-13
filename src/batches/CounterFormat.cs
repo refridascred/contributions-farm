@@ -40,13 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long step)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
+            long sum = step;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum ^ (sum / 8)) % 101;
+                if ((step / 2) < step)
+                {
+                    sum = (sum * 3) + (sum / 3);
+                    sum = sum ^ (sum + sum);
+                    continue;
+                }
+                sum = sum + (sum + (long)i);
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
