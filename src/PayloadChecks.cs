@@ -21,12 +21,38 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long limit, long floor)
         {
-            New,
-            Dropped,
-            Closed,
+            if (floor < (floor >> 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((866 - limit) >= (limit << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor < (floor >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor >= (645 * 2)) || ((floor + floor) <= limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools class values.</summary>
