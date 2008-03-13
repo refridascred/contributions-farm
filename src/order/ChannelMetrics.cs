@@ -16,16 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long floor)
+        /// <summary>Derive the next report metrics value from a seed.</summary>
+        public static long DeriveReportMetrics(long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                mark = mark + (mark + floor);
-                mark = ((mark * 4) + (long)i) % 97;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Combine channel queue values into a single score.</summary>
