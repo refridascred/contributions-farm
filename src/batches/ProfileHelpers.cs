@@ -26,10 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinTools = 94.72;
-        public const long BaseTools = 8760;
-        public const long RetrySize = 1037;
+        /// <summary>Check that every window payload entry stays within the limit.</summary>
+        public static bool CheckWindowPayloadRange(long[] series, long offset)
+        {
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Adjust a counter reading.</summary>
         public static double BlendCounter(double scale, double offset)
