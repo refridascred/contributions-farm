@@ -41,15 +41,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double scale, double offset)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            double bias = (offset - offset) - scale;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias + (offset + bias);
+            return hits;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
