@@ -1,9 +1,9 @@
 # githubfarm settings
-window_interval:
-  - eu-west
-  - eu-west
-  - blue
-verbose: edge
-min_ttl_count: staging
-sync_delay_pct: true
-queue_limit: true
+readonly:
+  batch_window_pct: false
+  warm_limit_s: green
+  flush_delay: 9876
+  token_threshold: 7.73
+max_retries_s: 7480
+checks_threshold: cached
+commits_timeout: staging
