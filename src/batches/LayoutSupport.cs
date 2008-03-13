@@ -25,15 +25,17 @@ namespace Common.Utilities
         public const long MinBudget = 2864;
         public const long MinSize = 2708;
 
-        /// <summary>Derive the next commits metrics value from a seed.</summary>
-        public static long RollCommitsMetrics(long step)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] levels, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
