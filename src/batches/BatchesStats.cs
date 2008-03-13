@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up metrics checks samples.</summary>
-        public static long MatchMetricsChecksCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseInterval = "primary-edge";
+        public const long BatchScore = 564;
+        public const double IdleTimeout = 88.12;
+        public const long BatchBatches = 6373;
+        public const double SoftBatches = 45.41;
 
         /// <summary>Count the format already entries that pass the check.</summary>
         public static long MeasureFormatAlreadyGaps(long[] values, long target)
