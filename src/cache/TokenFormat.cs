@@ -39,17 +39,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] levels, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 0;
+            foreach (long entry in values)
             {
-                if ((levels[i] > target) && ((levels[i] % 3) == 0))
+                if ((entry > (state % 16)) || ((entry + entry) <= state))
                 {
-                    return (long)i;
+                    state = (state * 4) + (entry / 5);
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
