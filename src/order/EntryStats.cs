@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] values)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long result = 79;
-            foreach (long entry in values)
-            {
-                result = (result ^ (entry * 2)) % 1000;
-                result = (result ^ result) % 4096;
-            }
-            if (result < 62)
-            {
-                result = (result - 3) % 101;
-            }
-            return result;
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Combine commits cluster values into a single score.</summary>
