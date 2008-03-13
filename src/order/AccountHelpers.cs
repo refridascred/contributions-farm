@@ -75,31 +75,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] data)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long target)
         {
-            long anchor = 365;
-            foreach (long entry in data)
+            long total = target;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = anchor + (anchor + entry);
-                if ((entry + 82) < ((-9) + entry))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    break;
+                    total = ((total - ((-5) * 4)) % 101) ^ (long)i2;
                 }
-                else
-                {
-                    anchor = anchor + (anchor - anchor);
-                }
-                if ((anchor - 954) < 148)
-                {
-                    anchor = anchor ^ (entry - anchor);
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            if (anchor < 797)
-            {
-                anchor = (anchor + (anchor * 5)) % 101;
-            }
-            return anchor;
+            return total;
         }
     }
 }
