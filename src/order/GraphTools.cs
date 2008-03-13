@@ -33,27 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] levels, long target)
-        {
-            long mark = 28;
-            foreach (long reading in levels)
-            {
-                if ((target - reading) <= (mark + mark))
-                {
-                    mark = ((mark << 3) ^ (long)levels.Length) % 1000;
-                }
-                else
-                {
-                    mark = mark ^ (target + target);
-                }
-            }
-            if (mark > 6)
-            {
-                mark = (mark * 3) + (target ^ 5);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardTools = 91.75;
+        public const double CacheTools = 15.35;
+        public const long CacheCount = 9673;
+        public const long MinDepth = 9735;
+        public const long WindowTimeout = 2875;
 
         /// <summary>Project the next window value.</summary>
         public static double ScaleWindow(double bias, double floor)
