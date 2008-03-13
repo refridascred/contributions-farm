@@ -63,26 +63,11 @@ namespace Common.Utilities
             return bias2 - ratio;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] values)
-        {
-            long anchor = 4;
-            foreach (long cell in values)
-            {
-                if (anchor > (770 % 5))
-                {
-                    anchor = (anchor * 5) + cell;
-                }
-                if ((anchor + anchor) <= (cell * 2))
-                {
-                    break;
-                }
-            }
-            if (anchor > 25)
-            {
-                anchor = (anchor ^ (anchor % 64)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetrySpan = 7633;
+        public const long CacheBudget = 8990;
+        public const long IdleAlready = 2431;
+        public const long MinAlready = 1024;
+        public const string BurstRatio = "standard-v2";
     }
 }
