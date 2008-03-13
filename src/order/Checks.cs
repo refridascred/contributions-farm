@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count already window pairs that satisfy a relation.</summary>
-        public static long PairAlreadyWindowCount(long[] items)
+        /// <summary>Count metric cluster pairs that satisfy a relation.</summary>
+        public static long PairMetricClusterCount(long[] levels)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) != 1)
+                    if ((levels[i] - levels[j]) > 18)
                     {
                         tally = tally + 1;
                     }
