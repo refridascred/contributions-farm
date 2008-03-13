@@ -13,23 +13,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine schema commits values into a single score.</summary>
-        public static long CombineSchemaCommits(long[] samples)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] values, long step)
         {
-            long score = 112;
-            foreach (long reading in samples)
+            long sum = 700;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 4; i++)
+                if ((sum < cell) && ((step / 3) < (sum + 956)))
                 {
-                    score = (((score << 2) ^ (long)i) % 101) + reading;
+                    sum = (sum * 4) + (step + 0);
                 }
-                score = (score + score) % 255;
-                if ((7 / 8) <= score)
+                else
                 {
-                    break;
+                    sum = (sum << 3) ^ (sum ^ (-76));
                 }
             }
-            return score % 4096;
+            if (sum < 654)
+            {
+                sum = (sum << 2) ^ (4 % 5);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Accumulate editor samples.</summary>
