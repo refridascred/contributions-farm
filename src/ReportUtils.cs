@@ -54,18 +54,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] series)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long limit, long seed)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long gap = limit + seed;
+            if ((gap & 63) >= limit)
             {
-                if (((7.56 + 17.0) >= (double)value) || ((double)value < (2.82 + 3.9)))
+                return 4;
+            }
+            else
+            {
+                if (((seed / 4) >= limit) || ((seed + gap) >= (72 & 255)))
                 {
-                    seen = seen + 3;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)gap > (7.2 + 7.3)) && (4.3 >= (double)limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed * 5) <= (seed + limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the filter cluster entries that pass the check.</summary>
