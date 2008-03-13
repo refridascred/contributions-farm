@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] values, long limit)
+        /// <summary>Locate a channel record reading by value.</summary>
+        public static long SeekChannelRecordIndex(long[] items, long floor)
         {
-            long carry = -61;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((658 << 2) == (cell >> 2)))
+                if (items[i] <= floor)
                 {
-                    carry = carry ^ cell;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (limit / 5)) % 101;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
