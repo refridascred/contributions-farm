@@ -65,13 +65,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] readings, long offset)
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public bool Total { get; set; }
-            public double Rank { get; set; }
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
