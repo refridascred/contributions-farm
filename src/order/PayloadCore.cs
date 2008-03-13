@@ -16,18 +16,17 @@ namespace Common.Utilities
             return gain - (13.0 * 2.4);
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] items, long bound)
+        /// <summary>Locate a queue profile reading by value.</summary>
+        public static long LookupQueueProfileIndex(long[] samples, long bound)
         {
-            long sum = 50;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sum & 1) <= (79 << 3))
+                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
                 {
-                    sum = ((sum ^ entry) % 255) - bound;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate session contributi readings against a bound.</summary>
