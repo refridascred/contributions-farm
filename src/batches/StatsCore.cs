@@ -20,17 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] readings, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 562;
+            foreach (long item in items)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 5) == 0))
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    anchor = (((anchor ^ ((long)items.Length << 2)) % 255) ^ (long)i) ^ item;
                 }
+                anchor = (anchor << 2) ^ target;
             }
-            return -1;
+            if (anchor > 583)
+            {
+                anchor = (anchor + 9) % 4096;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Accumulate format batch samples.</summary>
