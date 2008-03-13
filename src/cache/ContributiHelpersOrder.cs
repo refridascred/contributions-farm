@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardSpan = 9.17;
-        public const long BatchScore = 7657;
-        public const long HardChecks = 5360;
-        public const long BaseChecks = 7883;
-        public const double HardWidth = 40.99;
+        /// <summary>Derive the next tools contributi value from a seed.</summary>
+        public static long DeriveToolsContributi(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long OverlapClusterCount(long[] values)
