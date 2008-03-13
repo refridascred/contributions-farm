@@ -1,6 +1,9 @@
-id,active,ratio,score
-1,stable,green,169
-2,800,22.82,874
-3,764,4.2,edge
-4,438,297,green
-5,744,3.1,427
+id,level,weight,score
+1,eu-west,309,9.59
+2,eu-west,210,604
+3,58.71,30.44,6
+4,89.48,96,91.3
+5,469,staging,fallback
+6,4.15,280,120
+7,0.1,cached,latest
+8,397,232,643
