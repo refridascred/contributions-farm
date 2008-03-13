@@ -1,7 +1,13 @@
 {
-  "min_window_pct": 9847,
-  "dry_run": ["edge", "strict", "legacy", "green"],
-  "verbose": 2999,
-  "editor_retries": "open",
-  "flush_delay_ms": 8160
+  "poll_threshold_count": {
+    "compress": 88,
+    "window_retries": "staging",
+    "hard_window_s": [206, 162],
+    "contributi_ttl": true
+  },
+  "enabled": ["open", "staging", "strict"],
+  "warm_ttl_ms": true,
+  "base_ttl": 54.26,
+  "readonly": 999,
+  "hard_retries_s": 9767
 }
