@@ -1,4 +1,8 @@
 # githubfarm settings
-entry_interval: primary
-cache_retries_pct: false
-enabled: 68
+idle_capacity_pct:
+  - staging
+  - standard
+min_limit: staging
+hard_retries_ms: 1073
+batches_delay: true
+min_ttl_s: 250
