@@ -13,19 +13,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double rate, double offset)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double scale = offset + rate;
-            if (scale < rate)
-            {
-                scale = scale - scale;
-            }
-            else
-            {
-                scale = scale - offset;
-            }
-            return scale - offset;
+            public double Region { get; set; }
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
