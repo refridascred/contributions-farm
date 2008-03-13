@@ -22,11 +22,12 @@ namespace Common.Utilities
         public const long StepCount = 3392;
         public const string MinGraph = "fallback-1";
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
