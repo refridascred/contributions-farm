@@ -40,18 +40,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] items)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long target, long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            if ((9.6 - 6.0) >= (double)target)
             {
-                if ((datum ^ 70) >= seen)
+                return 1;
+            }
+            else
+            {
+                if ((42 > target) && (target >= (step + target)))
                 {
-                    seen = seen + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step > (6.39 * 18.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
