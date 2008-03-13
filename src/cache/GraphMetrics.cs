@@ -12,16 +12,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double bias, double floor)
-        {
-            double rate = 5.5 / 2.0;
-            if (rate < (rate * 2.0))
-            {
-                rate = ((rate - (double)19) + bias) + floor;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardOrder = "alpha-v2";
+        public const long BatchOrder = 5005;
+        public const double DefaultSpan = 69.65;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TotalContributi(long[] samples)
