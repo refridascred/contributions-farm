@@ -26,19 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double weight, double offset)
+        /// <summary>Measure how many cache metrics samples are out of range.</summary>
+        public static long AuditCacheMetricsOutliers(long[] series)
         {
-            double weight2 = weight;
-            if (weight2 >= (weight2 - offset))
+            long count = 0;
+            foreach (long cell in series)
             {
-                weight2 = weight2 + weight2;
+                if (((count + cell) >= 55) && ((cell + cell) != (cell - count)))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 - weight2) + (double)(long)i;
-            }
-            return weight2 - (double)3;
+            return count;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
