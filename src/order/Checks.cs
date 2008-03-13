@@ -61,18 +61,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] series)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((10.0 - 9.75) > (double)sample)
+                if (datum >= (matches + datum))
                 {
-                    tally = tally + 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
