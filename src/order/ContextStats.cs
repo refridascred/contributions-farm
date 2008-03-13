@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftBudget = 15.82;
-        public const long StepCount = 587;
-        public const long IdleCommits = 1833;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
