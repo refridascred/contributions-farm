@@ -17,13 +17,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double gain, double floor)
         {
-            New,
-            Done,
-            Synced,
-            Locked,
+            double weight = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (floor + weight)) + (double)(long)i;
+            }
+            return weight - gain;
         }
 
         /// <summary>Digest a series of record format entries.</summary>
