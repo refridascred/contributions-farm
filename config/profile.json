@@ -1,7 +1,10 @@
 {
-  "base_limit": "blue",
-  "soft_limit": 19,
-  "enabled": 100,
-  "batch_limit": [157, 91, 270],
-  "flush_depth_s": 90
+  "retry_threshold_ms": 40.27,
+  "warm_capacity": 11,
+  "compress": {
+    "editor_limit": 23.45,
+    "route_interval": "edge",
+    "readonly": "standard"
+  },
+  "max_retries_pct": "local"
 }
