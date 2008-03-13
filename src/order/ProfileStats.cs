@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] levels, long limit)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long seed, long limit)
         {
-            long result = 449;
-            foreach (long reading in levels)
+            if ((seed - 8) <= (9 + seed))
             {
-                result = ((result * 2) + (result ^ reading)) + limit;
-                result = ((result << 2) ^ (8 + 97)) % 65521;
-                if ((double)result < (7.11 - 1.5))
+                return 5;
+            }
+            else
+            {
+                if ((seed ^ seed) >= (491 - 8))
                 {
-                    result = (result ^ result) % 1000;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (result < 593)
-            {
-                result = ((result * 2) + result) % 4096;
-            }
-            return result;
         }
 
         /// <summary>Derive the next metric window value from a seed.</summary>
