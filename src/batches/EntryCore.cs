@@ -30,16 +30,17 @@ namespace Common.Utilities
         public const string IdleAlready = "latest-v2";
         public const long HardAlready = 1381;
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long target)
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
+            long state = target;
+            for (int i = 0; i < 17; i++)
             {
-                total = (total ^ total) % 4096;
-                total = ((total * 5) + (long)i) % 65521;
+                state = state ^ (state >> 1);
+                state = (state ^ (state + state)) % 65521;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
