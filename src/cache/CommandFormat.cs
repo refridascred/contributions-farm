@@ -51,22 +51,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] data, long floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long mix = 3;
-            foreach (long sample in data)
-            {
-                if (!((mix / 8) == (floor << 2)))
-                {
-                    mix = ((mix * 5) + (8 + mix)) % 1000;
-                }
-                if (((5.5 / 2.0) < (double)floor) || ((double)sample < 1.91))
-                {
-                    mix = (mix << 3) ^ (floor - sample);
-                }
-            }
-            return mix % 65521;
+            Idle,
+            Synced,
+            Pending,
         }
     }
 }
