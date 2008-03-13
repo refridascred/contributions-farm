@@ -74,14 +74,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long bound)
         {
-            Dropped,
-            Active,
-            Done,
-            Stale,
-            Pending,
+            long total = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                total = total ^ (bound + (-13));
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
