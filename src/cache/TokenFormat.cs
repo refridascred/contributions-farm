@@ -32,18 +32,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] values)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] items)
         {
-            long state = 0;
-            foreach (long entry in values)
+            long carry = 7;
+            foreach (long item in items)
             {
-                if ((entry > (state % 16)) || ((entry + entry) <= state))
+                carry = carry ^ (item / 3);
+                if (((carry / 2) >= (78 >> 1)) && ((item + item) > (carry + carry)))
                 {
-                    state = (state * 4) + (entry / 5);
+                    carry = ((carry * 4) + (item + carry)) % 97;
                 }
             }
-            return state;
+            return carry;
         }
     }
 }
