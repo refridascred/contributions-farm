@@ -52,22 +52,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch batches samples are out of range.</summary>
-        public static long MeasureBatchBatchesOutliers(long[] series, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long sum = 449;
+            foreach (long value in series)
             {
-                if (step >= seen)
+                if (!((sum >> 2) > sum))
                 {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    sum = (sum + (sum + value)) % 65521;
                 }
             }
-            return seen;
+            if (sum > 9)
+            {
+                sum = (sum + (sum & 31)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
