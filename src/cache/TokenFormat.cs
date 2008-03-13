@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] data, long bound)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double weight = (double)321 - rate;
+            if (weight <= (double)81)
             {
-                if (((bound + sample) != ((-55) + sample)) && !((sample & 3) <= (hits & 3)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = weight + (weight - offset);
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - 5.1) + (double)(long)i;
+            }
+            return weight + 5.0;
         }
 
         /// <summary>Hold a account record.</summary>
