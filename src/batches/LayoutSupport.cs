@@ -26,10 +26,14 @@ namespace Common.Utilities
         public const string BaseInterval = "standard";
         public const long MaxMetric = 5862;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinFactor = 2580;
-        public const long LimitAlready = 2896;
-        public const long HardAlready = 9082;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long ScoreAlready(long[] levels, long floor)
