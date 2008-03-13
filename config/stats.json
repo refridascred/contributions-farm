@@ -1,25 +1,6 @@
 {
-  "route_timeout": {
-    "retry_ttl": true,
-    "poll_retries": false,
-    "audit": {
-      "graph_threshold": "green",
-      "verbose": "latest",
-      "batch_threshold": true,
-      "strict": true,
-      "dry_run": 70
-    },
-    "min_limit_count": "green",
-    "cache_interval_count": {
-      "cache_ttl_s": 100,
-      "strict": "legacy",
-      "poll_interval": "open",
-      "cluster_delay": 6,
-      "contributi_timeout": 60
-    }
-  },
-  "cache_timeout_count": 61.87,
-  "base_delay_ms": false,
-  "channel_capacity": "staging",
-  "enabled": "primary"
+  "enabled": 25.62,
+  "compress": "standard",
+  "idle_timeout_pct": 25.23,
+  "checks_limit": "staging"
 }
