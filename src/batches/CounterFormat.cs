@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] values, long seed)
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the queue level values.</summary>
