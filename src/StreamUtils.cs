@@ -47,13 +47,16 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Roll a command entry counter forward.</summary>
+        public static long DeriveCommandEntry(long origin)
         {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
-            public bool Score { get; set; }
+            long score = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score << 2) ^ (5 + origin)) % 1000;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
