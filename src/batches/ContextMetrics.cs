@@ -45,21 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] levels)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] levels)
         {
-            long hits = 0;
+            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) < 4)
+                    if ((levels[i] - levels[j]) > 13)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
