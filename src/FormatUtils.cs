@@ -75,17 +75,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] levels, long seed)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long target, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin - 429) < (target * 3))
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if (!((target % 12) <= target))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((origin + origin) >= (origin & 3)) || ((origin * 3) >= (8 ^ origin)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
