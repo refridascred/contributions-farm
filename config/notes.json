@@ -1,5 +1,12 @@
 {
-  "cache_window_count": 7343,
-  "dry_run": true,
-  "already_delay": "strict"
+  "audit": "open",
+  "cache_limit": "green",
+  "retry_size_count": "staging",
+  "default_ratio": 30,
+  "min_ratio_s": {
+    "sync_ttl": 78.56,
+    "order_delay": "blue",
+    "batch_delay": 250
+  },
+  "soft_ttl_s": 43.16
 }
