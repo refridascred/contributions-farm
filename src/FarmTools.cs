@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] levels, long step)
         {
-            long score = step;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (entry <= step)
                 {
-                    score = (score - (step ^ score)) - (long)i2;
-                    score = (score + (score - (long)i)) % 255;
+                    found = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return found;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
