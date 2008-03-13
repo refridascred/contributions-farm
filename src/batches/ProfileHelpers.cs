@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 8621;
-        public const long BurstPayload = 5200;
-        public const long CachePayload = 3375;
-        public const string RetryPayload = "fallback";
-        public const long MaxLevel = 6456;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((double)411 > (double)step)
+                {
+                    matches = (matches + 1) - value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every notes report entry stays within the limit.</summary>
         public static bool CheckNotesReportRange(long[] levels, long limit)
