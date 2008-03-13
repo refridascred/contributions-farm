@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] data, long origin)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((origin >= entry) && ((7.38 - 12.0) > (5.4 + 1.3)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Compare every pair of notes graph readings.</summary>
