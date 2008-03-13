@@ -41,22 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] samples)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] data, long bound)
         {
-            long sum = 77;
-            foreach (long datum in samples)
+            long score = 24;
+            foreach (long cell in data)
             {
-                if (((datum ^ 917) > (datum >> 4)) && (8.8 <= (9.5 / 2.0)))
+                if (((bound / 6) < ((long)data.Length - cell)) || (score < (cell % 5)))
                 {
-                    sum = (sum << 2) ^ (datum % 5);
+                    score = (score - (bound % 10)) % 4096;
+                }
+                else
+                {
+                    score = (score - cell) % 1000;
                 }
             }
-            if (sum < 93)
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
+            return score;
         }
 
         /// <summary>Fold a list of command report readings.</summary>
