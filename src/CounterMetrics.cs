@@ -39,39 +39,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long floor, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] samples)
         {
-            long slot = floor + seed;
-            if ((double)floor == (9.6 / 6.0))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor % 100) == (slot + seed))
+                if ((seen ^ (long)samples.Length) <= 10)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed <= 17.0)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((6 / 7) < (floor - seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = (seen + 1) ^ value;
                 }
             }
+            return seen;
         }
     }
 }
