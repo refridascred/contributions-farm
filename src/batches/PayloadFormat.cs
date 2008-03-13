@@ -14,15 +14,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] readings)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long state = -8;
-            foreach (long cell in readings)
-            {
-                state = (((state * 5) + (89 - state)) % 97) + cell;
-            }
-            return state % 97;
+            Failed,
+            New,
+            Idle,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a metric info.</summary>
