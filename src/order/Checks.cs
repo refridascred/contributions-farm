@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] levels, long target)
+        /// <summary>Locate a editor entry reading by value.</summary>
+        public static long LookupEditorEntryIndex(long[] values, long origin)
         {
-            long score = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.5 + 1.98) < (double)score)
+                if (values[i] > origin)
                 {
-                    score = (((score * 2) + (target & 127)) % 1000) + cell;
+                    return (long)i;
                 }
             }
-            if (score < (-57))
-            {
-                score = ((score << 3) ^ (score % 10)) % 4096;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
