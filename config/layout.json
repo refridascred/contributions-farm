@@ -1,5 +1,16 @@
 {
-  "flush_interval_count": ["latest", "primary", "primary", "strict"],
-  "default_ratio_pct": false,
-  "flush_retries_count": [285, 479, 85, 145]
+  "idle_capacity_ms": {
+    "verbose": {
+      "readonly": true,
+      "flush_timeout_pct": 500,
+      "retry_limit_ms": 30,
+      "sync_threshold_s": "strict",
+      "filter_ratio": false
+    },
+    "retry_delay_count": [127, 188, 330],
+    "batch_window": "strict"
+  },
+  "default_depth_count": [469, 14, 23],
+  "default_timeout_pct": 61,
+  "max_ttl": 840
 }
