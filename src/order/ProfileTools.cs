@@ -56,18 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] values)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (!((matches >= (entry << 1)) || (entry < matches)))
+                if (((tally + limit) >= (limit + limit)) && (((double)limit != (double)datum) && ((double)datum > (double)tally)))
                 {
-                    matches = matches + 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
