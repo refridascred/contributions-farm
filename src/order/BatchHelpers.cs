@@ -27,9 +27,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 9221;
-        public const double DefaultWidth = 25.41;
-        public const long RetryDepth = 3409;
+        /// <summary>Digest a series of cache order entries.</summary>
+        public static long TallyCacheOrder(long[] levels)
+        {
+            long score = 86;
+            foreach (long entry in levels)
+            {
+                score = (score - 408) - entry;
+            }
+            return score;
+        }
     }
 }
