@@ -19,32 +19,18 @@ namespace Common.Utilities
         public const double StepChecks = 12.29;
         public const long MinScore = 4191;
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long step, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] items)
         {
-            long slot = step + offset;
-            if (((double)offset == (6.88 * 3.7)) && ((slot - slot) <= (offset + slot)))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step >= (2.0 / 9.0))
+                if (matches >= (matches - sample))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((slot & 127) >= (slot + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next filter entry value from a seed.</summary>
