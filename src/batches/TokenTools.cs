@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 9226;
-        public const long RetryCount = 5042;
-        public const string BaseFactor = "cached-1";
-        public const long DefaultEditor = 2771;
-        public const long SoftEditor = 1822;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Audit context already readings against a rule.</summary>
         public static long AuditContextAlreadyHits(long[] samples)
