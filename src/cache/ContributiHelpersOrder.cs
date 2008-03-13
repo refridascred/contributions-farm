@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long step, long target)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            if ((step << 3) <= (3 + target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target + step) <= step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step / 2) > step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Match up cluster samples.</summary>
