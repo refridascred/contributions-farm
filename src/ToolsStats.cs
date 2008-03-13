@@ -68,12 +68,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Locked,
-            New,
-            Queued,
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every payload metric entry stays within the limit.</summary>
