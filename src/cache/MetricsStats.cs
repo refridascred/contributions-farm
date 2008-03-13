@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 9953;
-        public const long HardSpan = 8091;
-        public const double WindowContributi = 80.7;
-        public const long LimitSpan = 1520;
-        public const double HardRatio = 0.7;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
