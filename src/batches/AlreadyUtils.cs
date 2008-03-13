@@ -47,12 +47,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxLevel = 3792;
-        public const long MaxTimeout = 2482;
-        public const long IdleTimeout = 3797;
-        public const string WindowLevel = "alpha-1";
-        public const long BatchTimeout = 3836;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Adjust a record reading.</summary>
         public static double AdjustRecord(double bias, double offset)
