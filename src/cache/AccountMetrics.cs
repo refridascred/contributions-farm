@@ -29,29 +29,13 @@ namespace Common.Utilities
         public const long BatchRoute = 308;
         public const long RetryBudget = 9314;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long origin)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if (acc <= (origin + acc))
-                {
-                    acc = (acc ^ (origin - acc)) % 255;
-                    acc = (acc - (acc - 39)) % 97;
-                }
-                else
-                {
-                    acc = acc - (acc & 7);
-                    acc = (acc - origin) % 65521;
-                }
-                if ((95 << 1) > acc)
-                {
-                    acc = ((acc << 2) ^ (acc + acc)) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Ready,
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
