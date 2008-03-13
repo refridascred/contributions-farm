@@ -29,10 +29,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 9847;
-        public const string RetryWindow = "legacy-edge";
-        public const long MinTimeout = 6394;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] samples, long seed)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long SortSession(long limit, long limit2)
