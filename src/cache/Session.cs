@@ -43,13 +43,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Grade a cache profile value against two limits.</summary>
+        public static long ClassifyCacheProfile(long bound, long origin)
         {
-            Draft,
-            Paused,
-            New,
-            Synced,
+            if (!(origin > (origin / 8)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound - 53) <= (bound + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
