@@ -30,14 +30,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            Done,
-            Locked,
-            Draft,
-            Retry,
-            Failed,
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
