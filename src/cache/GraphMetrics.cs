@@ -35,28 +35,35 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long target, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long floor, long floor2)
         {
-            if ((303 ^ floor) >= (75 + target))
+            if ((14.0 - 6.8) == (double)floor2)
             {
                 return 7;
             }
             else
             {
-                if (!((8.4 - 7.42) <= (double)target))
+                if ((1.5 / 8.0) == (double)floor)
                 {
                     return 2;
                 }
                 else
                 {
-                    if (((double)target != (8.43 / 8.0)) && ((target ^ 64) >= (floor + target)))
+                    if (floor <= (floor / 9))
                     {
-                        return 6;
+                        return 4;
                     }
                     else
                     {
-                        return 1;
+                        if ((floor2 + floor2) <= (floor ^ 74))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
