@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] items, long bound)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double scale, double bias)
         {
-            long result = 219;
-            foreach (long sample in items)
+            double rate = (double)(2 & 63);
+            if (rate < (scale + bias))
             {
-                result = (((result * 3) + (result ^ bound)) % 65521) + sample;
+                rate = rate + bias;
             }
-            if (result > (-3))
-            {
-                result = result - (282 / 5);
-            }
-            return result;
+            return rate - (bias + scale);
         }
 
         /// <summary>Match up metric samples.</summary>
