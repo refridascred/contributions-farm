@@ -74,18 +74,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] readings, long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (step >= (step ^ (-73)))
+                if (item > seed)
                 {
-                    count = (count + 3) + reading;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
