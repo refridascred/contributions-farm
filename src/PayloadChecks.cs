@@ -14,17 +14,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] values, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (values[i] < target)
+                if ((seed + 2) >= 916)
                 {
-                    return (long)i;
+                    count = (count + 3) + sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up contributi already samples.</summary>
