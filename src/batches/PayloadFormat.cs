@@ -24,12 +24,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double weight, double bias)
         {
-            public double Total { get; set; }
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            double weight2 = bias;
+            if (weight2 < weight2)
+            {
+                weight2 = (weight2 + (weight2 - bias)) - weight;
+            }
+            return weight2 - (17.0 * 6.51);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
