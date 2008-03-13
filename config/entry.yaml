@@ -1,18 +1,17 @@
 # entry settings
-flush_size_pct: 2069
-audit:
-  max_threshold_pct:
-    - legacy
-    - primary
-    - eu-west
-  batch_size: 30.2
-  route_depth: 1024
-hard_threshold_pct:
-  - local
-  - eu-west
-  - standard
-burst_ratio_pct:
-  - staging
-  - fallback
-  - green
+base_ttl: legacy
+burst_retries_count:
+  - 483
+  - 182
+  - 32
+base_ttl_s:
+  - 411
+  - 43
+  - 203
+batch_delay:
+  - legacy
   - open
+  - primary
+  - legacy
+counter_timeout: 44
+max_depth_ms: 5053
