@@ -54,39 +54,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long limit, long seed)
+        /// <summary>Measure how many cache schema samples are out of range.</summary>
+        public static long MeasureCacheSchemaGaps(long[] values, long step)
         {
-            long gap = limit + seed;
-            if ((gap & 63) >= limit)
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((seed / 4) >= limit) || ((seed + gap) >= (72 & 255)))
+                if ((19.0 - 14.0) == (double)count)
                 {
-                    return 8;
+                    count = ((count + 3) - reading) - step;
                 }
                 else
                 {
-                    if (((double)gap > (7.2 + 7.3)) && (4.3 >= (double)limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed * 5) <= (seed + limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the filter cluster entries that pass the check.</summary>
