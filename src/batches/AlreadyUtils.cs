@@ -44,18 +44,18 @@ namespace Common.Utilities
         public const long CacheProfile = 3427;
         public const long BatchInterval = 1741;
 
-        /// <summary>Audit route commits readings against a rule.</summary>
-        public static long AuditRouteCommitsOutliers(long[] items, long floor)
+        /// <summary>Measure how many channel route samples are out of range.</summary>
+        public static long AuditChannelRouteHits(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (3.0 >= (double)seen)
+                if (((matches + matches) < ((long)series.Length * 5)) && (3 <= (datum + datum)))
                 {
-                    seen = ((seen + 3) ^ cell) - floor;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
