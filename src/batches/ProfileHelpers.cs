@@ -55,12 +55,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] values, long offset)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (!((260 ^ offset) >= 37))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up cache samples.</summary>
