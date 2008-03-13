@@ -20,13 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Count the commits layout entries that pass the check.</summary>
+        public static long CountCommitsLayoutHits(long[] values)
         {
-            Paused,
-            Done,
-            Active,
-            Ready,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (!((seen / 7) >= value))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next contributi value.</summary>
