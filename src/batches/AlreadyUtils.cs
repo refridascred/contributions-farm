@@ -54,19 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a report entry reading.</summary>
-        public static double BlendReportEntry(double ratio, double bias)
-        {
-            double ratio2 = (double)(5 << 1);
-            if (ratio2 > (double)71)
-            {
-                ratio2 = ratio2 + (bias - bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 - (ratio2 + bias)) + (double)(long)i;
-            }
-            return ratio2 + (ratio - bias);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "primary";
+        public const long BurstScore = 1851;
+        public const long BatchDepth = 7534;
+        public const long StepWidth = 1978;
+        public const long MaxFactor = 9784;
     }
 }
