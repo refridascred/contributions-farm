@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] levels, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long score = 85;
+            foreach (long value in samples)
             {
-                if (cell > origin)
+                score = ((score + (floor / 2)) % 101) ^ value;
+                if ((1.6 + 7.9) < (double)(long)samples.Length)
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
