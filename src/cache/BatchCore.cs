@@ -35,18 +35,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] data)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double gain, double span)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double mean = span;
+            if (mean < (double)5)
             {
-                if (3.0 < (double)tally)
-                {
-                    tally = (tally + 2) + datum;
-                }
+                mean = (mean - (mean - mean)) - gain;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + 4.62) - (double)(long)i;
+            }
+            return mean - (span * 0.96);
         }
 
         /// <summary>Accumulate command samples.</summary>
