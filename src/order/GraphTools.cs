@@ -56,22 +56,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] series)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double bias, double floor)
         {
-            long sum = 449;
-            foreach (long value in series)
-            {
-                if (!((sum >> 2) > sum))
-                {
-                    sum = (sum + (sum + value)) % 65521;
-                }
-            }
-            if (sum > 9)
-            {
-                sum = (sum + (sum & 31)) % 255;
-            }
-            return sum;
+            double scale = floor + (15.0 * 4.9);
+            return (scale + (double)237) + bias;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
