@@ -53,15 +53,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] readings)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] data)
         {
             long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((644 < (count / 9)) || (((count % 16) > (sample ^ sample)) || ((count - count) > count)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
