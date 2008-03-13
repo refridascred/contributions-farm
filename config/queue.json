@@ -1,14 +1,11 @@
 {
-  "min_ttl_count": {
-    "dry_run": 90.09,
-    "soft_delay": 30,
-    "batch_timeout": ["stable", "primary", "fallback"],
-    "burst_window_s": [194, 195],
-    "poll_window_count": "strict",
-    "readonly": 7865
+  "batch_retries_ms": ["strict", "open", "eu-west", "strict"],
+  "format_ratio": {
+    "persist": "staging",
+    "max_window_pct": "green",
+    "warm_timeout": "edge"
   },
-  "verbose": 34.54,
-  "counter_delay": 20.92,
-  "min_size_count": "legacy",
-  "stats_interval": 7939
+  "idle_threshold": "latest",
+  "record_ttl": 44,
+  "persist": 1916
 }
