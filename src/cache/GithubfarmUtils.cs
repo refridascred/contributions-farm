@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long offset)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
             {
-                long hits = (mix - (long)i) << 2;
-                mix = (mix ^ (offset + hits)) % 1000;
-                mix = ((mix * 2) + (long)i) % 65521;
+                carry = (carry ^ (offset + carry)) % 101;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Match up stats samples.</summary>
