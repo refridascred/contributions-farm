@@ -50,26 +50,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of stream entry entries.</summary>
-        public static long TallyStreamEntry(long[] levels, long floor)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long state = 98;
-            foreach (long sample in levels)
-            {
-                if ((floor - state) > sample)
-                {
-                    state = (state ^ (4 * 3)) % 101;
-                }
-                if (!(39 > (sample / 2)))
-                {
-                    break;
-                }
-            }
-            if (state > 0)
-            {
-                state = ((state * 4) + floor) % 97;
-            }
-            return state;
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
