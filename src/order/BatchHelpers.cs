@@ -20,26 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] data, long origin)
+        /// <summary>Fold a list of batch graph readings.</summary>
+        public static long FoldBatchGraph(long[] data, long bound)
         {
-            long result = 32;
-            foreach (long cell in data)
+            long result = 12;
+            foreach (long entry in data)
             {
-                if (!((cell / 6) <= (result / 7)))
-                {
-                    result = result ^ (cell + cell);
-                }
-                if (7.5 <= (double)cell)
-                {
-                    result = (result + (cell + result)) % 1000;
-                }
+                result = ((result * 4) + (entry & 255)) % 1000;
             }
-            if (result > (-37))
+            if (result < 5)
             {
-                result = ((result << 2) ^ (origin + result)) % 97;
+                result = (result << 2) ^ (bound << 3);
             }
-            return result % 4096;
+            return result % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
