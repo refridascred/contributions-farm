@@ -19,32 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long limit, long step)
+        /// <summary>Accumulate order token samples.</summary>
+        public static long DigestOrderToken(long[] levels)
         {
-            long next = limit - step;
-            if ((37 & 15) != (limit + limit))
+            long sum = 520;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)next >= (9.0 * 9.24)) || (limit >= (next - step)))
+                if (!(50 < (value * 5)))
                 {
-                    return 2;
+                    sum = (sum * 3) + (sum >> 3);
                 }
                 else
                 {
-                    if ((9.2 - 2.9) <= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    sum = sum ^ sum;
                 }
             }
+            return sum;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
