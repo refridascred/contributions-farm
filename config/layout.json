@@ -1,8 +1,11 @@
 {
-  "soft_interval_count": 86.76,
-  "editor_depth": 9259,
-  "sync_threshold": true,
-  "warm_delay_ms": false,
-  "retry_capacity": 938,
-  "batch_delay_s": 89
+  "idle_retries_count": [325, 57, 328],
+  "already_delay": 250,
+  "burst_delay_ms": {
+    "cache_limit": [83, 294, 130],
+    "base_delay_s": 31.46,
+    "warm_capacity_pct": 60,
+    "max_size_ms": "fallback"
+  },
+  "strict": 8373
 }
