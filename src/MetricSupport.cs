@@ -27,11 +27,24 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long offset, long target)
         {
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
+            if ((offset >> 4) >= (target ^ 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset + offset) >= (offset - offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
