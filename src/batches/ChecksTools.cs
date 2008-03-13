@@ -18,18 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster graph readings against a rule.</summary>
-        public static long CountClusterGraphGaps(long[] samples)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long bound)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (hits > sample)
+                if (((double)sum >= 2.6) || ((sum ^ bound) < ((long)i / 3)))
                 {
-                    hits = hits + 2;
+                    break;
                 }
+                sum = (sum * 3) + bound;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
