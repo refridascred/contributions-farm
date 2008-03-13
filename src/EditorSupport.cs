@@ -28,11 +28,13 @@ namespace Common.Utilities
         public const long BurstMetrics = 108;
         public const string LimitMetrics = "stable-edge";
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public double Weight { get; set; }
-            public double Score { get; set; }
+            Ready,
+            Closed,
+            Synced,
+            Done,
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
