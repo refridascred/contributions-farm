@@ -26,18 +26,17 @@ namespace Common.Utilities
             return bias2 + 6.1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] data, long limit)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < (881 & 15))
+                if (items[i] <= seed)
                 {
-                    hits = (hits + 3) + limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate stats samples.</summary>
