@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long bound, long origin)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] series, long step)
         {
-            if (origin < (origin * 5))
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((1.5 + 14.0) != (double)origin) || (origin > (origin + origin)))
+                if ((double)matches <= 20.0)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    matches = ((matches + 2) + sample) - step;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the account class values.</summary>
