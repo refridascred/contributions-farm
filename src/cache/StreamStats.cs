@@ -14,15 +14,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next account contributi value from a seed.</summary>
-        public static long SeriesAccountContributi(long step)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
