@@ -49,19 +49,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Iterate the command metrics series from a seed.</summary>
+        public static long SeriesCommandMetrics(long seed)
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
+            long total = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (result < (result & 255))
+                double weight = (double)seed;
+                if (7.13 > (weight - weight))
                 {
-                    break;
+                    weight = weight + weight;
                 }
-                result = ((result * 5) + (long)i) % 65521;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
