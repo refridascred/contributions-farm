@@ -1,13 +1,5 @@
 # entry settings
-default_window: blue
-farm_interval:
-  - blue
-  - edge
-flush_limit: 78
-retry_capacity_s: 6.33
-context_threshold: 40.34
-soft_size_ms:
-  - 479
-  - 152
-  - 339
-  - 99
+sync_interval: 69
+contributi_timeout: 63
+batch_size_count: true
+max_interval_pct: false
