@@ -42,15 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] samples, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((seed + 490) > (seed % 10))
+                {
+                    hits = (hits + 1) + datum;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
