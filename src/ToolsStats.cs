@@ -66,11 +66,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheCount = 9667;
-        public const long MaxAlready = 3458;
-        public const double DefaultAlready = 56.47;
-        public const long BurstAlready = 8666;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Synced,
+            Failed,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
