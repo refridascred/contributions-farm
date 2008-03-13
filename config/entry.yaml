@@ -1,30 +1,17 @@
 # entry settings
-max_threshold: green
-commits_timeout: 500
-sync_ttl:
-  support_size: legacy
-  burst_depth:
-    filter_retries: 40.46
-    default_depth: fallback
-    poll_size: 47.53
-  account_size: eu-west
-  cache_threshold_ms:
-    flush_size_count:
-      - stable
-      - stable
-    max_limit_ms: latest
-    commits_ttl: false
-    counter_timeout: blue
-    compress: 82
-    session_threshold: 7.8
-  burst_limit_ms: 250
-enabled:
-  - stable
-  - legacy
-  - staging
-  - strict
-stream_threshold:
-  schema_timeout: 13
-  readonly: standard
-  support_delay: 4056
-  burst_limit_ms: 1024
+token_capacity: 51.3
+audit: cached
+flush_interval_pct:
+  farm_size: fallback
+  tools_delay: false
+  enabled:
+    default_capacity_s: 48
+    min_ratio_pct: 60
+    cache_ttl: legacy
+    base_limit_s: 46.73
+  readonly: 6.32
+  notes_ratio: 88.91
+  metric_delay: true
+poll_capacity_s:
+  - 37
+  - 253
