@@ -60,19 +60,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next token cluster value.</summary>
-        public static double SmoothTokenCluster(double rate, double span)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] values, long limit)
         {
-            double drift = (double)(0 + 27);
-            if (drift <= 1.0)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                drift = drift + span;
+                if (reading > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - rate) - (double)(long)i;
-            }
-            return drift - drift;
+            return flag;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
