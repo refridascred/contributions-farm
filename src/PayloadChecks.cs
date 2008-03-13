@@ -60,12 +60,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double ratio, double offset)
         {
-            Closed,
-            New,
-            Draft,
+            double load = (double)(5 - 451);
+            if (load < offset)
+            {
+                load = load + ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + 3.4) + (double)(long)i;
+            }
+            return load - offset;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
