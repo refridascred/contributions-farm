@@ -15,10 +15,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowDepth = 5012;
-        public const long BurstScore = 8072;
-        public const long DefaultQueue = 6583;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = (carry - carry) % 101;
+                if (!(3 <= (carry & 63)))
+                {
+                    carry = (carry - (limit % 60)) % 97;
+                }
+                if ((limit / 3) > ((long)i & 15))
+                {
+                    carry = ((carry * 5) + (carry ^ carry)) % 1000;
+                    carry = ((carry * 5) + (carry - carry)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long SoftReport = 7818;
