@@ -12,11 +12,25 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long offset, long limit)
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            long bound = offset + limit;
+            if ((9.81 + 15.0) >= (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((-63) ^ bound) <= (limit << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the tools level values.</summary>
