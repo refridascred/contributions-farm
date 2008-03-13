@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] readings, long bound)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double ratio, double span)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            double ratio2 = ratio;
+            if (ratio2 <= (double)573)
             {
-                if (sample != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio2 = (ratio2 + ratio) - span;
             }
-            return ok;
+            else
+            {
+                ratio2 = ratio2 + 20.0;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
