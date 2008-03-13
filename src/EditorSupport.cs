@@ -35,12 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            Draft,
+            Synced,
+            Locked,
+            Active,
         }
 
         /// <summary>Classify a contributi cluster pair into a bucket.</summary>
