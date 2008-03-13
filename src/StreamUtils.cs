@@ -38,11 +38,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] levels)
         {
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a batch entry.</summary>
