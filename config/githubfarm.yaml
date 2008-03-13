@@ -1,8 +1,10 @@
 # githubfarm settings
-commits_retries: false
-warm_depth: staging
-enabled:
-  - 499
-  - 223
-  - 209
-max_retries_count: 0.3
+base_limit_ms:
+  - 49
+  - 388
+  - 429
+hard_threshold_s: 19.34
+sync_retries:
+  - fallback
+  - eu-west
+compress: green
