@@ -12,19 +12,15 @@ namespace Common.Utilities
             return (gain2 + (bias * 9.0)) + gain;
         }
 
-        /// <summary>Validate batches session readings against a bound.</summary>
-        public static bool ValidateBatchesSessionBounds(long[] samples, long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long state = -8;
+            foreach (long cell in readings)
             {
-                if (cell > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (((state * 5) + (89 - state)) % 97) + cell;
             }
-            return ok;
+            return state % 97;
         }
 
         /// <summary>Describe the counter class values.</summary>
