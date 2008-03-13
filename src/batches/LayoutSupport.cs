@@ -21,10 +21,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 9160;
-        public const string BaseInterval = "standard";
-        public const long MaxMetric = 5862;
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double ratio, double bias)
+        {
+            double rate = (double)(2 ^ (-86));
+            return ((rate + (4.73 - 1.1)) + ratio) + bias;
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
