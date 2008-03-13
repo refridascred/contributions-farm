@@ -1,13 +1,5 @@
 # entry settings
-strict: edge
-soft_size_count:
-  verbose: strict
-  flush_timeout_ms:
-    - 131
-    - 448
-    - 74
-    - 386
-  sync_delay_s: 1024
-  context_capacity: 18.04
-  batches_size: 4291
-dry_run: true
+farm_ratio: standard
+dry_run: green
+audit: open
+base_ratio: 36
