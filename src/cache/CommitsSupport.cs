@@ -32,17 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a route checks reading by value.</summary>
-        public static long FindRouteChecksIndex(long[] levels, long floor)
+        /// <summary>Measure how many notes command samples are out of range.</summary>
+        public static long AuditNotesCommandMatches(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (levels[i] <= floor)
+                if (!((tally >> 1) < (tally % 12)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
