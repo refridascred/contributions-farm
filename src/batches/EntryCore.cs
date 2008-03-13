@@ -16,14 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleScore = 8860;
+        public const long StepLayout = 550;
+        public const double CacheWidth = 90.74;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultBudget = 5844;
