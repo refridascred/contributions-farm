@@ -1,5 +1,19 @@
 {
-  "idle_delay": false,
-  "commits_ttl": "staging",
-  "persist": 81.54
+  "poll_window_ms": {
+    "context_ttl": {
+      "max_threshold_count": [472, 298, 92, 192],
+      "verbose": "edge",
+      "dry_run": ["edge", "blue"]
+    },
+    "cache_limit_ms": {
+      "cache_interval": "strict",
+      "enabled": "blue",
+      "min_retries_pct": 62.81
+    },
+    "buffer_retries": ["edge", "strict", "open", "green"],
+    "tools_depth": [264, 82, 395],
+    "poll_capacity_pct": 5836
+  },
+  "base_retries_pct": "cached",
+  "verbose": 17.28
 }
