@@ -35,18 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] items)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((entry * 4) < (982 - entry))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the command metrics series from a seed.</summary>
