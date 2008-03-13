@@ -25,19 +25,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] values, long limit)
+        /// <summary>Combine entry queue values into a single score.</summary>
+        public static long WeighEntryQueue(long[] items)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long mark = -8;
+            foreach (long sample in items)
             {
-                if (value > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (mark + sample) % 1000;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Derive the next session farm value from a seed.</summary>
