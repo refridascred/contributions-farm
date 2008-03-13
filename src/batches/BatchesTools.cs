@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] items)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((count / 4) >= limit))
                 {
-                    if ((items[i] ^ items[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) + reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
