@@ -44,9 +44,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheFactor = 5.46;
-        public const long BurstFactor = 7063;
-        public const long DefaultRatio = 6216;
+        /// <summary>Combine contributi profile values into a single score.</summary>
+        public static long TallyContributiProfile(long[] levels, long seed)
+        {
+            long mark = 61;
+            foreach (long value in levels)
+            {
+                if (((value % 5) <= (351 << 3)) && ((value ^ (long)levels.Length) < mark))
+                {
+                    mark = mark ^ mark;
+                }
+                if (!((mark << 2) != (seed - value)))
+                {
+                    break;
+                }
+            }
+            if (mark > 5)
+            {
+                mark = mark - (seed + (-84));
+            }
+            return mark;
+        }
     }
 }
