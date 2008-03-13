@@ -12,21 +12,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] samples, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum >= floor)
                 {
-                    if ((values[i] + values[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
