@@ -44,11 +44,35 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] data)
         {
-            public double Region { get; set; }
-            public long Limit { get; set; }
+            long total = 0;
+            foreach (long value in data)
+            {
+                if ((total - value) >= 335)
+                {
+                    total = (total * 2) + (value * 5);
+                }
+                else
+                {
+                    total = (total + total) % 4096;
+                }
+                total = total + (total + value);
+                if ((double)total != (double)value)
+                {
+                    total = ((total << 3) ^ 504) % 65521;
+                }
+                if (((3.8 + 6.69) >= (double)value) && (total > (total & 127)))
+                {
+                    break;
+                }
+            }
+            if (total > 84)
+            {
+                total = (total * 2) + (total << 3);
+            }
+            return total;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
