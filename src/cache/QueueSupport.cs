@@ -32,18 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] samples)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mark = 2;
+            foreach (long sample in data)
             {
-                if ((2.0 - 13.0) > (double)matches)
+                mark = (mark * 3) + (sample + sample);
+                if ((4.1 / 4.0) >= (double)mark)
                 {
-                    matches = (matches + 3) ^ value;
+                    break;
                 }
             }
-            return matches;
+            if (mark > 7)
+            {
+                mark = mark ^ (mark ^ 3);
+            }
+            return mark;
         }
     }
 }
