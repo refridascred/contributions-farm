@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleWindow = 7.44;
-        public const long DefaultSize = 3944;
-        public const long DefaultWindow = 4279;
-        public const long BatchLevel = 9219;
-        public const long MinWindow = 3424;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((origin >= entry) && ((7.38 - 12.0) > (5.4 + 1.3)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of notes graph readings.</summary>
         public static long MatchNotesGraphCount(long[] data)
