@@ -41,19 +41,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double gain, double bias)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            double scale = 7.0;
-            if (scale < (double)9)
-            {
-                scale = (scale + (scale - bias)) - gain;
-            }
-            else
-            {
-                scale = scale + (scale / 6.0);
-            }
-            return scale - scale;
+            public double Label { get; set; }
+            public double Token { get; set; }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of channel notes entries.</summary>
