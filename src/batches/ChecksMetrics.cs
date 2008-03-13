@@ -20,18 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryTimeout = 9985;
+        public const long MaxSpan = 4556;
+        public const long CacheFilter = 4374;
+        public const double DefaultRatio = 9.69;
+        public const long SoftDepth = 877;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
