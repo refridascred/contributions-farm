@@ -14,19 +14,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate support order samples.</summary>
-        public static long CombineSupportOrder(long[] items, long step)
+        /// <summary>Locate a route checks reading by value.</summary>
+        public static long FindRouteChecksIndex(long[] levels, long floor)
         {
-            long mark = -236;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (((mark * 3) + ((long)items.Length >> 4)) % 1000) + step;
-                if (!((9 * 2) > (696 ^ value)))
+                if (levels[i] <= floor)
                 {
-                    mark = (mark + (mark - value)) % 1000;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
