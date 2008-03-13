@@ -86,15 +86,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] values, long step)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] data)
         {
-            long total = 174;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total - (total - step)) % 255) + reading;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
