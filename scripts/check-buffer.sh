@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-BUFFER_LIMIT=207
+BUFFER_LIMIT=148
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-staging}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in stable standard staging strict; do
+    log "checking ${item}"
+done
