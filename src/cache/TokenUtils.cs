@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                double gain = 18.0;
-                if ((gain < (4.0 / 4.0)) || (4.1 > (gain + gain)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    gain = gain - (double)72;
+                    if ((samples[i] - samples[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Locate a schema checks reading by value.</summary>
