@@ -65,14 +65,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Idle,
-            Retry,
-            Stale,
-            Active,
-            Ready,
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
