@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const string HardBuffer = "stable";
         public const string BatchBuffer = "standard-1";
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double bias, double bias2)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] data, long floor)
         {
-            double load = bias2;
-            if (load < (double)40)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                load = load - bias;
+                if (reading != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load - (9.1 + load);
+            return flag;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
