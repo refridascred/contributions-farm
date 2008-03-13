@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardSize = 12.86;
-        public const long CacheWidth = 3160;
-        public const double IdleInterval = 52.38;
-        public const long BurstScore = 6303;
+        /// <summary>Roll a graph commits counter forward.</summary>
+        public static long RollGraphCommits(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftTimeout = 1635;
