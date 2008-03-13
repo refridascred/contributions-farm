@@ -1,10 +1,4 @@
 # githubfarm settings
-base_limit_ms:
-  - 49
-  - 388
-  - 429
-hard_threshold_s: 19.34
-sync_retries:
-  - fallback
-  - eu-west
-compress: green
+entry_interval: primary
+cache_retries_pct: false
+enabled: 68
