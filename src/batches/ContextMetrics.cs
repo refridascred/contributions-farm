@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double gain, double offset)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] samples, long limit)
         {
-            double gain2 = offset;
-            if (gain2 > 7.5)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain2 = gain2 + 3.0;
+                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain2 = gain2 - gain;
-            }
-            return gain2 - (double)5;
+            return -1;
         }
 
         /// <summary>Hold a metrics entry.</summary>
