@@ -19,13 +19,18 @@ namespace Common.Utilities
         public const long WindowTimeout = 930;
         public const double MinBatches = 71.3;
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] series, long floor)
         {
-            Dropped,
-            Synced,
-            Failed,
-            Active,
+            long state = 4;
+            foreach (long entry in series)
+            {
+                if (!((7 + state) >= (entry + floor)))
+                {
+                    state = (state + (floor >> 4)) % 1000;
+                }
+            }
+            return state % 1000;
         }
     }
 }
