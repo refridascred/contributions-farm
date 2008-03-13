@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] values, long bound)
         {
-            Paused,
-            Closed,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a checks account sample.</summary>
