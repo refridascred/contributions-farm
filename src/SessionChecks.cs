@@ -25,19 +25,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading > (6.6 / 4.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseLevel = "cached-v2";
+        public const double LimitWindow = 94.27;
+        public const string StepDepth = "fallback";
+        public const long MinWindow = 7400;
 
         /// <summary>Digest a series of record report entries.</summary>
         public static long TallyRecordReport(long[] data, long floor)
