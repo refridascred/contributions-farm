@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryBudget = 3985;
-        public const long BurstDepth = 4451;
-        public const double DefaultCache = 86.97;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    score = (score - (step ^ score)) - (long)i2;
+                    score = (score + (score - (long)i)) % 255;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
