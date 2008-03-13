@@ -23,11 +23,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] levels, long origin)
         {
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((hits & 127) >= (0 + origin))
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
