@@ -73,18 +73,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the support stats entries that pass the check.</summary>
-        public static long CountSupportStatsHits(long[] readings)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] series)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long state = 99;
+            foreach (long value in series)
             {
-                if ((729 / 3) > (sample >> 3))
-                {
-                    count = count + 3;
-                }
+                state = state - (value & 7);
             }
-            return count;
+            if (state < 9)
+            {
+                state = (state ^ (state << 3)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the stats kind values.</summary>
