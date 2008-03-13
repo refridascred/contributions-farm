@@ -19,17 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] readings, long seed)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long seed)
         {
-            long mark = 7;
-            foreach (long cell in readings)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                mark = ((mark + 0) % 65521) - cell;
-            }
-            if (mark > 354)
-            {
-                mark = ((mark << 2) ^ (seed << 1)) % 1000;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
             return mark;
         }
