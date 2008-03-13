@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string HardBuffer = "stable";
         public const string BatchBuffer = "standard-1";
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] data, long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (reading != floor)
+                if ((double)floor != (double)2)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) - reading;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
