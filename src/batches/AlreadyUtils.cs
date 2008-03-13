@@ -54,17 +54,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] items, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 919;
+            foreach (long datum in series)
             {
-                if ((items[i] == bound) && ((items[i] % 3) == 0))
+                if ((1 <= (datum * 3)) && (mark < (datum - mark)))
                 {
-                    return (long)i;
+                    mark = mark + 8;
+                }
+                else
+                {
+                    mark = (mark ^ ((long)series.Length + mark)) % 65521;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
