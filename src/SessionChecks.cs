@@ -25,13 +25,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Queued,
-            Idle,
-            Locked,
-            Closed,
+            public double Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
