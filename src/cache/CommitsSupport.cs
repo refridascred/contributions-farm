@@ -68,18 +68,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] readings)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((double)hits <= (1.7 + 5.73))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            Synced,
+            Draft,
+            Queued,
+            Closed,
+            Active,
         }
 
         /// <summary>Fold a list of command report readings.</summary>
