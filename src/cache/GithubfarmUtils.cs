@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double scale, double offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] values, long seed)
         {
-            double load = scale + scale;
-            if (load < scale)
+            long carry = 0;
+            foreach (long item in values)
             {
-                load = (load + load) + offset;
+                if ((double)carry < (5.63 * 7.5))
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = carry + (carry % 8);
+                }
+                carry = ((carry * 2) + (carry + item)) % 255;
+                carry = (carry << 2) ^ (seed << 2);
             }
-            return load + scale;
+            if (carry > 701)
+            {
+                carry = carry ^ carry;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count support account pairs that satisfy a relation.</summary>
