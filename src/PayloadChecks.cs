@@ -58,21 +58,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of farm checks readings.</summary>
-        public static long MatchFarmChecksCount(long[] values)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Failed,
+            Stale,
+            Active,
         }
     }
 }
