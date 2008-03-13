@@ -52,13 +52,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double gain, double bias)
         {
-            public double Score { get; set; }
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            double mean = gain * 3.2;
+            if (mean <= (bias - gain))
+            {
+                mean = mean - (gain + mean);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (3.3 / 9.0)) + (double)(long)i;
+            }
+            return mean - (bias * 0.15);
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
