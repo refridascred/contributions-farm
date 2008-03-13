@@ -24,20 +24,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Validate session contributi readings against a bound.</summary>
+        public static bool ValidateSessionContributiRange(long[] levels, long step)
         {
-            long sum = 6;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                sum = sum - (907 % 12);
-                sum = (sum + (sum * 5)) % 255;
-                if ((double)cell != (8.45 / 4.0))
+                if (value <= step)
                 {
-                    sum = (sum + (cell / 3)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Roll a batches checks counter forward.</summary>
