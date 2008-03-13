@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-            public double Size { get; set; }
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the route state values.</summary>
