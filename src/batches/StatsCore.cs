@@ -49,11 +49,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultAccount = 64.84;
-        public const double StepAccount = 20.08;
-        public const string BurstAccount = "latest-v2";
-        public const double IdleAccount = 70.28;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long PairStatsCount(long[] series)
