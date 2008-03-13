@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] series, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (((target - cell) < (matches & 63)) && ((cell / 2) >= (cell - matches)))
+                if (entry > (hits - entry))
                 {
-                    matches = matches + 2;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of session readings.</summary>
