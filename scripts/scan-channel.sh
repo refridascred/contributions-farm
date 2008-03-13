@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west primary staging; do
+for item in green standard open eu-west; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+CHANNEL_LIMIT=310
+log "limit is ${CHANNEL_LIMIT}"
