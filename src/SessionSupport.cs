@@ -33,12 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public string Rank { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 4713;
+        public const long RetryCommits = 881;
+        public const long BaseTimeout = 1972;
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long RollSupport(long offset)
