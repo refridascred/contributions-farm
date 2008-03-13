@@ -1,12 +1,5 @@
 {
-  "hard_capacity": "cached",
-  "poll_ttl_s": {
-    "base_timeout": 1664,
-    "warm_ttl_ms": 2272,
-    "retry_ttl_count": 60.02,
-    "strict": [21, 233]
-  },
-  "batch_threshold_count": ["fallback", "strict", "cached", "latest"],
-  "report_capacity": 4411,
-  "poll_delay_ms": 29.83
+  "session_depth": 3533,
+  "stats_ttl": 7243,
+  "channel_capacity": false
 }
