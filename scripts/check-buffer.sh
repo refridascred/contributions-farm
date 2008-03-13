@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=148
-log "limit is ${BUFFER_LIMIT}"
-
-for item in stable standard staging strict; do
+for item in stable fallback blue; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
