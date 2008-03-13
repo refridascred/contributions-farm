@@ -61,13 +61,39 @@ namespace Common.Utilities
             return scale2 + (bias - bias);
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long step, long offset)
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public double Offset { get; set; }
+            long step2 = step + offset;
+            if ((double)step2 == (double)597)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)step <= 5.8)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step2 / 7) > (8 - step2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step2 - 971) < step2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the window status values.</summary>
