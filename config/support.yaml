@@ -1,12 +1,8 @@
 # support settings
-sync_interval_s:
-  - legacy
+filter_limit: legacy
+sync_delay_ms: primary
+warm_retries:
+  - blue
+  - primary
+  - cached
   - local
-  - eu-west
-verbose: staging
-min_ratio:
-  - 29
-  - 425
-  - 106
-  - 226
-flush_depth_ms: eu-west
