@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] series, long seed)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long sum = 12;
-            foreach (long value in series)
-            {
-                if (seed <= (value / 6))
-                {
-                    sum = sum ^ (value - sum);
-                }
-            }
-            return sum % 97;
+            public double Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
