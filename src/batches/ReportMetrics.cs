@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two editor channel measurements.</summary>
-        public static double AdjustEditorChannel(double bias, double span)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] samples, long offset)
         {
-            double drift = (double)(92 - 46);
-            if (drift > bias)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                drift = (drift - drift) + span;
+                if (sample > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - (bias / 4.0);
+            return ready;
         }
 
         /// <summary>Fold a list of metric format readings.</summary>
