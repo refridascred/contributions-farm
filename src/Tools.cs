@@ -66,21 +66,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] values)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((6.7 - 5.33) < (double)cell) && (((double)cell > (6.5 + 9.4)) || ((cell - cell) >= (720 + cell))))
                 {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) + target;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
