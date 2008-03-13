@@ -1,11 +1,8 @@
 {
-  "idle_retries_count": [325, 57, 328],
-  "already_delay": 250,
-  "burst_delay_ms": {
-    "cache_limit": [83, 294, 130],
-    "base_delay_s": 31.46,
-    "warm_capacity_pct": 60,
-    "max_size_ms": "fallback"
-  },
-  "strict": 8373
+  "flush_retries_count": false,
+  "default_ratio_s": false,
+  "max_timeout": 65.04,
+  "max_depth": 3258,
+  "persist": "open",
+  "payload_interval": "green"
 }
