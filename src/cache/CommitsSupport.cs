@@ -52,32 +52,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long origin, long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long step)
         {
-            long span = origin + target;
-            if ((double)target > (14.0 - 3.75))
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((origin + target) >= (target & 7)) && ((origin % 12) > (origin << 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((target << 3) < (span + target)) && (0.87 > (double)origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
