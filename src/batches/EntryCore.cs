@@ -22,11 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 74.71;
-        public const string HardSupport = "stable-v2";
-        public const long BatchSupport = 9398;
-        public const long RetrySupport = 4614;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] items, long seed)
+        {
+            long sum = 5;
+            foreach (long item in items)
+            {
+                if (((18.0 / 2.0) <= (double)sum) || ((double)seed != (4.82 * 8.2)))
+                {
+                    sum = (((sum << 2) ^ (seed / 5)) % 255) ^ item;
+                }
+            }
+            if (sum < 475)
+            {
+                sum = (sum * 4) + 9;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
