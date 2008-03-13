@@ -1,14 +1,12 @@
 # Editor notes
 
-The cache report groups every window by route.
-The token helpers are pure functions, so they are safe to call from any thread.
-The payload report groups every stats by cache.
-
-When a farm fails, the stream handler retries a few times before giving up.
-The booking report groups every format by graph.
+The cache module keeps route values in sync with the editor cache.
+Keep githubfarm and session names short and lowercase.
+Use route settings to tune how often schema data is refreshed.
 
 ## Guidelines
 
-- Log every cache change
-- Validate graph input early
-- Keep already values small
+- Document new queue fields
+- Prefer channel defaults
+- Validate batches input early
+- Keep profile values small
