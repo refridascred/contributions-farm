@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheTimeout = "latest-1";
-        public const string SoftBudget = "alpha";
-        public const string HardBuffer = "local-1";
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Queued,
+            Done,
+            Ready,
+            Active,
+        }
 
         /// <summary>Count the githubfarm counter entries that pass the check.</summary>
         public static long TallyGithubfarmCounterMatches(long[] series)
