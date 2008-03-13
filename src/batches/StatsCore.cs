@@ -56,20 +56,12 @@ namespace Common.Utilities
         public const long CacheCount = 3335;
         public const long CacheToken = 1356;
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double weight, double bias)
-        {
-            double bias2 = weight;
-            if (bias2 > (weight - 2.73))
-            {
-                bias2 = (bias2 + weight) + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 + 1.37;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 1477;
+        public const long CacheBudget = 5930;
+        public const long WindowDepth = 9051;
+        public const double RetryTimeout = 40.4;
+        public const long MinGraph = 7065;
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long PairContextCount(long[] data)
