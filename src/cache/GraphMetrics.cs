@@ -57,14 +57,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long limit, long floor)
         {
-            Active,
-            Ready,
-            Failed,
-            Stale,
-            Done,
+            if ((limit << 1) <= (402 - floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((952 * 4) < (limit * 3)) && (floor >= (floor ^ limit)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
