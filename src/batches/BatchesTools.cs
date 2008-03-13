@@ -14,21 +14,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score - floor) % 4096;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = (score + (628 + (long)i)) + (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxDepth = 31.59;
+        public const long CacheChecks = 5807;
+        public const long StepChecks = 9172;
+        public const string HardSpan = "strict-1";
+        public const long StepSize = 3005;
 
         /// <summary>Compare every pair of order cluster readings.</summary>
         public static long PairOrderClusterCount(long[] readings)
