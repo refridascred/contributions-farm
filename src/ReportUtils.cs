@@ -54,22 +54,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cache schema samples are out of range.</summary>
-        public static long MeasureCacheSchemaGaps(long[] values, long step)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long limit)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((19.0 - 14.0) == (double)count)
-                {
-                    count = ((count + 3) - reading) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = sum + limit;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Count the filter cluster entries that pass the check.</summary>
