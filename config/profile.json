@@ -1,8 +1,7 @@
 {
-  "counter_interval": "strict",
-  "sync_retries_ms": "primary",
-  "cache_interval_s": ["strict", "cached", "open"],
-  "batch_ttl_s": 46.38,
-  "dry_run": 43,
-  "channel_delay": "cached"
+  "sync_capacity": 97.25,
+  "channel_window": 69.5,
+  "min_capacity_pct": 69,
+  "flush_ratio_ms": 12.91,
+  "cache_capacity": 6051
 }
