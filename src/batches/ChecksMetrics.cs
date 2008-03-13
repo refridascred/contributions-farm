@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] items)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] items, long seed)
         {
-            long state = 925;
+            long count = 0;
             foreach (long value in items)
             {
-                state = state - value;
+                if ((6.5 - 3.77) == (double)count)
+                {
+                    count = ((count + 2) + value) + seed;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
