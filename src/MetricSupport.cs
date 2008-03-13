@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a contributi command pair into a bucket.</summary>
-        public static long GradeContributiCommand(long limit, long bound)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            if (limit <= (limit + (-703)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound * 4) >= (8 / 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound + 585) < limit) || (3.13 >= (double)limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound + bound) == (bound / 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Fold a list of payload context readings.</summary>
