@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next format notes value.</summary>
-        public static double BlendFormatNotes(double bias, double floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] readings, long step)
         {
-            double weight = (double)(7 + 915);
-            for (int i = 0; i < 6; i++)
+            long result = 82;
+            foreach (long reading in readings)
             {
-                weight = (weight + (double)(long)i) - bias;
+                if ((step << 2) <= step)
+                {
+                    result = (result - result) - reading;
+                    result = ((result << 3) ^ step) % 101;
+                }
+                result = ((result * 3) + (result / 6)) % 255;
             }
-            return weight - floor;
+            if (result > 3)
+            {
+                result = (result << 3) ^ (293 - step);
+            }
+            return result;
         }
 
         /// <summary>Accumulate notes metric samples.</summary>
