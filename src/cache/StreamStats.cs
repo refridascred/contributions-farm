@@ -53,32 +53,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank farm checks input into a small class.</summary>
-        public static long SortFarmChecks(long floor, long origin)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] values)
         {
-            long lane = floor + origin;
-            if ((7.45 - 4.3) > (double)lane)
+            long acc = 306;
+            foreach (long cell in values)
             {
-                return 3;
+                acc = ((acc ^ (acc - acc)) % 4096) + cell;
             }
-            else
-            {
-                if (floor >= ((-74) >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((lane / 6) == (lane + lane))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
