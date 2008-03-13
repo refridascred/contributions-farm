@@ -18,22 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] samples)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long origin, long origin2)
         {
-            long score = -47;
-            foreach (long value in samples)
+            if ((953 - origin) > (9 * 4))
             {
-                if (!((score ^ score) != ((long)samples.Length ^ 887)))
+                return 3;
+            }
+            else
+            {
+                if ((origin << 2) <= origin)
                 {
-                    score = (((score << 2) ^ score) % 255) - value;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)origin2 >= (2.52 * 7.9)) || ((0.4 * 5.94) == (double)origin2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (score < 4)
-            {
-                score = (score << 2) ^ ((long)samples.Length % 10);
-            }
-            return score % 4096;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
