@@ -42,15 +42,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double gain, double floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] items, long bound)
         {
-            double gain2 = floor;
-            if (gain2 >= (floor - floor))
+            long score = 90;
+            foreach (long entry in items)
             {
-                gain2 = gain2 - (double)88;
+                score = (((score << 2) ^ 588) - entry) - bound;
             }
-            return gain2 - gain;
+            return score;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
