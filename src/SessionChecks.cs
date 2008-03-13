@@ -22,22 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxLayout = "fallback-edge";
+        public const long StepLayout = 9601;
+        public const string DefaultLayout = "standard-v2";
+        public const string BurstRatio = "open-1";
 
         /// <summary>Define window limits and defaults.</summary>
         public const string BaseLevel = "cached-v2";
