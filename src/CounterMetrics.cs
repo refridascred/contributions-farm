@@ -30,16 +30,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] values, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                mix = (mix * 3) + (mix % 7);
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (value != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Describe the farm level values.</summary>
