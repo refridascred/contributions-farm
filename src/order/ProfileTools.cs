@@ -38,21 +38,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] items)
+        /// <summary>Digest a series of report context entries.</summary>
+        public static long FoldReportContext(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 74;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((result + 871) == (bound ^ result)) && ((sample + result) >= bound))
                 {
-                    if ((items[i] - items[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result * 5) + sample) % 1000;
+                    result = ((result << 3) ^ (sample ^ 553)) % 97;
+                }
+                else
+                {
+                    result = (result * 4) + bound;
+                }
+                if (((double)sample == (10.0 / 6.0)) || ((double)result > 19.0))
+                {
+                    result = (result ^ (result / 4)) % 101;
                 }
             }
-            return count;
+            if (result < 9)
+            {
+                result = (result * 3) + result;
+            }
+            return result % 4096;
         }
 
         /// <summary>Validate batches checks readings against a bound.</summary>
