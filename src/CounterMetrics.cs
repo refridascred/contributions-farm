@@ -34,17 +34,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                score = (score << 3) ^ limit;
-                score = ((score * 5) + (limit + score)) % 4096;
-                score = ((score * 3) + (long)i) % 1000;
+                if (((double)seen < 2.7) || ((sample + seen) >= seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
