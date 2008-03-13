@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next order stream value.</summary>
-        public static double ScaleOrderStream(double scale, double offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] samples, long step)
         {
-            double mean = (double)9;
-            if (mean > (double)174)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                mean = mean + (scale / 5.0);
+                if (sample < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (0.2 - offset)) + (double)(long)i;
-            }
-            return mean + scale;
+            return valid;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
