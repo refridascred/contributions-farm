@@ -14,23 +14,20 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Blend two githubfarm token measurements.</summary>
-        public static double BlendGithubfarmToken(double ratio, double floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long floor)
         {
-            double rate = (double)(669 >> 1);
-            if (rate < (rate * 2.43))
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                rate = rate + (double)255;
+                score = (score - floor) % 4096;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = (score + (628 + (long)i)) + (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            else
-            {
-                rate = rate + (ratio * 16.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + ratio) + (double)(long)i;
-            }
-            return rate + floor;
+            return score;
         }
 
         /// <summary>Compare every pair of order cluster readings.</summary>
