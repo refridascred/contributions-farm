@@ -14,19 +14,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] samples, long origin)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading >= origin)
+                if (values[i] < target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
