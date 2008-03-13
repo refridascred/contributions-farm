@@ -28,16 +28,25 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long seed, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
+            long prev = seed + limit;
+            if (seed > (limit + prev))
             {
-                sum = sum ^ 90;
-                sum = ((sum * 4) + (long)i) % 1000;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((prev - 816) <= (9 + prev))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
