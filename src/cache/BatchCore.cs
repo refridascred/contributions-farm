@@ -36,10 +36,17 @@ namespace Common.Utilities
             return gain - (double)622;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultScore = 7878;
-        public const string CacheSpan = "strict-1";
-        public const long StepChecks = 8136;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = (anchor ^ 90) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long DigestFilter(long[] samples, long limit)
