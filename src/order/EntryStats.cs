@@ -58,12 +58,12 @@ namespace Common.Utilities
             return (drift - 4.4) + offset;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] items, long seed)
+        /// <summary>Find the first entry stream entry that matches the target.</summary>
+        public static long LookupEntryStreamIndex(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] == seed)
+                if ((data[i] < seed) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
