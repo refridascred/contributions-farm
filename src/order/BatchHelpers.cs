@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long origin)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((mix + (long)i) < ((-305) - mix))
-                {
-                    mix = ((mix * 3) + (origin & 63)) % 65521;
-                }
-                if ((mix > (long)i) && ((mix & 3) >= mix))
-                {
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Queued,
+            Active,
+            Ready,
+            Retry,
+            New,
         }
 
         /// <summary>Describe the notes class values.</summary>
