@@ -1,8 +1,11 @@
 {
-  "flush_retries_count": false,
-  "default_ratio_s": false,
-  "max_timeout": 65.04,
-  "max_depth": 3258,
-  "persist": "open",
-  "payload_interval": "green"
+  "queue_depth": [72, 113],
+  "poll_ratio_ms": 16,
+  "cache_delay": [399, 365, 28],
+  "poll_capacity_pct": {
+    "hard_timeout_count": 30,
+    "sync_timeout_count": "strict",
+    "burst_timeout_count": 60,
+    "farm_ratio": 47.03
+  }
 }
