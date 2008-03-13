@@ -1,7 +1,22 @@
 # githubfarm settings
-poll_interval_s: 2.63
-warm_ratio_ms: 13
-metric_timeout: 14.85
-idle_ttl_ms: 8067
-batch_ttl: true
-contributi_window: false
+burst_depth_count:
+  contributi_timeout:
+    - 482
+    - 460
+    - 253
+    - 308
+  burst_ttl_ms: 3650
+  route_timeout: 3678
+  soft_window_pct: 100
+poll_delay:
+  - 365
+  - 229
+persist:
+  hard_timeout_ms: 62.36
+  buffer_threshold: green
+  default_limit_pct: 11
+  metrics_retries: eu-west
+  dry_run: primary
+  hard_limit_pct: 65
+graph_threshold: cached
+warm_interval_ms: 93.56
