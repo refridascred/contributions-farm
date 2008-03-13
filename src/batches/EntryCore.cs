@@ -15,12 +15,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 4493;
-        public const string WindowSupport = "stable";
-        public const long BatchLevel = 495;
-        public const string RetrySpan = "latest";
-        public const long BaseFactor = 3509;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LocateAccountIndex(long[] series, long floor)
