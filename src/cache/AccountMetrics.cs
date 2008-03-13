@@ -86,18 +86,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] data, long seed)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((seed % 24) < (value >> 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
     }
 }
