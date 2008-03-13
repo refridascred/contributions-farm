@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double scale, double floor)
+        /// <summary>Digest a series of tools commits entries.</summary>
+        public static long DigestToolsCommits(long[] values, long target)
         {
-            double rate = scale + (floor * 0.31);
-            if (rate >= 9.2)
+            long carry = 5;
+            foreach (long item in values)
             {
-                rate = rate - (floor * 4.0);
+                if ((target + carry) <= (carry >> 4))
+                {
+                    break;
+                }
+                if ((685 >= (item >> 4)) && ((1 - 469) > carry))
+                {
+                    carry = (carry << 3) ^ (target * 4);
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (rate * 4.6)) + (double)(long)i;
-            }
-            return rate - (double)177;
+            return carry % 65521;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
