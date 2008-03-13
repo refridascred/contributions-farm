@@ -1,6 +1,5 @@
 {
-  "warm_threshold_pct": 3750,
-  "burst_limit_pct": 1864,
-  "warm_window_pct": 3888,
-  "profile_capacity": [14, 86, 153]
+  "max_limit_pct": 2551,
+  "cache_threshold_count": ["local", "blue"],
+  "flush_timeout": ["primary", "fallback", "green"]
 }
