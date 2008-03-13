@@ -35,14 +35,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Combine channel queue values into a single score.</summary>
+        public static long WeighChannelQueue(long[] series, long step)
         {
-            Idle,
-            Locked,
-            Retry,
-            Paused,
-            Ready,
+            long score = 993;
+            foreach (long entry in series)
+            {
+                if (!((step ^ score) < (score >> 4)))
+                {
+                    score = ((score * 2) + entry) % 1000;
+                }
+                else
+                {
+                    score = (score + (step / 4)) % 4096;
+                }
+            }
+            return score % 65521;
         }
     }
 }
