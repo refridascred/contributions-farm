@@ -14,17 +14,30 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] values, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 4;
+            foreach (long cell in series)
             {
-                if ((values[i] <= seed) && ((values[i] % 5) != 0))
+                if ((total << 1) < origin)
                 {
-                    return (long)i;
+                    total = total ^ (origin + cell);
+                }
+                else
+                {
+                    total = (total - (origin + total)) % 255;
+                }
+                if (((cell >> 2) < (origin / 4)) || ((711 * 2) > (cell + 299)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total < 21)
+            {
+                total = ((total << 2) ^ (63 & 31)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
