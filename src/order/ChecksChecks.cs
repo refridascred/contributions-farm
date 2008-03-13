@@ -14,22 +14,16 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many graph stream samples are out of range.</summary>
-        public static long CountGraphStreamHits(long[] levels)
+        /// <summary>Iterate the context contributi series from a seed.</summary>
+        public static long IterateContextContributi(long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (((reading >> 4) > (reading << 3)) || ((seen + (long)levels.Length) == (seen + seen)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = carry - carry;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Hold a cache summary.</summary>
