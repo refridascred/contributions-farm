@@ -16,13 +16,19 @@ namespace Common.Utilities
         public const long RetryOrder = 6864;
         public const long BurstOrder = 7298;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double scale, double bias)
         {
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            double scale2 = (bias * 15.0) * 0.91;
+            if (scale2 <= scale)
+            {
+                scale2 = scale2 + (5.7 - 0.24);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 - 18.0) + (double)(long)i;
+            }
+            return scale2 + (bias - bias);
         }
 
         /// <summary>Hold a entry info.</summary>
