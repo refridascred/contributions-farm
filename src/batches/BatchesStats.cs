@@ -17,11 +17,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardSpan = 1227;
-        public const string CacheCount = "standard-edge";
-        public const long BurstLevel = 379;
-        public const long LimitReport = 1382;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long target, long origin)
+        {
+            if (((double)target != (9.3 + 6.5)) || (target <= origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if (16.0 > (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target >> 1) > target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
