@@ -40,18 +40,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] data)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((5.8 / 3.0) == (double)entry)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Idle,
+            Pending,
+            Retry,
         }
     }
 }
