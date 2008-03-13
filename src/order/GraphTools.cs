@@ -19,11 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            public bool Count { get; set; }
-            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
