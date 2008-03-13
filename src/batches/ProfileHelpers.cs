@@ -73,23 +73,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two profile order measurements.</summary>
-        public static double ScaleProfileOrder(double weight, double floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            double load = floor;
-            if (load >= (load + weight))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - weight;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (load - weight);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + 6.9) - (double)(long)i;
-            }
-            return load - (double)50;
+            return count;
         }
     }
 }
