@@ -20,20 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 5833;
+        public const long BaseGraph = 7423;
+        public const long LimitGraph = 5435;
+        public const double LimitCount = 84.97;
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long OverlapFormatCount(long[] values)
