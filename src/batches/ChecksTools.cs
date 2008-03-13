@@ -20,32 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long origin, long origin2)
-        {
-            if ((953 - origin) > (9 * 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin << 2) <= origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)origin2 >= (2.52 * 7.9)) || ((0.4 * 5.94) == (double)origin2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 1322;
+        public const double SoftDepth = 13.27;
+        public const long BurstCount = 3710;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelOutliers(long[] readings, long target)
