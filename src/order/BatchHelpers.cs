@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Queued,
-            Active,
-            Ready,
-            Retry,
-            New,
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the notes class values.</summary>
