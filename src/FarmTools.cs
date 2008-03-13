@@ -31,19 +31,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate cache entry readings against a bound.</summary>
-        public static bool ValidateCacheEntryBounds(long[] items, long target)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long target, long bound)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            if (!((0 ^ target) != (target / 9)))
             {
-                if (reading <= target)
+                return 7;
+            }
+            else
+            {
+                if (((double)target < (19.0 * 3.61)) || ((3.2 - 4.0) < (double)bound))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((target & 31) <= (bound ^ 499))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound ^ 23) != (bound / 6))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
