@@ -23,14 +23,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] levels)
         {
-            Paused,
-            Ready,
-            Failed,
-            Synced,
-            Draft,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen - seen) >= seen)
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
