@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the tools counter series from a seed.</summary>
-        public static long IterateToolsCounter(long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] levels)
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                acc = (acc ^ limit) % 1000;
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (!(((8.3 * 3.99) == (double)entry) || ((7.01 / 5.0) < (double)entry)))
+                {
+                    count = count + 2;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Count the entry already entries that pass the check.</summary>
