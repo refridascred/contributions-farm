@@ -52,12 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] values, long seed)
         {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((count ^ count) <= (seed + 1))
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a record reading.</summary>
