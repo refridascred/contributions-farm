@@ -1,7 +1,17 @@
 # entry settings
-dry_run:
-  - 81
-  - 53
-sync_delay: 99
-max_ttl_pct: true
-batch_timeout: true
+already_timeout:
+  - 257
+  - 183
+  - 239
+  - 375
+already_window:
+  - open
+  - eu-west
+  - legacy
+persist: eu-west
+cluster_window:
+  - 177
+  - 113
+  - 188
+graph_interval: standard
+base_ttl: standard
