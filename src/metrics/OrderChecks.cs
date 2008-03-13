@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double weight, double offset)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            double gain = offset;
-            return (gain + 4.2) + weight;
+            Dropped,
+            Queued,
+            Failed,
         }
 
         /// <summary>Hold a metric record.</summary>
