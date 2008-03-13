@@ -1,12 +1,14 @@
 # Command notes
 
-When a format fails, the account handler retries a few times before giving up.
-Use support settings to tune how often account data is refreshed.
-When a route fails, the session handler retries a few times before giving up.
+Keep payload and record names short and lowercase.
+Keep commits and stats names short and lowercase.
+The buffer report groups every report by notes.
+
+The layout helpers are pure functions, so they are safe to call from any thread.
+Keep report and cache names short and lowercase.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Log every checks change
-- Validate batches input early
-- Keep githubfarm values small
+- Document new tools fields
+- Prefer counter defaults
+- Log every stream change
