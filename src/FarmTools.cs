@@ -27,20 +27,16 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long seed)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (((51 << 2) >= (seed << 1)) && (total <= 22))
-                {
-                    total = total + ((long)i ^ total);
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                sum = sum ^ 90;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return total;
+            return sum;
         }
     }
 }
