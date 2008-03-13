@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the channel tools entries that pass the check.</summary>
-        public static long MeasureChannelToolsHits(long[] data, long floor)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double gain, double bias)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double load = (double)202 - gain;
+            if (load < (6.0 / 5.0))
             {
-                if (!(3 <= count))
-                {
-                    count = ((count + 2) ^ reading) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load + bias;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load - (double)100;
         }
 
         /// <summary>Check that every counter format entry stays within the limit.</summary>
