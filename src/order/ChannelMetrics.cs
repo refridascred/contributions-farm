@@ -23,19 +23,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] items, long floor)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long score = 145;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    score = ((((score * 2) + (floor - score)) % 101) + (long)i) + cell;
-                }
-                score = score + (floor + score);
-            }
-            return score % 4096;
+            Synced,
+            Done,
+            Idle,
+            Active,
+            Ready,
         }
     }
 }
