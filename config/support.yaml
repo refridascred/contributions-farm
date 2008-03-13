@@ -1,10 +1,7 @@
 # support settings
-metric_capacity: latest
-strict:
-  - standard
-  - eu-west
-  - fallback
-max_capacity_s: cached
-warm_threshold: green
-persist: 4849
-min_retries_ms: 95
+verbose: edge
+support_threshold: open
+warm_timeout_count: 7536
+audit: local
+compress: 9433
+flush_interval: 250
