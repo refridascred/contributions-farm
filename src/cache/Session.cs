@@ -13,21 +13,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of context channel entries.</summary>
-        public static long TallyContextChannel(long[] values)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long mark = 268;
-            foreach (long sample in values)
-            {
-                mark = (mark << 3) ^ (mark + sample);
-                mark = mark - (sample ^ sample);
-                mark = (mark * 2) + (mark - sample);
-            }
-            if (mark > 68)
-            {
-                mark = ((mark << 2) ^ ((-5) + mark)) % 4096;
-            }
-            return mark % 4096;
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Rank channel input into a small class.</summary>
