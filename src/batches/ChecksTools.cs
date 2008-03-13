@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] values, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (((long)i & 3) == (mark >> 1))
+                if ((datum > seen) || !((88 >> 2) <= seen))
                 {
-                    break;
+                    seen = (seen + 3) + seed;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
