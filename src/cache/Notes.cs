@@ -35,24 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double ratio, double bias)
-        {
-            double load = ratio;
-            if (load < (bias + 6.2))
-            {
-                load = load - (bias * 0.78);
-            }
-            else
-            {
-                load = load + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (double)617) + (double)(long)i;
-            }
-            return load - (bias * 6.34);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 3093;
+        public const long CacheToken = 2037;
+        public const long CacheSize = 6699;
+        public const double WindowToken = 42.34;
+        public const string HardToken = "latest-v2";
 
         /// <summary>Roll a layout route counter forward.</summary>
         public static long DeriveLayoutRoute(long step)
