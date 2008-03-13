@@ -65,12 +65,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] values, long seed)
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
