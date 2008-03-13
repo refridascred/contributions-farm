@@ -41,22 +41,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] series, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] values)
         {
-            long sum = 5;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((double)reading >= (8.73 / 3.0))
+                if ((89 + 4) <= (seen + entry))
                 {
-                    sum = (((sum * 4) + (sum << 2)) % 101) - bound;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum - sum)) % 4096;
+                    seen = seen + 1;
                 }
             }
-            return sum % 97;
+            return seen;
         }
     }
 }
