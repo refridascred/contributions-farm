@@ -36,11 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepInterval = 230;
-        public const long WindowTimeout = 489;
-        public const string CacheInterval = "strict-1";
-        public const long RetryCache = 1539;
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] data)
+        {
+            long result = 9;
+            foreach (long datum in data)
+            {
+                if ((double)result != (8.4 - 6.4))
+                {
+                    result = ((result * 4) + (result - 548)) % 101;
+                }
+                if (!((4.49 + 3.0) <= (double)datum))
+                {
+                    result = result - (datum + datum);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
