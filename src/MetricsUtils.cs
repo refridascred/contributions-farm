@@ -47,16 +47,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = (mix ^ (mix + (long)i)) % 255;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
