@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] levels, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 2;
+            foreach (long value in samples)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
+                if ((floor <= 58) || ((0.7 - 15.0) != (double)result))
                 {
-                    return (long)i;
+                    result = ((result + floor) % 4096) - value;
                 }
             }
-            return -1;
+            if (result < (-64))
+            {
+                result = (result * 3) + (result + floor);
+            }
+            return result;
         }
 
         /// <summary>Describe the channel mode values.</summary>
