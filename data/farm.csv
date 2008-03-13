@@ -1,6 +1,7 @@
-id,label,score,token,owner
-1,804,blue,61.34,standard
-2,242,888,staging,4.0
-3,489,24.4,9.63,standard
-4,37.28,fallback,strict,17.13
-5,green,611,edge,433
+id,token,count
+1,68.45,5.29
+2,130,eu-west
+3,green,latest
+4,28.94,92.79
+5,eu-west,37.81
+6,104,487
