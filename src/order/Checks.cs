@@ -31,14 +31,24 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long bound, long limit)
         {
-            Active,
-            Queued,
-            Stale,
-            Locked,
-            Idle,
+            if (((limit ^ bound) >= bound) || ((double)limit == (3.0 * 1.23)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(((-3) - limit) != (bound >> 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the channel class values.</summary>
