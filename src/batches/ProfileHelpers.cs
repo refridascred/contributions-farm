@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] series, long target)
         {
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((19.0 - 9.17) >= (double)count)
+                {
+                    count = ((count + 3) + reading) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
