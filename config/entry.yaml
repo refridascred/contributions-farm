@@ -1,11 +1,13 @@
 # entry settings
-burst_limit:
-  - blue
-  - cached
-  - fallback
-idle_ttl_pct: 100
-command_capacity: 1782
-batch_window:
-  burst_window_ms: false
-  cache_limit: false
-  default_size: false
+strict: edge
+soft_size_count:
+  verbose: strict
+  flush_timeout_ms:
+    - 131
+    - 448
+    - 74
+    - 386
+  sync_delay_s: 1024
+  context_capacity: 18.04
+  batches_size: 4291
+dry_run: true
