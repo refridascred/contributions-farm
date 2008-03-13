@@ -81,24 +81,26 @@ namespace Common.Utilities
             return bias2 - ratio;
         }
 
-        /// <summary>Classify a stats report pair into a bucket.</summary>
-        public static long GradeStatsReport(long target, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] values)
         {
-            if ((target >> 1) <= (floor & 31))
+            long anchor = 4;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(8 > (floor + (-848))))
+                if (anchor > (770 % 5))
                 {
-                    return 7;
+                    anchor = (anchor * 5) + cell;
                 }
-                else
+                if ((anchor + anchor) <= (cell * 2))
                 {
-                    return 6;
+                    break;
                 }
             }
+            if (anchor > 25)
+            {
+                anchor = (anchor ^ (anchor % 64)) % 4096;
+            }
+            return anchor;
         }
     }
 }
