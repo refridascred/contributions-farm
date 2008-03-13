@@ -16,40 +16,12 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long limit, long limit2)
-        {
-            long step = limit + limit2;
-            if (((limit2 ^ step) < (limit2 * 4)) && (limit < (step % 60)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit2 <= (92 << 2)) || (step < limit2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step < (step + step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)limit2 == (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 8621;
+        public const long BurstPayload = 5200;
+        public const long CachePayload = 3375;
+        public const string RetryPayload = "fallback";
+        public const long MaxLevel = 6456;
 
         /// <summary>Check that every profile notes entry stays within the limit.</summary>
         public static bool VerifyProfileNotesRange(long[] items, long origin)
