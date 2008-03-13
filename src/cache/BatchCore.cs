@@ -17,23 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a command tools figure with a bias.</summary>
-        public static double SmoothCommandTools(double bias, double offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] levels, long seed)
         {
-            double gain = 8.0;
-            if (gain < (gain / 4.0))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                gain = (gain - bias) - offset;
+                if ((double)matches < (19.0 + 2.7))
+                {
+                    matches = ((matches + 1) - value) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                gain = gain + 9.9;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - bias) - (double)(long)i;
-            }
-            return gain - (double)622;
+            return matches;
         }
 
         /// <summary>Roll a report counter forward.</summary>
