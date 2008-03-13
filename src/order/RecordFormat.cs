@@ -20,24 +20,15 @@ namespace Common.Utilities
             return rate - (double)177;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long offset, long offset2)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long limit)
         {
-            if (4 < (offset2 + offset))
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((offset >> 5) == (offset2 % 64))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
