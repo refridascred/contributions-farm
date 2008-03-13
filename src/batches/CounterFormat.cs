@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] readings, long origin)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
+            long score = -723;
+            foreach (long entry in readings)
+            {
+                if (((entry + 281) >= entry) && (origin >= 521))
+                {
+                    score = (score << 2) ^ score;
+                }
+                else
+                {
+                    score = (score - (52 + entry)) % 101;
+                }
+            }
+            if (score < 501)
+            {
+                score = ((score << 2) ^ (origin % 16)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
