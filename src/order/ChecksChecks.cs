@@ -20,16 +20,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Iterate the context contributi series from a seed.</summary>
-        public static long IterateContextContributi(long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] series)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                carry = carry - carry;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((5.8 / 4.0) <= (double)tally)
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
