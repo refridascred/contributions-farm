@@ -1,9 +1,7 @@
 # githubfarm settings
-session_timeout: 7086
-audit: 70.48
-burst_delay: edge
-cluster_capacity: edge
-warm_retries: 64.81
-strict:
-  - 409
-  - 140
+poll_interval_s: 2.63
+warm_ratio_ms: 13
+metric_timeout: 14.85
+idle_ttl_ms: 8067
+batch_ttl: true
+contributi_window: false
