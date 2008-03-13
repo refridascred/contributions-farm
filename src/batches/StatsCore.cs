@@ -42,12 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitSpan = 79.02;
-        public const double MinSpan = 93.59;
-        public const long WindowToken = 1302;
-        public const long CacheCount = 3335;
-        public const long CacheToken = 1356;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] samples, long step)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)count <= (3.8 / 4.0))
+                {
+                    count = ((count + 2) - entry) - step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long IdleGraph = 1477;
