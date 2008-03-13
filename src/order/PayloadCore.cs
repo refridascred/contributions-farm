@@ -24,14 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long seed)
         {
-            Done,
-            Pending,
-            Stale,
-            Queued,
-            Draft,
+            long anchor = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a checks stats.</summary>
