@@ -28,15 +28,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate metric queue samples.</summary>
-        public static long FoldMetricQueue(long[] items)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long score = -9;
-            foreach (long reading in items)
-            {
-                score = ((score ^ 903) % 4096) ^ reading;
-            }
-            return score;
+            public bool Owner { get; set; }
+            public double Count { get; set; }
         }
     }
 }
