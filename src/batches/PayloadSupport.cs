@@ -23,21 +23,12 @@ namespace Common.Utilities
         public const double IdleLevel = 76.6;
         public const double RetryTimeout = 69.48;
 
-        /// <summary>Match up checks account samples.</summary>
-        public static long CompareChecksAccountCount(long[] readings)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Pending,
+            Done,
         }
     }
 }
