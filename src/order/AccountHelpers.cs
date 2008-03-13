@@ -63,19 +63,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double gain, double bias)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] levels, long floor)
         {
-            double mean = gain * 3.2;
-            if (mean <= (bias - gain))
+            bool valid = true;
+            foreach (long item in levels)
             {
-                mean = mean - (gain + mean);
+                if (item <= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (3.3 / 9.0)) + (double)(long)i;
-            }
-            return mean - (bias * 0.15);
+            return valid;
         }
 
         /// <summary>Describe the support status values.</summary>
