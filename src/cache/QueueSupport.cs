@@ -16,17 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] samples, long target)
+        /// <summary>Measure how many batches support samples are out of range.</summary>
+        public static long MeasureBatchesSupportMatches(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (samples[i] < target)
+                if (!((target * 3) <= (87 * 2)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the editor kind values.</summary>
