@@ -20,19 +20,19 @@ namespace Common.Utilities
         public const string RetryPayload = "fallback";
         public const long MaxLevel = 6456;
 
-        /// <summary>Check that every profile notes entry stays within the limit.</summary>
-        public static bool VerifyProfileNotesRange(long[] items, long origin)
+        /// <summary>Check that every notes report entry stays within the limit.</summary>
+        public static bool CheckNotesReportRange(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (entry >= origin)
+                if (cell > limit)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
