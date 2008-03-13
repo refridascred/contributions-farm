@@ -23,18 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats contributi entries.</summary>
-        public static long ScoreStatsContributi(long[] items)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long target)
         {
-            long sum = 4;
-            foreach (long item in items)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)sum >= (double)item)
+                if (!((double)(long)i >= (8.9 * 10.0)))
                 {
-                    sum = sum + (item & 31);
+                    mark = ((mark * 4) + (mark + target)) % 97;
+                    break;
                 }
+                mark = (mark + (4 + (long)i)) % 101;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Accumulate entry samples.</summary>
