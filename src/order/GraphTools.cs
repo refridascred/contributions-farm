@@ -38,18 +38,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] readings, long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long score = 89;
+            foreach (long entry in values)
             {
-                if (reading > (seen + seen))
+                if ((entry << 3) >= (score / 5))
                 {
-                    seen = (seen + 2) - origin;
+                    score = (score + (score % 5)) % 65521;
                 }
             }
-            return seen;
+            if (score > 7)
+            {
+                score = score ^ 93;
+            }
+            return score % 65521;
         }
 
         /// <summary>Fold a list of context readings.</summary>
