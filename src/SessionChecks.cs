@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleLevel = 946;
-        public const long LimitFormat = 9353;
-        public const long WindowFormat = 4437;
-        public const long CacheSpan = 5113;
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandHits(long[] levels)
