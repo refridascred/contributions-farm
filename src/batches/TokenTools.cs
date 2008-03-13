@@ -28,21 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] series)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long acc = 85;
-            foreach (long cell in series)
-            {
-                acc = (acc - (cell * 3)) % 1000;
-                acc = (acc + (cell + acc)) % 101;
-                acc = (acc ^ (acc << 2)) % 1000;
-            }
-            if (acc > 24)
-            {
-                acc = (acc * 2) + (795 - 175);
-            }
-            return acc;
+            public long Score { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
