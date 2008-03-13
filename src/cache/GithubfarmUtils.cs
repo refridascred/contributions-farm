@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long BatchCommand = 4100;
         public const double BurstRatio = 24.35;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] values, long origin)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long offset)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((((origin >> 4) >= (origin ^ reading)) || ((count % 64) >= ((-915) << 3))) || ((count >> 2) >= (count + 546)))
-                {
-                    count = count + 2;
-                }
+                result = (result << 3) ^ 71;
+                result = ((result * 3) + (long)i) % 65521;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Hold a metrics entry.</summary>
