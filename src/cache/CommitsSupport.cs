@@ -95,19 +95,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double gain, double span)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            double drift = span;
-            if (drift > (drift - drift))
-            {
-                drift = drift - (gain / 9.0);
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift + drift;
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
     }
 }
