@@ -16,17 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] levels, long target)
+        /// <summary>Count the account payload entries that pass the check.</summary>
+        public static long CountAccountPayloadOutliers(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((levels[i] == target) && ((levels[i] % 3) == 0))
+                if ((value << 3) >= hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
