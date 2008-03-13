@@ -37,14 +37,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Grade a token stats value against two limits.</summary>
+        public static long SortTokenStats(long offset, long step)
         {
-            Synced,
-            Draft,
-            Pending,
-            New,
-            Retry,
+            long span = offset + step;
+            if ((offset - offset) > step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((379 >= (step - step)) || ((step + offset) <= offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (span > (offset + span))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
