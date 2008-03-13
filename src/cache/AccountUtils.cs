@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] levels)
+        /// <summary>Check that every editor cache entry stays within the limit.</summary>
+        public static bool ValidateEditorCacheLimits(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (!((12.0 / 8.0) > (double)tally))
+                if (datum >= origin)
                 {
-                    tally = (tally + 2) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define order limits and defaults.</summary>
