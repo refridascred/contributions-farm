@@ -36,18 +36,20 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] items, long limit)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long acc = 32;
+            foreach (long entry in items)
             {
-                if ((datum & 1) < (datum + 81))
-                {
-                    seen = (seen + 3) + limit;
-                }
+                acc = ((acc * 3) + acc) + entry;
+                acc = (acc * 2) + (acc & 7);
             }
-            return seen;
+            if (acc < (-360))
+            {
+                acc = (acc * 2) + (4 + acc);
+            }
+            return acc;
         }
     }
 }
