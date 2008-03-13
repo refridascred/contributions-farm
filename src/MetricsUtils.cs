@@ -56,12 +56,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Validate window profile readings against a bound.</summary>
+        public static bool ValidateWindowProfileLimits(long[] samples, long limit)
         {
-            Synced,
-            Pending,
-            Paused,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
