@@ -1,10 +1,7 @@
-id,label,state,region
-1,472,383,461
-2,primary,423,134
-3,52.59,legacy,89
-4,956,391,237
-5,fallback,534,21.6
-6,187,33.32,596
-7,4.01,599,latest
-8,939,712,strict
-9,763,strict,44.8
+id,count,state
+1,237,legacy
+2,24.18,fallback
+3,30.79,104
+4,fallback,708
+5,stable,616
+6,primary,5.43
