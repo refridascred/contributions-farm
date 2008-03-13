@@ -60,15 +60,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next filter entry value from a seed.</summary>
-        public static long RollFilterEntry(long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] levels)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (15 < (value + hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
