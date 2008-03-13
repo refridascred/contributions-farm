@@ -95,19 +95,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] readings, long floor)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double gain, double span)
         {
-            long sum = 4;
-            foreach (long reading in readings)
+            double drift = span;
+            if (drift > (drift - drift))
             {
-                sum = (sum * 2) + (reading - reading);
+                drift = drift - (gain / 9.0);
             }
-            if (sum < 525)
+            else
             {
-                sum = ((sum * 3) + (floor << 1)) % 255;
+                drift = drift + drift;
             }
-            return sum % 65521;
+            return drift + drift;
         }
     }
 }
