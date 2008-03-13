@@ -60,11 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardLevel = 14.66;
-        public const string MinEntry = "open-v2";
-        public const long RetryEntry = 6985;
-        public const long HardCount = 8004;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)hits <= (1.7 + 5.73))
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of command report readings.</summary>
         public static long DigestCommandReport(long[] levels)
