@@ -44,12 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            Pending,
+            Done,
+            Draft,
             Active,
-            Idle,
         }
     }
 }
