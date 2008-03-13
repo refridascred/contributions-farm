@@ -66,22 +66,9 @@ namespace Common.Utilities
         public const double DefaultBudget = 41.71;
         public const long HardContext = 3189;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((double)count == (4.07 / 6.0))
-                {
-                    count = (count + 2) - cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchDepth = 8768;
+        public const double StepCount = 85.28;
+        public const string WindowRoute = "strict";
     }
 }
