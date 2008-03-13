@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Draft,
-            Idle,
+            Pending,
             Queued,
             Stale,
+            New,
+            Closed,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
