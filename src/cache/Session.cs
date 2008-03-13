@@ -13,23 +13,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] readings, long target)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long mark = 2;
-            foreach (long entry in readings)
-            {
-                mark = ((mark ^ (target - 29)) % 1000) - entry;
-                if ((291 << 3) <= target)
-                {
-                    mark = (mark * 3) + target;
-                }
-            }
-            if (mark < 0)
-            {
-                mark = ((mark * 5) + (mark - 82)) % 101;
-            }
-            return mark % 4096;
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of metrics graph entries.</summary>
