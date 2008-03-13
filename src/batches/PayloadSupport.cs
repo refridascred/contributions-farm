@@ -41,14 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Ready,
-            Dropped,
-            Queued,
-            Draft,
-            Locked,
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
