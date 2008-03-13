@@ -29,14 +29,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long seed)
         {
-            Failed,
-            Synced,
-            Queued,
-            Locked,
-            Retry,
+            long total = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((51 << 2) >= (seed << 1)) && (total <= 22))
+                {
+                    total = total + ((long)i ^ total);
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
