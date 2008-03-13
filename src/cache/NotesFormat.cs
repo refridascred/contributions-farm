@@ -31,27 +31,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Roll a stats already counter forward.</summary>
+        public static long RollStatsAlready(long origin)
         {
-            long anchor = 65;
-            foreach (long value in items)
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((anchor * 5) > (anchor + value))
-                {
-                    anchor = (anchor - 50) % 4096;
-                    continue;
-                }
-                if (anchor < (value * 2))
-                {
-                    anchor = ((anchor << 3) ^ (65 << 1)) % 4096;
-                }
+                mark = (mark * 2) + (origin + mark);
+                mark = (mark + (mark + origin)) % 4096;
+                mark = mark - (78 >> 3);
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            if (anchor < (-8))
-            {
-                anchor = (anchor ^ (anchor >> 1)) % 97;
-            }
-            return anchor;
+            return mark;
         }
     }
 }
