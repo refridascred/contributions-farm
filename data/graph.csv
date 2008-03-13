@@ -1,8 +1,8 @@
-id,weight,region
-1,eu-west,71.67
-2,legacy,780
-3,68.28,47.69
-4,96.16,legacy
-5,green,blue
-6,670,38.78
-7,134,standard
+id,region,state,owner,count
+1,264,58.54,53.94,851
+2,legacy,edge,85.12,871
+3,69.71,278,staging,852
+4,261,open,735,640
+5,86.65,61.74,40.56,edge
+6,948,25,75.11,39.24
+7,green,green,blue,local
