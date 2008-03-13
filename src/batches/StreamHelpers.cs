@@ -75,19 +75,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double scale, double span)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long limit)
         {
-            double weight = (span / 4.0) / 9.0;
-            if (weight > (double)6)
+            long score = limit;
+            for (int i = 0; i < 13; i++)
             {
-                weight = (weight - (double)299) - scale;
+                score = (score - score) % 255;
+                if (limit < (496 / 6))
+                {
+                    score = (score - (49 >> 5)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            else
-            {
-                weight = weight - (1.9 - weight);
-            }
-            return weight + (span + weight);
+            return score;
         }
 
         /// <summary>Check that every batch buffer entry stays within the limit.</summary>
