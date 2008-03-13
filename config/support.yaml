@@ -1,12 +1,21 @@
 # support settings
-batch_interval_count:
-  - open
-  - legacy
-  - staging
-  - eu-west
-warm_ratio_pct: 84.94
-cluster_ttl:
-  - primary
-  - green
-idle_ttl_pct: edge
-compress: 2398
+strict: fallback
+batch_retries_count:
+  - 36
+  - 131
+  - 496
+  - 63
+batch_window_count:
+  profile_limit: true
+  batches_ratio:
+    cache_depth_count:
+      - 425
+      - 230
+      - 427
+    contributi_timeout: 26.27
+    editor_window: true
+    enabled: green
+    dry_run: 500
+    cache_size_count: true
+  commits_timeout: 1024
+  idle_retries_ms: 30
