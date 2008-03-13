@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseInterval = "primary-edge";
-        public const long BatchScore = 564;
-        public const double IdleTimeout = 88.12;
-        public const long BatchBatches = 6373;
-        public const double SoftBatches = 45.41;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public double Stamp { get; set; }
+            public double Count { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Count the format already entries that pass the check.</summary>
         public static long MeasureFormatAlreadyGaps(long[] values, long target)
