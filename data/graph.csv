@@ -1,8 +1,6 @@
-id,owner,rank
-1,656,645
-2,683,879
-3,91.28,83.62
-4,537,local
-5,106,747
-6,191,55.4
-7,green,legacy
+id,region,label,count
+1,525,716,9.9
+2,legacy,451,41.24
+3,stable,574,45.4
+4,7.29,standard,fallback
+5,456,cached,805
