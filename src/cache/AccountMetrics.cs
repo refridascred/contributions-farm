@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const long StepCount = 3392;
         public const string MinGraph = "fallback-1";
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((double)target == (7.96 / 5.0))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinBudget = 5494;
+        public const long BurstBudget = 6476;
+        public const long BatchRoute = 308;
+        public const long RetryBudget = 9314;
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long IterateAlready(long origin)
