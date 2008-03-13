@@ -20,20 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] samples, long floor)
-        {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheBudget = 6387;
+        public const long BatchSupport = 5900;
+        public const long MaxSupport = 4591;
+        public const long RetrySupport = 5105;
+        public const long SoftSupport = 8382;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long SeriesRecord(long step)
