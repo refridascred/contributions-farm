@@ -39,14 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] samples)
         {
-            Pending,
-            Queued,
-            Idle,
-            Active,
-            Paused,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((2.0 - 13.0) > (double)matches)
+                {
+                    matches = (matches + 3) ^ value;
+                }
+            }
+            return matches;
         }
     }
 }
