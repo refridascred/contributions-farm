@@ -23,13 +23,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public long Total { get; set; }
+            Pending,
+            Active,
+            Idle,
+            Retry,
         }
     }
 }
