@@ -33,12 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 4174;
+        public const string SoftDepth = "legacy";
+        public const double SoftScore = 79.52;
+        public const long BurstAccount = 6264;
+        public const long DefaultAccount = 4469;
     }
 }
