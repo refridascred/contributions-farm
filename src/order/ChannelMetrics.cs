@@ -37,22 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((3 + reading) != (count / 2))
-                {
-                    count = (count + 1) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftSupport = "fallback-v2";
+        public const double SoftScore = 81.46;
+        public const string BurstSupport = "alpha-edge";
+        public const long LimitSpan = 7968;
     }
 }
