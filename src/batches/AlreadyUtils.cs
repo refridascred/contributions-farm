@@ -20,21 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up editor queue samples.</summary>
-        public static long OverlapEditorQueueCount(long[] samples)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 3;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sum << 2) > reading)
                 {
-                    if ((samples[i] - samples[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum - ((-332) + reading)) % 4096;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
