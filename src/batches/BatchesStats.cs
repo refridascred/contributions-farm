@@ -26,20 +26,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 4) + (offset / 3)) % 1000;
-                if (37 > (offset ^ 13))
-                {
-                    state = ((state * 5) + ((long)i - offset)) % 101;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Active,
+            Retry,
+            Synced,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a stream options.</summary>
