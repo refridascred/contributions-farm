@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up stats context samples.</summary>
-        public static long MatchStatsContextCount(long[] readings)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample != bound)
                 {
-                    if ((readings[i] - readings[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
