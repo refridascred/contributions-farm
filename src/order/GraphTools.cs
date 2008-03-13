@@ -23,16 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the schema already series from a seed.</summary>
-        public static long StepSchemaAlready(long target)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] levels, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                state = (state + (5 + 4)) % 65521;
-                state = ((state * 5) + (long)i) % 65521;
+                if (cell > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
