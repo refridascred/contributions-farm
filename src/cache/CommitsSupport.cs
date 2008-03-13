@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long floor, long bound)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long floor, long seed)
         {
-            if (65 > (bound / 4))
+            long prev = floor + seed;
+            if (!(seed >= (floor << 3)))
             {
                 return 4;
             }
             else
             {
-                if ((bound + floor) <= (27 - bound))
+                if ((seed >> 5) >= (seed & 3))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((bound << 1) > ((-64) ^ bound))
+                    if ((561 - 21) >= (floor << 2))
                     {
                         return 8;
                     }
                     else
                     {
-                        return 3;
+                        if (10 > (prev / 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
