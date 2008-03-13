@@ -51,21 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] readings)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
     }
 }
