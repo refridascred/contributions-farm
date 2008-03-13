@@ -1,11 +1,7 @@
 # support settings
-burst_ratio: staging
-hard_depth:
-  - 499
-  - 160
-  - 89
-poll_size:
-  - legacy
-  - latest
+soft_ratio_ms: edge
+burst_limit_pct:
+  - local
   - edge
-warm_depth_pct: 16.09
+batch_delay_s: false
+max_window_pct: edge
