@@ -37,11 +37,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSpan = 5148;
-        public const string BurstSchema = "strict-edge";
-        public const long SoftSchema = 7296;
-        public const string MinSchema = "stable-1";
+        /// <summary>Iterate the filter already series from a seed.</summary>
+        public static long StepFilterAlready(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = mix ^ (mix % 24);
+                mix = (mix + (target / 2)) % 65521;
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of stream entry entries.</summary>
         public static long TallyStreamEntry(long[] levels, long floor)
