@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinDepth = 7457;
+        public const long BaseBudget = 826;
+        public const string DefaultLevel = "staging-v2";
+        public const double BaseLevel = 56.76;
+        public const long LimitStats = 7769;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long BucketBuffer(long step, long seed)
