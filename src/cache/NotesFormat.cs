@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account layout readings against a rule.</summary>
-        public static long TallyAccountLayoutGaps(long[] items, long bound)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((bound <= ((-565) % 2)) && (bound < seen)) && (reading > (-56)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Draft,
+            Done,
+            Retry,
         }
 
         /// <summary>Roll a stats already counter forward.</summary>
