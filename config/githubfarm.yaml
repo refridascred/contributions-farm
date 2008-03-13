@@ -1,10 +1,12 @@
 # githubfarm settings
-idle_timeout_count: strict
-max_window:
-  soft_delay_pct: 250
-  account_interval: 57
-  sync_threshold_count: strict
-idle_window: 74
-sync_limit_pct: strict
-soft_limit_count: 58.26
-min_threshold_count: edge
+max_limit:
+  - legacy
+  - eu-west
+  - staging
+  - green
+dry_run: latest
+min_depth_count:
+  - local
+  - eu-west
+  - standard
+  - blue
