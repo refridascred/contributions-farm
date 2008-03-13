@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] readings)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (double)(4 - 7);
+            if (bias > (offset / 8.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias - offset;
             }
-            return hits;
+            else
+            {
+                bias = bias - (bias * 19.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (2.0 / 6.0)) + (double)(long)i;
+            }
+            return bias - (rate * 1.1);
         }
 
         /// <summary>Hold a graph options.</summary>
