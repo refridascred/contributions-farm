@@ -18,12 +18,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] values)
         {
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
+            long carry = 64;
+            foreach (long item in values)
+            {
+                if (!(item <= (item & 127)))
+                {
+                    carry = carry - (carry - carry);
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    carry = ((carry * 5) + (item * 4)) ^ (long)i;
+                }
+                if ((double)item <= (8.77 + 8.77))
+                {
+                    carry = ((carry * 5) + (carry % 10)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
