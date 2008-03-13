@@ -38,15 +38,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Ready,
-            Active,
-            Stale,
-            Closed,
-            New,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "strict-v2";
+        public const long MinRoute = 7715;
+        public const long RetryFactor = 3086;
+        public const double BaseScore = 3.47;
+        public const long SoftRoute = 2985;
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long IterateGithubfarm(long bound)
