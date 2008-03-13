@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=363
-log "limit is ${CHANNEL_LIMIT}"
+for item in fallback local strict; do
+    log "checking ${item}"
+done
 
-mode="${1:-edge}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=133
+log "limit is ${CHANNEL_LIMIT}"
