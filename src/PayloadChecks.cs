@@ -43,21 +43,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a cache already counter forward.</summary>
-        public static long SeriesCacheAlready(long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] series, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
+            long state = 561;
+            foreach (long value in series)
             {
-                if (!((mix % 12) >= (origin << 1)))
-                {
-                    long gap2 = (origin + origin) & 255;
-                    mix = ((mix * 4) + (gap2 & 3)) % 255;
-                }
-                mix = (mix - (mix ^ origin)) % 1000;
-                mix = ((mix * 5) + (long)i) % 65521;
+                state = ((state - state) + value) + step;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Adjust a filter reading.</summary>
