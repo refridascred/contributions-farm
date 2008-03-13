@@ -72,21 +72,29 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 8;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (39 > (entry >> 4))
                 {
-                    if ((samples[i] - samples[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix ^ (mix - entry)) % 65521;
+                    continue;
                 }
+                else
+                {
+                    mix = (mix ^ (step - 674)) % 65521;
+                    mix = ((mix * 2) + step) % 101;
+                }
+                mix = ((mix * 4) + mix) % 65521;
             }
-            return matches;
+            if (mix > 0)
+            {
+                mix = (mix + step) % 101;
+            }
+            return mix % 1000;
         }
     }
 }
