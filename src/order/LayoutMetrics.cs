@@ -28,17 +28,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 5324;
+        public const long SoftDepth = 4195;
+        public const long BatchLevel = 532;
+        public const string CacheQueue = "alpha-v2";
     }
 }
