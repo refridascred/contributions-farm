@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long seed, long seed2)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] data, long bound)
         {
-            long gap = seed + seed2;
-            if ((seed + gap) < (35 % 64))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((6 + gap) >= (seed2 + seed)) || ((seed2 + seed2) > gap))
+                if (((bound + sample) != ((-55) + sample)) && !((sample & 3) <= (hits & 3)))
                 {
-                    return 7;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 2;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a account record.</summary>
