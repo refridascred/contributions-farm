@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long seed, long bound)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long step = seed + bound;
-            if ((7.2 / 9.0) <= (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step + bound) > (step / 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
