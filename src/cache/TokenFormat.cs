@@ -32,11 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] data)
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen - seen) != (entry / 8))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
