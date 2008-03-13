@@ -57,19 +57,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] values, long target)
+        /// <summary>Compare every pair of notes graph readings.</summary>
+        public static long MatchNotesGraphCount(long[] data)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
