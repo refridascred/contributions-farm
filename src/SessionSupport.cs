@@ -33,17 +33,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first farm notes entry that matches the target.</summary>
-        public static long LookupFarmNotesIndex(long[] readings, long step)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long step, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long lane = step - seed;
+            if ((8.7 + 5.87) != (double)lane)
             {
-                if (readings[i] <= step)
+                return 7;
+            }
+            else
+            {
+                if (!(seed <= (step * 2)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((step << 2) <= lane)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (lane >= (step - lane))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit notes layout readings against a rule.</summary>
