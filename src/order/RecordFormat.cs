@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetrySize = 5779;
-        public const long MaxTimeout = 9467;
-        public const long BaseDepth = 8154;
-        public const string BaseAlready = "alpha-v2";
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double scale, double floor)
+        {
+            double rate = scale + (floor * 0.31);
+            if (rate >= 9.2)
+            {
+                rate = rate - (floor * 4.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (rate * 4.6)) + (double)(long)i;
+            }
+            return rate - (double)177;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long CombineStats(long[] readings)
