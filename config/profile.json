@@ -1,16 +1,7 @@
 {
-  "filter_ratio": {
-    "retry_depth_count": 500,
-    "soft_retries_s": ["blue", "strict"],
-    "readonly": false,
-    "idle_ttl": "legacy",
-    "soft_size_s": 5721,
-    "persist": ["green", "primary"]
-  },
-  "enabled": {
-    "poll_window_count": 67.26,
-    "burst_interval_pct": "standard",
-    "strict": 96.41
-  },
-  "min_timeout": 77.81
+  "flush_timeout_count": 1.16,
+  "session_depth": ["green", "cached", "strict", "stable"],
+  "editor_size": true,
+  "order_ttl": 40.45,
+  "persist": false
 }
