@@ -45,12 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public long Token { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitWidth = 7840;
+        public const long CacheStats = 8014;
+        public const double LimitSpan = 88.36;
+        public const double MaxStats = 4.35;
+        public const string WindowStats = "fallback-1";
 
         /// <summary>Iterate the counter support series from a seed.</summary>
         public static long SeriesCounterSupport(long bound)
