@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] series, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 4;
+            foreach (long entry in items)
             {
-                if ((series[i] < target) && ((series[i] % 5) != 0))
+                if ((double)mix < (double)step)
                 {
-                    return (long)i;
+                    mix = (mix - mix) - entry;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a graph info.</summary>
