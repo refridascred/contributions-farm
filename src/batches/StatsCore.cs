@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Adjust a farm graph reading.</summary>
+        public static double SmoothFarmGraph(double ratio, double bias)
         {
-            public double Total { get; set; }
-            public double Owner { get; set; }
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
+            double drift = (double)14 + bias;
+            if (drift < (double)(-10))
+            {
+                drift = drift + (ratio / 8.0);
+            }
+            else
+            {
+                drift = drift - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - 5.1) + (double)(long)i;
+            }
+            return drift - (9.5 + drift);
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
