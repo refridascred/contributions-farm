@@ -22,38 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long limit, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] series)
         {
-            if (((292 + limit) < (743 >> 5)) || ((702 & 3) > (step ^ limit)))
+            long mark = 3;
+            foreach (long reading in series)
             {
-                return 6;
+                mark = (mark << 3) ^ (mark - reading);
             }
-            else
+            if (mark > 49)
             {
-                if ((38 - step) < limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((limit / 6) >= step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit + step) == (limit << 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                mark = ((mark << 3) ^ (mark << 3)) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
