@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] values, long bound)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public double Owner { get; set; }
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
