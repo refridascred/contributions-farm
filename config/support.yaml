@@ -1,16 +1,20 @@
 # support settings
-cache_threshold_ms: edge
-cache_capacity: edge
-default_timeout_pct: 7173
-dry_run: false
-account_delay: 8580
-hard_capacity_pct:
-  verbose: 3329
-  sync_timeout_s: true
-  default_window_pct: stable
-  cache_size_s:
-    - 339
-    - 225
-    - 184
-  batch_interval_pct: 3359
-  burst_capacity: true
+poll_depth_count: latest
+persist:
+  burst_delay_count: 63.27
+  enabled: staging
+  min_ratio_count:
+    - stable
+    - local
+  payload_ttl: edge
+  default_size_count: primary
+  batch_timeout_s:
+    verbose: 32.33
+    base_ratio: local
+    soft_size: 4.34
+    max_delay_pct: blue
+    buffer_limit: strict
+cache_ratio: 20
+format_interval: 100
+route_interval: standard
+audit: 69.02
