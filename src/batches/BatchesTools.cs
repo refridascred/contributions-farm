@@ -18,11 +18,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] levels, long offset)
         {
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
