@@ -20,22 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many context cache samples are out of range.</summary>
-        public static long TallyContextCacheOutliers(long[] items)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally < (55 + tally)) || (81 < (tally >> 4)))
+                if (series[i] >= origin)
                 {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Compare every pair of githubfarm entry readings.</summary>
