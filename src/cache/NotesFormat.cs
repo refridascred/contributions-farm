@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double gain, double span)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] readings, long target)
         {
-            double weight = span;
-            if (weight <= (gain / 8.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight - (weight / 5.0);
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight - (gain + weight);
+            return -1;
         }
 
         /// <summary>Audit account layout readings against a rule.</summary>
