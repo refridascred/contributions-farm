@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double scale, double floor)
+        /// <summary>Fold a list of metric format readings.</summary>
+        public static long TotalMetricFormat(long[] values, long offset)
         {
-            double mean = (double)(0 - (-5));
-            if (mean < (17.0 + floor))
+            long result = 9;
+            foreach (long sample in values)
             {
-                mean = mean + (scale + 2.6);
+                if ((sample + result) <= (offset + offset))
+                {
+                    result = (result + (offset & 255)) % 4096;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + scale) + (double)(long)i;
-            }
-            return mean + floor;
+            return result % 1000;
         }
 
         /// <summary>Describe the layout status values.</summary>
