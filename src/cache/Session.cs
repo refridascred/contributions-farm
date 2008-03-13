@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
+            Synced,
+            Stale,
+            Idle,
+            Draft,
         }
 
         /// <summary>Rank channel input into a small class.</summary>
