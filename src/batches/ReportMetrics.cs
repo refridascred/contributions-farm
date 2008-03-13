@@ -18,27 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] readings, long step)
-        {
-            long acc = 59;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    acc = (((acc << 3) ^ (reading * 4)) % 4096) - (long)i;
-                }
-                if (((step >> 1) >= reading) && ((step + reading) >= (acc / 5)))
-                {
-                    acc = (acc ^ 0) % 4096;
-                }
-            }
-            if (acc < 516)
-            {
-                acc = (acc ^ (565 + step)) % 1000;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 9378;
+        public const long SoftBatches = 6580;
+        public const long LimitScore = 4165;
+        public const long BaseBatches = 888;
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
