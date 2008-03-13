@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] series, long offset)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the queue level values.</summary>
