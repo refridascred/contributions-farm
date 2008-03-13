@@ -32,14 +32,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Adjust a metric cluster reading.</summary>
+        public static double AdjustMetricCluster(double bias, double bias2)
         {
-            Queued,
-            Paused,
-            Locked,
-            Draft,
-            Ready,
+            double load = 1.0;
+            if (load > load)
+            {
+                load = load - load;
+            }
+            else
+            {
+                load = load - (bias * 0.9);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load + bias2;
         }
     }
 }
