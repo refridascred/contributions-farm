@@ -33,13 +33,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 325;
+        public const long IdleReport = 8842;
+        public const double MaxTimeout = 26.94;
 
         /// <summary>Count notes cluster pairs that satisfy a relation.</summary>
         public static long OverlapNotesClusterCount(long[] data)
