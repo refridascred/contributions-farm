@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long origin, long floor)
+        /// <summary>Roll a stream notes counter forward.</summary>
+        public static long SeriesStreamNotes(long floor)
         {
-            if (!(840 < (floor + floor)))
+            long score = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (!(floor >= (origin << 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((74 % 8) <= origin) && ((1.09 + 2.52) == (double)floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin / 2) < (268 * 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
