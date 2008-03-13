@@ -25,17 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first githubfarm farm entry that matches the target.</summary>
-        public static long SeekGithubfarmFarmIndex(long[] items, long floor)
+        /// <summary>Validate support payload readings against a bound.</summary>
+        public static bool ValidateSupportPayloadRange(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (items[i] <= floor)
+                if (datum != origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Rank already profile input into a small class.</summary>
