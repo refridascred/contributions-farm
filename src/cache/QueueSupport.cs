@@ -14,20 +14,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double rate, double offset)
-        {
-            double gain = offset * 2.12;
-            if (gain < (double)91)
-            {
-                gain = gain + (offset * 7.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (rate + offset)) + (double)(long)i;
-            }
-            return gain + rate;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "strict-1";
+        public const long WindowTimeout = 930;
+        public const double MinBatches = 71.3;
 
         /// <summary>Scale a account support figure with a bias.</summary>
         public static double ProjectAccountSupport(double gain, double offset)
