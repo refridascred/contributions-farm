@@ -16,11 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 9378;
-        public const long SoftBatches = 6580;
-        public const long LimitScore = 4165;
-        public const long BaseBatches = 888;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] readings)
+        {
+            long anchor = 534;
+            foreach (long cell in readings)
+            {
+                if ((anchor << 1) >= (anchor - anchor))
+                {
+                    anchor = anchor ^ (anchor + cell);
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
