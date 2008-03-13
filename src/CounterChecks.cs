@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double gain, double bias)
+        /// <summary>Match up record entry samples.</summary>
+        public static long OverlapRecordEntryCount(long[] levels)
         {
-            double drift = (double)(23 - 105);
-            if (drift < (double)6)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (bias + gain);
-            }
-            return drift - 6.6;
+            return seen;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
