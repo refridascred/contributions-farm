@@ -52,13 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] data, long origin)
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
+            long carry = 579;
+            foreach (long cell in data)
+            {
+                carry = ((carry << 3) ^ (origin + origin)) + cell;
+            }
+            if (carry < 18)
+            {
+                carry = ((carry * 2) + (514 - carry)) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
