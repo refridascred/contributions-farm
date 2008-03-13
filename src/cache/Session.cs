@@ -53,11 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 9271;
-        public const double MaxBudget = 3.54;
-        public const long RetryStats = 6661;
-        public const string BaseStats = "standard-v2";
-        public const long MaxScore = 6316;
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
