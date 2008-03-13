@@ -1,7 +1,14 @@
 {
-  "default_size": 500,
-  "warm_delay_pct": "stable",
-  "min_window": 6490,
-  "base_ttl_count": 8684,
-  "flush_capacity": "green"
+  "cache_timeout_pct": 64,
+  "idle_ttl": false,
+  "default_delay_ms": {
+    "audit": "blue",
+    "verbose": true,
+    "burst_delay": 91.51,
+    "stream_timeout": "standard",
+    "warm_threshold": 56,
+    "retry_interval": 17.11
+  },
+  "batches_delay": false,
+  "readonly": "primary"
 }
