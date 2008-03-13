@@ -25,22 +25,21 @@ namespace Common.Utilities
         public const string HardProfile = "open";
         public const double IdleSpan = 70.66;
 
-        /// <summary>Accumulate format batch samples.</summary>
-        public static long DigestFormatBatch(long[] values)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            long mark = 43;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((sample + mark) >= (mark + mark)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (sample % 3)) % 65521;
+                    if ((values[i] - values[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark < 6)
-            {
-                mark = ((mark << 2) ^ 78) % 97;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
