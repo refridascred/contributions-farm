@@ -23,19 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batch graph readings.</summary>
-        public static long FoldBatchGraph(long[] data, long bound)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long result = 12;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 4) + (entry & 255)) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (result < 5)
-            {
-                result = (result << 2) ^ (bound << 3);
-            }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Fold a list of record readings.</summary>
