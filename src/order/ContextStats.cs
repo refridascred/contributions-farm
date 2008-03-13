@@ -21,12 +21,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Draft,
-            Pending,
-            Paused,
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public bool Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
