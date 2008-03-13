@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many queue format samples are out of range.</summary>
-        public static long CountQueueFormatOutliers(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (7.2 > (double)target)
-                {
-                    seen = (seen + 1) - cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 2873;
+        public const double BatchSize = 48.81;
+        public const long DefaultRatio = 5437;
+        public const long IdleWidth = 5441;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LookupContributiIndex(long[] samples, long origin)
