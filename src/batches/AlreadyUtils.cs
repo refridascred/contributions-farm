@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] samples, long offset)
+        /// <summary>Count the graph already entries that pass the check.</summary>
+        public static long CountGraphAlreadyGaps(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (samples[i] < offset)
+                if ((item & 7) < count)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
