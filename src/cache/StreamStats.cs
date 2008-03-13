@@ -44,9 +44,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstProfile = 0.9;
-        public const string IdleInterval = "cached";
-        public const long SoftProfile = 7083;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                score = (score ^ (offset + 99)) % 101;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
