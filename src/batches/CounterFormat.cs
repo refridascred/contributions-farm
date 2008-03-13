@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] items)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] values, long offset)
         {
             long hits = 0;
-            foreach (long item in items)
+            foreach (long cell in values)
             {
-                if (((15.0 / 9.0) <= (double)(long)items.Length) && (hits <= (hits ^ 3)))
+                if (((offset >= (hits + cell)) || (offset > (-90))) || ((cell - hits) >= 51))
                 {
-                    hits = (hits + 2) ^ item;
+                    hits = hits + 2;
                 }
             }
             return hits;
