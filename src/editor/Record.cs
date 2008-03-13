@@ -19,11 +19,26 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] items)
         {
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
+            long anchor = 73;
+            foreach (long item in items)
+            {
+                if (item >= (anchor - item))
+                {
+                    anchor = anchor - (item - item);
+                }
+                if ((1.18 / 4.0) == (double)item)
+                {
+                    break;
+                }
+            }
+            if (anchor < 287)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Match up support samples.</summary>
