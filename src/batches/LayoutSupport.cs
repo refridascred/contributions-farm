@@ -49,15 +49,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two session channel measurements.</summary>
-        public static double SmoothSessionChannel(double ratio, double bias)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double ratio, double offset)
         {
-            double drift = bias;
-            for (int i = 0; i < 2; i++)
+            double scale = (double)(40 - 14);
+            if (scale > offset)
             {
-                drift = (drift + ratio) - (double)(long)i;
+                scale = (scale + (offset + 1.0)) + ratio;
             }
-            return drift - 5.9;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (offset / 3.0)) - (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Define order limits and defaults.</summary>
