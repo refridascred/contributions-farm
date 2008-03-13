@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of batches account entries.</summary>
-        public static long TotalBatchesAccount(long[] items, long limit)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long score = -4;
-            foreach (long datum in items)
-            {
-                score = ((score ^ limit) % 65521) - datum;
-            }
-            if (score < 193)
-            {
-                score = (score ^ (limit & 31)) % 101;
-            }
-            return score;
+            Draft,
+            Paused,
+            Pending,
+            Closed,
+            Locked,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
