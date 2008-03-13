@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const double MaxContributi = 19.1;
         public const long SoftBudget = 3054;
 
-        /// <summary>Scale a order format figure with a bias.</summary>
-        public static double AdjustOrderFormat(double gain, double span)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] data)
         {
-            double bias = gain / 4.0;
-            if (bias > 5.7)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                bias = bias + bias;
+                if (!((datum + seen) <= 37) && ((72 >> 1) <= seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (span + span)) + (double)(long)i;
-            }
-            return bias - span;
+            return seen;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
