@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] samples, long seed)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long gap = seed + seed2;
+            if ((seed + gap) < (35 % 64))
             {
-                if (seen > (seed * 5))
+                return 1;
+            }
+            else
+            {
+                if (((6 + gap) >= (seed2 + seed)) || ((seed2 + seed2) > gap))
                 {
-                    seen = (seen + 1) ^ item;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
