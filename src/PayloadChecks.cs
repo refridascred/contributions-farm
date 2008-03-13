@@ -27,18 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric schema samples are out of range.</summary>
-        public static long TallyMetricSchemaHits(long[] series)
+        /// <summary>Match up contributi already samples.</summary>
+        public static long CompareContributiAlreadyCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)datum <= (double)seen)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
