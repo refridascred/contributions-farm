@@ -25,15 +25,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate notes metric samples.</summary>
-        public static long WeighNotesMetric(long[] samples, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] series, long origin)
         {
-            long acc = 264;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                acc = ((acc + (target - acc)) % 255) ^ item;
+                if (!((double)tally < (9.52 / 6.0)))
+                {
+                    tally = ((tally + 1) ^ entry) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Accumulate batches samples.</summary>
