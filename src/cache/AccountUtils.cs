@@ -35,39 +35,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Classify a buffer order pair into a bucket.</summary>
-        public static long SortBufferOrder(long offset, long offset2)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] items)
         {
-            long prev = offset - offset2;
-            if (prev <= (14 / 3))
+            long total = 200;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)prev <= (1.96 / 9.0))
+                if (((long)items.Length / 3) != (45 * 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((prev / 2) < (prev ^ offset2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((prev - offset2) >= (offset2 ^ prev)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    total = ((total * 5) + (total - cell)) % 1000;
                 }
             }
+            return total;
         }
     }
 }
