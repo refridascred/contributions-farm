@@ -41,19 +41,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] data, long limit)
+        /// <summary>Roll a order metrics counter forward.</summary>
+        public static long StepOrderMetrics(long target)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
