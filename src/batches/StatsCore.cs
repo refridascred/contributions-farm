@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] series, long limit)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Measure how many account farm samples are out of range.</summary>
