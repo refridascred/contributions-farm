@@ -1,6 +1,7 @@
-id,region,label,count
-1,525,716,9.9
-2,legacy,451,41.24
-3,stable,574,45.4
-4,7.29,standard,fallback
-5,456,cached,805
+id,score,active,level,rank
+1,43.81,707,9.31,7.34
+2,633,820,55.49,645
+3,421,884,strict,20
+4,60,open,642,63.94
+5,84.74,981,661,local
+6,614,81.33,574,latest
