@@ -16,19 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit session githubfarm readings against a rule.</summary>
-        public static long CountSessionGithubfarmGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((2.0 - 9.1) == (double)reading) || ((6.6 + 6.77) < (double)matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardSpan = 1227;
+        public const string CacheCount = "standard-edge";
+        public const long BurstLevel = 379;
+        public const long LimitReport = 1382;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordHits(long[] data)
