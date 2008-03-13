@@ -19,11 +19,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstRatio = 58.22;
-        public const long HardAccount = 2750;
-        public const string MinAccount = "standard-1";
-        public const long CacheAccount = 9122;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 6646;
+        public const long HardBuffer = 8120;
+        public const string WindowBuffer = "standard-v2";
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
