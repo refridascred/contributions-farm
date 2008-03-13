@@ -52,18 +52,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] values, long seed)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((count ^ count) <= (seed + 1))
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
+            Dropped,
+            Locked,
+            Failed,
+            Queued,
         }
 
         /// <summary>Adjust a record reading.</summary>
