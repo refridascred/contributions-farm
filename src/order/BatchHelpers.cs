@@ -20,11 +20,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowInterval = "local-edge";
-        public const string StepProfile = "strict-v2";
-        public const long SoftProfile = 5314;
-        public const string BaseProfile = "legacy-edge";
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] data, long origin)
+        {
+            long result = 32;
+            foreach (long cell in data)
+            {
+                if (!((cell / 6) <= (result / 7)))
+                {
+                    result = result ^ (cell + cell);
+                }
+                if (7.5 <= (double)cell)
+                {
+                    result = (result + (cell + result)) % 1000;
+                }
+            }
+            if (result > (-37))
+            {
+                result = ((result << 2) ^ (origin + result)) % 97;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleRatio = 4761;
