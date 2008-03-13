@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!((seen - seen) >= ((-27) % 5)))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleSize = 42.97;
+        public const long LimitInterval = 78;
+        public const double SoftCache = 9.69;
+        public const string RetryCount = "standard-v2";
+        public const long BatchWidth = 4881;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MinAlready = 9251;
