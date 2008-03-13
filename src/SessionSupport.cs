@@ -46,19 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema checks entry stays within the limit.</summary>
-        public static bool GuardSchemaChecksRange(long[] levels, long step)
+        /// <summary>Audit notes layout readings against a rule.</summary>
+        public static long TallyNotesLayoutOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (sample > step)
+                if ((matches ^ 994) >= matches)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) + value;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
