@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank metric command input into a small class.</summary>
-        public static long ClassifyMetricCommand(long origin, long offset)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            if ((origin + offset) >= (origin & 15))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((56 ^ origin) < (offset + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin == (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
