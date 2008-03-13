@@ -19,19 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] levels, long offset)
+        /// <summary>Iterate the metric report series from a seed.</summary>
+        public static long IterateMetricReport(long offset)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix + (offset ^ mix)) % 97;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Blend two commits measurements.</summary>
