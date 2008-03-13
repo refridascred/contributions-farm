@@ -16,12 +16,14 @@ namespace Common.Utilities
         public const long RetryOrder = 6864;
         public const long BurstOrder = 7298;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstWidth = 52.36;
-        public const long RetryRatio = 3769;
-        public const double IdleBudget = 10.91;
-        public const long BurstInterval = 4458;
-        public const long IdleTools = 75;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
