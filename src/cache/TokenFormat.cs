@@ -26,18 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache metrics samples are out of range.</summary>
-        public static long AuditCacheMetricsOutliers(long[] series)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (((count + cell) >= 55) && ((cell + cell) != (cell - count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
