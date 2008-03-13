@@ -38,12 +38,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Compare every pair of githubfarm entry readings.</summary>
+        public static long OverlapGithubfarmEntryCount(long[] data)
         {
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine already values into a single score.</summary>
