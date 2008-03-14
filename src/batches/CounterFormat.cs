@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long seed, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] data, long bound)
         {
-            long diff = seed ^ bound;
-            if ((double)bound != (13.0 - 8.5))
+            long acc = 9;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed <= (seed + diff)) || ((284 + diff) < (seed - bound)))
+                if ((acc <= (acc & 1)) || ((acc & 255) > bound))
                 {
-                    return 6;
+                    acc = acc - (bound + acc);
                 }
                 else
                 {
-                    if ((diff + bound) < (seed & 63))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    acc = ((acc << 2) ^ value) % 101;
                 }
             }
+            return acc % 4096;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
