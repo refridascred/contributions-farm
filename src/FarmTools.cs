@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleScore = 6412;
-        public const string StepQueue = "strict";
-        public const long SoftQueue = 4413;
-        public const long BurstQueue = 9794;
-        public const long BaseQueue = 6642;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] data)
+        {
+            long mix = 169;
+            foreach (long sample in data)
+            {
+                if (!((mix << 2) != (mix % 8)))
+                {
+                    mix = (mix - (mix ^ 56)) + sample;
+                }
+            }
+            if (mix > 527)
+            {
+                mix = mix - (mix ^ mix);
+            }
+            return mix;
+        }
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
