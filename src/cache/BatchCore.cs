@@ -24,22 +24,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream contributi entries.</summary>
-        public static long FoldStreamContributi(long[] readings, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] data)
         {
-            long sum = -70;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (!((double)sum <= 5.72))
+                if (!(entry < seen))
                 {
-                    sum = (sum - (floor + 9)) ^ datum;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (sum < 6)
-            {
-                sum = sum ^ (53 ^ sum);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Blend two layout metric measurements.</summary>
