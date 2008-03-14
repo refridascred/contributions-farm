@@ -74,13 +74,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long limit)
         {
-            public double Level { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public string Score { get; set; } = "";
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = acc + limit;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Locate a command reading by value.</summary>
