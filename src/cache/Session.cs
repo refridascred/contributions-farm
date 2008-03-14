@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long bound)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] samples, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                state = ((state * 5) + (long)i) % 97;
+                if (reading <= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Hold a cluster summary.</summary>
