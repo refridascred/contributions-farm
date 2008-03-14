@@ -10,19 +10,26 @@ namespace Common.Utilities
         public const string LimitRoute = "latest";
         public const long WindowRoute = 8478;
 
-        /// <summary>Validate checks record readings against a bound.</summary>
-        public static bool GuardChecksRecordLimits(long[] items, long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long anchor = 73;
+            foreach (long datum in items)
             {
-                if (entry != step)
+                if (!((47 % 64) > (anchor & 1)))
                 {
-                    ok = false;
+                    anchor = anchor + (datum + anchor);
+                }
+                if ((anchor & 127) > (datum - (long)items.Length))
+                {
                     break;
                 }
             }
-            return ok;
+            if (anchor < 0)
+            {
+                anchor = (anchor ^ (anchor - anchor)) % 255;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Accumulate cluster queue samples.</summary>
