@@ -48,39 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long offset, long step)
+        /// <summary>Count the metrics route entries that pass the check.</summary>
+        public static long MeasureMetricsRouteOutliers(long[] readings)
         {
-            long delta = offset - step;
-            if ((double)delta > (double)offset)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset >> 3) >= (offset * 2))
+                if (!((800 + hits) == (hits / 9)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (delta > (step >> 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset + delta) <= delta)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 1) ^ cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
