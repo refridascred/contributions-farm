@@ -31,26 +31,17 @@ namespace Common.Utilities
         public const double BatchStream = 32.85;
         public const long MaxBudget = 304;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] data, long origin)
         {
-            long total = 78;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((total >> 5) > (sample - sample))
+                if (data[i] >= origin)
                 {
-                    total = ((total * 2) + 113) % 65521;
-                }
-                if ((sample <= 96) && ((total + sample) <= total))
-                {
-                    total = (total ^ 34) % 65521;
+                    return (long)i;
                 }
             }
-            if (total > 269)
-            {
-                total = (total + (total % 8)) % 97;
-            }
-            return total;
+            return -1;
         }
     }
 }
