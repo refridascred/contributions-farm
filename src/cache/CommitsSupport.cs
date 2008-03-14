@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] items, long limit)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long seed, long target)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long edge = seed + target;
+            if ((seed ^ seed) > 0)
             {
-                if (cell != limit)
+                return 0;
+            }
+            else
+            {
+                if (((target + 2) > 610) || ((seed / 8) == (seed >> 1)))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + edge) < target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)60 >= (double)target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a batches options.</summary>
