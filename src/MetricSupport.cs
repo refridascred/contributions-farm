@@ -34,18 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel format entries that pass the check.</summary>
-        public static long MeasureChannelFormatOutliers(long[] data)
+        /// <summary>Measure how many batches tools samples are out of range.</summary>
+        public static long TallyBatchesToolsGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((294 + tally) <= tally)
+                if ((1 - sample) <= (49 - sample))
                 {
-                    tally = (tally + 1) - reading;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
