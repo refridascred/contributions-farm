@@ -68,11 +68,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultFactor = 9931;
-        public const string BatchTimeout = "latest-v2";
-        public const long BurstToken = 709;
-        public const long StepToken = 6758;
-        public const long CacheToken = 3694;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Idle,
+            Pending,
+            Stale,
+            Queued,
+            Draft,
+        }
     }
 }
