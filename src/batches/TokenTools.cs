@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] values, long origin)
+        /// <summary>Count the command editor entries that pass the check.</summary>
+        public static long CountCommandEditorMatches(long[] data, long bound)
         {
-            long result = 938;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long item in data)
             {
-                result = ((result - (result % 97)) + datum) + origin;
+                if ((0 << 3) < (bound * 2))
+                {
+                    hits = (hits + 1) - item;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
