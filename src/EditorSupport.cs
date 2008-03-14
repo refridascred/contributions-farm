@@ -34,11 +34,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double gain, double bias)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            double bias2 = gain;
-            return (bias2 + (gain * 12.0)) + bias;
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
