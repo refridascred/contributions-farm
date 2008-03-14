@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double bias, double span)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double drift = bias;
-            if (drift <= (double)(-11))
-            {
-                drift = drift + drift;
-            }
-            else
-            {
-                drift = drift - span;
-            }
-            return drift - (drift * 3.0);
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit stats counter readings against a rule.</summary>
