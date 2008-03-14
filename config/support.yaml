@@ -1,7 +1,25 @@
 # support settings
-warm_limit: 8728
-compress: 30
-readonly:
-  - 488
-  - 402
-  - 133
+graph_timeout:
+  batch_ratio_pct:
+    - 348
+    - 223
+    - 267
+    - 62
+  base_threshold: 4.26
+  report_timeout:
+    - 65
+    - 24
+batch_retries_count: 1132
+poll_ttl_count:
+  default_interval: false
+  soft_ratio_s: true
+  session_ttl:
+    - 13
+    - 276
+    - 393
+    - 203
+  soft_ratio:
+    counter_window: 46.16
+    dry_run: 500
+    persist: cached
+readonly: standard
