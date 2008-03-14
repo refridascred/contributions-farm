@@ -52,18 +52,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit session token readings against a rule.</summary>
-        public static long CountSessionTokenHits(long[] items, long seed)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((seed << 3) >= (seed + count)) && ((datum ^ seed) > (seed - datum)))
+                if (data[i] == target)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
