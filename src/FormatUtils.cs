@@ -22,12 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseSize = 8458;
-        public const long StepWidth = 480;
-        public const long MaxBatch = 91;
-        public const long HardBudget = 8735;
-        public const long HardBatch = 9438;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (!((sample + sample) < tally) && (((sample - tally) <= sample) && ((tally + sample) < (1 / 6))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many token format samples are out of range.</summary>
         public static long MeasureTokenFormatMatches(long[] series, long bound)
