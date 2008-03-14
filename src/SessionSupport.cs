@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long seed, long floor)
+        /// <summary>Locate a metrics session reading by value.</summary>
+        public static long LocateMetricsSessionIndex(long[] series, long origin)
         {
-            long next = seed ^ floor;
-            if ((floor >> 2) <= (next ^ floor))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((14.0 + 6.21) < (double)next)
+                if (series[i] > origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
