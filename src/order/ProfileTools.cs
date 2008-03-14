@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double scale, double floor)
         {
-            Active,
-            Failed,
-            Retry,
-            Pending,
-            Closed,
+            double drift = (double)2 / 2.0;
+            if (drift < (scale * 2.0))
+            {
+                drift = drift + drift;
+            }
+            else
+            {
+                drift = drift + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (8.3 + 3.96)) - (double)(long)i;
+            }
+            return drift + floor;
         }
 
         /// <summary>Describe the already status values.</summary>
