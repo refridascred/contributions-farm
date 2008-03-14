@@ -31,11 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            Ready,
+            Draft,
+            Stale,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
