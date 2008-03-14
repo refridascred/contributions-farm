@@ -30,18 +30,10 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((5.9 + 0.73) < (double)entry)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "strict-v2";
+        public const long MaxCache = 9877;
+        public const string RetryDepth = "latest-1";
+        public const long BatchTimeout = 9445;
     }
 }
