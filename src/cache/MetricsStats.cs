@@ -32,22 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchCount = 14.61;
+        public const long RetryRatio = 4691;
+        public const double MaxDepth = 83.31;
+        public const string RetryLevel = "local-v2";
+        public const long HardScore = 1084;
 
         /// <summary>Accumulate window samples.</summary>
         public static long TallyWindow(long[] levels)
