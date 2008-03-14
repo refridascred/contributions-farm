@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long seed, long bound)
         {
-            Closed,
-            Failed,
-            Ready,
-            Draft,
-            Paused,
+            if ((bound << 2) == (516 - seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed & 15) == (seed & 255))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (seed <= (seed / 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a metric stream reading.</summary>
