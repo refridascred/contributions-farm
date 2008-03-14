@@ -16,18 +16,13 @@ namespace Common.Utilities
             return bias + (bias + rate);
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] values)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((9.0 / 5.0) <= (double)seen) || ((reading + (long)values.Length) == (seen + 2)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Draft,
+            New,
+            Synced,
+            Idle,
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
