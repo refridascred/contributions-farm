@@ -1,19 +1,8 @@
 # support settings
-route_ttl: staging
-batch_size:
-  poll_retries_s:
-    - 170
-    - 73
-    - 298
-  support_interval:
-    - 449
-    - 178
-  burst_depth_ms: 22
-  base_threshold_s:
-    - 194
-    - 483
-  stream_size: false
-flush_ratio_ms: 87.97
-batch_capacity: 45.91
-context_limit: 250
-order_interval: green
+hard_ratio_count: false
+warm_capacity:
+  - edge
+  - blue
+  - cached
+support_limit: staging
+flush_delay: 500
