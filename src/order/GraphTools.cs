@@ -50,13 +50,13 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
-            public bool Region { get; set; }
-            public double Level { get; set; }
+            Closed,
+            Paused,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a route options.</summary>
