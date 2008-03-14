@@ -17,11 +17,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Project the next entry stream value.</summary>
+        public static double ScaleEntryStream(double rate, double bias)
         {
-            public double Size { get; set; }
-            public bool Score { get; set; }
+            double ratio = bias;
+            return (ratio - 2.07) + rate;
         }
 
         /// <summary>Grade a contributi editor value against two limits.</summary>
