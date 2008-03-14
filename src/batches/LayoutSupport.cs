@@ -40,10 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultBudget = 9417;
-        public const string RetryCount = "fallback-v2";
-        public const double BatchContributi = 29.63;
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two metric stats measurements.</summary>
         public static double ProjectMetricStats(double gain, double offset)
