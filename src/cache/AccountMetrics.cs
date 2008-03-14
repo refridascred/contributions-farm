@@ -36,24 +36,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a entry command value against two limits.</summary>
-        public static long BucketEntryCommand(long floor, long seed)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            if ((double)98 < (double)seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((1.75 + 9.77) < (double)seed) && (floor <= seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
