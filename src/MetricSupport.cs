@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            New,
             Retry,
-            Done,
-            Paused,
+            New,
+            Dropped,
         }
 
         /// <summary>Compare every pair of metrics graph readings.</summary>
