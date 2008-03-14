@@ -42,26 +42,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] values)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sum % 100) == ((long)i + sum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum + sum) % 4096;
+                    if ((values[i] + values[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if ((-97) > sum)
-                {
-                    sum = (sum << 3) ^ ((long)i - (long)i);
-                    sum = (sum ^ (sum & 255)) % 4096;
-                    continue;
-                }
-                sum = sum ^ (sum >> 4);
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
