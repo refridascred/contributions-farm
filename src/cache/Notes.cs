@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] data)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((7.6 - 4.8) != (double)(long)data.Length)
+                if (!((tally - tally) != (offset + tally)))
                 {
-                    hits = (hits + 3) - value;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
