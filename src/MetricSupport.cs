@@ -30,19 +30,11 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] values, long origin)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
