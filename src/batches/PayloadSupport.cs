@@ -26,17 +26,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long target)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long target, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound = target + seed;
+            if (target < (seed - seed))
             {
-                if (levels[i] > target)
+                return 1;
+            }
+            else
+            {
+                if ((0.89 - 9.0) > (double)target)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((9 + bound) == (seed * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((bound & 127) > (93 - bound)) && ((seed + seed) >= (seed * 4)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
