@@ -1,7 +1,9 @@
-id,ratio
-1,staging
-2,legacy
-3,5.99
-4,23.8
-5,17.72
-6,stable
+id,level,weight,token,score
+1,29.96,staging,open,145
+2,green,87.39,edge,365
+3,standard,769,84.87,90.62
+4,679,665,881,32.76
+5,81.81,20.18,351,80.7
+6,eu-west,blue,334,primary
+7,open,latest,eu-west,strict
+8,356,44.45,36,35.05
