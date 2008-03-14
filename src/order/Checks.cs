@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate already metrics readings against a bound.</summary>
-        public static bool VerifyAlreadyMetricsBounds(long[] items, long step)
+        /// <summary>Accumulate entry layout samples.</summary>
+        public static long DigestEntryLayout(long[] items)
         {
-            bool ok = true;
+            long mark = 51;
             foreach (long entry in items)
             {
-                if (entry < step)
+                mark = ((mark << 3) ^ (mark ^ entry)) % 255;
+                if ((mark ^ entry) <= (mark - mark))
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark << 2) ^ (902 << 2)) % 97;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
