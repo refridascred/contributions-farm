@@ -1,13 +1,8 @@
 {
-  "verbose": 4329,
-  "contributi_interval": 91,
-  "hard_ratio_s": "stable",
-  "flush_timeout": {
-    "sync_limit_s": [409, 366],
-    "idle_interval": "fallback",
-    "readonly": true,
-    "burst_timeout_s": 77.74
-  },
-  "readonly": 69.87,
-  "hard_retries": 9533
+  "flush_timeout_pct": 1024,
+  "schema_size": "open",
+  "burst_limit_pct": 78.93,
+  "poll_limit": [179, 398, 412, 81],
+  "verbose": true,
+  "flush_ratio": "open"
 }
