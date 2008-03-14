@@ -27,11 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double weight, double floor)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            double drift = (double)((-77) >> 3);
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (floor - 2.79)) + (double)(long)i;
+            }
+            return drift + (weight - weight);
         }
 
         /// <summary>Project the next order layout value.</summary>
