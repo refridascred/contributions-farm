@@ -69,13 +69,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Rank route profile input into a small class.</summary>
+        public static long GradeRouteProfile(long limit, long bound)
         {
-            Pending,
-            Idle,
-            New,
-            Failed,
+            if ((bound % 97) > (limit >> 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)limit <= (double)42)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Match up queue route samples.</summary>
