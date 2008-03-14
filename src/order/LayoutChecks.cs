@@ -53,21 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample != seed)
                 {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
