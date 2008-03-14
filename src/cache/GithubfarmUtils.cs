@@ -33,21 +33,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] items)
+        /// <summary>Rank schema farm input into a small class.</summary>
+        public static long RankSchemaFarm(long limit, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((limit ^ 23) != (limit - limit))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((5.68 * 1.4) > (double)target))
                 {
-                    if ((items[i] ^ items[j]) > 19)
+                    return 1;
+                }
+                else
+                {
+                    if ((limit / 8) == (target - target))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next record value.</summary>
