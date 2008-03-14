@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the queue class values.</summary>
