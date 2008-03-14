@@ -19,10 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 8649;
-        public const long HardSchema = 6681;
-        public const double RetrySchema = 90.26;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (((tally * 4) > 608) || ((double)tally <= 7.44))
+                {
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long SortCluster(long seed, long origin)
