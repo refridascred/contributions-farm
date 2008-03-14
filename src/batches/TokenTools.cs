@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Stale,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxTimeout = "alpha-1";
+        public const double MinWidth = 64.11;
+        public const long LimitCount = 342;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 13;
