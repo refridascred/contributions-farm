@@ -13,13 +13,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] values)
         {
-            Paused,
-            Synced,
-            Draft,
-            Failed,
+            long score = 175;
+            foreach (long value in values)
+            {
+                if (!((value << 1) >= (score / 6)))
+                {
+                    score = ((score * 3) + (score + score)) % 1000;
+                }
+                if (value >= (score << 3))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the checks kind values.</summary>
