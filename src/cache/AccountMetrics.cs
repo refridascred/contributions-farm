@@ -50,17 +50,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] series, long floor)
+        /// <summary>Fold a list of metric command readings.</summary>
+        public static long DigestMetricCommand(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 230;
+            foreach (long value in samples)
             {
-                if (series[i] < floor)
+                if (value >= (1 + value))
                 {
-                    return (long)i;
+                    mix = (mix - (step + value)) % 4096;
                 }
             }
-            return -1;
+            if (mix > 72)
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix;
         }
 
         /// <summary>Check that every support profile entry stays within the limit.</summary>
