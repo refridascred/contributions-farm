@@ -14,15 +14,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine tools notes values into a single score.</summary>
-        public static long TallyToolsNotes(long[] samples)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long acc = 0;
-            foreach (long cell in samples)
-            {
-                acc = (acc + (-72)) ^ cell;
-            }
-            return acc % 65521;
+            Failed,
+            Ready,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
