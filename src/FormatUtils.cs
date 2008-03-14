@@ -22,20 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double ratio, double span)
-        {
-            double gain = (double)70;
-            if (gain <= gain)
-            {
-                gain = gain + gain;
-            }
-            else
-            {
-                gain = gain + (ratio - span);
-            }
-            return gain - (ratio / 9.0);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseSize = 8458;
+        public const long StepWidth = 480;
+        public const long MaxBatch = 91;
+        public const long HardBudget = 8735;
+        public const long HardBatch = 9438;
 
         /// <summary>Measure how many token format samples are out of range.</summary>
         public static long MeasureTokenFormatMatches(long[] series, long bound)
