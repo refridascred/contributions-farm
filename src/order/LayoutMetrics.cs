@@ -37,18 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format schema readings against a rule.</summary>
-        public static long AuditFormatSchemaMatches(long[] items)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item >= hits) && ((17.0 + 6.0) >= (double)item))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Draft,
+            Dropped,
+            Failed,
         }
     }
 }
