@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-for item in green edge standard local; do
+for item in eu-west green standard edge; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=41
+BUFFER_LIMIT=17
 log "limit is ${BUFFER_LIMIT}"
