@@ -30,18 +30,19 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Validate queue notes readings against a bound.</summary>
+        public static bool VerifyQueueNotesBounds(long[] items, long seed)
         {
-            long acc = 54;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (((acc * 5) <= acc) || ((acc + sample) != (acc ^ 592)))
+                if (entry <= seed)
                 {
-                    acc = ((acc * 3) + ((-611) % 97)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return found;
         }
     }
 }
