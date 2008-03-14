@@ -24,13 +24,21 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate tools token readings against a bound.</summary>
