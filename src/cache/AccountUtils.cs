@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((floor + (-86)) < (floor % 12))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowBudget = 6411;
+        public const long CacheInterval = 2368;
+        public const long BatchCommand = 9003;
 
         /// <summary>Adjust a checks reading.</summary>
         public static double ScaleChecks(double ratio, double span)
