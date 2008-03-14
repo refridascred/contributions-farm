@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] samples, long bound)
+        /// <summary>Count the contributi counter entries that pass the check.</summary>
+        public static long AuditContributiCounterHits(long[] data)
         {
-            long mark = 870;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                long diff = 901;
-                if ((diff >> 3) == (mark % 100))
+                if (((tally & 1) < (long)data.Length) && (((long)data.Length >> 1) <= (datum ^ datum)))
                 {
-                    diff = (diff - diff) - bound;
-                    mark = mark + diff;
+                    tally = tally + 3;
                 }
-                mark = (mark << 3) ^ (92 + reading);
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
