@@ -14,14 +14,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long limit)
         {
-            Pending,
-            Locked,
-            Done,
-            Paused,
-            Stale,
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if (carry < (limit >> 4))
+                {
+                    break;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
