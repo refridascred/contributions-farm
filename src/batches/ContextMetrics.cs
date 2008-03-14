@@ -80,13 +80,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
             public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
