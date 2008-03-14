@@ -35,11 +35,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftWindow = "alpha-1";
-        public const long MinLevel = 8859;
-        public const string MaxWindow = "standard-v2";
-        public const long BurstWindow = 2100;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long step, long origin)
+        {
+            if ((origin - step) >= (step / 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin % 100) <= (origin + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (1.15 > (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long SeekBatchesIndex(long[] values, long step)
