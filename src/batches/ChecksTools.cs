@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double bias, double bias2)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long step, long limit)
         {
-            double weight = bias;
-            if (weight < weight)
+            long delta = step + limit;
+            if ((delta ^ 728) < (limit ^ step))
             {
-                weight = (weight - (bias * 1.3)) + bias2;
+                return 6;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight = (weight + bias) + (double)(long)i;
+                if ((limit / 5) < 850)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (delta < (limit + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return weight + weight;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
