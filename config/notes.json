@@ -1,5 +1,8 @@
 {
-  "profile_interval": [275, 297, 1, 317],
-  "min_ttl": 44,
-  "hard_threshold": 6101
+  "hard_delay_pct": [285, 390, 465],
+  "burst_interval": false,
+  "idle_interval_ms": false,
+  "retry_delay_count": 56.35,
+  "retry_timeout_s": true,
+  "warm_delay": "local"
 }
