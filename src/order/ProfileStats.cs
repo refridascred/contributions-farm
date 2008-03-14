@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long SoftLevel = 312;
         public const long LimitGraph = 1305;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long step)
+        /// <summary>Count the schema queue entries that pass the check.</summary>
+        public static long MeasureSchemaQueueHits(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (items[i] <= step)
+                if ((tally - tally) > (floor * 2))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Match up metrics samples.</summary>
