@@ -23,23 +23,18 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Project the next stream window value.</summary>
-        public static double ScaleStreamWindow(double weight, double floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] items)
         {
-            double rate = weight * 8.5;
-            if (rate > (double)607)
+            long seen = 0;
+            foreach (long value in items)
             {
-                rate = rate + (double)9;
+                if ((1 - value) >= (seen - seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                rate = rate + (rate * 8.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - floor) - (double)(long)i;
-            }
-            return rate + floor;
+            return seen;
         }
     }
 }
