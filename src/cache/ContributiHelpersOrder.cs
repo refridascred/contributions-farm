@@ -35,15 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double ratio, double bias)
+        /// <summary>Audit stream window readings against a rule.</summary>
+        public static long AuditStreamWindowOutliers(long[] readings, long limit)
         {
-            double mean = (double)(452 - 0);
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                mean = (mean + (bias * 2.6)) + (double)(long)i;
+                if ((reading % 7) <= (hits << 1))
+                {
+                    hits = (hits + 3) - limit;
+                }
             }
-            return mean + ratio;
+            return hits;
         }
     }
 }
