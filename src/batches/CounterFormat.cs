@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double rate, double bias)
+        /// <summary>Check that every cluster graph entry stays within the limit.</summary>
+        public static bool CheckClusterGraphBounds(long[] samples, long bound)
         {
-            double scale = bias * 17.0;
-            return (scale + scale) + rate;
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate context samples.</summary>
