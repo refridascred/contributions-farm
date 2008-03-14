@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double weight, double offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] levels, long bound)
         {
-            double scale = (weight + 3.3) * 13.0;
-            if (scale > (weight - offset))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                scale = scale - offset;
+                if (bound <= 820)
+                {
+                    count = (count + 1) + entry;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale + (double)9;
+            return count;
         }
 
         /// <summary>Measure how many contributi command samples are out of range.</summary>
