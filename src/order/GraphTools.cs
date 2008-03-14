@@ -23,19 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double scale, double offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            double ratio = scale;
-            if (ratio > (double)70)
-            {
-                ratio = ratio - (4.57 * 4.05);
-            }
-            else
-            {
-                ratio = ratio - (5.3 / 7.0);
-            }
-            return ratio + offset;
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
