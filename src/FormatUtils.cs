@@ -30,18 +30,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of metrics support readings.</summary>
-        public static long TallyMetricsSupport(long[] values, long bound)
+        /// <summary>Accumulate token payload samples.</summary>
+        public static long ScoreTokenPayload(long[] items, long seed)
         {
-            long acc = 3;
-            foreach (long reading in values)
+            long mark = 842;
+            foreach (long item in items)
             {
-                if ((bound + acc) >= bound)
+                if ((double)mark > (3.6 + 1.3))
                 {
-                    acc = ((acc - acc) % 1000) + reading;
+                    mark = ((mark + (seed & 63)) % 4096) - item;
                 }
+                mark = mark ^ (seed & 3);
             }
-            return acc % 97;
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
