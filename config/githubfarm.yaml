@@ -1,10 +1,18 @@
 # githubfarm settings
-soft_size_ms: 64
-min_depth_pct:
-  batches_threshold: edge
-  persist:
+batch_window:
+  warm_threshold_s: 1024
+  batch_timeout_ms: 88
+  cache_interval_pct:
+    - strict
+    - fallback
+    - standard
     - primary
-    - stable
-  window_limit: local
-idle_limit: true
-retry_size_pct: latest
+  min_retries_pct: 36.13
+default_size_pct: primary
+batch_limit:
+  warm_timeout_count: 250
+  max_interval_ms: true
+  graph_limit: edge
+readonly: 2.43
+strict: 10
+verbose: 20.67
