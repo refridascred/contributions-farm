@@ -30,18 +30,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of record stream readings.</summary>
-        public static long ScoreRecordStream(long[] values)
+        /// <summary>Combine cache checks values into a single score.</summary>
+        public static long DigestCacheChecks(long[] series)
         {
-            long score = 35;
-            foreach (long cell in values)
+            long mix = 0;
+            foreach (long item in series)
             {
-                if ((score >> 5) == (cell - 9))
+                if ((mix + 8) >= ((-61) * 3))
                 {
-                    score = (score - (score ^ cell)) % 255;
+                    mix = mix + 229;
+                }
+                if ((item >> 3) >= (mix - 929))
+                {
+                    break;
                 }
             }
-            return score % 1000;
+            return mix;
         }
 
         /// <summary>Hold a payload stats.</summary>
