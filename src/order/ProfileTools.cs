@@ -15,21 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] data)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
