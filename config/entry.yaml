@@ -1,7 +1,9 @@
 # entry settings
-retry_delay: legacy
-cache_ratio_count: true
-warm_interval_s: 39.93
-max_limit: 60
-cache_capacity: true
-compress: 1024
+retry_ttl: 9423
+sync_timeout: stable
+githubfarm_timeout: 96
+already_ttl: true
+report_ttl:
+  - 128
+  - 155
+  - 318
