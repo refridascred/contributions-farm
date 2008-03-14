@@ -44,22 +44,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record schema readings against a rule.</summary>
-        public static long MeasureRecordSchemaMatches(long[] levels, long floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (1 >= (hits % 7))
-                {
-                    hits = ((hits + 3) ^ cell) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Paused,
+            Pending,
+            Ready,
+            New,
         }
 
         /// <summary>Rank notes input into a small class.</summary>
