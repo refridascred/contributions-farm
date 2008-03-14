@@ -36,11 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowStats = "alpha";
-        public const long RetryScore = 8940;
-        public const long BurstStats = 1263;
-        public const double BurstRatio = 5.77;
-        public const long HardStats = 4368;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] samples, long floor)
+        {
+            long state = 830;
+            foreach (long entry in samples)
+            {
+                state = ((state ^ entry) % 65521) + floor;
+                state = ((state << 3) ^ (entry + state)) % 1000;
+                if ((entry * 4) == (entry << 3))
+                {
+                    break;
+                }
+            }
+            if (state < 399)
+            {
+                state = state ^ state;
+            }
+            return state % 97;
+        }
     }
 }
