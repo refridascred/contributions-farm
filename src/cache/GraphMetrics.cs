@@ -19,10 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardOrder = "alpha-v2";
-        public const long BatchOrder = 5005;
-        public const double DefaultSpan = 69.65;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long offset, long bound)
+        {
+            long delta = offset - bound;
+            if ((delta + offset) < (7 % 60))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((delta + offset) < offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Measure how many already githubfarm samples are out of range.</summary>
         public static long MeasureAlreadyGithubfarmGaps(long[] samples, long limit)
