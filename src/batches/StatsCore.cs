@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long target, long target2)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] items)
         {
-            long lane = target - target2;
-            if ((lane / 9) >= (target * 5))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1 <= (target / 2)) && ((target & 63) > lane))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    if ((items[i] - items[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the format report entries that pass the check.</summary>
