@@ -1,9 +1,8 @@
-id,rank,token,ratio
-1,76.72,840,224
-2,82.0,open,stable
-3,strict,legacy,open
-4,76.68,latest,934
-5,edge,stable,standard
-6,178,edge,669
-7,37,open,80.38
-8,881,cached,56.49
+id,rank,label,token
+1,79.76,42.44,234
+2,42,974,30.37
+3,3.27,624,eu-west
+4,67.47,776,edge
+5,937,green,stable
+6,94,170,15.19
+7,local,40.95,primary
