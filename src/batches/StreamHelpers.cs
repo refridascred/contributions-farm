@@ -35,18 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((hits / 5) > 758)
+                if (((double)reading != (18.0 + 2.0)) || (3.06 > (double)reading))
                 {
-                    hits = (hits + 2) ^ value;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
