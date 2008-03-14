@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a entry already pair into a bucket.</summary>
-        public static long BucketEntryAlready(long origin, long origin2)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            if ((5.8 / 4.0) == (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin << 2) <= (origin2 << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((origin2 & 1) <= (origin2 + 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)origin2 > (5.06 * 13.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
