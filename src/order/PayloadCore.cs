@@ -27,22 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine cache checks values into a single score.</summary>
-        public static long DigestCacheChecks(long[] series)
+        /// <summary>Validate filter route readings against a bound.</summary>
+        public static bool CheckFilterRouteRange(long[] series, long origin)
         {
-            long mix = 0;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((mix + 8) >= ((-61) * 3))
+                if (value <= origin)
                 {
-                    mix = mix + 229;
-                }
-                if ((item >> 3) >= (mix - 929))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Hold a payload stats.</summary>
