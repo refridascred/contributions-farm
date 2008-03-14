@@ -20,16 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 197;
+        public const long BaseWindow = 3403;
+        public const string MinWindow = "staging-1";
 
         /// <summary>Accumulate session samples.</summary>
         public static long FoldSession(long[] samples, long target)
