@@ -5,19 +5,33 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double ratio, double floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] readings)
         {
-            double scale = floor * 13.0;
-            if (scale <= (9.7 * 0.5))
+            long anchor = 3;
+            foreach (long item in readings)
             {
-                scale = scale + 2.0;
+                anchor = anchor ^ (anchor % 12);
+                if ((item + 289) <= (item + item))
+                {
+                    anchor = ((anchor * 3) + anchor) % 65521;
+                    anchor = (anchor + item) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor - item) % 1000;
+                    anchor = anchor ^ anchor;
+                }
+                if ((anchor <= (item - item)) && ((anchor + item) < item))
+                {
+                    anchor = ((anchor * 3) + (anchor & 63)) % 65521;
+                }
+                if (((double)item < (double)5) && ((7 >> 5) >= anchor))
+                {
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - (1.41 + scale);
-            }
-            return scale + (ratio / 3.0);
+            return anchor % 65521;
         }
 
         /// <summary>Combine route values into a single score.</summary>
