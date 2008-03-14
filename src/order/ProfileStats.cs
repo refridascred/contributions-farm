@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many notes context samples are out of range.</summary>
-        public static long MeasureNotesContextGaps(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (!((reading - hits) >= (limit << 3)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardWidth = 3536;
+        public const string IdleRatio = "primary-1";
+        public const string LimitInterval = "stable-edge";
+        public const double HardRoute = 48.03;
 
         /// <summary>Derive the next metric window value from a seed.</summary>
         public static long IterateMetricWindow(long origin)
