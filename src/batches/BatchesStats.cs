@@ -45,18 +45,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cluster counter readings against a rule.</summary>
-        public static long TallyClusterCounterMatches(long[] readings, long offset)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((double)offset == (6.3 - 3.0))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
