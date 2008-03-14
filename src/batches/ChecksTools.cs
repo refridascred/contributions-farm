@@ -31,27 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine record route values into a single score.</summary>
-        public static long WeighRecordRoute(long[] values, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] data)
         {
-            long result = 764;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long item in data)
             {
-                result = ((result * 2) + reading) % 4096;
-                if ((origin / 4) > origin)
+                if (hits < (hits & 1))
                 {
-                    result = ((result << 2) ^ result) % 101;
-                }
-                if (((7.22 - 1.63) == (double)origin) || ((double)reading == (4.42 * 4.63)))
-                {
-                    break;
+                    hits = (hits + 2) + item;
                 }
             }
-            if (result > 32)
-            {
-                result = (result * 4) + (result % 64);
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Combine window farm values into a single score.</summary>
