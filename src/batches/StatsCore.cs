@@ -46,9 +46,39 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 8669;
-        public const double BurstSpan = 56.14;
-        public const long DefaultBudget = 9227;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long step, long bound)
+        {
+            long span = step ^ bound;
+            if (84 <= (step & 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((span * 3) > (3 << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((5 + span) <= (bound + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (span < (step * 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
