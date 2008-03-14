@@ -31,18 +31,11 @@ namespace Common.Utilities
             return (rate + bias) + gain;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 4348;
+        public const long HardBudget = 2417;
+        public const string BatchLevel = "legacy-v2";
+        public const double BatchToken = 80.75;
 
         /// <summary>Match up buffer samples.</summary>
         public static long CompareBufferCount(long[] data)
