@@ -35,12 +35,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] items, long origin)
         {
-            Pending,
-            Retry,
-            Queued,
+            long acc = -1;
+            foreach (long cell in items)
+            {
+                if ((double)cell != (4.1 + 16.0))
+                {
+                    acc = (acc - cell) % 1000;
+                }
+                else
+                {
+                    acc = (acc + (acc - acc)) % 65521;
+                }
+            }
+            if (acc < 8)
+            {
+                acc = acc - origin;
+            }
+            return acc;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
