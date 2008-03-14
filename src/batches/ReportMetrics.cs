@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double scale, double offset)
         {
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public double Flag { get; set; }
+            double gain = (double)(645 >> 5);
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain + (offset * 8.62)) + (double)(long)i) - scale;
+            }
+            return gain + offset;
         }
 
         /// <summary>Define support limits and defaults.</summary>
