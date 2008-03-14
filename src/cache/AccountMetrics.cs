@@ -66,18 +66,14 @@ namespace Common.Utilities
         public const string DefaultProfile = "legacy-1";
         public const long RetryProfile = 5798;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] data)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long anchor = 3;
-            foreach (long item in data)
-            {
-                if ((2.3 + 9.3) < (double)item)
-                {
-                    anchor = anchor + (anchor >> 1);
-                }
-            }
-            return anchor % 65521;
+            Retry,
+            Failed,
+            Queued,
+            Paused,
+            Active,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
