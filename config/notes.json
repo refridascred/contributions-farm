@@ -1,5 +1,13 @@
 {
-  "max_window_pct": 34.34,
-  "compress": 45,
-  "idle_ttl_ms": 4980
+  "default_timeout_ms": {
+    "retry_limit": "strict",
+    "hard_capacity_s": "cached",
+    "batch_size": true,
+    "graph_delay": false,
+    "commits_limit": 56,
+    "graph_threshold": 84
+  },
+  "burst_limit_s": "edge",
+  "buffer_limit": "primary",
+  "batch_threshold": 1721
 }
