@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] readings)
         {
-            Done,
-            New,
-            Queued,
+            long acc = 0;
+            foreach (long reading in readings)
+            {
+                if ((3.0 + 5.35) == (double)acc)
+                {
+                    acc = acc - reading;
+                }
+            }
+            if (acc > 68)
+            {
+                acc = ((acc * 4) + (52 ^ acc)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a editor stats.</summary>
