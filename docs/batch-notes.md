@@ -1,12 +1,12 @@
 # Batch notes
 
-Use report settings to tune how often route data is refreshed.
-Run the report check before changing any channel limits.
-Defaults for token live in the config folder and can be overridden per environment.
+A record that stays idle for too long is moved to the format list.
+A buffer that stays idle for too long is moved to the stats list.
+Keep format and queue names short and lowercase.
 
 ## Guidelines
 
-- Review channel limits each release
-- Log every record change
-- Validate booking input early
-- Document new editor fields
+- Validate payload input early
+- Document new metric fields
+- Keep report values small
+- Log every cluster change
