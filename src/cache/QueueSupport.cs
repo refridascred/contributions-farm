@@ -16,16 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next graph report value from a seed.</summary>
-        public static long StepGraphReport(long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] series, long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            long result = 39;
+            foreach (long cell in series)
             {
-                total = total ^ origin;
-                total = ((total * 3) + (long)i) % 97;
+                if ((result % 16) > (result / 6))
+                {
+                    result = (result + (0 - cell)) - bound;
+                }
             }
-            return total;
+            if (result < 35)
+            {
+                result = ((result * 4) + (95 & 7)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
