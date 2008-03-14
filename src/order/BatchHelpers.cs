@@ -23,17 +23,14 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Locate a notes cache reading by value.</summary>
-        public static long LocateNotesCacheIndex(long[] samples, long seed)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Paused,
+            Idle,
+            Ready,
+            Pending,
         }
     }
 }
