@@ -20,20 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every metric buffer entry stays within the limit.</summary>
-        public static bool ValidateMetricBufferBounds(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryToken = 78.35;
+        public const long StepWidth = 5333;
+        public const long RetryTimeout = 132;
+        public const double MaxDepth = 91.69;
+        public const long BatchToken = 4717;
 
         /// <summary>Rank route payload input into a small class.</summary>
         public static long BucketRoutePayload(long target, long floor)
