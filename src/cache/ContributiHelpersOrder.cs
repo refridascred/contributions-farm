@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a support notes pair into a bucket.</summary>
-        public static long GradeSupportNotes(long floor, long origin)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] samples, long target)
         {
-            if (!((1.4 - 1.25) >= (double)origin))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor <= (3.5 / 7.0))
+                if ((samples[i] == target) && ((samples[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up notes samples.</summary>
