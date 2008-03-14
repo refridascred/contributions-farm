@@ -46,19 +46,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] series, long bound)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long floor, long floor2)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long next = floor - floor2;
+            if ((floor2 - floor) == (next * 2))
             {
-                if (sample != bound)
+                return 6;
+            }
+            else
+            {
+                if (((floor ^ floor) <= (floor / 6)) || ((next << 3) > (floor + 37)))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - next) != (floor2 * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
