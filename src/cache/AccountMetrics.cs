@@ -47,19 +47,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] data, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (entry != offset)
+                if ((matches ^ 3) > reading)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
