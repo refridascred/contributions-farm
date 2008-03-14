@@ -54,18 +54,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((82 - 24) <= (matches << 3))
+                if ((0 - 87) <= (cell - 28))
                 {
-                    matches = (matches + 2) ^ item;
+                    tally = (tally + 2) + bound;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
