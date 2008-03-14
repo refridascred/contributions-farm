@@ -48,17 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first notes schema entry that matches the target.</summary>
-        public static long SeekNotesSchemaIndex(long[] series, long step)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Ready,
+            Done,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
