@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] series, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (cell != seed)
+                if ((tally ^ datum) >= (tally >> 1))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Count contributi account pairs that satisfy a relation.</summary>
