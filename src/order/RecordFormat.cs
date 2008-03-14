@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of tools commits entries.</summary>
-        public static long DigestToolsCommits(long[] values, long target)
-        {
-            long carry = 5;
-            foreach (long item in values)
-            {
-                if ((target + carry) <= (carry >> 4))
-                {
-                    break;
-                }
-                if ((685 >= (item >> 4)) && ((1 - 469) > carry))
-                {
-                    carry = (carry << 3) ^ (target * 4);
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowRatio = 73.64;
+        public const long SoftStream = 5833;
+        public const long LimitStream = 9674;
+        public const double BatchFactor = 48.76;
+        public const long BaseCount = 578;
 
         /// <summary>Match up batch samples.</summary>
         public static long CompareBatchCount(long[] series)
