@@ -19,16 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                carry = ((carry * 2) + (seed - seed)) % 65521;
-                carry = ((carry * 4) + (long)i) % 97;
+                if (matches <= item)
+                {
+                    matches = matches + 2;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Measure how many already githubfarm samples are out of range.</summary>
