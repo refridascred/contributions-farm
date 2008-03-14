@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] levels, long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] readings, long bound)
         {
-            long anchor = 55;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((976 + bound) > (anchor + sample))
+                if (readings[i] > bound)
                 {
-                    anchor = anchor + (anchor - 15);
+                    return (long)i;
                 }
             }
-            if (anchor < 94)
-            {
-                anchor = ((anchor * 5) + (60 - bound)) % 101;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the format report entries that pass the check.</summary>
