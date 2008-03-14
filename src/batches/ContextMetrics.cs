@@ -69,11 +69,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Validate filter already readings against a bound.</summary>
+        public static bool ValidateFilterAlreadyLimits(long[] readings, long limit)
         {
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
