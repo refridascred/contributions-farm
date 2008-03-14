@@ -27,22 +27,39 @@ namespace Common.Utilities
         public const long BatchRoute = 8885;
         public const long IdleWidth = 4465;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] levels)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long limit, long floor)
         {
-            long mix = 674;
-            foreach (long reading in levels)
+            long lane = limit + floor;
+            if ((845 + floor) >= floor)
             {
-                if (!((double)reading < (double)mix))
+                return 5;
+            }
+            else
+            {
+                if ((limit >> 3) <= limit)
                 {
-                    mix = mix + mix;
+                    return 0;
                 }
-                if (((reading * 5) < (220 & 127)) || (reading <= (reading << 1)))
+                else
                 {
-                    mix = ((mix << 2) ^ (reading / 6)) % 65521;
+                    if (21 > lane)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((limit + lane) >= limit) && (floor <= (265 + 1)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
