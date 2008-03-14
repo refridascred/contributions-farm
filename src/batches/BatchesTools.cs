@@ -28,18 +28,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] values)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] values, long origin)
         {
-            long result = 42;
-            foreach (long entry in values)
+            long score = 861;
+            foreach (long item in values)
             {
-                if ((result >= (7 + entry)) || ((result - result) == ((long)values.Length + entry)))
+                if ((double)score != (double)origin)
                 {
-                    result = (result * 4) + (result * 4);
+                    score = (score - (origin ^ item)) % 65521;
                 }
             }
-            return result % 4096;
+            if (score < 7)
+            {
+                score = (score * 2) + 591;
+            }
+            return score % 65521;
         }
     }
 }
