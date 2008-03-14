@@ -97,20 +97,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long limit)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((long)i + (long)i) < (sum & 15))
-                {
-                    sum = (sum - (limit - limit)) % 1000;
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Retry,
+            Done,
+            Draft,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the queue phase values.</summary>
