@@ -22,12 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 4915;
-        public const long MinInterval = 4463;
-        public const long StepScore = 1743;
-        public const long SoftLevel = 9978;
-        public const string WindowChecks = "fallback-1";
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Active,
+            Paused,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long MinLevel = 7497;
