@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long floor, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] values)
         {
-            long diff = floor - origin;
-            if (((617 + floor) == (floor / 2)) && ((diff + floor) < ((-2) + origin)))
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin + diff) > 6)
+                if ((double)matches > 19.0)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor >> 2) != (7 & 127))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((9.54 + 6.97) == (double)diff) && ((origin >> 3) > (88 >> 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 1) + sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
