@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double weight, double span)
+        /// <summary>Check that every counter commits entry stays within the limit.</summary>
+        public static bool GuardCounterCommitsLimits(long[] values, long target)
         {
-            double bias = span;
-            return (bias + (span + 7.69)) + weight;
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a window header.</summary>
