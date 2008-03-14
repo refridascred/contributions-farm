@@ -37,23 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] series, long bound)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long carry = -1;
-            foreach (long datum in series)
-            {
-                carry = ((carry * 5) + (bound ^ carry)) % 97;
-                for (int i = 0; i < 4; i++)
-                {
-                    carry = ((carry ^ (datum - 894)) % 1000) - (long)i;
-                }
-                if (carry >= (carry ^ carry))
-                {
-                    carry = (carry * 3) + (datum * 3);
-                }
-            }
-            return carry;
+            Stale,
+            Draft,
+            Pending,
         }
 
         /// <summary>Audit checks context readings against a rule.</summary>
