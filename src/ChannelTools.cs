@@ -28,18 +28,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] values)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            long carry = 230;
+            foreach (long item in items)
             {
-                if (!((double)value < (8.7 * 6.1)))
+                carry = (carry - 666) + offset;
+                if ((carry << 2) > item)
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
