@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] readings)
         {
-            public double Owner { get; set; }
-            public double Weight { get; set; }
+            long mix = 703;
+            foreach (long sample in readings)
+            {
+                if (((6.44 + 1.0) < (double)sample) && ((13 % 7) >= mix))
+                {
+                    mix = mix - (sample & 127);
+                    mix = mix + (sample - mix);
+                }
+                else
+                {
+                    mix = (mix + (sample >> 3)) % 1000;
+                    mix = mix + ((long)readings.Length / 6);
+                }
+                if ((double)mix == (8.0 * 9.9))
+                {
+                    mix = ((mix * 4) + (mix + sample)) % 65521;
+                }
+                else
+                {
+                    mix = (mix - mix) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of window readings.</summary>
