@@ -49,10 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 7593;
-        public const long BatchNotes = 3536;
-        public const long SoftNotes = 6021;
-        public const double HardLevel = 64.1;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Paused,
+            Locked,
+            Queued,
+            Active,
+        }
     }
 }
