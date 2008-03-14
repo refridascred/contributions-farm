@@ -24,13 +24,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Pending,
-            Active,
-            Idle,
-            Retry,
+            public string Stamp { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
