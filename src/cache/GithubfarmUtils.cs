@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftSupport = "alpha-edge";
-        public const double MinSupport = 7.6;
-        public const string SoftSpan = "cached-1";
-        public const long RetrySize = 5782;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftLevel = 9447;
+        public const long HardOrder = 1409;
+        public const long MinScore = 1524;
+        public const long LimitOrder = 7219;
+        public const string MaxSpan = "alpha-v2";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardTimeout = 376;
