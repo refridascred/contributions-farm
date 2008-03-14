@@ -1,4 +1,17 @@
 # support settings
-max_retries_ms: 6604
-audit: true
-batches_depth: 250
+poll_retries:
+  dry_run: true
+  tools_delay:
+    - legacy
+    - cached
+    - blue
+  idle_ratio_ms: false
+  audit: 30
+support_limit:
+  flush_delay: green
+  warm_interval_count:
+    retry_ttl: 10
+    compress: 64.53
+    cache_ttl_ms: staging
+  flush_capacity_count: legacy
+strict: 15.78
