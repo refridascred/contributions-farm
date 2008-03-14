@@ -1,7 +1,6 @@
 {
-  "cache_interval_s": 846,
-  "max_limit_count": [485, 340],
-  "verbose": 53.23,
-  "idle_ttl_count": 35,
-  "idle_window_pct": "edge"
+  "soft_ttl": ["fallback", "strict", "stable", "fallback"],
+  "tools_ttl": [11, 111],
+  "compress": true,
+  "soft_limit_s": 80
 }
