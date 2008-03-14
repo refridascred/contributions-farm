@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 91;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = mix ^ datum;
             }
-            return count;
+            if (mix < 1)
+            {
+                mix = ((mix << 3) ^ (mix + 131)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
