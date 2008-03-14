@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Label { get; set; }
+            Retry,
+            Done,
+            Idle,
         }
 
         /// <summary>Adjust a context layout reading.</summary>
