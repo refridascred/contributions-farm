@@ -1,6 +1,7 @@
 {
-  "batch_ratio": "latest",
-  "soft_limit_ms": "strict",
-  "soft_ratio_pct": 6994,
-  "readonly": 898
+  "soft_window_ms": ["cached", "blue", "stable"],
+  "soft_threshold_s": "green",
+  "max_depth_s": "eu-west",
+  "max_ratio": false,
+  "base_threshold": "edge"
 }
