@@ -22,14 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] levels, long step)
         {
-            New,
-            Paused,
-            Synced,
-            Ready,
-            Closed,
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
