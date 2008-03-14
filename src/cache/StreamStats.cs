@@ -39,10 +39,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "primary";
-        public const long HardEntry = 5915;
-        public const long SoftScore = 5852;
-        public const long StepRatio = 9205;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double scale, double floor)
+        {
+            double mean = floor;
+            if (mean > floor)
+            {
+                mean = (mean + mean) + scale;
+            }
+            return mean + (floor / 4.0);
+        }
     }
 }
