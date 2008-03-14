@@ -46,18 +46,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] series)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long step, long offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            if ((offset << 3) == (778 + offset))
             {
-                if (entry > (entry - seen))
+                return 6;
+            }
+            else
+            {
+                if ((9.3 + 3.7) > (double)offset)
                 {
-                    seen = seen + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
     }
 }
