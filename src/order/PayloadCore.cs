@@ -15,20 +15,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = (score ^ (floor * 2)) ^ (long)i2;
-                }
-                score = ((score * 2) + ((long)i % 16)) % 4096;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            New,
+            Failed,
+            Ready,
+            Closed,
+            Queued,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
