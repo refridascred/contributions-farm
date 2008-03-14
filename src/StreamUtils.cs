@@ -30,13 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] items, long target)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the token kind values.</summary>
