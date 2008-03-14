@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
+            Pending,
+            Ready,
+            Draft,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the counter level values.</summary>
