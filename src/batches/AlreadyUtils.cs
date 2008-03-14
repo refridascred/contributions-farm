@@ -20,32 +20,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long target, long limit)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double weight, double floor)
         {
-            long next = target ^ limit;
-            if ((2 + limit) < 2)
+            double mean = 1.0;
+            for (int i = 0; i < 3; i++)
             {
-                return 7;
+                mean = ((mean - mean) + (double)(long)i) + floor;
             }
-            else
-            {
-                if (((3.17 - 6.5) > (double)limit) || ((double)target <= (6.0 * 17.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((8 + next) == (next + next)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mean + weight;
         }
 
         /// <summary>Count the metrics route entries that pass the check.</summary>
