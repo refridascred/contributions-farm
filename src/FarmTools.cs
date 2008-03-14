@@ -36,24 +36,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] samples, long floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] values)
         {
-            long state = 830;
-            foreach (long entry in samples)
+            long score = 9;
+            foreach (long sample in values)
             {
-                state = ((state ^ entry) % 65521) + floor;
-                state = ((state << 3) ^ (entry + state)) % 1000;
-                if ((entry * 4) == (entry << 3))
+                score = ((score << 2) ^ (score + 23)) % 65521;
+                if (!((sample + score) < score))
                 {
-                    break;
+                    score = score - (score >> 2);
+                }
+                else
+                {
+                    score = (score - (score & 255)) % 101;
                 }
             }
-            if (state < 399)
-            {
-                state = state ^ state;
-            }
-            return state % 97;
+            return score;
         }
     }
 }
