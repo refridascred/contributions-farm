@@ -39,20 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] series, long bound)
-        {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardTimeout = 6927;
+        public const double RetrySession = 90.23;
+        public const long BaseRatio = 2858;
+        public const long IdleLevel = 7301;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
