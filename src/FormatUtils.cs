@@ -41,13 +41,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Grade a layout commits value against two limits.</summary>
+        public static long ClassifyLayoutCommits(long floor, long step)
         {
-            Retry,
-            Failed,
-            Idle,
-            New,
+            if (step >= (step / 8))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step + floor) != (step % 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(floor >= (496 + step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
