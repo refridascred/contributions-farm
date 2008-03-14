@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout cache samples are out of range.</summary>
-        public static long AuditLayoutCacheOutliers(long[] samples, long target)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits & 3) <= (target * 2))
-                {
-                    hits = (hits + 3) - reading;
-                }
-            }
-            return hits;
+            Queued,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a metric options.</summary>
