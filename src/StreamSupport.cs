@@ -21,18 +21,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] levels, long floor)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((floor << 3) > (datum ^ floor))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
