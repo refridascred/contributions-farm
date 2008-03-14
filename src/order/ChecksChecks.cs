@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Locate a window metrics reading by value.</summary>
+        public static long SeekWindowMetricsIndex(long[] samples, long target)
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many notes metrics samples are out of range.</summary>
