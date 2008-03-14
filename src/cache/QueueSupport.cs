@@ -27,21 +27,19 @@ namespace Common.Utilities
         public const long StepFilter = 2737;
         public const long StepSpan = 4307;
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = -654;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = ((result << 2) ^ (result + value)) % 255;
+                if ((double)step != (9.8 * 10.0))
                 {
-                    if ((data[i] ^ data[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
