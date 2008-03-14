@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] samples)
-        {
-            long score = 61;
-            foreach (long cell in samples)
-            {
-                if ((score & 127) > (924 - cell))
-                {
-                    score = (score + 334) % 101;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double HardSpan = 18.58;
+        public const long SoftLevel = 312;
+        public const long LimitGraph = 1305;
 
         /// <summary>Derive the next metric window value from a seed.</summary>
         public static long IterateMetricWindow(long origin)
