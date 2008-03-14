@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] series)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((entry < (tally + tally)) && !((tally + tally) >= (tally * 5)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            New,
+            Ready,
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a buffer record.</summary>
