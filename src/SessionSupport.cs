@@ -38,39 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank graph layout input into a small class.</summary>
-        public static long RankGraphLayout(long offset, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long prev = offset + step;
-            if ((step - step) < (step % 100))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((prev / 4) > (step & 63))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((step * 3) <= (-487)) && ((step + prev) >= (prev - step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((prev - step) != (step << 3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Active,
+            Closed,
         }
     }
 }
