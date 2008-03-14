@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double HardSpan = 18.58;
-        public const long SoftLevel = 312;
-        public const long LimitGraph = 1305;
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string BurstToken = "local";
