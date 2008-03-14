@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] series, long origin)
+        /// <summary>Roll a cluster tools counter forward.</summary>
+        public static long RollClusterTools(long seed)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = (mix - seed) % 255;
+                mix = (mix * 4) + (mix >> 4);
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
