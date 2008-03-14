@@ -1,7 +1,8 @@
-id,token,owner,region,count
-1,154,922,748,63.12
-2,open,edge,694,43.08
-3,432,blue,85.26,blue
-4,standard,446,fallback,27.17
-5,0,882,edge,fallback
-6,23.06,strict,772,local
+id,weight,token,state,count
+1,latest,151,stable,staging
+2,62.35,209,primary,green
+3,586,462,31.02,47.81
+4,922,82.84,834,primary
+5,blue,fallback,54.69,50
+6,135,strict,fallback,217
+7,blue,263,eu-west,830
