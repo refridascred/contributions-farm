@@ -79,18 +79,16 @@ namespace Common.Utilities
             return weight - (gain / 4.0);
         }
 
-        /// <summary>Combine profile command values into a single score.</summary>
-        public static long CombineProfileCommand(long[] items)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long offset)
         {
-            long mix = 9;
-            foreach (long datum in items)
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((datum % 100) > datum)
-                {
-                    mix = (mix ^ (mix - mix)) % 97;
-                }
+                carry = ((carry * 5) + (long)i) % 255;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
     }
 }
