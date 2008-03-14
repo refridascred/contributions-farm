@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count batches counter pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCounterCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxWidth = "cached-edge";
+        public const double RetryTimeout = 2.1;
+        public const string HardCount = "cached-v2";
+        public const string RetryProfile = "local-1";
+        public const double CacheInterval = 43.58;
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
