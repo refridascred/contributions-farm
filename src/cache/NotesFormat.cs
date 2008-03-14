@@ -23,14 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Dropped,
-            Draft,
-            Done,
-            Retry,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 8687;
+        public const long SoftRatio = 5047;
+        public const long DefaultGraph = 1547;
+        public const long MaxDepth = 9420;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricGaps(long[] items)
