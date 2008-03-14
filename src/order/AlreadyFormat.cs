@@ -36,21 +36,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] levels)
+        /// <summary>Grade a payload schema value against two limits.</summary>
+        public static long ClassifyPayloadSchema(long step, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long slot = step - origin;
+            if ((step / 9) != (step + origin))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((step >> 5) <= (slot % 97))
                 {
-                    if ((levels[i] - levels[j]) != 3)
+                    return 0;
+                }
+                else
+                {
+                    if (((double)step < (double)slot) || ((5.97 / 2.0) < (double)step))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
