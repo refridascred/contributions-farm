@@ -14,19 +14,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((entry - 16) < tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxScore = 53.29;
+        public const long StepFilter = 2737;
+        public const long StepSpan = 4307;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long ScoreCommits(long[] data)
