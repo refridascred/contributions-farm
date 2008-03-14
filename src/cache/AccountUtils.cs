@@ -30,9 +30,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxBudget = 1958;
-        public const long SoftToken = 1529;
-        public const string LimitInterval = "staging-v2";
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
