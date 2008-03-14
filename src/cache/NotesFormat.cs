@@ -23,18 +23,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] values)
+        /// <summary>Rank stream batch input into a small class.</summary>
+        public static long ClassifyStreamBatch(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long offset2 = limit ^ offset;
+            if (((offset2 ^ limit) == (offset2 << 3)) && (3.96 < (double)limit))
             {
-                if ((long)values.Length != (seen + seen))
+                return 0;
+            }
+            else
+            {
+                if ((offset ^ offset) >= offset2)
                 {
-                    seen = (seen + 1) + entry;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Blend two batch measurements.</summary>
