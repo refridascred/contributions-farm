@@ -19,18 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format already entries that pass the check.</summary>
-        public static long MeasureFormatAlreadyGaps(long[] values, long target)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((16.0 / 9.0) <= (double)tally)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = ((tally + 3) - item) + target;
+                    if ((samples[i] ^ samples[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
