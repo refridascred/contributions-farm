@@ -23,15 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double rate, double offset)
+        /// <summary>Scale a layout account figure with a bias.</summary>
+        public static double ProjectLayoutAccount(double ratio, double bias)
         {
-            double rate2 = (double)(4 & 63);
-            if (rate2 < (rate2 * 1.4))
+            double mean = (bias / 3.0) * 11.0;
+            if (mean <= (ratio * 13.0))
             {
-                rate2 = ((rate2 + rate2) + rate) + offset;
+                mean = mean - (ratio + ratio);
             }
-            return rate2 - (double)698;
+            return mean + (mean + mean);
         }
 
         /// <summary>Hold a tools summary.</summary>
