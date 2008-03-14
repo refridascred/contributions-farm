@@ -26,15 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command githubfarm counter forward.</summary>
-        public static long SeriesCommandGithubfarm(long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] series, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                if (item != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Measure how many buffer filter samples are out of range.</summary>
