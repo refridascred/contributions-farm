@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of cache already readings.</summary>
-        public static long WeighCacheAlready(long[] series, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] samples)
         {
-            long carry = -61;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                carry = ((carry - (8 + 88)) + sample) - bound;
+                if ((matches ^ value) <= (value - value))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Describe the editor status values.</summary>
