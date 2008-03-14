@@ -31,17 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] values, long limit)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the batch state values.</summary>
