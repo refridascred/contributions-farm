@@ -42,18 +42,19 @@ namespace Common.Utilities
         public const double BurstInterval = 82.85;
         public const long LimitWidth = 5963;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] levels)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((matches >> 1) >= (sample - matches))
+                if (reading <= origin)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define account limits and defaults.</summary>
