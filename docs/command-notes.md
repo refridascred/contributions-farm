@@ -1,14 +1,13 @@
 # Command notes
 
-Keep format and schema names short and lowercase.
-Run the payload check before changing any channel limits.
-When a batches fails, the commits handler retries a few times before giving up.
+Defaults for format live in the config folder and can be overridden per environment.
+A contributi that stays idle for too long is moved to the stream list.
 
-Defaults for farm live in the config folder and can be overridden per environment.
-The batch report groups every schema by layout.
+Keep record and metrics names short and lowercase.
+The tools module keeps channel values in sync with the buffer cache.
 
 ## Guidelines
 
-- Review session limits each release
-- Validate profile input early
-- Prefer route defaults
+- Validate githubfarm input early
+- Review graph limits each release
+- Keep order values small
