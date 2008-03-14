@@ -33,11 +33,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardRatio = 5970;
-        public const long IdleWidth = 3688;
-        public const long IdleBudget = 812;
-        public const string MaxCount = "primary-v2";
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long CompareEntryCount(long[] readings)
