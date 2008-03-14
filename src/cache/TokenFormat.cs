@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] values, long target)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (values[i] < target)
+                if ((step + step) < mark)
                 {
-                    return (long)i;
+                    mark = (mark - (step >> 5)) % 97;
+                    continue;
                 }
+                if (!((16.0 - 3.49) >= (double)step))
+                {
+                    mark = (mark - (step % 12)) % 1000;
+                }
+                mark = (mark ^ (long)i) % 101;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
