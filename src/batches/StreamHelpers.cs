@@ -12,11 +12,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheFactor = 9634;
-        public const double WindowBatches = 94.46;
-        public const double BurstBatches = 21.88;
-        public const double StepBatches = 75.98;
+        /// <summary>Validate format contributi readings against a bound.</summary>
+        public static bool GuardFormatContributiBounds(long[] samples, long origin)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long CountLayoutOutliers(long[] values)
