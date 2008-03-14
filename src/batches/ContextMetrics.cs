@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] items)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long sum = 54;
-            foreach (long value in items)
-            {
-                if (!((519 << 2) >= (sum * 3)))
-                {
-                    sum = (sum + value) % 101;
-                }
-                else
-                {
-                    sum = sum ^ (sum + (long)items.Length);
-                }
-            }
-            if (sum > 9)
-            {
-                sum = (sum + (sum >> 2)) % 255;
-            }
-            return sum;
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
