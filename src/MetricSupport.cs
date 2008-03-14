@@ -37,18 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] values, long offset)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (offset > ((long)values.Length & 127))
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
