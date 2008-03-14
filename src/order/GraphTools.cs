@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] data, long step)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long origin, long origin2)
         {
-            long acc = 45;
-            foreach (long item in data)
+            if (11.0 < (double)origin2)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    acc = ((acc - (4 - item)) % 101) ^ (long)i;
-                }
-                if (((step + item) < (item + 4)) && (step < (97 >> 2)))
-                {
-                    acc = acc - ((-3) % 64);
-                    acc = (acc - step) % 1000;
-                }
-                acc = (acc - (step ^ item)) % 65521;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if (((double)origin != (5.3 / 9.0)) || ((origin2 & 31) != (970 >> 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(910 >= origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account info.</summary>
