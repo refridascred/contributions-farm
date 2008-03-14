@@ -1,6 +1,5 @@
 # entry settings
-retry_window_s: 1024
-min_retries_pct: blue
-poll_retries_s: 8.24
-poll_interval_pct: staging
-compress: 30
+max_size: blue
+already_window: 4990
+min_window_s: legacy
+idle_delay_count: cached
