@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks core helpers.</summary>
     public static class ChecksCore
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = (mark << 3) ^ ((long)i >> 1);
-                mark = mark - (mark % 64);
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Done,
+            Paused,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define report limits and defaults.</summary>
