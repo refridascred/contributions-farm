@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 4728;
-        public const long HardSize = 7314;
-        public const long CacheSession = 4581;
-        public const long BatchScore = 1771;
-        public const long IdleSession = 8817;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] values, long target)
+        {
+            long acc = 73;
+            foreach (long entry in values)
+            {
+                if ((entry % 8) != (target + entry))
+                {
+                    acc = (acc + (target + acc)) % 1000;
+                }
+                if ((4.54 / 6.0) <= (double)entry)
+                {
+                    acc = ((acc << 2) ^ (acc ^ acc)) % 4096;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
