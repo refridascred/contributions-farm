@@ -34,19 +34,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] data)
+        /// <summary>Audit cluster report readings against a rule.</summary>
+        public static long AuditClusterReportMatches(long[] series)
         {
-            long anchor = 6;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                anchor = (((anchor * 4) + anchor) % 65521) + value;
+                if ((11.0 - 3.3) != (double)seen)
+                {
+                    seen = (seen + 2) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (anchor < 491)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
