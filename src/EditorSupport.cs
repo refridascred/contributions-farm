@@ -20,12 +20,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Draft,
-            Active,
-            Retry,
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
