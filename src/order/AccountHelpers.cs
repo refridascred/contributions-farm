@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 2605;
-        public const long SoftStats = 4987;
-        public const string WindowTimeout = "fallback-edge";
-        public const long StepStats = 7930;
-        public const string MaxStats = "latest-edge";
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
