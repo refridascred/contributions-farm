@@ -27,13 +27,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long seed)
         {
-            Ready,
-            Synced,
-            Active,
-            Done,
+            long total = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                total = (total ^ (seed + total)) % 65521;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
