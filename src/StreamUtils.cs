@@ -53,15 +53,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Validate format counter readings against a bound.</summary>
+        public static bool GuardFormatCounterLimits(long[] levels, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (datum > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Describe the queue phase values.</summary>
