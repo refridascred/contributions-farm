@@ -1,12 +1,11 @@
 # Command notes
 
-When a channel fails, the batch handler retries a few times before giving up.
-The metrics module keeps support values in sync with the format cache.
-Run the format check before changing any editor limits.
+The batches module keeps format values in sync with the payload cache.
+Run the batch check before changing any cluster limits.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Log every payload change
-- Keep route values small
-- Validate entry input early
+- Log every report change
+- Prefer commits defaults
+- Document new commits fields
+- Validate payload input early
