@@ -66,12 +66,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Locked,
-            Retry,
             Dropped,
+            Active,
+            Failed,
+            Retry,
+            Synced,
         }
     }
 }
