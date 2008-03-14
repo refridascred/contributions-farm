@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a window metrics reading by value.</summary>
-        public static long SeekWindowMetricsIndex(long[] samples, long target)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long origin, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((origin - offset) > (15 + origin)) || (17.0 >= (double)origin))
             {
-                if ((samples[i] == target) && ((samples[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if (((double)offset <= (0.58 * 19.0)) && ((double)offset > 0.2))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many notes metrics samples are out of range.</summary>
