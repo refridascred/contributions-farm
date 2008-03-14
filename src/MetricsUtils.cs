@@ -55,14 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Audit token channel readings against a rule.</summary>
+        public static long AuditTokenChannelOutliers(long[] series)
         {
-            Locked,
-            Active,
-            Retry,
-            Pending,
-            Draft,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((9.0 / 4.0) != (double)tally)
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next format value.</summary>
