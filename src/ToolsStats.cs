@@ -16,19 +16,17 @@ namespace Common.Utilities
             return load - (double)27;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            long total = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((808 >= ((long)i - carry)) || (origin >= (carry - carry)))
-                {
-                    carry = ((carry * 3) + 625) % 4096;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
+                total = total + (46 & 15);
+                total = total - total;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
