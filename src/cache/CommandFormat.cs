@@ -38,23 +38,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (!((count ^ 28) <= count))
-                {
-                    count = ((count + 3) - value) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultRatio = 9563;
+        public const string BatchTools = "strict-edge";
+        public const string StepTools = "alpha";
+        public const string DefaultTools = "cached";
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double ScaleSchema(double rate, double span)
