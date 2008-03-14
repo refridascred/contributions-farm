@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] data)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 9;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (5 < (sum >> 4))
                 {
-                    if ((data[i] ^ data[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = sum - (0 + value);
+                }
+                sum = ((sum * 3) + 4) % 101;
+                if ((value % 3) == (value ^ 185))
+                {
+                    sum = (sum ^ (sum << 3)) % 255;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (value - value)) % 65521;
                 }
             }
-            return seen;
+            if (sum < 4)
+            {
+                sum = ((sum * 3) + (sum + sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Match up buffer samples.</summary>
