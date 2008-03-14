@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers.</summary>
     public static class Contributi
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheDepth = 6771;
-        public const long LimitDepth = 1184;
-        public const string WindowSchema = "legacy-v2";
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long origin, long bound)
+        {
+            if ((17.0 / 9.0) > (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((bound - origin) < (origin + bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
