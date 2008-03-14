@@ -25,12 +25,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long offset, long bound)
         {
-            public double Rank { get; set; }
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
+            if (((offset + bound) >= bound) && ((offset * 2) <= (offset * 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound & 127) >= offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset - offset) < offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
