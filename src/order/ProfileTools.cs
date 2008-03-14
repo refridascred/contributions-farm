@@ -32,13 +32,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] items)
         {
-            Draft,
-            Synced,
-            Retry,
-            Idle,
+            long mix = -77;
+            foreach (long sample in items)
+            {
+                mix = ((mix * 3) + (sample / 9)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
