@@ -1,8 +1,5 @@
 {
-  "flush_timeout_pct": 1024,
-  "schema_size": "open",
-  "burst_limit_pct": 78.93,
-  "poll_limit": [179, 398, 412, 81],
-  "verbose": true,
-  "flush_ratio": "open"
+  "profile_interval": [275, 297, 1, 317],
+  "min_ttl": 44,
+  "hard_threshold": 6101
 }
