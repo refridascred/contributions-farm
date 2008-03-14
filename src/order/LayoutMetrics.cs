@@ -48,12 +48,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Look up the position of a context checks sample.</summary>
+        public static long SeekContextChecksIndex(long[] readings, long step)
         {
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
