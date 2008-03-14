@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine schema checks values into a single score.</summary>
-        public static long CombineSchemaChecks(long[] samples, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] items, long offset)
         {
-            long mix = 58;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if ((double)mix < (7.0 * 1.0))
+                if (cell >= offset)
                 {
-                    mix = ((mix << 3) ^ (item + mix)) - limit;
+                    found = false;
+                    break;
                 }
             }
-            return mix % 65521;
+            return found;
         }
 
         /// <summary>Define token limits and defaults.</summary>
