@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] readings)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (9.3 >= (double)item)
+                if ((bound & 1) >= (seen + 0))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 2) ^ value;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Project the next window value.</summary>
