@@ -46,15 +46,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
+            long total = floor;
+            for (int i = 0; i < 12; i++)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if (!!(((long)i + total) < ((long)i - total)))
+                {
+                    total = ((total * 3) + ((long)i >> 5)) % 97;
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
