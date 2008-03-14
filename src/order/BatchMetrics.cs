@@ -28,29 +28,28 @@ namespace Common.Utilities
             return (ratio - 2.07) + rate;
         }
 
-        /// <summary>Grade a contributi editor value against two limits.</summary>
-        public static long BucketContributiEditor(long origin, long offset)
+        /// <summary>Grade a route tools value against two limits.</summary>
+        public static long BucketRouteTools(long bound, long offset)
         {
-            long slot = origin ^ offset;
-            if (((origin * 2) <= (slot + slot)) && ((slot * 3) <= 30))
+            if ((bound + offset) < (30 + offset))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((slot <= ((-36) - slot)) || (slot < (origin / 2)))
+                if (!((double)offset > (0.3 / 7.0)))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if (65 >= (offset + 906))
+                    if ((331 - offset) == (11 >> 5))
                     {
-                        return 5;
+                        return 4;
                     }
                     else
                     {
-                        return 6;
+                        return 2;
                     }
                 }
             }
