@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double weight, double floor)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] values)
         {
-            double load = (4.18 / 3.0) - 9.88;
-            if (load > (0.1 + 6.6))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load + (floor * 0.16)) + weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load - (double)27;
+            return seen;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
