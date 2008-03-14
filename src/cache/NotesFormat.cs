@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] readings, long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (readings[i] > target)
+                if ((tally >> 5) >= (tally + (-37)))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) ^ sample) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the editor status values.</summary>
