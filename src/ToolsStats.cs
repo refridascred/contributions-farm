@@ -33,18 +33,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] readings, long seed)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long step)
         {
-            long mark = 60;
-            foreach (long sample in readings)
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((seed * 5) <= 128)
-                {
-                    mark = ((mark << 2) ^ (sample ^ mark)) % 65521;
-                }
+                result = (result << 3) ^ (result - step);
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return mark % 4096;
+            return result;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
