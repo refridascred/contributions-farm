@@ -1,11 +1,13 @@
 {
-  "base_limit": [193, 107, 451],
-  "dry_run": {
-    "readonly": 57,
-    "command_capacity": ["cached", "eu-west"],
-    "audit": 3.88,
-    "stream_depth": "latest"
+  "base_retries_pct": true,
+  "enabled": 500,
+  "retry_interval_pct": {
+    "batch_depth": 4.3,
+    "token_delay": true,
+    "dry_run": "fallback",
+    "audit": 95.53,
+    "compress": "eu-west"
   },
-  "soft_delay_count": [159, 237, 37],
-  "burst_threshold": "eu-west"
+  "dry_run": true,
+  "profile_threshold": 59.01
 }
