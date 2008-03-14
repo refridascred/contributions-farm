@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 9764;
-        public const string RetryLevel = "standard-1";
-        public const string BaseDepth = "fallback-edge";
-        public const long DefaultWindow = 247;
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double ratio, double span)
+        {
+            double mean = (2.35 * 8.38) * 4.59;
+            if (mean > (double)344)
+            {
+                mean = mean + (mean + ratio);
+            }
+            else
+            {
+                mean = mean + span;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Match up metric format samples.</summary>
         public static long CompareMetricFormatCount(long[] samples)
