@@ -1,6 +1,7 @@
 {
-  "retry_interval": 1024,
-  "hard_limit_count": false,
-  "retry_window": "fallback",
-  "flush_depth": true
+  "account_capacity": 3665,
+  "retry_retries_s": "edge",
+  "channel_size": 55,
+  "retry_ratio_pct": false,
+  "idle_timeout": 33.61
 }
