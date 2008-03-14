@@ -1,6 +1,16 @@
 # support settings
-window_retries: latest
-filter_ratio: 6226
-counter_ttl: 60
-poll_interval_ms: fallback
-token_ratio: 1530
+stats_retries:
+  - strict
+  - green
+  - stable
+  - primary
+batch_limit:
+  verbose:
+    - local
+    - green
+  queue_retries: 68.33
+  flush_window: local
+  hard_threshold_ms: true
+poll_window: standard
+window_capacity: legacy
+idle_ratio: false
