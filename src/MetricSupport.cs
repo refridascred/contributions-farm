@@ -23,24 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!(6 > (limit + total)))
-                {
-                    total = ((total * 2) + limit) % 1000;
-                }
-                if ((limit + (long)i) > 511)
-                {
-                    total = ((total << 2) ^ (659 << 2)) % 101;
-                }
-                total = ((total << 2) ^ total) % 97;
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public double Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
