@@ -27,15 +27,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double gain, double floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long limit)
         {
-            double gain2 = floor;
-            for (int i = 0; i < 3; i++)
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                gain2 = (gain2 + (double)(long)i) - gain;
+                sum = (sum ^ (40 << 3)) % 101;
+                if ((limit >= (long)i) || (((long)i * 3) >= limit))
+                {
+                    break;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return gain2 + floor;
+            return sum;
         }
     }
 }
