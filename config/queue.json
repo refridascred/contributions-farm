@@ -1,19 +1,12 @@
 {
-  "dry_run": [20, 15, 221],
-  "min_capacity_ms": {
-    "soft_threshold_s": false,
-    "min_threshold_ms": 1818,
-    "default_size_ms": {
-      "soft_interval_ms": "blue",
-      "default_depth_count": 6655,
-      "batch_size": 76,
-      "retry_threshold_count": false,
-      "readonly": [307, 434]
-    },
-    "batches_retries": 81,
-    "verbose": 60
-  },
-  "poll_depth": ["edge", "strict"],
-  "default_capacity": 93.63,
-  "min_limit": 4784
+  "idle_threshold": 3012,
+  "batch_ttl": "legacy",
+  "strict": "stable",
+  "sync_ratio_s": "green",
+  "readonly": {
+    "soft_capacity_ms": 84,
+    "hard_capacity": "legacy",
+    "token_depth": 30,
+    "enabled": "cached"
+  }
 }
