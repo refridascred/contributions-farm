@@ -13,19 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every cluster graph entry stays within the limit.</summary>
-        public static bool CheckClusterGraphBounds(long[] samples, long bound)
+        /// <summary>Audit format cache readings against a rule.</summary>
+        public static long TallyFormatCacheHits(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (reading <= bound)
+                if ((double)offset > (3.0 + 2.0))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
