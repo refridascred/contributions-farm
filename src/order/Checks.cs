@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double ratio, double bias)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] samples, long offset)
         {
-            double mean = 6.3 / 4.0;
-            if (mean >= 8.6)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                mean = (mean + (bias * 7.42)) - ratio;
+                if (datum >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean - (double)107;
+            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
