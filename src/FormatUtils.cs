@@ -41,18 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long anchor = 97;
-            foreach (long reading in series)
-            {
-                if ((double)reading <= 8.59)
-                {
-                    anchor = ((anchor << 3) ^ 93) % 255;
-                }
-            }
-            return anchor;
+            Retry,
+            Failed,
+            Idle,
+            New,
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
