@@ -43,17 +43,18 @@ namespace Common.Utilities
         public const long MinInterval = 8552;
         public const string WindowRatio = "staging-v2";
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] data, long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 116;
+            foreach (long value in values)
             {
-                if ((data[i] > bound) && ((data[i] % 2) != 0))
+                if ((15.0 / 7.0) >= (double)carry)
                 {
-                    return (long)i;
+                    carry = (((carry << 3) ^ (target + 57)) % 97) + value;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Combine profile command values into a single score.</summary>
