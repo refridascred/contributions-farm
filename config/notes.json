@@ -1,6 +1,5 @@
 {
-  "contributi_timeout": 803,
-  "default_interval_s": [344, 201],
-  "burst_interval": [450, 79],
-  "verbose": false
+  "min_retries": "green",
+  "burst_threshold_s": ["staging", "staging"],
+  "base_ratio_count": ["standard", "cached", "eu-west", "green"]
 }
