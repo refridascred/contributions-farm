@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of batch context readings.</summary>
-        public static long PairBatchContextCount(long[] items)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value > floor)
                 {
-                    if ((items[i] ^ items[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Count the cluster graph entries that pass the check.</summary>
