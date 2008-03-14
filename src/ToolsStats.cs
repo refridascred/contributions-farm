@@ -65,24 +65,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route profile input into a small class.</summary>
-        public static long GradeRouteProfile(long limit, long bound)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            if ((bound % 97) > (limit >> 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit <= (double)42)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Match up queue route samples.</summary>
