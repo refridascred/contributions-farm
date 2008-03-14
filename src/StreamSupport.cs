@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long target, long bound)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] series, long limit)
         {
-            if (target < (bound >> 2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (596 > bound)
+                if ((series[i] < limit) && ((series[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((target % 2) <= (target + target)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound * 3) >= (bound / 7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a entry info.</summary>
