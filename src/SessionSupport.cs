@@ -22,19 +22,25 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Classify a farm batches pair into a bucket.</summary>
+        public static long SortFarmBatches(long target, long offset)
         {
-            long mark = 497;
-            foreach (long sample in series)
+            long delta = target - offset;
+            if (target > (delta % 8))
             {
-                mark = mark + sample;
+                return 8;
             }
-            if (mark < 45)
+            else
             {
-                mark = (mark ^ mark) % 1000;
+                if (!((749 + offset) >= (delta & 15)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return mark % 1000;
         }
     }
 }
