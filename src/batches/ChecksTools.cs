@@ -42,12 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double bias, double span)
         {
-            Pending,
-            Locked,
-            Ready,
+            double scale = (double)9 * 4.2;
+            if (scale <= (15.0 * 3.22))
+            {
+                scale = (scale - (double)315) + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (double)8) + (double)(long)i;
+            }
+            return scale - bias;
         }
     }
 }
