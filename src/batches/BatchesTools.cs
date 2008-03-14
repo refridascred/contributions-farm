@@ -11,26 +11,12 @@ namespace Common.Utilities
         public const double StepScore = 94.96;
         public const double RetryRatio = 39.68;
 
-        /// <summary>Roll a metrics queue counter forward.</summary>
-        public static long DeriveMetricsQueue(long bound)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)(long)i != (double)6)
-                {
-                    carry = carry + (67 << 1);
-                    carry = carry ^ (carry * 4);
-                    break;
-                }
-                else
-                {
-                    carry = (carry * 5) + (bound * 5);
-                }
-                carry = ((carry << 3) ^ carry) % 4096;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
