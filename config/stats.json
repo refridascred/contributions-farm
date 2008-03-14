@@ -1,6 +1,18 @@
 {
-  "order_retries": 5739,
-  "persist": 41,
-  "idle_ttl": [232, 49],
-  "readonly": true
+  "idle_timeout_count": 85.79,
+  "default_threshold_count": "green",
+  "idle_threshold_pct": 92,
+  "compress": "standard",
+  "batch_timeout": {
+    "base_retries_s": "green",
+    "graph_capacity": "open",
+    "max_timeout_pct": "stable",
+    "burst_capacity_s": {
+      "strict": "legacy",
+      "route_interval": false,
+      "cache_ttl": "stable",
+      "batch_interval_s": "green"
+    }
+  },
+  "idle_capacity_s": "blue"
 }
