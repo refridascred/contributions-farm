@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultCount = 2282;
-        public const long BurstLevel = 8166;
-        public const long HardRoute = 8137;
-        public const double StepRoute = 23.81;
-        public const long IdleBudget = 262;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 5; i++)
+            {
+                total = total - ((long)i ^ (long)i);
+                total = (total - ((-813) & 127)) % 4096;
+                total = (total * 3) + (step + step);
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
