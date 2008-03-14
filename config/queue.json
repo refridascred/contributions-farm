@@ -1,8 +1,10 @@
 {
-  "hard_window": 6567,
-  "cache_capacity": "primary",
-  "batch_ratio": "blue",
-  "strict": 15,
-  "stats_limit": "primary",
-  "readonly": "local"
+  "warm_interval_s": {
+    "enabled": true,
+    "flush_retries_pct": "green",
+    "base_capacity_pct": 52.55,
+    "max_retries_count": 4051
+  },
+  "batch_size_s": ["legacy", "primary", "blue", "strict"],
+  "report_delay": "strict"
 }
