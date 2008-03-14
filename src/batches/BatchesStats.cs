@@ -20,18 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] samples, long step)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (step < (matches % 100))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            Ready,
+            Pending,
+            Idle,
         }
 
         /// <summary>Project the next cache value.</summary>
