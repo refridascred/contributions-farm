@@ -38,25 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a account batches pair into a bucket.</summary>
-        public static long GradeAccountBatches(long limit, long origin)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long cur = limit + origin;
-            if ((3.0 - 8.7) > (double)cur)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((24 - 19) == (cur >> 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Closed,
+            New,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
