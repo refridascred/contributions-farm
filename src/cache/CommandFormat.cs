@@ -20,19 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] samples, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] values)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long state = 1;
+            foreach (long datum in values)
             {
-                if (datum < limit)
+                state = ((state << 2) ^ (datum ^ datum)) % 1000;
+                if ((18.0 * 9.25) >= (double)state)
                 {
-                    ready = false;
+                    state = (state - (state + (long)values.Length)) % 1000;
+                }
+                if (!((datum - state) > 650))
+                {
                     break;
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Hold a filter entry.</summary>
