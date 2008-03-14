@@ -1,11 +1,6 @@
 {
-  "cache_threshold_count": 0.46,
-  "githubfarm_threshold": {
-    "base_window_pct": "legacy",
-    "cache_size": true,
-    "commits_limit": "staging",
-    "readonly": [145, 185]
-  },
-  "cache_ratio": [63, 7, 455, 142],
-  "readonly": "primary"
+  "base_size_pct": false,
+  "base_capacity_pct": 75,
+  "readonly": 2782,
+  "enabled": ["latest", "primary", "eu-west"]
 }
