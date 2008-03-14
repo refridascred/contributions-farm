@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] data, long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (value > step)
+                if ((value & 15) == (value << 2))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) + step;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Accumulate notes samples.</summary>
