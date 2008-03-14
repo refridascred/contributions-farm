@@ -28,15 +28,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] values, long target)
-        {
-            long mix = 575;
-            foreach (long cell in values)
-            {
-                mix = (((mix << 2) ^ (mix + (-154))) ^ cell) + target;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 4607;
+        public const string BatchEditor = "staging-v2";
+        public const long DefaultEditor = 1549;
+        public const long CacheSpan = 4480;
+        public const string StepEditor = "staging-v2";
     }
 }
