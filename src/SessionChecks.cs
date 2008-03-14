@@ -25,15 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double weight, double bias)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            double bias2 = bias * 1.0;
-            for (int i = 0; i < 6; i++)
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
             {
-                bias2 = ((bias2 + (double)5) + (double)(long)i) - weight;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return bias2 - (double)865;
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
