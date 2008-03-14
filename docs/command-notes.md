@@ -1,13 +1,13 @@
 # Command notes
 
 Defaults for format live in the config folder and can be overridden per environment.
-A contributi that stays idle for too long is moved to the stream list.
+The context report groups every queue by order.
 
-Keep record and metrics names short and lowercase.
-The tools module keeps channel values in sync with the buffer cache.
+Each order is validated before it reaches the channel queue.
+Each profile is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Review graph limits each release
-- Keep order values small
+- Review filter limits each release
+- Prefer entry defaults
+- Validate context input early
