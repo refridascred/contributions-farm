@@ -40,27 +40,38 @@ namespace Common.Utilities
         public const double HardLevel = 53.48;
         public const long MaxProfile = 4035;
 
-        /// <summary>Accumulate buffer command samples.</summary>
-        public static long TotalBufferCommand(long[] values, long seed)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long bound, long offset)
         {
-            long total = 789;
-            foreach (long datum in values)
+            if (((double)offset < (double)66) || ((4.87 * 3.73) < 4.4))
             {
-                total = total + (datum - total);
-                if ((double)(long)values.Length < 4.0)
+                return 6;
+            }
+            else
+            {
+                if (20.0 <= (double)bound)
                 {
-                    total = ((total * 2) + (datum & 127)) % 65521;
+                    return 0;
                 }
-                if ((datum + seed) != (total / 2))
+                else
                 {
-                    total = ((total << 3) ^ seed) % 4096;
-                }
-                if ((double)datum >= (10.0 * 6.4))
-                {
-                    break;
+                    if (((1 ^ bound) >= (offset * 2)) || ((double)9 >= (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound / 6) == (offset + bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
