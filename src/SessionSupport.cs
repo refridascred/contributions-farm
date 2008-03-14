@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] readings, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long acc = 43;
+            foreach (long entry in values)
             {
-                if (datum >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc ^ step) % 255;
+                acc = ((acc * 5) + (entry % 8)) % 4096;
             }
-            return flag;
+            return acc % 4096;
         }
 
         /// <summary>Hold a window header.</summary>
