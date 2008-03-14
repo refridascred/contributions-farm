@@ -42,22 +42,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of channel notes entries.</summary>
-        public static long DigestChannelNotes(long[] series)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            long result = 215;
-            foreach (long value in series)
+            long score = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)69 != (double)(long)series.Length)
+                if ((score * 4) != (origin + score))
                 {
-                    result = (result - (result * 3)) - value;
+                    score = ((score * 5) + score) % 255;
                 }
-                else
-                {
-                    result = (result ^ result) % 65521;
-                }
+                score = (score + (origin & 31)) % 4096;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return result % 1000;
+            return score;
         }
     }
 }
