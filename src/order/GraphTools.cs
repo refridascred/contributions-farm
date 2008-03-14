@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate metrics entry readings against a bound.</summary>
-        public static bool VerifyMetricsEntryBounds(long[] values, long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long acc = 45;
+            foreach (long item in data)
             {
-                if (reading < limit)
+                for (int i = 0; i < 7; i++)
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc - (4 - item)) % 101) ^ (long)i;
                 }
+                if (((step + item) < (item + 4)) && (step < (97 >> 2)))
+                {
+                    acc = acc - ((-3) % 64);
+                    acc = (acc - step) % 1000;
+                }
+                acc = (acc - (step ^ item)) % 65521;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Hold a account info.</summary>
