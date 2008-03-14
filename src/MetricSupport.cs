@@ -40,16 +40,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
+            long mark = 32;
+            foreach (long reading in data)
             {
-                state = (state ^ (seed % 3)) % 255;
-                state = ((state * 4) + (long)i) % 101;
+                mark = (((mark * 3) + (mark - mark)) % 4096) ^ reading;
             }
-            return state;
+            return mark;
         }
     }
 }
