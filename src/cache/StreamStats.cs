@@ -12,15 +12,20 @@ namespace Common.Utilities
             return (bias + bias) + rate;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double rate, double span)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long seed)
         {
-            double scale = rate * 8.1;
-            for (int i = 0; i < 6; i++)
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                scale = (scale - (double)(long)i) - span;
+                score = ((score << 3) ^ (seed - score)) % 101;
+                if ((double)seed < (12.0 + 4.01))
+                {
+                    score = (score ^ (seed >> 5)) % 101;
+                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return scale + (1.0 * 6.45);
+            return score;
         }
 
         /// <summary>Combine route values into a single score.</summary>
