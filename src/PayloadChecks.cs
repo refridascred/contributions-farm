@@ -32,18 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] samples)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long mix = 1;
+            foreach (long cell in levels)
             {
-                if (!((-5) <= (seen % 24)))
+                if (cell >= (cell - mix))
                 {
-                    seen = (seen + 3) + reading;
+                    mix = (mix * 5) + (cell ^ mix);
                 }
             }
-            return seen;
+            if (mix > 9)
+            {
+                mix = (mix * 3) + (30 + mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the batches kind values.</summary>
