@@ -1,7 +1,6 @@
-id,token,score,count,state
-1,legacy,cached,45.3,585
-2,683,green,65.25,50.47
-3,primary,legacy,open,62.83
-4,263,98.07,413,fallback
-5,33.63,primary,595,cached
-6,standard,2.17,975,60.97
+id,rank,state
+1,open,cached
+2,open,81.73
+3,468,strict
+4,365,524
+5,638,0.97
