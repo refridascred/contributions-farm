@@ -20,11 +20,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long origin, long floor)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            if ((floor + floor) > (92 + origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((0 + floor) > origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin > 9.7)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((floor + 340) == (origin - floor)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter summary.</summary>
