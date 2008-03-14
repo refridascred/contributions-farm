@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Validate metrics entry readings against a bound.</summary>
+        public static bool VerifyMetricsEntryBounds(long[] values, long limit)
         {
-            long result = 6;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (6 < (reading << 3))
+                if (reading < limit)
                 {
-                    result = (result ^ (result & 127)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (result > 612)
-            {
-                result = result + (result + result);
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Hold a account info.</summary>
