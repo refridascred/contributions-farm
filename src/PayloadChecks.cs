@@ -73,15 +73,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] series, long seed)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long state = 59;
-            foreach (long cell in series)
-            {
-                state = ((state + (29 << 2)) + cell) + seed;
-            }
-            return state % 4096;
+            Closed,
+            Done,
+            Queued,
+            New,
+            Stale,
         }
     }
 }
