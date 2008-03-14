@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] data, long origin)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long item in data)
+            double mean = (double)(210 + 846);
+            if (mean <= ratio)
             {
-                if (item != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean + (mean + ratio);
             }
-            return stale;
+            else
+            {
+                mean = mean + 3.2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (floor - 15.0)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a payload record.</summary>
