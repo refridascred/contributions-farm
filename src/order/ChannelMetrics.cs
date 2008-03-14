@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const string BurstChecks = "primary-1";
         public const string SoftChecks = "legacy-v2";
 
-        /// <summary>Project the next account commits value.</summary>
-        public static double AdjustAccountCommits(double gain, double span)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] data)
         {
-            double gain2 = (double)((-63) - 989);
-            return (gain2 - (gain + 8.16)) + span;
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((8.0 * 10.0) != (double)reading)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
