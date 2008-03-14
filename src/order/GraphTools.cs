@@ -34,11 +34,19 @@ namespace Common.Utilities
         public const double WindowDepth = 1.83;
         public const long MinSize = 6943;
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] levels, long offset)
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
