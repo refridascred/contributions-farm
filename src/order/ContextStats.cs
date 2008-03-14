@@ -53,13 +53,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Stale,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinDepth = "primary-edge";
+        public const long DefaultContext = 5703;
+        public const double LimitWidth = 3.61;
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
