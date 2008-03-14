@@ -49,18 +49,17 @@ namespace Common.Utilities
         public const double IdleAccount = 47.71;
         public const long DefaultRatio = 7015;
 
-        /// <summary>Measure how many metric editor samples are out of range.</summary>
-        public static long TallyMetricEditorHits(long[] values, long floor)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((floor & 127) < reading)
+                if (values[i] >= offset)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
