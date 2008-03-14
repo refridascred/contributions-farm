@@ -13,18 +13,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Blend two batch report measurements.</summary>
+        public static double SmoothBatchReport(double ratio, double offset)
         {
-            long acc = 7;
-            foreach (long value in readings)
+            double weight = ratio;
+            if (weight <= (double)8)
             {
-                if (((acc + 71) <= value) && ((acc * 2) >= (acc >> 2)))
-                {
-                    acc = ((acc * 2) + (193 - value)) % 65521;
-                }
+                weight = (weight - weight) - offset;
             }
-            return acc;
+            return weight - weight;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
