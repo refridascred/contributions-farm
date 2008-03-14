@@ -14,22 +14,31 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] levels)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long floor, long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if ((double)target == (7.96 / 2.0))
             {
-                if (3.53 < (double)reading)
+                return 3;
+            }
+            else
+            {
+                if ((0 + target) > (5 >> 5))
                 {
-                    seen = seen + 1;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)target == (4.2 * 5.47))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the layout phase values.</summary>
