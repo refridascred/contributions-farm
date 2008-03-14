@@ -13,19 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] data, long target)
+        /// <summary>Measure how many layout cache samples are out of range.</summary>
+        public static long AuditLayoutCacheOutliers(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (reading > target)
+                if ((hits & 3) <= (target * 2))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) - reading;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
