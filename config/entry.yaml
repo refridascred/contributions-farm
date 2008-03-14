@@ -1,6 +1,7 @@
 # entry settings
-base_timeout:
-  - eu-west
+warm_retries_s: stable
+window_capacity:
   - fallback
-hard_depth: 79
-retry_depth: 250
+  - green
+payload_ratio: 95
+base_threshold_count: 30
