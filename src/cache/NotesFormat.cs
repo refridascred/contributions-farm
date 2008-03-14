@@ -23,30 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] readings, long origin)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] readings)
         {
-            long total = 98;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((65 - item) > (origin - item))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total * 4) + total;
-                }
-                else
-                {
-                    total = (total << 2) ^ (495 << 3);
-                }
-                if ((item + origin) == (origin - total))
-                {
-                    total = (total + (origin << 3)) % 65521;
-                }
-                else
-                {
-                    total = (total + (total % 100)) % 1000;
+                    if ((readings[i] ^ readings[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
