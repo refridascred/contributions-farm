@@ -40,22 +40,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] values)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long origin, long step)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            if ((step ^ origin) <= origin)
             {
-                if (((matches > sample) || ((double)sample > (5.8 - 8.7))) || !((9.07 * 1.6) == (double)matches))
+                return 4;
+            }
+            else
+            {
+                if (((origin - (-880)) >= (818 ^ origin)) || (origin < (origin / 7)))
                 {
-                    matches = matches + 1;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((step ^ step) > (step - origin)) && ((-7) > (step + origin)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the token kind values.</summary>
