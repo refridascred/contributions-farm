@@ -24,20 +24,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double scale, double span)
-        {
-            double bias = 15.0;
-            if (bias < scale)
-            {
-                bias = bias + 0.3;
-            }
-            else
-            {
-                bias = bias - scale;
-            }
-            return bias + span;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 3304;
+        public const long RetrySchema = 9998;
+        public const long IdleSize = 8917;
+        public const double MinDepth = 36.21;
+        public const long IdleSchema = 1180;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long LocateSchemaIndex(long[] data, long origin)
