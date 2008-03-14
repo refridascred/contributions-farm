@@ -51,21 +51,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of already buffer readings.</summary>
-        public static long CompareAlreadyBufferCount(long[] items)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
