@@ -68,22 +68,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double rate, double bias)
         {
-            long state = 113;
-            foreach (long datum in series)
+            double scale = (double)(15 / 3);
+            for (int i = 0; i < 8; i++)
             {
-                if (((78 << 2) <= (state - state)) && ((double)state >= (double)4))
-                {
-                    state = (state ^ state) ^ datum;
-                }
+                scale = ((scale + (1.0 - scale)) + (double)(long)i) - rate;
             }
-            if (state > 63)
-            {
-                state = (state << 2) ^ 0;
-            }
-            return state;
+            return scale + bias;
         }
     }
 }
