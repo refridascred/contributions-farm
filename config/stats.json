@@ -1,13 +1,14 @@
 {
-  "base_retries_pct": true,
-  "enabled": 500,
-  "retry_interval_pct": {
-    "batch_depth": 4.3,
-    "token_delay": true,
-    "dry_run": "fallback",
-    "audit": 95.53,
-    "compress": "eu-west"
+  "contributi_timeout": {
+    "max_threshold": 3.12,
+    "readonly": "cached",
+    "min_limit": "edge",
+    "burst_ttl": 47.78,
+    "flush_size": "open",
+    "batch_timeout_count": "legacy"
   },
-  "dry_run": true,
-  "profile_threshold": 59.01
+  "poll_threshold_s": 1024,
+  "default_limit_s": 64.61,
+  "token_delay": "staging",
+  "hard_ttl_s": ["standard", "strict", "primary", "eu-west"]
 }
