@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (!((hits - (-8)) <= hits))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepSpan = "stable";
+        public const long MaxEntry = 8410;
+        public const string MaxCount = "stable-edge";
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatMatches(long[] series)
