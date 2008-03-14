@@ -20,12 +20,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] data)
         {
-            public double Size { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry % 16) <= (entry * 5)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
