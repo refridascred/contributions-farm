@@ -1,6 +1,10 @@
-id,label,level,state
-1,54.57,primary,606
-2,32.76,green,151
-3,759,21.06,396
-4,latest,63,76.68
-5,cached,46.45,87.13
+id,state,count,region
+1,906,882,557
+2,39.1,82.29,7.28
+3,997,open,919
+4,757,latest,staging
+5,538,legacy,edge
+6,540,eu-west,93.84
+7,cached,fallback,473
+8,18.02,813,standard
+9,959,61.57,61.67
