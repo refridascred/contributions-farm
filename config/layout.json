@@ -1,5 +1,13 @@
 {
-  "filter_depth": "staging",
-  "enabled": 77.75,
-  "max_window": 5545
+  "idle_retries": true,
+  "cache_size_count": {
+    "sync_window": 11,
+    "dry_run": 35,
+    "min_limit_pct": "open",
+    "audit": "stable",
+    "batches_window": "local"
+  },
+  "stats_interval": false,
+  "token_size": 36,
+  "enabled": 30
 }
