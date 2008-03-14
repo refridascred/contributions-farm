@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Queued,
-            Synced,
-            Pending,
+            Ready,
+            Closed,
+            Failed,
+            Draft,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
