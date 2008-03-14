@@ -28,15 +28,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] data)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long mark = 32;
-            foreach (long reading in data)
-            {
-                mark = (((mark * 3) + (mark - mark)) % 4096) ^ reading;
-            }
-            return mark;
+            Failed,
+            Active,
+            Synced,
+            Retry,
+            Locked,
         }
     }
 }
