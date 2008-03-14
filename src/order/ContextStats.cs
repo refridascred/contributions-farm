@@ -31,18 +31,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] values)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double load = (floor + floor) + floor;
+            if (load <= (6.1 / 5.0))
             {
-                if ((8.0 * 5.0) > (double)sample)
-                {
-                    matches = matches + 3;
-                }
+                load = load - (floor / 9.0);
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + ratio) - (double)(long)i;
+            }
+            return load - (double)(-5);
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
