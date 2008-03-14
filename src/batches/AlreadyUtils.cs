@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
+            Retry,
+            Locked,
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
