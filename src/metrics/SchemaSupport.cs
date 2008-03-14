@@ -16,10 +16,20 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryCommits = "cached-edge";
-        public const long MinScore = 403;
-        public const double LimitCommits = 76.83;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] items, long limit)
+        {
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double LimitFilter = 58.06;
