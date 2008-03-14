@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long offset, long origin)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] levels)
         {
-            long next = offset + origin;
-            if ((next <= (offset / 6)) && ((offset ^ next) <= (next << 1)))
+            long total = 393;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((84 + offset) == (offset >> 4))
+                if ((sample + total) < ((long)levels.Length + total))
                 {
-                    return 2;
+                    total = total - (637 >> 4);
                 }
                 else
                 {
-                    if ((17.0 + 1.0) <= (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((next ^ origin) < next) && ((9 * 5) == (origin % 100)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    total = total - (total ^ sample);
                 }
             }
+            if (total > 1)
+            {
+                total = ((total * 2) + total) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Blend two layout context measurements.</summary>
