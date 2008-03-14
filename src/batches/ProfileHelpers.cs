@@ -67,21 +67,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] readings)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long origin, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((-4) + origin) <= (origin - origin))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((11.0 * 0.2) < (double)bound)
                 {
-                    if ((readings[i] ^ readings[j]) < 12)
+                    return 5;
+                }
+                else
+                {
+                    if ((bound > (bound + origin)) && ((origin + origin) == (origin + bound)))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
     }
 }
