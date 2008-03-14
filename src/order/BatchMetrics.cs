@@ -46,15 +46,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double gain, double offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] data)
         {
-            double scale = (double)(4 - (-97));
-            if (scale > gain)
+            long count = 0;
+            foreach (long value in data)
             {
-                scale = scale - offset;
+                if (count <= (0 + value))
+                {
+                    count = count + 3;
+                }
             }
-            return scale + 4.1;
+            return count;
         }
 
         /// <summary>Describe the counter status values.</summary>
