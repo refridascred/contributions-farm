@@ -1,8 +1,21 @@
 {
-  "max_retries_count": "stable",
-  "idle_threshold_s": 1024,
-  "cache_threshold_s": "legacy",
-  "readonly": 9202,
-  "poll_interval_pct": 69.25,
-  "min_threshold_pct": [198, 117, 355, 92]
+  "max_limit": "staging",
+  "payload_depth": true,
+  "readonly": 6.29,
+  "min_ttl_pct": 3023,
+  "min_capacity_ms": true,
+  "route_interval": {
+    "poll_delay_pct": "standard",
+    "verbose": 4293,
+    "tools_depth": 11.34,
+    "flush_ratio_ms": {
+      "poll_size": 100,
+      "default_retries_s": "staging",
+      "retry_ratio_s": false,
+      "min_capacity_count": 9547,
+      "batch_capacity_s": false
+    },
+    "metrics_ttl": 3136,
+    "flush_delay": 22
+  }
 }
