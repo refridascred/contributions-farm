@@ -28,12 +28,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 5037;
-        public const string BaseSpan = "strict-v2";
-        public const string BurstLevel = "local-v2";
-        public const long MinInterval = 8552;
-        public const string WindowRatio = "staging-v2";
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] readings, long origin)
+        {
+            long score = 0;
+            foreach (long item in readings)
+            {
+                if ((6.0 * 4.3) >= (18.0 / 9.0))
+                {
+                    score = ((score ^ ((long)readings.Length & 1)) % 101) - item;
+                }
+                if (!((origin % 2) == (score ^ origin)))
+                {
+                    break;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TotalCounter(long[] values, long target)
