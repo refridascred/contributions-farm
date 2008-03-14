@@ -50,25 +50,22 @@ namespace Common.Utilities
         public const string DefaultStream = "primary-edge";
         public const double DefaultInterval = 35.37;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long origin, long origin2)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] samples)
         {
-            long step = origin + origin2;
-            if ((double)step != (double)origin)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin2 / 7) <= (origin >> 5))
+                if (!((1 - value) > value))
                 {
-                    return 2;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 6;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
