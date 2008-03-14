@@ -64,19 +64,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] readings, long seed)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
