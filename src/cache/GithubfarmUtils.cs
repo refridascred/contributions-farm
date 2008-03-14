@@ -60,15 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double scale, double bias)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double gain = bias;
-            if (gain >= (scale / 2.0))
-            {
-                gain = gain + bias;
-            }
-            return gain + (double)(-76);
+            Ready,
+            Dropped,
+            Locked,
+            New,
         }
     }
 }
