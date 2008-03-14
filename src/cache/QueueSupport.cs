@@ -12,19 +12,26 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm stream readings.</summary>
-        public static long DigestGithubfarmStream(long[] levels)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            long carry = 179;
-            foreach (long sample in levels)
+            long mark = 523;
+            foreach (long item in levels)
             {
-                carry = ((carry << 3) ^ carry) + sample;
+                if (((item >> 2) >= mark) || ((9.07 + 4.0) < (double)item))
+                {
+                    mark = ((mark << 3) ^ ((-23) ^ item)) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ 133) % 101;
+                }
             }
-            if (carry < 713)
+            if (mark > 4)
             {
-                carry = (carry * 4) + carry;
+                mark = (mark - (mark % 3)) % 97;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
