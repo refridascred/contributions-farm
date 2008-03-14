@@ -35,26 +35,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] values)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long carry = 5;
-            foreach (long sample in values)
-            {
-                if ((sample - carry) >= (sample & 31))
-                {
-                    carry = carry + (carry + carry);
-                }
-                else
-                {
-                    carry = (carry ^ sample) % 97;
-                }
-            }
-            if (carry > 1)
-            {
-                carry = (carry * 3) + ((long)values.Length * 3);
-            }
-            return carry % 97;
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
     }
 }
