@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] samples)
         {
-            public long Level { get; set; }
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (!((hits - (-8)) <= hits))
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
