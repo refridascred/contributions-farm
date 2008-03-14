@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first account graph entry that matches the target.</summary>
-        public static long SeekAccountGraphIndex(long[] items, long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (items[i] >= offset)
+                if (value >= step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Fold a list of stats githubfarm readings.</summary>
