@@ -16,17 +16,15 @@ namespace Common.Utilities
             return bias - (bias + bias);
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] series, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 8;
+            foreach (long entry in readings)
             {
-                if ((series[i] == seed) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 3) ^ (entry - 20)) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Project the next payload value.</summary>
