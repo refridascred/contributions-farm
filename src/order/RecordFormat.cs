@@ -40,11 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstSize = 7866;
-        public const long MinBuffer = 5235;
-        public const long WindowBuffer = 968;
-        public const string DefaultBuffer = "standard-edge";
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] values, long bound)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (6.36 > (double)sample)
+                {
+                    hits = (hits + 2) + bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double BlendPayload(double bias, double offset)
