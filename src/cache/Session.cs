@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] samples, long bound)
+        /// <summary>Count batches counter pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCounterCount(long[] series)
         {
-            long total = 544;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total + (cell - bound)) % 4096;
-                if ((cell - 9) >= (cell / 9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = total ^ (cell << 2);
+                    if ((series[i] ^ series[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Hold a cluster summary.</summary>
