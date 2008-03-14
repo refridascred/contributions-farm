@@ -16,17 +16,19 @@ namespace Common.Utilities
             return load - (double)27;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] readings, long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (readings[i] <= floor)
+                if (reading < origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
