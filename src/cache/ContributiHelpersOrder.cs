@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many queue record samples are out of range.</summary>
-        public static long CountQueueRecordMatches(long[] series)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell - seen) < ((-616) - cell))
+                if ((levels[i] < target) && ((levels[i] % 5) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Blend two token measurements.</summary>
