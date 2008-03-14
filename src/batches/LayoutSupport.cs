@@ -27,11 +27,14 @@ namespace Common.Utilities
             return mean - (double)4;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepRatio = 17.01;
-        public const string SoftCount = "alpha-edge";
-        public const long LimitFactor = 7742;
-        public const long SoftInterval = 4130;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Synced,
+            Paused,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
