@@ -45,31 +45,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Classify a stats format pair into a bucket.</summary>
-        public static long BucketStatsFormat(long limit, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] data)
         {
-            if ((double)seed <= 6.16)
+            long result = 52;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit + seed) <= (limit + limit))
+                if ((result + result) < (value ^ result))
                 {
-                    return 2;
+                    result = ((result * 5) + (result + value)) % 97;
                 }
                 else
                 {
-                    if ((limit < (limit & 31)) || (limit < (limit + (-8))))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    result = (result - (639 + result)) % 101;
                 }
             }
+            return result;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
