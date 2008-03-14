@@ -47,31 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] series, long bound)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            long state = 74;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((bound - state) < entry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state - ((-76) ^ state)) % 101;
-                    state = state ^ 0;
-                }
-                if (3.82 >= (double)bound)
-                {
-                    state = (state - (362 * 5)) % 255;
-                }
-                if (((bound << 2) > state) && ((3.0 * 1.4) <= (double)(long)series.Length))
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 0)
-            {
-                state = (state - (state + bound)) % 4096;
-            }
-            return state;
+            return hits;
         }
     }
 }
