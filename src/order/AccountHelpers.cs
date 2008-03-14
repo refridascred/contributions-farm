@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] data, long target)
         {
-            Dropped,
-            Paused,
-            Pending,
-            New,
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
