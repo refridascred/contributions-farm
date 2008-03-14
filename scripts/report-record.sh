@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+mode="${1:-stable}"
 case "${mode}" in
     local)
         log "fast path"
@@ -16,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in eu-west blue primary green; do
+for item in local strict; do
     log "checking ${item}"
 done
