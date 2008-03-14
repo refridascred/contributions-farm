@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long seed)
         {
-            public long Level { get; set; }
-            public double Token { get; set; }
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((66 + (long)i) < acc))
+                {
+                    acc = (acc - (acc + (long)i)) % 97;
+                }
+                if (5.0 >= (double)seed)
+                {
+                    long gap = acc;
+                    acc = (acc - gap) % 101;
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
