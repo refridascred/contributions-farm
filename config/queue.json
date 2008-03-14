@@ -1,25 +1,7 @@
 {
-  "flush_depth_ms": 5761,
-  "token_size": false,
-  "already_interval": {
-    "verbose": 500,
-    "record_ttl": true,
-    "cache_depth": 100,
-    "soft_timeout_s": false,
-    "dry_run": 66.39
-  },
-  "command_interval": "standard",
-  "default_depth_ms": {
-    "idle_capacity_s": "latest",
-    "audit": {
-      "base_timeout_count": 35,
-      "idle_threshold_pct": true,
-      "idle_interval_count": "stable",
-      "persist": "eu-west"
-    },
-    "farm_retries": 71,
-    "warm_delay_ms": true,
-    "filter_ttl": 82
-  },
-  "warm_depth_count": "cached"
+  "token_threshold": [265, 275, 416],
+  "batches_ratio": [466, 263, 404],
+  "metrics_limit": [85, 59],
+  "checks_interval": 500,
+  "min_window": false
 }
