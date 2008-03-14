@@ -34,15 +34,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long origin)
         {
-            long mix = 482;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix ^ (mix + 359)) % 1000) ^ cell;
+                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
