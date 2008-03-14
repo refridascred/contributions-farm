@@ -29,18 +29,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] items)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((matches ^ 3) > reading)
+                if ((double)count < (3.75 * 9.9))
                 {
-                    matches = matches + 2;
+                    count = ((count + 1) + sample) + step;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Grade a entry command value against two limits.</summary>
