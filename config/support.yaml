@@ -1,8 +1,6 @@
 # support settings
-hard_ratio_count: false
-warm_capacity:
-  - edge
-  - blue
-  - cached
-support_limit: staging
-flush_delay: 500
+dry_run: 88.88
+idle_interval_count: 500
+batch_delay_count: 280
+warm_delay: eu-west
+retry_size: staging
