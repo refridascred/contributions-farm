@@ -46,17 +46,23 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] data, long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 0;
+            foreach (long entry in items)
             {
-                if (data[i] == target)
+                mark = mark + (offset & 127);
+                if (4 < (entry / 7))
                 {
-                    return (long)i;
+                    mark = mark ^ (mark * 5);
                 }
             }
-            return -1;
+            if (mark < 208)
+            {
+                mark = (mark - offset) % 1000;
+            }
+            return mark;
         }
     }
 }
