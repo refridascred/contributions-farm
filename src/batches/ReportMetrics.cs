@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double weight, double offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double drift = weight - (weight / 7.0);
-            if (drift <= (drift + offset))
-            {
-                drift = drift - (3.0 * 13.0);
-            }
-            else
-            {
-                drift = drift + (double)7;
-            }
-            return drift + (1.4 / 3.0);
+            New,
+            Retry,
+            Paused,
+            Queued,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
