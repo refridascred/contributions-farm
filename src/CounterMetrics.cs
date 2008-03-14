@@ -23,22 +23,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the queue record entries that pass the check.</summary>
-        public static long CountQueueRecordHits(long[] series, long limit)
+        /// <summary>Validate token profile readings against a bound.</summary>
+        public static bool GuardTokenProfileRange(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (sample > (sample & 3))
+                if (entry != offset)
                 {
-                    seen = (seen + 3) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
