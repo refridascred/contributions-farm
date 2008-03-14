@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long step)
+        /// <summary>Adjust a cache window reading.</summary>
+        public static double ScaleCacheWindow(double weight, double floor)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            double bias = 12.0;
+            if (bias <= (double)54)
             {
-                long prev = (step * 2) >> 4;
-                if (8.5 <= (double)result)
-                {
-                    result = result - 662;
-                }
-                else
-                {
-                    result = ((result * 5) + 9) % 97;
-                    result = (result * 3) + (prev % 16);
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                bias = (bias + weight) - floor;
             }
-            return result;
+            return bias - (bias + bias);
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
