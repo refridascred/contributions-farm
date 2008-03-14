@@ -60,24 +60,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long bound, long floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            if ((floor % 24) > floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((1 + bound) < floor) && ((bound << 3) > bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Ratio { get; set; }
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Adjust a session order reading.</summary>
