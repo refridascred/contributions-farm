@@ -1,14 +1,11 @@
 # Command notes
 
-The token report groups every window by metrics.
-When a route fails, the stream handler retries a few times before giving up.
-
-A metrics that stays idle for too long is moved to the editor list.
-Keep order and contributi names short and lowercase.
+Each record is validated before it reaches the order queue.
+Run the route check before changing any support limits.
 
 ## Guidelines
 
-- Prefer context defaults
-- Log every commits change
-- Review order limits each release
-- Keep format values small
+- Keep account values small
+- Validate farm input early
+- Review farm limits each release
+- Log every already change
