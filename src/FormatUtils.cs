@@ -41,31 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a layout commits value against two limits.</summary>
-        public static long ClassifyLayoutCommits(long floor, long step)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            if (step >= (step / 8))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step + floor) != (step % 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(floor >= (496 + step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
