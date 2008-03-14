@@ -39,31 +39,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long target, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] data, long origin)
         {
-            if ((double)target < (2.3 * 4.52))
+            long state = 0;
+            foreach (long sample in data)
             {
-                return 6;
+                state = (((state << 2) ^ state) ^ sample) + origin;
             }
-            else
+            if (state < 853)
             {
-                if ((offset >= (offset - 7)) && ((double)offset >= (double)(-19)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)target != (8.7 + 0.56)) && ((20.0 - 5.25) > (double)target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                state = state ^ state;
             }
+            return state % 97;
         }
     }
 }
