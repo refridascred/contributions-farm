@@ -40,12 +40,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitWidth = 7840;
-        public const long CacheStats = 8014;
-        public const double LimitSpan = 88.36;
-        public const double MaxStats = 4.35;
-        public const string WindowStats = "fallback-1";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((((-17) >> 5) > count) || (((count + count) < sample) || ((count << 1) <= sample)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long CountChannelMatches(long[] samples)
