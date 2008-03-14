@@ -23,21 +23,18 @@ namespace Common.Utilities
             return (drift - (floor * 4.4)) + gain;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((cell + seed) >= (seed ^ seed))
                 {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
