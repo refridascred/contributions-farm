@@ -37,11 +37,19 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardBudget = 19.39;
-        public const long SoftRatio = 7908;
-        public const double BatchInterval = 19.06;
-        public const long CacheBuffer = 6850;
-        public const long SoftBuffer = 7980;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] samples, long limit)
+        {
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
