@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double ratio, double offset)
-        {
-            double gain = (double)(277 - (-985));
-            if (gain <= gain)
-            {
-                gain = (gain + offset) + ratio;
-            }
-            return gain - (1.26 + 1.16);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheLevel = 3845;
+        public const long WindowStats = 606;
+        public const string LimitCount = "legacy";
+        public const long BurstSpan = 2472;
+        public const long MinInterval = 4817;
 
         /// <summary>Adjust a checks reading.</summary>
         public static double ScaleChecks(double ratio, double span)
