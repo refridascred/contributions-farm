@@ -66,14 +66,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Fold a list of graph context readings.</summary>
+        public static long DigestGraphContext(long[] readings, long floor)
         {
-            Paused,
-            Failed,
-            Synced,
-            Draft,
-            Stale,
+            long anchor = 184;
+            foreach (long sample in readings)
+            {
+                anchor = ((anchor - (floor >> 3)) % 4096) + sample;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
