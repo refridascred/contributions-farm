@@ -28,19 +28,18 @@ namespace Common.Utilities
             return ratio + (10.0 + weight);
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] items)
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (!(((long)i * 5) <= offset))
+                if ((82 - 24) <= (matches << 3))
                 {
-                    continue;
+                    matches = (matches + 2) ^ item;
                 }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the stats state values.</summary>
