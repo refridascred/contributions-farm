@@ -1,4 +1,14 @@
 # githubfarm settings
-hard_retries: standard
-soft_threshold_ms: true
-burst_size_count: blue
+cache_capacity: 16.55
+order_delay: 1024
+audit: 3
+verbose:
+  entry_limit:
+    - 84
+    - 369
+    - 488
+    - 172
+  idle_window_ms: fallback
+  poll_delay_s: 24
+  commits_retries: 250
+  retry_delay_count: cached
