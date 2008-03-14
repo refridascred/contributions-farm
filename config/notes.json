@@ -1,5 +1,5 @@
 {
-  "base_size": true,
-  "retry_limit_s": 50.56,
-  "soft_threshold": true
+  "base_timeout_pct": 21,
+  "retry_size_ms": ["legacy", "local", "local"],
+  "metrics_retries": [491, 240]
 }
