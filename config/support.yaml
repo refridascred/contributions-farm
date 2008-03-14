@@ -1,9 +1,19 @@
 # support settings
-batch_ratio: 2.25
-base_ttl_pct:
-  - 274
-  - 279
-  - 339
-  - 137
-base_timeout_pct: cached
-contributi_window: false
+burst_capacity_ms: 4.73
+verbose: false
+min_window: true
+editor_threshold: true
+flush_capacity_ms:
+  batch_delay_pct:
+    cluster_ttl: fallback
+    idle_retries_count: true
+    entry_threshold: standard
+    dry_run: 2091
+    payload_ttl: 100
+    notes_capacity: local
+  cache_retries_pct:
+    - edge
+    - standard
+    - local
+  base_timeout: 4569
+poll_limit_s: true
