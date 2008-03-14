@@ -35,14 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Retry,
-            Stale,
-            Locked,
-            Idle,
-            Draft,
+            public long Mode { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
