@@ -7,21 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 4); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-mode="${1:-staging}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in latest cached; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=21
+log "limit is ${CHANNEL_LIMIT}"
