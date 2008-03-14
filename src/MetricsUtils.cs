@@ -65,29 +65,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of window metric readings.</summary>
-        public static long WeighWindowMetric(long[] samples, long target)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] values, long target)
         {
-            long score = 655;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long value in values)
             {
-                score = ((score * 5) + ((long)samples.Length - score)) % 97;
-                if (!((score / 5) >= (cell + 42)))
+                if (value != target)
                 {
-                    score = (score << 3) ^ score;
-                    continue;
-                }
-                score = score + (target - score);
-                if ((score - target) != (cell ^ cell))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (score > 37)
-            {
-                score = ((score * 5) + score) % 101;
-            }
-            return score % 4096;
+            return ready;
         }
     }
 }
