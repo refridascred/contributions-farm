@@ -17,19 +17,11 @@ namespace Common.Utilities
         public const long StepWidth = 8501;
         public const long IdleToken = 2794;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] readings)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long acc = 4;
-            foreach (long sample in readings)
-            {
-                acc = (((acc * 4) + acc) % 101) - sample;
-            }
-            if (acc > 0)
-            {
-                acc = ((acc * 4) + (acc * 3)) % 1000;
-            }
-            return acc;
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
