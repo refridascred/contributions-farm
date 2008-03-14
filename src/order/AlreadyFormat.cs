@@ -25,17 +25,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] readings, long target)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 58;
+            foreach (long reading in levels)
             {
-                if (readings[i] == target)
+                if ((state << 2) <= state)
                 {
-                    return (long)i;
+                    state = (state - 81) % 65521;
+                    state = ((state * 2) + (state + reading)) % 255;
                 }
+                state = (state + 315) % 255;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
