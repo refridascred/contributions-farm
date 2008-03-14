@@ -18,20 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] series, long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] readings, long floor)
         {
-            long carry = 563;
-            foreach (long reading in series)
+            long result = 2;
+            foreach (long value in readings)
             {
-                carry = carry - (carry / 5);
-                if ((2.8 - 8.5) == (double)carry)
-                {
-                    carry = (carry - bound) % 1000;
-                }
-                carry = (carry + reading) % 65521;
+                result = ((result - (1 - result)) ^ value) - floor;
             }
-            return carry % 4096;
+            return result;
         }
 
         /// <summary>Hold a channel options.</summary>
