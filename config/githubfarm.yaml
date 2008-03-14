@@ -1,8 +1,6 @@
 # githubfarm settings
-poll_limit: 88.6
-base_interval_pct:
-  idle_depth_ms: strict
-  hard_depth_pct: true
-  strict: true
-idle_timeout_ms: 27
-tools_retries: standard
+support_size: 64
+persist: 4471
+layout_delay: 500
+cache_size: 97.87
+order_retries: 45
