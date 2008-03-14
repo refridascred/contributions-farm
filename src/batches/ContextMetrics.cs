@@ -50,18 +50,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] values)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((matches - matches) >= (matches + value))
+                if ((carry + 1) >= (carry + carry))
                 {
-                    matches = matches + 2;
+                    carry = ((carry << 3) ^ floor) % 65521;
                 }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
     }
 }
