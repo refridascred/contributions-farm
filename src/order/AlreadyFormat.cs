@@ -44,11 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardAccount = "alpha-v2";
-        public const long BaseAccount = 4194;
-        public const double IdleAccount = 47.71;
-        public const long DefaultRatio = 7015;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitCount = 3608;
+        public const long HardDepth = 3868;
+        public const double BatchWidth = 59.21;
+        public const string WindowPayload = "local-1";
 
         /// <summary>Roll a batch layout counter forward.</summary>
         public static long StepBatchLayout(long target)
