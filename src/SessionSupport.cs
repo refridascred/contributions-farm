@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] samples, long limit)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Idle,
+            Ready,
+            Paused,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
