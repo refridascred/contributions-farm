@@ -1,19 +1,7 @@
 {
-  "max_depth_s": 100,
-  "min_capacity_ms": {
-    "idle_retries_count": true,
-    "editor_depth": {
-      "cache_retries": ["open", "cached", "standard", "edge"],
-      "flush_depth_pct": "latest",
-      "verbose": 89.82,
-      "dry_run": [70, 433],
-      "idle_retries_count": 85
-    },
-    "account_ttl": "stable",
-    "cache_window_pct": 65.59
-  },
-  "compress": 30,
-  "flush_size": [436, 411, 218, 485],
-  "warm_window": 79.02,
-  "enabled": "edge"
+  "cluster_window": ["local", "staging"],
+  "route_depth": false,
+  "strict": 17.68,
+  "default_window_pct": "legacy",
+  "min_threshold": 6586
 }
