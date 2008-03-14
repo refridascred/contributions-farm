@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] values)
         {
-            public string Ratio { get; set; } = "";
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (datum < (datum / 3))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
