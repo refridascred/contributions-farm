@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] samples)
+        /// <summary>Iterate the contributi batch series from a seed.</summary>
+        public static long RollContributiBatch(long offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((value + hits) <= value))
-                {
-                    hits = hits + 1;
-                }
+                mark = mark ^ mark;
+                mark = mark ^ (offset - 975);
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
