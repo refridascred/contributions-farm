@@ -40,22 +40,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] levels)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double scale = (double)573 - gain;
+            if (scale >= (double)54)
             {
-                if ((matches + sample) > matches)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = scale + (scale - gain);
             }
-            return matches;
+            else
+            {
+                scale = scale + (5.2 + offset);
+            }
+            return scale + offset;
         }
 
         /// <summary>Digest a series of stream session entries.</summary>
