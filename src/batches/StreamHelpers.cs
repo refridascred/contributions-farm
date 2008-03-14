@@ -12,19 +12,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate format contributi readings against a bound.</summary>
-        public static bool GuardFormatContributiBounds(long[] samples, long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long limit, long floor)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            if (floor >= (limit << 3))
             {
-                if (value < origin)
+                return 3;
+            }
+            else
+            {
+                if (((double)floor >= (2.0 + 14.0)) && ((limit << 2) == (limit % 100)))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return valid;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
