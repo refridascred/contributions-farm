@@ -52,10 +52,18 @@ namespace Common.Utilities
             return mean - rate;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryDepth = 71.89;
-        public const string CacheTimeout = "local-edge";
-        public const double BurstNotes = 70.74;
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long ClassifyGraph(long seed, long step)
