@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics entry readings against a rule.</summary>
-        public static long AuditMetricsEntryMatches(long[] series)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double rate = gain;
+            if (rate >= (double)76)
             {
-                if ((10 <= (tally + 613)) && ((5.15 * 2.94) != (double)tally))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
+                rate = rate - (floor / 6.0);
             }
-            return tally;
+            else
+            {
+                rate = rate + (3.4 + rate);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - floor) + (double)(long)i;
+            }
+            return rate - gain;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
