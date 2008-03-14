@@ -14,12 +14,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the counter level values.</summary>
