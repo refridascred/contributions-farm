@@ -12,10 +12,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseFarm = "legacy-v2";
-        public const double StepSize = 37.42;
-        public const long BatchFarm = 4982;
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
+        {
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long FoldCommits(long[] values, long target)
