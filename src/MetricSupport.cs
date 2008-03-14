@@ -37,11 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long origin)
         {
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
+            long state = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
