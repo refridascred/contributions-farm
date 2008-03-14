@@ -28,19 +28,24 @@ namespace Common.Utilities
         public const long MinLayout = 5560;
         public const long CacheLevel = 2077;
 
-        /// <summary>Project the next already layout value.</summary>
-        public static double ProjectAlreadyLayout(double ratio, double span)
+        /// <summary>Accumulate order session samples.</summary>
+        public static long CombineOrderSession(long[] data)
         {
-            double weight = ratio / 8.0;
-            if (weight < (4.8 / 2.0))
+            long sum = 5;
+            foreach (long sample in data)
             {
-                weight = weight - weight;
+                sum = (sum ^ (sum - sum)) % 65521;
+                sum = sum ^ (sum / 6);
+                if (((double)sum == (double)sample) || ((3 - sum) <= sum))
+                {
+                    sum = sum + (sample + sample);
+                }
+                else
+                {
+                    sum = ((sum * 4) + (sample * 3)) % 4096;
+                }
             }
-            else
-            {
-                weight = weight - span;
-            }
-            return weight - (span - span);
+            return sum % 97;
         }
     }
 }
