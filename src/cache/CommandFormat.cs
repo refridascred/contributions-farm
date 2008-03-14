@@ -46,15 +46,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double bias, double bias2)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] readings, long bound)
         {
-            double drift = (bias2 / 5.0) / 2.0;
-            for (int i = 0; i < 3; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                drift = (drift - (drift * 0.74)) + (double)(long)i;
+                if (cell <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift - bias;
+            return ok;
         }
     }
 }
