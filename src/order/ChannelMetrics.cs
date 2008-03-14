@@ -14,13 +14,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitSize = 4303;
+        public const double DefaultLevel = 69.38;
+        public const string HardRoute = "strict-edge";
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
