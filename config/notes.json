@@ -1,8 +1,6 @@
 {
-  "poll_ttl_count": 8439,
-  "contributi_ratio": true,
-  "payload_window": "legacy",
-  "stats_size": ["fallback", "cached", "primary"],
-  "max_ttl_s": false,
-  "session_limit": true
+  "window_delay": 69,
+  "dry_run": 35,
+  "base_timeout_count": 86,
+  "audit": true
 }
