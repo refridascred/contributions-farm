@@ -28,12 +28,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public double Rank { get; set; }
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
