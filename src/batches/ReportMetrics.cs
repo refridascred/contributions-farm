@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double weight, double offset)
         {
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-            public long Rank { get; set; }
+            double drift = weight - (weight / 7.0);
+            if (drift <= (drift + offset))
+            {
+                drift = drift - (3.0 * 13.0);
+            }
+            else
+            {
+                drift = drift + (double)7;
+            }
+            return drift + (1.4 / 3.0);
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
