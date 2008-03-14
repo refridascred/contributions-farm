@@ -1,7 +1,5 @@
 {
-  "command_threshold": [88, 18],
-  "hard_delay": "open",
-  "strict": "stable",
-  "verbose": 90,
-  "support_depth": true
+  "base_size": true,
+  "retry_limit_s": 50.56,
+  "soft_threshold": true
 }
