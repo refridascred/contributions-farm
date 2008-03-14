@@ -24,12 +24,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double gain, double bias)
-        {
-            double rate = (double)(23 & 127);
-            return (rate + bias) + gain;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 8574;
+        public const long StepGithubfarm = 5883;
+        public const double LimitGithubfarm = 1.53;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepToken = 4348;
