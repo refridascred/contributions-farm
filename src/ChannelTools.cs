@@ -29,18 +29,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] values)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)value < (8.7 * 6.1)))
                 {
-                    if ((values[i] + values[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
                 }
             }
             return count;
