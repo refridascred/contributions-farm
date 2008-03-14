@@ -37,19 +37,14 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] samples, long limit)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            New,
+            Stale,
+            Active,
+            Queued,
         }
     }
 }
