@@ -17,11 +17,19 @@ namespace Common.Utilities
         public const long StepWidth = 8501;
         public const long IdleToken = 2794;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] items)
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            long anchor = 390;
+            foreach (long datum in items)
+            {
+                anchor = (anchor ^ (anchor - datum)) % 255;
+                if ((datum - datum) < (datum << 1))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the entry phase values.</summary>
