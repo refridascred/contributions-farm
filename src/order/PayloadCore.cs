@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Done,
-            Ready,
-            New,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 7120;
+        public const long MinScore = 8535;
+        public const double HardCount = 7.24;
+        public const long LimitChecks = 3095;
+        public const long CacheWidth = 1851;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheRange(long[] readings, long seed)
