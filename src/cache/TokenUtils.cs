@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Rank checks metrics input into a small class.</summary>
+        public static long BucketChecksMetrics(long floor, long step)
         {
-            Retry,
-            Stale,
-            Dropped,
-            Idle,
-            Closed,
+            if (4.11 < (4.2 * 10.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor == (8.4 + 18.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
