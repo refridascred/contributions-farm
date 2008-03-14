@@ -34,17 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long origin)
+        /// <summary>Fold a list of batch metric readings.</summary>
+        public static long CombineBatchMetric(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 3;
+            foreach (long cell in series)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
+                if ((cell * 3) <= anchor)
                 {
-                    return (long)i;
+                    anchor = anchor - (cell & 255);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
