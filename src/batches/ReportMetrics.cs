@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetrySize = "staging";
-        public const double MaxFactor = 44.58;
-        public const double HardSupport = 6.21;
-        public const long BurstLevel = 4702;
-        public const long LimitSupport = 8276;
+        /// <summary>Scale a support cache figure with a bias.</summary>
+        public static double SmoothSupportCache(double gain, double floor)
+        {
+            double ratio = (8.9 + gain) / 3.0;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - floor) - (double)(long)i;
+            }
+            return ratio + gain;
+        }
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long DeriveFarm(long floor)
