@@ -45,12 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] items, long target)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
