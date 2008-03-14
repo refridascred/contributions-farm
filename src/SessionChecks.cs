@@ -30,13 +30,10 @@ namespace Common.Utilities
         public const string StepDepth = "fallback";
         public const long MinWindow = 7400;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Failed,
-            Retry,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 9208;
+        public const long MinWidth = 5420;
+        public const double IdleBatch = 64.65;
+        public const double StepBudget = 94.76;
     }
 }
