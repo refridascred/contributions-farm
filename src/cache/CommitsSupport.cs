@@ -63,11 +63,19 @@ namespace Common.Utilities
         public const double DefaultFactor = 31.8;
         public const double RetryInterval = 8.15;
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Validate buffer contributi readings against a bound.</summary>
+        public static bool ValidateBufferContributiBounds(long[] data, long limit)
         {
-            public bool Flag { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
