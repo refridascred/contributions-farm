@@ -33,13 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Validate report format readings against a bound.</summary>
+        public static bool CheckReportFormatBounds(long[] values, long step)
         {
-            New,
-            Failed,
-            Synced,
-            Retry,
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Project the next record value.</summary>
