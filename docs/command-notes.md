@@ -1,16 +1,15 @@
 # Command notes
 
-The account helpers are pure functions, so they are safe to call from any thread.
-The farm report groups every token by window.
-The record helpers are pure functions, so they are safe to call from any thread.
+When a batch fails, the stream handler retries a few times before giving up.
+Defaults for commits live in the config folder and can be overridden per environment.
+Keep window and notes names short and lowercase.
 
-When a order fails, the queue handler retries a few times before giving up.
-Defaults for report live in the config folder and can be overridden per environment.
-Each format is validated before it reaches the format queue.
+When a profile fails, the token handler retries a few times before giving up.
+A metrics that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Keep schema values small
-- Validate cache input early
-- Review record limits each release
+- Prefer context defaults
+- Validate entry input early
+- Keep command values small
+- Document new batches fields
