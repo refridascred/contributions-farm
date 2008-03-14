@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 7120;
-        public const long MinScore = 8535;
-        public const double HardCount = 7.24;
-        public const long LimitChecks = 3095;
-        public const long CacheWidth = 1851;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowLevel = 8689;
+        public const long CacheSpan = 5925;
+        public const long DefaultContributi = 3354;
+        public const string StepContributi = "strict-v2";
+        public const string MinContributi = "fallback-v2";
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheRange(long[] readings, long seed)
