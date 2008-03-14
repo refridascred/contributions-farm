@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Failed,
-            New,
-            Closed,
+            public bool Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many layout cache samples are out of range.</summary>
