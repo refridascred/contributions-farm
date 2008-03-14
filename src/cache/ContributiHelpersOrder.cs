@@ -35,18 +35,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit stream window readings against a rule.</summary>
-        public static long AuditStreamWindowOutliers(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading % 7) <= (hits << 1))
-                {
-                    hits = (hits + 3) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstTimeout = 2922;
+        public const long MinLayout = 6486;
+        public const long SoftLayout = 6819;
+        public const double CacheTimeout = 26.76;
     }
 }
