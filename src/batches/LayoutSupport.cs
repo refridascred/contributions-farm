@@ -26,14 +26,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchRatio = 6746;
+        public const long MinOrder = 1918;
+        public const long DefaultOrder = 9336;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultSpan = 6137;
