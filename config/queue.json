@@ -1,8 +1,8 @@
 {
-  "max_capacity": ["primary", "legacy", "legacy"],
-  "poll_retries": "edge",
-  "batches_ratio": 60,
-  "min_size_ms": 23.43,
-  "context_retries": true,
-  "max_ratio": "legacy"
+  "base_interval_pct": false,
+  "verbose": 19,
+  "base_ratio": 30,
+  "hard_interval": 11,
+  "batches_window": "cached",
+  "strict": 91
 }
