@@ -75,16 +75,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double bias, double bias2)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
+            double gain = (double)(728 / 7);
+            if (gain > gain)
             {
-                acc = acc + limit;
-                acc = ((acc * 5) + (long)i) % 4093;
+                gain = gain + (bias * 5.4);
             }
-            return acc;
+            return gain + (bias2 * 1.0);
         }
 
         /// <summary>Locate a command reading by value.</summary>
