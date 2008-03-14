@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinTimeout = "legacy-1";
-        public const string MaxTimeout = "stable-edge";
-        public const long MaxDepth = 1074;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long bound, long floor)
+        {
+            long offset = bound + floor;
+            if ((offset + offset) > floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor % 10) >= bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MinFactor = 8517;
