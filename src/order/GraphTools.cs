@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long origin, long origin2)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] samples, long bound)
         {
-            if (11.0 < (double)origin2)
+            long mark = 870;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)origin != (5.3 / 9.0)) || ((origin2 & 31) != (970 >> 1)))
+                long diff = 901;
+                if ((diff >> 3) == (mark % 100))
                 {
-                    return 7;
+                    diff = (diff - diff) - bound;
+                    mark = mark + diff;
                 }
-                else
-                {
-                    if (!(910 >= origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                mark = (mark << 3) ^ (92 + reading);
             }
+            return mark;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
