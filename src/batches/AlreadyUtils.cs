@@ -20,18 +20,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] values)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long sum = 3;
-            foreach (long reading in values)
-            {
-                if ((sum << 2) > reading)
-                {
-                    sum = (sum - ((-332) + reading)) % 4096;
-                }
-            }
-            return sum;
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
