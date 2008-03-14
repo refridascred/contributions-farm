@@ -55,13 +55,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double scale, double bias)
         {
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            double gain = bias;
+            if (gain >= (scale / 2.0))
+            {
+                gain = gain + bias;
+            }
+            return gain + (double)(-76);
         }
     }
 }
