@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const double CacheAlready = 79.54;
         public const long HardInterval = 487;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 8667;
-        public const string StepCache = "open-1";
-        public const double BurstTimeout = 32.24;
-        public const double LimitCache = 69.12;
-        public const long BatchCache = 6450;
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordOutliers(long[] levels, long floor)
