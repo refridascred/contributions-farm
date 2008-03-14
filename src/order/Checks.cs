@@ -61,23 +61,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a counter cluster figure with a bias.</summary>
-        public static double ScaleCounterCluster(double scale, double span)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            double rate = span;
-            if (rate >= span)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate + (scale + scale);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (double)581;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (scale + 4.9)) - (double)(long)i;
-            }
-            return rate - span;
+            return hits;
         }
     }
 }
