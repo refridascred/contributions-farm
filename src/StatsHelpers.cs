@@ -54,13 +54,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Audit session token readings against a rule.</summary>
+        public static long CountSessionTokenHits(long[] items, long seed)
         {
-            Paused,
-            Done,
-            Dropped,
-            Retry,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (((seed << 3) >= (seed + count)) && ((datum ^ seed) > (seed - datum)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
