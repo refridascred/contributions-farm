@@ -1,5 +1,10 @@
 {
-  "sync_delay_pct": 5326,
-  "enabled": "edge",
-  "idle_interval_count": "local"
+  "support_timeout": 3882,
+  "persist": "stable",
+  "warm_depth_count": "legacy",
+  "token_delay": {
+    "cache_retries": 20.48,
+    "command_retries": false,
+    "queue_ratio": true
+  }
 }
