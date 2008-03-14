@@ -1,9 +1,6 @@
 # githubfarm settings
-burst_ttl_pct: standard
-flush_depth_pct: 3783
-hard_interval: 29.1
-sync_ttl_ms: open
-dry_run:
-  - standard
-  - standard
-  - primary
+retry_ratio: 60
+flush_timeout_ms: false
+default_ratio_pct:
+  - staging
+  - legacy
