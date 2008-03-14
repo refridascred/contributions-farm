@@ -1,8 +1,6 @@
 # githubfarm settings
-entry_ratio: 30
-idle_size_count: blue
-hard_limit_count:
-  - latest
-  - green
-  - staging
-warm_ratio_ms: 30
+record_threshold: primary
+metric_capacity:
+  - 421
+  - 238
+burst_ttl: 23.63
