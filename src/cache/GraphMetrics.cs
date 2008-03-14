@@ -39,19 +39,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] levels, long limit)
+        /// <summary>Validate metric editor readings against a bound.</summary>
+        public static bool CheckMetricEditorRange(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (item <= limit)
+                if (item >= origin)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
