@@ -46,14 +46,15 @@ namespace Common.Utilities
         public const double LimitSupport = 1.53;
         public const long StepSupport = 2335;
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long offset)
         {
-            Idle,
-            Pending,
-            Stale,
-            Queued,
-            Draft,
+            long result = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
