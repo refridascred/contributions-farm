@@ -37,16 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] items, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                state = ((state * 2) + (314 >> 3)) % 101;
-                state = ((state * 5) + (long)i) % 97;
+                if (entry != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
     }
 }
