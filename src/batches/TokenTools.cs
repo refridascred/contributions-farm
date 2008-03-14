@@ -14,16 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] levels)
         {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                total = (total ^ (seed + total)) % 65521;
-                total = ((total * 2) + (long)i) % 4093;
+                if (reading < 94)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
