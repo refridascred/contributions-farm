@@ -19,21 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] data)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = floor;
+            if (scale < (gain - scale))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale - (6.67 * 8.3);
             }
-            return tally;
+            return scale - gain;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
