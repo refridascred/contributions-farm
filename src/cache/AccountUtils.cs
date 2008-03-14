@@ -14,17 +14,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] readings, long offset)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)(332 + 3);
+            if (gain <= weight)
             {
-                if ((readings[i] < offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - (double)767;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (floor - 9.0)) - (double)(long)i;
+            }
+            return gain - (gain + floor);
         }
 
         /// <summary>Hold a profile info.</summary>
