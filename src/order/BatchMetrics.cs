@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate tools route readings against a bound.</summary>
-        public static bool GuardToolsRouteBounds(long[] data, long origin)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 8018;
+        public const long SoftCommits = 1934;
+        public const long BurstDepth = 32;
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
