@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in open local primary; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=251
+log "limit is ${RECORD_LIMIT}"
+
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-RECORD_LIMIT=190
-log "limit is ${RECORD_LIMIT}"
-
-for item in strict local blue; do
-    log "checking ${item}"
-done
