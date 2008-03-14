@@ -56,19 +56,24 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double weight, double span)
+        /// <summary>Grade a cache counter value against two limits.</summary>
+        public static long RankCacheCounter(long step, long origin)
         {
-            double bias = weight;
-            if (bias > (span - bias))
+            if (!((560 << 1) >= (step - step)))
             {
-                bias = bias + (weight * 11.0);
+                return 5;
             }
             else
             {
-                bias = bias + weight;
+                if (3 > (origin >> 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return bias - bias;
         }
     }
 }
