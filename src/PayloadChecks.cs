@@ -46,13 +46,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long floor)
         {
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public bool Size { get; set; }
-            public double Offset { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
