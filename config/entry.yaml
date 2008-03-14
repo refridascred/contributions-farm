@@ -1,24 +1,19 @@
 # entry settings
-report_window:
-  notes_capacity: 98.74
-  cache_capacity_count: 887
-  hard_timeout_count: 1024
-  soft_depth:
-    enabled: cached
-    idle_threshold_count: false
-    base_timeout_ms:
-      - blue
-      - strict
-      - green
-    record_ratio: cached
-    channel_timeout: staging
-    burst_window: false
-  idle_ratio_pct:
-    - 81
-    - 366
-    - 156
-    - 488
-  warm_interval: open
-default_ttl: 100
-notes_interval: 80
-commits_window: strict
+batch_ttl: primary
+warm_threshold:
+  context_ttl: green
+  githubfarm_window: fallback
+  hard_depth_pct:
+    base_limit_pct: standard
+    soft_interval: 7735
+    idle_window_pct: false
+    cache_depth: open
+compress:
+  record_ratio: legacy
+  queue_capacity:
+    - 391
+    - 87
+    - 34
+  sync_ttl_pct: 77
+flush_timeout_s: 8561
+cache_window: 28
