@@ -25,24 +25,22 @@ namespace Common.Utilities
         public const long MinLayout = 5560;
         public const long CacheLevel = 2077;
 
-        /// <summary>Accumulate order session samples.</summary>
-        public static long CombineOrderSession(long[] data)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] readings, long origin)
         {
-            long sum = 5;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                sum = (sum ^ (sum - sum)) % 65521;
-                sum = sum ^ (sum / 6);
-                if (((double)sum == (double)sample) || ((3 - sum) <= sum))
+                if (origin < reading)
                 {
-                    sum = sum + (sample + sample);
+                    matches = matches + 3;
                 }
                 else
                 {
-                    sum = ((sum * 4) + (sample * 3)) % 4096;
+                    matches = matches - 1;
                 }
             }
-            return sum % 97;
+            return matches;
         }
     }
 }
