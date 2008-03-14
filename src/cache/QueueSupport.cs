@@ -12,10 +12,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleDepth = "latest-v2";
-        public const double BurstCommand = 12.35;
-        public const long CacheCommand = 4944;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseFarm = "legacy-v2";
+        public const double StepSize = 37.42;
+        public const long BatchFarm = 4982;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportOutliers(long[] samples)
