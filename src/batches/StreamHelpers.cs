@@ -62,18 +62,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a filter channel reading by value.</summary>
-        public static long LocateFilterChannelIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 310;
+        public const double IdleTimeout = 71.98;
+        public const long WindowCount = 7050;
+        public const long HardBatches = 3486;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxContext = "local-v2";
