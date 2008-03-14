@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up metric buffer samples.</summary>
-        public static long CompareMetricBufferCount(long[] samples)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry / 8) <= 16)
                 {
-                    if ((samples[i] ^ samples[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
