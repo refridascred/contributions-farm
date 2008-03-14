@@ -22,16 +22,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] series)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] series)
         {
-            long mark = -5;
+            long mark = 497;
             foreach (long sample in series)
             {
-                if (!(3.77 <= (double)mark))
-                {
-                    mark = ((mark * 2) + mark) + sample;
-                }
+                mark = mark + sample;
+            }
+            if (mark < 45)
+            {
+                mark = (mark ^ mark) % 1000;
             }
             return mark % 1000;
         }
