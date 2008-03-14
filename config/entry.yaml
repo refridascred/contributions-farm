@@ -1,6 +1,10 @@
 # entry settings
-audit:
-  - 220
-  - 79
-compress: 81
-readonly: 60.44
+compress: 69.78
+checks_ratio: 97.18
+verbose:
+  flush_threshold_ms: strict
+  metric_interval: false
+  min_window_count: fallback
+  soft_capacity_ms: 7202
+  default_window: green
+enabled: 68.52
