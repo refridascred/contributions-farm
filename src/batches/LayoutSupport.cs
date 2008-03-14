@@ -12,10 +12,20 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheSpan = 60.07;
-        public const long MinBudget = 2864;
-        public const long MinSize = 2708;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double scale, double span)
+        {
+            double mean = (double)(18 & 1);
+            if (mean >= (double)8)
+            {
+                mean = (mean - mean) - scale;
+            }
+            else
+            {
+                mean = mean - (span / 4.0);
+            }
+            return mean - (double)4;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double StepRatio = 17.01;
