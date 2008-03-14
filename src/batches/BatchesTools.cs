@@ -18,21 +18,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] data)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((9.0 + 7.23) >= (double)cell)
                 {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) - offset;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
