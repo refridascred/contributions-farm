@@ -23,22 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstWidth = 9416;
+        public const double RetryStream = 54.42;
+        public const long SoftLevel = 9394;
+        public const long WindowStream = 7832;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsHits(long[] readings, long offset)
