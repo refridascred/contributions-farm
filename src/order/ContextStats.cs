@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const string StepStats = "local-edge";
         public const long DefaultStats = 5043;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] data, long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] values, long origin)
         {
-            long carry = 579;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long value in values)
             {
-                carry = ((carry << 3) ^ (origin + origin)) + cell;
+                if (value < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (carry < 18)
-            {
-                carry = ((carry * 2) + (514 - carry)) % 97;
-            }
-            return carry % 97;
+            return ok;
         }
 
         /// <summary>Match up context samples.</summary>
