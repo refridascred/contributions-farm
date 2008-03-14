@@ -54,39 +54,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long step, long bound)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] readings, long offset)
         {
-            long span = step ^ bound;
-            if (84 <= (step & 7))
+            long state = -7;
+            foreach (long datum in readings)
             {
-                return 0;
+                if (!((double)state <= (0.5 / 8.0)))
+                {
+                    state = (state + 8) - datum;
+                }
+                state = (state - (state & 15)) % 101;
             }
-            else
+            if (state < 705)
             {
-                if ((span * 3) > (3 << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((5 + span) <= (bound + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (span < (step * 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                state = state + (offset * 4);
             }
+            return state;
         }
     }
 }
