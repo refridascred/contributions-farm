@@ -52,9 +52,17 @@ namespace Common.Utilities
         public const string MaxWindow = "standard-v2";
         public const long BurstWindow = 2100;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepLevel = 6821;
-        public const string BurstScore = "fallback-1";
-        public const string BatchTimeout = "open-v2";
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
