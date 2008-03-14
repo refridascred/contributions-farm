@@ -78,17 +78,19 @@ namespace Common.Utilities
         public const long BatchSize = 1514;
         public const string SoftToken = "staging-1";
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] values, long bound)
+        /// <summary>Validate graph entry readings against a bound.</summary>
+        public static bool CheckGraphEntryBounds(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (values[i] == bound)
+                if (datum < step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
