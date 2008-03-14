@@ -29,26 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                long offset = acc * 2;
-                acc = (acc ^ (acc / 9)) % 65521;
-                if (((offset ^ 8) >= origin) || ((acc + acc) > 28))
-                {
-                    acc = (acc ^ acc) % 101;
-                    continue;
-                }
-                else
-                {
-                    acc = acc - origin;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
