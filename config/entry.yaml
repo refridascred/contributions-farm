@@ -1,4 +1,9 @@
 # entry settings
-default_ratio_count: 721
-session_depth: 5980
-default_window_count: eu-west
+cache_depth:
+  - edge
+  - legacy
+idle_capacity_pct: 250
+soft_retries_count: 7906
+enabled: 94.02
+retry_depth: latest
+flush_ttl_count: 19.13
