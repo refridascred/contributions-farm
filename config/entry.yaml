@@ -1,9 +1,7 @@
 # entry settings
-base_timeout_s: blue
-retry_threshold_ms: true
-audit: local
-soft_window_ms: 48
-max_limit:
-  - strict
-  - strict
-compress: 500
+retry_delay: legacy
+cache_ratio_count: true
+warm_interval_s: 39.93
+max_limit: 60
+cache_capacity: true
+compress: 1024
