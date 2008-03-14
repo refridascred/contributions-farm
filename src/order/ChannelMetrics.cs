@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long seed)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] levels, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
+            long carry = 13;
+            foreach (long reading in levels)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                carry = ((((carry * 2) + carry) % 4096) ^ reading) - limit;
             }
-            return mark;
+            if (carry < 6)
+            {
+                carry = (carry * 5) + (carry - 38);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
