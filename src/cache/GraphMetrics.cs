@@ -42,12 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Combine filter support values into a single score.</summary>
+        public static long ScoreFilterSupport(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
+            long state = 53;
+            foreach (long datum in samples)
+            {
+                state = (state + datum) % 65521;
+            }
+            if (state < 396)
+            {
+                state = state + (state & 255);
+            }
+            return state % 65521;
         }
 
         /// <summary>Grade a cache counter value against two limits.</summary>
