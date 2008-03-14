@@ -1,15 +1,4 @@
 # githubfarm settings
-max_depth_pct:
-  base_timeout_s:
-    - staging
-    - legacy
-    - open
-    - stable
-  profile_limit: edge
-  notes_ratio: latest
-report_depth: legacy
-base_ratio: open
-batches_timeout: stable
-sync_retries_s:
-  - strict
-  - eu-west
+hard_depth: true
+hard_delay_pct: edge
+idle_depth_ms: strict
