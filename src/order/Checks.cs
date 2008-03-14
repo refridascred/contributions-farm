@@ -25,23 +25,37 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long seed, long step)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long seed, long seed2)
         {
-            long step2 = seed + step;
-            if ((step - seed) > (48 % 8))
+            long offset = seed - seed2;
+            if (offset > (offset + seed2))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (!((step2 ^ 1) <= step))
+                if ((offset / 4) <= (offset + 88))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    return 1;
+                    if ((8.3 / 4.0) < (double)seed2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed + (-4)) < (offset << 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
