@@ -39,23 +39,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] levels, long target)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            long acc = 8;
+            foreach (long value in levels)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (acc <= value)
                 {
-                    state = (((state * 3) + (60 / 7)) % 97) ^ (long)i2;
+                    acc = acc - (value + 99);
                 }
-                if (!((double)(long)i <= (16.0 * 9.32)))
+                else
                 {
-                    state = (state + state) % 97;
+                    acc = acc ^ (acc + acc);
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            if (acc < 0)
+            {
+                acc = (acc * 2) + (target >> 2);
+            }
+            return acc;
         }
     }
 }
