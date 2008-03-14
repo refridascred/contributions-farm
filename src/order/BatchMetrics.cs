@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 8018;
-        public const long SoftCommits = 1934;
-        public const long BurstDepth = 32;
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
