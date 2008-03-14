@@ -20,38 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long seed, long origin)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double gain, double span)
         {
-            if (origin <= (origin ^ seed))
+            double mean = gain;
+            if (mean >= (double)(-333))
             {
-                return 0;
+                mean = (mean - gain) + span;
             }
-            else
-            {
-                if ((origin / 5) < origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)origin <= (double)11) && ((origin % 97) > (19 + seed)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((1.7 / 6.0) > (double)seed) && ((seed + 95) != (9 - seed)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mean + gain;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
