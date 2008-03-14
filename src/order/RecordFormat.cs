@@ -48,15 +48,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] values)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
-            long sum = 95;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum + (item % 16)) % 255;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
