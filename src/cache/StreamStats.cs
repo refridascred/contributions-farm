@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] items)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((0.5 - 7.0) <= (double)tally) || ((tally - tally) <= (reading + 280)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Active,
+            Stale,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
