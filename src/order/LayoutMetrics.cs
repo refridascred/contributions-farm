@@ -28,19 +28,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] levels, long floor)
+        /// <summary>Derive the next editor tools value from a seed.</summary>
+        public static long SeriesEditorTools(long limit)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long state = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum > floor)
+                if ((long)i > limit)
                 {
-                    ok = false;
-                    break;
+                    long next = (long)i + (state / 5);
+                    state = (state << 3) ^ (78 - next);
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return ok;
+            return state;
         }
     }
 }
