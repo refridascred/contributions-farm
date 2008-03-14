@@ -1,21 +1,6 @@
 {
-  "default_window_ms": "local",
-  "persist": "staging",
-  "default_window": {
-    "readonly": "fallback",
-    "persist": 41.18,
-    "warm_limit_count": "local",
-    "hard_retries_pct": {
-      "soft_limit_pct": 9.25,
-      "readonly": "cached",
-      "min_interval_count": 2748,
-      "record_ttl": "strict",
-      "hard_timeout_pct": 17.98,
-      "poll_timeout": 24.46
-    },
-    "verbose": "edge",
-    "command_interval": true
-  },
-  "command_interval": "open",
-  "soft_limit_ms": [430, 265, 364, 392]
+  "stream_depth": 31.19,
+  "poll_threshold": "stable",
+  "metric_limit": "cached",
+  "max_limit_count": true
 }
