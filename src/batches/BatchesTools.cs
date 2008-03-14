@@ -56,20 +56,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = ((result + (result % 64)) % 97) - (long)i2;
-                }
-                result = (result * 2) + ((long)i & 127);
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
