@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseWindow = 91.8;
+        public const long IdleWindow = 7898;
+        public const double MaxWindow = 63.32;
+        public const double StepLevel = 47.56;
+        public const string BurstWindow = "stable-1";
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TallyCounter(long[] series, long floor)
