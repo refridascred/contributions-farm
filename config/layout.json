@@ -1,7 +1,6 @@
 {
-  "flush_interval": "green",
-  "burst_limit": "green",
-  "idle_size": "staging",
-  "hard_delay_s": true,
-  "warm_size_pct": true
+  "strict": 549,
+  "profile_limit": false,
+  "layout_depth": true,
+  "default_interval_count": "fallback"
 }
