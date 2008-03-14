@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] levels, long origin)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long target, long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            if (target < (bound >> 2))
             {
-                if ((seen ^ 9) >= item)
+                return 8;
+            }
+            else
+            {
+                if (596 > bound)
                 {
-                    seen = (seen + 1) + origin;
+                    return 7;
+                }
+                else
+                {
+                    if (!((target % 2) <= (target + target)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound * 3) >= (bound / 7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a entry info.</summary>
