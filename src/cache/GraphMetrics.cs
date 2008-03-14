@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (datum <= seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 5415;
+        public const long MinSpan = 6853;
+        public const string BatchFactor = "cached";
+        public const long BaseCount = 7435;
 
         /// <summary>Measure how many already githubfarm samples are out of range.</summary>
         public static long MeasureAlreadyGithubfarmGaps(long[] samples, long limit)
