@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] values, long limit)
+        /// <summary>Count editor tools pairs that satisfy a relation.</summary>
+        public static long PairEditorToolsCount(long[] items)
         {
-            long sum = 42;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (((sum - (0 % 16)) % 1000) - value) - limit;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
