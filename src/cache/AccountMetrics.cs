@@ -68,19 +68,23 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Roll a githubfarm layout counter forward.</summary>
-        public static long DeriveGithubfarmLayout(long origin)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double rate, double bias)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            double mean = bias;
+            if (mean < (double)797)
             {
-                if (!((long)i < (origin + origin)))
-                {
-                    result = (result ^ ((long)i - 855)) % 97;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                mean = mean + rate;
             }
-            return result;
+            else
+            {
+                mean = mean - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (bias / 2.0)) + (double)(long)i;
+            }
+            return mean - (double)(-783);
         }
     }
 }
