@@ -14,30 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] series, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] series, long bound)
         {
-            long total = 4;
+            long acc = 9;
             foreach (long cell in series)
             {
-                if ((total << 1) < origin)
-                {
-                    total = total ^ (origin + cell);
-                }
-                else
-                {
-                    total = (total - (origin + total)) % 255;
-                }
-                if (((cell >> 2) < (origin / 4)) || ((711 * 2) > (cell + 299)))
-                {
-                    break;
-                }
+                acc = (((acc << 2) ^ (bound * 4)) % 4096) - cell;
             }
-            if (total < 21)
+            if (acc > 61)
             {
-                total = ((total << 2) ^ (63 & 31)) % 255;
+                acc = (acc - bound) % 101;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Match up account samples.</summary>
