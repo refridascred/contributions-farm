@@ -47,39 +47,19 @@ namespace Common.Utilities
             return (bias - (double)(-2)) + offset;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long floor, long target)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] data, long offset)
         {
-            long span = floor - target;
-            if ((target ^ (-15)) == (target >> 4))
+            bool valid = true;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)target < (9.66 - 6.9))
+                if (datum > offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target % 60) < (-606))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)span >= (2.8 - 6.68))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
