@@ -35,13 +35,9 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultSpan = 6137;
+        public const double StepScore = 13.87;
+        public const long BatchDepth = 9528;
     }
 }
