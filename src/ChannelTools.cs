@@ -33,12 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
