@@ -42,13 +42,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] readings, long offset)
         {
-            Failed,
-            Stale,
-            Idle,
-            Draft,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((matches - 89) != (offset - reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
