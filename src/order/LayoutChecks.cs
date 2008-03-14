@@ -55,13 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] data, long origin)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((origin & 3) > (item - item))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
