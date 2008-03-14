@@ -41,19 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] values, long limit)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double bias, double bias2)
         {
-            long anchor = 9;
-            foreach (long datum in values)
-            {
-                anchor = (((anchor * 2) + (limit % 64)) % 97) - datum;
-            }
-            if (anchor < (-51))
-            {
-                anchor = (anchor * 5) + anchor;
-            }
-            return anchor % 4096;
+            double load = (double)(9 - 1);
+            return ((load - (double)801) + bias) + bias2;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
