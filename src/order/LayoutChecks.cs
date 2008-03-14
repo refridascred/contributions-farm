@@ -43,31 +43,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long seed, long origin)
+        /// <summary>Audit report tools readings against a rule.</summary>
+        public static long CountReportToolsGaps(long[] readings, long limit)
         {
-            if ((9.5 / 3.0) == (double)origin)
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin > (double)31)
+                if ((item - count) < item)
                 {
-                    return 5;
+                    count = (count + 2) + limit;
                 }
                 else
                 {
-                    if ((seed * 3) == (8 + seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
