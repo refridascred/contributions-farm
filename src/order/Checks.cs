@@ -94,19 +94,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] series, long target)
+        /// <summary>Count filter batch pairs that satisfy a relation.</summary>
+        public static long PairFilterBatchCount(long[] readings)
         {
-            long mix = 1;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix - (target % 3)) ^ reading;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mix < 14)
-            {
-                mix = (mix - (target + mix)) % 65521;
-            }
-            return mix;
+            return seen;
         }
     }
 }
