@@ -36,12 +36,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultBudget = 3839;
-        public const long HardTimeout = 3706;
-        public const long BaseTimeout = 6816;
-        public const string MinAlready = "stable-edge";
-        public const long MaxAlready = 9950;
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long DeriveCluster(long floor)
