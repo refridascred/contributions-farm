@@ -20,12 +20,10 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstToken = "local";
-        public const double BaseToken = 96.27;
-        public const long DefaultWidth = 5782;
-        public const long StepWidth = 8501;
-        public const long IdleToken = 2794;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 1412;
+        public const long BatchCommits = 5244;
+        public const double SoftScore = 33.16;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long WeighLayout(long[] items)
