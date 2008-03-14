@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Audit order route readings against a rule.</summary>
+        public static long TallyOrderRouteHits(long[] data)
         {
-            Done,
-            Failed,
-            Dropped,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (((-3) - matches) >= (sample >> 2))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
