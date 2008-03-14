@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] items)
+        /// <summary>Count the schema payload entries that pass the check.</summary>
+        public static long CountSchemaPayloadHits(long[] readings, long seed)
         {
-            long score = 471;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((cell % 12) >= (-4))
+                if ((double)entry < 1.0)
                 {
-                    score = ((score << 3) ^ (cell - (long)items.Length)) % 4096;
+                    hits = (hits + 1) - seed;
                 }
             }
-            if (score > 7)
-            {
-                score = ((score << 3) ^ (score + score)) % 255;
-            }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Project the next schema value.</summary>
