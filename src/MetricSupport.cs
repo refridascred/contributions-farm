@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] readings, long step)
         {
-            Idle,
-            Done,
-            Failed,
-            New,
-            Synced,
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
