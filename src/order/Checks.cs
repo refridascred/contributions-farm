@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] samples, long offset)
+        /// <summary>Validate already metrics readings against a bound.</summary>
+        public static bool VerifyAlreadyMetricsBounds(long[] items, long step)
         {
             bool ok = true;
-            foreach (long datum in samples)
+            foreach (long entry in items)
             {
-                if (datum >= offset)
+                if (entry < step)
                 {
                     ok = false;
                     break;
