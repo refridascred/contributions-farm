@@ -44,22 +44,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] values, long target)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((6.9 + 4.4) > (double)reading)
-                {
-                    count = (count + 3) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Queued,
+            New,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
