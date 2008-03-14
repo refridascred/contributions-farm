@@ -27,18 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the metrics route entries that pass the check.</summary>
-        public static long MeasureMetricsRouteOutliers(long[] readings)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((800 + hits) == (hits / 9)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    hits = (hits + 1) ^ cell;
+                    anchor = ((anchor - (step - step)) % 255) ^ (long)i2;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Adjust a farm reading.</summary>
