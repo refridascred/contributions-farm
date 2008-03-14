@@ -48,18 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] series, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] data, long target)
         {
-            long mix = 4;
-            foreach (long value in series)
+            long acc = 52;
+            foreach (long entry in data)
             {
-                if ((double)mix > (5.1 + 2.33))
-                {
-                    mix = (((mix ^ (mix << 1)) % 101) ^ value) + origin;
-                }
+                acc = ((((acc * 2) + (420 / 6)) % 1000) ^ entry) - target;
             }
-            return mix % 1000;
+            if (acc < (-4))
+            {
+                acc = acc ^ 969;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
