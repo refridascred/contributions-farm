@@ -53,19 +53,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] items, long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (datum < bound)
+                if ((double)3 > (double)sample)
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the session state values.</summary>
