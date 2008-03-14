@@ -1,8 +1,8 @@
 {
-  "hard_delay_pct": [285, 390, 465],
-  "burst_interval": false,
-  "idle_interval_ms": false,
-  "retry_delay_count": 56.35,
-  "retry_timeout_s": true,
-  "warm_delay": "local"
+  "report_depth": "legacy",
+  "strict": false,
+  "max_capacity_pct": false,
+  "channel_delay": false,
+  "warm_timeout": true,
+  "burst_timeout_pct": ["primary", "local", "stable"]
 }
