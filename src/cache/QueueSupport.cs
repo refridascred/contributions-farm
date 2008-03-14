@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            Failed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Hold a counter summary.</summary>
