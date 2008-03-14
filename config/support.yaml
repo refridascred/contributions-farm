@@ -1,7 +1,10 @@
 # support settings
-base_size: true
-report_timeout: latest
-hard_interval_count: 1260
-poll_limit_count:
-  - cached
-  - cached
+idle_depth:
+  flush_retries: primary
+  soft_size_count: 61
+  sync_window_ms: 79
+contributi_threshold: 17.27
+poll_timeout_s: 6997
+compress:
+  - 279
+  - 85
