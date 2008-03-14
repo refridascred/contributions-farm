@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a account buffer reading.</summary>
-        public static double ProjectAccountBuffer(double weight, double floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double scale, double offset)
         {
-            double rate = weight;
-            for (int i = 0; i < 8; i++)
+            double drift = (scale * 2.0) - (offset * 3.0);
+            for (int i = 0; i < 6; i++)
             {
-                rate = (rate - (double)(long)i) - floor;
+                drift = drift + (double)(long)i;
             }
-            return rate - (5.0 / 4.0);
+            return drift + (offset / 9.0);
         }
 
         /// <summary>Digest a series of window entries.</summary>
