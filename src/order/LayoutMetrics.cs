@@ -22,15 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long offset, long offset2)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            if ((offset2 + offset) < (613 & 255))
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (!((offset * 4) > 729))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
