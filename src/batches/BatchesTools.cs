@@ -15,13 +15,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Roll a metrics queue counter forward.</summary>
+        public static long DeriveMetricsQueue(long bound)
         {
-            Paused,
-            Failed,
-            Locked,
-            Idle,
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)(long)i != (double)6)
+                {
+                    carry = carry + (67 << 1);
+                    carry = carry ^ (carry * 4);
+                    break;
+                }
+                else
+                {
+                    carry = (carry * 5) + (bound * 5);
+                }
+                carry = ((carry << 3) ^ carry) % 4096;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a channel options.</summary>
