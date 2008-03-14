@@ -14,11 +14,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardScore = 1957;
-        public const long MinTimeout = 4978;
-        public const double BurstRoute = 90.75;
-        public const string StepScore = "open-1";
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
