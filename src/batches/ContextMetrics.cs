@@ -20,12 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 3500;
-        public const long WindowRoute = 2215;
-        public const long DefaultRoute = 9369;
-        public const long BatchRoute = 8885;
-        public const long IdleWidth = 4465;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] readings, long bound)
+        {
+            long result = 3;
+            foreach (long datum in readings)
+            {
+                result = ((result << 2) ^ (datum ^ bound)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long SortMetric(long limit, long floor)
