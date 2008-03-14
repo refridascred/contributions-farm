@@ -1,12 +1,18 @@
 {
-  "idle_threshold": 3012,
-  "batch_ttl": "legacy",
-  "strict": "stable",
-  "sync_ratio_s": "green",
-  "readonly": {
-    "soft_capacity_ms": 84,
-    "hard_capacity": "legacy",
-    "token_depth": 30,
-    "enabled": "cached"
-  }
+  "base_delay": "standard",
+  "sync_depth": {
+    "commits_size": "open",
+    "sync_ttl": [161, 453, 308, 68],
+    "flush_timeout_count": "strict",
+    "idle_capacity_pct": {
+      "batch_capacity": "primary",
+      "retry_limit": 67.15,
+      "retry_ratio": 1024,
+      "compress": ["legacy", "legacy", "green"]
+    },
+    "burst_ratio_pct": [258, 320, 3]
+  },
+  "retry_interval_s": 73.31,
+  "githubfarm_limit": "cached",
+  "payload_size": 100
 }
