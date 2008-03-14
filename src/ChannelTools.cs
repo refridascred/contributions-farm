@@ -33,13 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public double Token { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
