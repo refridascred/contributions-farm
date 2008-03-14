@@ -42,11 +42,18 @@ namespace Common.Utilities
         public const long IdleBudget = 812;
         public const string MaxCount = "primary-v2";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryLevel = 5418;
-        public const long MaxOrder = 472;
-        public const long DefaultDepth = 1933;
-        public const long LimitOrder = 9423;
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TotalOrder(long[] data, long floor)
