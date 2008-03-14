@@ -12,19 +12,38 @@ namespace Common.Utilities
         public const string StepContributi = "strict-v2";
         public const string MinContributi = "fallback-v2";
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] readings, long seed)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long step, long limit)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            if (!((double)4 == (double)limit))
             {
-                if (entry > seed)
+                return 1;
+            }
+            else
+            {
+                if (((2.8 * 12.0) != (double)step) && ((double)step <= 10.0))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((step ^ step) <= (step / 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step >> 5) != (step << 1)) || (limit <= (6 % 3)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a checks entry.</summary>
