@@ -23,11 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstWidth = 9416;
-        public const double RetryStream = 54.42;
-        public const long SoftLevel = 9394;
-        public const long WindowStream = 7832;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsHits(long[] readings, long offset)
