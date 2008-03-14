@@ -72,11 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "strict-edge";
-        public const long MinSize = 6366;
-        public const long LimitDepth = 7662;
-        public const long BurstBatch = 1151;
-        public const string MinBatch = "standard-1";
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((sum + sum) > sum)
+                {
+                    sum = (sum + (long)i) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
