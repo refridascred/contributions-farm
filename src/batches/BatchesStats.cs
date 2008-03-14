@@ -53,18 +53,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((2 << 2) <= seen)
                 {
-                    if ((data[i] ^ data[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) + entry;
                 }
             }
             return seen;
