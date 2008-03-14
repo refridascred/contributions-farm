@@ -62,12 +62,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Locate a filter channel reading by value.</summary>
+        public static long LocateFilterChannelIndex(long[] series, long bound)
         {
-            Stale,
-            Draft,
-            Retry,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
