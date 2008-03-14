@@ -23,14 +23,22 @@ namespace Common.Utilities
             return scale + (1.0 * 6.45);
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] samples, long step)
         {
-            Ready,
-            Queued,
-            Idle,
-            Done,
-            Active,
+            long anchor = 436;
+            foreach (long reading in samples)
+            {
+                if (((-256) - anchor) < anchor)
+                {
+                    anchor = (anchor + (step * 2)) ^ reading;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (step % 64);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Match up already checks samples.</summary>
