@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] readings, long limit)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Count { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
