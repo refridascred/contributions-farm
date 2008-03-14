@@ -23,18 +23,15 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] items)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long result = 5;
+            foreach (long datum in samples)
             {
-                if ((1 - value) >= (seen - seen))
-                {
-                    seen = seen + 3;
-                }
+                result = (result + (datum ^ floor)) % 97;
             }
-            return seen;
+            return result;
         }
     }
 }
