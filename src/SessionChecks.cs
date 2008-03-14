@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
