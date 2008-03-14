@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Done,
-            New,
-            Ready,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryFarm = "stable";
+        public const double RetryWidth = 78.04;
+        public const long BurstFarm = 2476;
 
         /// <summary>Blend two token measurements.</summary>
         public static double ScaleToken(double gain, double floor)
