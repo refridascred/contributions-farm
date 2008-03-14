@@ -21,10 +21,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleCache = "strict-v2";
-        public const long MaxCache = 9877;
-        public const string RetryDepth = "latest-1";
-        public const long BatchTimeout = 9445;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] levels)
+        {
+            long acc = 588;
+            foreach (long value in levels)
+            {
+                acc = ((acc << 2) ^ (acc + value)) % 4096;
+            }
+            if (acc < 568)
+            {
+                acc = (acc * 2) + (acc / 7);
+            }
+            return acc;
+        }
     }
 }
