@@ -54,10 +54,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardCount = 70.62;
-        public const double WindowStats = 3.72;
-        public const long BatchStats = 1603;
-        public const long BatchTimeout = 1778;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 7593;
+        public const long BatchNotes = 3536;
+        public const long SoftNotes = 6021;
+        public const double HardLevel = 64.1;
     }
 }
