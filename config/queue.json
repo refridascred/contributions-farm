@@ -1,22 +1,5 @@
 {
-  "default_ttl_ms": 49,
-  "record_depth": {
-    "sync_ttl": false,
-    "batch_limit_pct": {
-      "cache_ttl_ms": "staging",
-      "idle_depth_pct": 17,
-      "soft_interval": 5551,
-      "default_interval": 584,
-      "queue_depth": 60
-    },
-    "session_delay": false,
-    "hard_interval_ms": {
-      "audit": [35, 27, 85, 173],
-      "burst_size_count": 26.36,
-      "cache_interval_pct": 5760,
-      "account_retries": "green"
-    }
-  },
-  "min_delay": "fallback",
-  "already_depth": true
+  "flush_depth": 98,
+  "contributi_delay": "primary",
+  "soft_threshold_pct": 18.03
 }
