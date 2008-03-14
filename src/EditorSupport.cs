@@ -20,10 +20,23 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 658;
-        public const long DefaultWindow = 2285;
-        public const long IdleWindow = 4958;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] values, long floor)
+        {
+            long mark = 370;
+            foreach (long cell in values)
+            {
+                if (!((double)(long)values.Length >= (5.6 * 2.8)))
+                {
+                    mark = ((mark + (floor >> 3)) % 4096) + cell;
+                }
+            }
+            if (mark > (-171))
+            {
+                mark = mark ^ (mark - floor);
+            }
+            return mark;
+        }
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
