@@ -17,13 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Closed,
-            Active,
-            Idle,
-            Ready,
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
