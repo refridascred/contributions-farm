@@ -20,18 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the cluster graph entries that pass the check.</summary>
-        public static long TallyClusterGraphOutliers(long[] items)
+        /// <summary>Rank filter githubfarm input into a small class.</summary>
+        public static long ClassifyFilterGithubfarm(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long prev = seed ^ offset;
+            if (((15.0 + 7.7) >= (double)prev) && ((double)prev >= (double)offset))
             {
-                if ((double)seen != (5.0 * 6.5))
+                return 4;
+            }
+            else
+            {
+                if ((seed % 16) >= (seed * 4))
                 {
-                    seen = (seen + 2) ^ datum;
+                    return 1;
+                }
+                else
+                {
+                    if ((670 >> 5) != (68 - seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the stats class values.</summary>
