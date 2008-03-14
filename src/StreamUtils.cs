@@ -36,18 +36,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] items)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((6.0 * 0.8) > (double)cell) && ((hits - cell) > (hits & 7)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
