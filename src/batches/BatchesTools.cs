@@ -18,15 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] readings, long floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long limit)
         {
-            long result = 2;
-            foreach (long value in readings)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                result = ((result - (1 - result)) ^ value) - floor;
+                score = ((score << 3) ^ (2 % 7)) % 65521;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Hold a channel options.</summary>
