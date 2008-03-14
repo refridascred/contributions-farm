@@ -1,6 +1,11 @@
-id,ratio,label
-1,63.28,24.8
-2,633,34
-3,5.65,5.39
-4,35.75,141
-5,97.96,244
+id,active,weight,token
+1,27.22,eu-west,eu-west
+2,235,latest,91.58
+3,latest,83.68,919
+4,eu-west,cached,eu-west
+5,28.06,618,484
+6,38.24,608,local
+7,54.05,local,blue
+8,783,924,54.4
+9,682,794,112
+10,88.57,strict,70.96
