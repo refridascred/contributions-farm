@@ -27,19 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] data, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] data, long floor)
         {
-            bool ok = true;
+            long mark = 3;
             foreach (long cell in data)
             {
-                if (cell >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (mark ^ (floor << 1)) + cell;
             }
-            return ok;
+            return mark;
         }
     }
 }
