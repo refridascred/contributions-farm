@@ -1,7 +1,8 @@
 # githubfarm settings
-min_delay: stable
-counter_threshold: 100
-persist: 90
-verbose: green
-audit: 61
-flush_window: 68
+entry_ratio: 30
+idle_size_count: blue
+hard_limit_count:
+  - latest
+  - green
+  - staging
+warm_ratio_ms: 30
