@@ -34,15 +34,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double weight, double bias)
-        {
-            double load = weight;
-            if (load <= load)
-            {
-                load = (load - (2.8 / 2.0)) - bias;
-            }
-            return load - (double)0;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 574;
+        public const string HardCommits = "fallback-edge";
+        public const long LimitCommits = 867;
     }
 }
