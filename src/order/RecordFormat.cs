@@ -54,19 +54,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double bias, double offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] values)
         {
-            double rate = offset;
-            if (rate <= (double)392)
+            long sum = 95;
+            foreach (long item in values)
             {
-                rate = rate - offset;
+                sum = (sum + (item % 16)) % 255;
             }
-            else
-            {
-                rate = rate - (bias - bias);
-            }
-            return rate + (bias * 5.06);
+            return sum % 1000;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
