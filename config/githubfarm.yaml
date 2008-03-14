@@ -1,8 +1,7 @@
 # githubfarm settings
-strict:
-  - 410
-  - 288
-  - 420
-  - 361
-verbose: 60
-default_depth_pct: 739
+min_delay: stable
+counter_threshold: 100
+persist: 90
+verbose: green
+audit: 61
+flush_window: 68
