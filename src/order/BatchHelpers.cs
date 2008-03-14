@@ -26,19 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] readings, long offset)
+        /// <summary>Iterate the stream cache series from a seed.</summary>
+        public static long IterateStreamCache(long origin)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long result = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (value != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return ready;
+            return result;
         }
     }
 }
