@@ -55,39 +55,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long seed, long seed2)
+        /// <summary>Accumulate filter channel samples.</summary>
+        public static long WeighFilterChannel(long[] readings, long target)
         {
-            long offset = seed - seed2;
-            if (offset > (offset + seed2))
+            long mix = 953;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset / 4) <= (offset + 88))
+                mix = ((mix << 2) ^ (26 + target)) % 1000;
+                if ((double)value == (2.9 + 4.8))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((8.3 / 4.0) < (double)seed2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed + (-4)) < (offset << 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mix > 293)
+            {
+                mix = ((mix << 2) ^ (target * 4)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the account kind values.</summary>
