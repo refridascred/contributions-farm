@@ -40,18 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token format samples are out of range.</summary>
-        public static long MeasureTokenFormatMatches(long[] series, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] series)
         {
-            long tally = 0;
+            long anchor = 97;
             foreach (long reading in series)
             {
-                if (!(((double)bound == (double)tally) && (bound > (bound + (long)series.Length))))
+                if ((double)reading <= 8.59)
                 {
-                    tally = (tally + 2) - reading;
+                    anchor = ((anchor << 3) ^ 93) % 255;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
