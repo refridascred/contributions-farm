@@ -26,11 +26,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultLevel = 82.84;
-        public const double MinDepth = 76.69;
-        public const double LimitSupport = 1.53;
-        public const long StepSupport = 2335;
+        /// <summary>Accumulate cluster queue samples.</summary>
+        public static long ScoreClusterQueue(long[] samples, long target)
+        {
+            long carry = 0;
+            foreach (long datum in samples)
+            {
+                if (target < (datum + target))
+                {
+                    break;
+                }
+                carry = (carry + carry) % 101;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardDepth = 8418;
