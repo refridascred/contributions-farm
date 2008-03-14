@@ -47,22 +47,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultBudget = 3839;
+        public const long HardTimeout = 3706;
+        public const long BaseTimeout = 6816;
+        public const string MinAlready = "stable-edge";
+        public const long MaxAlready = 9950;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long DeriveCluster(long floor)
