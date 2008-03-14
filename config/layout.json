@@ -1,5 +1,13 @@
 {
-  "record_retries": "stable",
-  "base_timeout_s": 6681,
-  "idle_window_pct": "blue"
+  "sync_interval_pct": "fallback",
+  "session_delay": {
+    "sync_limit_s": ["green", "legacy", "blue"],
+    "audit": "cached",
+    "token_size": false,
+    "batch_capacity": 78,
+    "min_size_s": 5350,
+    "batch_size_ms": 70.18
+  },
+  "compress": 29.86,
+  "idle_ttl": "staging"
 }
