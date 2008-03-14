@@ -1,38 +1,11 @@
 # githubfarm settings
-already_threshold:
-  burst_interval:
-    flush_interval_pct: staging
-    readonly: local
-    cache_limit_count:
-      - green
-      - latest
-    cache_capacity_count: 22.1
-  audit: 17.25
-  default_depth_pct:
-    editor_limit: 6
-    min_retries_pct: 15.26
-    sync_limit_ms: 39.28
-    editor_depth:
-      - legacy
-      - open
-      - cached
-    strict: 250
-    warm_timeout_pct: green
-  warm_capacity_pct:
-    - cached
-    - stable
-    - cached
-    - eu-west
-  poll_timeout_count:
-    - 85
-    - 424
-    - 409
-    - 269
-  readonly:
-    - blue
-    - stable
-    - primary
-    - blue
-audit: green
-layout_ttl: 63
-readonly: 60
+readonly: 95.69
+burst_threshold_count:
+  - standard
+  - standard
+  - green
+  - fallback
+stats_ttl:
+  - 243
+  - 363
+audit: false
