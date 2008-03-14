@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] series)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] series, long offset)
         {
-            long mix = 91;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                mix = mix ^ datum;
+                if ((cell + 579) < (seen ^ 401))
+                {
+                    seen = (seen + 1) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (mix < 1)
-            {
-                mix = ((mix << 3) ^ (mix + 131)) % 255;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Accumulate order samples.</summary>
