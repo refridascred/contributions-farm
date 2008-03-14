@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Derive the next order checks value from a seed.</summary>
+        public static long RollOrderChecks(long offset)
         {
-            long total = 393;
-            foreach (long sample in levels)
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((sample + total) < ((long)levels.Length + total))
-                {
-                    total = total - (637 >> 4);
-                }
-                else
-                {
-                    total = total - (total ^ sample);
-                }
+                long edge = (carry >> 5) - (long)i;
+                carry = (carry - (edge + edge)) % 1000;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            if (total > 1)
-            {
-                total = ((total * 2) + total) % 1000;
-            }
-            return total % 97;
+            return carry;
         }
 
         /// <summary>Blend two layout context measurements.</summary>
