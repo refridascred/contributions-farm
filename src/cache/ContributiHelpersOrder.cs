@@ -38,11 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
+            public double Level { get; set; }
         }
     }
 }
