@@ -29,18 +29,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] values, long step)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((double)count < (3.75 * 9.9))
-                {
-                    count = ((count + 1) + sample) + step;
-                }
-            }
-            return count;
+            Queued,
+            Draft,
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Grade a entry command value against two limits.</summary>
