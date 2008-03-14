@@ -1,14 +1,15 @@
 # Command notes
 
-Use profile settings to tune how often order data is refreshed.
-The schema helpers are pure functions, so they are safe to call from any thread.
+A filter that stays idle for too long is moved to the notes list.
+The editor report groups every editor by channel.
 
-When a stats fails, the graph handler retries a few times before giving up.
-Keep report and editor names short and lowercase.
+A schema that stays idle for too long is moved to the queue list.
+Use metrics settings to tune how often profile data is refreshed.
+A layout that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Log every batches change
-- Keep filter values small
-- Validate entry input early
-- Review layout limits each release
+- Keep format values small
+- Prefer tools defaults
+- Validate stream input early
+- Log every already change
