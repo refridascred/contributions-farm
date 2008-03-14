@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stats batch entry stays within the limit.</summary>
-        public static bool GuardStatsBatchBounds(long[] readings, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (reading < step)
+                if ((hits / 3) >= 589)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) - entry;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
