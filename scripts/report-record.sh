@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=254
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-green}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    latest)
+    stable)
         log "fast path"
         ;;
     *)
@@ -19,8 +16,12 @@ case "${mode}" in
         ;;
 esac
 
+for item in primary legacy eu-west strict; do
+    log "checking ${item}"
+done
+
 total=0
 for i in $(seq 1 4); do
-    total=$((total + i * 5))
+    total=$((total + i * 1))
 done
 log "total ${total}"
