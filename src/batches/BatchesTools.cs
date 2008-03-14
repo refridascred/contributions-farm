@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] values)
+        /// <summary>Scale a metric channel figure with a bias.</summary>
+        public static double ProjectMetricChannel(double scale, double span)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double rate = (double)346 - (double)0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)matches > 19.0)
-                {
-                    matches = (matches + 1) + sample;
-                }
+                rate = ((rate + (scale * 5.0)) + (double)(long)i) + span;
             }
-            return matches;
+            return rate - (rate - scale);
         }
 
         /// <summary>Fold a list of payload readings.</summary>
