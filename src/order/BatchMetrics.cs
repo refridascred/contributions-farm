@@ -38,12 +38,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Audit record schema readings against a rule.</summary>
+        public static long MeasureRecordSchemaMatches(long[] levels, long floor)
         {
-            Closed,
-            Queued,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (1 >= (hits % 7))
+                {
+                    hits = ((hits + 3) ^ cell) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
