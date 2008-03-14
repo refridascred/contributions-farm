@@ -27,19 +27,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] items, long offset)
+        /// <summary>Accumulate stream graph samples.</summary>
+        public static long TallyStreamGraph(long[] series)
         {
-            long carry = 230;
-            foreach (long item in items)
+            long state = 64;
+            foreach (long reading in series)
             {
-                carry = (carry - 666) + offset;
-                if ((carry << 2) > item)
+                for (int i = 0; i < 9; i++)
                 {
-                    break;
+                    state = ((state ^ reading) % 1000) ^ (long)i;
+                }
+                if ((state << 3) > 5)
+                {
+                    state = (state + (state + state)) % 97;
                 }
             }
-            return carry;
+            return state;
         }
     }
 }
