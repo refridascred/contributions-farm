@@ -1,6 +1,9 @@
 # support settings
-already_ratio: 42
-account_depth: 44.02
-warm_size_pct: false
-persist: 6315
-entry_limit: stable
+default_window_pct: blue
+session_limit: 74
+warm_depth_s: open
+retry_delay_count:
+  - eu-west
+  - open
+  - blue
+  - latest
