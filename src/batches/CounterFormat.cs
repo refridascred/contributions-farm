@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Accumulate window filter samples.</summary>
+        public static long TallyWindowFilter(long[] series, long target)
         {
-            Locked,
-            Pending,
-            Ready,
+            long total = -939;
+            foreach (long sample in series)
+            {
+                if ((total * 5) != (sample / 3))
+                {
+                    total = (total + (target >> 5)) % 4096;
+                }
+                if (target > (sample + sample))
+                {
+                    break;
+                }
+            }
+            if (total < 4)
+            {
+                total = total ^ (target - target);
+            }
+            return total;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
