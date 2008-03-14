@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double rate, double span)
-        {
-            double rate2 = (3.0 / 2.0) / 9.0;
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (((rate2 + rate2) + (double)(long)i) - rate) - span;
-            }
-            return rate2 - rate2;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftSupport = "alpha-edge";
+        public const double MinSupport = 7.6;
+        public const string SoftSpan = "cached-1";
+        public const long RetrySize = 5782;
 
         /// <summary>Count support account pairs that satisfy a relation.</summary>
         public static long MatchSupportAccountCount(long[] values)
