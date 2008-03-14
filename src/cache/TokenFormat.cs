@@ -25,22 +25,17 @@ namespace Common.Utilities
         public const long MinLayout = 5560;
         public const long CacheLevel = 2077;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] readings, long origin)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (origin < reading)
+                if (values[i] > seed)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
