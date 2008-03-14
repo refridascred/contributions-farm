@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] items, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((items[i] > floor) && ((items[i] % 5) == 0))
+                long prev = (step * 2) >> 4;
+                if (8.5 <= (double)result)
                 {
-                    return (long)i;
+                    result = result - 662;
                 }
+                else
+                {
+                    result = ((result * 5) + 9) % 97;
+                    result = (result * 3) + (prev % 16);
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
