@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks metric entry stays within the limit.</summary>
-        public static bool CheckChecksMetricLimits(long[] items, long origin)
+        /// <summary>Combine route editor values into a single score.</summary>
+        public static long TallyRouteEditor(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long acc = 85;
+            foreach (long sample in samples)
             {
-                if (sample < origin)
+                if (((double)acc < (1.1 / 2.0)) && ((sample & 1) < (acc - 47)))
                 {
-                    stale = false;
-                    break;
+                    acc = acc ^ (acc + sample);
                 }
             }
-            return stale;
+            if (acc < 826)
+            {
+                acc = acc - (acc & 3);
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
