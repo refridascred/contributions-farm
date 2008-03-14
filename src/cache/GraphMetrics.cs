@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] levels)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (matches <= item)
+                if (datum <= seen)
                 {
-                    matches = matches + 2;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many already githubfarm samples are out of range.</summary>
