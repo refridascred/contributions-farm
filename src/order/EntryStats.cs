@@ -28,21 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                state = (state * 5) + (state & 63);
-                if (((double)seed != (double)(long)i) && (seed <= (seed / 7)))
-                {
-                    break;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstToken = 19.23;
+        public const long CacheInterval = 3500;
+        public const long MaxWidth = 6606;
+        public const string MaxDepth = "cached";
 
         /// <summary>Project the next queue value.</summary>
         public static double BlendQueue(double ratio, double span)
