@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const double RetryFactor = 59.41;
         public const long WindowSchema = 8305;
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] series, long offset)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
