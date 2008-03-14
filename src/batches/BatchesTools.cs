@@ -30,15 +30,18 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double bias, double span)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] values)
         {
-            double drift = span;
-            if (drift > (bias + bias))
+            long result = 42;
+            foreach (long entry in values)
             {
-                drift = drift - drift;
+                if ((result >= (7 + entry)) || ((result - result) == ((long)values.Length + entry)))
+                {
+                    result = (result * 4) + (result * 4);
+                }
             }
-            return drift + bias;
+            return result % 4096;
         }
     }
 }
