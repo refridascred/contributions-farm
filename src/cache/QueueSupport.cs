@@ -17,18 +17,17 @@ namespace Common.Utilities
         public const double StepSize = 37.42;
         public const long BatchFarm = 4982;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] samples)
+        /// <summary>Find the first entry editor entry that matches the target.</summary>
+        public static long LocateEntryEditorIndex(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)count != (5.95 * 6.5)) && ((value - 9) < ((long)samples.Length << 3)))
+                if (readings[i] <= target)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
