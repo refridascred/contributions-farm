@@ -23,18 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] readings)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double ratio = scale;
+            if (ratio >= (ratio + 12.0))
             {
-                if (!(((reading + reading) <= reading) || ((6 - tally) >= (24 * 2))))
-                {
-                    tally = tally + 3;
-                }
+                ratio = (ratio + (double)3) + offset;
             }
-            return tally;
+            else
+            {
+                ratio = ratio - 7.92;
+            }
+            return ratio + 0.73;
         }
 
         /// <summary>Describe the tools mode values.</summary>
