@@ -28,18 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload order entries that pass the check.</summary>
-        public static long MeasurePayloadOrderOutliers(long[] readings)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long mark = 60;
+            foreach (long sample in readings)
             {
-                if (count > (item + count))
+                if ((seed * 5) <= 128)
                 {
-                    count = count + 3;
+                    mark = ((mark << 2) ^ (sample ^ mark)) % 65521;
                 }
             }
-            return count;
+            return mark % 4096;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
