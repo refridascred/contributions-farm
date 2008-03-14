@@ -47,18 +47,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] samples, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((hits + 3) <= (target + hits))
+                if ((offset & 7) == (count / 3))
                 {
-                    hits = (hits + 3) ^ cell;
+                    count = (count + 3) ^ reading;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
