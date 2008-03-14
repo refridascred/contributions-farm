@@ -16,18 +16,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long mark = -347;
+            foreach (long cell in items)
             {
-                if (!((7.1 + 4.0) == (double)reading))
-                {
-                    hits = hits + 1;
-                }
+                mark = (mark + (cell + bound)) % 4096;
+                mark = (mark * 3) + (cell + bound);
             }
-            return hits;
+            if (mark > 929)
+            {
+                mark = (mark - bound) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
