@@ -34,26 +34,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next session farm value from a seed.</summary>
-        public static long DeriveSessionFarm(long step)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long seed, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            long cur = seed ^ offset;
+            if ((double)839 < (double)cur)
             {
-                long slot = (step - (-5)) + (38 - step);
-                if (!((double)(long)i <= (double)slot))
+                return 5;
+            }
+            else
+            {
+                if (((181 << 3) != (cur * 5)) && (cur < offset))
                 {
-                    slot = (slot - ((long)i + step)) % 101;
-                    continue;
+                    return 1;
                 }
                 else
                 {
-                    total = ((total << 2) ^ (slot + (long)i)) % 1000;
+                    if ((953 >> 5) > seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                slot = slot - (step + total);
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
