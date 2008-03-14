@@ -32,18 +32,11 @@ namespace Common.Utilities
         public const double StepTimeout = 21.63;
         public const long WindowCluster = 8369;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((seed + 9) > count)
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 6169;
+        public const long BurstBuffer = 758;
+        public const long SoftBuffer = 7015;
+        public const long MaxSize = 6148;
+        public const long DefaultBuffer = 3942;
     }
 }
