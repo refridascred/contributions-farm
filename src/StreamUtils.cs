@@ -25,19 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double rate, double floor)
+        /// <summary>Project the next window notes value.</summary>
+        public static double BlendWindowNotes(double gain, double span)
         {
-            double gain = floor;
-            if (gain > 5.55)
-            {
-                gain = gain - (floor / 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + rate) - (double)(long)i;
-            }
-            return gain - gain;
+            double rate = (gain * 9.9) * 7.86;
+            return (rate - gain) + span;
         }
 
         /// <summary>Describe the notes phase values.</summary>
