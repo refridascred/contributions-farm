@@ -1,15 +1,7 @@
 {
-  "flush_delay_ms": "cached",
-  "soft_limit": ["legacy", "fallback"],
-  "flush_window_s": "local",
-  "soft_ttl_s": false,
-  "verbose": 100,
-  "soft_window_pct": {
-    "dry_run": 96.17,
-    "idle_capacity": true,
-    "verbose": "fallback",
-    "audit": false,
-    "default_capacity": 38.81,
-    "default_interval_ms": true
-  }
+  "poll_ratio_count": true,
+  "strict": 4129,
+  "tools_retries": "cached",
+  "cache_depth": "open",
+  "sync_depth_s": false
 }
