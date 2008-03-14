@@ -1,14 +1,16 @@
 # githubfarm settings
-counter_retries: green
-default_capacity: stable
-command_retries:
-  - cached
-  - latest
-  - eu-west
-cache_capacity_ms:
-  - 274
-  - 307
-  - 261
-  - 167
-support_threshold: 34.01
-metrics_delay: false
+hard_depth_s:
+  cache_threshold_s:
+    - eu-west
+    - staging
+  verbose: 5.66
+  soft_ttl_s: 70
+  entry_limit: 98.53
+  enabled: 642
+  window_size:
+    - open
+    - green
+    - eu-west
+burst_retries: 7
+idle_delay_pct: 48
+sync_timeout_count: 1004
