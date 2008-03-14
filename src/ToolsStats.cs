@@ -29,12 +29,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstDepth = "cached-edge";
-        public const string BurstFactor = "fallback-v2";
-        public const long SoftSpan = 1153;
-        public const long RetrySize = 7842;
-        public const long StepCounter = 2160;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long limit, long origin)
+        {
+            if ((4 / 9) < (origin << 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((7.5 - 9.0) != (double)limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin * 5) != (1 & 127))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LocateEditorIndex(long[] levels, long seed)
