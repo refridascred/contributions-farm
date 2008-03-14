@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate context counter samples.</summary>
-        public static long WeighContextCounter(long[] values)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long state = 7;
-            foreach (long value in values)
-            {
-                state = ((state * 4) + (value + 964)) % 255;
-                if ((((long)values.Length ^ value) <= state) && ((state & 15) != (value + value)))
-                {
-                    break;
-                }
-            }
-            return state % 4096;
+            Failed,
+            Active,
+            Idle,
+            Retry,
+            Synced,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
