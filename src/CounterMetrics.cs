@@ -40,13 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Accumulate schema format samples.</summary>
+        public static long CombineSchemaFormat(long[] readings)
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            long mix = 878;
+            foreach (long reading in readings)
+            {
+                if ((double)mix != (4.5 / 9.0))
+                {
+                    mix = (((mix << 3) ^ mix) % 1000) - reading;
+                }
+            }
+            if (mix > (-4))
+            {
+                mix = ((mix * 5) + (mix - mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Validate token profile readings against a bound.</summary>
