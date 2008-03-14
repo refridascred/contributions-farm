@@ -48,19 +48,17 @@ namespace Common.Utilities
         public const string BurstFormat = "stable-v2";
         public const string SoftFormat = "local-edge";
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] readings, long seed)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] items, long step)
         {
-            long score = 20;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (((score * 4) + (seed * 4)) % 65521) - entry;
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 82)
-            {
-                score = (score * 5) + score;
-            }
-            return score % 65521;
+            return -1;
         }
     }
 }
