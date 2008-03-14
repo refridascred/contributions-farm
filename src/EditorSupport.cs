@@ -28,13 +28,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] series)
         {
-            public string Level { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - datum) <= (datum + datum))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a queue record.</summary>
