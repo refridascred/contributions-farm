@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 74.83;
-        public const string MaxRatio = "alpha-1";
-        public const long DefaultCache = 8666;
-        public const long BatchCache = 1373;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == seed) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetryWidth = 8477;
