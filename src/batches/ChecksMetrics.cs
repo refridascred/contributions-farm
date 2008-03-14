@@ -49,22 +49,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] levels, long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] levels, long origin)
         {
-            long seen = 0;
+            bool flag = true;
             foreach (long item in levels)
             {
-                if (((-1) % 97) >= seen)
+                if (item < origin)
                 {
-                    seen = ((seen + 3) + item) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
