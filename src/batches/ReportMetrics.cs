@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const string BurstRatio = "strict";
         public const long BurstCounter = 1635;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 197;
-        public const long BaseWindow = 3403;
-        public const string MinWindow = "staging-1";
+        /// <summary>Check that every metrics channel entry stays within the limit.</summary>
+        public static bool VerifyMetricsChannelLimits(long[] values, long bound)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long FoldSession(long[] samples, long target)
