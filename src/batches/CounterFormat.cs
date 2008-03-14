@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate window filter samples.</summary>
-        public static long TallyWindowFilter(long[] series, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] series, long floor)
         {
-            long total = -939;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((total * 5) != (sample / 3))
+                if ((6.1 / 7.0) != (double)tally)
                 {
-                    total = (total + (target >> 5)) % 4096;
-                }
-                if (target > (sample + sample))
-                {
-                    break;
+                    tally = ((tally + 1) + cell) - floor;
                 }
             }
-            if (total < 4)
-            {
-                total = total ^ (target - target);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the token level values.</summary>
