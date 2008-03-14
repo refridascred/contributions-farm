@@ -62,18 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally ^ tally) == (long)levels.Length)
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultFactor = 9931;
+        public const string BatchTimeout = "latest-v2";
+        public const long BurstToken = 709;
+        public const long StepToken = 6758;
+        public const long CacheToken = 3694;
     }
 }
