@@ -25,22 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] values, long origin)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long sum = 7;
-            foreach (long reading in values)
-            {
-                if ((origin * 4) <= (reading / 6))
-                {
-                    sum = (sum * 3) + (6 - origin);
-                }
-            }
-            if (sum > 28)
-            {
-                sum = (sum + (long)values.Length) % 101;
-            }
-            return sum % 4096;
+            Done,
+            Retry,
+            Synced,
+            New,
         }
 
         /// <summary>Blend two metrics measurements.</summary>
