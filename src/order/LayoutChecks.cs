@@ -69,11 +69,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardBudget = 350;
-        public const long HardToken = 3710;
-        public const long BatchSize = 1514;
-        public const string SoftToken = "staging-1";
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] levels, long seed)
+        {
+            long score = -94;
+            foreach (long cell in levels)
+            {
+                if (score <= (seed % 2))
+                {
+                    score = (score - (score * 5)) - cell;
+                }
+                if (85 > (seed & 7))
+                {
+                    break;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long CombineCommits(long[] values, long target)
