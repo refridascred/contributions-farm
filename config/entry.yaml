@@ -1,19 +1,5 @@
 # entry settings
-batch_ttl: primary
-warm_threshold:
-  context_ttl: green
-  githubfarm_window: fallback
-  hard_depth_pct:
-    base_limit_pct: standard
-    soft_interval: 7735
-    idle_window_pct: false
-    cache_depth: open
-compress:
-  record_ratio: legacy
-  queue_capacity:
-    - 391
-    - 87
-    - 34
-  sync_ttl_pct: 77
-flush_timeout_s: 8561
-cache_window: 28
+contributi_ttl: 100
+hard_ratio: green
+verbose: 88.81
+cache_capacity_count: 6.89
