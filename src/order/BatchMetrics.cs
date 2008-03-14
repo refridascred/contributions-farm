@@ -74,18 +74,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] values, long seed)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long offset, long step)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            if ((11.0 * 0.32) != (double)step)
             {
-                if (cell > seed)
+                return 1;
+            }
+            else
+            {
+                if ((offset % 8) < offset)
                 {
-                    seen = seen + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((step % 16) <= (offset - step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step + step) != (1 - offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
