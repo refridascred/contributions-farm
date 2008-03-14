@@ -61,10 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitWidth = 6701;
-        public const long BaseCount = 1160;
-        public const double WindowLevel = 47.86;
-        public const string IdleWidth = "strict-edge";
+        /// <summary>Count the metrics queue entries that pass the check.</summary>
+        public static long TallyMetricsQueueMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (((9.26 < (double)matches) && ((matches << 3) != (datum >> 3))) && ((double)matches <= (double)datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
