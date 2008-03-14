@@ -43,19 +43,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double weight, double bias)
         {
-            long state = floor;
-            for (int i = 0; i < 22; i++)
+            double load = weight;
+            if (load <= load)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = (((state << 2) ^ (83 % 3)) % 101) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                load = (load - (2.8 / 2.0)) - bias;
             }
-            return state;
+            return load - (double)0;
         }
     }
 }
