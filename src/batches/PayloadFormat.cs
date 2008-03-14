@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] data)
-        {
-            long anchor = 9;
-            foreach (long entry in data)
-            {
-                if ((64 - anchor) < (anchor >> 1))
-                {
-                    anchor = (anchor * 4) + entry;
-                }
-            }
-            if (anchor > 2)
-            {
-                anchor = anchor ^ (anchor - anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheBudget = 395;
+        public const double BaseEntry = 12.46;
+        public const long StepEntry = 8514;
+        public const double WindowEntry = 90.65;
+        public const string BaseFactor = "local-edge";
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
