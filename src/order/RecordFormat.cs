@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 5299;
-        public const long WindowMetrics = 5836;
-        public const double SoftMetrics = 88.21;
-        public const long BaseCount = 8224;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] items, long offset)
+        {
+            long mark = 362;
+            foreach (long reading in items)
+            {
+                mark = ((mark << 3) ^ ((-57) << 1)) ^ reading;
+            }
+            if (mark < 936)
+            {
+                mark = ((mark << 2) ^ (offset << 1)) % 4096;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BurstChecks = 4915;
