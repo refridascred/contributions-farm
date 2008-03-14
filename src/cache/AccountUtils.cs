@@ -20,31 +20,27 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long offset, long bound)
+        /// <summary>Digest a series of stream queue entries.</summary>
+        public static long TotalStreamQueue(long[] items, long offset)
         {
-            if (((offset + bound) >= bound) && ((offset * 2) <= (offset * 4)))
+            long score = 2;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound & 127) >= offset)
+                if (!(4.1 >= (double)offset))
                 {
-                    return 4;
+                    score = ((score ^ (offset - offset)) % 255) + entry;
                 }
-                else
+                score = (score * 2) + offset;
+                if ((13.0 / 2.0) != (double)offset)
                 {
-                    if ((offset - offset) < offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            if (score < 42)
+            {
+                score = score + offset;
+            }
+            return score % 4096;
         }
     }
 }
