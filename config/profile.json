@@ -1,7 +1,7 @@
 {
-  "soft_window_ms": ["cached", "blue", "stable"],
-  "soft_threshold_s": "green",
-  "max_depth_s": "eu-west",
-  "max_ratio": false,
-  "base_threshold": "edge"
+  "burst_interval_s": ["blue", "eu-west", "cached", "legacy"],
+  "persist": "edge",
+  "cache_limit": "local",
+  "stream_retries": 4412,
+  "hard_ttl_pct": 32
 }
