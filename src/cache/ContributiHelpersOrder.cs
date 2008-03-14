@@ -20,15 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two batch report measurements.</summary>
-        public static double SmoothBatchReport(double ratio, double offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] values)
         {
-            double weight = ratio;
-            if (weight <= (double)8)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                weight = (weight - weight) - offset;
+                if (!((0.9 / 3.0) == (double)entry))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return weight - weight;
+            return seen;
         }
 
         /// <summary>Hold a graph header.</summary>
