@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a layout checks reading.</summary>
-        public static double ScaleLayoutChecks(double bias, double span)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            double bias2 = (bias - span) / 2.0;
-            if (bias2 <= (double)(-85))
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 + bias2;
+            Done,
+            New,
+            Queued,
         }
 
         /// <summary>Hold a editor stats.</summary>
