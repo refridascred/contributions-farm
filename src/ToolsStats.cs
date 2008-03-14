@@ -76,21 +76,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
