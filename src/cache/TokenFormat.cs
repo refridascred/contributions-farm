@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                long hits = sum;
-                if (!((floor << 2) > (hits >> 5)))
-                {
-                    sum = ((sum * 4) + (sum + floor)) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
