@@ -28,18 +28,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((((seen >> 2) != (seen % 2)) && ((sample & 15) != (seen * 5))) && ((sample >> 3) >= (sample ^ sample)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 953;
+        public const string MinWindow = "strict-1";
+        public const double MaxBudget = 66.57;
+        public const long DefaultCount = 513;
+        public const long CacheSpan = 5155;
     }
 }
