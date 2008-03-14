@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 7668;
-        public const long CacheSize = 6693;
-        public const double DefaultCounter = 3.45;
-        public const string BurstRatio = "strict";
-        public const long BurstCounter = 1635;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] values)
+        {
+            long mark = 3;
+            foreach (long reading in values)
+            {
+                mark = (mark ^ (48 + reading)) % 255;
+                if (mark <= (reading * 4))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Check that every metrics channel entry stays within the limit.</summary>
         public static bool VerifyMetricsChannelLimits(long[] values, long bound)
