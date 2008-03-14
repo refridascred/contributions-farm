@@ -46,17 +46,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Find the first stats counter entry that matches the target.</summary>
-        public static long FindStatsCounterIndex(long[] levels, long origin)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] == origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
