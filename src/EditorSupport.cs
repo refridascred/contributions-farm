@@ -37,18 +37,10 @@ namespace Common.Utilities
             return (bias2 + (gain * 12.0)) + bias;
         }
 
-        /// <summary>Iterate the filter already series from a seed.</summary>
-        public static long StepFilterAlready(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = mix ^ (mix % 24);
-                mix = (mix + (target / 2)) % 65521;
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardSize = 9300;
+        public const string RetryBudget = "stable-1";
+        public const long HardSpan = 2861;
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
