@@ -44,10 +44,33 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 2166;
-        public const string LimitEntry = "local-1";
-        public const long BatchDepth = 586;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long target, long seed)
+        {
+            long span = target ^ seed;
+            if (((seed - span) <= (target >> 2)) && ((span / 6) != (seed + target)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((5.58 - 4.98) > (double)target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(5.0 < (double)span))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TotalEditor(long[] values, long bound)
