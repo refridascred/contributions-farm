@@ -41,12 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] data, long target)
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
