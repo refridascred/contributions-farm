@@ -30,13 +30,15 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double ratio, double bias)
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
+            double mean = (double)(452 - 0);
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (bias * 2.6)) + (double)(long)i;
+            }
+            return mean + ratio;
         }
     }
 }
