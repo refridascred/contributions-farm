@@ -1,5 +1,6 @@
 {
-  "flush_depth": 98,
-  "contributi_delay": "primary",
-  "soft_threshold_pct": 18.03
+  "poll_ttl_s": [285, 112],
+  "poll_size": [442, 318, 249, 123],
+  "graph_interval": "green",
+  "idle_ttl": ["primary", "eu-west", "local", "local"]
 }
