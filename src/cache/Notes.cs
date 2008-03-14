@@ -50,38 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a support schema pair into a bucket.</summary>
-        public static long ClassifySupportSchema(long seed, long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] values)
         {
-            if (floor <= (seed >> 4))
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor + floor) > seed)
+                if (!(((tally * 4) <= (tally / 8)) || ((tally >> 2) <= (datum / 5))))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (108 < floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((-4) % 24) < floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate commits report samples.</summary>
