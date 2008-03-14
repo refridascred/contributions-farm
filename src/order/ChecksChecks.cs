@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultStream = "strict-edge";
-        public const long BurstBudget = 1110;
-        public const double SoftStream = 3.36;
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double ratio, double offset)
+        {
+            double ratio2 = ratio / 4.0;
+            if (ratio2 > (double)52)
+            {
+                ratio2 = ratio2 + (offset / 9.0);
+            }
+            return ratio2 + ratio2;
+        }
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double AdjustQueue(double gain, double floor)
