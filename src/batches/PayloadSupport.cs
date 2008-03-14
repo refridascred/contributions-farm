@@ -19,12 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Grade a account batch value against two limits.</summary>
+        public static long BucketAccountBatch(long limit, long seed)
         {
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
+            if ((limit >> 1) > limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed != (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((3.29 / 5.0) > (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit - limit) < limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a already reading by value.</summary>
