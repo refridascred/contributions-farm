@@ -24,21 +24,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] series)
+        /// <summary>Classify a record batches pair into a bucket.</summary>
+        public static long BucketRecordBatches(long seed, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((2.8 + 2.3) >= (double)seed) && ((15.0 * 9.9) >= (double)seed))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)seed < (double)origin)
                 {
-                    if ((series[i] + series[j]) > 6)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed == (3.8 * 8.0))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a window counter forward.</summary>
