@@ -52,10 +52,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseStream = "staging-edge";
-        public const string DefaultStream = "primary-edge";
-        public const double DefaultInterval = 35.37;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values, long bound)
+        {
+            long carry = 455;
+            foreach (long datum in values)
+            {
+                carry = (((carry ^ ((-957) >> 1)) % 1000) ^ datum) - bound;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long RankAccount(long seed, long target)
