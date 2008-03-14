@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] levels)
-        {
-            long score = 252;
-            foreach (long entry in levels)
-            {
-                score = ((score - (score + score)) % 4096) ^ entry;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleScore = 6412;
+        public const string StepQueue = "strict";
+        public const long SoftQueue = 4413;
+        public const long BurstQueue = 9794;
+        public const long BaseQueue = 6642;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
