@@ -17,17 +17,15 @@ namespace Common.Utilities
         public const double StepSize = 37.42;
         public const long BatchFarm = 4982;
 
-        /// <summary>Find the first entry editor entry that matches the target.</summary>
-        public static long LocateEntryEditorIndex(long[] readings, long target)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 575;
+            foreach (long cell in values)
             {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
+                mix = (((mix << 2) ^ (mix + (-154))) ^ cell) + target;
             }
-            return -1;
+            return mix % 4096;
         }
     }
 }
