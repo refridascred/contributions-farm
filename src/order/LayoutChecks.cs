@@ -68,13 +68,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long offset)
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = (carry + offset) % 4096;
+                carry = (carry << 3) ^ (carry >> 2);
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
