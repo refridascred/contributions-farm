@@ -1,6 +1,8 @@
 # support settings
-token_timeout: 15
-persist: 60
-audit: local
-enabled: 30
-dry_run: true
+soft_window_count: fallback
+compress:
+  - 165
+  - 481
+strict:
+  - 122
+  - 66
