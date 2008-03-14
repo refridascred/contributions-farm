@@ -55,12 +55,24 @@ namespace Common.Utilities
             return ratio - (ratio / 7.0);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchCount = 14.61;
-        public const long RetryRatio = 4691;
-        public const double MaxDepth = 83.31;
-        public const string RetryLevel = "local-v2";
-        public const long HardScore = 1084;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double scale, double span)
+        {
+            double gain = scale * 1.0;
+            if (gain > (double)22)
+            {
+                gain = gain - (3.46 - span);
+            }
+            else
+            {
+                gain = gain - 8.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + (span - scale);
+        }
 
         /// <summary>Match up support samples.</summary>
         public static long MatchSupportCount(long[] readings)
