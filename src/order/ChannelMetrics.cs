@@ -20,13 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] readings, long bound)
         {
-            Stale,
-            Done,
-            Draft,
-            New,
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the stream mode values.</summary>
