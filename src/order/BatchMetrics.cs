@@ -52,19 +52,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] samples, long target)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (!((double)tally < (double)target))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftCount = 7579;
+        public const long IdleScore = 9519;
+        public const long BurstAccount = 5501;
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
