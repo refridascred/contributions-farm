@@ -32,13 +32,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            Draft,
+            Synced,
+            Retry,
+            Idle,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
