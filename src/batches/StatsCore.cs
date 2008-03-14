@@ -14,12 +14,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 3168;
-        public const string HardSize = "cached-v2";
-        public const long BurstBudget = 2653;
-        public const long DefaultCommits = 8477;
-        public const long BatchCommits = 455;
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] values)
+        {
+            long mix = 9;
+            foreach (long datum in values)
+            {
+                mix = (mix - (datum << 2)) % 4096;
+            }
+            if (mix < 34)
+            {
+                mix = ((mix << 2) ^ (539 - mix)) % 4096;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
