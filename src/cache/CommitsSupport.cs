@@ -19,19 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes cluster entries that pass the check.</summary>
-        public static long CountNotesClusterHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((((355 % 3) <= (count * 4)) && ((0.2 * 16.0) == (double)(long)readings.Length)) || ((0 - 2) > (count - count)))
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryScore = 1922;
+        public const long CacheScore = 309;
+        public const long DefaultDepth = 8161;
 
         /// <summary>Match up schema samples.</summary>
         public static long CompareSchemaCount(long[] data)
