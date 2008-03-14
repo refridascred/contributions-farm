@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 3382;
+        public const long StepSpan = 6912;
+        public const long SoftMetrics = 6761;
+        public const long MaxScore = 3677;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string IdleRatio = "open-v2";
