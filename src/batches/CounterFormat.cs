@@ -13,22 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] levels)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] values, long offset)
         {
-            long mark = 891;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (((-282) - reading) < (mark + reading))
+                if (!!((offset / 6) == (17 / 5)))
                 {
-                    mark = (mark + reading) % 4096;
-                }
-                if (mark <= (mark << 3))
-                {
-                    break;
+                    tally = (tally + 3) + item;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
