@@ -1,7 +1,6 @@
 {
-  "strict": "edge",
-  "idle_limit_count": 1024,
-  "min_size_s": "cached",
-  "audit": "standard",
-  "idle_threshold_count": false
+  "hard_size": [45, 497, 60, 461],
+  "default_depth": [247, 47, 382],
+  "support_threshold": "open",
+  "tools_threshold": true
 }
