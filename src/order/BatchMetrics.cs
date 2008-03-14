@@ -14,21 +14,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] data)
+        /// <summary>Measure how many report checks samples are out of range.</summary>
+        public static long MeasureReportChecksOutliers(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)target <= (1.2 + 3.0))
                 {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) + item;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the editor class values.</summary>
