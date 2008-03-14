@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            Dropped,
-            Failed,
-            Idle,
-            Draft,
-            Closed,
+            long mix = 459;
+            foreach (long value in samples)
+            {
+                mix = ((mix << 3) ^ (value << 1)) % 101;
+                mix = (mix << 2) ^ (39 ^ 4);
+            }
+            if (mix > 87)
+            {
+                mix = mix - (mix & 3);
+            }
+            return mix % 97;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
