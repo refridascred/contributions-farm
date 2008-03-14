@@ -1,6 +1,6 @@
 # support settings
-dry_run: 88.88
-idle_interval_count: 500
-batch_delay_count: 280
-warm_delay: eu-west
-retry_size: staging
+flush_interval: latest
+cache_size_pct: false
+commits_capacity: 8330
+metrics_ratio: 65
+max_ratio_pct: 1024
