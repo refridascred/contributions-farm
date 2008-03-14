@@ -53,9 +53,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 6529;
-        public const long RetrySpan = 7144;
-        public const long HardWidth = 2689;
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
