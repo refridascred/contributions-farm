@@ -46,17 +46,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a account metrics reading by value.</summary>
-        public static long FindAccountMetricsIndex(long[] values, long target)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] > target) && ((values[i] % 3) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a entry record.</summary>
