@@ -1,4 +1,4 @@
 # githubfarm settings
-hard_depth: true
-hard_delay_pct: edge
-idle_depth_ms: strict
+hard_retries: standard
+soft_threshold_ms: true
+burst_size_count: blue
