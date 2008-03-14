@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] levels)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double gain, double bias)
         {
-            long result = 394;
-            foreach (long sample in levels)
+            double ratio = gain - (bias + bias);
+            if (ratio < bias)
             {
-                result = (result * 5) + (5 & 3);
-                if (((1.0 - 4.7) >= (double)result) && ((sample >> 3) >= (sample ^ 4)))
-                {
-                    result = ((result * 4) + 613) % 65521;
-                }
+                ratio = ratio - gain;
             }
-            if (result < 919)
+            else
             {
-                result = (result - (result * 2)) % 4096;
+                ratio = ratio + 6.0;
             }
-            return result;
+            return ratio - ratio;
         }
 
         /// <summary>Fold a list of commits queue readings.</summary>
