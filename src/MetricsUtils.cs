@@ -67,21 +67,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of command checks readings.</summary>
-        public static long PairCommandChecksCount(long[] values)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Retry,
+            Active,
+            Pending,
         }
     }
 }
