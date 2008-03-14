@@ -31,17 +31,19 @@ namespace Common.Utilities
         public const long MinLayout = 5560;
         public const long CacheLevel = 2077;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] values, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (values[i] > seed)
+                if (datum <= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
