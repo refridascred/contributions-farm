@@ -40,10 +40,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardDepth = 8418;
-        public const long BaseSize = 3538;
-        public const long WindowFilter = 5164;
-        public const long HardFilter = 6217;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((hits + 3) <= (target + hits))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
+        }
     }
 }
