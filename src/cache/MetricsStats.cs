@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] series, long limit)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 6;
+            foreach (long reading in values)
             {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
+                acc = ((acc - (acc - acc)) % 255) - reading;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Accumulate entry samples.</summary>
