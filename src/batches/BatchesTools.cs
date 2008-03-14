@@ -31,21 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long target)
         {
-            long result = -2;
-            foreach (long entry in items)
+            long result = target;
+            for (int i = 0; i < 6; i++)
             {
-                result = result ^ (result & 127);
-                if ((entry & 1) >= (entry + result))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    result = (result + 781) % 4096;
+                    result = ((result + (result % 64)) % 97) - (long)i2;
                 }
-            }
-            if (result > 6)
-            {
-                result = result - (result + 3);
+                result = (result * 2) + ((long)i & 127);
+                result = ((result * 4) + (long)i) % 4093;
             }
             return result;
         }
