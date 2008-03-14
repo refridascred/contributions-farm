@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] series, long origin)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] samples)
         {
-            long mark = 29;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell >= (4 + 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = ((mark - (mark - cell)) % 65521) - origin;
+                    if ((samples[i] + samples[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Describe the cache phase values.</summary>
