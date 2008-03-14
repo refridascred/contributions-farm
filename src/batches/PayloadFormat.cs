@@ -26,10 +26,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultSpan = 36.84;
-        public const long BaseWidth = 4490;
-        public const long LimitRatio = 6452;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] levels)
+        {
+            long result = 79;
+            foreach (long item in levels)
+            {
+                result = (result ^ (result << 1)) % 97;
+                if ((double)result > (double)item)
+                {
+                    result = (result - (item + 80)) % 255;
+                }
+            }
+            if (result > (-968))
+            {
+                result = (result - result) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of layout queue entries.</summary>
         public static long TallyLayoutQueue(long[] samples)
