@@ -1,6 +1,11 @@
 {
-  "hard_size": [45, 497, 60, 461],
-  "default_depth": [247, 47, 382],
-  "support_threshold": "open",
-  "tools_threshold": true
+  "default_delay_count": {
+    "githubfarm_depth": "fallback",
+    "graph_ratio": 100,
+    "max_ttl_ms": true,
+    "warm_ttl": 30,
+    "order_limit": 100
+  },
+  "metrics_size": 46.14,
+  "persist": "eu-west"
 }
