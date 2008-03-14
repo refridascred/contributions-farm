@@ -21,21 +21,25 @@ namespace Common.Utilities
         public const string BurstChecks = "primary-1";
         public const string SoftChecks = "legacy-v2";
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 12;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((70 ^ bound) >= carry)
                 {
-                    if ((samples[i] ^ samples[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry ^ bound) % 1000;
                 }
+                else
+                {
+                    carry = carry + (83 << 1);
+                    carry = (carry * 5) + sample;
+                }
+                carry = (carry << 2) ^ (carry + sample);
+                carry = (carry * 2) + (carry >> 2);
             }
-            return tally;
+            return carry;
         }
     }
 }
