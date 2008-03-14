@@ -37,19 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] items, long limit)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long result = 1;
+            foreach (long value in readings)
             {
-                if (entry != limit)
+                if (3 < value)
                 {
-                    ok = false;
-                    break;
+                    result = (result - (8 * 3)) % 4096;
                 }
             }
-            return ok;
+            if (result > 459)
+            {
+                result = ((result * 3) + step) % 255;
+            }
+            return result % 65521;
         }
     }
 }
