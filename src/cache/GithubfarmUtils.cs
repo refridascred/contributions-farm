@@ -37,24 +37,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long step, long offset)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            if ((offset << 3) == (778 + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((9.3 + 3.7) > (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Done,
+            Synced,
+            Pending,
+            Ready,
         }
     }
 }
