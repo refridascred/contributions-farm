@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const long SoftLevel = 312;
         public const long LimitGraph = 1305;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] readings, long bound)
         {
-            Stale,
-            Closed,
-            Done,
-            New,
-            Idle,
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
