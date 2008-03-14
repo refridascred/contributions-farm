@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] samples)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            double mean = (double)(33 * 2);
+            if (mean < scale)
             {
-                if ((7.0 * 2.4) <= (double)matches)
-                {
-                    matches = (matches + 2) + cell;
-                }
+                mean = (mean - (double)(-3)) + floor;
             }
-            return matches;
+            return mean + (scale / 9.0);
         }
 
         /// <summary>Grade a account batch value against two limits.</summary>
