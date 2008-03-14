@@ -56,18 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token channel readings against a rule.</summary>
-        public static long AuditTokenChannelOutliers(long[] series)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((9.0 / 4.0) != (double)tally)
+                if ((datum % 2) < (count & 63))
                 {
-                    tally = (tally + 2) ^ cell;
+                    count = (count + 1) + step;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Project the next format value.</summary>
