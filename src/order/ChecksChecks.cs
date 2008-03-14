@@ -13,30 +13,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] items, long limit)
+        /// <summary>Measure how many notes metrics samples are out of range.</summary>
+        public static long MeasureNotesMetricsOutliers(long[] values, long floor)
         {
-            long score = -46;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (587 > score)
+                if (((reading & 255) > (floor + floor)) && ((2.17 + 4.1) > (double)reading))
                 {
-                    score = (((score * 3) + (score + 0)) % 4096) ^ item;
-                }
-                else
-                {
-                    score = ((score << 2) ^ 6) % 255;
-                }
-                if (limit < (limit - limit))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            if (score < (-138))
-            {
-                score = ((score << 2) ^ score) % 255;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
