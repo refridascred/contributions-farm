@@ -83,18 +83,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many account window samples are out of range.</summary>
-        public static long TallyAccountWindowMatches(long[] series)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long state = 6;
+            foreach (long sample in samples)
             {
-                if (sample < hits)
+                for (int i = 0; i < 7; i++)
                 {
-                    hits = hits + 1;
+                    state = (state - (long)i) % 101;
+                }
+                if (state <= (bound ^ sample))
+                {
+                    state = (state - (sample + bound)) % 4096;
+                }
+                else
+                {
+                    state = ((state * 4) + state) % 101;
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
