@@ -36,11 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public double Count { get; set; }
-            public double Level { get; set; }
+            public long Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
