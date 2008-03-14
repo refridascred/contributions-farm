@@ -37,19 +37,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] items, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] levels, long origin)
         {
             long seen = 0;
-            foreach (long item in items)
+            foreach (long reading in levels)
             {
-                if ((seen - bound) >= (bound >> 1))
+                if (((double)reading >= (7.54 * 9.33)) && (seen >= (origin ^ origin)))
                 {
-                    seen = (seen + 3) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 1;
                 }
             }
             return seen;
