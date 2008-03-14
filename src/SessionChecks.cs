@@ -34,30 +34,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate session support samples.</summary>
-        public static long TotalSessionSupport(long[] items)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long seed)
         {
-            long acc = 9;
-            foreach (long sample in items)
+            long total = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (sample <= (sample + acc))
+                if ((long)i != (total << 2))
                 {
-                    continue;
+                    total = total + total;
                 }
-                else
+                if (!((double)seed <= (double)total))
                 {
-                    acc = (acc << 3) ^ (acc - 257);
+                    total = (total ^ (total - seed)) % 65521;
                 }
-                if ((acc % 100) >= acc)
-                {
-                    acc = (acc - (sample * 3)) % 97;
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            if (acc < 43)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc % 65521;
+            return total;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
