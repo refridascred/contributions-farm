@@ -25,16 +25,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] data, long limit)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long state = -520;
-            foreach (long cell in data)
-            {
-                state = ((state + limit) % 255) ^ cell;
-                state = state - (-210);
-            }
-            return state % 97;
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
