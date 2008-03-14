@@ -45,10 +45,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftBudget = 9140;
-        public const double DefaultFactor = 31.8;
-        public const double RetryInterval = 8.15;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 9537;
+        public const string BurstWindow = "legacy-1";
+        public const long SoftDepth = 4436;
+        public const double RetryWindow = 74.78;
+        public const long LimitWindow = 7550;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long CombineSchema(long[] items, long bound)
