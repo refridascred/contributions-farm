@@ -1,10 +1,7 @@
 # githubfarm settings
-poll_depth_s: green
-metrics_interval: false
-idle_interval_count: false
-retry_delay_pct:
-  - 496
-  - 426
-  - 39
-  - 438
-channel_threshold: open
+idle_size_count: primary
+batch_limit_ms: true
+account_threshold: local
+batch_retries_count: 69
+metric_ttl: cached
+poll_ttl_pct: green
