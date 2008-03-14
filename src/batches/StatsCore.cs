@@ -14,19 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] samples, long bound)
         {
-            long mix = 9;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                mix = (mix - (datum << 2)) % 4096;
+                if ((double)bound >= (9.13 * 6.0))
+                {
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (mix < 34)
-            {
-                mix = ((mix << 2) ^ (539 - mix)) % 4096;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a buffer options.</summary>
