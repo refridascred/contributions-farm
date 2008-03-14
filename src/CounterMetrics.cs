@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long floor, long bound)
         {
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long slot = floor ^ bound;
+            if (((floor - floor) > (bound + slot)) && ((13.0 + 1.21) < (double)slot))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((94 / 6) <= (floor * 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((1.0 / 4.0) == (double)slot)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)bound < (4.2 / 7.0)) || ((double)bound < 5.3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record record.</summary>
