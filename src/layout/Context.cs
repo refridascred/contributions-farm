@@ -20,21 +20,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] samples)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 323;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((9.1 / 7.0) <= (double)entry)
                 {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum << 2) ^ (sum / 3);
+                }
+                if ((sum + sum) < (sum * 2))
+                {
+                    break;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the window status values.</summary>
