@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const string SoftSpan = "cached-1";
         public const long RetrySize = 5782;
 
-        /// <summary>Count support account pairs that satisfy a relation.</summary>
-        public static long MatchSupportAccountCount(long[] values)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 888;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)anchor >= (2.65 / 3.0))
                 {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor * 5) + anchor) ^ entry;
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Rank schema farm input into a small class.</summary>
