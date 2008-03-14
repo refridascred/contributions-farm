@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftLevel = 9447;
-        public const long HardOrder = 1409;
-        public const long MinScore = 1524;
-        public const long LimitOrder = 7219;
-        public const string MaxSpan = "alpha-v2";
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (9.3 >= (double)item)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardTimeout = 376;
