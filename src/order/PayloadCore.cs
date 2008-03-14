@@ -27,14 +27,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Dropped,
-            Idle,
-            Ready,
-            Queued,
-            Synced,
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a payload stats.</summary>
