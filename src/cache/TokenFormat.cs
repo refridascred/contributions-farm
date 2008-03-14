@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 4349;
-        public const double IdleFormat = 21.48;
-        public const long IdleDepth = 5064;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] values, long limit)
+        {
+            long sum = 937;
+            foreach (long value in values)
+            {
+                if ((4 - value) < value)
+                {
+                    sum = ((sum + (531 - sum)) % 4096) - limit;
+                }
+            }
+            if (sum < 91)
+            {
+                sum = (sum << 2) ^ sum;
+            }
+            return sum;
+        }
 
         /// <summary>Project the next farm value.</summary>
         public static double SmoothFarm(double gain, double floor)
