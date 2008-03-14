@@ -20,32 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank filter githubfarm input into a small class.</summary>
-        public static long ClassifyFilterGithubfarm(long seed, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] series, long target)
         {
-            long prev = seed ^ offset;
-            if (((15.0 + 7.7) >= (double)prev) && ((double)prev >= (double)offset))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed % 16) >= (seed * 4))
+                if ((6.0 - 2.98) <= (double)entry)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((670 >> 5) != (68 - seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = (seen + 3) - target;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
