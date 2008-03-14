@@ -1,14 +1,14 @@
 # Command notes
 
-Use format settings to tune how often token data is refreshed.
-Keep metrics and cache names short and lowercase.
+The token report groups every window by metrics.
+When a route fails, the stream handler retries a few times before giving up.
 
-When a buffer fails, the counter handler retries a few times before giving up.
-The payload report groups every graph by batches.
-Each order is validated before it reaches the githubfarm queue.
+A metrics that stays idle for too long is moved to the editor list.
+Keep order and contributi names short and lowercase.
 
 ## Guidelines
 
-- Review batch limits each release
-- Keep cache values small
-- Document new stream fields
+- Prefer context defaults
+- Log every commits change
+- Review order limits each release
+- Keep format values small
