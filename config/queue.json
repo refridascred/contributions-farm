@@ -1,8 +1,8 @@
 {
-  "compress": 6272,
-  "min_timeout_count": ["local", "fallback"],
-  "strict": 4912,
-  "hard_interval": true,
-  "flush_interval_s": 15,
-  "githubfarm_size": "strict"
+  "hard_window": 6567,
+  "cache_capacity": "primary",
+  "batch_ratio": "blue",
+  "strict": 15,
+  "stats_limit": "primary",
+  "readonly": "local"
 }
