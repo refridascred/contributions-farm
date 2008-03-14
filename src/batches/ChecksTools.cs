@@ -68,15 +68,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double rate, double bias)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            double scale = (double)(15 / 3);
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale + (1.0 - scale)) + (double)(long)i) - rate;
-            }
-            return scale + bias;
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
