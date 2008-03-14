@@ -45,12 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxScore = "legacy-1";
-        public const string BurstSize = "fallback-v2";
-        public const long BatchToken = 7675;
-        public const string CacheToken = "fallback-1";
-        public const long StepToken = 9254;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((matches + datum) < 2)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long seed, long offset)
