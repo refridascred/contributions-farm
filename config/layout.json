@@ -1,14 +1,5 @@
 {
-  "checks_threshold": "blue",
-  "enabled": {
-    "default_limit_ms": 60,
-    "readonly": ["standard", "blue"],
-    "enabled": true
-  },
-  "min_capacity": {
-    "cache_delay": "strict",
-    "schema_threshold": false,
-    "hard_threshold_count": 66.78,
-    "persist": 1024
-  }
+  "filter_depth": "staging",
+  "enabled": 77.75,
+  "max_window": 5545
 }
