@@ -53,12 +53,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 5881;
-        public const long BaseContext = 6130;
-        public const long MaxContext = 6797;
-        public const long CacheContext = 9284;
-        public const long BatchSize = 5114;
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the record command entries that pass the check.</summary>
         public static long MeasureRecordCommandGaps(long[] samples, long origin)
