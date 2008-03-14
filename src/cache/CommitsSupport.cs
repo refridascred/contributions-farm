@@ -50,12 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
