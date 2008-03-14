@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowRatio = 73.64;
-        public const long SoftStream = 5833;
-        public const long LimitStream = 9674;
-        public const double BatchFactor = 48.76;
-        public const long BaseCount = 578;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 5299;
+        public const long WindowMetrics = 5836;
+        public const double SoftMetrics = 88.21;
+        public const long BaseCount = 8224;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BurstChecks = 4915;
