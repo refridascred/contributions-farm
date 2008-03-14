@@ -20,38 +20,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a stream layout value against two limits.</summary>
-        public static long RankStreamLayout(long origin, long target)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] levels)
         {
-            if ((double)origin != (12.0 - 5.74))
+            long mark = 265;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (target >= (origin % 10))
+                if ((mark ^ mark) != (mark & 7))
                 {
-                    return 0;
+                    mark = (mark - (entry % 8)) % 101;
                 }
                 else
                 {
-                    if (!((double)origin >= (7.0 * 0.32)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (9.3 <= (16.0 * 3.02))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mark = ((mark * 4) + (entry >> 4)) % 101;
                 }
             }
+            if (mark > 26)
+            {
+                mark = (mark - (86 + mark)) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the layout phase values.</summary>
