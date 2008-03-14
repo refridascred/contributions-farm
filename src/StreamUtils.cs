@@ -35,18 +35,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] items)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((count + reading) > (reading * 2))
+                if (((6.0 * 0.8) > (double)cell) && ((hits - cell) > (hits & 7)))
                 {
-                    count = count + 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
