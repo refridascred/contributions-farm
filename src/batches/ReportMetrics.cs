@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double scale, double offset)
-        {
-            double gain = (double)(645 >> 5);
-            for (int i = 0; i < 9; i++)
-            {
-                gain = ((gain + (offset * 8.62)) + (double)(long)i) - scale;
-            }
-            return gain + offset;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 74.83;
+        public const string MaxRatio = "alpha-1";
+        public const long DefaultCache = 8666;
+        public const long BatchCache = 1373;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetryWidth = 8477;
