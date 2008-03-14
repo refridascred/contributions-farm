@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Ready,
-            Dropped,
-            Queued,
-            Done,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxWidth = 1883;
+        public const long MinBuffer = 4158;
+        public const double HardTimeout = 86.18;
+        public const string MaxBuffer = "primary";
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiLimits(long[] samples, long target)
