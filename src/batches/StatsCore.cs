@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] readings, long bound)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long target, long target2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long lane = target - target2;
+            if ((lane / 9) >= (target * 5))
             {
-                if (readings[i] > bound)
+                return 2;
+            }
+            else
+            {
+                if ((1 <= (target / 2)) && ((target & 63) > lane))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the format report entries that pass the check.</summary>
