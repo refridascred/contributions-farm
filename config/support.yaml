@@ -1,10 +1,23 @@
 # support settings
-counter_retries:
-  farm_ratio: 56
-  audit: true
-  sync_window_pct: green
-format_window: true
-dry_run: 4751
-persist: strict
-cache_ttl_pct: 81
-strict: 2604
+window_delay:
+  default_ttl_pct: false
+  poll_limit_s:
+    cluster_window:
+      - standard
+      - fallback
+    warm_ttl_count: latest
+    sync_threshold_count:
+      - stable
+      - green
+      - legacy
+    strict: true
+    retry_depth: 9593
+  audit: 47
+  readonly: 44.5
+  burst_ratio: 69
+layout_ratio: fallback
+min_threshold_s:
+  - 267
+  - 113
+  - 197
+  - 456
