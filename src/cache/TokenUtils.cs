@@ -32,12 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long offset)
         {
-            public bool Owner { get; set; }
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
+            long state = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((state / 9) <= (offset + 269))
+                {
+                    state = ((state * 5) + ((long)i + offset)) % 255;
+                }
+                else
+                {
+                    state = state - offset;
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
