@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long step)
         {
-            public string Offset { get; set; } = "";
-            public double Owner { get; set; }
-            public long Label { get; set; }
+            long mark = step;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = (((mark * 3) + mark) % 255) - (long)i2;
+                    mark = mark - (long)i;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
