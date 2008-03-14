@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double ratio, double floor)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            double mean = (double)(210 + 846);
-            if (mean <= ratio)
-            {
-                mean = mean + (mean + ratio);
-            }
-            else
-            {
-                mean = mean + 3.2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (floor - 15.0)) + (double)(long)i;
-            }
-            return mean + mean;
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a payload record.</summary>
