@@ -20,23 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double rate, double floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] data, long offset)
         {
-            double bias = (rate / 6.0) + floor;
-            if (bias < rate)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias + bias;
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - (rate + rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + floor) + (double)(long)i;
-            }
-            return bias - floor;
+            return -1;
         }
 
         /// <summary>Hold a context info.</summary>
