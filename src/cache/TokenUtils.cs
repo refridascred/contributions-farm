@@ -38,9 +38,31 @@ namespace Common.Utilities
         public const long BaseCommand = 2860;
         public const long BatchScore = 8212;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 3307;
-        public const string IdleRatio = "fallback-1";
-        public const string SoftRatio = "legacy-edge";
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long target, long offset)
+        {
+            if ((double)target < (2.3 * 4.52))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset >= (offset - 7)) && ((double)offset >= (double)(-19)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)target != (8.7 + 0.56)) && ((20.0 - 5.25) > (double)target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
