@@ -51,30 +51,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of layout queue entries.</summary>
-        public static long TallyLayoutQueue(long[] samples)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long state = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample % 60) != (state % 3))
-                {
-                    state = (state ^ (sample & 15)) % 255;
-                }
-                else
-                {
-                    state = (state - state) % 4096;
-                }
-                if ((sample - (long)samples.Length) <= (sample ^ state))
-                {
-                    break;
-                }
-            }
-            if (state > 6)
-            {
-                state = state ^ state;
-            }
-            return state;
+            New,
+            Ready,
+            Active,
         }
     }
 }
