@@ -19,23 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Match up queue cache samples.</summary>
+        public static long OverlapQueueCacheCount(long[] data)
         {
-            long score = 380;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = score - (score ^ score);
-                if ((value + score) <= (8 ^ value))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = score + (score << 3);
+                    if ((data[i] ^ data[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score < (-43))
-            {
-                score = (score - score) % 101;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
