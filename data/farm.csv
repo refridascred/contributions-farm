@@ -1,6 +1,8 @@
-id,state,active,label,region
-1,edge,56.64,69.0,47.1
-2,52.52,standard,stable,legacy
-3,86.99,698,750,3.19
-4,319,608,legacy,274
-5,36.21,98.17,81.13,94.29
+id,token,count,region,label
+1,541,83.43,2.56,890
+2,59,93.93,primary,445
+3,555,strict,91.07,422
+4,strict,73.91,edge,611
+5,9,green,stable,52.39
+6,primary,269,814,150
+7,50.26,latest,latest,886
