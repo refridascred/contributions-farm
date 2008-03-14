@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session route readings against a bound.</summary>
-        public static bool GuardSessionRouteLimits(long[] items, long target)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
