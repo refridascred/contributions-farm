@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Digest a series of stats buffer entries.</summary>
+        public static long ScoreStatsBuffer(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 672;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result << 2) ^ (value >> 5)) % 1000;
             }
-            return hits;
+            if (result < 9)
+            {
+                result = result - (result + result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
