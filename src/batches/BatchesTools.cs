@@ -33,30 +33,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] series, long step)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long offset)
         {
-            long state = 46;
-            foreach (long cell in series)
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((state >> 4) != (step * 2)))
-                {
-                    state = state - (step ^ 8);
-                }
-                if (((state * 4) == (long)series.Length) || ((double)state != (2.51 * 7.1)))
-                {
-                    state = ((state << 3) ^ 984) % 1000;
-                }
-                else
-                {
-                    state = (state ^ (cell - 9)) % 255;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            if (state > 306)
-            {
-                state = state + step;
-            }
-            return state % 1000;
+            return mix;
         }
     }
 }
