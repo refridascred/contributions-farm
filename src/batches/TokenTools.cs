@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] readings, long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] samples, long target)
         {
-            long result = 9;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((cell * 3) >= (cell % 97))
+                if (datum < target)
                 {
-                    long slot = (cell / 6) << 3;
-                    result = (((result * 4) + (slot + cell)) % 65521) - step;
+                    ready = false;
+                    break;
                 }
-                result = (result * 5) + (result << 3);
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
