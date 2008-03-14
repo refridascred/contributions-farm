@@ -31,15 +31,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Classify a account batches pair into a bucket.</summary>
+        public static long GradeAccountBatches(long limit, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
+            long cur = limit + origin;
+            if ((3.0 - 8.7) > (double)cur)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((24 - 19) == (cur >> 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
