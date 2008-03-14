@@ -66,12 +66,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long seed, long step)
         {
-            Queued,
-            Ready,
-            Closed,
+            if (((step ^ step) <= seed) && ((step % 7) > (step + step)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((7 + step) <= (step << 2)) || ((0.3 / 8.0) >= (double)step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
