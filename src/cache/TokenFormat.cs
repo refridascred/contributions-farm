@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((count + (-1)) < 145)
-                {
-                    count = ((count + 2) + item) + origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 4349;
+        public const double IdleFormat = 21.48;
+        public const long IdleDepth = 5064;
 
         /// <summary>Project the next farm value.</summary>
         public static double SmoothFarm(double gain, double floor)
