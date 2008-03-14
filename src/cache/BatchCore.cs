@@ -44,13 +44,22 @@ namespace Common.Utilities
         public const long BaseRatio = 2858;
         public const long IdleLevel = 7301;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)count != (15.0 * 9.0))
+                {
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
