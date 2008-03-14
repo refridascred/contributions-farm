@@ -20,10 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 3925;
-        public const long SoftLevel = 3033;
-        public const long SoftEditor = 1638;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Draft,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatBounds(long[] series, long origin)
