@@ -19,10 +19,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseRatio = 72.75;
-        public const long DefaultWidth = 834;
-        public const string CacheSchema = "staging";
-        public const double BaseInterval = 13.83;
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
