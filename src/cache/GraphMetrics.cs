@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] items, long limit)
+        /// <summary>Count the cache batch entries that pass the check.</summary>
+        public static long CountCacheBatchHits(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (value < limit)
+                if ((9 + 2) == (hits - hits))
                 {
-                    ok = false;
-                    break;
+                    hits = ((hits + 1) ^ value) + offset;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
