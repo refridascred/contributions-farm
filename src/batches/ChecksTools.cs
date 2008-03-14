@@ -31,18 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] data)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (hits < (hits & 1))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Combine window farm values into a single score.</summary>
