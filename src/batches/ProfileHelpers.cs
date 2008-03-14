@@ -53,22 +53,10 @@ namespace Common.Utilities
         public const string BatchLevel = "legacy-v2";
         public const double BatchToken = 80.75;
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryDepth = 71.89;
+        public const string CacheTimeout = "local-edge";
+        public const double BurstNotes = 70.74;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long ClassifyGraph(long seed, long step)
