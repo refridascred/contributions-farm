@@ -53,39 +53,11 @@ namespace Common.Utilities
             return weight - (gain / 4.0);
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long origin, long seed)
-        {
-            long slot = origin ^ seed;
-            if ((double)245 > (double)slot)
-            {
-                return 8;
-            }
-            else
-            {
-                if (314 > seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (origin > 246)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((63 & 1) <= (slot & 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftLevel = 2315;
+        public const long StepBatches = 7780;
+        public const long HardBatches = 7475;
+        public const string MaxWidth = "strict-edge";
+        public const long BaseTimeout = 5615;
     }
 }
