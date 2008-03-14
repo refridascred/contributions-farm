@@ -14,11 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] samples, long step)
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (18.0 <= (double)entry)
+                {
+                    seen = (seen + 2) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
