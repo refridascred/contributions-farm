@@ -41,18 +41,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] series)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long step, long step2)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long lane = step - step2;
+            if (((step2 % 10) != (lane >> 1)) || ((step + step2) < lane))
             {
-                if ((double)96 < (double)(long)series.Length)
+                return 6;
+            }
+            else
+            {
+                if ((step2 + lane) == (lane * 2))
                 {
-                    count = (count + 2) + entry;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
     }
 }
