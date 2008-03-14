@@ -16,16 +16,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double ratio, double offset)
-        {
-            double bias = (4.0 / 6.0) - ratio;
-            for (int i = 0; i < 6; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + (offset - bias);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardCount = 6747;
+        public const string BatchFilter = "open-1";
+        public const long DefaultFilter = 4174;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long SoftEditor = 4607;
