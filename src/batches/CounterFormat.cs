@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] items)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long score = 471;
+            foreach (long cell in items)
+            {
+                if ((cell % 12) >= (-4))
+                {
+                    score = ((score << 3) ^ (cell - (long)items.Length)) % 4096;
+                }
+            }
+            if (score > 7)
+            {
+                score = ((score << 3) ^ (score + score)) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Match up format samples.</summary>
