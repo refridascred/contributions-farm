@@ -41,21 +41,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up already checks samples.</summary>
-        public static long PairAlreadyChecksCount(long[] samples)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] series, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item > step)
                 {
-                    if ((samples[i] ^ samples[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
