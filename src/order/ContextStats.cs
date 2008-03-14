@@ -53,10 +53,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinDepth = "primary-edge";
-        public const long DefaultContext = 5703;
-        public const double LimitWidth = 3.61;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
