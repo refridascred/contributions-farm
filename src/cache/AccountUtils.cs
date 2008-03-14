@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit context cache readings against a rule.</summary>
-        public static long CountContextCacheMatches(long[] values)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] levels)
         {
             long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading < (reading & 31))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
+                    if ((levels[i] ^ levels[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
