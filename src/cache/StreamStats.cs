@@ -40,33 +40,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long seed, long offset)
-        {
-            long cur = seed ^ offset;
-            if ((double)839 < (double)cur)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((181 << 3) != (cur * 5)) && (cur < offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((953 >> 5) > seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchScore = 33.99;
+        public const string HardFactor = "strict";
+        public const double LimitInterval = 44.21;
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
