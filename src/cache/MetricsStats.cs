@@ -50,18 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] values, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (((double)seed < (double)value) && ((value + value) < (357 % 12)))
+                if ((hits + hits) >= (hits >> 5))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
