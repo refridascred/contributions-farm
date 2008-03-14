@@ -18,20 +18,12 @@ namespace Common.Utilities
         public const string RetryCount = "fallback-v2";
         public const double BatchContributi = 29.63;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] series, long bound)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardReport = "standard-1";
+        public const string BurstReport = "local-1";
+        public const double MaxCount = 7.14;
+        public const long StepBudget = 2370;
+        public const double RetryReport = 75.85;
 
         /// <summary>Measure how many buffer filter samples are out of range.</summary>
         public static long CountBufferFilterGaps(long[] data, long step)
