@@ -36,22 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] readings)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value * 4) == (hits + hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Synced,
+            Locked,
         }
 
         /// <summary>Rank cache input into a small class.</summary>
