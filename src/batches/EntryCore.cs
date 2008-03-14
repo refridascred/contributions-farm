@@ -76,18 +76,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] values)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] values)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((0.7 - 7.7) != (double)(long)values.Length))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) + value;
+                    if ((values[i] + values[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
