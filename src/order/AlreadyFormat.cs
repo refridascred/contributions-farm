@@ -39,11 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitCount = 3608;
-        public const long HardDepth = 3868;
-        public const double BatchWidth = 59.21;
-        public const string WindowPayload = "local-1";
+        /// <summary>Roll a metric queue counter forward.</summary>
+        public static long DeriveMetricQueue(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = (carry + (carry & 1)) % 1000;
+                carry = (carry + carry) % 4096;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long DeriveCluster(long floor)
