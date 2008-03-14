@@ -1,17 +1,6 @@
 {
-  "strict": [478, 342],
-  "max_ratio": "edge",
-  "batch_timeout_pct": 60,
-  "base_delay": {
-    "payload_interval": [447, 258, 273, 440],
-    "payload_limit": {
-      "warm_threshold_count": "strict",
-      "sync_limit_ms": 40.4,
-      "route_timeout": true,
-      "default_size_s": "legacy",
-      "min_delay_ms": "strict"
-    },
-    "base_delay_count": "standard"
-  },
-  "cache_ttl_s": 100
+  "dry_run": 47,
+  "strict": 66.04,
+  "max_delay_count": "strict",
+  "checks_window": false
 }
