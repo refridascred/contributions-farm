@@ -49,17 +49,15 @@ namespace Common.Utilities
         public const double IdleAccount = 47.71;
         public const long DefaultRatio = 7015;
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] values, long offset)
+        /// <summary>Roll a batch layout counter forward.</summary>
+        public static long StepBatchLayout(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
     }
 }
