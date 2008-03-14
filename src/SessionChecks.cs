@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of buffer cache entries.</summary>
-        public static long DigestBufferCache(long[] readings)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long step, long target)
         {
-            long carry = 4;
-            foreach (long cell in readings)
+            if ((target + step) >= (target >> 5))
             {
-                carry = ((carry * 2) + cell) % 255;
-                carry = (carry - carry) % 65521;
+                return 5;
             }
-            if (carry > (-4))
+            else
             {
-                carry = (carry << 3) ^ carry;
+                if (!(step <= (6 - step)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return carry % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
