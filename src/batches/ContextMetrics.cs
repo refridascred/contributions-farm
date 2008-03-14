@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public bool Label { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 3500;
+        public const long WindowRoute = 2215;
+        public const long DefaultRoute = 9369;
+        public const long BatchRoute = 8885;
+        public const long IdleWidth = 4465;
 
         /// <summary>Look up the position of a command batches sample.</summary>
         public static long FindCommandBatchesIndex(long[] series, long origin)
