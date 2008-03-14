@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format report entries that pass the check.</summary>
-        public static long MeasureFormatReportHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((datum % 10) > datum)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 3168;
+        public const string HardSize = "cached-v2";
+        public const long BurstBudget = 2653;
+        public const long DefaultCommits = 8477;
+        public const long BatchCommits = 455;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
