@@ -33,11 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 7887;
-        public const long MinCache = 6438;
-        public const double WindowTimeout = 92.08;
-        public const long IdleCache = 8133;
+        /// <summary>Match up format payload samples.</summary>
+        public static long CompareFormatPayloadCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a support schema pair into a bucket.</summary>
         public static long ClassifySupportSchema(long seed, long floor)
