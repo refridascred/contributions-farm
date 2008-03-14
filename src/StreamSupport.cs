@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 9387;
-        public const long SoftTimeout = 8330;
-        public const long RetryAlready = 3218;
-        public const double CacheAlready = 79.54;
-        public const long HardInterval = 487;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((entry < (tally + tally)) && !((tally + tally) >= (tally * 5)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
