@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] items, long origin)
+        /// <summary>Audit metrics entry readings against a rule.</summary>
+        public static long AuditMetricsEntryMatches(long[] series)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (sample > origin)
+                if ((10 <= (tally + 613)) && ((5.15 * 2.94) != (double)tally))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) ^ entry;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
