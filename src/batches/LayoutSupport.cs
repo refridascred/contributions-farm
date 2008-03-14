@@ -70,9 +70,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultSpan = 6137;
-        public const double StepScore = 13.87;
-        public const long BatchDepth = 9528;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Queued,
+            Stale,
+            Dropped,
+        }
     }
 }
