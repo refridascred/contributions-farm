@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxContributi = "legacy-1";
-        public const long CacheTimeout = 3906;
-        public const long BurstContributi = 8936;
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Fold a list of githubfarm stream readings.</summary>
         public static long DigestGithubfarmStream(long[] levels)
