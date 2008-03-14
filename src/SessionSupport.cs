@@ -31,25 +31,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Classify a farm batches pair into a bucket.</summary>
-        public static long SortFarmBatches(long target, long offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            long delta = target - offset;
-            if (target > (delta % 8))
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
+                carry = (carry * 3) + ((long)i ^ limit);
+                carry = (carry * 3) + carry;
+                carry = (carry + carry) % 97;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((749 + offset) >= (delta & 15)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return carry;
         }
     }
 }
