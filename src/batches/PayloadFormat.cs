@@ -55,13 +55,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Compare every pair of tools cluster readings.</summary>
+        public static long CompareToolsClusterCount(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
