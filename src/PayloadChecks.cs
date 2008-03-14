@@ -58,15 +58,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] items, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if (item > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
