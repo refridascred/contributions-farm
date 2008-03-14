@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long step)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
-            {
-                total = total - ((long)i ^ (long)i);
-                total = (total - ((-813) & 127)) % 4096;
-                total = (total * 3) + (step + step);
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Locate a already reading by value.</summary>
