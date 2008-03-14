@@ -53,22 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 5881;
+        public const long BaseContext = 6130;
+        public const long MaxContext = 6797;
+        public const long CacheContext = 9284;
+        public const long BatchSize = 5114;
 
         /// <summary>Count the record command entries that pass the check.</summary>
         public static long MeasureRecordCommandGaps(long[] samples, long origin)
