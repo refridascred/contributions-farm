@@ -1,4 +1,10 @@
 # githubfarm settings
-payload_capacity: 4.88
-account_capacity: 94
-farm_interval: strict
+soft_size_ms: 64
+min_depth_pct:
+  batches_threshold: edge
+  persist:
+    - primary
+    - stable
+  window_limit: local
+idle_limit: true
+retry_size_pct: latest
