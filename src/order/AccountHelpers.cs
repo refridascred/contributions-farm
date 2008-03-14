@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] data, long target)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Paused,
+            Pending,
+            Active,
         }
 
         /// <summary>Hold a record info.</summary>
