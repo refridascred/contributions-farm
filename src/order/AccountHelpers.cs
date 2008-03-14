@@ -51,19 +51,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] values, long limit)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (reading > limit)
+                if (origin >= 555)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) + value;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
