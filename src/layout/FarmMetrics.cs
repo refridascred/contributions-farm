@@ -20,19 +20,18 @@ namespace Common.Utilities
         public const string CacheWidth = "primary-edge";
         public const string StepScore = "staging-edge";
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double ratio, double span)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] series)
         {
-            double bias = (double)(489 << 3);
-            if (bias <= (span / 9.0))
+            long seen = 0;
+            foreach (long item in series)
             {
-                bias = bias + (span / 8.0);
+                if ((seen + item) < item)
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                bias = bias + (bias * 0.18);
-            }
-            return bias - (ratio * 4.2);
+            return seen;
         }
     }
 }
