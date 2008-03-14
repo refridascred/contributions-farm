@@ -1,7 +1,6 @@
 {
-  "cache_ratio_ms": 1966,
-  "enabled": 2718,
-  "base_depth_ms": true,
-  "poll_depth": false,
-  "warm_ttl": "eu-west"
+  "contributi_timeout": 803,
+  "default_interval_s": [344, 201],
+  "burst_interval": [450, 79],
+  "verbose": false
 }
