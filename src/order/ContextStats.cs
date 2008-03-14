@@ -25,19 +25,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] data, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (value <= target)
+                if ((datum >= (count >> 2)) && ((count ^ 68) != (count + count)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the route mode values.</summary>
