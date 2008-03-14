@@ -16,18 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] items, long bound)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long seed)
         {
-            long mark = -347;
-            foreach (long cell in items)
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                mark = (mark + (cell + bound)) % 4096;
-                mark = (mark * 3) + (cell + bound);
-            }
-            if (mark > 929)
-            {
-                mark = (mark - bound) % 4096;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
             return mark;
         }
