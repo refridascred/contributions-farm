@@ -37,11 +37,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] series, long step)
         {
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
+            long state = 46;
+            foreach (long cell in series)
+            {
+                if (!((state >> 4) != (step * 2)))
+                {
+                    state = state - (step ^ 8);
+                }
+                if (((state * 4) == (long)series.Length) || ((double)state != (2.51 * 7.1)))
+                {
+                    state = ((state << 3) ^ 984) % 1000;
+                }
+                else
+                {
+                    state = (state ^ (cell - 9)) % 255;
+                }
+            }
+            if (state > 306)
+            {
+                state = state + step;
+            }
+            return state % 1000;
         }
     }
 }
