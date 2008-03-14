@@ -36,19 +36,24 @@ namespace Common.Utilities
             return drift + (weight - weight);
         }
 
-        /// <summary>Project the next order layout value.</summary>
-        public static double SmoothOrderLayout(double rate, double floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long origin, long offset)
         {
-            double mean = rate;
-            if (mean > (floor + floor))
+            if ((offset - offset) < (origin ^ offset))
             {
-                mean = mean - 6.13;
+                return 8;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                mean = (mean - floor) + (double)(long)i;
+                if (((231 + origin) == (origin / 9)) || ((offset * 2) >= (origin + offset)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return mean - mean;
         }
     }
 }
