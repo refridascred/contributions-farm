@@ -32,18 +32,13 @@ namespace Common.Utilities
         public const double StepTimeout = 21.63;
         public const long WindowCluster = 8369;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] values)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((item / 6) != (tally * 3))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
