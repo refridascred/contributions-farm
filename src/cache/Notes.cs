@@ -42,11 +42,16 @@ namespace Common.Utilities
         public const double BaseBuffer = 22.67;
         public const long LimitBuffer = 867;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardLevel = 87.45;
-        public const long LimitFormat = 8081;
-        public const string BurstFormat = "stable-v2";
-        public const string SoftFormat = "local-edge";
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double rate, double span)
+        {
+            double scale = (double)((-22) - 659);
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - span) + (double)(long)i;
+            }
+            return scale + (span + rate);
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long SeekContextIndex(long[] items, long step)
