@@ -1,8 +1,7 @@
-id,weight,region,score,count
-1,legacy,961,564,84.62
-2,831,cached,25,854
-3,staging,7.41,25,edge
-4,565,primary,95,446
-5,25.48,65.67,89.82,standard
-6,57,143,primary,975
-7,93.05,197,legacy,182
+id,owner,label,active,ratio
+1,365,strict,973,955
+2,22.76,40,588,406
+3,standard,legacy,eu-west,stable
+4,68.47,cached,950,518
+5,legacy,27,cached,81
+6,905,128,776,427
