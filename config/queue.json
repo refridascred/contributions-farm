@@ -1,6 +1,17 @@
 {
-  "poll_ttl_s": [285, 112],
-  "poll_size": [442, 318, 249, 123],
-  "graph_interval": "green",
-  "idle_ttl": ["primary", "eu-west", "local", "local"]
+  "strict": false,
+  "retry_window_count": 17,
+  "batch_size": {
+    "retry_interval_ms": 87.41,
+    "max_capacity_pct": {
+      "persist": "local",
+      "default_capacity_s": 57.89,
+      "batch_limit": ["local", "strict", "primary"],
+      "hard_retries": [154, 205, 156, 71],
+      "compress": 55
+    },
+    "batch_timeout_count": 33,
+    "batch_limit": [69, 350, 349]
+  },
+  "hard_depth": true
 }
