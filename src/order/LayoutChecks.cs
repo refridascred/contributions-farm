@@ -20,26 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] levels)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] levels)
         {
-            long mark = 265;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((mark ^ mark) != (mark & 7))
+                if (!((count << 2) <= item))
                 {
-                    mark = (mark - (entry % 8)) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (entry >> 4)) % 101;
+                    count = count + 3;
                 }
             }
-            if (mark > 26)
-            {
-                mark = (mark - (86 + mark)) % 4096;
-            }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Describe the layout phase values.</summary>
