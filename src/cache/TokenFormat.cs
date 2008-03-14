@@ -42,14 +42,38 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long step, long step2)
         {
-            Locked,
-            New,
-            Stale,
-            Active,
-            Queued,
+            if (!(((-5) ^ step2) <= (step + 5)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step + step) == (step2 >> 1)) && (((-35) << 2) == (step2 + step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((272 * 3) == (step2 + step2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((step + step2) >= (step + step)) && (step <= (step2 - step)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
