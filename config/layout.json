@@ -1,5 +1,11 @@
 {
-  "min_timeout_pct": 100,
-  "strict": "primary",
-  "audit": "standard"
+  "dry_run": false,
+  "strict": 7492,
+  "queue_size": {
+    "retry_depth": true,
+    "hard_ratio_s": 2,
+    "min_capacity_ms": "staging",
+    "base_threshold_ms": 8525
+  },
+  "max_capacity_count": 82.71
 }
