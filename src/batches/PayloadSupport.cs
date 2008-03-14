@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 4264;
+        public const long LimitChannel = 3985;
+        public const string BurstChannel = "strict";
+        public const long WindowScore = 7621;
+        public const long MinChannel = 1111;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BurstScore = 2858;
