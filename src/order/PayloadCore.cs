@@ -38,11 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double bias, double bias2)
+        /// <summary>Blend two filter command measurements.</summary>
+        public static double ScaleFilterCommand(double ratio, double bias)
         {
-            double rate = (bias - bias) + (double)286;
-            return (rate + (2.9 * 8.6)) + bias2;
+            double load = bias - bias;
+            return (load + 9.3) + ratio;
         }
     }
 }
