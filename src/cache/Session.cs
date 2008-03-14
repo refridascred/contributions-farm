@@ -22,12 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
