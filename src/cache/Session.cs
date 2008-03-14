@@ -22,10 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Owner { get; set; }
             public double Stamp { get; set; }
         }
 
