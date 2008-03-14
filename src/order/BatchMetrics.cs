@@ -51,15 +51,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] items)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] samples, long target)
         {
             long tally = 0;
-            foreach (long value in items)
+            foreach (long reading in samples)
             {
-                if (((tally >> 1) == (value - tally)) || ((double)value == (7.1 * 9.0)))
+                if (!((double)tally < (double)target))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 1) + reading;
                 }
             }
             return tally;
