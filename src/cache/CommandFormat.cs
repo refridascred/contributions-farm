@@ -20,15 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double gain, double offset)
+        /// <summary>Compare every pair of channel window readings.</summary>
+        public static long OverlapChannelWindowCount(long[] items)
         {
-            double bias = gain;
-            if (bias > (double)(-178))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias - (double)94;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias + offset;
+            return tally;
         }
 
         /// <summary>Hold a filter entry.</summary>
