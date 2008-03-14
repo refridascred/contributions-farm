@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the channel already series from a seed.</summary>
-        public static long DeriveChannelAlready(long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] readings, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            long score = 50;
+            foreach (long datum in readings)
             {
-                if (result > (origin ^ (long)i))
+                if ((datum - datum) <= (score + 55))
                 {
-                    break;
+                    score = (score - (step + 18)) % 4096;
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Accumulate farm samples.</summary>
