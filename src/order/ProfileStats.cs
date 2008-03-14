@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long SoftLevel = 312;
         public const long LimitGraph = 1305;
 
-        /// <summary>Count the schema queue entries that pass the check.</summary>
-        public static long MeasureSchemaQueueHits(long[] values, long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] levels)
         {
             long tally = 0;
-            foreach (long item in values)
+            foreach (long reading in levels)
             {
-                if ((tally - tally) > (floor * 2))
+                if ((58 << 2) > (reading ^ tally))
                 {
-                    tally = (tally + 3) - item;
+                    tally = tally + 2;
                 }
             }
             return tally;
