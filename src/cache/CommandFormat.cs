@@ -37,23 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] items)
-        {
-            long carry = 20;
-            foreach (long value in items)
-            {
-                if (((carry % 24) <= (value + (long)items.Length)) || ((16.0 / 5.0) >= (double)value))
-                {
-                    carry = ((carry * 3) + carry) % 65521;
-                }
-                else
-                {
-                    carry = (carry + (carry + value)) % 4096;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 9265;
+        public const double LimitBatches = 4.63;
+        public const long IdleBatches = 4340;
+        public const string SoftScore = "latest-edge";
+        public const double SoftSpan = 53.51;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MinWidth = 1478;
