@@ -1,8 +1,6 @@
 {
-  "persist": 100,
-  "hard_window_ms": "staging",
-  "batch_window": 3130,
-  "poll_window_count": 5468,
-  "max_window": 250,
-  "min_retries": 66.82
+  "flush_interval": ["legacy", "latest", "stable", "primary"],
+  "window_timeout": false,
+  "default_ratio_count": false,
+  "cache_interval_ms": ["primary", "open"]
 }
