@@ -18,20 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] series, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
+            long anchor = -54;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mark = (((mark * 3) + mark) % 255) - (long)i2;
-                    mark = mark - (long)i;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                anchor = (anchor ^ (item - item)) % 65521;
+                anchor = ((anchor * 5) + (long)series.Length) % 1000;
             }
-            return mark;
+            if (anchor < 5)
+            {
+                anchor = ((anchor << 3) ^ (floor % 100)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
