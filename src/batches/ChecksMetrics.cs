@@ -63,19 +63,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Measure how many schema graph samples are out of range.</summary>
+        public static long AuditSchemaGraphOutliers(long[] items)
         {
-            long score = 8;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                score = ((score * 3) + (sample >> 4)) % 65521;
-                if (((score << 2) < (sample & 7)) || ((double)sample <= (double)199))
+                if (((7.08 - 1.37) == (double)item) || ((275 - item) >= (4 + hits)))
                 {
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Adjust a session order reading.</summary>
