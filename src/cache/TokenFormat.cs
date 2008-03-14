@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] values, long limit)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] items, long origin)
         {
-            long sum = 937;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((4 - value) < value)
+                if (reading != origin)
                 {
-                    sum = ((sum + (531 - sum)) % 4096) - limit;
+                    found = false;
+                    break;
                 }
             }
-            if (sum < 91)
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum;
+            return found;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
