@@ -25,13 +25,13 @@ namespace Common.Utilities
         public const long DefaultWindow = 2285;
         public const long IdleWindow = 4958;
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Synced,
-            Draft,
-            Failed,
-            Closed,
+            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a queue record.</summary>
