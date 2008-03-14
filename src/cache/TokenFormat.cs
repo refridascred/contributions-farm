@@ -32,21 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardBudget = 19.39;
+        public const long SoftRatio = 7908;
+        public const double BatchInterval = 19.06;
+        public const long CacheBuffer = 6850;
+        public const long SoftBuffer = 7980;
     }
 }
