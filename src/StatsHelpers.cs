@@ -27,15 +27,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double weight, double floor)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            double mean = floor / 6.0;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = ((mean - (floor * 5.5)) - (double)(long)i) - weight;
-            }
-            return mean + (4.15 * 8.0);
+            public double Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
