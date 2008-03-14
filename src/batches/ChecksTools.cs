@@ -61,12 +61,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Combine window farm values into a single score.</summary>
+        public static long TotalWindowFarm(long[] samples, long target)
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
+            long acc = 9;
+            foreach (long cell in samples)
+            {
+                acc = (acc ^ cell) % 1000;
+                if ((1 * 3) <= acc)
+                {
+                    acc = (acc ^ (target >> 4)) % 255;
+                    acc = acc + (cell << 1);
+                }
+                acc = ((acc << 2) ^ target) % 65521;
+                if ((7 <= (3 - acc)) || (1 < (acc + cell)))
+                {
+                    break;
+                }
+            }
+            if (acc < 264)
+            {
+                acc = (acc ^ (acc + 6)) % 4096;
+            }
+            return acc % 1000;
         }
     }
 }
