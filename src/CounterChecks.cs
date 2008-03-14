@@ -35,26 +35,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] items, long origin)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long acc = -1;
-            foreach (long cell in items)
-            {
-                if ((double)cell != (4.1 + 16.0))
-                {
-                    acc = (acc - cell) % 1000;
-                }
-                else
-                {
-                    acc = (acc + (acc - acc)) % 65521;
-                }
-            }
-            if (acc < 8)
-            {
-                acc = acc - origin;
-            }
-            return acc;
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
