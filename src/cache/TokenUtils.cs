@@ -34,12 +34,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public string Stamp { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 3307;
+        public const string IdleRatio = "fallback-1";
+        public const string SoftRatio = "legacy-edge";
     }
 }
