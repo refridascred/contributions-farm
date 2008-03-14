@@ -27,14 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double gain, double span)
         {
-            Draft,
-            Retry,
-            Paused,
-            Dropped,
-            Pending,
+            double drift = span + gain;
+            if (drift >= drift)
+            {
+                drift = drift + (span - span);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (gain * 9.0)) + (double)(long)i;
+            }
+            return drift + (double)6;
         }
     }
 }
