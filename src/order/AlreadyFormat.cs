@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many checks route samples are out of range.</summary>
-        public static long TallyChecksRouteHits(long[] readings, long bound)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (seen < (bound + value))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next window contributi value from a seed.</summary>
