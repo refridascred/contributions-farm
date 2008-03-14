@@ -45,13 +45,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public double Region { get; set; }
-            public bool Weight { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 7523;
+        public const long WindowChannel = 2003;
+        public const long IdleFactor = 1927;
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long IteratePayload(long limit)
