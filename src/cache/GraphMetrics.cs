@@ -47,18 +47,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] levels)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample < (count - sample))
-                {
-                    count = count + 1;
-                }
+                sum = ((sum << 3) ^ (sum / 3)) % 255;
+                sum = (sum - (sum ^ origin)) % 255;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
     }
 }
