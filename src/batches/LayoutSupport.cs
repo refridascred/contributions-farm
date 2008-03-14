@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] samples)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long offset, long offset2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long offset3 = offset - offset2;
+            if (offset3 < (offset3 >> 1))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((1.85 * 17.0) <= (2.0 + 4.73)) && ((double)offset2 != (double)35))
                 {
-                    if ((samples[i] ^ samples[j]) != 15)
+                    return 5;
+                }
+                else
+                {
+                    if ((1.82 + 3.5) <= (double)offset2)
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset3 - offset2) > (4 ^ 858))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
