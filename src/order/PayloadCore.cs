@@ -25,10 +25,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheRatio = 9376;
-        public const long SoftSession = 1940;
-        public const string CacheSession = "primary-edge";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstBudget = 8771;
+        public const long BaseGithubfarm = 4684;
+        public const string LimitGithubfarm = "cached-1";
+        public const double StepLevel = 7.18;
+        public const long MinBudget = 6452;
 
         /// <summary>Blend two filter command measurements.</summary>
         public static double ScaleFilterCommand(double ratio, double bias)
