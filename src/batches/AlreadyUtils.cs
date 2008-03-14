@@ -12,19 +12,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] samples)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] levels, long seed)
         {
-            long carry = 9;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                carry = (carry ^ 77) + reading;
+                if (item < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (carry < 6)
-            {
-                carry = (carry + (carry - 2)) % 255;
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
