@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] levels)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry / 8) <= 16)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Stale,
+            Synced,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
