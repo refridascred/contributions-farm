@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long offset, long step)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            if ((step + step) < (offset >> 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((53 << 1) < (offset - 1)) || ((4.0 - 5.9) > (double)step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset + step) > 4)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step >= (offset & 1)) || ((9.18 / 2.0) > (double)step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
