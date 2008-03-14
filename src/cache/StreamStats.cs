@@ -10,26 +10,12 @@ namespace Common.Utilities
         public const string LimitRoute = "latest";
         public const long WindowRoute = 8478;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] items)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long anchor = 73;
-            foreach (long datum in items)
-            {
-                if (!((47 % 64) > (anchor & 1)))
-                {
-                    anchor = anchor + (datum + anchor);
-                }
-                if ((anchor & 127) > (datum - (long)items.Length))
-                {
-                    break;
-                }
-            }
-            if (anchor < 0)
-            {
-                anchor = (anchor ^ (anchor - anchor)) % 255;
-            }
-            return anchor % 1000;
+            public bool Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a account header.</summary>
