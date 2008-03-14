@@ -28,24 +28,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long step, long target)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            if (step > (target - step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step > (step << 1)) && ((target + 44) > (step & 127)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the context mode values.</summary>
