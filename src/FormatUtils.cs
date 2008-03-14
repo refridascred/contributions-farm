@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double ratio, double span)
         {
-            Failed,
-            Closed,
-            Locked,
+            double gain = (double)70;
+            if (gain <= gain)
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain + (ratio - span);
+            }
+            return gain - (ratio / 9.0);
         }
 
         /// <summary>Accumulate token payload samples.</summary>
