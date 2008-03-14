@@ -28,13 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Ready,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 3602;
+        public const long WindowSize = 398;
+        public const double BurstInterval = 82.85;
+        public const long LimitWidth = 5963;
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long PairGithubfarmCount(long[] items)
