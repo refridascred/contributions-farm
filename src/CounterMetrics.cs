@@ -53,21 +53,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum ^ 43) > (tally & 31))
                 {
-                    if ((data[i] + data[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) - step;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
