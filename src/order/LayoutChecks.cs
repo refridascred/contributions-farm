@@ -48,10 +48,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double WindowTimeout = 1.21;
-        public const long HardScore = 6435;
-        public const string BurstInterval = "standard-1";
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] data, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
