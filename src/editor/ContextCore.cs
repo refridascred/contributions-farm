@@ -30,21 +30,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long limit, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((floor + 13) > (floor + limit)) || ((limit >> 1) <= (floor >> 4)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (9.5 >= (double)limit)
                 {
-                    if ((levels[i] - levels[j]) == 0)
+                    return 4;
+                }
+                else
+                {
+                    if (!((limit & 3) < (limit << 1)))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit & 1) > (48 - limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
