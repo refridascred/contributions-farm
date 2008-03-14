@@ -20,24 +20,18 @@ namespace Common.Utilities
             return drift - (drift * 3.0);
         }
 
-        /// <summary>Rank route githubfarm input into a small class.</summary>
-        public static long ClassifyRouteGithubfarm(long floor, long offset)
+        /// <summary>Audit stats counter readings against a rule.</summary>
+        public static long CountStatsCounterMatches(long[] items)
         {
-            if ((offset ^ offset) < (floor % 3))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset / 2) >= floor)
+                if ((double)hits >= (double)datum)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many already githubfarm samples are out of range.</summary>
