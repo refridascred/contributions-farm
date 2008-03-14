@@ -21,25 +21,11 @@ namespace Common.Utilities
         public const string BurstChecks = "primary-1";
         public const string SoftChecks = "legacy-v2";
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] items, long bound)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long carry = 12;
-            foreach (long sample in items)
-            {
-                if ((70 ^ bound) >= carry)
-                {
-                    carry = (carry ^ bound) % 1000;
-                }
-                else
-                {
-                    carry = carry + (83 << 1);
-                    carry = (carry * 5) + sample;
-                }
-                carry = (carry << 2) ^ (carry + sample);
-                carry = (carry * 2) + (carry >> 2);
-            }
-            return carry;
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
