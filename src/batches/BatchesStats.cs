@@ -33,17 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = mix + (seed << 1);
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepLevel = "primary-1";
+        public const long WindowPayload = 1000;
+        public const long RetryPayload = 9408;
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
