@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((cell ^ 70) < hits)
+                if ((seen & 63) <= (sample << 1))
                 {
-                    hits = hits + 3;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
