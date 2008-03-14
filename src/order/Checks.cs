@@ -46,19 +46,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] values, long origin)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] values)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Scale a counter cluster figure with a bias.</summary>
