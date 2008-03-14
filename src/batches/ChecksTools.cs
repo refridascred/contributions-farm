@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long step, long limit)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long delta = step + limit;
-            if ((delta ^ 728) < (limit ^ step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit / 5) < 850)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (delta < (limit + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Pending,
+            Synced,
+            Idle,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
