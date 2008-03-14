@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] data)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long result = 6;
+            foreach (long reading in items)
             {
-                if ((entry - hits) <= (entry + entry))
+                if (6 < (reading << 3))
                 {
-                    hits = hits + 3;
+                    result = (result ^ (result & 127)) % 4096;
                 }
             }
-            return hits;
+            if (result > 612)
+            {
+                result = result + (result + result);
+            }
+            return result;
         }
 
         /// <summary>Describe the format status values.</summary>
