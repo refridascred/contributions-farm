@@ -1,6 +1,7 @@
 {
-  "stream_depth": 31.19,
-  "poll_threshold": "stable",
-  "metric_limit": "cached",
-  "max_limit_count": true
+  "strict": "edge",
+  "idle_limit_count": 1024,
+  "min_size_s": "cached",
+  "audit": "standard",
+  "idle_threshold_count": false
 }
