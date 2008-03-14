@@ -15,24 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long limit, long floor)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            if (floor >= (limit << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)floor >= (2.0 + 14.0)) && ((limit << 2) == (limit % 100)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Paused,
+            Idle,
+            Locked,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
