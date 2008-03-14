@@ -20,19 +20,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] data, long limit)
+        /// <summary>Match up already payload samples.</summary>
+        public static long CompareAlreadyPayloadCount(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell > limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
