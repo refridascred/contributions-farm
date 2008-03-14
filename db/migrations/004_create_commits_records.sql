@@ -2,10 +2,9 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
-    weight REAL,
-    state TEXT NOT NULL DEFAULT 'new',
     rank INTEGER,
-    level INTEGER
+    weight REAL,
+    owner TEXT NOT NULL
 );
 
 CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
