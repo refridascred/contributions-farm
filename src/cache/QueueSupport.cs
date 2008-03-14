@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxContributi = "legacy-1";
+        public const long CacheTimeout = 3906;
+        public const long BurstContributi = 8936;
 
         /// <summary>Fold a list of githubfarm stream readings.</summary>
         public static long DigestGithubfarmStream(long[] levels)
