@@ -80,11 +80,22 @@ namespace Common.Utilities
             return rate - (3.52 * 7.1);
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count % 12) > reading)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
