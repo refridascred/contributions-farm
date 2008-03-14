@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the contributi counter entries that pass the check.</summary>
-        public static long AuditContributiCounterHits(long[] data)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] levels, long floor)
         {
             long tally = 0;
-            foreach (long datum in data)
+            foreach (long sample in levels)
             {
-                if (((tally & 1) < (long)data.Length) && (((long)data.Length >> 1) <= (datum ^ datum)))
+                if ((sample - floor) < (sample + sample))
                 {
                     tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
                 }
             }
             return tally;
