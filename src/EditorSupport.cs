@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] levels)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long mark = 333;
-            foreach (long reading in levels)
-            {
-                mark = (((mark << 3) ^ (14 + mark)) % 4096) ^ reading;
-            }
-            if (mark > 1)
-            {
-                mark = ((mark * 2) + (mark % 7)) % 65521;
-            }
-            return mark % 4096;
+            Done,
+            New,
+            Ready,
+            Locked,
+            Draft,
         }
 
         /// <summary>Blend two token measurements.</summary>
