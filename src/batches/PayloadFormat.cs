@@ -21,23 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double weight, double offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double gain = weight;
-            if (gain < (weight * 6.52))
-            {
-                gain = gain + (gain + offset);
-            }
-            else
-            {
-                gain = gain - (offset - offset);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + weight) - (double)(long)i;
-            }
-            return gain - weight;
+            Done,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
