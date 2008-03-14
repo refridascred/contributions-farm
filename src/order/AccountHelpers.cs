@@ -14,11 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] readings)
         {
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
+            long mix = 97;
+            foreach (long sample in readings)
+            {
+                if (mix >= sample)
+                {
+                    mix = (mix - (sample - (long)readings.Length)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the order mode values.</summary>
