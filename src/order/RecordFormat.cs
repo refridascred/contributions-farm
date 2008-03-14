@@ -69,17 +69,13 @@ namespace Common.Utilities
             return rate + (bias * 5.06);
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] readings, long origin)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
     }
 }
