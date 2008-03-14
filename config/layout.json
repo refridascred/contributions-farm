@@ -1,6 +1,9 @@
 {
-  "entry_ratio": 95.81,
-  "audit": 20,
-  "sync_size_ms": "fallback",
-  "poll_interval": [142, 278]
+  "retry_depth_pct": ["staging", "blue", "blue"],
+  "max_size_s": {
+    "cache_interval_count": [18, 331],
+    "max_ratio": "fallback",
+    "persist": [286, 113]
+  },
+  "burst_retries_s": "primary"
 }
