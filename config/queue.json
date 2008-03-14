@@ -1,6 +1,22 @@
 {
-  "burst_delay": 40,
-  "flush_capacity_ms": "fallback",
-  "window_retries": false,
-  "default_delay_count": 60
+  "stream_threshold": 5603,
+  "strict": false,
+  "default_interval_s": 2.51,
+  "idle_capacity": "staging",
+  "warm_limit_s": {
+    "hard_depth_pct": "local",
+    "compress": "edge",
+    "poll_interval": {
+      "tools_depth": 69,
+      "burst_size_pct": "cached",
+      "hard_ratio_count": "eu-west"
+    },
+    "flush_ratio_ms": "edge",
+    "poll_limit_s": {
+      "already_limit": 13,
+      "sync_capacity": 90.25,
+      "sync_ttl": 27
+    },
+    "default_threshold_pct": 5447
+  }
 }
