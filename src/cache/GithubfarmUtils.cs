@@ -60,13 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            Ready,
-            Dropped,
+            Queued,
+            Active,
+            Closed,
             Locked,
-            New,
         }
     }
 }
