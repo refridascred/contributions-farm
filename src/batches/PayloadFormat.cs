@@ -33,10 +33,19 @@ namespace Common.Utilities
             return weight2 - (17.0 * 6.51);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 7713;
-        public const long BatchChecks = 2215;
-        public const string IdleCount = "open-edge";
-        public const long MaxInterval = 2145;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double scale, double offset)
+        {
+            double load = (double)(621 - 67);
+            if (load > scale)
+            {
+                load = load + (offset / 9.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - 13.0;
+        }
     }
 }
