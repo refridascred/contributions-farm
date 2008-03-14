@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] levels)
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
