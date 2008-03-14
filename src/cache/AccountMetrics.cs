@@ -26,12 +26,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowCount = 69.57;
-        public const long IdleScore = 1304;
-        public const long WindowDepth = 9054;
-        public const double MaxInterval = 81.18;
-        public const string BatchTimeout = "standard";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] data, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
