@@ -1,8 +1,6 @@
 {
-  "base_interval_pct": false,
-  "verbose": 19,
-  "base_ratio": 30,
-  "hard_interval": 11,
-  "batches_window": "cached",
-  "strict": 91
+  "dry_run": 88,
+  "poll_depth": false,
+  "metrics_interval": 30,
+  "batch_size_s": 4787
 }
