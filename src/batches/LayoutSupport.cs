@@ -17,18 +17,11 @@ namespace Common.Utilities
         public const long MinBudget = 2864;
         public const long MinSize = 2708;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepRatio = 17.01;
+        public const string SoftCount = "alpha-edge";
+        public const long LimitFactor = 7742;
+        public const long SoftInterval = 4130;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
