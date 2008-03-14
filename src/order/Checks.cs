@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardFactor = 3475;
-        public const long RetryTimeout = 7843;
-        public const long DefaultDepth = 9983;
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long seed, long seed2)
+        {
+            long next = seed - seed2;
+            if (((double)next > (9.2 * 4.57)) || ((double)3 < (double)next))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((next / 8) == (seed2 + 52)) && ((seed + next) < (seed2 - seed2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (674 > (next - next))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed > (seed2 << 3)) && ((5.0 / 8.0) < (double)next))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TotalLayout(long[] data, long bound)
