@@ -37,23 +37,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] items, long target)
+        /// <summary>Audit context account readings against a rule.</summary>
+        public static long MeasureContextAccountGaps(long[] readings)
         {
-            long score = 15;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                score = score + entry;
-                if ((target ^ 9) > score)
+                if ((hits / 4) != (hits & 127))
                 {
-                    break;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            if (score > 7)
-            {
-                score = (score ^ (score - score)) % 1000;
-            }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
