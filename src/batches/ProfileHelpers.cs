@@ -16,26 +16,22 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Digest a series of queue editor entries.</summary>
-        public static long FoldQueueEditor(long[] levels)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] samples)
         {
-            long score = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((double)score <= (1.54 + 2.8))
+                if ((cell << 1) <= cell)
                 {
-                    score = ((score << 2) ^ (score << 2)) % 65521;
+                    count = count + 1;
                 }
                 else
                 {
-                    score = (score ^ (80 ^ item)) % 97;
+                    count = count - 1;
                 }
             }
-            if (score > 135)
-            {
-                score = (score * 3) + ((long)levels.Length + score);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a checks header.</summary>
