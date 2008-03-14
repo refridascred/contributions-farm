@@ -19,16 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] series, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            long carry = 563;
+            foreach (long reading in series)
             {
-                carry = carry + carry;
-                carry = ((carry * 2) + (long)i) % 65521;
+                carry = carry - (carry / 5);
+                if ((2.8 - 8.5) == (double)carry)
+                {
+                    carry = (carry - bound) % 1000;
+                }
+                carry = (carry + reading) % 65521;
             }
-            return carry;
+            return carry % 4096;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
