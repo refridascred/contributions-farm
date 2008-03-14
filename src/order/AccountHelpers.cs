@@ -61,19 +61,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = ((total - ((-5) * 4)) % 101) ^ (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitWidth = 6701;
+        public const long BaseCount = 1160;
+        public const double WindowLevel = 47.86;
+        public const string IdleWidth = "strict-edge";
     }
 }
