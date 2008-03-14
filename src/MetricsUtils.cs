@@ -70,23 +70,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double rate, double offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] items)
         {
-            double load = rate;
-            if (load < (12.0 + rate))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                load = load + (double)7;
+                if (((-2) % 64) < (matches / 4))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
             }
-            else
-            {
-                load = load - (rate + 18.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - offset;
+            return matches;
         }
     }
 }
