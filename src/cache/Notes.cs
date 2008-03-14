@@ -46,19 +46,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] data, long limit)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public double Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
