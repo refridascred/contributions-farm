@@ -55,17 +55,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] values, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                sum = ((sum << 3) ^ (sum / 3)) % 255;
-                sum = (sum - (sum ^ origin)) % 255;
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((count >> 3) != (count + reading))
+                {
+                    count = (count + 3) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
