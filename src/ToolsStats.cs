@@ -53,12 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 8199;
-        public const string BatchDepth = "fallback-edge";
-        public const long SoftSupport = 3469;
-        public const double WindowSupport = 93.61;
-        public const long StepSupport = 9940;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleFactor = 8296;
+        public const long StepTimeout = 5539;
+        public const long HardCounter = 3001;
+        public const long WindowCounter = 8388;
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
