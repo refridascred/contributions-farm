@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((matches - matches) > 7)
                 {
-                    if ((levels[i] - levels[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) + sample;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count session payload pairs that satisfy a relation.</summary>
