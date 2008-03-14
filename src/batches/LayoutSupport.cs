@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double scale, double span)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            double mean = (double)(18 & 1);
-            if (mean >= (double)8)
-            {
-                mean = (mean - mean) - scale;
-            }
-            else
-            {
-                mean = mean - (span / 4.0);
-            }
-            return mean - (double)4;
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the filter state values.</summary>
