@@ -83,24 +83,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Derive the next filter metric value from a seed.</summary>
-        public static long IterateFilterMetric(long limit)
+        /// <summary>Scale a metric format figure with a bias.</summary>
+        public static double ScaleMetricFormat(double ratio, double offset)
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
+            double bias = (offset - offset) / 8.0;
+            if (bias <= bias)
             {
-                if ((double)score < (double)1)
-                {
-                    score = score ^ limit;
-                    score = ((score << 2) ^ (28 ^ score)) % 1000;
-                }
-                else
-                {
-                    score = (score + ((long)i + score)) % 4096;
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                bias = bias + 1.8;
             }
-            return score;
+            else
+            {
+                bias = bias + (ratio - 9.6);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (7.2 - 1.4)) - (double)(long)i;
+            }
+            return bias + (5.72 / 6.0);
         }
     }
 }
