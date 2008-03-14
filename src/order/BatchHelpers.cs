@@ -39,15 +39,14 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] samples, long floor)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long result = 5;
-            foreach (long datum in samples)
-            {
-                result = (result + (datum ^ floor)) % 97;
-            }
-            return result;
+            New,
+            Dropped,
+            Synced,
+            Paused,
+            Closed,
         }
     }
 }
