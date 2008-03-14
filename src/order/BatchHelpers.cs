@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const long BaseOrder = 4381;
         public const long SoftCount = 9463;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] values, long origin)
         {
-            Locked,
-            Failed,
-            Dropped,
-            Retry,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
