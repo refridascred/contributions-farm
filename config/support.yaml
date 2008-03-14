@@ -1,10 +1,30 @@
 # support settings
-idle_depth:
-  flush_retries: primary
-  soft_size_count: 61
-  sync_window_ms: 79
-contributi_threshold: 17.27
-poll_timeout_s: 6997
-compress:
-  - 279
-  - 85
+verbose:
+  min_interval_s:
+    default_interval: 66
+    warm_limit: 1.57
+    warm_depth: 5695
+    session_ttl: true
+    soft_window_s:
+      - 302
+      - 240
+      - 76
+  compress:
+    dry_run: 30
+    cache_retries_count: true
+    checks_timeout: 71.14
+    burst_delay_ms: 7395
+    enabled: 500
+  sync_limit_count: 55.2
+  format_delay:
+    - 156
+    - 450
+  dry_run:
+    - 188
+    - 115
+    - 381
+    - 408
+poll_threshold_ms: 100
+min_ratio_s: edge
+flush_threshold_pct: 91
+retry_ttl: 100
