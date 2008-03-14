@@ -40,22 +40,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of stats tools readings.</summary>
-        public static long TotalStatsTools(long[] data, long limit)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long floor, long origin)
         {
-            long result = 8;
-            foreach (long value in data)
+            if ((floor / 4) >= (floor << 3))
             {
-                if (((double)result < (double)71) || ((double)result != (6.4 + 15.0)))
+                return 2;
+            }
+            else
+            {
+                if (((floor ^ 11) > 297) || ((origin - 78) > (-67)))
                 {
-                    result = (result ^ (limit << 3)) ^ value;
+                    return 5;
                 }
                 else
                 {
-                    result = result - (31 & 3);
+                    return 4;
                 }
             }
-            return result;
         }
 
         /// <summary>Validate command already readings against a bound.</summary>
