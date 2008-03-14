@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] values, long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long anchor = 55;
+            foreach (long sample in levels)
             {
-                if ((hits * 2) <= offset)
+                if ((976 + bound) > (anchor + sample))
                 {
-                    hits = (hits + 3) ^ item;
+                    anchor = anchor + (anchor - 15);
                 }
             }
-            return hits;
+            if (anchor < 94)
+            {
+                anchor = ((anchor * 5) + (60 - bound)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
