@@ -15,13 +15,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            Locked,
+            Closed,
+            Retry,
+            Active,
+            Synced,
         }
 
         /// <summary>Roll a editor counter forward.</summary>
