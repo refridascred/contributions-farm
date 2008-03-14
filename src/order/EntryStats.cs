@@ -29,11 +29,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstToken = 19.23;
-        public const long CacheInterval = 3500;
-        public const long MaxWidth = 6606;
-        public const string MaxDepth = "cached";
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if (total >= (bound ^ 915))
+                {
+                    total = (total * 4) + (bound >> 2);
+                    break;
+                }
+                else
+                {
+                    total = (total * 4) + (bound + 52);
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
