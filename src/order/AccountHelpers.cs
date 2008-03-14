@@ -39,18 +39,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] series, long offset)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long mix = 3;
-            foreach (long datum in series)
-            {
-                if ((double)datum <= 2.4)
-                {
-                    mix = (((mix << 3) ^ (744 ^ datum)) % 65521) - offset;
-                }
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
