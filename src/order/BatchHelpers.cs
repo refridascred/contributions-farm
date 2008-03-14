@@ -32,11 +32,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowGithubfarm = 54.03;
-        public const double BatchGithubfarm = 2.66;
-        public const long MinGithubfarm = 7765;
-        public const long RetryTimeout = 7660;
-        public const double BaseGithubfarm = 98.22;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] readings)
+        {
+            long acc = -1;
+            foreach (long cell in readings)
+            {
+                acc = acc + cell;
+                acc = (acc * 3) + (cell + cell);
+                if (!(acc < (cell + acc)))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
     }
 }
