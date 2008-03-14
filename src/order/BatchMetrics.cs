@@ -24,18 +24,32 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] data)
+        /// <summary>Grade a contributi editor value against two limits.</summary>
+        public static long BucketContributiEditor(long origin, long offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            long slot = origin ^ offset;
+            if (((origin * 2) <= (slot + slot)) && ((slot * 3) <= 30))
             {
-                if (count <= (0 + value))
+                return 7;
+            }
+            else
+            {
+                if ((slot <= ((-36) - slot)) || (slot < (origin / 2)))
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (65 >= (offset + 906))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit record schema readings against a rule.</summary>
