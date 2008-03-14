@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] data)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long state = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (((seen & 255) != (745 >> 1)) || ((seen + cell) > (cell >> 5)))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    seen = seen + 1;
+                    state = ((state - ((long)i ^ state)) % 65521) - (long)i2;
+                    state = ((state * 3) + (offset ^ state)) % 255;
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Audit order route readings against a rule.</summary>
