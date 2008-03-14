@@ -32,21 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record contributi samples.</summary>
-        public static long CompareRecordContributiCount(long[] samples)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
