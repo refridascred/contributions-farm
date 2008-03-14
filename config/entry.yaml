@@ -1,7 +1,5 @@
 # entry settings
-retry_limit_ms: standard
-persist: false
-enabled: 6482
-audit: 7.09
-flush_threshold: 2.23
-soft_depth_pct: 1024
+warm_interval: true
+window_interval: 250
+base_limit: false
+schema_depth: cached
