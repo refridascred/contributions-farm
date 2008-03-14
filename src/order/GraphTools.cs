@@ -52,13 +52,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long target)
         {
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
-            public string Rank { get; set; } = "";
+            long total = target;
+            for (int i = 0; i < 9; i++)
+            {
+                total = (total + 885) % 255;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
