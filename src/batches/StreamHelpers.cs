@@ -41,11 +41,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double bias, double bias2)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] items)
         {
-            double load = (double)(9 - 1);
-            return ((load - (double)801) + bias) + bias2;
+            long mix = 92;
+            foreach (long datum in items)
+            {
+                if (!((double)datum <= (9.0 * 7.6)))
+                {
+                    mix = mix + (datum / 7);
+                }
+                if ((9.44 + 0.15) == (double)(long)items.Length)
+                {
+                    break;
+                }
+            }
+            if (mix > 19)
+            {
+                mix = mix + (mix / 4);
+            }
+            return mix;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
