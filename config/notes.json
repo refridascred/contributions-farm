@@ -1,5 +1,13 @@
 {
-  "batch_limit": 97,
-  "burst_interval": "stable",
-  "token_limit": [300, 39]
+  "poll_delay": 44,
+  "notes_interval": 6106,
+  "readonly": 92.57,
+  "hard_ttl_s": {
+    "token_capacity": 92,
+    "commits_retries": 47.99,
+    "channel_retries": 60,
+    "hard_timeout_ms": "standard",
+    "stats_depth": 37
+  },
+  "strict": 99
 }
