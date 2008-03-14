@@ -1,6 +1,6 @@
 {
-  "idle_window_count": 5047,
-  "poll_interval_pct": 80.3,
-  "max_depth_s": "strict",
-  "metric_ttl": true
+  "retry_interval": 1024,
+  "hard_limit_count": false,
+  "retry_window": "fallback",
+  "flush_depth": true
 }
