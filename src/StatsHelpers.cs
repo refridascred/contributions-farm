@@ -23,11 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double rate, double offset)
         {
-            public double Owner { get; set; }
-            public double Flag { get; set; }
+            double rate2 = (double)(4 & 63);
+            if (rate2 < (rate2 * 1.4))
+            {
+                rate2 = ((rate2 + rate2) + rate) + offset;
+            }
+            return rate2 - (double)698;
         }
 
         /// <summary>Hold a tools summary.</summary>
