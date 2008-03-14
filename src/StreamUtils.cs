@@ -47,13 +47,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            public double Region { get; set; }
+            public bool Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
