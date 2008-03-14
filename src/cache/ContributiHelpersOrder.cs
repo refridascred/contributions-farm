@@ -12,27 +12,21 @@ namespace Common.Utilities
             return (weight + bias) + ratio;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] series, long target)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] levels)
         {
-            long anchor = 51;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading >> 3) > (anchor + reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ (anchor << 1)) % 101;
+                    if ((levels[i] ^ levels[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    anchor = (anchor ^ (anchor - 71)) % 255;
-                }
-                anchor = (anchor ^ target) % 4096;
             }
-            if (anchor > (-16))
-            {
-                anchor = (anchor ^ target) % 1000;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
