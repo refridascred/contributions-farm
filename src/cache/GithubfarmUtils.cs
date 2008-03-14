@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const string SoftSpan = "cached-1";
         public const long RetrySize = 5782;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] data)
-        {
-            long anchor = 888;
-            foreach (long entry in data)
-            {
-                if ((double)anchor >= (2.65 / 3.0))
-                {
-                    anchor = ((anchor * 5) + anchor) ^ entry;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardTimeout = 376;
+        public const long BaseLayout = 4673;
+        public const long WindowSize = 5424;
+        public const double RetryLayout = 89.14;
 
         /// <summary>Rank schema farm input into a small class.</summary>
         public static long RankSchemaFarm(long limit, long target)
