@@ -1,10 +1,6 @@
 # support settings
-sync_retries_s: latest
-cache_interval_count: 59
-batch_ratio: 88
-flush_ratio_count:
-  max_ratio: 28
-  cluster_limit: false
-  base_threshold_pct: blue
-retry_timeout_pct: latest
-sync_interval_ms: 73
+retry_capacity_pct: 43.64
+poll_interval_count: 34.87
+warm_threshold: 44.76
+filter_threshold: 60
+schema_ratio: false
