@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for command live in the config folder and can be overridden per environment.
-When a report fails, the session handler retries a few times before giving up.
-Use context settings to tune how often githubfarm data is refreshed.
+Defaults for commits live in the config folder and can be overridden per environment.
+Use profile settings to tune how often cluster data is refreshed.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep queue values small
-- Validate filter input early
-- Review order limits each release
+- Keep record values small
+- Review profile limits each release
+- Validate window input early
+- Document new account fields
