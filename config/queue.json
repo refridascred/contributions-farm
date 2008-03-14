@@ -1,6 +1,13 @@
 {
-  "dry_run": 88,
-  "poll_depth": false,
-  "metrics_interval": 30,
-  "batch_size_s": 4787
+  "dry_run": {
+    "idle_size_ms": 65.49,
+    "enabled": [137, 445, 67, 344],
+    "batch_delay_count": 1024,
+    "poll_depth_pct": "local",
+    "retry_limit_count": [239, 293, 407]
+  },
+  "sync_retries_s": "legacy",
+  "poll_capacity_pct": true,
+  "flush_threshold_count": [204, 17],
+  "sync_interval_s": "blue"
 }
