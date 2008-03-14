@@ -39,17 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metric queue counter forward.</summary>
-        public static long DeriveMetricQueue(long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] values, long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                carry = (carry + (carry & 1)) % 1000;
-                carry = (carry + carry) % 4096;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
