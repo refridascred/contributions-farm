@@ -20,21 +20,30 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count contributi account pairs that satisfy a relation.</summary>
-        public static long CompareContributiAccountCount(long[] levels)
+        /// <summary>Accumulate notes farm samples.</summary>
+        public static long WeighNotesFarm(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 7;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((5.0 + 8.8) >= (double)acc)
                 {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc + (value << 1)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc * 5) + value) % 101;
+                }
+                if ((value - acc) < (acc ^ value))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (acc > 898)
+            {
+                acc = (acc * 3) + (acc % 12);
+            }
+            return acc % 97;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
