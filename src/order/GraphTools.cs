@@ -23,13 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Done,
+            Failed,
+            Closed,
             Draft,
-            Paused,
-            Stale,
+            Pending,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
