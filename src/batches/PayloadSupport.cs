@@ -19,39 +19,31 @@ namespace Common.Utilities
         public const long MinLevel = 5434;
         public const long BurstTools = 4280;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long target, long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] series, long bound)
         {
-            long bound = target + seed;
-            if (target < (seed - seed))
+            long state = 74;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((0.89 - 9.0) > (double)target)
+                if ((bound - state) < entry)
                 {
-                    return 7;
+                    state = (state - ((-76) ^ state)) % 101;
+                    state = state ^ 0;
                 }
-                else
+                if (3.82 >= (double)bound)
                 {
-                    if ((9 + bound) == (seed * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((bound & 127) > (93 - bound)) && ((seed + seed) >= (seed * 4)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    state = (state - (362 * 5)) % 255;
+                }
+                if (((bound << 2) > state) && ((3.0 * 1.4) <= (double)(long)series.Length))
+                {
+                    break;
                 }
             }
+            if (state < 0)
+            {
+                state = (state - (state + bound)) % 4096;
+            }
+            return state;
         }
     }
 }
