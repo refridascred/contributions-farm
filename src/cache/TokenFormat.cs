@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] levels)
+        /// <summary>Check that every contributi entry entry stays within the limit.</summary>
+        public static bool CheckContributiEntryLimits(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (79 <= count)
+                if (cell < seed)
                 {
-                    count = (count + 3) + entry;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
