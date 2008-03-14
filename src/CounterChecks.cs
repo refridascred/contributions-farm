@@ -27,13 +27,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Paused,
-            Locked,
-            Queued,
-            Done,
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Roll a filter counter forward.</summary>
