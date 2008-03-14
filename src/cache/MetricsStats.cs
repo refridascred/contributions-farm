@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] series, long bound)
+        /// <summary>Audit command batch readings against a rule.</summary>
+        public static long CountCommandBatchOutliers(long[] samples, long limit)
         {
-            long acc = 9;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                acc = (((acc << 2) ^ (bound * 4)) % 4096) - cell;
+                if ((double)matches == (5.3 * 3.39))
+                {
+                    matches = ((matches + 3) ^ cell) - limit;
+                }
             }
-            if (acc > 61)
-            {
-                acc = (acc - bound) % 101;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Match up account samples.</summary>
