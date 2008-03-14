@@ -1,6 +1,6 @@
 {
-  "retry_delay_ms": 23.56,
-  "idle_threshold_count": "eu-west",
-  "flush_delay_count": ["latest", "strict", "standard"],
-  "warm_timeout_count": ["latest", "local", "local"]
+  "batch_ratio": "latest",
+  "soft_limit_ms": "strict",
+  "soft_ratio_pct": 6994,
+  "readonly": 898
 }
