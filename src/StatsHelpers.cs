@@ -23,15 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a layout account figure with a bias.</summary>
-        public static double ProjectLayoutAccount(double ratio, double bias)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double mean = (bias / 3.0) * 11.0;
-            if (mean <= (ratio * 13.0))
-            {
-                mean = mean - (ratio + ratio);
-            }
-            return mean + (mean + mean);
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a tools summary.</summary>
