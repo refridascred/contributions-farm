@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Count the cluster graph entries that pass the check.</summary>
+        public static long TallyClusterGraphOutliers(long[] items)
         {
-            Pending,
-            Stale,
-            Failed,
-            Retry,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((double)seen != (5.0 * 6.5))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stats class values.</summary>
