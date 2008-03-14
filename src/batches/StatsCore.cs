@@ -43,32 +43,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long target, long seed)
+        /// <summary>Measure how many counter cache samples are out of range.</summary>
+        public static long TallyCounterCacheOutliers(long[] items)
         {
-            long span = target ^ seed;
-            if (((seed - span) <= (target >> 2)) && ((span / 6) != (seed + target)))
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((5.58 - 4.98) > (double)target))
+                if ((((seen * 4) < seen) && ((0.2 / 5.0) < (double)seen)) && ((double)seen < (7.2 / 4.0)))
                 {
-                    return 3;
+                    seen = (seen + 3) + value;
                 }
                 else
                 {
-                    if (!(5.0 < (double)span))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
