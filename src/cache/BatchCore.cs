@@ -36,38 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long limit, long bound)
+        /// <summary>Measure how many notes channel samples are out of range.</summary>
+        public static long AuditNotesChannelGaps(long[] levels, long bound)
         {
-            if ((double)limit <= (6.36 - 4.5))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + limit) == (limit - bound))
+                if ((entry + matches) < (matches + 48))
                 {
-                    return 1;
+                    matches = (matches + 3) + bound;
                 }
                 else
                 {
-                    if (((limit - bound) <= (bound % 8)) && ((7.7 * 11.0) != (double)limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit - bound) >= (bound % 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two layout metric measurements.</summary>
