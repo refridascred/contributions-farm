@@ -1,13 +1,4 @@
 # githubfarm settings
-soft_interval_s:
-  - fallback
-  - primary
-  - cached
-  - blue
-flush_capacity_pct:
-  - 161
-  - 274
-readonly:
-  - green
-  - cached
-githubfarm_delay: standard
+payload_capacity: 4.88
+account_capacity: 94
+farm_interval: strict
