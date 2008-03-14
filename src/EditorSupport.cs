@@ -64,13 +64,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Size { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardCommits = 77.08;
+        public const double MaxDepth = 59.3;
+        public const long BatchCommits = 7484;
+        public const double CacheTimeout = 93.68;
+        public const double BurstCommits = 67.28;
     }
 }
