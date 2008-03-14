@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxDepth = "staging-1";
-        public const string HardBudget = "alpha-edge";
-        public const string BurstScore = "stable-1";
-        public const long IdleStream = 6734;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] values, long floor)
+        {
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountMatches(long[] values, long offset)
