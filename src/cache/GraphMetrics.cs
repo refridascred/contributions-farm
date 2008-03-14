@@ -20,18 +20,31 @@ namespace Common.Utilities
             return ((ratio - ratio) + weight) + offset;
         }
 
-        /// <summary>Measure how many already githubfarm samples are out of range.</summary>
-        public static long MeasureAlreadyGithubfarmGaps(long[] samples, long limit)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] samples)
         {
-            long tally = 0;
+            long result = 935;
             foreach (long item in samples)
             {
-                if (!(limit >= (tally / 8)))
+                if (!((item & 255) != (item >> 2)))
                 {
-                    tally = (tally + 3) ^ item;
+                    result = (result - (result - item)) % 101;
+                }
+                if (!(item < (item & 127)))
+                {
+                    result = (result ^ (item + item)) % 97;
+                    result = (result << 2) ^ item;
+                }
+                if ((517 + result) > (327 + result))
+                {
+                    result = result ^ (result - 9);
                 }
             }
-            return tally;
+            if (result > 717)
+            {
+                result = result - result;
+            }
+            return result;
         }
 
         /// <summary>Describe the batches state values.</summary>
