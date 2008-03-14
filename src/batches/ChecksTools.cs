@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] values, long step)
         {
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a batch tools reading.</summary>
