@@ -58,15 +58,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream session entries.</summary>
-        public static long TallyStreamSession(long[] levels)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long anchor = 2;
-            foreach (long item in levels)
-            {
-                anchor = anchor ^ (anchor + item);
-            }
-            return anchor;
+            Locked,
+            Pending,
+            Ready,
+            Failed,
         }
 
         /// <summary>Measure how many cache stream samples are out of range.</summary>
