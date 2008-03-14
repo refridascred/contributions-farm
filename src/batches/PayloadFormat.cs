@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long SoftLevel = 6865;
         public const long BurstBatch = 1322;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] samples)
         {
-            Failed,
-            New,
-            Idle,
-            Closed,
-            Ready,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((matches - 37) >= 16)
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
