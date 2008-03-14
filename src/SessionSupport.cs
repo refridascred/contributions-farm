@@ -34,39 +34,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long limit, long limit2)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] levels)
         {
-            long edge = limit ^ limit2;
-            if ((limit << 3) >= (edge << 2))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit < (limit + 260))
+                if ((item % 16) > item)
                 {
-                    return 7;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if (972 >= (limit << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((edge + limit2) > edge)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
