@@ -13,17 +13,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] series, long bound)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long floor, long floor2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = floor ^ floor2;
+            if ((floor2 + floor2) == (floor + 506))
             {
-                if (series[i] > bound)
+                return 1;
+            }
+            else
+            {
+                if ((delta << 1) < delta)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)45 == (double)delta) || (floor2 >= (floor + delta)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
