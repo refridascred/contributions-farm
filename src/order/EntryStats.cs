@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] samples)
         {
-            long state = 8;
+            long hits = 0;
             foreach (long value in samples)
             {
-                if ((5.54 - 9.25) > (double)value)
+                if (!((value + hits) <= value))
                 {
-                    state = (state << 3) ^ (state + 421);
+                    hits = hits + 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
