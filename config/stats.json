@@ -1,5 +1,6 @@
 {
-  "warm_retries_ms": false,
-  "default_depth_s": 38.07,
-  "layout_threshold": true
+  "farm_capacity": "primary",
+  "poll_limit": [486, 54, 254, 87],
+  "hard_size_pct": "legacy",
+  "readonly": true
 }
