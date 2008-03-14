@@ -33,24 +33,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long origin, long offset)
+        /// <summary>Match up already checks samples.</summary>
+        public static long PairAlreadyChecksCount(long[] samples)
         {
-            if ((offset - offset) < (origin ^ offset))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((231 + origin) == (origin / 9)) || ((offset * 2) >= (origin + offset)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    if ((samples[i] ^ samples[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
