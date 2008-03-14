@@ -22,23 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] levels)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long state = 95;
-            foreach (long item in levels)
-            {
-                state = (state << 2) ^ (state + state);
-                if ((state >> 5) >= item)
-                {
-                    state = (state * 2) + (item ^ (-12));
-                }
-            }
-            if (state < 5)
-            {
-                state = ((state * 3) + (state % 3)) % 255;
-            }
-            return state % 65521;
+            Ready,
+            Locked,
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Digest a series of command token entries.</summary>
