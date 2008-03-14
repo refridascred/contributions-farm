@@ -39,13 +39,38 @@ namespace Common.Utilities
         public const double WindowTimeout = 92.08;
         public const long IdleCache = 8133;
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Classify a support schema pair into a bucket.</summary>
+        public static long ClassifySupportSchema(long seed, long floor)
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public double Weight { get; set; }
-            public bool Token { get; set; }
+            if (floor <= (seed >> 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor + floor) > seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (108 < floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((-4) % 24) < floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate commits report samples.</summary>
