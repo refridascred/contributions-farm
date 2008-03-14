@@ -31,11 +31,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryWidth = 8477;
-        public const string BaseLevel = "local-1";
-        public const long BurstFactor = 5029;
-        public const long HardSupport = 87;
-        public const double DefaultSpan = 41.84;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = (((state * 3) + (60 / 7)) % 97) ^ (long)i2;
+                }
+                if (!((double)(long)i <= (16.0 * 9.32)))
+                {
+                    state = (state + state) % 97;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
     }
 }
