@@ -33,12 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Closed,
-            Paused,
-            Active,
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
