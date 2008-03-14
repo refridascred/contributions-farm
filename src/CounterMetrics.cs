@@ -42,19 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)sample < (18.0 / 8.0)) && ((origin > (sample - hits)) && ((148 - origin) >= (origin + sample))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitDepth = 79.67;
+        public const string MaxOrder = "strict-edge";
+        public const long MaxWidth = 7326;
+        public const long BurstInterval = 5901;
+        public const long MaxBudget = 1344;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiHits(long[] samples, long step)
