@@ -70,11 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
+            Active,
+            Draft,
+            Pending,
+            Synced,
         }
     }
 }
