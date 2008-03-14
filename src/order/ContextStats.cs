@@ -27,20 +27,10 @@ namespace Common.Utilities
         public const string StepStats = "local-edge";
         public const long DefaultStats = 5043;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitBudget = 5658;
+        public const double MinFactor = 7.44;
+        public const string CacheAccount = "stable";
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
