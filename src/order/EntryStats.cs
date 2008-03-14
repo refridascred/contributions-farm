@@ -69,19 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] levels, long limit)
+        /// <summary>Check that every queue session entry stays within the limit.</summary>
+        public static bool VerifyQueueSessionRange(long[] data, long target)
         {
-            long anchor = 3;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (!(limit >= anchor))
+                if (datum > target)
                 {
-                    anchor = (anchor ^ (anchor << 2)) % 4096;
+                    ready = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + cell) % 255;
             }
-            return anchor;
+            return ready;
         }
     }
 }
