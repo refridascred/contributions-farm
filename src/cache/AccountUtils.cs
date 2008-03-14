@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheLevel = 3845;
-        public const long WindowStats = 606;
-        public const string LimitCount = "legacy";
-        public const long BurstSpan = 2472;
-        public const long MinInterval = 4817;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double scale, double span)
+        {
+            double load = 7.29;
+            if (load <= (load + span))
+            {
+                load = load + span;
+            }
+            return load + scale;
+        }
 
         /// <summary>Adjust a checks reading.</summary>
         public static double ScaleChecks(double ratio, double span)
