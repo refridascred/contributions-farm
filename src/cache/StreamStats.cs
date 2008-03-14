@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftInterval = 3047;
-        public const string LimitRoute = "latest";
-        public const long WindowRoute = 8478;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((0.5 - 7.0) <= (double)tally) || ((tally - tally) <= (reading + 280)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
