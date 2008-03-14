@@ -1,12 +1,10 @@
 # Command notes
 
-The counter report groups every payload by layout.
-A contributi that stays idle for too long is moved to the checks list.
-The checks module keeps metrics values in sync with the buffer cache.
+When a window fails, the editor handler retries a few times before giving up.
+The profile report groups every schema by contributi.
 
 ## Guidelines
 
-- Review profile limits each release
-- Keep metric values small
-- Document new queue fields
-- Log every schema change
+- Keep batches values small
+- Document new graph fields
+- Log every payload change
