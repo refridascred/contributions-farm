@@ -51,18 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Audit checks filter readings against a rule.</summary>
+        public static long CountChecksFilterGaps(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (seen < (datum + datum))
                 {
-                    if ((series[i] ^ series[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
