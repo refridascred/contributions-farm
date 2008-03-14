@@ -72,23 +72,21 @@ namespace Common.Utilities
         public const double RetryWindow = 74.78;
         public const long LimitWindow = 7550;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] items, long bound)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] samples)
         {
-            long result = 757;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((result * 5) < result) || ((result - bound) <= (result << 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = result ^ (bound << 3);
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = result + (entry / 7);
             }
-            if (result > 304)
-            {
-                result = result ^ (bound + result);
-            }
-            return result;
+            return seen;
         }
     }
 }
