@@ -13,20 +13,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] series, long floor)
+        /// <summary>Count the already filter entries that pass the check.</summary>
+        public static long TallyAlreadyFilterMatches(long[] series, long step)
         {
-            long anchor = -54;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                anchor = (anchor ^ (item - item)) % 65521;
-                anchor = ((anchor * 5) + (long)series.Length) % 1000;
+                if (((double)reading > (8.0 + 7.19)) || ((double)reading > 5.6))
+                {
+                    tally = (tally + 1) - step;
+                }
             }
-            if (anchor < 5)
-            {
-                anchor = ((anchor << 3) ^ (floor % 100)) % 101;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
