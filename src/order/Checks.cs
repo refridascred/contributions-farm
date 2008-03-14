@@ -22,14 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] samples)
         {
-            Ready,
-            Locked,
-            Stale,
-            Retry,
-            Idle,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((7 << 3) > (sample >> 4))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of command token entries.</summary>
