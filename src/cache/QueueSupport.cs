@@ -16,22 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] series, long bound)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double ratio, double offset)
         {
-            long result = 39;
-            foreach (long cell in series)
+            double bias = (4.0 / 6.0) - ratio;
+            for (int i = 0; i < 6; i++)
             {
-                if ((result % 16) > (result / 6))
-                {
-                    result = (result + (0 - cell)) - bound;
-                }
+                bias = bias + (double)(long)i;
             }
-            if (result < 35)
-            {
-                result = ((result * 4) + (95 & 7)) % 255;
-            }
-            return result;
+            return bias + (offset - bias);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
