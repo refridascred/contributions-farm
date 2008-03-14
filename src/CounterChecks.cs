@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
