@@ -47,39 +47,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long bound, long bound2)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            long lane = bound ^ bound2;
-            if ((bound2 & 31) >= lane)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (4.0 > (double)bound2)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((lane % 97) < bound) || ((bound % 64) < bound2))
+                    if ((data[i] - data[j]) < 15)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(((-202) - bound) >= (bound + 1)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
