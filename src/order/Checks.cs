@@ -46,18 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] series, long seed)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((double)seed > (9.1 / 3.0))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            Failed,
+            Paused,
+            Closed,
+            Idle,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
