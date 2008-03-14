@@ -31,12 +31,38 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long limit, long step)
         {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
+            if (((limit * 5) < limit) || (17.0 <= (double)step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((limit % 64) >= (-45)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step == (8.8 / 8.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)step > (double)step) && ((limit << 1) < (limit % 12)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
