@@ -1,11 +1,4 @@
 # support settings
-schema_depth: false
-default_delay: 100
-poll_ttl: true
-cache_capacity: 1507
-poll_ratio_ms:
-  - blue
-  - blue
-  - stable
-  - eu-west
-readonly: edge
+strict: 650
+poll_threshold_count: cached
+batch_ratio: 30.93
