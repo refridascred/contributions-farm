@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxTimeout = "alpha-1";
-        public const double MinWidth = 64.11;
-        public const long LimitCount = 342;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double gain, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 < bias2)
+            {
+                bias2 = (bias2 - bias) - gain;
+            }
+            else
+            {
+                bias2 = bias2 + (9.5 / 3.0);
+            }
+            return bias2 + (bias * 2.69);
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 13;
