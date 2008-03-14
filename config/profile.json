@@ -1,5 +1,24 @@
 {
-  "flush_ratio_ms": "staging",
-  "default_threshold_ms": 81.2,
-  "max_delay": "standard"
+  "poll_depth_count": 100,
+  "base_depth_ms": {
+    "cache_depth_s": 30,
+    "poll_depth": "primary",
+    "burst_depth_count": 1024,
+    "persist": ["green", "stable"]
+  },
+  "flush_capacity_s": {
+    "flush_ratio": {
+      "default_timeout_s": 19.21,
+      "max_size_s": "stable",
+      "poll_window_pct": false
+    },
+    "idle_interval_count": false,
+    "cache_interval": 60,
+    "buffer_window": {
+      "cluster_limit": true,
+      "persist": false,
+      "default_interval": 26.6,
+      "retry_capacity_s": [383, 305, 238]
+    }
+  }
 }
