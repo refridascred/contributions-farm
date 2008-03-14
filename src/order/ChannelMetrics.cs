@@ -37,19 +37,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] items, long seed)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Ready,
+            Draft,
+            Idle,
+            Locked,
         }
     }
 }
