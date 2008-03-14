@@ -28,11 +28,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            public bool Region { get; set; }
-            public double Weight { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
