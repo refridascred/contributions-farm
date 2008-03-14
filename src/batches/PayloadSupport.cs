@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double scale, double floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] items, long origin)
         {
-            double mean = (double)(33 * 2);
-            if (mean < scale)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - (double)(-3)) + floor;
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return mean + (scale / 9.0);
+            return -1;
         }
 
         /// <summary>Grade a account batch value against two limits.</summary>
