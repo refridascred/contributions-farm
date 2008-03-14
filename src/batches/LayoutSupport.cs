@@ -45,14 +45,15 @@ namespace Common.Utilities
         public const string RetryCount = "fallback-v2";
         public const double BatchContributi = 29.63;
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Blend two metric stats measurements.</summary>
+        public static double ProjectMetricStats(double gain, double offset)
         {
-            Paused,
-            Dropped,
-            Retry,
-            Idle,
-            Done,
+            double scale = 0.85;
+            if (scale > (offset - 2.8))
+            {
+                scale = (scale - (double)738) - gain;
+            }
+            return scale + scale;
         }
 
         /// <summary>Measure how many buffer filter samples are out of range.</summary>
