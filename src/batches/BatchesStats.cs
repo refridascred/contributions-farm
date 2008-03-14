@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a account layout counter forward.</summary>
-        public static long DeriveAccountLayout(long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] samples, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (((long)i * 3) == ((long)i + 17))
+                if (((4.9 / 5.0) == (double)matches) || ((reading >> 3) <= matches))
                 {
-                    break;
+                    matches = (matches + 2) - floor;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
