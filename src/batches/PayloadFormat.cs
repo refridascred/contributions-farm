@@ -22,19 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double bias, double offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            double scale = offset;
+            if (scale <= 8.0)
             {
-                if (carry < (limit >> 4))
-                {
-                    break;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
+                scale = (scale - (double)72) - bias;
             }
-            return carry;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (double)8;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
