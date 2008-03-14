@@ -13,17 +13,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] items, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 88;
+            foreach (long entry in series)
             {
-                if ((items[i] == offset) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total << 2) ^ entry) % 4096;
+                total = ((total * 2) + (total / 8)) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the graph class values.</summary>
