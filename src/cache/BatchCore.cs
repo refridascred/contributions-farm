@@ -32,19 +32,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double gain, double span)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] levels, long step)
         {
-            double mean = span;
-            if (mean < (double)5)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - (mean - mean)) - gain;
+                if ((levels[i] <= step) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + 4.62) - (double)(long)i;
-            }
-            return mean - (span * 0.96);
+            return -1;
         }
 
         /// <summary>Accumulate command samples.</summary>
