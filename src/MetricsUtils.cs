@@ -5,33 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] readings)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] readings)
         {
-            long anchor = 3;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                anchor = anchor ^ (anchor % 12);
-                if ((item + 289) <= (item + item))
+                if ((sample + sample) >= (sample / 9))
                 {
-                    anchor = ((anchor * 3) + anchor) % 65521;
-                    anchor = (anchor + item) % 65521;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    anchor = (anchor - item) % 1000;
-                    anchor = anchor ^ anchor;
-                }
-                if ((anchor <= (item - item)) && ((anchor + item) < item))
-                {
-                    anchor = ((anchor * 3) + (anchor & 63)) % 65521;
-                }
-                if (((double)item < (double)5) && ((7 >> 5) >= anchor))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Combine route values into a single score.</summary>
