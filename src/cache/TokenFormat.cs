@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long seed)
         {
-            Draft,
-            Ready,
-            Retry,
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)1 != (double)seed)
+                {
+                    break;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
