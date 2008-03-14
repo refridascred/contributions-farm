@@ -39,15 +39,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double scale, double span)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            double load = span;
-            if (load <= (span + 8.8))
-            {
-                load = load + (double)196;
-            }
-            return load + scale;
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
