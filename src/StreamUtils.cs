@@ -70,25 +70,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cache filter value against two limits.</summary>
-        public static long BucketCacheFilter(long bound, long seed)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long bound2 = bound - seed;
-            if ((bound + seed) == (bound % 24))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound2 + bound2) < bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Retry,
+            Failed,
+            Active,
+            Stale,
+            Paused,
         }
     }
 }
