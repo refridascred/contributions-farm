@@ -33,22 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record batches samples are out of range.</summary>
-        public static long CountRecordBatchesMatches(long[] items)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (!(value > (value ^ 32)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a window options.</summary>
