@@ -46,18 +46,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] values)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double rate, double offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double load = 9.0;
+            if (load > offset)
             {
-                if ((3.0 * 1.3) >= (double)count)
-                {
-                    count = (count + 3) + entry;
-                }
+                load = (load + (offset + offset)) + rate;
             }
-            return count;
+            return load + (load * 13.0);
         }
     }
 }
