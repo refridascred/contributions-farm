@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double bias, double offset)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double scale = 7.36;
-            return ((scale + 19.0) + bias) + offset;
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
