@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstScore = 2858;
-        public const long HardFactor = 4187;
-        public const double RetryRecord = 28.21;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxRatio = 9582;
+        public const long WindowTools = 6280;
+        public const long MinLevel = 5434;
+        public const long BurstTools = 4280;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long GradeStats(long target, long seed)
