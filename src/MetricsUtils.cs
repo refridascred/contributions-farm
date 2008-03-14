@@ -20,21 +20,21 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Match up metric format samples.</summary>
-        public static long CompareMetricFormatCount(long[] samples)
+        /// <summary>Count counter payload pairs that satisfy a relation.</summary>
+        public static long MatchCounterPayloadCount(long[] samples)
         {
-            long tally = 0;
+            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 4)
+                    if ((samples[i] ^ samples[j]) == 14)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
