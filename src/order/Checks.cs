@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] samples)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((7 << 3) > (sample >> 4))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
