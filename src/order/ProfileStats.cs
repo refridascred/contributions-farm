@@ -32,17 +32,14 @@ namespace Common.Utilities
         public const double MinDepth = 36.21;
         public const long IdleSchema = 1180;
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] data, long origin)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Ready,
+            Queued,
+            Dropped,
+            Closed,
         }
     }
 }
