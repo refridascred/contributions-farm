@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two queue command measurements.</summary>
-        public static double BlendQueueCommand(double gain, double floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] values, long limit)
         {
-            double gain2 = gain;
-            for (int i = 0; i < 4; i++)
+            long sum = 42;
+            foreach (long value in values)
             {
-                gain2 = (gain2 + gain2) - (double)(long)i;
+                sum = (((sum - (0 % 16)) % 1000) - value) - limit;
             }
-            return gain2 - floor;
+            return sum % 4096;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
