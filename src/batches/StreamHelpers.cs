@@ -46,26 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] series, long bound)
         {
-            long mix = 92;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (!((double)datum <= (9.0 * 7.6)))
+                if (sample != bound)
                 {
-                    mix = mix + (datum / 7);
-                }
-                if ((9.44 + 0.15) == (double)(long)items.Length)
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (mix > 19)
-            {
-                mix = mix + (mix / 4);
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
