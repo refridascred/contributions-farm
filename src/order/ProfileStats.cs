@@ -24,14 +24,14 @@ namespace Common.Utilities
         public const double MinDepth = 36.21;
         public const long IdleSchema = 1180;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Retry,
-            Ready,
-            Queued,
-            Dropped,
             Closed,
+            Idle,
+            Pending,
+            Paused,
+            Queued,
         }
     }
 }
