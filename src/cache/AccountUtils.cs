@@ -14,15 +14,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double ratio, double span)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            double ratio2 = (double)(0 + 949);
-            if (ratio2 > 16.0)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio2 = ((ratio2 + (2.72 * 5.1)) + ratio) - span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio2 + ratio2;
+            return hits;
         }
 
         /// <summary>Validate queue notes readings against a bound.</summary>
