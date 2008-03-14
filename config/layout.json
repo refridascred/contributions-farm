@@ -1,17 +1,6 @@
 {
-  "default_capacity_count": false,
-  "default_retries_s": {
-    "retry_depth_s": 60,
-    "soft_threshold": 66,
-    "record_timeout": 2.6,
-    "command_size": "local",
-    "default_interval": 83.82
-  },
-  "githubfarm_retries": 260,
-  "verbose": true,
-  "stream_timeout": {
-    "cache_delay": 12.87,
-    "base_threshold_count": 500,
-    "default_capacity_s": 72
-  }
+  "entry_ratio": 95.81,
+  "audit": 20,
+  "sync_size_ms": "fallback",
+  "poll_interval": [142, 278]
 }
