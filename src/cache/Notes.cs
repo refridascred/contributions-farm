@@ -36,12 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 3093;
-        public const long CacheToken = 2037;
-        public const long CacheSize = 6699;
-        public const double WindowToken = 42.34;
-        public const string HardToken = "latest-v2";
+        /// <summary>Find the first schema notes entry that matches the target.</summary>
+        public static long LookupSchemaNotesIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
