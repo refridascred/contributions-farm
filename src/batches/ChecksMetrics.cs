@@ -28,18 +28,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinDepth = 2533;
+        public const double WindowContext = 4.41;
+        public const long LimitContext = 8735;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheBounds(long[] levels, long origin)
