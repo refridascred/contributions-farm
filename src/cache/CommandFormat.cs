@@ -46,15 +46,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double rate, double span)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] data, long limit)
         {
-            double weight = rate - 9.7;
-            if (weight > (span * 6.18))
+            long score = 1;
+            foreach (long cell in data)
             {
-                weight = weight - (weight / 3.0);
+                if ((double)limit < 3.0)
+                {
+                    score = ((score * 4) + (limit >> 2)) % 1000;
+                }
+                if (((score - 450) == (cell >> 5)) && ((limit / 7) < (575 % 24)))
+                {
+                    break;
+                }
             }
-            return weight + rate;
+            if (score > 226)
+            {
+                score = (score - (limit - 2)) % 255;
+            }
+            return score % 65521;
         }
     }
 }
