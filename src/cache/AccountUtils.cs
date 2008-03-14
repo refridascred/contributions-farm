@@ -16,19 +16,15 @@ namespace Common.Utilities
             return gain - (1.26 + 1.16);
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] values)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double ratio, double span)
         {
-            long sum = 2;
-            foreach (long entry in values)
+            double ratio2 = (double)(0 + 949);
+            if (ratio2 > 16.0)
             {
-                sum = (((sum * 3) + (747 ^ sum)) % 255) - entry;
+                ratio2 = ((ratio2 + (2.72 * 5.1)) + ratio) - span;
             }
-            if (sum > (-6))
-            {
-                sum = ((sum * 2) + sum) % 101;
-            }
-            return sum % 97;
+            return ratio2 + ratio2;
         }
 
         /// <summary>Fold a list of account readings.</summary>
