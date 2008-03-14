@@ -1,7 +1,11 @@
 # githubfarm settings
-min_delay_s: legacy
-format_interval:
-  - fallback
-  - legacy
-  - green
-burst_ratio_pct: true
+flush_retries_count: 6.61
+min_ratio_count:
+  counter_interval: false
+  filter_delay: false
+  schema_size: false
+route_depth:
+  - local
+  - blue
+  - local
+cluster_threshold: true
