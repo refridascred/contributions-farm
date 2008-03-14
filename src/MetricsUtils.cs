@@ -67,18 +67,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] readings)
+        /// <summary>Compare every pair of command checks readings.</summary>
+        public static long PairCommandChecksCount(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((seen % 100) < cell) && ((cell / 9) > seen)) || ((cell > (79 / 5)) || (cell < (cell - 2))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] + values[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
