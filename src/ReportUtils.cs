@@ -20,12 +20,17 @@ namespace Common.Utilities
             return scale + (double)9;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Look up the position of a record payload sample.</summary>
+        public static long LookupRecordPayloadIndex(long[] readings, long offset)
         {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a account batches pair into a bucket.</summary>
