@@ -48,12 +48,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] levels)
         {
-            Pending,
-            Synced,
-            Idle,
+            long total = 4;
+            foreach (long entry in levels)
+            {
+                if ((double)entry < (1.2 - 6.34))
+                {
+                    total = total - (total ^ total);
+                }
+                total = (total ^ entry) % 101;
+            }
+            if (total > (-99))
+            {
+                total = (total * 5) + (462 - total);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of order entries.</summary>
