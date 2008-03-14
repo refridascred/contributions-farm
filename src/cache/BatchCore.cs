@@ -51,31 +51,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long offset, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] values, long step)
         {
-            if ((step * 4) == (step * 2))
+            long sum = 11;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (step <= (step - step))
+                for (int i = 0; i < 5; i++)
                 {
-                    return 7;
+                    sum = ((sum - ((long)values.Length + value)) % 97) ^ (long)i;
                 }
-                else
+                if ((value % 16) <= ((long)values.Length << 3))
                 {
-                    if ((20.0 * 8.3) <= (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    sum = ((sum * 2) + step) % 1000;
                 }
             }
+            return sum;
         }
     }
 }
