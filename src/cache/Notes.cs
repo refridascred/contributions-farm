@@ -36,17 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first schema notes entry that matches the target.</summary>
-        public static long LookupSchemaNotesIndex(long[] readings, long origin)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
