@@ -23,14 +23,13 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Failed,
-            Paused,
-            Idle,
-            Ready,
-            Pending,
+            public double Level { get; set; }
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
