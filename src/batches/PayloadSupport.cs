@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] samples, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (4 < hits)
+                if ((7.0 * 2.4) <= (double)matches)
                 {
-                    hits = ((hits + 3) + value) - bound;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
