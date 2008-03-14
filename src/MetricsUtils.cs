@@ -65,19 +65,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] values, long target)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double rate, double offset)
         {
-            bool ready = true;
-            foreach (long value in values)
+            double load = rate;
+            if (load < (12.0 + rate))
             {
-                if (value != target)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load + (double)7;
             }
-            return ready;
+            else
+            {
+                load = load - (rate + 18.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - offset;
         }
     }
 }
