@@ -23,18 +23,18 @@ namespace Common.Utilities
         public const long StepFilter = 2737;
         public const long StepSpan = 4307;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] samples, long seed)
+        /// <summary>Audit already context readings against a rule.</summary>
+        public static long AuditAlreadyContextOutliers(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((hits - seed) > hits)
+                if ((datum + count) > (floor << 2))
                 {
-                    hits = (hits + 3) + cell;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
