@@ -29,31 +29,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long limit, long origin)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            if ((4 / 9) < (origin << 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((7.5 - 9.0) != (double)limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin * 5) != (1 & 127))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Active,
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
