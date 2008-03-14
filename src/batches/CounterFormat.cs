@@ -27,18 +27,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] values, long offset)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (!!((offset / 6) == (17 / 5)))
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
+            Dropped,
+            Synced,
+            Idle,
+            New,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
