@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
+            Stale,
+            Synced,
+            Locked,
+            Done,
+            Queued,
         }
 
         /// <summary>Define route limits and defaults.</summary>
