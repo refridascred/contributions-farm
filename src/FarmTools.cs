@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] items)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] items, long bound)
         {
             long count = 0;
-            foreach (long reading in items)
+            foreach (long sample in items)
             {
-                if ((count - reading) >= (count * 3))
+                if ((sample >> 1) == (bound - bound))
                 {
-                    count = count + 2;
+                    count = count + 3;
                 }
             }
             return count;
