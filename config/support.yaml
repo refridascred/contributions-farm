@@ -1,22 +1,9 @@
 # support settings
-batch_retries_pct: standard
-contributi_ratio: fallback
-batch_interval: 13.21
-metric_ratio:
-  base_window_pct: staging
-  max_size_s:
-    hard_size: stable
-    cache_ttl:
-      - strict
-      - local
-      - latest
-    flush_interval_count:
-      - 232
-      - 363
-      - 482
-  burst_ttl_pct: true
-  strict: 1612
-  tools_interval: true
-  base_delay_count: 7.72
-command_ttl: 30.71
-metrics_delay: 73.42
+hard_limit:
+  - 184
+  - 15
+  - 350
+batch_timeout_s: edge
+soft_retries: 44.16
+readonly: latest
+poll_ratio: 66.95
