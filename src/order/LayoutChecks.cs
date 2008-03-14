@@ -72,23 +72,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit report tools readings against a rule.</summary>
-        public static long CountReportToolsGaps(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item - count) < item)
-                {
-                    count = (count + 2) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardBudget = 350;
+        public const long HardToken = 3710;
+        public const long BatchSize = 1514;
+        public const string SoftToken = "staging-1";
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long FindSchemaIndex(long[] values, long bound)
