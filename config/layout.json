@@ -1,13 +1,6 @@
 {
-  "cache_window_pct": ["legacy", "strict", "latest", "cached"],
-  "compress": {
-    "idle_timeout_ms": true,
-    "strict": 1652,
-    "min_window_s": "staging",
-    "base_capacity_s": 250,
-    "poll_threshold_s": 41.45
-  },
-  "layout_threshold": "cached",
-  "token_ratio": 500,
-  "graph_timeout": "stable"
+  "enabled": [398, 364, 14],
+  "batch_delay_count": "green",
+  "retry_window_pct": 100,
+  "verbose": 100
 }
