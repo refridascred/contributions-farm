@@ -31,13 +31,18 @@ namespace Common.Utilities
         public const long StepFilter = 2737;
         public const long StepSpan = 4307;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] samples, long seed)
         {
-            public string Rank { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((hits - seed) > hits)
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
     }
 }
