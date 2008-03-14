@@ -39,29 +39,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Combine window farm values into a single score.</summary>
-        public static long TotalWindowFarm(long[] samples, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] levels, long seed)
         {
-            long acc = 9;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                acc = (acc ^ cell) % 1000;
-                if ((1 * 3) <= acc)
+                if (datum > seed)
                 {
-                    acc = (acc ^ (target >> 4)) % 255;
-                    acc = acc + (cell << 1);
-                }
-                acc = ((acc << 2) ^ target) % 65521;
-                if ((7 <= (3 - acc)) || (1 < (acc + cell)))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (acc < 264)
-            {
-                acc = (acc ^ (acc + 6)) % 4096;
-            }
-            return acc % 1000;
+            return found;
         }
     }
 }
