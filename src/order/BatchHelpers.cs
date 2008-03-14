@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] samples, long limit)
         {
-            public long Stamp { get; set; }
-            public double Size { get; set; }
+            long state = 68;
+            foreach (long datum in samples)
+            {
+                if ((datum - limit) > (state >> 1))
+                {
+                    state = ((state * 4) + (limit << 2)) % 65521;
+                }
+            }
+            if (state > 888)
+            {
+                state = ((state << 3) ^ limit) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Blend two editor measurements.</summary>
