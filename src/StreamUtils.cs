@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window notes value.</summary>
-        public static double BlendWindowNotes(double gain, double span)
+        /// <summary>Check that every checks metric entry stays within the limit.</summary>
+        public static bool CheckChecksMetricLimits(long[] items, long origin)
         {
-            double rate = (gain * 9.9) * 7.86;
-            return (rate - gain) + span;
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
