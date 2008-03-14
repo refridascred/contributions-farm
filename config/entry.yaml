@@ -1,7 +1,7 @@
 # entry settings
-dry_run: edge
-persist: standard
-cache_capacity: 60
-graph_window: eu-west
-burst_depth_count: eu-west
-base_size: legacy
+retry_limit_ms: standard
+persist: false
+enabled: 6482
+audit: 7.09
+flush_threshold: 2.23
+soft_depth_pct: 1024
