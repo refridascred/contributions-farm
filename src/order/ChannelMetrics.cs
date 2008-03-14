@@ -20,19 +20,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] readings, long bound)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long floor)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Describe the stream mode values.</summary>
