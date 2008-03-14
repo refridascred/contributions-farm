@@ -1,6 +1,14 @@
 # githubfarm settings
-retry_ratio: 60
-flush_timeout_ms: false
-default_ratio_pct:
-  - staging
-  - legacy
+counter_retries: green
+default_capacity: stable
+command_retries:
+  - cached
+  - latest
+  - eu-west
+cache_capacity_ms:
+  - 274
+  - 307
+  - 261
+  - 167
+support_threshold: 34.01
+metrics_delay: false
