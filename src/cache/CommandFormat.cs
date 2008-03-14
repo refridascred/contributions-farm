@@ -27,24 +27,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long floor, long floor2)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            if ((floor - floor2) > (floor2 - floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor <= (0.7 / 5.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Label { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Project the next notes value.</summary>
