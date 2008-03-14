@@ -34,18 +34,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] levels)
+        /// <summary>Look up the position of a checks support sample.</summary>
+        public static long LocateChecksSupportIndex(long[] series, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum >= (count >> 2)) && ((count ^ 68) != (count + count)))
+                if (series[i] > step)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the route mode values.</summary>
