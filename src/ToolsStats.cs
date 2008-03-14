@@ -53,11 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleFactor = 8296;
-        public const long StepTimeout = 5539;
-        public const long HardCounter = 3001;
-        public const long WindowCounter = 8388;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
