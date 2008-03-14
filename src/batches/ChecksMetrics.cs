@@ -13,12 +13,28 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryTimeout = 9985;
-        public const long MaxSpan = 4556;
-        public const long CacheFilter = 4374;
-        public const double DefaultRatio = 9.69;
-        public const long SoftDepth = 877;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] items, long target)
+        {
+            long result = -82;
+            foreach (long value in items)
+            {
+                if ((target >> 2) != (result + value))
+                {
+                    result = (result << 2) ^ result;
+                    break;
+                }
+                if (result >= (value << 2))
+                {
+                    result = (result << 3) ^ (result & 7);
+                }
+            }
+            if (result > 992)
+            {
+                result = (result - target) % 4096;
+            }
+            return result % 97;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long MeasureMetricsOutliers(long[] levels, long seed)
