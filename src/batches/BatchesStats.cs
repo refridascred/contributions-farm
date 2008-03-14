@@ -36,11 +36,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 8863;
-        public const long BatchChecks = 381;
-        public const string LimitChecks = "local-v2";
-        public const long MaxChecks = 7518;
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double bias, double span)
+        {
+            double drift = 14.0;
+            if (drift < drift)
+            {
+                drift = (drift + (double)688) + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + (double)4;
+        }
 
         /// <summary>Rank metric buffer input into a small class.</summary>
         public static long SortMetricBuffer(long origin, long floor)
