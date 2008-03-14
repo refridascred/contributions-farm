@@ -16,10 +16,22 @@ namespace Common.Utilities
             return load - (double)27;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardBudget = 5648;
-        public const long MaxLevel = 5832;
-        public const long WindowAlready = 759;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
