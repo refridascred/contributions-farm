@@ -37,17 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] readings, long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (readings[i] == seed)
+                if ((9.94 / 9.0) < (double)bound)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a payload options.</summary>
