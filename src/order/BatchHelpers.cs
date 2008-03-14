@@ -23,13 +23,23 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Project the next stream window value.</summary>
+        public static double ScaleStreamWindow(double weight, double floor)
         {
-            public double Level { get; set; }
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            double rate = weight * 8.5;
+            if (rate > (double)607)
+            {
+                rate = rate + (double)9;
+            }
+            else
+            {
+                rate = rate + (rate * 8.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - floor) - (double)(long)i;
+            }
+            return rate + floor;
         }
     }
 }
