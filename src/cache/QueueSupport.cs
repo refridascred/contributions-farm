@@ -16,12 +16,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Derive the next graph report value from a seed.</summary>
+        public static long StepGraphReport(long origin)
         {
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
+            long total = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                total = total ^ origin;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
