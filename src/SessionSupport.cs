@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] values, long step)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long acc = 43;
-            foreach (long entry in values)
-            {
-                acc = (acc ^ step) % 255;
-                acc = ((acc * 5) + (entry % 8)) % 4096;
-            }
-            return acc % 4096;
+            Ready,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a window header.</summary>
