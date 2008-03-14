@@ -40,13 +40,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Done,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultLevel = 82.84;
+        public const double MinDepth = 76.69;
+        public const double LimitSupport = 1.53;
+        public const long StepSupport = 2335;
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
