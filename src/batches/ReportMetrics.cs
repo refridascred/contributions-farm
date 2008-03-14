@@ -19,18 +19,11 @@ namespace Common.Utilities
         public const double BatchInterval = 89.5;
         public const long CacheLevel = 1178;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((reading - tally) != (reading + reading))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 4817;
+        public const double HardLevel = 86.51;
+        public const long HardScore = 8112;
+        public const long RetryFactor = 8652;
+        public const long SoftRatio = 7700;
     }
 }
