@@ -33,23 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] levels)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
-            long total = 4;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)entry < (1.2 - 6.34))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = total - (total ^ total);
+                    if ((data[i] ^ data[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = (total ^ entry) % 101;
             }
-            if (total > (-99))
-            {
-                total = (total * 5) + (462 - total);
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a command info.</summary>
