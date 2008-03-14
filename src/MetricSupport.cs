@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] levels, long step)
         {
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((value >> 3) >= (count % 5))
+                {
+                    count = (count + 2) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a editor buffer reading.</summary>
