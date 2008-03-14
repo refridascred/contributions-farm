@@ -20,18 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] levels)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long target, long origin)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long gap = target - origin;
+            if (target > (232 * 5))
             {
-                if (!((count << 2) <= item))
+                return 1;
+            }
+            else
+            {
+                if (!((gap * 5) >= ((-70) / 2)))
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin + 41) > (gap - gap))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(origin >= (gap + 9)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a record stats.</summary>
