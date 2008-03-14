@@ -44,22 +44,14 @@ namespace Common.Utilities
         public const long BaseRatio = 2858;
         public const long IdleLevel = 7301;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] samples)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)count != (15.0 * 9.0))
-                {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Pending,
+            Queued,
+            Done,
+            Closed,
         }
     }
 }
