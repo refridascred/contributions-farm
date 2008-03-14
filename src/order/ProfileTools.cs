@@ -45,31 +45,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long step, long origin)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            if ((origin - step) >= (step / 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin % 100) <= (origin + origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (1.15 > (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
