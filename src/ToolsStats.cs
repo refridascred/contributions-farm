@@ -16,19 +16,13 @@ namespace Common.Utilities
             return load - (double)27;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] readings, long origin)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
