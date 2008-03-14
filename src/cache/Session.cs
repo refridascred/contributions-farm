@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxWidth = "cached-edge";
-        public const double RetryTimeout = 2.1;
-        public const string HardCount = "cached-v2";
-        public const string RetryProfile = "local-1";
-        public const double CacheInterval = 43.58;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
