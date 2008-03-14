@@ -75,31 +75,14 @@ namespace Common.Utilities
             return rate - (3.52 * 7.1);
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long limit, long seed)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            if ((seed / 2) != (limit + limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed < (limit - seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit == (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            Done,
+            Active,
+            Idle,
         }
     }
 }
