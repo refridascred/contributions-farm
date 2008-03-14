@@ -60,14 +60,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Synced,
-            Active,
             Paused,
-            Stale,
-            Failed,
+            New,
+            Queued,
         }
 
         /// <summary>Scale a counter cluster figure with a bias.</summary>
