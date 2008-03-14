@@ -38,11 +38,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultRatio = 9563;
-        public const string BatchTools = "strict-edge";
-        public const string StepTools = "alpha";
-        public const string DefaultTools = "cached";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 649;
+        public const string MaxTimeout = "standard-1";
+        public const long BaseRoute = 3651;
+        public const string BaseDepth = "primary-edge";
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double ScaleSchema(double rate, double span)
