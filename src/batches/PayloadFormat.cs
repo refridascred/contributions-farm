@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] data)
         {
-            long total = target;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((target % 3) > (total << 2))
+                if (((seen & 255) != (745 >> 1)) || ((seen + cell) > (cell >> 5)))
                 {
-                    total = (total - (target - (long)i)) % 97;
-                    break;
+                    seen = seen + 1;
                 }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the counter phase values.</summary>
