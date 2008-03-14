@@ -21,18 +21,24 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] values)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long bound, long bound2)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            if ((bound >> 1) != (bound2 + 5))
             {
-                if (((6.6 - 5.0) != (double)seen) || ((double)seen >= (14.0 * 1.3)))
+                return 1;
+            }
+            else
+            {
+                if (!((bound2 >> 5) < bound))
                 {
-                    seen = (seen + 1) - datum;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a schema route counter forward.</summary>
