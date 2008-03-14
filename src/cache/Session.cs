@@ -16,15 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double ratio, double offset)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            double scale = offset - (offset + offset);
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + ratio) + (double)(long)i;
-            }
-            return scale + (8.6 + ratio);
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
