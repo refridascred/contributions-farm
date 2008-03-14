@@ -50,21 +50,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] readings)
+        /// <summary>Accumulate buffer command samples.</summary>
+        public static long TotalBufferCommand(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 789;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = total + (datum - total);
+                if ((double)(long)values.Length < 4.0)
                 {
-                    if ((readings[i] ^ readings[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total * 2) + (datum & 127)) % 65521;
+                }
+                if ((datum + seed) != (total / 2))
+                {
+                    total = ((total << 3) ^ seed) % 4096;
+                }
+                if ((double)datum >= (10.0 * 6.4))
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
