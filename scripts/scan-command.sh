@@ -6,21 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=144
-log "limit is ${COMMAND_LIMIT}"
-
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+COMMAND_LIMIT=395
+log "limit is ${COMMAND_LIMIT}"
