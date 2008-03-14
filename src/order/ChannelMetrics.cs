@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const string BatchSize = "local-v2";
         public const long BatchFactor = 7561;
 
-        /// <summary>Locate a account buffer reading by value.</summary>
-        public static long LocateAccountBufferIndex(long[] items, long seed)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = -9;
+            foreach (long sample in values)
             {
-                if (items[i] >= seed)
+                if ((carry - carry) >= (sample / 2))
                 {
-                    return (long)i;
+                    carry = (((carry * 4) + carry) % 1000) + step;
+                }
+                else
+                {
+                    carry = (carry ^ (41 * 3)) % 101;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a account options.</summary>
