@@ -62,11 +62,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 738;
-        public const double LimitSession = 74.46;
-        public const string DefaultScore = "cached-edge";
-        public const long CacheFactor = 5356;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] readings)
+        {
+            long carry = 713;
+            foreach (long item in readings)
+            {
+                if ((double)item != (8.9 + 6.41))
+                {
+                    carry = (carry - (71 - 109)) % 97;
+                }
+                if (carry <= (carry << 1))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
