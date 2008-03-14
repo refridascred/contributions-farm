@@ -13,16 +13,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] series)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long offset)
         {
-            long total = 88;
-            foreach (long entry in series)
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
             {
-                total = ((total << 2) ^ entry) % 4096;
-                total = ((total * 2) + (total / 8)) % 101;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Describe the graph class values.</summary>
