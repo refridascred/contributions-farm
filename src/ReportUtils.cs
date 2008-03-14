@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] levels, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long anchor = 42;
+            foreach (long datum in values)
             {
-                if (bound <= 820)
+                if ((datum + offset) > (71 * 5))
                 {
-                    count = (count + 1) + entry;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor + (datum & 255)) % 255;
+                    anchor = anchor ^ (-2);
+                }
+                anchor = anchor + (datum - anchor);
+                if (offset > (882 + anchor))
+                {
+                    break;
                 }
             }
-            return count;
+            if (anchor > 378)
+            {
+                anchor = (anchor - anchor) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many contributi command samples are out of range.</summary>
