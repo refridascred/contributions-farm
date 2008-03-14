@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = carry + carry;
-                carry = ((carry * 3) + ((long)i >> 5)) % 4096;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public double Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
