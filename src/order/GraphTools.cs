@@ -50,13 +50,17 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] items, long target)
         {
-            Closed,
-            Paused,
-            Ready,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a route options.</summary>
