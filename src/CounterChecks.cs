@@ -56,19 +56,22 @@ namespace Common.Utilities
         public const double MaxStats = 4.35;
         public const string WindowStats = "fallback-1";
 
-        /// <summary>Iterate the counter support series from a seed.</summary>
-        public static long SeriesCounterSupport(long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] samples)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((4.4 + 0.6) >= (double)bound)
+                if ((cell + cell) > (hits >> 3))
                 {
-                    total = ((total << 2) ^ total) % 1000;
+                    hits = hits + 3;
                 }
-                total = ((total * 4) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
