@@ -36,23 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((double)seed >= (double)item)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 7887;
+        public const long MinCache = 6438;
+        public const double WindowTimeout = 92.08;
+        public const long IdleCache = 8133;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
