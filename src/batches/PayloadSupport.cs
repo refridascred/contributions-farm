@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every metrics format entry stays within the limit.</summary>
-        public static bool VerifyMetricsFormatBounds(long[] data, long origin)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Locked,
+            Dropped,
+            Done,
+            Pending,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
