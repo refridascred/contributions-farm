@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Locked,
-            Pending,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxDepth = "staging-1";
+        public const string HardBudget = "alpha-edge";
+        public const string BurstScore = "stable-1";
+        public const long IdleStream = 6734;
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long SeriesCluster(long floor)
