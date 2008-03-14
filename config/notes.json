@@ -1,5 +1,19 @@
 {
-  "min_retries": "green",
-  "burst_threshold_s": ["staging", "staging"],
-  "base_ratio_count": ["standard", "cached", "eu-west", "green"]
+  "notes_limit": 6.3,
+  "idle_ratio": 6.58,
+  "cache_size_count": 38,
+  "hard_capacity_count": "latest",
+  "min_retries_ms": 61.28,
+  "poll_limit_s": {
+    "verbose": 6.67,
+    "hard_ratio": 78,
+    "batch_capacity": {
+      "warm_capacity_pct": "legacy",
+      "payload_timeout": 54.28,
+      "route_capacity": "fallback",
+      "already_window": 54,
+      "cache_depth_s": 6695,
+      "batch_depth": "primary"
+    }
+  }
 }
