@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Paused,
-            Retry,
-            Closed,
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Adjust a editor buffer reading.</summary>
