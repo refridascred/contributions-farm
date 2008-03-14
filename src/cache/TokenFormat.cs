@@ -18,10 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleTimeout = 9137;
-        public const double SoftMetrics = 53.52;
-        public const double WindowInterval = 25.94;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                long hits = sum;
+                if (!((floor << 2) > (hits >> 5)))
+                {
+                    sum = ((sum * 4) + (sum + floor)) % 97;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a metric cluster reading.</summary>
         public static double AdjustMetricCluster(double bias, double bias2)
