@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] values, long origin)
         {
-            Failed,
-            Stale,
-            Idle,
-            Retry,
+            long result = 938;
+            foreach (long datum in values)
+            {
+                result = ((result - (result % 97)) + datum) + origin;
+            }
+            return result;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
