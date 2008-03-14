@@ -57,18 +57,31 @@ namespace Common.Utilities
         public const string DefaultStream = "primary-edge";
         public const double DefaultInterval = 35.37;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] levels)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long seed, long target)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            if ((double)seed > (double)target)
             {
-                if ((item << 1) <= item)
+                return 0;
+            }
+            else
+            {
+                if (seed > target)
                 {
-                    hits = hits + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed * 4) <= target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
