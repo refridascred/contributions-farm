@@ -50,13 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
