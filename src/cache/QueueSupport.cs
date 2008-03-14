@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Fold a list of session filter readings.</summary>
+        public static long DigestSessionFilter(long[] items)
         {
-            Failed,
-            Idle,
-            Retry,
+            long state = 306;
+            foreach (long item in items)
+            {
+                state = ((state << 3) ^ item) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Hold a counter summary.</summary>
