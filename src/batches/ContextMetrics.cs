@@ -50,19 +50,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate filter already readings against a bound.</summary>
-        public static bool ValidateFilterAlreadyLimits(long[] readings, long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (value != limit)
+                if ((matches - matches) >= (matches + value))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
