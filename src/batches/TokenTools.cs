@@ -32,13 +32,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] data, long floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] items, long target)
         {
             bool found = true;
-            foreach (long item in data)
+            foreach (long reading in items)
             {
-                if (item > floor)
+                if (reading != target)
                 {
                     found = false;
                     break;
