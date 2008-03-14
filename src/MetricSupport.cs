@@ -29,11 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] items, long floor)
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
