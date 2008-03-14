@@ -66,18 +66,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many cache stream samples are out of range.</summary>
-        public static long TallyCacheStreamHits(long[] series, long step)
+        /// <summary>Derive the next filter metric value from a seed.</summary>
+        public static long IterateFilterMetric(long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long score = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((69 % 64) != (79 + item))
+                if ((double)score < (double)1)
                 {
-                    tally = (tally + 1) - step;
+                    score = score ^ limit;
+                    score = ((score << 2) ^ (28 ^ score)) % 1000;
                 }
+                else
+                {
+                    score = (score + ((long)i + score)) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
     }
 }
