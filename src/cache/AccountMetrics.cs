@@ -32,13 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Check that every metric buffer entry stays within the limit.</summary>
+        public static bool ValidateMetricBufferBounds(long[] samples, long seed)
         {
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
