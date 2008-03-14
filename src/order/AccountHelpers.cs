@@ -57,25 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] readings)
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (!(carry >= ((long)i >> 2)))
+                if (((datum <= (datum + hits)) || (datum > (hits - datum))) || !((double)datum == (11.0 - 5.2)))
                 {
-                    carry = (carry << 2) ^ (carry / 2);
-                    carry = ((carry * 3) + 107) % 97;
+                    hits = hits + 1;
                 }
-                else
-                {
-                    carry = (carry + (offset / 9)) % 4096;
-                    carry = (carry * 2) + (offset * 4);
-                }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
     }
 }
