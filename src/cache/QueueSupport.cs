@@ -27,18 +27,21 @@ namespace Common.Utilities
         public const long StepFilter = 2737;
         public const long StepSpan = 4307;
 
-        /// <summary>Audit already context readings against a rule.</summary>
-        public static long AuditAlreadyContextOutliers(long[] series, long floor)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum + count) > (floor << 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] ^ data[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
