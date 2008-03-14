@@ -23,15 +23,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 5420;
+        public const string MaxDepth = "alpha";
+        public const long WindowInterval = 8202;
+        public const string BatchPayload = "stable-v2";
+        public const double MinScore = 78.34;
     }
 }
