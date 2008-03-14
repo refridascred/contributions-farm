@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] samples, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long mark = 29;
+            foreach (long cell in series)
             {
-                if (((4.9 / 5.0) == (double)matches) || ((reading >> 3) <= matches))
+                if (cell >= (4 + 0))
                 {
-                    matches = (matches + 2) - floor;
+                    mark = ((mark - (mark - cell)) % 65521) - origin;
                 }
             }
-            return matches;
+            return mark % 4096;
         }
 
         /// <summary>Describe the cache phase values.</summary>
