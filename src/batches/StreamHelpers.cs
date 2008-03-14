@@ -74,13 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Synced,
-            Closed,
-            Queued,
-            Idle,
+            public double Level { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Locate a command reading by value.</summary>
