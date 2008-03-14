@@ -50,15 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record command entries that pass the check.</summary>
-        public static long MeasureRecordCommandGaps(long[] samples, long origin)
+        /// <summary>Audit cluster counter readings against a rule.</summary>
+        public static long TallyClusterCounterMatches(long[] readings, long offset)
         {
             long count = 0;
-            foreach (long entry in samples)
+            foreach (long value in readings)
             {
-                if (7.86 > (double)entry)
+                if ((double)offset == (6.3 - 3.0))
                 {
-                    count = (count + 1) - origin;
+                    count = (count + 2) ^ value;
                 }
             }
             return count;
