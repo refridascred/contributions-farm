@@ -40,19 +40,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate batches metrics readings against a bound.</summary>
-        public static bool ValidateBatchesMetricsRange(long[] samples, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (cell != bound)
+                if (((matches > sample) || ((double)sample > (5.8 - 8.7))) || !((9.07 * 1.6) == (double)matches))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Digest a series of stream session entries.</summary>
