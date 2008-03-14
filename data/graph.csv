@@ -1,7 +1,6 @@
-id,weight,ratio,count,label
-1,cached,721,cached,green
-2,open,staging,stable,649
-3,52.32,primary,59.48,31
-4,75,93,451,51.22
-5,376,60,508,70.73
-6,915,363,open,417
+id,score,label
+1,blue,fallback
+2,379,260
+3,637,23.96
+4,92.5,stable
+5,27.62,eu-west
