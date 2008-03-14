@@ -58,12 +58,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] values, long origin)
         {
-            Paused,
-            New,
-            Queued,
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Scale a counter cluster figure with a bias.</summary>
