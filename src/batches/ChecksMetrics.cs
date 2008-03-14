@@ -90,22 +90,31 @@ namespace Common.Utilities
             return rate - (3.52 * 7.1);
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] data)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long limit, long seed)
         {
-            long count = 0;
-            foreach (long reading in data)
+            if ((seed / 2) != (limit + limit))
             {
-                if ((count % 12) > reading)
+                return 7;
+            }
+            else
+            {
+                if (seed < (limit - seed))
                 {
-                    count = count + 1;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)limit == (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
     }
 }
