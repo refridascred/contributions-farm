@@ -47,12 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Active,
-            Closed,
-            Stale,
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
