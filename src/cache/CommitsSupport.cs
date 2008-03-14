@@ -59,19 +59,23 @@ namespace Common.Utilities
         public const double DefaultFactor = 31.8;
         public const double RetryInterval = 8.15;
 
-        /// <summary>Validate buffer contributi readings against a bound.</summary>
-        public static bool ValidateBufferContributiBounds(long[] data, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long result = 757;
+            foreach (long entry in items)
             {
-                if (datum <= limit)
+                if (((result * 5) < result) || ((result - bound) <= (result << 2)))
                 {
-                    found = false;
-                    break;
+                    result = result ^ (bound << 3);
                 }
+                result = result + (entry / 7);
             }
-            return found;
+            if (result > 304)
+            {
+                result = result ^ (bound + result);
+            }
+            return result;
         }
     }
 }
