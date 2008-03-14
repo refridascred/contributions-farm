@@ -52,24 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long bound, long offset)
+        /// <summary>Audit checks context readings against a rule.</summary>
+        public static long CountChecksContextHits(long[] data, long origin)
         {
-            if (bound > (0 / 8))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound / 8) != (591 + 164)) && (offset >= (bound - offset)))
+                if ((origin + 53) < (-27))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    seen = (seen + 1) - cell;
                 }
             }
+            return seen;
         }
     }
 }
