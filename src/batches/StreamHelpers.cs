@@ -47,32 +47,13 @@ namespace Common.Utilities
             return ((mean + (double)260) + bias) + floor;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long floor, long floor2)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long next = floor - floor2;
-            if ((floor2 - floor) == (next * 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((floor ^ floor) <= (floor / 6)) || ((next << 3) > (floor + 37)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor - next) != (floor2 * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Draft,
+            Ready,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Blend two report measurements.</summary>
