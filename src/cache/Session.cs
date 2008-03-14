@@ -31,31 +31,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long limit, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] values)
         {
-            if ((limit >> 1) >= (limit + limit))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset <= (0.09 - 1.0))
+                if (((6.6 - 5.0) != (double)seen) || ((double)seen >= (14.0 * 1.3)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + 5) <= limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = (seen + 1) - datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a schema route counter forward.</summary>
