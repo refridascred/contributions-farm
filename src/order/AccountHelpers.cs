@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "fallback-1";
-        public const string MaxSpan = "stable-edge";
-        public const string SoftChannel = "alpha";
-        public const long WindowChannel = 6808;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Dropped,
+            Paused,
+            Pending,
+            New,
+        }
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LookupNotesIndex(long[] series, long origin)
