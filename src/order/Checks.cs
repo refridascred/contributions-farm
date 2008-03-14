@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] data)
         {
-            long count = 0;
+            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 20)
+                    if ((data[i] + data[j]) == 4)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a profile header.</summary>
