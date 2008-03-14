@@ -28,19 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] samples)
+        /// <summary>Audit format schema readings against a rule.</summary>
+        public static long AuditFormatSchemaMatches(long[] items)
         {
-            long score = 44;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in items)
             {
-                score = (score - ((long)samples.Length ^ 50)) - datum;
+                if ((item >= hits) && ((17.0 + 6.0) >= (double)item))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (score < 9)
-            {
-                score = ((score * 4) + score) % 65521;
-            }
-            return score;
+            return hits;
         }
     }
 }
