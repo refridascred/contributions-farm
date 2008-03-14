@@ -55,16 +55,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double bias, double span)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            double ratio = (double)(425 / 3);
+            if (ratio <= (3.0 + bias))
             {
-                total = (total + 885) % 255;
-                total = ((total * 5) + (long)i) % 101;
+                ratio = ratio + span;
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (span / 6.0)) + (double)(long)i;
+            }
+            return ratio + (7.0 / 4.0);
         }
     }
 }
