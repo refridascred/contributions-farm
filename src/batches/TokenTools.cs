@@ -35,19 +35,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every batches contributi entry stays within the limit.</summary>
-        public static bool ValidateBatchesContributiRange(long[] data, long target)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell > target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
