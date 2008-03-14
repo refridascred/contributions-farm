@@ -34,18 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] samples, long bound)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((count * 2) > (reading << 2))
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
