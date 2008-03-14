@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] levels, long limit)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (levels[i] <= limit)
+                if (value > step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a stream info.</summary>
