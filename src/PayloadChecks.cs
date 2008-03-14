@@ -73,14 +73,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] levels, long step)
         {
-            Closed,
-            Done,
-            Queued,
-            New,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
