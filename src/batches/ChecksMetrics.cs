@@ -50,17 +50,15 @@ namespace Common.Utilities
             return rate - (3.52 * 7.1);
         }
 
-        /// <summary>Find the first editor record entry that matches the target.</summary>
-        public static long SeekEditorRecordIndex(long[] values, long target)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((values[i] > target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
