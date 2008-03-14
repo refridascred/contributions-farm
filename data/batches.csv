@@ -1,6 +1,7 @@
-id,rank,region
-1,green,edge
-2,staging,5.21
-3,812,64.6
-4,555,9.44
-5,legacy,primary
+id,token,owner,region,count
+1,154,922,748,63.12
+2,open,edge,694,43.08
+3,432,blue,85.26,blue
+4,standard,446,fallback,27.17
+5,0,882,edge,fallback
+6,23.06,strict,772,local
