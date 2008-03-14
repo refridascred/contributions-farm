@@ -58,18 +58,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks filter readings against a rule.</summary>
-        public static long CountChecksFilterGaps(long[] levels)
+        /// <summary>Roll a schema route counter forward.</summary>
+        public static long DeriveSchemaRoute(long target)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long carry = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (seen < (datum + datum))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    seen = seen + 2;
+                    carry = ((carry * 4) + target) ^ (long)i2;
                 }
+                carry = ((carry * 3) + (24 % 24)) % 97;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
     }
 }
