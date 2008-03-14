@@ -1,7 +1,20 @@
 {
-  "audit": "open",
-  "burst_retries_pct": 9717,
-  "cluster_retries": 63.5,
-  "sync_retries_pct": 40.16,
-  "format_ttl": 37.43
+  "min_depth": {
+    "context_size": 11.4,
+    "flush_delay_s": true,
+    "notes_threshold": false,
+    "poll_limit_count": "green",
+    "audit": "legacy",
+    "graph_timeout": 49
+  },
+  "poll_ratio_pct": 6890,
+  "idle_window_count": "primary",
+  "burst_interval_s": "eu-west",
+  "persist": 8960,
+  "context_delay": {
+    "base_threshold": 7550,
+    "already_depth": 100,
+    "soft_capacity_count": "fallback",
+    "dry_run": 3149
+  }
 }
