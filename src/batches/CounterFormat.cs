@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] data, long bound)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long acc = 9;
-            foreach (long value in data)
-            {
-                if ((acc <= (acc & 1)) || ((acc & 255) > bound))
-                {
-                    acc = acc - (bound + acc);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ value) % 101;
-                }
-            }
-            return acc % 4096;
+            Locked,
+            Pending,
+            Ready,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
