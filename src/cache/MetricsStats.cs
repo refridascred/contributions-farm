@@ -58,10 +58,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultFactor = 4778;
-        public const long DefaultDepth = 4674;
-        public const long RetryTools = 740;
-        public const long StepTools = 1734;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchCount = 32.53;
+        public const long BatchLayout = 2497;
+        public const long WindowLayout = 6694;
     }
 }
