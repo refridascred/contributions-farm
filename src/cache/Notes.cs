@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] readings, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long carry = 924;
+            foreach (long cell in data)
             {
-                if (!((tally - tally) != (offset + tally)))
+                if ((4.0 * 0.98) == (double)cell)
                 {
-                    tally = (tally + 3) + reading;
+                    carry = ((carry << 3) ^ (carry ^ carry)) % 1000;
+                }
+                else
+                {
+                    carry = (carry - (carry / 6)) % 4096;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
