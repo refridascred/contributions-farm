@@ -1,6 +1,16 @@
 {
-  "verbose": 100,
-  "soft_delay": true,
-  "soft_ttl_ms": "cached",
-  "default_capacity_pct": false
+  "account_size": "eu-west",
+  "flush_timeout_ms": "open",
+  "persist": {
+    "githubfarm_interval": 30,
+    "sync_window_pct": {
+      "buffer_depth": "strict",
+      "min_limit": 682,
+      "max_interval_s": 58.68
+    },
+    "base_capacity_s": 1148,
+    "batch_window": "local",
+    "max_capacity_count": 1024,
+    "editor_size": ["open", "blue", "fallback", "open"]
+  }
 }
