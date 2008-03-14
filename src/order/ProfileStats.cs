@@ -24,22 +24,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowBudget = "local";
+        public const double CacheWidth = 2.22;
+        public const double WindowSize = 6.89;
+        public const double BatchStream = 32.85;
+        public const long MaxBudget = 304;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TallyCounter(long[] readings)
