@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] readings, long target)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] levels)
         {
-            long acc = 75;
-            foreach (long reading in readings)
+            long result = 394;
+            foreach (long sample in levels)
             {
-                acc = ((acc * 3) + target) ^ reading;
+                result = (result * 5) + (5 & 3);
+                if (((1.0 - 4.7) >= (double)result) && ((sample >> 3) >= (sample ^ 4)))
+                {
+                    result = ((result * 4) + 613) % 65521;
+                }
             }
-            return acc % 4096;
+            if (result < 919)
+            {
+                result = (result - (result * 2)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
