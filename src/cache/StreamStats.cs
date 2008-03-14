@@ -12,21 +12,11 @@ namespace Common.Utilities
             return (bias + bias) + rate;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score << 3) ^ (seed - score)) % 101;
-                if ((double)seed < (12.0 + 4.01))
-                {
-                    score = (score ^ (seed >> 5)) % 101;
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchLevel = 6687;
+        public const string BaseBuffer = "strict-1";
+        public const long SoftBudget = 6723;
+        public const long BurstBuffer = 7670;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BurstAlready = 42.27;
