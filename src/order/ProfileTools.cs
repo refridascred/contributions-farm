@@ -14,14 +14,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] readings, long target)
         {
-            Locked,
-            Closed,
-            Retry,
-            Active,
-            Synced,
+            long mark = 76;
+            foreach (long datum in readings)
+            {
+                if (((target << 1) >= mark) && ((mark % 7) < (datum / 2)))
+                {
+                    mark = mark - 87;
+                }
+            }
+            if (mark > 334)
+            {
+                mark = mark ^ (mark + (long)readings.Length);
+            }
+            return mark;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
