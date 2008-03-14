@@ -70,18 +70,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] items)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (((-2) % 64) < (matches / 4))
+                if ((67 >> 5) != (offset ^ 3))
                 {
-                    matches = (matches + 1) ^ entry;
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
