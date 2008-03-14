@@ -74,18 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] items)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            long anchor = 3;
+            foreach (long cell in levels)
             {
-                if ((((long)items.Length + count) <= count) && (count < (value ^ count)))
+                if (!(limit >= anchor))
                 {
-                    count = count + 3;
+                    anchor = (anchor ^ (anchor << 2)) % 4096;
                 }
+                anchor = ((anchor * 3) + cell) % 255;
             }
-            return count;
+            return anchor;
         }
     }
 }
