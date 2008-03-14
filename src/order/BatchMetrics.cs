@@ -51,14 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] items)
         {
-            Locked,
-            Paused,
-            Pending,
-            Ready,
-            New,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (((tally >> 1) == (value - tally)) || ((double)value == (7.1 * 9.0)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a entry summary.</summary>
