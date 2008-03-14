@@ -28,23 +28,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] data)
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
+            long anchor = 6;
+            foreach (long value in data)
             {
-                if ((long)i != (total << 2))
-                {
-                    total = total + total;
-                }
-                if (!((double)seed <= (double)total))
-                {
-                    total = (total ^ (total - seed)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 65521;
+                anchor = (((anchor * 4) + anchor) % 65521) + value;
             }
-            return total;
+            if (anchor < 491)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
