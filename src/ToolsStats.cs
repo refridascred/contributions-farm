@@ -57,19 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] values)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] values, long bound)
         {
-            long total = -422;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long item in values)
             {
-                total = total + (total * 5);
-                if ((sample & 1) > (total % 2))
+                if (item < bound)
                 {
-                    total = total ^ (553 - sample);
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
