@@ -22,14 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public bool Total { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBatches = 3.71;
+        public const long SoftInterval = 9137;
+        public const double StepBatches = 10.51;
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
