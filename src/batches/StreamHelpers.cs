@@ -32,17 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] samples, long origin)
+        /// <summary>Blend two stats record measurements.</summary>
+        public static double BlendStatsRecord(double bias, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (double)(67 & 127);
+            return ((mean + (double)260) + bias) + floor;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
