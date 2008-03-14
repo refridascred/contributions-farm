@@ -23,19 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine already report values into a single score.</summary>
-        public static long CombineAlreadyReport(long[] items, long limit)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long result = 0;
-            foreach (long item in items)
-            {
-                result = (result ^ (limit + item)) % 1000;
-            }
-            if (result > 16)
-            {
-                result = result - (result * 2);
-            }
-            return result;
+            Paused,
+            Failed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a channel options.</summary>
