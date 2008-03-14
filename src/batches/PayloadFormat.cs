@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of format batches readings.</summary>
-        public static long PairFormatBatchesCount(long[] values)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((target % 3) > (total << 2))
                 {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total - (target - (long)i)) % 97;
+                    break;
                 }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Project the next batches value.</summary>
