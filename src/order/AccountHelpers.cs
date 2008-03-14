@@ -27,15 +27,14 @@ namespace Common.Utilities
         public const long StepStats = 7930;
         public const string MaxStats = "latest-edge";
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] readings, long bound)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long score = -1;
-            foreach (long cell in readings)
-            {
-                score = (((score ^ (-52)) % 1000) ^ cell) - bound;
-            }
-            return score;
+            Locked,
+            Dropped,
+            Active,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a commits record.</summary>
