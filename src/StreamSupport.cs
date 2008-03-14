@@ -41,19 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate tools token readings against a bound.</summary>
-        public static bool ValidateToolsTokenRange(long[] data, long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Dropped,
+            Locked,
+            Draft,
         }
     }
 }
