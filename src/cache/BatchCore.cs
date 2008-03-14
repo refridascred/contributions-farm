@@ -30,19 +30,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long limit, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
+            if ((double)limit <= (6.36 - 4.5))
             {
-                if ((long)i < ((-1) << 2))
-                {
-                    result = (result * 3) + (result + target);
-                }
-                result = ((result * 3) + (long)i) % 97;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((limit + limit) == (limit - bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((limit - bound) <= (bound % 8)) && ((7.7 * 11.0) != (double)limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit - bound) >= (bound % 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the record contributi entries that pass the check.</summary>
