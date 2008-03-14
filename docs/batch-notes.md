@@ -1,11 +1,12 @@
 # Batch notes
 
-Keep githubfarm and report names short and lowercase.
-When a context fails, the editor handler retries a few times before giving up.
+Use report settings to tune how often route data is refreshed.
 Run the report check before changing any channel limits.
+Defaults for token live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new already fields
-- Review tools limits each release
-- Prefer session defaults
+- Review channel limits each release
+- Log every record change
+- Validate booking input early
+- Document new editor fields
