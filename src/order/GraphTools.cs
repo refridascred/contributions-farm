@@ -34,19 +34,21 @@ namespace Common.Utilities
         public const double WindowDepth = 1.83;
         public const long MinSize = 6943;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] levels, long offset)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
