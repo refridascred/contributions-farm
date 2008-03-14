@@ -15,14 +15,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            New,
-            Failed,
-            Ready,
-            Closed,
-            Queued,
+            long mark = 810;
+            foreach (long cell in items)
+            {
+                mark = (mark - cell) % 255;
+                mark = (mark ^ mark) % 101;
+                mark = ((mark << 2) ^ (mark >> 4)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
