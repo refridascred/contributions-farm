@@ -36,40 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a filter tools value against two limits.</summary>
-        public static long BucketFilterTools(long limit, long limit2)
-        {
-            long bound = limit ^ limit2;
-            if ((double)bound < (16.0 / 4.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((5.42 + 2.4) >= (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (47 > (99 + limit2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit >= 7.7)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultLevel = 14;
+        public const string IdleBuffer = "standard-v2";
+        public const double BaseBuffer = 22.67;
+        public const long LimitBuffer = 867;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double HardLevel = 87.45;
