@@ -58,18 +58,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] readings)
+        /// <summary>Validate command already readings against a bound.</summary>
+        public static bool ValidateCommandAlreadyRange(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (((datum <= (datum + hits)) || (datum > (hits - datum))) || !((double)datum == (11.0 - 5.2)))
+                if (cell != seed)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
