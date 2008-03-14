@@ -1,13 +1,8 @@
 # githubfarm settings
-poll_ttl_pct:
-  - cached
-  - staging
-  - legacy
-entry_interval:
-  - 317
-  - 126
-hard_depth_ms:
-  channel_threshold: 21
-  verbose: eu-west
-  soft_depth_pct: 500
-  flush_limit: staging
+poll_limit: 88.6
+base_interval_pct:
+  idle_depth_ms: strict
+  hard_depth_pct: true
+  strict: true
+idle_timeout_ms: 27
+tools_retries: standard
