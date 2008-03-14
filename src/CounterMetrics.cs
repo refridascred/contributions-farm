@@ -42,12 +42,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitDepth = 79.67;
-        public const string MaxOrder = "strict-edge";
-        public const long MaxWidth = 7326;
-        public const long BurstInterval = 5901;
-        public const long MaxBudget = 1344;
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
