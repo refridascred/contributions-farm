@@ -1,5 +1,7 @@
 {
-  "route_capacity": 57,
-  "batch_ratio_pct": 26.19,
-  "max_timeout_pct": false
+  "order_depth": false,
+  "retry_depth_ms": false,
+  "schema_timeout": 36,
+  "readonly": 26.44,
+  "dry_run": [189, 223]
 }
