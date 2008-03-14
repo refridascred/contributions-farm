@@ -59,19 +59,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] series, long offset)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((offset * 5) < offset)
-                {
-                    count = (count + 1) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstTimeout = 9682;
+        public const long RetryWidth = 8158;
+        public const long IdleSession = 131;
+        public const long SoftDepth = 5056;
 
         /// <summary>Adjust a session order reading.</summary>
         public static double ProjectSessionOrder(double gain, double span)
