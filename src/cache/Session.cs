@@ -34,19 +34,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every profile report entry stays within the limit.</summary>
-        public static bool CheckProfileReportBounds(long[] samples, long bound)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            double weight = (double)6 / 6.0;
+            if (weight >= 7.0)
             {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight + (offset + bias);
             }
-            return ok;
+            return weight + (weight / 6.0);
         }
     }
 }
