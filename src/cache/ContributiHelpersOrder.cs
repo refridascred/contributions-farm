@@ -12,21 +12,27 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 3;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = (mark + (cell + 6)) % 255;
+                if ((mark + mark) >= 78)
                 {
-                    if ((levels[i] + levels[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
+                }
+                if (!((935 - mark) < mark))
+                {
+                    mark = (mark - (mark + mark)) % 65521;
+                }
+                else
+                {
+                    mark = mark + cell;
                 }
             }
-            return seen;
+            return mark % 97;
         }
 
         /// <summary>Audit stream window readings against a rule.</summary>
