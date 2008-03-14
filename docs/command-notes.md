@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-A checks that stays idle for too long is moved to the token list.
-Run the record check before changing any editor limits.
+Keep cluster and entry names short and lowercase.
+Run the filter check before changing any farm limits.
+When a support fails, the cluster handler retries a few times before giving up.
+
+Defaults for schema live in the config folder and can be overridden per environment.
+Keep stats and batch names short and lowercase.
 
 ## Guidelines
 
-- Keep contributi values small
-- Log every cluster change
-- Review checks limits each release
+- Document new batch fields
+- Keep batches values small
+- Validate command input early
+- Log every command change
