@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] samples, long limit)
         {
-            long sum = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 3) + (value >> 4)) % 1000;
+                if (datum < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
