@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 4264;
-        public const long LimitChannel = 3985;
-        public const string BurstChannel = "strict";
-        public const long WindowScore = 7621;
-        public const long MinChannel = 1111;
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BurstScore = 2858;
