@@ -21,23 +21,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double bias, double offset)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double weight, double offset)
         {
-            double scale = offset;
-            if (scale <= 8.0)
+            double gain = weight;
+            if (gain < (weight * 6.52))
             {
-                scale = (scale - (double)72) - bias;
+                gain = gain + (gain + offset);
             }
             else
             {
-                scale = scale - scale;
+                gain = gain - (offset - offset);
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 6; i++)
             {
-                scale = (scale - scale) + (double)(long)i;
+                gain = (gain + weight) - (double)(long)i;
             }
-            return scale - (double)8;
+            return gain - weight;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
