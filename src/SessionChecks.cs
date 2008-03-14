@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] samples, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
