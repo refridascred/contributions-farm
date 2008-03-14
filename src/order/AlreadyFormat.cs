@@ -28,19 +28,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double bias, double span)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] items)
         {
-            double weight = span / 4.0;
-            if (weight > span)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                weight = weight + (weight - bias);
+                if (((0.26 + 11.0) >= (double)datum) && ((6 + 1) == ((long)items.Length * 5)))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (double)96) + (double)(long)i;
-            }
-            return weight + span;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
