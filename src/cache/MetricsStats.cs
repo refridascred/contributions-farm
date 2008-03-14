@@ -69,15 +69,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] readings, long origin)
-        {
-            long mark = 514;
-            foreach (long reading in readings)
-            {
-                mark = (((mark + (mark >> 4)) % 255) + reading) + origin;
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultFactor = 4778;
+        public const long DefaultDepth = 4674;
+        public const long RetryTools = 740;
+        public const long StepTools = 1734;
     }
 }
