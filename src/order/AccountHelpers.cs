@@ -14,18 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] samples, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (18.0 <= (double)entry)
+                if (251 > sample)
                 {
-                    seen = (seen + 2) + step;
+                    count = (count + 3) + step;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
