@@ -25,19 +25,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] samples, long seed)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != seed)
+                if (series[i] <= offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
