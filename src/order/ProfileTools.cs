@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long bound)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            Active,
+            Failed,
+            Retry,
+            Pending,
+            Closed,
         }
 
         /// <summary>Match up buffer samples.</summary>
