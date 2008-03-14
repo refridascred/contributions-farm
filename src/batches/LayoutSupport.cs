@@ -38,13 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
-            public long Region { get; set; }
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
