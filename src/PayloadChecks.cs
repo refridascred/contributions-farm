@@ -32,22 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] levels)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long mix = 1;
-            foreach (long cell in levels)
-            {
-                if (cell >= (cell - mix))
-                {
-                    mix = (mix * 5) + (cell ^ mix);
-                }
-            }
-            if (mix > 9)
-            {
-                mix = (mix * 3) + (30 + mix);
-            }
-            return mix;
+            Retry,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the batches kind values.</summary>
