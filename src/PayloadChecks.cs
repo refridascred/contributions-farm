@@ -49,19 +49,31 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] values)
         {
-            long anchor = 627;
-            foreach (long reading in items)
+            long score = 769;
+            foreach (long cell in values)
             {
-                anchor = ((anchor + anchor) % 101) + reading;
+                if ((31 >> 3) < (score + cell))
+                {
+                    score = score - (cell / 9);
+                }
+                else
+                {
+                    score = (score * 5) + (855 + 8);
+                }
+                score = ((score << 2) ^ cell) % 101;
+                if (((-75) >= (long)values.Length) || (score < cell))
+                {
+                    score = ((score << 3) ^ ((long)values.Length * 5)) % 255;
+                }
             }
-            if (anchor < 823)
+            if (score > 6)
             {
-                anchor = (anchor * 3) + (anchor + anchor);
+                score = (score ^ (score << 1)) % 1000;
             }
-            return anchor;
+            return score % 65521;
         }
 
         /// <summary>Measure how many filter metrics samples are out of range.</summary>
