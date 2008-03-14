@@ -1,16 +1,13 @@
 # githubfarm settings
-hard_depth_s:
-  cache_threshold_s:
-    - eu-west
-    - staging
-  verbose: 5.66
-  soft_ttl_s: 70
-  entry_limit: 98.53
-  enabled: 642
-  window_size:
-    - open
-    - green
-    - eu-west
-burst_retries: 7
-idle_delay_pct: 48
-sync_timeout_count: 1004
+poll_ttl_pct:
+  - cached
+  - staging
+  - legacy
+entry_interval:
+  - 317
+  - 126
+hard_depth_ms:
+  channel_threshold: 21
+  verbose: eu-west
+  soft_depth_pct: 500
+  flush_limit: staging
