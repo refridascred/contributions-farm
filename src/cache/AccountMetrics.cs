@@ -78,9 +78,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleScore = 91.54;
-        public const long BurstWidth = 2391;
-        public const string MinCluster = "standard";
+        /// <summary>Roll a githubfarm layout counter forward.</summary>
+        public static long DeriveGithubfarmLayout(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((long)i < (origin + origin)))
+                {
+                    result = (result ^ ((long)i - 855)) % 97;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
