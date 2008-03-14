@@ -42,14 +42,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Draft,
-            Closed,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowTimeout = 1.21;
+        public const long HardScore = 6435;
+        public const string BurstInterval = "standard-1";
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
