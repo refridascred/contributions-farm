@@ -23,11 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 8687;
-        public const long SoftRatio = 5047;
-        public const long DefaultGraph = 1547;
-        public const long MaxDepth = 9420;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((long)values.Length != (seen + seen))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricGaps(long[] items)
