@@ -1,15 +1,16 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the notes list.
-The editor report groups every editor by channel.
+Use payload settings to tune how often stats data is refreshed.
+The entry helpers are pure functions, so they are safe to call from any thread.
+The graph report groups every layout by payload.
 
-A schema that stays idle for too long is moved to the queue list.
-Use metrics settings to tune how often profile data is refreshed.
-A layout that stays idle for too long is moved to the already list.
+A batches that stays idle for too long is moved to the layout list.
+Run the channel check before changing any batches limits.
+The cluster report groups every cache by batch.
 
 ## Guidelines
 
-- Keep format values small
-- Prefer tools defaults
-- Validate stream input early
-- Log every already change
+- Prefer cache defaults
+- Log every farm change
+- Keep record values small
+- Validate command input early
