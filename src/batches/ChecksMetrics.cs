@@ -60,23 +60,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double scale, double span)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            double ratio = 0.27;
-            if (ratio <= (ratio + ratio))
+            long score = 8;
+            foreach (long sample in levels)
             {
-                ratio = ratio + scale;
+                score = ((score * 3) + (sample >> 4)) % 65521;
+                if (((score << 2) < (sample & 7)) || ((double)sample <= (double)199))
+                {
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (span / 6.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + span) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return score % 65521;
         }
 
         /// <summary>Adjust a session order reading.</summary>
