@@ -1,13 +1,8 @@
 {
-  "idle_capacity_ms": "cached",
-  "record_delay": "stable",
-  "default_size_pct": false,
-  "stats_threshold": {
-    "poll_ratio": false,
-    "cache_capacity": 30,
-    "max_size": true,
-    "record_limit": "stable",
-    "enabled": 45
-  },
-  "persist": 82.07
+  "compress": 6272,
+  "min_timeout_count": ["local", "fallback"],
+  "strict": 4912,
+  "hard_interval": true,
+  "flush_interval_s": 15,
+  "githubfarm_size": "strict"
 }
