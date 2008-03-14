@@ -29,10 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 6646;
-        public const long HardBuffer = 8120;
-        public const string WindowBuffer = "standard-v2";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstDepth = "cached-edge";
+        public const string BurstFactor = "fallback-v2";
+        public const long SoftSpan = 1153;
+        public const long RetrySize = 7842;
+        public const long StepCounter = 2160;
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LocateEditorIndex(long[] levels, long seed)
