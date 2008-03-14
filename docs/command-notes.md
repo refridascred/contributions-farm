@@ -1,10 +1,11 @@
 # Command notes
 
-The channel module keeps cache values in sync with the contributi cache.
-Run the metrics check before changing any session limits.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Each order is validated before it reaches the contributi queue.
 
 ## Guidelines
 
-- Document new tools fields
-- Prefer editor defaults
-- Keep metrics values small
+- Keep window values small
+- Document new batch fields
+- Review commits limits each release
+- Validate batches input early
