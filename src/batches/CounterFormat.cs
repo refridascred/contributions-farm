@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] series, long floor)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((6.1 / 7.0) != (double)tally)
-                {
-                    tally = ((tally + 1) + cell) - floor;
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the token level values.</summary>
