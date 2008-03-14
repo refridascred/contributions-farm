@@ -1,5 +1,4 @@
 # support settings
-default_retries_pct: 100
-burst_capacity_count: false
-compress: standard
-flush_interval: 250
+readonly: latest
+batch_ttl_pct: fallback
+commits_delay: green
