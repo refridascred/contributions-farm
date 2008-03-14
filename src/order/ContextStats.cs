@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] levels, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 97;
+            foreach (long entry in values)
             {
-                if ((levels[i] == bound) && ((levels[i] % 5) != 0))
+                if (entry > (entry - 99))
                 {
-                    return (long)i;
+                    acc = acc ^ (limit % 5);
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Describe the schema state values.</summary>
