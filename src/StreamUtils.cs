@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank counter schema input into a small class.</summary>
-        public static long SortCounterSchema(long offset, long target)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] series, long bound)
         {
-            if ((target / 3) < (target * 3))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset + target) != (target ^ offset))
+                if ((series[i] <= bound) && ((series[i] % 5) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next window notes value.</summary>
