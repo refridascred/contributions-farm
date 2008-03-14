@@ -30,19 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] samples, long bound)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long target)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long result = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell <= bound)
+                if ((long)i < ((-1) << 2))
                 {
-                    found = false;
-                    break;
+                    result = (result * 3) + (result + target);
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Count the record contributi entries that pass the check.</summary>
