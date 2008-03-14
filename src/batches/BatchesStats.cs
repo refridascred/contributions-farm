@@ -20,12 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] values, long bound)
         {
-            Ready,
-            Pending,
-            Idle,
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Project the next cache value.</summary>
