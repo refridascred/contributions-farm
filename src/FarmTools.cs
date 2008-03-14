@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] items, long bound)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((sample >> 1) == (bound - bound))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardContributi = "legacy-1";
+        public const double StepLevel = 72.55;
+        public const string WindowDepth = "local-edge";
+        public const double WindowTimeout = 14.78;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
