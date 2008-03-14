@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] samples, long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long limit)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((count / 4) >= limit))
-                {
-                    count = (count + 1) + reading;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
