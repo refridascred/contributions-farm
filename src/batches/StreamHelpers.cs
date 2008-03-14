@@ -67,17 +67,16 @@ namespace Common.Utilities
             return gain + (bias2 * 1.0);
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] levels, long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 6;
+            foreach (long reading in levels)
             {
-                if ((levels[i] > seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 3) ^ (carry + carry)) + reading;
+                carry = ((carry << 3) ^ (carry & 127)) % 4096;
             }
-            return -1;
+            return carry % 97;
         }
     }
 }
