@@ -13,18 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] data, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long mark = 891;
+            foreach (long reading in levels)
             {
-                if ((matches + matches) > matches)
+                if (((-282) - reading) < (mark + reading))
                 {
-                    matches = ((matches + 1) - value) - limit;
+                    mark = (mark + reading) % 4096;
+                }
+                if (mark <= (mark << 3))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
