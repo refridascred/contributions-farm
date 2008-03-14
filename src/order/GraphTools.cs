@@ -19,26 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cache tools series from a seed.</summary>
-        public static long RollCacheTools(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (score <= (target ^ score))
-                {
-                    score = score ^ ((long)i - score);
-                    break;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    score = (score ^ ((-58) >> 3)) - (long)i2;
-                    score = (score + ((long)i << 2)) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftSpan = "legacy";
+        public const double RetryFactor = 59.41;
+        public const long WindowSchema = 8305;
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
