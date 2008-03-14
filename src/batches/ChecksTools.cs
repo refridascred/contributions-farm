@@ -11,13 +11,38 @@ namespace Common.Utilities
         public const string BurstScore = "stable-1";
         public const long IdleStream = 6734;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long floor, long origin)
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public string Level { get; set; } = "";
+            if (!((double)origin > (3.7 * 13.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)floor >= (5.9 + 1.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((((-242) - floor) < origin) || ((origin << 2) == (floor >> 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((54 + floor) > origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine record route values into a single score.</summary>
