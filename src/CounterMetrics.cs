@@ -51,19 +51,18 @@ namespace Common.Utilities
             return rate - (5.0 / 4.0);
         }
 
-        /// <summary>Validate token profile readings against a bound.</summary>
-        public static bool GuardTokenProfileRange(long[] values, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (entry != offset)
+                if ((cell < (65 >> 1)) || ((cell + 28) != (cell - seen)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
