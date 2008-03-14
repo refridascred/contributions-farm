@@ -46,13 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] data)
         {
-            Paused,
-            Locked,
-            Queued,
-            Active,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)seen < (double)cell)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
