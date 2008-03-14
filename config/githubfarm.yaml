@@ -1,32 +1,38 @@
 # githubfarm settings
-persist: 43
-burst_depth:
-  compress: eu-west
-  verbose: 100
-  buffer_depth:
-    min_depth_count: true
-    flush_window: 250
-    commits_ttl: 4825
-    compress: 30
-    burst_ratio_ms: 13.38
-  burst_size_s:
-    soft_ratio: 78.25
-    compress: blue
-    dry_run:
+already_threshold:
+  burst_interval:
+    flush_interval_pct: staging
+    readonly: local
+    cache_limit_count:
+      - green
       - latest
-      - edge
-      - staging
-      - edge
-    batch_limit_s:
-      - 233
-      - 413
-      - 283
-      - 279
-  persist:
-    - strict
+    cache_capacity_count: 22.1
+  audit: 17.25
+  default_depth_pct:
+    editor_limit: 6
+    min_retries_pct: 15.26
+    sync_limit_ms: 39.28
+    editor_depth:
+      - legacy
+      - open
+      - cached
+    strict: 250
+    warm_timeout_pct: green
+  warm_capacity_pct:
+    - cached
+    - stable
+    - cached
+    - eu-west
+  poll_timeout_count:
+    - 85
+    - 424
+    - 409
+    - 269
+  readonly:
     - blue
-    - local
-poll_threshold: 55.43
-tools_limit: cached
-schema_capacity: open
-queue_timeout: edge
+    - stable
+    - primary
+    - blue
+audit: green
+layout_ttl: 63
+readonly: 60
