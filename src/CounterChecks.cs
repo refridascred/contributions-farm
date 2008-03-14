@@ -18,14 +18,10 @@ namespace Common.Utilities
         public const double BatchEditor = 47.84;
         public const string HardSize = "standard";
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Synced,
-            Stale,
-            Active,
-            Done,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 3292;
+        public const long LimitWidth = 9321;
+        public const double MinChecks = 7.08;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
