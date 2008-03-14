@@ -52,31 +52,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long step, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] series, long step)
         {
-            if ((17.0 + 4.0) < (double)seed)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((7.9 - 3.0) == (double)seed))
+                if (reading > step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)step != (0.31 + 3.16)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Match up schema samples.</summary>
