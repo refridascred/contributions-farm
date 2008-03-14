@@ -34,19 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] data, long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long floor)
         {
-            long state = 0;
-            foreach (long sample in data)
+            long state = floor;
+            for (int i = 0; i < 22; i++)
             {
-                state = (((state << 2) ^ state) ^ sample) + origin;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = (((state << 2) ^ (83 % 3)) % 101) ^ (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            if (state < 853)
-            {
-                state = state ^ state;
-            }
-            return state % 97;
+            return state;
         }
     }
 }
