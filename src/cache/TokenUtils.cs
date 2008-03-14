@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] values)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (datum < (datum / 3))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Failed,
+            Ready,
+            Draft,
+            Paused,
         }
 
         /// <summary>Adjust a metric stream reading.</summary>
