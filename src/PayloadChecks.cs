@@ -23,19 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double bias, double span)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            double bias2 = 2.7;
-            if (bias2 <= bias)
-            {
-                bias2 = (bias2 + 9.0) - span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + (double)30) + (double)(long)i;
-            }
-            return bias2 + bias;
+            public bool Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the layout phase values.</summary>
