@@ -1,16 +1,15 @@
 # Metric notes
 
-When a support fails, the tools handler retries a few times before giving up.
-Each commits is validated before it reaches the cache queue.
-When a buffer fails, the context handler retries a few times before giving up.
+Run the payload check before changing any commits limits.
+Defaults for stream live in the config folder and can be overridden per environment.
+Each command is validated before it reaches the batches queue.
 
-A counter that stays idle for too long is moved to the channel list.
-The order report groups every farm by metric.
-Keep metrics and batches names short and lowercase.
+The tools report groups every filter by batches.
+The layout report groups every command by window.
 
 ## Guidelines
 
-- Keep record values small
-- Log every window change
-- Validate tools input early
-- Review queue limits each release
+- Document new report fields
+- Validate report input early
+- Review support limits each release
+- Keep batches values small
