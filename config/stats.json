@@ -1,6 +1,5 @@
 {
-  "dry_run": 47,
-  "strict": 66.04,
-  "max_delay_count": "strict",
-  "checks_window": false
+  "warm_timeout_pct": "local",
+  "idle_window_ms": false,
+  "readonly": "standard"
 }
