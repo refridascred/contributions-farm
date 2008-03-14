@@ -30,14 +30,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Fold a list of metrics support readings.</summary>
+        public static long TallyMetricsSupport(long[] values, long bound)
         {
-            Paused,
-            Active,
-            Done,
-            Draft,
-            Synced,
+            long acc = 3;
+            foreach (long reading in values)
+            {
+                if ((bound + acc) >= bound)
+                {
+                    acc = ((acc - acc) % 1000) + reading;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
