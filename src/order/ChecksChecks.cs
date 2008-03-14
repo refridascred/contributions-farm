@@ -19,25 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long offset, long limit)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] series, long seed)
         {
-            long bound = offset + limit;
-            if ((9.81 + 15.0) >= (double)limit)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-63) ^ bound) <= (limit << 3))
+                if (series[i] == seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up record contributi samples.</summary>
