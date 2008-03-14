@@ -43,10 +43,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinProfile = "staging-1";
-        public const string DefaultProfile = "legacy-1";
-        public const long RetryProfile = 5798;
+        /// <summary>Grade a entry command value against two limits.</summary>
+        public static long BucketEntryCommand(long floor, long seed)
+        {
+            if ((double)98 < (double)seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((1.75 + 9.77) < (double)seed) && (floor <= seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] series)
