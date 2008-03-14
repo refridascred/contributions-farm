@@ -1,7 +1,6 @@
 {
-  "poll_ratio_count": true,
-  "strict": 4129,
-  "tools_retries": "cached",
-  "cache_depth": "open",
-  "sync_depth_s": false
+  "farm_timeout": false,
+  "tools_threshold": [360, 306],
+  "retry_delay_pct": 70.82,
+  "default_ttl_pct": ["strict", "legacy", "fallback", "staging"]
 }
