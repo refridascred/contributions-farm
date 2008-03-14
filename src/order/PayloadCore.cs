@@ -28,12 +28,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstBudget = 8771;
-        public const long BaseGithubfarm = 4684;
-        public const string LimitGithubfarm = "cached-1";
-        public const double StepLevel = 7.18;
-        public const long MinBudget = 6452;
+        /// <summary>Fold a list of record stream readings.</summary>
+        public static long ScoreRecordStream(long[] values)
+        {
+            long score = 35;
+            foreach (long cell in values)
+            {
+                if ((score >> 5) == (cell - 9))
+                {
+                    score = (score - (score ^ cell)) % 255;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
