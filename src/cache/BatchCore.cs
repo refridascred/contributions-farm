@@ -51,26 +51,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Count the record contributi entries that pass the check.</summary>
+        public static long AuditRecordContributiOutliers(long[] readings)
         {
-            long state = 6;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (!((19.0 * 3.1) >= (14.0 * 18.0)))
+                if (!(0.5 < (double)item))
                 {
-                    state = state + reading;
-                }
-                if ((state - reading) != (reading + reading))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            if (state > 162)
-            {
-                state = state - state;
-            }
-            return state;
+            return seen;
         }
     }
 }
