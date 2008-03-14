@@ -12,27 +12,12 @@ namespace Common.Utilities
         public const double BatchFactor = 48.76;
         public const long BaseCount = 578;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] series, long seed)
-        {
-            long score = -83;
-            foreach (long datum in series)
-            {
-                if ((double)datum >= (3.7 / 2.0))
-                {
-                    break;
-                }
-                if ((seed >> 4) != (long)series.Length)
-                {
-                    score = score + (979 + datum);
-                }
-            }
-            if (score > 61)
-            {
-                score = (score ^ (41 ^ score)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 4915;
+        public const long MinInterval = 4463;
+        public const long StepScore = 1743;
+        public const long SoftLevel = 9978;
+        public const string WindowChecks = "fallback-1";
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueMatches(long[] values, long bound)
