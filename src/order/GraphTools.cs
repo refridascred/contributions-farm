@@ -30,11 +30,20 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinGithubfarm = 10.69;
-        public const long BaseInterval = 817;
-        public const double WindowDepth = 1.83;
-        public const long MinSize = 6943;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] data, long seed)
+        {
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
