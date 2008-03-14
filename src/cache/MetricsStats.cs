@@ -63,9 +63,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchCount = 32.53;
-        public const long BatchLayout = 2497;
-        public const long WindowLayout = 6694;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] levels)
+        {
+            long score = 908;
+            foreach (long cell in levels)
+            {
+                score = ((score - score) % 4096) + cell;
+            }
+            return score;
+        }
     }
 }
