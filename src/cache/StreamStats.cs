@@ -41,19 +41,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] series, long step)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BaseProfile = 59.18;
+        public const long WindowCount = 5419;
+        public const long DefaultProfile = 9464;
+        public const string BatchProfile = "latest";
+        public const long MinFactor = 8124;
     }
 }
