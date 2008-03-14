@@ -20,10 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryScore = 1922;
-        public const long CacheScore = 309;
-        public const long DefaultDepth = 8161;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Match up schema samples.</summary>
         public static long CompareSchemaCount(long[] data)
