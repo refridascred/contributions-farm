@@ -25,20 +25,26 @@ namespace Common.Utilities
         public const string LimitFormat = "cached-v2";
         public const string BurstFormat = "standard-edge";
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] items)
         {
-            long state = 58;
-            foreach (long reading in levels)
+            long mix = -480;
+            foreach (long value in items)
             {
-                if ((state << 2) <= state)
+                if ((mix >> 5) != (mix - value))
                 {
-                    state = (state - 81) % 65521;
-                    state = ((state * 2) + (state + reading)) % 255;
+                    mix = mix + value;
                 }
-                state = (state + 315) % 255;
+                else
+                {
+                    mix = mix + ((-260) + 780);
+                }
             }
-            return state;
+            if (mix > 685)
+            {
+                mix = (mix ^ mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define already limits and defaults.</summary>
