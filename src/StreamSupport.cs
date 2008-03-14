@@ -41,18 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token buffer entries that pass the check.</summary>
-        public static long MeasureTokenBufferOutliers(long[] levels)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((5.0 - 1.61) <= (double)datum)
+                if ((double)96 < (double)(long)series.Length)
                 {
-                    matches = matches + 2;
+                    count = (count + 2) + entry;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
