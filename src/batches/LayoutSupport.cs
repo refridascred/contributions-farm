@@ -5,35 +5,35 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long offset, long offset2)
+        /// <summary>Classify a context tools pair into a bucket.</summary>
+        public static long ClassifyContextTools(long limit, long seed)
         {
-            long offset3 = offset - offset2;
-            if (offset3 < (offset3 >> 1))
+            long prev = limit + seed;
+            if (((limit - limit) > (seed & 1)) && ((limit & 1) < seed))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if (((1.85 * 17.0) <= (2.0 + 4.73)) && ((double)offset2 != (double)35))
+                if ((double)prev <= (9.16 - 13.0))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((1.82 + 3.5) <= (double)offset2)
+                    if (prev <= (seed + seed))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        if ((offset3 - offset2) > (4 ^ 858))
+                        if ((limit - seed) >= 26)
                         {
-                            return 6;
+                            return 8;
                         }
                         else
                         {
-                            return 7;
+                            return 5;
                         }
                     }
                 }
