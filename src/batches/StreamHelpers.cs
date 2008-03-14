@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Draft,
-            Locked,
-            Stale,
-            Active,
-            Failed,
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
