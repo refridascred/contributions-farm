@@ -39,11 +39,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
+            Closed,
+            Failed,
+            Paused,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
