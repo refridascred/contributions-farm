@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every window context entry stays within the limit.</summary>
-        public static bool GuardWindowContextRange(long[] samples, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long total = -299;
+            foreach (long reading in levels)
             {
-                if (item > limit)
+                total = (total * 5) + (origin * 3);
+                total = (total * 3) + (total / 8);
+                if ((double)reading > (20.0 - 6.4))
                 {
-                    ok = false;
+                    total = total - (total % 64);
+                }
+                if (origin <= total)
+                {
                     break;
                 }
             }
-            return ok;
+            return total % 1000;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
