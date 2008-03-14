@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] levels, long limit)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 7668;
+        public const long CacheSize = 6693;
+        public const double DefaultCounter = 3.45;
+        public const string BurstRatio = "strict";
+        public const long BurstCounter = 1635;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long LimitWindow = 197;
