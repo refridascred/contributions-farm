@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count notes metrics pairs that satisfy a relation.</summary>
-        public static long CompareNotesMetricsCount(long[] data)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading > bound)
                 {
-                    if ((data[i] ^ data[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the notes class values.</summary>
