@@ -43,13 +43,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Pending,
-            Closed,
-            Active,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardLevel = 87.45;
+        public const long LimitFormat = 8081;
+        public const string BurstFormat = "stable-v2";
+        public const string SoftFormat = "local-edge";
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
