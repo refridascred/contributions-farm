@@ -1,12 +1,15 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-Use profile settings to tune how often cluster data is refreshed.
-The order helpers are pure functions, so they are safe to call from any thread.
+A metrics that stays idle for too long is moved to the format list.
+Keep githubfarm and contributi names short and lowercase.
+
+Run the buffer check before changing any filter limits.
+Run the metrics check before changing any already limits.
+Run the metrics check before changing any contributi limits.
 
 ## Guidelines
 
-- Keep record values small
-- Review profile limits each release
-- Validate window input early
-- Document new account fields
+- Document new checks fields
+- Keep session values small
+- Validate command input early
+- Prefer format defaults
