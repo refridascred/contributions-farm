@@ -13,21 +13,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of metrics graph readings.</summary>
-        public static long MatchMetricsGraphCount(long[] series)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(6 > (limit + total)))
                 {
-                    if ((series[i] ^ series[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total * 2) + limit) % 1000;
                 }
+                if ((limit + (long)i) > 511)
+                {
+                    total = ((total << 2) ^ (659 << 2)) % 101;
+                }
+                total = ((total << 2) ^ total) % 97;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
