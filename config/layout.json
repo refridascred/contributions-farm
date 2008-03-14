@@ -1,5 +1,7 @@
 {
-  "batch_ratio_pct": "stable",
-  "warm_threshold": 66.92,
-  "idle_threshold_ms": ["standard", "staging", "latest"]
+  "cache_interval_s": 846,
+  "max_limit_count": [485, 340],
+  "verbose": 53.23,
+  "idle_ttl_count": 35,
+  "idle_window_pct": "edge"
 }
