@@ -1,6 +1,5 @@
 # githubfarm settings
-record_threshold: primary
-metric_capacity:
-  - 421
-  - 238
-burst_ttl: 23.63
+compress: eu-west
+filter_limit: 1024
+cache_interval_count: false
+soft_size_ms: 1024
