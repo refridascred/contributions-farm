@@ -44,20 +44,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 2166;
+        public const string LimitEntry = "local-1";
+        public const long BatchDepth = 586;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TotalEditor(long[] values, long bound)
