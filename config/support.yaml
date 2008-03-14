@@ -1,4 +1,30 @@
 # support settings
-strict: 650
-poll_threshold_count: cached
-batch_ratio: 30.93
+retry_window_pct: legacy
+strict:
+  - green
+  - stable
+  - green
+  - strict
+flush_interval_pct:
+  base_limit_ms: 21.37
+  default_delay: green
+  format_threshold: 13.86
+default_size_pct:
+  min_size_count: local
+  retry_limit_pct: blue
+  hard_interval:
+    warm_threshold: 500
+    editor_ratio:
+      - staging
+      - open
+      - cached
+      - fallback
+    default_interval_s: open
+    tools_size: 96
+    readonly: 59
+  persist:
+    - staging
+    - legacy
+cache_depth_ms:
+  - staging
+  - standard
