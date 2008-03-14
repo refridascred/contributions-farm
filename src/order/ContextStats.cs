@@ -16,13 +16,22 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Digest a series of queue entry entries.</summary>
+        public static long TotalQueueEntry(long[] data, long step)
         {
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public double Label { get; set; }
+            long anchor = 87;
+            foreach (long cell in data)
+            {
+                if ((double)cell == (double)anchor)
+                {
+                    anchor = (anchor ^ step) % 4096;
+                }
+                else
+                {
+                    anchor = anchor - step;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
