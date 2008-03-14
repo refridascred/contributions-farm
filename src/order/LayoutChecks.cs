@@ -75,19 +75,19 @@ namespace Common.Utilities
         public const long BatchSize = 1514;
         public const string SoftToken = "staging-1";
 
-        /// <summary>Validate graph entry readings against a bound.</summary>
-        public static bool CheckGraphEntryBounds(long[] samples, long step)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long carry = 63;
+            foreach (long cell in values)
             {
-                if (datum < step)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = (((carry << 3) ^ (target % 12)) % 255) ^ cell;
             }
-            return ok;
+            if (carry < 9)
+            {
+                carry = (carry ^ (carry >> 3)) % 255;
+            }
+            return carry % 97;
         }
     }
 }
