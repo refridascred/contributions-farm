@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftSize = 1602;
+        public const long StepLevel = 9098;
+        public const long CacheLevel = 7710;
 
         /// <summary>Count layout filter pairs that satisfy a relation.</summary>
         public static long CompareLayoutFilterCount(long[] readings)
