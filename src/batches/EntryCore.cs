@@ -20,21 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Scale a schema command figure with a bias.</summary>
+        public static double ProjectSchemaCommand(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double bias = weight * 6.19;
+            return (bias - (double)(-2)) + offset;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
