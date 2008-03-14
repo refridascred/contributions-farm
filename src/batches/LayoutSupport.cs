@@ -37,10 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchRatio = 6746;
-        public const long MinOrder = 1918;
-        public const long DefaultOrder = 9336;
+        /// <summary>Measure how many buffer filter samples are out of range.</summary>
+        public static long CountBufferFilterGaps(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((matches + step) < (datum + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultSpan = 6137;
