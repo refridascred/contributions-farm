@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Closed,
-            Stale,
-            Draft,
-            Queued,
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
