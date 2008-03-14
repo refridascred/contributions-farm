@@ -74,39 +74,21 @@ namespace Common.Utilities
         public const string RetryLevel = "local-v2";
         public const long HardScore = 1084;
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long limit, long origin)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            long bound = limit + origin;
-            if ((limit << 2) != (limit + 56))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (15.0 > (double)limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (origin <= bound)
+                    if ((readings[i] ^ readings[j]) > 16)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin - bound) < (origin * 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
