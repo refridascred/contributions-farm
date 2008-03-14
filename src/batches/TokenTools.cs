@@ -14,23 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (reading < 94)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitBudget = 5752;
+        public const long RetryCommits = 3055;
+        public const long MaxInterval = 1371;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
