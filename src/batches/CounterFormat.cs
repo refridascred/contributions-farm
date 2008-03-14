@@ -14,13 +14,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] data, long origin)
         {
-            Dropped,
-            Synced,
-            Idle,
-            New,
+            long total = 890;
+            foreach (long reading in data)
+            {
+                if (origin > (total % 100))
+                {
+                    total = total ^ (reading + reading);
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
