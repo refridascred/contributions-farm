@@ -1,15 +1,21 @@
 # entry settings
-strict: 58
-poll_capacity_pct:
-  cache_timeout:
-    idle_capacity_s: true
-    session_interval: 9050
-    counter_limit: true
-    persist: 66.23
-    max_window: true
-  hard_ratio_pct: fallback
-  layout_capacity: strict
-  flush_limit_ms: 37.72
-  warm_capacity: open
-  strict: 851
-githubfarm_capacity: false
+readonly: true
+record_depth: true
+flush_delay_s:
+  enabled: 250
+  verbose:
+    entry_window:
+      - staging
+      - eu-west
+      - primary
+    counter_depth: 14
+    metric_interval:
+      - stable
+      - local
+    cache_capacity: false
+  default_interval_count: 95.42
+  persist: strict
+  max_timeout_pct: primary
+batch_delay_count: latest
+default_retries: 75
+enabled: true
