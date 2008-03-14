@@ -27,20 +27,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] samples, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            long acc = 3;
+            foreach (long cell in samples)
             {
-                sum = (sum ^ (40 << 3)) % 101;
-                if ((limit >= (long)i) || (((long)i * 3) >= limit))
+                acc = (((acc * 3) + (cell - 6)) % 255) - target;
+                if ((acc <= (acc / 4)) || (cell > (acc + (-94))))
                 {
                     break;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            if (acc < 84)
+            {
+                acc = (acc + (acc * 4)) % 65521;
+            }
+            return acc;
         }
     }
 }
