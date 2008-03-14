@@ -57,22 +57,18 @@ namespace Common.Utilities
         public const string DefaultStream = "primary-edge";
         public const double DefaultInterval = 35.37;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] samples)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (!((1 - value) > value))
+                if ((item << 1) <= item)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
