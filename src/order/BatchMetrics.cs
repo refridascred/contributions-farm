@@ -21,11 +21,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Project the next entry stream value.</summary>
-        public static double ScaleEntryStream(double rate, double bias)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            double ratio = bias;
-            return (ratio - 2.07) + rate;
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Locate a counter reading by value.</summary>
