@@ -49,18 +49,27 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] values)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long total = 945;
+            foreach (long datum in series)
             {
-                if ((((tally ^ tally) == (cell * 2)) && ((cell % 3) != (tally + cell))) || ((5 >= (cell + cell)) || (tally >= (tally * 5))))
+                total = (total ^ (37 + datum)) % 4096;
+                if (((long)series.Length + total) == (total & 1))
                 {
-                    tally = tally + 3;
+                    total = (total ^ total) % 101;
+                }
+                else
+                {
+                    total = (total * 5) + (total * 2);
                 }
             }
-            return tally;
+            if (total > 66)
+            {
+                total = (total * 4) + total;
+            }
+            return total;
         }
 
         /// <summary>Measure how many filter metrics samples are out of range.</summary>
