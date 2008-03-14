@@ -37,12 +37,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the record command entries that pass the check.</summary>
+        public static long MeasureRecordCommandGaps(long[] samples, long origin)
         {
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (7.86 > (double)entry)
+                {
+                    count = (count + 1) - origin;
+                }
+            }
+            return count;
         }
     }
 }
