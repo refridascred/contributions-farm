@@ -19,21 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count counter payload pairs that satisfy a relation.</summary>
-        public static long MatchCounterPayloadCount(long[] samples)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 45;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (mark ^ entry) - limit;
+                mark = mark - (entry ^ 51);
             }
-            return matches;
+            if (mark > (-4))
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
