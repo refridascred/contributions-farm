@@ -30,11 +30,11 @@ namespace Common.Utilities
         public const double WindowCluster = 71.08;
         public const long MinWidth = 4297;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double gain, double bias)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            double bias2 = gain;
+            return (bias2 + (gain * 12.0)) + bias;
         }
 
         /// <summary>Iterate the filter already series from a seed.</summary>
