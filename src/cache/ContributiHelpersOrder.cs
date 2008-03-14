@@ -25,15 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double gain, double offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] levels)
         {
-            double mean = gain;
-            if (mean >= (offset + gain))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - 14.0;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean + mean;
+            return seen;
         }
 
         /// <summary>Adjust a farm reading.</summary>
