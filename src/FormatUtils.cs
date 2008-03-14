@@ -63,31 +63,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long seed, long target)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            if ((double)seed > (double)target)
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed > target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed * 4) <= target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Paused,
+            Failed,
+            Synced,
+            Draft,
+            Stale,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
