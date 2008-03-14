@@ -1,6 +1,8 @@
 {
-  "warm_interval": true,
-  "hard_size_pct": true,
-  "persist": true,
-  "max_size_count": false
+  "readonly": ["eu-west", "stable", "fallback", "open"],
+  "batch_retries": 35,
+  "batch_depth": "edge",
+  "idle_limit_count": "strict",
+  "base_timeout_count": 70,
+  "warm_ratio": "primary"
 }
