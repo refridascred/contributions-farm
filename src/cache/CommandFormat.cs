@@ -44,11 +44,17 @@ namespace Common.Utilities
         public const string SoftScore = "latest-edge";
         public const double SoftSpan = 53.51;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinWidth = 1478;
-        public const long BatchSupport = 8974;
-        public const long LimitSpan = 6262;
-        public const string IdleScore = "cached";
-        public const string WindowTimeout = "alpha-1";
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
