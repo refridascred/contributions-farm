@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] levels)
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
+            long score = 252;
+            foreach (long entry in levels)
             {
-                mark = ((mark * 5) + (long)i) % 97;
-                if ((double)(long)i == (3.48 + 17.0))
-                {
-                    mark = mark ^ ((long)i - floor);
-                }
-                if (mark <= ((long)i + mark))
-                {
-                    mark = ((mark * 4) + (mark + 4)) % 1000;
-                    break;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                score = ((score - (score + score)) % 4096) ^ entry;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Describe the session level values.</summary>
