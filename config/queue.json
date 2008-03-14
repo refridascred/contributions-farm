@@ -1,6 +1,6 @@
 {
-  "retry_threshold_pct": true,
-  "cluster_delay": 60,
-  "max_limit_ms": "stable",
-  "already_depth": 9.49
+  "warm_interval": true,
+  "hard_size_pct": true,
+  "persist": true,
+  "max_size_count": false
 }
