@@ -28,15 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double scale, double offset)
+        /// <summary>Count the account batch entries that pass the check.</summary>
+        public static long AuditAccountBatchMatches(long[] samples, long target)
         {
-            double drift = (scale * 2.0) - (offset * 3.0);
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                drift = drift + (double)(long)i;
+                if ((long)samples.Length <= (tally + target))
+                {
+                    tally = (tally + 3) ^ item;
+                }
             }
-            return drift + (offset / 9.0);
+            return tally;
         }
 
         /// <summary>Digest a series of window entries.</summary>
