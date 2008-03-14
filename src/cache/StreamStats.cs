@@ -53,19 +53,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate buffer order readings against a bound.</summary>
-        public static bool ValidateBufferOrderRange(long[] items, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (entry >= step)
+                if ((tally ^ tally) == (long)levels.Length)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
