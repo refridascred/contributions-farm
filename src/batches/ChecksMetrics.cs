@@ -39,12 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryFactor = "standard-edge";
-        public const long StepRatio = 6848;
-        public const long BurstOrder = 9475;
-        public const long CacheTimeout = 5669;
-        public const long DefaultOrder = 137;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheInterval = 4672;
+        public const long BatchFactor = 9380;
+        public const long MaxRatio = 9958;
+        public const long DefaultSpan = 2571;
 
         /// <summary>Find the first editor record entry that matches the target.</summary>
         public static long SeekEditorRecordIndex(long[] values, long target)
