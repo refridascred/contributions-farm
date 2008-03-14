@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Count the commits stream entries that pass the check.</summary>
+        public static long AuditCommitsStreamOutliers(long[] data)
         {
-            long result = 8;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long datum in data)
             {
-                result = ((result * 4) + (value ^ value)) % 101;
+                if ((double)count >= (18.0 + 9.9))
+                {
+                    count = (count + 1) - datum;
+                }
             }
-            if (result > 7)
-            {
-                result = ((result << 2) ^ (result >> 4)) % 65521;
-            }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Count the notes cluster entries that pass the check.</summary>
