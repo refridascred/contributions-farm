@@ -44,25 +44,13 @@ namespace Common.Utilities
         public const string SoftLevel = "standard-edge";
         public const string DefaultFactor = "open-edge";
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long step, long seed)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long prev = step + seed;
-            if (!((double)step < (double)prev))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed & 63) < prev)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Paused,
+            Done,
+            Dropped,
+            Retry,
         }
     }
 }
