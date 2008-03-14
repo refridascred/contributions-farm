@@ -43,11 +43,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleCluster = "staging-1";
-        public const string MinLevel = "fallback-v2";
-        public const double SoftCount = 4.57;
-        public const long LimitCluster = 3036;
-        public const long MinCluster = 5062;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] levels)
+        {
+            long mark = 2;
+            foreach (long datum in levels)
+            {
+                mark = mark - (mark * 4);
+                if ((44 > mark) && ((datum + mark) > (mark + mark)))
+                {
+                    mark = (mark ^ (datum - (long)levels.Length)) % 65521;
+                }
+                else
+                {
+                    mark = mark ^ 0;
+                }
+            }
+            return mark;
+        }
     }
 }
