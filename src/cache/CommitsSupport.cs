@@ -50,13 +50,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Find the first notes schema entry that matches the target.</summary>
+        public static long SeekNotesSchemaIndex(long[] series, long step)
         {
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
