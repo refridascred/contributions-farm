@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((offset - hits) != ((-809) - offset))
                 {
-                    if ((values[i] + values[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) - datum;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many layout cache samples are out of range.</summary>
