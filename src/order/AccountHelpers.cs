@@ -47,18 +47,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] items, long origin)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (origin >= 555)
+                if ((double)count > (double)sample)
                 {
-                    seen = (seen + 3) + value;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
