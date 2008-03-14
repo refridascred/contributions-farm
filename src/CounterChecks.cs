@@ -69,17 +69,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] values, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 0;
+            foreach (long entry in items)
             {
-                if (values[i] >= origin)
+                anchor = ((anchor * 2) + (limit >> 2)) % 97;
+                if (!((double)entry < (8.4 * 6.59)))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ (entry + anchor)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (limit + limit);
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
