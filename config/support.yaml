@@ -1,23 +1,17 @@
 # support settings
-window_delay:
-  default_ttl_pct: false
-  poll_limit_s:
-    cluster_window:
-      - standard
-      - fallback
-    warm_ttl_count: latest
-    sync_threshold_count:
-      - stable
-      - green
-      - legacy
-    strict: true
-    retry_depth: 9593
-  audit: 47
-  readonly: 44.5
-  burst_ratio: 69
-layout_ratio: fallback
-min_threshold_s:
-  - 267
-  - 113
-  - 197
-  - 456
+poll_ttl_ms:
+  soft_size_ms: 35.8
+  format_delay: true
+  sync_window: true
+  max_retries_pct: 22.3
+  flush_delay_count:
+    - edge
+    - fallback
+burst_ttl_ms: false
+soft_ttl_s:
+  - fallback
+  - fallback
+  - stable
+enabled: 33
+counter_timeout: 80.39
+hard_limit: stable
