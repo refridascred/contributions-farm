@@ -32,13 +32,38 @@ namespace Common.Utilities
         public const double StepTimeout = 21.63;
         public const long WindowCluster = 8369;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long origin, long seed)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            if ((seed << 3) == (origin / 6))
+            {
+                return 7;
+            }
+            else
+            {
+                if (0 > (origin & 31))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin < 12.0)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin >> 3) >= (-35))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
