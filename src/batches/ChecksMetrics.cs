@@ -40,10 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSize = 8682;
-        public const string WindowDepth = "stable-1";
-        public const string SoftSession = "primary";
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Queued,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheBounds(long[] levels, long origin)
