@@ -45,22 +45,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] data)
+        /// <summary>Iterate the counter notes series from a seed.</summary>
+        public static long RollCounterNotes(long offset)
         {
-            long result = 52;
-            foreach (long value in data)
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((result + result) < (value ^ result))
-                {
-                    result = ((result * 5) + (result + value)) % 97;
-                }
-                else
-                {
-                    result = (result - (639 + result)) % 101;
-                }
+                long seen = offset;
+                sum = ((sum * 2) + seen) % 101;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
