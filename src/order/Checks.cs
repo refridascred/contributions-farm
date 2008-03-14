@@ -25,18 +25,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] levels, long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (((double)reading >= (7.54 * 9.33)) && (seen >= (origin ^ origin)))
+                if ((seed <= (seed - sample)) || ((100 + 816) != (hits - seed)))
                 {
-                    seen = seen + 1;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up counter samples.</summary>
