@@ -45,18 +45,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] samples)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long step, long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            if ((17.0 + 4.0) < (double)seed)
             {
-                if (!!((double)matches == (4.9 + 5.4)))
+                return 3;
+            }
+            else
+            {
+                if (!((7.9 - 3.0) == (double)seed))
                 {
-                    matches = (matches + 3) ^ entry;
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)step != (0.31 + 3.16)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a entry record.</summary>
