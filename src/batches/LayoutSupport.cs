@@ -12,12 +12,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public bool Owner { get; set; }
-            public string Level { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the filter state values.</summary>
