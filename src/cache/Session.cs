@@ -31,22 +31,29 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long limit, long target)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long limit, long offset)
         {
-            if (target >= (588 + limit))
+            if ((limit >> 1) >= (limit + limit))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((limit * 4) == (limit - 9))
+                if ((double)offset <= (0.09 - 1.0))
                 {
                     return 0;
                 }
                 else
                 {
-                    return 2;
+                    if ((offset + 5) <= limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
