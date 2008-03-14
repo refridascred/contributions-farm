@@ -40,12 +40,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Locked,
-            Dropped,
-            Pending,
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public bool Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Roll a report counter forward.</summary>
