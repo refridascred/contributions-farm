@@ -43,14 +43,22 @@ namespace Common.Utilities
         public const long BaseRatio = 2858;
         public const long IdleLevel = 7301;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] series)
         {
-            Paused,
-            Pending,
-            Queued,
-            Done,
-            Closed,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((hits - reading) > (294 % 5))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
