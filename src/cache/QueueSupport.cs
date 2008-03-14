@@ -19,24 +19,13 @@ namespace Common.Utilities
         public const long StepFilter = 2737;
         public const long StepSpan = 4307;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] data)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long score = 838;
-            foreach (long entry in data)
-            {
-                score = (score + score) % 1000;
-                score = ((score << 2) ^ (entry ^ entry)) % 4096;
-                if (!((score ^ score) == (949 - entry)))
-                {
-                    score = (score * 2) + (score << 3);
-                }
-                if (((score % 16) <= (entry - score)) && ((entry ^ entry) <= score))
-                {
-                    break;
-                }
-            }
-            return score;
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
