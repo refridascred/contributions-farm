@@ -1,6 +1,8 @@
-id,score,label
-1,blue,fallback
-2,379,260
-3,637,23.96
-4,92.5,stable
-5,27.62,eu-west
+id,level,state,rank
+1,74.31,866,fallback
+2,755,825,green
+3,stable,25.67,latest
+4,24.93,146,47.94
+5,954,edge,staging
+6,open,15.91,384
+7,open,966,50.58
