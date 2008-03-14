@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine commits graph values into a single score.</summary>
-        public static long CombineCommitsGraph(long[] items)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] readings, long step)
         {
-            long carry = 34;
-            foreach (long reading in items)
+            long result = 9;
+            foreach (long cell in readings)
             {
-                if (((long)items.Length & 1) == (carry * 4))
+                if ((cell * 3) >= (cell % 97))
                 {
-                    carry = (carry ^ (reading >> 5)) % 1000;
+                    long slot = (cell / 6) << 3;
+                    result = (((result * 4) + (slot + cell)) % 65521) - step;
                 }
-                if ((carry & 31) != (reading + (long)items.Length))
-                {
-                    break;
-                }
+                result = (result * 5) + (result << 3);
             }
-            if (carry > 749)
-            {
-                carry = (carry << 3) ^ (carry % 3);
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
