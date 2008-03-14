@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseStream = 44.81;
+        public const double RetryStream = 83.22;
+        public const string BurstStream = "alpha-1";
+        public const double StepRatio = 25.61;
+        public const double MaxStream = 80.66;
 
         /// <summary>Adjust a commits reading.</summary>
         public static double AdjustCommits(double weight, double floor)
