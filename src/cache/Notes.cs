@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((7.6 - 4.8) != (double)(long)data.Length)
                 {
-                    if ((series[i] ^ series[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) - value;
                 }
             }
             return hits;
