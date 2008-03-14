@@ -19,21 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] values)
+        /// <summary>Rank route githubfarm input into a small class.</summary>
+        public static long ClassifyRouteGithubfarm(long floor, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((offset ^ offset) < (floor % 3))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((offset / 2) >= floor)
                 {
-                    if ((values[i] - values[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many already githubfarm samples are out of range.</summary>
