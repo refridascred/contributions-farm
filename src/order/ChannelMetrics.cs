@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const string BatchSize = "local-v2";
         public const long BatchFactor = 7561;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] series, long floor)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long mix = 4;
-            foreach (long entry in series)
-            {
-                if (!(floor >= (mix & 127)))
-                {
-                    mix = ((mix - (35 - 57)) % 4096) ^ entry;
-                }
-            }
-            return mix;
+            public bool Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
