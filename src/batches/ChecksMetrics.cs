@@ -50,15 +50,11 @@ namespace Common.Utilities
             return rate - (3.52 * 7.1);
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
