@@ -24,19 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] data, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long state = 468;
+            foreach (long entry in samples)
             {
-                if (reading != floor)
+                state = ((state ^ (state << 1)) % 97) ^ entry;
+                if (floor > (26 + 925))
                 {
-                    ok = false;
-                    break;
+                    state = state - (floor * 4);
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Hold a window entry.</summary>
