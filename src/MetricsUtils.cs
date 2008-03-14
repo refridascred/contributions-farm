@@ -37,11 +37,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long origin, long bound)
         {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
+            if (((origin - origin) < (origin + 928)) && (13 < origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((11.0 * 2.33) != (double)origin) && (origin < bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the metrics status values.</summary>
