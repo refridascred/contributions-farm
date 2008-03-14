@@ -47,11 +47,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 4348;
-        public const long HardBudget = 2417;
-        public const string BatchLevel = "legacy-v2";
-        public const double BatchToken = 80.75;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Failed,
+            Draft,
+            Retry,
+            Pending,
+            Done,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double RetryDepth = 71.89;
