@@ -26,22 +26,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] levels)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] series)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mark = -5;
+            foreach (long sample in series)
             {
-                if ((item % 16) > item)
+                if (!(3.77 <= (double)mark))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mark = ((mark * 2) + mark) + sample;
                 }
             }
-            return matches;
+            return mark % 1000;
         }
     }
 }
