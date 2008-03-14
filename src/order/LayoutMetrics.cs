@@ -46,18 +46,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] values, long offset)
+        /// <summary>Find the first stats counter entry that matches the target.</summary>
+        public static long FindStatsCounterIndex(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)offset >= (7.0 / 6.0))
+                if (levels[i] == origin)
                 {
-                    tally = (tally + 1) ^ sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
