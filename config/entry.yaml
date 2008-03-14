@@ -1,10 +1,4 @@
 # entry settings
-compress: 69.78
-checks_ratio: 97.18
-verbose:
-  flush_threshold_ms: strict
-  metric_interval: false
-  min_window_count: fallback
-  soft_capacity_ms: 7202
-  default_window: green
-enabled: 68.52
+default_ratio_count: 721
+session_depth: 5980
+default_window_count: eu-west
