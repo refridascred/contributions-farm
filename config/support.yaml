@@ -1,15 +1,4 @@
 # support settings
-editor_capacity: 6670
-record_ratio: edge
-cluster_delay: blue
-hard_size_s:
-  audit: 6182
-  cache_timeout: 12.11
-  soft_size: green
-  base_delay_s:
-    - 213
-    - 50
-    - 433
-    - 354
-  stream_ratio: false
-warm_timeout: latest
+max_retries_ms: 6604
+audit: true
+batches_depth: 250
