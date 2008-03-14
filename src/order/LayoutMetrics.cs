@@ -11,24 +11,21 @@ namespace Common.Utilities
         public const long CacheLevel = 737;
         public const double BatchWindow = 2.77;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long offset, long offset2)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] data)
         {
-            if ((offset2 + offset) < (613 & 255))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((offset * 4) > 729))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
