@@ -19,13 +19,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Synced,
-            Paused,
+            Dropped,
             Locked,
-            Retry,
+            Failed,
         }
 
         /// <summary>Hold a profile record.</summary>
