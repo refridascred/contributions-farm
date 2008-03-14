@@ -28,14 +28,14 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            Failed,
-            Active,
-            Synced,
+            Stale,
             Retry,
-            Locked,
+            Done,
+            Dropped,
+            Pending,
         }
     }
 }
