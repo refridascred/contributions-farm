@@ -20,12 +20,32 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long target, long limit)
         {
-            Paused,
-            Closed,
-            Idle,
+            long next = target ^ limit;
+            if ((2 + limit) < 2)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((3.17 - 6.5) > (double)limit) || ((double)target <= (6.0 * 17.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((8 + next) == (next + next)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
