@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] series, long limit)
         {
-            Synced,
-            New,
-            Done,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
