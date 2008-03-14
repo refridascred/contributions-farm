@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Audit buffer cluster readings against a rule.</summary>
+        public static long AuditBufferClusterMatches(long[] readings)
         {
-            Locked,
-            Failed,
-            New,
-            Ready,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (!(seen >= (entry + seen)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a record record.</summary>
