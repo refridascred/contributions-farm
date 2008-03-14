@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Locked,
-            Idle,
-            Stale,
-            Ready,
-            Failed,
+            public double Region { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a metrics queue counter forward.</summary>
