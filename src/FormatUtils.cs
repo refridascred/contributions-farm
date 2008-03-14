@@ -41,12 +41,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultCluster = 83.26;
-        public const long HardCluster = 4240;
-        public const double MinCluster = 14.86;
-        public const long WindowSpan = 426;
-        public const long SoftScore = 5383;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = ((state << 2) ^ (seed + 5)) ^ (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
