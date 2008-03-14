@@ -31,19 +31,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double rate, double span)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] values)
         {
-            double gain = 2.1 + rate;
-            if (gain >= (gain / 5.0))
+            long matches = 0;
+            foreach (long sample in values)
             {
-                gain = gain + (gain - gain);
+                if ((8.0 * 5.0) > (double)sample)
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                gain = gain - (span - rate);
-            }
-            return gain + rate;
+            return matches;
         }
 
         /// <summary>Hold a channel options.</summary>
