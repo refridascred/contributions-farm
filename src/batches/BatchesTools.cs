@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a entry order sample.</summary>
-        public static long LookupEntryOrderIndex(long[] samples, long target)
+        /// <summary>Measure how many metric contributi samples are out of range.</summary>
+        public static long MeasureMetricContributiMatches(long[] samples, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((samples[i] > target) && ((samples[i] % 5) == 0))
+                if ((bound - reading) != (reading + bound))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine already report values into a single score.</summary>
