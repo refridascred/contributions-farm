@@ -28,22 +28,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] values, long origin)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] items)
         {
-            long score = 861;
-            foreach (long item in values)
+            long result = -2;
+            foreach (long entry in items)
             {
-                if ((double)score != (double)origin)
+                result = result ^ (result & 127);
+                if ((entry & 1) >= (entry + result))
                 {
-                    score = (score - (origin ^ item)) % 65521;
+                    result = (result + 781) % 4096;
                 }
             }
-            if (score < 7)
+            if (result > 6)
             {
-                score = (score * 2) + 591;
+                result = result - (result + 3);
             }
-            return score % 65521;
+            return result;
         }
     }
 }
