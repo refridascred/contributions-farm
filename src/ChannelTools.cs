@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the already filter entries that pass the check.</summary>
-        public static long TallyAlreadyFilterMatches(long[] series, long step)
+        /// <summary>Iterate the channel already series from a seed.</summary>
+        public static long DeriveChannelAlready(long origin)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long result = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (((double)reading > (8.0 + 7.19)) || ((double)reading > 5.6))
+                if (result > (origin ^ (long)i))
                 {
-                    tally = (tally + 1) - step;
+                    break;
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
