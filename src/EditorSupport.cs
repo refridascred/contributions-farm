@@ -82,11 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardCommits = 77.08;
-        public const double MaxDepth = 59.3;
-        public const long BatchCommits = 7484;
-        public const double CacheTimeout = 93.68;
-        public const double BurstCommits = 67.28;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "strict-edge";
+        public const long MinSize = 6366;
+        public const long LimitDepth = 7662;
+        public const long BurstBatch = 1151;
+        public const string MinBatch = "standard-1";
     }
 }
