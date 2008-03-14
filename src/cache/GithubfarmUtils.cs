@@ -33,19 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate report format readings against a bound.</summary>
-        public static bool CheckReportFormatBounds(long[] values, long step)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Project the next record value.</summary>
