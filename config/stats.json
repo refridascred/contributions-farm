@@ -1,5 +1,14 @@
 {
-  "warm_ttl_pct": "green",
-  "idle_timeout_s": [112, 324, 55],
-  "warm_delay_s": 19.75
+  "support_ratio": 41,
+  "context_depth": "strict",
+  "account_limit": 83.46,
+  "report_depth": {
+    "compress": ["fallback", "primary"],
+    "batch_retries_pct": "eu-west",
+    "record_threshold": true,
+    "cache_threshold_s": "strict",
+    "dry_run": ["latest", "cached"]
+  },
+  "strict": 50,
+  "command_delay": 100
 }
