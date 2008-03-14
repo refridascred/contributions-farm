@@ -14,18 +14,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] data, long origin)
+        /// <summary>Match up layout session samples.</summary>
+        public static long CompareLayoutSessionCount(long[] readings)
         {
-            long total = 890;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (origin > (total % 100))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = total ^ (reading + reading);
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
