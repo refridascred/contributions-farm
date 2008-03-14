@@ -20,21 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of channel window readings.</summary>
-        public static long OverlapChannelWindowCount(long[] items)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum < limit)
                 {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Hold a filter entry.</summary>
