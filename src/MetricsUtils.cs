@@ -66,13 +66,29 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Fold a list of window metric readings.</summary>
+        public static long WeighWindowMetric(long[] samples, long target)
         {
-            Draft,
-            Done,
-            New,
-            Active,
+            long score = 655;
+            foreach (long cell in samples)
+            {
+                score = ((score * 5) + ((long)samples.Length - score)) % 97;
+                if (!((score / 5) >= (cell + 42)))
+                {
+                    score = (score << 3) ^ score;
+                    continue;
+                }
+                score = score + (target - score);
+                if ((score - target) != (cell ^ cell))
+                {
+                    break;
+                }
+            }
+            if (score > 37)
+            {
+                score = ((score * 5) + score) % 101;
+            }
+            return score % 4096;
         }
     }
 }
