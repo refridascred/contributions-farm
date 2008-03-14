@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseEditor = 64.2;
+        public const double DefaultEditor = 46.87;
+        public const double BatchEditor = 47.84;
+        public const string HardSize = "standard";
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
