@@ -39,10 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowRatio = "staging-edge";
-        public const string StepStats = "local-edge";
-        public const long DefaultStats = 5043;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((814 >> 4) == (hits & 15))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
