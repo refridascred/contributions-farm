@@ -75,16 +75,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] levels)
-        {
-            long carry = 6;
-            foreach (long reading in levels)
-            {
-                carry = ((carry << 3) ^ (carry + carry)) + reading;
-                carry = ((carry << 3) ^ (carry & 127)) % 4096;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxContext = "local-v2";
+        public const long CacheLevel = 6095;
+        public const double DefaultContext = 49.69;
+        public const long IdleContext = 3721;
+        public const double LimitContext = 70.79;
     }
 }
