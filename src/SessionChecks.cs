@@ -43,18 +43,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((7.0 * 1.73) > (double)seed)
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleCluster = "staging-1";
+        public const string MinLevel = "fallback-v2";
+        public const double SoftCount = 4.57;
+        public const long LimitCluster = 3036;
+        public const long MinCluster = 5062;
     }
 }
