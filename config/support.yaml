@@ -1,4 +1,10 @@
 # support settings
-retry_ttl_s: 60
-batch_depth: legacy
-sync_capacity_s: 100
+sync_retries_s: latest
+cache_interval_count: 59
+batch_ratio: 88
+flush_ratio_count:
+  max_ratio: 28
+  cluster_limit: false
+  base_threshold_pct: blue
+retry_timeout_pct: latest
+sync_interval_ms: 73
