@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open edge cached; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=216
+RECORD_LIMIT=254
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-cached}"
+mode="${1:-green}"
 case "${mode}" in
-    cached)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
