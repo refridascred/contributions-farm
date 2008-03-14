@@ -31,19 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] levels, long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] levels, long floor)
         {
-            long mark = 1;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                mark = mark ^ (offset << 2);
-                if ((mark + mark) > entry)
+                if (datum > floor)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return mark;
+            return ok;
         }
     }
 }
