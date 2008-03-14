@@ -27,19 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue notes readings against a bound.</summary>
-        public static bool VerifyQueueNotesBounds(long[] items, long seed)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Rank { get; set; }
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
