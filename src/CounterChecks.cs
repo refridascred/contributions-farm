@@ -27,12 +27,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            Paused,
+            Locked,
+            Queued,
+            Done,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
