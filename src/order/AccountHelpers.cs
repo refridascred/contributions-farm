@@ -21,19 +21,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] samples, long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] series, long step)
         {
-            long state = 468;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long value in series)
             {
-                state = ((state ^ (state << 1)) % 97) ^ entry;
-                if (floor > (26 + 925))
+                if (value != step)
                 {
-                    state = state - (floor * 4);
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Hold a window entry.</summary>
