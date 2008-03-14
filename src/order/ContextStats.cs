@@ -39,24 +39,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long step, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] series, long floor)
         {
-            if (!(floor >= (59 + step)))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor >= (96 ^ step))
+                if (!((double)seen <= 9.9))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    seen = ((seen + 2) ^ value) - floor;
                 }
             }
+            return seen;
         }
     }
 }
