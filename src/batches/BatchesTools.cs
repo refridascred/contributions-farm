@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double weight, double span)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double scale, double offset)
         {
-            double scale = weight;
-            if (scale < span)
+            double weight = offset;
+            if (weight > weight)
             {
-                scale = scale + scale;
+                weight = weight + offset;
             }
-            return scale - weight;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (scale + 7.8)) + (double)(long)i;
+            }
+            return weight - scale;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
