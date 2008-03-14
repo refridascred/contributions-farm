@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const long SoftLevel = 312;
         public const long LimitGraph = 1305;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] levels)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((58 << 2) > (reading ^ tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Closed,
+            Done,
+            New,
+            Idle,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
