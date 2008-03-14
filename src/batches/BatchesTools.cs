@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Combine already report values into a single score.</summary>
+        public static long CombineAlreadyReport(long[] items, long limit)
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long result = 0;
+            foreach (long item in items)
+            {
+                result = (result ^ (limit + item)) % 1000;
+            }
+            if (result > 16)
+            {
+                result = result - (result * 2);
+            }
+            return result;
         }
 
         /// <summary>Hold a channel options.</summary>
