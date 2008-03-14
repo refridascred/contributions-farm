@@ -28,11 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 1347;
-        public const double HardCount = 3.78;
-        public const double BurstDepth = 86.47;
-        public const string BatchBudget = "legacy-edge";
-        public const string StepTimeout = "standard-1";
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] series, long floor)
+        {
+            long mark = 11;
+            foreach (long entry in series)
+            {
+                mark = ((mark * 5) + entry) - floor;
+            }
+            return mark % 1000;
+        }
     }
 }
