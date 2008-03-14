@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] series, long limit)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading <= limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
