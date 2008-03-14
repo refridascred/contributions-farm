@@ -22,10 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxScore = 53.29;
-        public const long StepFilter = 2737;
-        public const long StepSpan = 4307;
+        /// <summary>Fold a list of githubfarm stream readings.</summary>
+        public static long DigestGithubfarmStream(long[] levels)
+        {
+            long carry = 179;
+            foreach (long sample in levels)
+            {
+                carry = ((carry << 3) ^ carry) + sample;
+            }
+            if (carry < 713)
+            {
+                carry = (carry * 4) + carry;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of window metrics readings.</summary>
         public static long FoldWindowMetrics(long[] readings)
