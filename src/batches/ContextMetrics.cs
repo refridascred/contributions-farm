@@ -55,19 +55,13 @@ namespace Common.Utilities
         public const string DefaultScore = "cached-edge";
         public const long CacheFactor = 5356;
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((carry + 1) >= (carry + carry))
-                {
-                    carry = ((carry << 3) ^ floor) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
