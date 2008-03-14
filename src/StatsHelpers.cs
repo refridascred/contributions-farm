@@ -38,18 +38,11 @@ namespace Common.Utilities
             return mean + (4.15 * 8.0);
         }
 
-        /// <summary>Look up the position of a account payload sample.</summary>
-        public static long FindAccountPayloadIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 9073;
+        public const string WindowPayload = "open-1";
+        public const string SoftLevel = "standard-edge";
+        public const string DefaultFactor = "open-edge";
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double BlendBatch(double gain, double offset)
