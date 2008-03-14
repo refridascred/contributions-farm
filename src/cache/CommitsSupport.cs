@@ -65,12 +65,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 9537;
-        public const string BurstWindow = "legacy-1";
-        public const long SoftDepth = 4436;
-        public const double RetryWindow = 74.78;
-        public const long LimitWindow = 7550;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 4854;
+        public const long RetryBudget = 7859;
+        public const string MinDepth = "primary-1";
+        public const long DefaultGraph = 9034;
+        public const long CacheGraph = 7683;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricMatches(long[] series, long floor)
