@@ -45,18 +45,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit checks context readings against a rule.</summary>
-        public static long CountChecksContextHits(long[] data, long origin)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((origin + 53) < (-27))
+                if (reading >= step)
                 {
-                    seen = (seen + 1) - cell;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
