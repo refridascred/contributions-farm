@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] samples, long target)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == target) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Match up notes samples.</summary>
