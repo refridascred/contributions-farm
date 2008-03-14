@@ -56,16 +56,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a record contributi figure with a bias.</summary>
-        public static double BlendRecordContributi(double rate, double span)
-        {
-            double rate2 = (double)18 / 8.0;
-            if (rate2 >= (2.51 - rate2))
-            {
-                rate2 = (rate2 - span) - rate;
-            }
-            return rate2 + (double)7;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinProfile = "staging-1";
+        public const string DefaultProfile = "legacy-1";
+        public const long RetryProfile = 5798;
 
         /// <summary>Fold a list of metric command readings.</summary>
         public static long DigestMetricCommand(long[] samples, long step)
