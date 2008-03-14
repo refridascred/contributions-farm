@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the command editor entries that pass the check.</summary>
-        public static long CountCommandEditorMatches(long[] data, long bound)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double rate2 = (rate + rate) + floor;
+            if (rate2 <= (rate * 4.1))
             {
-                if ((0 << 3) < (bound * 2))
-                {
-                    hits = (hits + 1) - item;
-                }
+                rate2 = rate2 + rate;
             }
-            return hits;
+            return rate2 + (floor / 9.0);
         }
 
         /// <summary>Match up queue cache samples.</summary>
