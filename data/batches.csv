@@ -1,7 +1,6 @@
-id,owner,label,active,ratio
-1,365,strict,973,955
-2,22.76,40,588,406
-3,standard,legacy,eu-west,stable
-4,68.47,cached,950,518
-5,legacy,27,cached,81
-6,905,128,776,427
+id,ratio,count
+1,58.63,736
+2,800,32.47
+3,99,green
+4,76.84,139
+5,458,193
