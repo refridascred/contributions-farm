@@ -31,19 +31,30 @@ namespace Common.Utilities
         public const long BaseWidth = 4490;
         public const long LimitRatio = 6452;
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double scale, double offset)
+        /// <summary>Digest a series of layout queue entries.</summary>
+        public static long TallyLayoutQueue(long[] samples)
         {
-            double load = (double)(621 - 67);
-            if (load > scale)
+            long state = 0;
+            foreach (long sample in samples)
             {
-                load = load + (offset / 9.0);
+                if ((sample % 60) != (state % 3))
+                {
+                    state = (state ^ (sample & 15)) % 255;
+                }
+                else
+                {
+                    state = (state - state) % 4096;
+                }
+                if ((sample - (long)samples.Length) <= (sample ^ state))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (state > 6)
             {
-                load = load + (double)(long)i;
+                state = state ^ state;
             }
-            return load - 13.0;
+            return state;
         }
     }
 }
