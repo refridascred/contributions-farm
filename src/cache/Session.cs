@@ -21,24 +21,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long bound, long bound2)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] data)
         {
-            if ((bound >> 1) != (bound2 + 5))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((bound2 >> 5) < bound))
+                if ((hits >> 5) > hits)
                 {
-                    return 3;
+                    hits = (hits + 3) + cell;
                 }
                 else
                 {
-                    return 6;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
