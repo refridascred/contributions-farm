@@ -37,31 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long seed, long origin)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            if ((seed - 956) >= (32 * 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed < (5 % 16))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((95 + origin) > seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Failed,
+            Pending,
+            Closed,
+            Stale,
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
