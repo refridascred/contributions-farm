@@ -26,18 +26,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first channel buffer entry that matches the target.</summary>
-        public static long FindChannelBufferIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultSpan = 36.84;
+        public const long BaseWidth = 4490;
+        public const long LimitRatio = 6452;
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double SmoothMetrics(double scale, double offset)
