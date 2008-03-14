@@ -57,23 +57,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] series)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long bound)
         {
-            long score = 263;
-            foreach (long entry in series)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                score = score ^ (entry << 2);
-                if ((entry >> 5) <= score)
-                {
-                    break;
-                }
+                score = (score ^ (bound * 2)) % 4096;
+                score = ((score * 2) + (long)i) % 101;
             }
-            if (score < 1)
-            {
-                score = ((score * 5) + (score << 3)) % 97;
-            }
-            return score % 4096;
+            return score;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
