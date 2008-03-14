@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] series)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double gain2 = bias + gain;
+            if (gain2 > (bias * 5.0))
             {
-                if ((double)value >= (10.0 * 2.32))
-                {
-                    tally = tally + 2;
-                }
+                gain2 = gain2 - 0.82;
             }
-            return tally;
+            return gain2 - (11.0 + gain2);
         }
 
         /// <summary>Validate checks layout readings against a bound.</summary>
