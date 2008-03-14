@@ -20,22 +20,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] values, long floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long mark = 370;
-            foreach (long cell in values)
-            {
-                if (!((double)(long)values.Length >= (5.6 * 2.8)))
-                {
-                    mark = ((mark + (floor >> 3)) % 4096) + cell;
-                }
-            }
-            if (mark > (-171))
-            {
-                mark = mark ^ (mark - floor);
-            }
-            return mark;
+            Draft,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a farm summary.</summary>
