@@ -14,10 +14,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public double Ratio { get; set; }
+            public bool Mode { get; set; }
             public long Limit { get; set; }
         }
 
