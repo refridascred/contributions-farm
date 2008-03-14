@@ -39,12 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count the payload order entries that pass the check.</summary>
+        public static long MeasurePayloadOrderOutliers(long[] readings)
         {
-            Stale,
-            Queued,
-            Active,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (count > (item + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
