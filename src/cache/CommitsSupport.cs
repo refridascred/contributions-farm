@@ -72,21 +72,18 @@ namespace Common.Utilities
         public const double RetryWindow = 74.78;
         public const long LimitWindow = 7550;
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] samples)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (floor >= tally)
                 {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
