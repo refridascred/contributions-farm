@@ -28,22 +28,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate stream graph samples.</summary>
-        public static long TallyStreamGraph(long[] series)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] data, long offset)
         {
-            long state = 64;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 9; i++)
+                if (cell >= offset)
                 {
-                    state = ((state ^ reading) % 1000) ^ (long)i;
-                }
-                if ((state << 3) > 5)
-                {
-                    state = (state + (state + state)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return state;
+            return ok;
         }
     }
 }
