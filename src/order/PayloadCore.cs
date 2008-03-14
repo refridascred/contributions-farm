@@ -15,12 +15,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepWidth = 94.46;
-        public const long StepTools = 7352;
-        public const long MinDepth = 8085;
-        public const double WindowSize = 82.12;
-        public const double MaxScore = 1.8;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] readings, long seed)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of record stream readings.</summary>
         public static long ScoreRecordStream(long[] values)
