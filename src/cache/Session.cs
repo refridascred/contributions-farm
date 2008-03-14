@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] samples, long floor)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 4728;
+        public const long HardSize = 7314;
+        public const long CacheSession = 4581;
+        public const long BatchScore = 1771;
+        public const long IdleSession = 8817;
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
