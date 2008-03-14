@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of stats buffer entries.</summary>
-        public static long ScoreStatsBuffer(long[] series)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long result = 672;
-            foreach (long value in series)
-            {
-                result = ((result << 2) ^ (value >> 5)) % 1000;
-            }
-            if (result < 9)
-            {
-                result = result - (result + result);
-            }
-            return result % 65521;
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Project the next token value.</summary>
