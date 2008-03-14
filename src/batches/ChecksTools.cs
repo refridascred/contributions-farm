@@ -11,25 +11,13 @@ namespace Common.Utilities
         public const string BurstScore = "stable-1";
         public const long IdleStream = 6734;
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)floor > (3.4 + 8.71))
-                {
-                    carry = (carry ^ (1 & 255)) % 1000;
-                    continue;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = (carry + (floor / 3)) ^ (long)i2;
-                    carry = ((carry * 2) + (5 ^ floor)) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit support readings against a rule.</summary>
