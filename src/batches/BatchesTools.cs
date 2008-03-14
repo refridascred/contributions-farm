@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] data)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (entry < (seen << 2))
+                if ((item * 5) <= (item << 1))
                 {
-                    seen = seen + 1;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a channel options.</summary>
