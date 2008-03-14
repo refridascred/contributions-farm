@@ -36,19 +36,13 @@ namespace Common.Utilities
         public const double WindowDepth = 1.83;
         public const long MinSize = 6943;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] data, long step)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+            public bool Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Match up stream samples.</summary>
