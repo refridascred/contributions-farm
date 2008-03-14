@@ -22,19 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cluster report entry stays within the limit.</summary>
-        public static bool GuardClusterReportLimits(long[] data, long offset)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Stale,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the stats class values.</summary>
