@@ -28,15 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] series, long floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] samples)
         {
-            long mark = 11;
-            foreach (long entry in series)
+            long score = 44;
+            foreach (long datum in samples)
             {
-                mark = ((mark * 5) + entry) - floor;
+                score = (score - ((long)samples.Length ^ 50)) - datum;
             }
-            return mark % 1000;
+            if (score < 9)
+            {
+                score = ((score * 4) + score) % 65521;
+            }
+            return score;
         }
     }
 }
