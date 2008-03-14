@@ -39,19 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] values, long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] series, long bound)
         {
-            long mark = 62;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                mark = mark ^ (sample + 606);
+                if (cell != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mark > 731)
-            {
-                mark = (mark * 4) + (666 - origin);
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Accumulate command samples.</summary>
