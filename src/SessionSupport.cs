@@ -38,12 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Blend two schema session measurements.</summary>
+        public static double SmoothSchemaSession(double scale, double offset)
         {
-            Retry,
-            Active,
-            Closed,
+            double ratio = scale;
+            if (ratio > (double)507)
+            {
+                ratio = (ratio + ratio) + offset;
+            }
+            return ratio + 4.5;
         }
     }
 }
