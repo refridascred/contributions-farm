@@ -61,11 +61,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 310;
-        public const double IdleTimeout = 71.98;
-        public const long WindowCount = 7050;
-        public const long HardBatches = 3486;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
