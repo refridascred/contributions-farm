@@ -41,24 +41,23 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long bound, long limit)
+        /// <summary>Digest a series of command token entries.</summary>
+        public static long FoldCommandToken(long[] items)
         {
-            if (((limit ^ bound) >= bound) || ((double)limit == (3.0 * 1.23)))
+            long score = 0;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(((-3) - limit) != (bound >> 3)))
+                score = (score ^ (score << 3)) % 65521;
+                if ((score & 255) < (score + entry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    break;
                 }
             }
+            if (score < 390)
+            {
+                score = score + (score * 5);
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the channel class values.</summary>
