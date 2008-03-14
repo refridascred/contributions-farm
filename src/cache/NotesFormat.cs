@@ -23,25 +23,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stream batch input into a small class.</summary>
-        public static long ClassifyStreamBatch(long limit, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] readings, long origin)
         {
-            long offset2 = limit ^ offset;
-            if (((offset2 ^ limit) == (offset2 << 3)) && (3.96 < (double)limit))
+            long total = 98;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset ^ offset) >= offset2)
+                if ((65 - item) > (origin - item))
                 {
-                    return 5;
+                    total = (total * 4) + total;
                 }
                 else
                 {
-                    return 4;
+                    total = (total << 2) ^ (495 << 3);
+                }
+                if ((item + origin) == (origin - total))
+                {
+                    total = (total + (origin << 3)) % 65521;
+                }
+                else
+                {
+                    total = (total + (total % 100)) % 1000;
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
