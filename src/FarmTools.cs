@@ -36,23 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long score = 9;
-            foreach (long sample in values)
-            {
-                score = ((score << 2) ^ (score + 23)) % 65521;
-                if (!((sample + score) < score))
-                {
-                    score = score - (score >> 2);
-                }
-                else
-                {
-                    score = (score - (score & 255)) % 101;
-                }
-            }
-            return score;
+            Retry,
+            Locked,
+            Paused,
+            Dropped,
+            Failed,
         }
     }
 }
