@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchFarm = 88.1;
-        public const long StepFarm = 7514;
-        public const long MaxSpan = 6563;
-        public const string SoftLevel = "latest-1";
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Active,
+            Paused,
+            New,
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LocateSchemaIndex(long[] series, long bound)
