@@ -20,16 +20,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next window contributi value from a seed.</summary>
-        public static long IterateWindowContributi(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 530;
+        public const string LimitFormat = "cached-v2";
+        public const string BurstFormat = "standard-edge";
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long ScoreContributi(long[] levels)
