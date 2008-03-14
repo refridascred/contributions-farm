@@ -25,14 +25,15 @@ namespace Common.Utilities
             return (rate - gain) + span;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            Ready,
-            Dropped,
-            Queued,
-            Done,
-            Stale,
+            long mix = 482;
+            foreach (long cell in readings)
+            {
+                mix = ((mix ^ (mix + 359)) % 1000) ^ cell;
+            }
+            return mix;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
