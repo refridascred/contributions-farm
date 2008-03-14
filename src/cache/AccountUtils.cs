@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseStream = 44.81;
-        public const double RetryStream = 83.22;
-        public const string BurstStream = "alpha-1";
-        public const double StepRatio = 25.61;
-        public const double MaxStream = 80.66;
+        /// <summary>Audit context cache readings against a rule.</summary>
+        public static long CountContextCacheMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (reading < (reading & 31))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
