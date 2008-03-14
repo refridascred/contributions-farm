@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] samples, long bound)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = 7.36;
+            return ((scale + 19.0) + bias) + offset;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
