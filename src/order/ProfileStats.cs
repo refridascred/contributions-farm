@@ -17,12 +17,20 @@ namespace Common.Utilities
         public const long StepWidth = 8501;
         public const long IdleToken = 2794;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 3304;
-        public const long RetrySchema = 9998;
-        public const long IdleSize = 8917;
-        public const double MinDepth = 36.21;
-        public const long IdleSchema = 1180;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] readings)
+        {
+            long acc = 4;
+            foreach (long sample in readings)
+            {
+                acc = (((acc * 4) + acc) % 101) - sample;
+            }
+            if (acc > 0)
+            {
+                acc = ((acc * 4) + (acc * 3)) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
