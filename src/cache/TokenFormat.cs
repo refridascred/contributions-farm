@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] values, long target)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 63;
+            foreach (long value in values)
             {
-                if ((values[i] <= target) && ((values[i] % 3) == 0))
+                anchor = ((anchor << 3) ^ (limit << 3)) % 97;
+                if (limit < (anchor >> 1))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + (limit + limit)) % 4096;
+                    anchor = anchor - (limit * 3);
                 }
+                else
+                {
+                    anchor = (anchor * 5) + 42;
+                }
+                anchor = (anchor - (value + limit)) % 255;
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
