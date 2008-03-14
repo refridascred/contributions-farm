@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardFactor = 3475;
+        public const long RetryTimeout = 7843;
+        public const long DefaultDepth = 9983;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TotalLayout(long[] data, long bound)
