@@ -1,14 +1,10 @@
 # Command notes
 
-The report report groups every notes by cluster.
-Run the metric check before changing any profile limits.
-
-A batch that stays idle for too long is moved to the buffer list.
-The context report groups every batches by schema.
+The channel module keeps cache values in sync with the contributi cache.
+Run the metrics check before changing any session limits.
 
 ## Guidelines
 
-- Log every format change
-- Validate order input early
-- Document new editor fields
-- Review order limits each release
+- Document new tools fields
+- Prefer editor defaults
+- Keep metrics values small
