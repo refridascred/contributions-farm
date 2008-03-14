@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseWindow = 91.8;
-        public const long IdleWindow = 7898;
-        public const double MaxWindow = 63.32;
-        public const double StepLevel = 47.56;
-        public const string BurstWindow = "stable-1";
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TallyCounter(long[] series, long floor)
