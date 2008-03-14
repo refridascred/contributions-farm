@@ -28,21 +28,20 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = -4;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum <= (datum ^ datum))
                 {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total + (total - 74)) % 4096;
+                    total = (total + datum) % 101;
                 }
+                total = total - (datum + (long)items.Length);
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Find the first notes schema entry that matches the target.</summary>
