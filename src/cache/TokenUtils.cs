@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long seed, long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] data, long step)
         {
-            if ((bound << 2) == (516 - seed))
+            bool ok = true;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed & 15) == (seed & 255))
+                if (cell != step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (seed <= (seed / 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
