@@ -37,20 +37,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of window metrics readings.</summary>
-        public static long FoldWindowMetrics(long[] readings)
-        {
-            long mix = 479;
-            foreach (long entry in readings)
-            {
-                bool found = 282 < ((long)readings.Length / 5);
-                if (!!found)
-                {
-                    mix = (mix * 2) + (mix % 100);
-                }
-                mix = (mix ^ (mix - entry)) % 65521;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchToken = "stable";
+        public const long HardWidth = 1686;
+        public const long BaseToken = 8170;
+        public const string BaseScore = "open-edge";
     }
 }
