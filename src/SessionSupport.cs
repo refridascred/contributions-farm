@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long seed, long floor)
         {
-            Queued,
-            Pending,
-            Failed,
-            Locked,
-            Active,
+            long next = seed ^ floor;
+            if ((floor >> 2) <= (next ^ floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((14.0 + 6.21) < (double)next)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
