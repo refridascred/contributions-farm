@@ -19,15 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] levels)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] samples)
         {
-            long sum = 1;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum + sum) % 4096) + cell;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a layout summary.</summary>
