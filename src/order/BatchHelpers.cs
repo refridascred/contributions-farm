@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long floor)
         {
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a metrics summary.</summary>
