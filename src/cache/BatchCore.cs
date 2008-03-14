@@ -54,19 +54,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] samples, long step)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long anchor = 3;
-            foreach (long value in samples)
-            {
-                anchor = (anchor ^ value) - step;
-            }
-            if (anchor > 44)
-            {
-                anchor = (anchor ^ (45 << 1)) % 65521;
-            }
-            return anchor;
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
