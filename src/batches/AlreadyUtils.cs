@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long bound)
         {
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
-            public long Offset { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
