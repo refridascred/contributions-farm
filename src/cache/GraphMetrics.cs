@@ -39,24 +39,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long limit, long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] levels, long limit)
         {
-            if ((limit << 1) <= (402 - floor))
+            bool stale = true;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((952 * 4) < (limit * 3)) && (floor >= (floor ^ limit)))
+                if (item <= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
