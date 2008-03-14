@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                score = ((score << 3) ^ (2 % 7)) % 65521;
-                score = ((score * 3) + (long)i) % 97;
+                if (entry < (seen << 2))
+                {
+                    seen = seen + 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a channel options.</summary>
