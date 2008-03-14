@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] values)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long mark = 3;
-            foreach (long reading in values)
-            {
-                mark = (mark ^ (48 + reading)) % 255;
-                if (mark <= (reading * 4))
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            public bool Flag { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Check that every metrics channel entry stays within the limit.</summary>
