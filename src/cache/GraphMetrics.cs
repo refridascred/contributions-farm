@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] readings)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double bias, double span)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double drift = bias;
+            if (drift <= (double)(-11))
             {
-                if ((((double)matches != (5.0 / 3.0)) && ((57 & 31) < (datum - datum))) && ((datum * 3) != (datum & 31)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift + drift;
             }
-            return matches;
+            else
+            {
+                drift = drift - span;
+            }
+            return drift - (drift * 3.0);
         }
 
         /// <summary>Rank route githubfarm input into a small class.</summary>
