@@ -37,15 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stream cache series from a seed.</summary>
-        public static long IterateStreamCache(long origin)
+        /// <summary>Locate a notes cache reading by value.</summary>
+        public static long LocateNotesCacheIndex(long[] samples, long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
