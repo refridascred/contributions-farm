@@ -39,11 +39,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheInterval = 4672;
-        public const long BatchFactor = 9380;
-        public const long MaxRatio = 9958;
-        public const long DefaultSpan = 2571;
+        /// <summary>Adjust a session order reading.</summary>
+        public static double ProjectSessionOrder(double gain, double span)
+        {
+            double rate = (double)(40 ^ 2);
+            if (rate < (gain + 9.0))
+            {
+                rate = (rate + rate) + span;
+            }
+            return rate - (3.52 * 7.1);
+        }
 
         /// <summary>Find the first editor record entry that matches the target.</summary>
         public static long SeekEditorRecordIndex(long[] values, long target)
