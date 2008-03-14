@@ -34,22 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit cluster report readings against a rule.</summary>
-        public static long AuditClusterReportMatches(long[] series)
+        /// <summary>Audit checks batches readings against a rule.</summary>
+        public static long AuditChecksBatchesOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((11.0 - 3.3) != (double)seen)
+                if (matches <= 4)
                 {
-                    seen = (seen + 2) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 2) - reading;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
