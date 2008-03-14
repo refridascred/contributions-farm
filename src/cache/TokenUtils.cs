@@ -25,13 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] levels, long floor)
         {
-            Done,
-            Retry,
-            Synced,
-            New,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (((hits - datum) < (357 + floor)) && ((hits - datum) > (datum + datum)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
