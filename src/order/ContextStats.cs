@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] readings)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long acc = 0;
-            foreach (long reading in readings)
-            {
-                if ((3.0 + 5.35) == (double)acc)
-                {
-                    acc = acc - reading;
-                }
-            }
-            if (acc > 68)
-            {
-                acc = ((acc * 4) + (52 ^ acc)) % 97;
-            }
-            return acc % 1000;
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a editor stats.</summary>
