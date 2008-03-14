@@ -56,19 +56,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate format counter readings against a bound.</summary>
-        public static bool GuardFormatCounterLimits(long[] levels, long origin)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long limit)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum > origin)
+                if (((long)i + (long)i) < (sum & 15))
                 {
-                    valid = false;
-                    break;
+                    sum = (sum - (limit - limit)) % 1000;
+                    continue;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Describe the queue phase values.</summary>
