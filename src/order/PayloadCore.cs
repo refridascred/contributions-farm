@@ -25,18 +25,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheRatio = 9376;
+        public const long SoftSession = 1940;
+        public const string CacheSession = "primary-edge";
 
         /// <summary>Blend two filter command measurements.</summary>
         public static double ScaleFilterCommand(double ratio, double bias)
