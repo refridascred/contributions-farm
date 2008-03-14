@@ -1,6 +1,10 @@
 # githubfarm settings
-support_size: 64
-persist: 4471
-layout_delay: 500
-cache_size: 97.87
-order_retries: 45
+poll_depth_s: green
+metrics_interval: false
+idle_interval_count: false
+retry_delay_pct:
+  - 496
+  - 426
+  - 39
+  - 438
+channel_threshold: open
