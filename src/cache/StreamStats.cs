@@ -25,15 +25,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double scale, double floor)
+        /// <summary>Project the next order layout value.</summary>
+        public static double SmoothOrderLayout(double rate, double floor)
         {
-            double mean = floor;
-            if (mean > floor)
+            double mean = rate;
+            if (mean > (floor + floor))
             {
-                mean = (mean + mean) + scale;
+                mean = mean - 6.13;
             }
-            return mean + (floor / 4.0);
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
