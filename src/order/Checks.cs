@@ -43,21 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] values)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)seed > (9.1 / 3.0))
                 {
-                    if ((values[i] ^ values[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) + cell;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
