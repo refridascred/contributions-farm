@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every command route entry stays within the limit.</summary>
-        public static bool VerifyCommandRouteBounds(long[] values, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (sample <= limit)
+                if ((item < (6 << 3)) || ((hits >= (item >> 3)) && ((3.75 * 4.22) >= (double)item)))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a payload summary.</summary>
