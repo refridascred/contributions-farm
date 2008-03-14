@@ -28,10 +28,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinDepth = 2533;
-        public const double WindowContext = 4.41;
-        public const long LimitContext = 8735;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] levels, long offset)
+        {
+            long mix = -1;
+            foreach (long cell in levels)
+            {
+                mix = (mix ^ (78 & 1)) % 255;
+                mix = (mix << 3) ^ (cell + offset);
+                if (((offset ^ cell) == (mix ^ cell)) && ((cell << 3) >= (mix - cell)))
+                {
+                    mix = ((mix * 5) + (mix / 5)) % 1000;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheBounds(long[] levels, long origin)
