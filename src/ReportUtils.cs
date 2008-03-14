@@ -16,20 +16,12 @@ namespace Common.Utilities
             return gain2 - (11.0 + gain2);
         }
 
-        /// <summary>Validate checks layout readings against a bound.</summary>
-        public static bool ValidateChecksLayoutBounds(long[] samples, long seed)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFactor = 5090;
+        public const string SoftFormat = "legacy-1";
+        public const double BaseDepth = 27.91;
+        public const long StepLevel = 466;
+        public const string MinFormat = "latest-edge";
 
         /// <summary>Classify a account batches pair into a bucket.</summary>
         public static long GradeAccountBatches(long limit, long origin)
