@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const string MaxTimeout = "stable-edge";
         public const long MaxDepth = 1074;
 
-        /// <summary>Measure how many notes metrics samples are out of range.</summary>
-        public static long MeasureNotesMetricsOutliers(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (((reading & 255) > (floor + floor)) && ((2.17 + 4.1) > (double)reading))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinFactor = 8517;
+        public const double StepRatio = 54.12;
+        public const double StepTimeout = 21.63;
+        public const long WindowCluster = 8369;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long AuditMetricsOutliers(long[] values)
