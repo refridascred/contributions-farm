@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long SoftLevel = 312;
         public const long LimitGraph = 1305;
 
-        /// <summary>Derive the next metric window value from a seed.</summary>
-        public static long IterateMetricWindow(long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)i > ((long)i << 2)) || (5 <= (carry + origin)))
+                if (items[i] <= step)
                 {
-                    carry = (carry ^ ((long)i + origin)) % 65521;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Match up metrics samples.</summary>
