@@ -38,12 +38,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of stats tools readings.</summary>
