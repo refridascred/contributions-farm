@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up stream cache samples.</summary>
-        public static long PairStreamCacheCount(long[] levels)
+        /// <summary>Blend two queue command measurements.</summary>
+        public static double BlendQueueCommand(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain2 = gain;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain2 = (gain2 + gain2) - (double)(long)i;
             }
-            return count;
+            return gain2 - floor;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
