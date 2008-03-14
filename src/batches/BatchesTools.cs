@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a metric channel figure with a bias.</summary>
-        public static double ProjectMetricChannel(double scale, double span)
+        /// <summary>Look up the position of a entry order sample.</summary>
+        public static long LookupEntryOrderIndex(long[] samples, long target)
         {
-            double rate = (double)346 - (double)0;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = ((rate + (scale * 5.0)) + (double)(long)i) + span;
+                if ((samples[i] > target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - (rate - scale);
+            return -1;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
