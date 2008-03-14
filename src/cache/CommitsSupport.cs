@@ -48,22 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] data, long bound)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long score = 24;
-            foreach (long cell in data)
-            {
-                if (((bound / 6) < ((long)data.Length - cell)) || (score < (cell % 5)))
-                {
-                    score = (score - (bound % 10)) % 4096;
-                }
-                else
-                {
-                    score = (score - cell) % 1000;
-                }
-            }
-            return score;
+            public bool Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
