@@ -47,31 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] readings)
-        {
-            long acc = 81;
-            foreach (long sample in readings)
-            {
-                if (((acc >> 3) >= acc) && ((sample >> 2) <= (sample ^ sample)))
-                {
-                    acc = (acc - acc) % 65521;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (346 ^ sample)) % 101;
-                }
-                if ((2.0 * 9.0) >= (double)acc)
-                {
-                    acc = (acc * 2) + (sample - 341);
-                }
-            }
-            if (acc < 386)
-            {
-                acc = ((acc << 2) ^ acc) % 101;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstContributi = "open-1";
+        public const double DefaultLevel = 10.39;
+        public const double StepContributi = 84.69;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] series)
