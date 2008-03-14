@@ -44,25 +44,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((double)step <= (7.81 + 1.1)))
-                {
-                    total = (total << 2) ^ (7 / 4);
-                    continue;
-                }
-                else
-                {
-                    total = (total << 2) ^ step;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseStream = "staging-edge";
+        public const string DefaultStream = "primary-edge";
+        public const double DefaultInterval = 35.37;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long SortChannel(long origin, long origin2)
