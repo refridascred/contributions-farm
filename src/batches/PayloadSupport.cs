@@ -13,11 +13,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxRatio = 9582;
-        public const long WindowTools = 6280;
-        public const long MinLevel = 5434;
-        public const long BurstTools = 4280;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long limit, long step)
+        {
+            if ((limit >> 5) > (step / 8))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit + 56) >= step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit * 5) > step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step - step) > limit) || ((step % 7) <= (step - step)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long CombineToken(long[] series, long bound)
