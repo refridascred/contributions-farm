@@ -28,20 +28,24 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long limit, long bound)
         {
-            long total = -4;
-            foreach (long datum in items)
+            if ((double)bound == (14.0 * 18.0))
             {
-                if (datum <= (datum ^ datum))
-                {
-                    total = (total + (total - 74)) % 4096;
-                    total = (total + datum) % 101;
-                }
-                total = total - (datum + (long)items.Length);
+                return 7;
             }
-            return total;
+            else
+            {
+                if (((limit - bound) == (bound / 5)) || ((bound * 4) > (bound + bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Find the first notes schema entry that matches the target.</summary>
