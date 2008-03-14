@@ -1,5 +1,6 @@
 {
-  "compress": 76.14,
-  "audit": true,
-  "burst_retries": 11.6
+  "batch_ratio_ms": true,
+  "idle_ttl_ms": "fallback",
+  "cache_ttl_pct": false,
+  "warm_capacity_ms": false
 }
