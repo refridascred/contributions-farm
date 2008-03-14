@@ -1,6 +1,5 @@
 {
-  "strict": 549,
-  "profile_limit": false,
-  "layout_depth": true,
-  "default_interval_count": "fallback"
+  "persist": [267, 188, 429],
+  "idle_retries": 500,
+  "layout_timeout": 62.73
 }
