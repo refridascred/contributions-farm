@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] items)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double scale = floor * 13.0;
+            if (scale <= (9.7 * 0.5))
             {
-                if (!!((-21) < (reading + hits)))
-                {
-                    hits = hits + 2;
-                }
+                scale = scale + 2.0;
             }
-            return hits;
+            else
+            {
+                scale = scale - (1.41 + scale);
+            }
+            return scale + (ratio / 3.0);
         }
 
         /// <summary>Combine route values into a single score.</summary>
