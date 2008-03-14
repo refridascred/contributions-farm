@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] levels)
         {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
+            long score = 0;
+            foreach (long entry in levels)
+            {
+                score = ((score << 2) ^ (entry % 7)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
