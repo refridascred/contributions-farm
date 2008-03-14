@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate counter farm readings against a bound.</summary>
-        public static bool VerifyCounterFarmRange(long[] data, long bound)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            New,
+            Closed,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
