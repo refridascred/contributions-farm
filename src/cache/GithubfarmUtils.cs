@@ -55,13 +55,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long bound, long offset)
         {
-            Queued,
-            Active,
-            Closed,
-            Locked,
+            if (bound > (0 / 8))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((bound / 8) != (591 + 164)) && (offset >= (bound - offset)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
