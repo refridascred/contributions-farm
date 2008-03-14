@@ -1,5 +1,9 @@
 # githubfarm settings
-compress: eu-west
-filter_limit: 1024
-cache_interval_count: false
-soft_size_ms: 1024
+cache_interval_count: 14.59
+hard_depth: true
+retry_ttl_ms: stable
+entry_depth:
+  - cached
+  - cached
+  - local
+  - strict
