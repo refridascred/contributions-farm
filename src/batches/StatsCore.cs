@@ -41,31 +41,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long origin, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] levels, long seed)
         {
-            if ((step ^ origin) <= origin)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((origin - (-880)) >= (818 ^ origin)) || (origin < (origin / 7)))
+                if (sample < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((step ^ step) > (step - origin)) && ((-7) > (step + origin)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
