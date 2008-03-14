@@ -28,22 +28,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long limit, long bound)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long step, long target)
         {
-            if ((double)bound == (14.0 * 18.0))
+            if (step > (target - step))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (((limit - bound) == (bound / 5)) || ((bound * 4) > (bound + bound)))
+                if ((step > (step << 1)) && ((target + 44) > (step & 127)))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    return 3;
+                    return 2;
                 }
             }
         }
