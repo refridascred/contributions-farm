@@ -20,11 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Fold a list of checks editor readings.</summary>
+        public static long ScoreChecksEditor(long[] values)
         {
-            public long Weight { get; set; }
-            public bool Total { get; set; }
+            long score = 8;
+            foreach (long cell in values)
+            {
+                if (!((score >> 1) > (score + cell)))
+                {
+                    score = score ^ ((-6) + score);
+                }
+                score = ((score << 2) ^ (cell & 127)) % 4096;
+            }
+            if (score > 929)
+            {
+                score = (score - (score + 99)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a filter entry.</summary>
