@@ -32,16 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metric stream reading.</summary>
-        public static double AdjustMetricStream(double gain, double floor)
-        {
-            double rate = floor;
-            if (rate < (gain + 0.47))
-            {
-                rate = rate - gain;
-            }
-            return rate + (gain - rate);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitInterval = "stable-1";
+        public const long MinCommand = 8093;
+        public const long BaseCommand = 2860;
+        public const long BatchScore = 8212;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long DefaultToken = 3307;
