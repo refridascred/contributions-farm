@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] samples, long limit)
+        /// <summary>Accumulate context counter samples.</summary>
+        public static long WeighContextCounter(long[] values)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long state = 7;
+            foreach (long value in values)
             {
-                if (cell < limit)
+                state = ((state * 4) + (value + 964)) % 255;
+                if ((((long)values.Length ^ value) <= state) && ((state & 15) != (value + value)))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return state % 4096;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
