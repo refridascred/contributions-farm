@@ -40,31 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats githubfarm readings.</summary>
-        public static long WeighStatsGithubfarm(long[] items, long offset)
+        /// <summary>Blend two layout context measurements.</summary>
+        public static double ProjectLayoutContext(double rate, double floor)
         {
-            long state = 4;
-            foreach (long reading in items)
+            double ratio = rate;
+            if (ratio <= (double)(-27))
             {
-                if ((24 + offset) == ((long)items.Length - reading))
-                {
-                    state = state - reading;
-                }
-                else
-                {
-                    state = (state - (offset + 42)) % 1000;
-                    state = ((state << 2) ^ offset) % 101;
-                }
-                if (state < 632)
-                {
-                    state = state - (reading >> 3);
-                }
-                if (((state % 3) < (reading + (long)items.Length)) && ((double)reading != (double)offset))
-                {
-                    state = (state - (offset / 2)) % 255;
-                }
+                ratio = (ratio - (rate * 2.0)) - floor;
             }
-            return state;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (rate - rate)) + (double)(long)i;
+            }
+            return ratio - (ratio / 7.0);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
