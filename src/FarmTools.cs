@@ -36,17 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowStats = "alpha";
+        public const long RetryScore = 8940;
+        public const long BurstStats = 1263;
+        public const double BurstRatio = 5.77;
+        public const long HardStats = 4368;
     }
 }
