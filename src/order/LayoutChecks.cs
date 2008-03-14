@@ -45,19 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] samples, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (sample != seed)
+                if (!((entry & 1) > tally))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Describe the already class values.</summary>
