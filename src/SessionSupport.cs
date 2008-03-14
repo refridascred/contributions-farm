@@ -38,19 +38,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] series, long origin)
+        /// <summary>Rank graph layout input into a small class.</summary>
+        public static long RankGraphLayout(long offset, long step)
         {
-            long anchor = 82;
-            foreach (long reading in series)
+            long prev = offset + step;
+            if ((step - step) < (step % 100))
             {
-                anchor = ((anchor + origin) % 97) - reading;
+                return 6;
             }
-            if (anchor < 480)
+            else
             {
-                anchor = anchor - origin;
+                if ((prev / 4) > (step & 63))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step * 3) <= (-487)) && ((step + prev) >= (prev - step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((prev - step) != (step << 3)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return anchor;
         }
     }
 }
