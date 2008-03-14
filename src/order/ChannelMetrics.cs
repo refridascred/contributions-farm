@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] levels, long origin)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (hits < (hits % 97))
-                {
-                    hits = ((hits + 1) ^ value) + origin;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
