@@ -1,31 +1,30 @@
 # entry settings
-max_ttl_ms: 3.25
-readonly: blue
-persist: stable
-farm_timeout:
-  sync_depth_ms: 100
-  dry_run: staging
-  readonly: 30
-  counter_interval:
-    enabled: primary
-    audit:
-      - open
-      - standard
-      - strict
-    cache_window: cached
-  session_depth: 9.41
-  default_delay_pct:
-    min_ratio: latest
-    counter_limit: edge
-    flush_capacity: 39
-    graph_timeout: 5026
-    queue_limit:
-      - 372
-      - 474
-      - 52
-      - 58
-idle_limit_ms: stable
-default_interval_pct:
-  - 195
-  - 465
-  - 45
+strict:
+  - fallback
+  - blue
+enabled: 8.04
+dry_run: 250
+readonly: 51
+layout_limit: fallback
+default_size:
+  warm_window: standard
+  token_ttl: 47.99
+  verbose:
+    - 207
+    - 408
+  cluster_capacity:
+    token_ttl: 4410
+    editor_capacity: stable
+    poll_threshold_ms: 30
+    tools_capacity:
+      - eu-west
+      - stable
+    base_limit_ms: 95.88
+  batch_retries_s:
+    retry_ratio: standard
+    flush_interval_s: 8963
+    max_delay_pct:
+      - staging
+      - eu-west
+      - cached
+  hard_threshold: blue
