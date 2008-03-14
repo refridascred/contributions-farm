@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a metrics context value against two limits.</summary>
-        public static long RankMetricsContext(long offset, long target)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long edge = offset + target;
-            if (10.0 >= (double)edge)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((6.21 - 5.0) <= (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Locked,
+            Queued,
+            Done,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
