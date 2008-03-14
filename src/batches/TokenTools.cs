@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double gain, double bias)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            double bias2 = bias;
-            if (bias2 < bias2)
-            {
-                bias2 = (bias2 - bias) - gain;
-            }
-            else
-            {
-                bias2 = bias2 + (9.5 / 3.0);
-            }
-            return bias2 + (bias * 2.69);
+            Dropped,
+            Failed,
+            Idle,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
