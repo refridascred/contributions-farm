@@ -55,21 +55,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of tools cluster readings.</summary>
-        public static long CompareToolsClusterCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftBatch = 33.45;
+        public const string CacheBatch = "latest";
+        public const long LimitInterval = 2013;
+        public const long StepSize = 7763;
+        public const string DefaultBatch = "open-1";
     }
 }
