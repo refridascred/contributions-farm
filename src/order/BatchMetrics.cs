@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public long Label { get; set; }
+            Retry,
+            Draft,
+            Locked,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Measure how many report checks samples are out of range.</summary>
