@@ -27,19 +27,39 @@ namespace Common.Utilities
             return (bias - (double)(-2)) + offset;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] data, long target)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long floor, long target)
         {
-            long acc = 52;
-            foreach (long entry in data)
+            long span = floor - target;
+            if ((target ^ (-15)) == (target >> 4))
             {
-                acc = ((((acc * 2) + (420 / 6)) % 1000) ^ entry) - target;
+                return 3;
             }
-            if (acc < (-4))
+            else
             {
-                acc = acc ^ 969;
+                if ((double)target < (9.66 - 6.9))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target % 60) < (-606))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)span >= (2.8 - 6.68))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return acc % 1000;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
