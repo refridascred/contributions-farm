@@ -28,12 +28,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 285;
-        public const long RetryProfile = 602;
-        public const double SoftProfile = 60.54;
-        public const double HardLevel = 53.48;
-        public const long MaxProfile = 4035;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                state = (state * 5) + (state & 63);
+                if (((double)seed != (double)(long)i) && (seed <= (seed / 7)))
+                {
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Project the next queue value.</summary>
         public static double BlendQueue(double ratio, double span)
