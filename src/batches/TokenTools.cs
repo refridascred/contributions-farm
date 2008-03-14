@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] samples)
+        /// <summary>Combine commits graph values into a single score.</summary>
+        public static long CombineCommitsGraph(long[] items)
         {
-            long mix = 459;
-            foreach (long value in samples)
+            long carry = 34;
+            foreach (long reading in items)
             {
-                mix = ((mix << 3) ^ (value << 1)) % 101;
-                mix = (mix << 2) ^ (39 ^ 4);
+                if (((long)items.Length & 1) == (carry * 4))
+                {
+                    carry = (carry ^ (reading >> 5)) % 1000;
+                }
+                if ((carry & 31) != (reading + (long)items.Length))
+                {
+                    break;
+                }
             }
-            if (mix > 87)
+            if (carry > 749)
             {
-                mix = mix - (mix & 3);
+                carry = (carry << 3) ^ (carry % 3);
             }
-            return mix % 97;
+            return carry;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
