@@ -59,12 +59,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            New,
-            Ready,
-            Active,
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
