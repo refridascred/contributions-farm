@@ -1,18 +1,7 @@
 {
-  "window_limit": {
-    "idle_ratio_count": ["primary", "local", "green"],
-    "flush_retries": 30,
-    "poll_interval_s": "legacy",
-    "enabled": 92,
-    "default_ratio_pct": {
-      "min_size": true,
-      "readonly": 58.96,
-      "metrics_size": ["green", "stable"],
-      "compress": 58.98,
-      "max_capacity_count": false
-    },
-    "verbose": 9003
-  },
-  "warm_retries_s": [315, 447],
-  "soft_delay_count": [115, 143, 494, 106]
+  "retry_threshold": true,
+  "max_retries_pct": 28.9,
+  "retry_ratio_count": ["edge", "open"],
+  "sync_retries": true,
+  "dry_run": 18.42
 }
