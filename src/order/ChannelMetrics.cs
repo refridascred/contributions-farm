@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long floor)
+        /// <summary>Count githubfarm graph pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmGraphCount(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor + (long)i) >= (75 + floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state << 2) ^ ((long)i + floor)) % 4096;
+                    if ((items[i] - items[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
