@@ -33,18 +33,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of batch metric readings.</summary>
-        public static long CombineBatchMetric(long[] series)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long anchor = 3;
-            foreach (long cell in series)
-            {
-                if ((cell * 3) <= anchor)
-                {
-                    anchor = anchor - (cell & 255);
-                }
-            }
-            return anchor;
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the token kind values.</summary>
