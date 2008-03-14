@@ -37,22 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] readings, long step)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long limit)
         {
-            long result = 1;
-            foreach (long value in readings)
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (3 < value)
-                {
-                    result = (result - (8 * 3)) % 4096;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            if (result > 459)
-            {
-                result = ((result * 3) + step) % 255;
-            }
-            return result % 65521;
+            return acc;
         }
     }
 }
