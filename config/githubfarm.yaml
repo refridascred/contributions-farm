@@ -1,11 +1,5 @@
 # githubfarm settings
-flush_retries_count: 6.61
-min_ratio_count:
-  counter_interval: false
-  filter_delay: false
-  schema_size: false
-route_depth:
-  - local
-  - blue
-  - local
-cluster_threshold: true
+audit: 25
+default_ratio: 91.4
+record_ttl: 100
+hard_ratio_s: true
