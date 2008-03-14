@@ -35,19 +35,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] items, long target)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long step, long floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            if (!(floor >= (59 + step)))
             {
-                if (value <= target)
+                return 7;
+            }
+            else
+            {
+                if (floor >= (96 ^ step))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
     }
 }
