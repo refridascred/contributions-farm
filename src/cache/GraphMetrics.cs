@@ -61,22 +61,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] values, long origin)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] items)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count >> 3) != (count + reading))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] - items[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
