@@ -34,18 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record farm samples are out of range.</summary>
-        public static long MeasureRecordFarmGaps(long[] values, long target)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(target > (target % 5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) + reading;
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
