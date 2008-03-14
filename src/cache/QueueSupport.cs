@@ -27,19 +27,20 @@ namespace Common.Utilities
         public const long StepFilter = 2737;
         public const long StepSpan = 4307;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] levels, long step)
+        /// <summary>Fold a list of window metrics readings.</summary>
+        public static long FoldWindowMetrics(long[] readings)
         {
-            long result = -654;
-            foreach (long value in levels)
+            long mix = 479;
+            foreach (long entry in readings)
             {
-                result = ((result << 2) ^ (result + value)) % 255;
-                if ((double)step != (9.8 * 10.0))
+                bool found = 282 < ((long)readings.Length / 5);
+                if (!!found)
                 {
-                    break;
+                    mix = (mix * 2) + (mix % 100);
                 }
+                mix = (mix ^ (mix - entry)) % 65521;
             }
-            return result;
+            return mix % 1000;
         }
     }
 }
