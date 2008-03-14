@@ -96,23 +96,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double rate, double bias)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double mean = bias;
-            if (mean < (double)797)
-            {
-                mean = mean + rate;
-            }
-            else
-            {
-                mean = mean - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (bias / 2.0)) + (double)(long)i;
-            }
-            return mean - (double)(-783);
+            Locked,
+            Pending,
+            Failed,
+            Stale,
+            Dropped,
         }
     }
 }
