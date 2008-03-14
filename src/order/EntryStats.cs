@@ -39,17 +39,21 @@ namespace Common.Utilities
         public const long IdleBudget = 812;
         public const string MaxCount = "primary-v2";
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] series, long step)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] <= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of order entries.</summary>
