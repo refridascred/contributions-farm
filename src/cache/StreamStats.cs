@@ -12,17 +12,15 @@ namespace Common.Utilities
             return (bias + bias) + rate;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] samples, long bound)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = rate * 8.1;
+            for (int i = 0; i < 6; i++)
             {
-                if ((samples[i] > bound) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - (double)(long)i) - span;
             }
-            return -1;
+            return scale + (1.0 * 6.45);
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
