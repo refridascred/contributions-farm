@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double bias, double bias2)
         {
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public double Token { get; set; }
+            double weight = bias;
+            if (weight < weight)
+            {
+                weight = (weight - (bias * 1.3)) + bias2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Adjust a batch tools reading.</summary>
