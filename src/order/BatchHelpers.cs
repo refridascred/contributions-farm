@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 2610;
-        public const string MaxSpan = "stable";
-        public const long BaseRatio = 4830;
-        public const long BaseOrder = 4381;
-        public const long SoftCount = 9463;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long step, long limit)
+        {
+            long gap = step ^ limit;
+            if ((double)limit > (double)gap)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit >> 1) != (limit - gap))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-4) / 4) <= (limit * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((8 % 64) == (limit + gap))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long SeekStreamIndex(long[] values, long origin)
