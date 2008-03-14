@@ -61,13 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] values)
         {
-            Ready,
-            Closed,
-            Retry,
-            Failed,
+            long total = -422;
+            foreach (long sample in values)
+            {
+                total = total + (total * 5);
+                if ((sample & 1) > (total % 2))
+                {
+                    total = total ^ (553 - sample);
+                }
+            }
+            return total;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
