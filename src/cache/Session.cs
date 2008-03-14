@@ -23,21 +23,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Check that every profile report entry stays within the limit.</summary>
