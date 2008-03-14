@@ -33,18 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] series, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            long anchor = 82;
+            foreach (long reading in series)
             {
-                carry = (carry * 3) + ((long)i ^ limit);
-                carry = (carry * 3) + carry;
-                carry = (carry + carry) % 97;
-                carry = ((carry * 3) + (long)i) % 1000;
+                anchor = ((anchor + origin) % 97) - reading;
             }
-            return carry;
+            if (anchor < 480)
+            {
+                anchor = anchor - origin;
+            }
+            return anchor;
         }
     }
 }
