@@ -14,21 +14,30 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count session payload pairs that satisfy a relation.</summary>
-        public static long CompareSessionPayloadCount(long[] items)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = -46;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (587 > score)
                 {
-                    if ((items[i] ^ items[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (((score * 3) + (score + 0)) % 4096) ^ item;
+                }
+                else
+                {
+                    score = ((score << 2) ^ 6) % 255;
+                }
+                if (limit < (limit - limit))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (score < (-138))
+            {
+                score = ((score << 2) ^ score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
