@@ -60,37 +60,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long seed, long offset)
+        /// <summary>Classify a contributi tools pair into a bucket.</summary>
+        public static long BucketContributiTools(long offset, long limit)
         {
-            long step = seed ^ offset;
-            if (offset >= seed)
+            if (((double)limit >= (8.62 + 3.5)) && ((double)limit == (double)617))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((double)offset < 5.1)
+                if (((offset % 24) > (offset - limit)) && ((offset * 3) > (limit & 255)))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if (offset <= (offset & 31))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset >= (seed - step)) && ((617 ^ seed) != (step + seed)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
