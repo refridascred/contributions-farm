@@ -56,31 +56,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long origin, long bound)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            if (((-4) + origin) <= (origin - origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((11.0 * 0.2) < (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound > (bound + origin)) && ((origin + origin) == (origin + bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            Dropped,
         }
     }
 }
