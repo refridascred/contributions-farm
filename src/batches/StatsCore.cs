@@ -61,23 +61,9 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Scale a metric format figure with a bias.</summary>
-        public static double ScaleMetricFormat(double ratio, double offset)
-        {
-            double bias = (offset - offset) / 8.0;
-            if (bias <= bias)
-            {
-                bias = bias + 1.8;
-            }
-            else
-            {
-                bias = bias + (ratio - 9.6);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (7.2 - 1.4)) - (double)(long)i;
-            }
-            return bias + (5.72 / 6.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 8669;
+        public const double BurstSpan = 56.14;
+        public const long DefaultBudget = 9227;
     }
 }
