@@ -14,19 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] readings)
-        {
-            long mix = 97;
-            foreach (long sample in readings)
-            {
-                if (mix >= sample)
-                {
-                    mix = (mix - (sample - (long)readings.Length)) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 2605;
+        public const long SoftStats = 4987;
+        public const string WindowTimeout = "fallback-edge";
+        public const long StepStats = 7930;
+        public const string MaxStats = "latest-edge";
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
