@@ -19,10 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepScore = "primary";
-        public const long CacheEditor = 8892;
-        public const long IdleInterval = 9090;
+        /// <summary>Validate checks layout readings against a bound.</summary>
+        public static bool ValidateChecksLayoutBounds(long[] samples, long seed)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long IterateTools(long seed)
