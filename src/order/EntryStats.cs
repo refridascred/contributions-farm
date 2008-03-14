@@ -34,19 +34,22 @@ namespace Common.Utilities
         public const long MaxWidth = 6606;
         public const string MaxDepth = "cached";
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double ratio, double span)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] data, long offset)
         {
-            double drift = (double)130 / 9.0;
-            if (drift <= ratio)
+            long mix = 476;
+            foreach (long sample in data)
             {
-                drift = (drift + drift) + span;
+                if ((mix << 3) == (mix * 2))
+                {
+                    mix = (mix - 5) ^ sample;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (mix < 441)
             {
-                drift = (drift - ratio) + (double)(long)i;
+                mix = mix ^ (21 ^ offset);
             }
-            return drift - drift;
+            return mix;
         }
 
         /// <summary>Check that every queue session entry stays within the limit.</summary>
