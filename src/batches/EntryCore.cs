@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] data, long floor)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long offset, long bound)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long diff = offset + bound;
+            if ((((-68) - offset) > (diff * 5)) && ((15.0 + 14.0) == (double)diff))
             {
-                if (value > floor)
+                return 0;
+            }
+            else
+            {
+                if ((double)bound <= (double)21)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((diff > (bound % 16)) && ((offset - offset) < diff))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset << 3) <= offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Scale a schema command figure with a bias.</summary>
