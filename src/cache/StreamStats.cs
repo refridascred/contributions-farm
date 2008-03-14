@@ -32,19 +32,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate cluster queue samples.</summary>
-        public static long ScoreClusterQueue(long[] samples, long target)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long carry = 0;
-            foreach (long datum in samples)
-            {
-                if (target < (datum + target))
-                {
-                    break;
-                }
-                carry = (carry + carry) % 101;
-            }
-            return carry % 65521;
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
