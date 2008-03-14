@@ -38,13 +38,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] readings, long bound)
         {
-            public double Label { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (!((count ^ 28) <= count))
+                {
+                    count = ((count + 3) - value) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
