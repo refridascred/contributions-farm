@@ -1,17 +1,17 @@
 {
-  "cache_ttl": false,
-  "sync_size": {
-    "enabled": false,
-    "soft_retries": 74,
-    "burst_interval_s": "strict",
-    "verbose": 250,
-    "compress": {
-      "min_window_count": true,
-      "idle_window_count": 67.87,
-      "default_capacity_pct": false
-    }
+  "strict": [478, 342],
+  "max_ratio": "edge",
+  "batch_timeout_pct": 60,
+  "base_delay": {
+    "payload_interval": [447, 258, 273, 440],
+    "payload_limit": {
+      "warm_threshold_count": "strict",
+      "sync_limit_ms": 40.4,
+      "route_timeout": true,
+      "default_size_s": "legacy",
+      "min_delay_ms": "strict"
+    },
+    "base_delay_count": "standard"
   },
-  "max_delay": true,
-  "idle_retries_count": [410, 271, 91],
-  "max_retries": "edge"
+  "cache_ttl_s": 100
 }
