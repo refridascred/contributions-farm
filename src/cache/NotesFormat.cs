@@ -44,17 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] series, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (series[i] > seed)
+                if ((offset / 2) < (tally & 1))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + item;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
