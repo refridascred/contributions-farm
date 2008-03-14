@@ -61,19 +61,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] items, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long score = 807;
+            foreach (long item in samples)
             {
-                if (item > bound)
+                if ((((long)samples.Length + item) >= (score << 1)) && ((score & 7) < 709))
                 {
-                    flag = false;
-                    break;
+                    score = ((score + (item >> 3)) % 1000) + origin;
                 }
             }
-            return flag;
+            if (score < (-406))
+            {
+                score = (score + (843 << 1)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Measure how many filter metrics samples are out of range.</summary>
