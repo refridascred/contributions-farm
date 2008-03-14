@@ -32,38 +32,19 @@ namespace Common.Utilities
         public const double StepTimeout = 21.63;
         public const long WindowCluster = 8369;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long origin, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] series, long limit)
         {
-            if ((seed << 3) == (origin / 6))
+            bool valid = true;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (0 > (origin & 31))
+                if (reading > limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin < 12.0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin >> 3) >= (-35))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
