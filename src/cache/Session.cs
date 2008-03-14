@@ -44,38 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long limit, long origin)
+        /// <summary>Check that every profile report entry stays within the limit.</summary>
+        public static bool CheckProfileReportBounds(long[] samples, long bound)
         {
-            if (!(5.0 >= (double)limit))
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((3.83 + 16.0) <= (double)origin))
+                if (entry != bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit / 3) >= limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((14.0 * 3.69) != (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
