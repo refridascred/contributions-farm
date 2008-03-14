@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const string BatchSize = "local-v2";
         public const long BatchFactor = 7561;
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Locate a account buffer reading by value.</summary>
+        public static long LocateAccountBufferIndex(long[] items, long seed)
         {
-            public bool Token { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account options.</summary>
