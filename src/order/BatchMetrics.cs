@@ -28,31 +28,17 @@ namespace Common.Utilities
             return (ratio - 2.07) + rate;
         }
 
-        /// <summary>Grade a route tools value against two limits.</summary>
-        public static long BucketRouteTools(long bound, long offset)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] items, long step)
         {
-            if ((bound + offset) < (30 + offset))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)offset > (0.3 / 7.0)))
+                if ((items[i] < step) && ((items[i] % 3) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((331 - offset) == (11 >> 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit record schema readings against a rule.</summary>
