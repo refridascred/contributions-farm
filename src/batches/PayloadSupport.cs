@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Active,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstScore = 2858;
+        public const long HardFactor = 4187;
+        public const double RetryRecord = 28.21;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long GradeStats(long target, long seed)
