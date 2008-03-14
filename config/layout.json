@@ -1,6 +1,8 @@
 {
-  "base_size_pct": false,
-  "base_capacity_pct": 75,
-  "readonly": 2782,
-  "enabled": ["latest", "primary", "eu-west"]
+  "cache_retries": "eu-west",
+  "persist": "standard",
+  "hard_interval_s": 11.4,
+  "soft_interval_pct": "primary",
+  "dry_run": "edge",
+  "batch_retries_s": 18
 }
