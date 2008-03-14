@@ -19,14 +19,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Pending,
+            Queued,
+            Stale,
+            Active,
             Ready,
-            Draft,
-            Closed,
-            Retry,
+            Failed,
         }
 
         /// <summary>Describe the format phase values.</summary>
