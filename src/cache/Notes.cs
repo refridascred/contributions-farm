@@ -56,12 +56,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public long Owner { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 7444;
+        public const long WindowScore = 8908;
+        public const long RetryGraph = 5327;
 
         /// <summary>Accumulate commits report samples.</summary>
         public static long TotalCommitsReport(long[] levels, long step)
