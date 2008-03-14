@@ -12,15 +12,13 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
+for item in stable primary latest; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-blue}"
+mode="${1:-open}"
 case "${mode}" in
-    latest)
+    open)
         log "fast path"
         ;;
     *)
