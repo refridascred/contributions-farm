@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] values, long floor)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Limit { get; set; }
+            public double Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Audit account readings against a rule.</summary>
