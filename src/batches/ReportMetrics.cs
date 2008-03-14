@@ -14,20 +14,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Check that every metrics channel entry stays within the limit.</summary>
-        public static bool VerifyMetricsChannelLimits(long[] values, long bound)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinRatio = "legacy-v2";
+        public const double BatchInterval = 89.5;
+        public const long CacheLevel = 1178;
 
         /// <summary>Accumulate session samples.</summary>
         public static long FoldSession(long[] samples, long target)
