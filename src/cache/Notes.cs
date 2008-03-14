@@ -36,11 +36,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Grade a filter tools value against two limits.</summary>
+        public static long BucketFilterTools(long limit, long limit2)
         {
-            public long Region { get; set; }
-            public bool Score { get; set; }
+            long bound = limit ^ limit2;
+            if ((double)bound < (16.0 / 4.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((5.42 + 2.4) >= (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (47 > (99 + limit2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit >= 7.7)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
