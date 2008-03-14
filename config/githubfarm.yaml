@@ -1,7 +1,32 @@
 # githubfarm settings
-idle_size_count: primary
-batch_limit_ms: true
-account_threshold: local
-batch_retries_count: 69
-metric_ttl: cached
-poll_ttl_pct: green
+persist: 43
+burst_depth:
+  compress: eu-west
+  verbose: 100
+  buffer_depth:
+    min_depth_count: true
+    flush_window: 250
+    commits_ttl: 4825
+    compress: 30
+    burst_ratio_ms: 13.38
+  burst_size_s:
+    soft_ratio: 78.25
+    compress: blue
+    dry_run:
+      - latest
+      - edge
+      - staging
+      - edge
+    batch_limit_s:
+      - 233
+      - 413
+      - 283
+      - 279
+  persist:
+    - strict
+    - blue
+    - local
+poll_threshold: 55.43
+tools_limit: cached
+schema_capacity: open
+queue_timeout: edge
