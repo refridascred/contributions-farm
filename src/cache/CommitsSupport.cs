@@ -59,22 +59,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of command report readings.</summary>
-        public static long DigestCommandReport(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] series)
         {
-            long result = 257;
-            foreach (long cell in levels)
+            long total = 920;
+            foreach (long cell in series)
             {
-                if (((double)4 >= (double)result) || ((result % 12) != (cell << 3)))
+                total = (total ^ cell) % 1000;
+                if ((double)total != (11.0 * 19.0))
                 {
-                    result = (result - (result >> 2)) % 97;
+                    total = total ^ (294 ^ cell);
                 }
             }
-            if (result > 16)
-            {
-                result = ((result * 3) + result) % 1000;
-            }
-            return result % 1000;
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
