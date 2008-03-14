@@ -24,22 +24,9 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] levels)
-        {
-            long acc = 6;
-            foreach (long value in levels)
-            {
-                if (((-133) / 8) == (acc % 16))
-                {
-                    acc = (acc + (value >> 2)) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (acc + value)) % 97;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWidth = "alpha";
+        public const long WindowInterval = 5699;
+        public const string LimitWindow = "staging-edge";
     }
 }
