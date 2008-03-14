@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] samples, long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long diff = floor - origin;
+            if (((617 + floor) == (floor / 2)) && ((diff + floor) < ((-2) + origin)))
             {
-                if ((double)bound != (double)tally)
+                return 6;
+            }
+            else
+            {
+                if ((origin + diff) > 6)
                 {
-                    tally = (tally + 3) + sample;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor >> 2) != (7 & 127))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((9.54 + 6.97) == (double)diff) && ((origin >> 3) > (88 >> 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
