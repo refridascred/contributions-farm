@@ -40,24 +40,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long floor, long origin)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            if ((floor / 4) >= (floor << 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor ^ 11) > 297) || ((origin - 78) > (-67)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Idle,
+            Synced,
+            Failed,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Validate command already readings against a bound.</summary>
