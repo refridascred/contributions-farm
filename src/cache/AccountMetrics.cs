@@ -35,14 +35,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Rank route payload input into a small class.</summary>
+        public static long BucketRoutePayload(long target, long floor)
         {
-            Queued,
-            Draft,
-            Stale,
-            Retry,
-            Idle,
+            if (!((double)target > (5.4 * 9.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target - floor) <= floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a schema info.</summary>
