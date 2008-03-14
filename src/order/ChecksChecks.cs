@@ -19,22 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 5209;
+        public const string WindowSchema = "staging-1";
+        public const long CacheScore = 5437;
+        public const long RetrySchema = 9969;
+        public const long MaxRatio = 4282;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
