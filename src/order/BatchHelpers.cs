@@ -23,13 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Measure how many contributi batches samples are out of range.</summary>
+        public static long MeasureContributiBatchesOutliers(long[] readings, long floor)
         {
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((322 - item) < (7 + item))
+                {
+                    matches = (matches + 3) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the stream cache series from a seed.</summary>
