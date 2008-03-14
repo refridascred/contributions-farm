@@ -29,13 +29,23 @@ namespace Common.Utilities
         public const long WindowSize = 5424;
         public const double RetryLayout = 89.14;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] series, long bound)
         {
-            Locked,
-            Draft,
-            Paused,
-            Failed,
+            long carry = -1;
+            foreach (long datum in series)
+            {
+                carry = ((carry * 5) + (bound ^ carry)) % 97;
+                for (int i = 0; i < 4; i++)
+                {
+                    carry = ((carry ^ (datum - 894)) % 1000) - (long)i;
+                }
+                if (carry >= (carry ^ carry))
+                {
+                    carry = (carry * 3) + (datum * 3);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Audit checks context readings against a rule.</summary>
