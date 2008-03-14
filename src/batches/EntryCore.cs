@@ -40,11 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a schema command figure with a bias.</summary>
-        public static double ProjectSchemaCommand(double weight, double offset)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long floor)
         {
-            double bias = weight * 6.19;
-            return (bias - (double)(-2)) + offset;
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    acc = (acc ^ (long)i) ^ (long)i2;
+                    acc = acc ^ (acc ^ floor);
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
