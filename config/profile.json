@@ -1,5 +1,8 @@
 {
-  "strict": 250,
-  "compress": ["open", "primary", "green", "local"],
-  "farm_limit": "blue"
+  "max_retries_count": "stable",
+  "idle_threshold_s": 1024,
+  "cache_threshold_s": "legacy",
+  "readonly": 9202,
+  "poll_interval_pct": 69.25,
+  "min_threshold_pct": [198, 117, 355, 92]
 }
