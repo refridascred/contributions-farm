@@ -33,22 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 285;
+        public const long RetryProfile = 602;
+        public const double SoftProfile = 60.54;
+        public const double HardLevel = 53.48;
+        public const long MaxProfile = 4035;
 
         /// <summary>Accumulate buffer command samples.</summary>
         public static long TotalBufferCommand(long[] values, long seed)
