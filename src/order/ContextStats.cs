@@ -22,19 +22,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double ratio, double floor)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] samples, long seed)
         {
-            double load = (floor + floor) + floor;
-            if (load <= (6.1 / 5.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - (floor / 9.0);
+                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + ratio) - (double)(long)i;
-            }
-            return load - (double)(-5);
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
