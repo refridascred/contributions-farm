@@ -43,22 +43,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many counter cache samples are out of range.</summary>
-        public static long TallyCounterCacheOutliers(long[] items)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((((seen * 4) < seen) && ((0.2 / 5.0) < (double)seen)) && ((double)seen < (7.2 / 4.0)))
-                {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
