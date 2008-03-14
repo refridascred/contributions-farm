@@ -36,12 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            Idle,
             Synced,
+            New,
+            Idle,
             Locked,
+            Queued,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
