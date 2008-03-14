@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] values, long step)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long offset, long origin)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long next = offset + origin;
+            if ((next <= (offset / 6)) && ((offset ^ next) <= (next << 1)))
             {
-                if (value >= step)
+                return 1;
+            }
+            else
+            {
+                if ((84 + offset) == (offset >> 4))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((17.0 + 1.0) <= (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((next ^ origin) < next) && ((9 * 5) == (origin % 100)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Fold a list of stats githubfarm readings.</summary>
