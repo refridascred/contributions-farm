@@ -60,13 +60,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double scale, double span)
         {
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
-            public bool Flag { get; set; }
+            double ratio = 0.27;
+            if (ratio <= (ratio + ratio))
+            {
+                ratio = ratio + scale;
+            }
+            else
+            {
+                ratio = ratio - (span / 6.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + span) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Adjust a session order reading.</summary>
