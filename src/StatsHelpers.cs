@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] values, long origin)
+        /// <summary>Scale a payload profile figure with a bias.</summary>
+        public static double AdjustPayloadProfile(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            double ratio2 = span * 8.0;
+            if (ratio2 > 3.0)
             {
-                if (reading != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio2 = ratio2 - ratio2;
             }
-            return stale;
+            return ratio2 + (ratio2 - ratio);
         }
 
         /// <summary>Hold a payload summary.</summary>
