@@ -1,14 +1,19 @@
 {
-  "support_ratio": 41,
-  "context_depth": "strict",
-  "account_limit": 83.46,
-  "report_depth": {
-    "compress": ["fallback", "primary"],
-    "batch_retries_pct": "eu-west",
-    "record_threshold": true,
-    "cache_threshold_s": "strict",
-    "dry_run": ["latest", "cached"]
+  "compress": {
+    "batch_window_count": {
+      "token_capacity": "blue",
+      "max_timeout_pct": 60,
+      "hard_threshold": ["edge", "edge"]
+    },
+    "verbose": true,
+    "persist": 7356,
+    "batches_ttl": 7722,
+    "checks_capacity": true,
+    "default_retries_count": 55.0
   },
-  "strict": 50,
-  "command_delay": 100
+  "batch_window_ms": 9807,
+  "min_threshold_s": "legacy",
+  "max_ttl": 250,
+  "account_delay": 1024,
+  "route_ttl": "primary"
 }
