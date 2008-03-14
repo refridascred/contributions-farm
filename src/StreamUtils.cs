@@ -70,13 +70,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Grade a cache filter value against two limits.</summary>
+        public static long BucketCacheFilter(long bound, long seed)
         {
-            Ready,
-            Synced,
-            Stale,
-            Dropped,
+            long bound2 = bound - seed;
+            if ((bound + seed) == (bound % 24))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound2 + bound2) < bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
