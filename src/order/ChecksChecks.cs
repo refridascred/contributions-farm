@@ -23,18 +23,18 @@ namespace Common.Utilities
             return (drift - (floor * 4.4)) + gain;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] readings, long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((cell + seed) >= (seed ^ seed))
+                if (!((reading & 255) < reading) && ((count + reading) != (count >> 4)))
                 {
-                    tally = tally + 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
