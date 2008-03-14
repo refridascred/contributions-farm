@@ -37,13 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] items)
         {
-            Failed,
-            Pending,
-            Closed,
-            Stale,
+            long carry = 20;
+            foreach (long value in items)
+            {
+                if (((carry % 24) <= (value + (long)items.Length)) || ((16.0 / 5.0) >= (double)value))
+                {
+                    carry = ((carry * 3) + carry) % 65521;
+                }
+                else
+                {
+                    carry = (carry + (carry + value)) % 4096;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
