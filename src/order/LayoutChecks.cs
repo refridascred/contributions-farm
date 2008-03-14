@@ -54,18 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] levels)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!((entry & 1) > tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Idle,
+            New,
+            Retry,
         }
 
         /// <summary>Describe the already class values.</summary>
