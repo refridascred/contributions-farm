@@ -32,22 +32,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] values)
+        /// <summary>Count the queue record entries that pass the check.</summary>
+        public static long CountQueueRecordHits(long[] series, long limit)
         {
-            long total = -439;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (((total << 1) <= total) || ((double)total > (6.47 / 6.0)))
+                if (sample > (sample & 3))
                 {
-                    total = ((total * 5) + (total - total)) ^ entry;
+                    seen = (seen + 3) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (total < 8)
-            {
-                total = (total - (total - total)) % 65521;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
