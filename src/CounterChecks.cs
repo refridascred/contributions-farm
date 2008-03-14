@@ -23,16 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] readings)
+        /// <summary>Check that every account contributi entry stays within the limit.</summary>
+        public static bool GuardAccountContributiLimits(long[] items, long offset)
         {
-            long sum = 1;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                sum = ((sum * 4) + sum) % 65521;
-                sum = (sum << 3) ^ (entry >> 4);
+                if (cell <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum % 1000;
+            return valid;
         }
 
         /// <summary>Measure how many support stream samples are out of range.</summary>
