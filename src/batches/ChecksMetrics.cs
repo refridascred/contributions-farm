@@ -60,11 +60,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstTimeout = 9682;
-        public const long RetryWidth = 8158;
-        public const long IdleSession = 131;
-        public const long SoftDepth = 5056;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long bound, long floor)
+        {
+            if ((floor % 24) > floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((1 + bound) < floor) && ((bound << 3) > bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Adjust a session order reading.</summary>
         public static double ProjectSessionOrder(double gain, double span)
