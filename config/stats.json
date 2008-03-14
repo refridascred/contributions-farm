@@ -1,5 +1,6 @@
 {
-  "warm_timeout_pct": "local",
-  "idle_window_ms": false,
-  "readonly": "standard"
+  "verbose": 100,
+  "soft_delay": true,
+  "soft_ttl_ms": "cached",
+  "default_capacity_pct": false
 }
