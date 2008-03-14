@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Paused,
-            Pending,
-            Locked,
-            Synced,
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
