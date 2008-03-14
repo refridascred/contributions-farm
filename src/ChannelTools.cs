@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Validate counter farm readings against a bound.</summary>
+        public static bool VerifyCounterFarmRange(long[] data, long bound)
         {
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
