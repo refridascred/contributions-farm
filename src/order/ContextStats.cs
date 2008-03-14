@@ -63,11 +63,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public double Size { get; set; }
-            public bool Mode { get; set; }
+            Active,
+            Closed,
+            Stale,
         }
     }
 }
