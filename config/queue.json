@@ -1,5 +1,13 @@
 {
-  "hard_capacity_ms": [128, 374],
-  "warm_ttl_pct": 9,
-  "base_ratio_s": "standard"
+  "strict": {
+    "hard_size_pct": "fallback",
+    "batch_window": 1309,
+    "flush_retries": 7130,
+    "max_interval": 250,
+    "soft_ratio": "edge",
+    "persist": 30.93
+  },
+  "enabled": true,
+  "default_limit": "latest",
+  "dry_run": "standard"
 }
