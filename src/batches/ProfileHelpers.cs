@@ -59,19 +59,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command channel entry stays within the limit.</summary>
-        public static bool CheckCommandChannelLimits(long[] readings, long seed)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Match up cache samples.</summary>
