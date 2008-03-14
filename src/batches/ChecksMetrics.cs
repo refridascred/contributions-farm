@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitTimeout = 82.78;
-        public const long WindowRatio = 9101;
-        public const long HardFactor = 8536;
-        public const string RetryBudget = "cached-v2";
-        public const long BaseSize = 704;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Draft,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long SeekEntryIndex(long[] readings, long target)
