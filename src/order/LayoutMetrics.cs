@@ -48,17 +48,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Look up the position of a context checks sample.</summary>
-        public static long SeekContextChecksIndex(long[] readings, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 1;
+            foreach (long entry in levels)
             {
-                if (readings[i] < step)
+                mark = mark ^ (offset << 2);
+                if ((mark + mark) > entry)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
