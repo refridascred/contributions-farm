@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long BurstBudget = 1110;
         public const double SoftStream = 3.36;
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] readings, long limit)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double gain, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = floor;
+            return (drift - (floor * 4.4)) + gain;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
