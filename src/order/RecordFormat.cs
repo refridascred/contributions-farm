@@ -50,18 +50,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] data)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seen < (double)cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] + items[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
