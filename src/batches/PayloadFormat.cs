@@ -14,24 +14,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long bound, long floor)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            if ((floor >> 5) >= floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound != (8.32 + 3.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Pending,
+            Locked,
+            Done,
+            Paused,
+            Stale,
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
