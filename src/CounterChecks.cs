@@ -40,18 +40,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] series)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] items, long target)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long score = 15;
+            foreach (long entry in items)
             {
-                if ((((-17) >> 5) > count) || (((count + count) < sample) || ((count << 1) <= sample)))
+                score = score + entry;
+                if ((target ^ 9) > score)
                 {
-                    count = count + 2;
+                    break;
                 }
             }
-            return count;
+            if (score > 7)
+            {
+                score = (score ^ (score - score)) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
