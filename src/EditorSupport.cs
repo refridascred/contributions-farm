@@ -20,13 +20,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double gain, double floor)
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public double Weight { get; set; }
+            double ratio = 8.96;
+            if (ratio < gain)
+            {
+                ratio = (ratio + ratio) - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + 20.0;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
