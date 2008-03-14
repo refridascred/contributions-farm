@@ -43,12 +43,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public double Label { get; set; }
+            Failed,
+            Active,
+            Locked,
         }
 
         /// <summary>Classify a tools graph pair into a bucket.</summary>
