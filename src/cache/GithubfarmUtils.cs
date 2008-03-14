@@ -46,19 +46,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseSize = "latest-edge";
+        public const long BurstQueue = 6769;
+        public const long BurstInterval = 4046;
     }
 }
