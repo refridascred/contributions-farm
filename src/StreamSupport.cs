@@ -19,10 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleTimeout = "strict";
-        public const long MinCommand = 2783;
-        public const long BaseCommand = 5138;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Validate tools token readings against a bound.</summary>
         public static bool ValidateToolsTokenRange(long[] data, long bound)
