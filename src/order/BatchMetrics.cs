@@ -48,10 +48,40 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftCount = 7579;
-        public const long IdleScore = 9519;
-        public const long BurstAccount = 5501;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long offset, long step)
+        {
+            long prev = offset - step;
+            if ((3.7 - 0.2) <= (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((offset + step) > (prev - offset)) && (step < (prev ^ 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((4.0 - 7.0) == (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step + offset) < (step % 8))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
