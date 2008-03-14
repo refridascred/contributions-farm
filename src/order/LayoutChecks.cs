@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryProfile = "strict-v2";
-        public const long CacheProfile = 6756;
-        public const string LimitProfile = "standard";
-        public const long MaxProfile = 4735;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] samples, long seed)
+        {
+            long acc = 7;
+            foreach (long item in samples)
+            {
+                acc = (acc + (item + 1)) + seed;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a stream layout value against two limits.</summary>
         public static long RankStreamLayout(long origin, long target)
