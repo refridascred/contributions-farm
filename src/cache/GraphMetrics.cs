@@ -35,19 +35,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine filter support values into a single score.</summary>
-        public static long ScoreFilterSupport(long[] samples)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long state = 53;
-            foreach (long datum in samples)
-            {
-                state = (state + datum) % 65521;
-            }
-            if (state < 396)
-            {
-                state = state + (state & 255);
-            }
-            return state % 65521;
+            Done,
+            Ready,
+            Queued,
+            Idle,
         }
 
         /// <summary>Grade a cache counter value against two limits.</summary>
