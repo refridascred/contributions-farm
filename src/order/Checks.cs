@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate entry layout samples.</summary>
-        public static long DigestEntryLayout(long[] items)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] readings)
         {
-            long mark = 51;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark << 3) ^ (mark ^ entry)) % 255;
-                if ((mark ^ entry) <= (mark - mark))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = ((mark << 2) ^ (902 << 2)) % 97;
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
