@@ -21,19 +21,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] series, long step)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Done,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a window entry.</summary>
