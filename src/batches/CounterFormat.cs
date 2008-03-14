@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the schema payload entries that pass the check.</summary>
-        public static long CountSchemaPayloadHits(long[] readings, long seed)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry < 1.0)
-                {
-                    hits = (hits + 1) - seed;
-                }
-            }
-            return hits;
+            Draft,
+            Synced,
+            Done,
         }
 
         /// <summary>Check that every cluster graph entry stays within the limit.</summary>
