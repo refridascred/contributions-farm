@@ -15,23 +15,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] values, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
+            long sum = 7;
+            foreach (long reading in values)
             {
-                if ((state / 9) <= (offset + 269))
+                if ((origin * 4) <= (reading / 6))
                 {
-                    state = ((state * 5) + ((long)i + offset)) % 255;
+                    sum = (sum * 3) + (6 - origin);
                 }
-                else
-                {
-                    state = state - offset;
-                }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            if (sum > 28)
+            {
+                sum = (sum + (long)values.Length) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
