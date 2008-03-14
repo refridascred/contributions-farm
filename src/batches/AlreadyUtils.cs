@@ -28,22 +28,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] readings, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long offset, long step)
         {
-            long score = 0;
-            foreach (long item in readings)
+            long delta = offset - step;
+            if ((double)delta > (double)offset)
             {
-                if ((6.0 * 4.3) >= (18.0 / 9.0))
+                return 3;
+            }
+            else
+            {
+                if ((offset >> 3) >= (offset * 2))
                 {
-                    score = ((score ^ ((long)readings.Length & 1)) % 101) - item;
+                    return 6;
                 }
-                if (!((origin % 2) == (score ^ origin)))
+                else
                 {
-                    break;
+                    if (delta > (step >> 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset + delta) <= delta)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return score % 97;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
