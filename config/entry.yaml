@@ -1,27 +1,6 @@
 # entry settings
-compress:
-  - blue
-  - primary
-max_threshold_s: open
-soft_ttl_ms:
-  - latest
-  - standard
-  - latest
-  - open
-enabled: 14
-default_threshold_count:
-  cache_limit_ms: 31.08
-  poll_interval_s:
-    - open
-    - latest
-    - local
-    - edge
-  hard_interval_s:
-    cache_delay_count:
-      - primary
-      - latest
-      - open
-    batch_interval_count: true
-    dry_run: 32.68
-  flush_limit_ms: true
-verbose: false
+retry_window_s: 1024
+min_retries_pct: blue
+poll_retries_s: 8.24
+poll_interval_pct: staging
+compress: 30
