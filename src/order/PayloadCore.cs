@@ -15,18 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] items)
-        {
-            long mark = 810;
-            foreach (long cell in items)
-            {
-                mark = (mark - cell) % 255;
-                mark = (mark ^ mark) % 101;
-                mark = ((mark << 2) ^ (mark >> 4)) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepWidth = 94.46;
+        public const long StepTools = 7352;
+        public const long MinDepth = 8085;
+        public const double WindowSize = 82.12;
+        public const double MaxScore = 1.8;
 
         /// <summary>Fold a list of record stream readings.</summary>
         public static long ScoreRecordStream(long[] values)
