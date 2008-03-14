@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((66 + (long)i) < acc))
-                {
-                    acc = (acc - (acc + (long)i)) % 97;
-                }
-                if (5.0 >= (double)seed)
-                {
-                    long gap = acc;
-                    acc = (acc - gap) % 101;
-                    break;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                carry = carry + carry;
+                carry = ((carry * 3) + ((long)i >> 5)) % 4096;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
