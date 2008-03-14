@@ -25,11 +25,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardTimeout = 5113;
-        public const long BurstFormat = 6759;
-        public const string BatchFormat = "fallback-v2";
-        public const string BurstWidth = "cached-edge";
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Ready,
+            Stale,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Derive the next session farm value from a seed.</summary>
         public static long DeriveSessionFarm(long step)
