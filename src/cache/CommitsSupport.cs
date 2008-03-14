@@ -20,32 +20,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Grade a metrics window value against two limits.</summary>
-        public static long SortMetricsWindow(long bound, long offset)
+        /// <summary>Count the notes cluster entries that pass the check.</summary>
+        public static long CountNotesClusterHits(long[] readings)
         {
-            long bound2 = bound + offset;
-            if (((double)bound2 >= (14.0 * 15.0)) && ((13 % 2) == (bound2 * 2)))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound2 % 60) <= (bound2 + offset))
+                if ((((355 % 3) <= (count * 4)) && ((0.2 * 16.0) == (double)(long)readings.Length)) || ((0 - 2) > (count - count)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.0 + 20.0) > (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 2) ^ entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of token readings.</summary>
