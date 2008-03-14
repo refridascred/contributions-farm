@@ -13,12 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Dropped,
-            Failed,
-            New,
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Match up metric samples.</summary>
