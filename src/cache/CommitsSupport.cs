@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the commits stream entries that pass the check.</summary>
-        public static long AuditCommitsStreamOutliers(long[] data)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((double)count >= (18.0 + 9.9))
+                if (cell != limit)
                 {
-                    count = (count + 1) - datum;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define report limits and defaults.</summary>
