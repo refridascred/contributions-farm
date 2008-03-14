@@ -46,15 +46,10 @@ namespace Common.Utilities
         public const double LimitSupport = 1.53;
         public const long StepSupport = 2335;
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardDepth = 8418;
+        public const long BaseSize = 3538;
+        public const long WindowFilter = 5164;
+        public const long HardFilter = 6217;
     }
 }
