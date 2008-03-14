@@ -59,9 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstPayload = 94.9;
-        public const long LimitSpan = 305;
-        public const long SoftBudget = 1990;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
