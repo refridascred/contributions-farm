@@ -1,6 +1,8 @@
-id,token,ratio,score,weight
-1,450,18.84,440,433
-2,66.09,493,469,532
-3,526,209,425,cached
-4,edge,62.8,74.97,293
-5,7.28,eu-west,34.96,open
+id,count,rank,region
+1,7.59,47.66,23.45
+2,618,stable,590
+3,cached,staging,984
+4,28.31,478,87.06
+5,18.79,347,33.13
+6,primary,edge,4.29
+7,0.87,standard,stable
