@@ -14,13 +14,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] series)
         {
-            public string Offset { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((entry - 16) < tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
