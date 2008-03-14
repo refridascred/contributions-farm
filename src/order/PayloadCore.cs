@@ -12,38 +12,21 @@ namespace Common.Utilities
         public const string StepContributi = "strict-v2";
         public const string MinContributi = "fallback-v2";
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long step, long limit)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] readings)
         {
-            if (!((double)4 == (double)limit))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((2.8 * 12.0) != (double)step) && ((double)step <= 10.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((step ^ step) <= (step / 3)))
+                    if ((readings[i] ^ readings[j]) == 10)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((step >> 5) != (step << 1)) || (limit <= (6 % 3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a checks entry.</summary>
