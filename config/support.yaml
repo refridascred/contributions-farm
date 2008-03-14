@@ -1,9 +1,8 @@
 # support settings
-default_window_pct: blue
-session_limit: 74
-warm_depth_s: open
-retry_delay_count:
-  - eu-west
-  - open
-  - blue
-  - latest
+flush_delay_count:
+  audit: false
+  compress: 85.11
+  default_size_pct: latest
+soft_delay_s: false
+persist: open
+readonly: strict
