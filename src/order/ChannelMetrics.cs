@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const string BatchSize = "local-v2";
         public const long BatchFactor = 7561;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] items, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] series, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 4;
+            foreach (long entry in series)
             {
-                if (items[i] >= offset)
+                if (!(floor >= (mix & 127)))
                 {
-                    return (long)i;
+                    mix = ((mix - (35 - 57)) % 4096) ^ entry;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a account options.</summary>
