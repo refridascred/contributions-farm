@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] values, long limit)
+        /// <summary>Roll a account layout counter forward.</summary>
+        public static long DeriveAccountLayout(long target)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long mark = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((double)tally != (3.7 + 0.94)))
+                if (((long)i * 3) == ((long)i + 17))
                 {
-                    tally = ((tally + 3) ^ cell) + limit;
+                    break;
                 }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
