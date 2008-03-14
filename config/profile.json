@@ -1,11 +1,8 @@
 {
-  "payload_ttl": 8.7,
-  "entry_timeout": "open",
-  "base_delay_pct": {
-    "cache_size_pct": [36, 168],
-    "hard_window": "eu-west",
-    "retry_threshold_pct": 1771,
-    "tools_threshold": "blue"
-  },
-  "poll_ratio": "fallback"
+  "burst_ttl_s": 87,
+  "poll_delay_ms": "stable",
+  "min_window_pct": 28.46,
+  "verbose": 98.96,
+  "githubfarm_window": [467, 320, 358, 59],
+  "sync_threshold_pct": 2.43
 }
