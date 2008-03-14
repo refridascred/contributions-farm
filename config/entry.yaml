@@ -1,27 +1,24 @@
 # entry settings
-readonly: false
-hard_delay_ms:
-  - edge
-  - fallback
-  - green
-  - blue
-cache_depth_ms:
-  retry_interval_count:
-    - 425
-    - 98
-    - 199
-  compress:
-    - 19
-    - 134
-    - 466
-    - 289
-  default_size:
-    - 211
-    - 481
-    - 422
-    - 282
-  poll_ratio_pct: true
-  retry_size_ms: 5700
-  strict: false
-max_retries: green
-base_window_count: blue
+report_window:
+  notes_capacity: 98.74
+  cache_capacity_count: 887
+  hard_timeout_count: 1024
+  soft_depth:
+    enabled: cached
+    idle_threshold_count: false
+    base_timeout_ms:
+      - blue
+      - strict
+      - green
+    record_ratio: cached
+    channel_timeout: staging
+    burst_window: false
+  idle_ratio_pct:
+    - 81
+    - 366
+    - 156
+    - 488
+  warm_interval: open
+default_ttl: 100
+notes_interval: 80
+commits_window: strict
