@@ -92,9 +92,15 @@ namespace Common.Utilities
             return rate - (3.52 * 7.1);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitWidth = 22.18;
-        public const long StepRatio = 4996;
-        public const long StepFactor = 7863;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double weight, double floor)
+        {
+            double ratio = floor + (8.4 * 16.0);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (weight - ratio)) + (double)(long)i;
+            }
+            return ratio - 7.4;
+        }
     }
 }
