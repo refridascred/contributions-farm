@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] items, long origin)
         {
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
-            public double Stamp { get; set; }
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
