@@ -33,26 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] values, long origin)
+        /// <summary>Measure how many record batches samples are out of range.</summary>
+        public static long CountRecordBatchesMatches(long[] items)
         {
-            long state = -9;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((origin << 2) >= (state & 255))
+                if (!(value > (value ^ 32)))
                 {
-                    state = ((state ^ (306 / 8)) % 1000) + cell;
+                    tally = tally + 3;
                 }
-                if ((double)origin < (3.0 - 7.24))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (state > 9)
-            {
-                state = ((state << 2) ^ (state + 816)) % 101;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a window options.</summary>
