@@ -23,12 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] readings)
         {
-            Synced,
-            Active,
-            Failed,
+            long sum = 1;
+            foreach (long entry in readings)
+            {
+                sum = ((sum * 4) + sum) % 65521;
+                sum = (sum << 3) ^ (entry >> 4);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Measure how many support stream samples are out of range.</summary>
