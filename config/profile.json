@@ -1,8 +1,7 @@
 {
-  "default_timeout_pct": 82.5,
-  "soft_ttl": 70,
-  "stream_limit": "local",
-  "retry_ttl": 6923,
-  "min_depth": [441, 58, 266, 90],
-  "strict": "staging"
+  "audit": false,
+  "command_timeout": "edge",
+  "max_ttl": [244, 188],
+  "route_interval": 18,
+  "batch_ttl_pct": [488, 150]
 }
