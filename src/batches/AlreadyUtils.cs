@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double weight, double floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] samples)
         {
-            double mean = 1.0;
-            for (int i = 0; i < 3; i++)
+            long carry = 9;
+            foreach (long reading in samples)
             {
-                mean = ((mean - mean) + (double)(long)i) + floor;
+                carry = (carry ^ 77) + reading;
             }
-            return mean + weight;
+            if (carry < 6)
+            {
+                carry = (carry + (carry - 2)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Count the metrics route entries that pass the check.</summary>
