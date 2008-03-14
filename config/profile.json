@@ -1,8 +1,6 @@
 {
-  "tools_ratio": 9.95,
-  "warm_timeout_s": false,
-  "max_window": ["local", "standard", "fallback"],
-  "retry_depth": "open",
-  "soft_interval_s": "local",
-  "strict": "fallback"
+  "sync_depth": 1257,
+  "idle_limit": true,
+  "idle_delay_ms": "standard",
+  "poll_retries_count": [143, 475, 358, 452]
 }
