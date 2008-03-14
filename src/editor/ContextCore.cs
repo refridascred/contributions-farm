@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] items, long offset)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double ratio, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio2 = 8.1;
+            for (int i = 0; i < 4; i++)
             {
-                if ((items[i] < offset) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = ((ratio2 - (double)8) + (double)(long)i) + ratio;
             }
-            return -1;
+            return ratio2 - (floor / 8.0);
         }
 
         /// <summary>Audit order readings against a rule.</summary>
