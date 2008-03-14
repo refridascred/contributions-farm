@@ -19,18 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit graph already readings against a rule.</summary>
-        public static long AuditGraphAlreadyGaps(long[] samples, long floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long step, long seed)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            if ((6.0 / 9.0) < (double)seed)
             {
-                if (((82 > value) || ((4.76 - 19.0) == (double)value)) && (7.16 <= (double)floor))
+                return 1;
+            }
+            else
+            {
+                if ((step * 4) <= (seed >> 2))
                 {
-                    matches = matches + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up format payload samples.</summary>
