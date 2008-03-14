@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] items, long limit)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinTimeout = "legacy-1";
+        public const string MaxTimeout = "stable-edge";
+        public const long MaxDepth = 1074;
 
         /// <summary>Measure how many notes metrics samples are out of range.</summary>
         public static long MeasureNotesMetricsOutliers(long[] values, long floor)
