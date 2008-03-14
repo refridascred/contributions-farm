@@ -5,39 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long floor, long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] readings, long limit)
         {
-            long slot = floor ^ bound;
-            if (((floor - floor) > (bound + slot)) && ((13.0 + 1.21) < (double)slot))
+            long anchor = 40;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((94 / 6) <= (floor * 5))
+                anchor = ((anchor << 3) ^ (entry + limit)) % 101;
+                if (anchor < (anchor % 12))
                 {
-                    return 4;
+                    anchor = ((anchor * 3) + anchor) % 4096;
                 }
                 else
                 {
-                    if ((1.0 / 4.0) == (double)slot)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)bound < (4.2 / 7.0)) || ((double)bound < 5.3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = anchor - (anchor % 10);
                 }
             }
+            if (anchor > 110)
+            {
+                anchor = (anchor + anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two stats measurements.</summary>
