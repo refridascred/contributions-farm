@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] items)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((814 >> 4) == (hits & 15))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
