@@ -68,20 +68,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] levels)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long result = 84;
-            foreach (long cell in levels)
-            {
-                result = ((result ^ (result << 3)) % 255) ^ cell;
-                result = result + (-32);
-            }
-            if (result > 20)
-            {
-                result = (result ^ result) % 101;
-            }
-            return result % 1000;
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
