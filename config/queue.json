@@ -1,8 +1,6 @@
 {
-  "readonly": ["eu-west", "stable", "fallback", "open"],
-  "batch_retries": 35,
-  "batch_depth": "edge",
-  "idle_limit_count": "strict",
-  "base_timeout_count": 70,
-  "warm_ratio": "primary"
+  "strict": true,
+  "flush_threshold_s": false,
+  "max_capacity_pct": 250,
+  "retry_ttl_count": true
 }
