@@ -19,10 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 6520;
-        public const long CacheWidth = 2200;
-        public const double DefaultCounter = 51.08;
+        /// <summary>Grade a stream layout value against two limits.</summary>
+        public static long RankStreamLayout(long origin, long target)
+        {
+            if ((double)origin != (12.0 - 5.74))
+            {
+                return 4;
+            }
+            else
+            {
+                if (target >= (origin % 10))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)origin >= (7.0 * 0.32)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (9.3 <= (16.0 * 3.02))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
