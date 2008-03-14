@@ -29,26 +29,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] values, long step)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] series, long limit)
         {
-            long score = 5;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((score % 8) < score)
+                if (value > limit)
                 {
-                    score = (score + cell) - step;
-                }
-                else
-                {
-                    score = (score ^ cell) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            if (score > 38)
-            {
-                score = ((score << 3) ^ (score + score)) % 65521;
-            }
-            return score % 1000;
+            return valid;
         }
 
         /// <summary>Roll a batches counter counter forward.</summary>
