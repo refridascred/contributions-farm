@@ -32,17 +32,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] levels, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 62;
+            foreach (long sample in values)
             {
-                if ((levels[i] <= step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = mark ^ (sample + 606);
             }
-            return -1;
+            if (mark > 731)
+            {
+                mark = (mark * 4) + (666 - origin);
+            }
+            return mark;
         }
 
         /// <summary>Accumulate command samples.</summary>
