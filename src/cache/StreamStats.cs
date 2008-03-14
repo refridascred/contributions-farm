@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double rate, double floor)
         {
-            Active,
-            Stale,
-            Locked,
-            Dropped,
+            double bias = floor;
+            return (bias + bias) + rate;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
