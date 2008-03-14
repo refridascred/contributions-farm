@@ -22,30 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes farm samples.</summary>
-        public static long WeighNotesFarm(long[] samples)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long seed)
         {
-            long acc = 7;
-            foreach (long value in samples)
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((5.0 + 8.8) >= (double)acc)
-                {
-                    acc = (acc + (value << 1)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 5) + value) % 101;
-                }
-                if ((value - acc) < (acc ^ value))
-                {
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            if (acc > 898)
-            {
-                acc = (acc * 3) + (acc % 12);
-            }
-            return acc % 97;
+            return carry;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
