@@ -20,23 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of checks editor readings.</summary>
-        public static long ScoreChecksEditor(long[] values)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double gain, double offset)
         {
-            long score = 8;
-            foreach (long cell in values)
+            double bias = gain;
+            if (bias > (double)(-178))
             {
-                if (!((score >> 1) > (score + cell)))
-                {
-                    score = score ^ ((-6) + score);
-                }
-                score = ((score << 2) ^ (cell & 127)) % 4096;
+                bias = bias - (double)94;
             }
-            if (score > 929)
-            {
-                score = (score - (score + 99)) % 65521;
-            }
-            return score;
+            return bias + offset;
         }
 
         /// <summary>Hold a filter entry.</summary>
