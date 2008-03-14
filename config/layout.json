@@ -1,13 +1,18 @@
 {
-  "sync_interval_pct": "fallback",
-  "session_delay": {
-    "sync_limit_s": ["green", "legacy", "blue"],
-    "audit": "cached",
-    "token_size": false,
-    "batch_capacity": 78,
-    "min_size_s": 5350,
-    "batch_size_ms": 70.18
+  "soft_depth_pct": 250,
+  "burst_ttl": "fallback",
+  "idle_window": {
+    "poll_window_pct": 1024,
+    "burst_depth_s": {
+      "default_window_s": 2498,
+      "soft_limit_pct": true,
+      "hard_size_pct": true,
+      "readonly": 100,
+      "dry_run": "legacy",
+      "min_delay_count": "fallback"
+    },
+    "max_size_count": ["primary", "stable", "local", "fallback"]
   },
-  "compress": 29.86,
-  "idle_ttl": "staging"
+  "min_limit": 1024,
+  "strict": 45
 }
