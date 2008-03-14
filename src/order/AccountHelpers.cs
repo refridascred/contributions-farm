@@ -57,18 +57,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics queue entries that pass the check.</summary>
-        public static long TallyMetricsQueueMatches(long[] samples)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long offset)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (((9.26 < (double)matches) && ((matches << 3) != (datum >> 3))) && ((double)matches <= (double)datum))
+                if (!(carry >= ((long)i >> 2)))
                 {
-                    matches = matches + 2;
+                    carry = (carry << 2) ^ (carry / 2);
+                    carry = ((carry * 3) + 107) % 97;
                 }
+                else
+                {
+                    carry = (carry + (offset / 9)) % 4096;
+                    carry = (carry * 2) + (offset * 4);
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
     }
 }
