@@ -1,14 +1,4 @@
 # support settings
-filter_window:
-  - legacy
-  - fallback
-  - strict
-default_capacity_s: 92.19
-report_ttl: 2476
-strict:
-  - 223
-  - 473
-  - 119
-hard_threshold:
-  - 390
-  - 29
+retry_ttl_s: 60
+batch_depth: legacy
+sync_capacity_s: 100
