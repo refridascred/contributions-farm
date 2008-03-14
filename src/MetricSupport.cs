@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] readings, long step)
+        /// <summary>Classify a schema checks pair into a bucket.</summary>
+        public static long GradeSchemaChecks(long floor, long offset)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            if ((double)floor > (15.0 / 8.0))
             {
-                if (entry != step)
+                return 2;
+            }
+            else
+            {
+                if (((floor % 12) <= (floor * 3)) || ((double)floor < (9.6 / 9.0)))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
