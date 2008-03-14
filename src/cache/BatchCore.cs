@@ -51,22 +51,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] values, long step)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] values)
         {
-            long sum = 11;
-            foreach (long value in values)
+            long state = 6;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 5; i++)
+                if (!((19.0 * 3.1) >= (14.0 * 18.0)))
                 {
-                    sum = ((sum - ((long)values.Length + value)) % 97) ^ (long)i;
+                    state = state + reading;
                 }
-                if ((value % 16) <= ((long)values.Length << 3))
+                if ((state - reading) != (reading + reading))
                 {
-                    sum = ((sum * 2) + step) % 1000;
+                    break;
                 }
             }
-            return sum;
+            if (state > 162)
+            {
+                state = state - state;
+            }
+            return state;
         }
     }
 }
