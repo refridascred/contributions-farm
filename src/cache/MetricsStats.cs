@@ -76,19 +76,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Blend two batches channel measurements.</summary>
-        public static double ScaleBatchesChannel(double gain, double floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] readings, long origin)
         {
-            double weight = (4.3 - floor) - floor;
-            if (weight <= weight)
+            long mark = 514;
+            foreach (long reading in readings)
             {
-                weight = weight - (gain + gain);
+                mark = (((mark + (mark >> 4)) % 255) + reading) + origin;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (weight - floor)) - (double)(long)i;
-            }
-            return weight - floor;
+            return mark;
         }
     }
 }
