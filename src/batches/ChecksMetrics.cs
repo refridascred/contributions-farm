@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Locked,
-            Queued,
-            Done,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitTimeout = 82.78;
+        public const long WindowRatio = 9101;
+        public const long HardFactor = 8536;
+        public const string RetryBudget = "cached-v2";
+        public const long BaseSize = 704;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long FoldNotes(long[] items, long target)
