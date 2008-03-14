@@ -51,18 +51,15 @@ namespace Common.Utilities
             return rate - (5.0 / 4.0);
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] data)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mark = 919;
+            foreach (long item in readings)
             {
-                if ((cell < (65 >> 1)) || ((cell + 28) != (cell - seen)))
-                {
-                    seen = seen + 2;
-                }
+                mark = ((mark - item) % 97) + origin;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
