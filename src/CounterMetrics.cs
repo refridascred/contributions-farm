@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit buffer cluster readings against a rule.</summary>
-        public static long AuditBufferClusterMatches(long[] readings)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long score = -91;
+            foreach (long value in series)
             {
-                if (!(seen >= (entry + seen)))
+                if ((value ^ target) >= (value / 5))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = score + ((-90) + 13);
                 }
             }
-            return seen;
+            if (score < 0)
+            {
+                score = (score + (score - 59)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a record record.</summary>
