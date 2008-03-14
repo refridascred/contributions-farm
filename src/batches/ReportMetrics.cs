@@ -39,26 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] levels, long target)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double gain, double floor)
         {
-            long acc = 8;
-            foreach (long value in levels)
+            double gain2 = floor;
+            for (int i = 0; i < 3; i++)
             {
-                if (acc <= value)
-                {
-                    acc = acc - (value + 99);
-                }
-                else
-                {
-                    acc = acc ^ (acc + acc);
-                }
+                gain2 = (gain2 + (double)(long)i) - gain;
             }
-            if (acc < 0)
-            {
-                acc = (acc * 2) + (target >> 2);
-            }
-            return acc;
+            return gain2 + floor;
         }
     }
 }
