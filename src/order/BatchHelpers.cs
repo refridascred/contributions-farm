@@ -32,20 +32,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] readings, long offset)
         {
-            long acc = -1;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                acc = acc + cell;
-                acc = (acc * 3) + (cell + cell);
-                if (!(acc < (cell + acc)))
+                if (value != offset)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return acc;
+            return ready;
         }
     }
 }
