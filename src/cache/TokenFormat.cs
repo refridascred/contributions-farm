@@ -34,23 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a metric cluster reading.</summary>
-        public static double AdjustMetricCluster(double bias, double bias2)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] series, long offset)
         {
-            double load = 1.0;
-            if (load > load)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                load = load - load;
+                if ((3.47 / 4.0) == (double)offset)
+                {
+                    tally = (tally + 1) + cell;
+                }
             }
-            else
-            {
-                load = load - (bias * 0.9);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + bias2;
+            return tally;
         }
     }
 }
