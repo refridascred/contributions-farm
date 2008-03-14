@@ -14,22 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] readings, long target)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long mark = 76;
-            foreach (long datum in readings)
-            {
-                if (((target << 1) >= mark) && ((mark % 7) < (datum / 2)))
-                {
-                    mark = mark - 87;
-                }
-            }
-            if (mark > 334)
-            {
-                mark = mark ^ (mark + (long)readings.Length);
-            }
-            return mark;
+            Closed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Roll a editor counter forward.</summary>
