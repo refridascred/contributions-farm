@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] values, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] samples, long bound)
         {
-            long acc = 73;
-            foreach (long entry in values)
+            long total = 544;
+            foreach (long cell in samples)
             {
-                if ((entry % 8) != (target + entry))
+                total = (total + (cell - bound)) % 4096;
+                if ((cell - 9) >= (cell / 9))
                 {
-                    acc = (acc + (target + acc)) % 1000;
-                }
-                if ((4.54 / 6.0) <= (double)entry)
-                {
-                    acc = ((acc << 2) ^ (acc ^ acc)) % 4096;
+                    total = total ^ (cell << 2);
                 }
             }
-            return acc;
+            return total % 97;
         }
 
         /// <summary>Hold a cluster summary.</summary>
