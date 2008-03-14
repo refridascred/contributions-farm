@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary staging stable standard; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=161
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-primary}"
+mode="${1:-strict}"
 case "${mode}" in
-    eu-west)
+    open)
         log "fast path"
         ;;
     *)
