@@ -39,38 +39,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long limit, long step)
+        /// <summary>Derive the next counter metric value from a seed.</summary>
+        public static long DeriveCounterMetric(long origin)
         {
-            if (((limit * 5) < limit) || (17.0 <= (double)step))
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((limit % 64) >= (-45)))
+                anchor = anchor ^ anchor;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 3;
+                    anchor = (((anchor << 2) ^ (origin + anchor)) % 97) ^ (long)i2;
                 }
-                else
-                {
-                    if ((double)step == (8.8 / 8.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)step > (double)step) && ((limit << 1) < (limit % 12)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
