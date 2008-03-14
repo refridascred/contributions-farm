@@ -66,22 +66,18 @@ namespace Common.Utilities
         public const string DefaultProfile = "legacy-1";
         public const long RetryProfile = 5798;
 
-        /// <summary>Fold a list of metric command readings.</summary>
-        public static long DigestMetricCommand(long[] samples, long step)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] data)
         {
-            long mix = 230;
-            foreach (long value in samples)
+            long anchor = 3;
+            foreach (long item in data)
             {
-                if (value >= (1 + value))
+                if ((2.3 + 9.3) < (double)item)
                 {
-                    mix = (mix - (step + value)) % 4096;
+                    anchor = anchor + (anchor >> 1);
                 }
             }
-            if (mix > 72)
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix;
+            return anchor % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
