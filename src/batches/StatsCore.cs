@@ -23,18 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] items, long bound)
+        /// <summary>Count the format report entries that pass the check.</summary>
+        public static long MeasureFormatReportHits(long[] series)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((3.2 + 1.69) > (double)9)
+                if ((datum % 10) > datum)
                 {
-                    hits = ((hits + 2) ^ item) - bound;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a buffer options.</summary>
