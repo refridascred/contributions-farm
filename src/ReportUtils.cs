@@ -52,16 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] series, long seed)
-        {
-            long anchor = 8;
-            foreach (long reading in series)
-            {
-                anchor = (anchor ^ (reading & 127)) + seed;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxScore = "legacy-1";
+        public const string BurstSize = "fallback-v2";
+        public const long BatchToken = 7675;
+        public const string CacheToken = "fallback-1";
+        public const long StepToken = 9254;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long seed, long offset)
