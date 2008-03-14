@@ -25,19 +25,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the report tools entries that pass the check.</summary>
-        public static long CountReportToolsOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((18.0 - 9.4) > (double)matches)
-                {
-                    matches = (matches + 2) - value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleScore = 5963;
+        public const long HardSize = 3506;
+        public const string MinQueue = "primary";
+        public const long BurstLevel = 2019;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
