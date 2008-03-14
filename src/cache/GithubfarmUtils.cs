@@ -55,9 +55,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 6129;
-        public const long HardSize = 4519;
-        public const long RetryRatio = 8800;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
