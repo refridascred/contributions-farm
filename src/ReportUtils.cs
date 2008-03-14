@@ -42,25 +42,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long limit, long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] series, long seed)
         {
-            long bound = limit + target;
-            if ((bound & 31) < limit)
+            long anchor = 8;
+            foreach (long reading in series)
             {
-                return 5;
+                anchor = (anchor ^ (reading & 127)) + seed;
             }
-            else
-            {
-                if ((0.94 / 9.0) != (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return anchor % 4096;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
