@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double scale, double span)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] data, long floor)
         {
-            double load = 7.29;
-            if (load <= (load + span))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                load = load + span;
+                if ((floor + (-86)) < (floor % 12))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
             }
-            return load + scale;
+            return tally;
         }
 
         /// <summary>Adjust a checks reading.</summary>
