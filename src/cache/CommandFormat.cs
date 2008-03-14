@@ -46,26 +46,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] data, long limit)
-        {
-            long score = 1;
-            foreach (long cell in data)
-            {
-                if ((double)limit < 3.0)
-                {
-                    score = ((score * 4) + (limit >> 2)) % 1000;
-                }
-                if (((score - 450) == (cell >> 5)) && ((limit / 7) < (575 % 24)))
-                {
-                    break;
-                }
-            }
-            if (score > 226)
-            {
-                score = (score - (limit - 2)) % 255;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinWidth = 1478;
+        public const long BatchSupport = 8974;
+        public const long LimitSpan = 6262;
+        public const string IdleScore = "cached";
+        public const string WindowTimeout = "alpha-1";
     }
 }
