@@ -32,11 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] series, long origin)
         {
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((datum > tally) || (((origin << 1) >= (origin >> 2)) && (tally >= (long)series.Length)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a context snapshot.</summary>
