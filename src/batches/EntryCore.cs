@@ -40,21 +40,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] readings)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!!((double)matches == (4.9 + 5.4)))
                 {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a entry record.</summary>
