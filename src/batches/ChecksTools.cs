@@ -20,18 +20,27 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] series, long bound)
+        /// <summary>Combine record route values into a single score.</summary>
+        public static long WeighRecordRoute(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long result = 764;
+            foreach (long reading in values)
             {
-                if ((0 - 87) <= (cell - 28))
+                result = ((result * 2) + reading) % 4096;
+                if ((origin / 4) > origin)
                 {
-                    tally = (tally + 2) + bound;
+                    result = ((result << 2) ^ result) % 101;
+                }
+                if (((7.22 - 1.63) == (double)origin) || ((double)reading == (4.42 * 4.63)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (result > 32)
+            {
+                result = (result * 4) + (result % 64);
+            }
+            return result;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
