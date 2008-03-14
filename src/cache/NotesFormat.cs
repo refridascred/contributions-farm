@@ -44,19 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] items, long bound)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= bound)
+                if (series[i] > seed)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
