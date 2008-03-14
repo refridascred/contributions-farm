@@ -41,20 +41,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a schema route counter forward.</summary>
-        public static long DeriveSchemaRoute(long target)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long limit, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
+            if (!(5.0 >= (double)limit))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = ((carry * 4) + target) ^ (long)i2;
-                }
-                carry = ((carry * 3) + (24 % 24)) % 97;
-                carry = ((carry * 5) + (long)i) % 65521;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if (!((3.83 + 16.0) <= (double)origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit / 3) >= limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((14.0 * 3.69) != (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
