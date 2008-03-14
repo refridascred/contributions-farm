@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long limit, long step)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] series)
         {
-            if ((limit ^ limit) > limit)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((step >> 3) >= (limit ^ step)) || ((step - step) <= (step / 5)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((4 >> 2) >= limit) && ((limit << 3) >= (limit + 9)))
+                    if ((series[i] - series[j]) > 4)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((0 ^ limit) <= limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the format already entries that pass the check.</summary>
