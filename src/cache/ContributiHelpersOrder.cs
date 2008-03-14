@@ -35,10 +35,9 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstTimeout = 2922;
-        public const long MinLayout = 6486;
-        public const long SoftLayout = 6819;
-        public const double CacheTimeout = 26.76;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepInterval = 281;
+        public const long BaseInterval = 1458;
+        public const double WindowBudget = 38.03;
     }
 }
