@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] samples)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long mix = 73;
-            foreach (long datum in samples)
-            {
-                mix = (mix + (836 - mix)) % 255;
-                mix = (mix - (mix * 3)) % 1000;
-                if (((5 - 37) >= ((long)samples.Length - 333)) || (mix > (356 / 5)))
-                {
-                    mix = (mix + (mix % 5)) % 101;
-                }
-                else
-                {
-                    mix = (mix + ((-9) ^ mix)) % 65521;
-                }
-                if (mix < (mix + datum))
-                {
-                    break;
-                }
-            }
-            if (mix < 124)
-            {
-                mix = ((mix * 4) + (24 >> 3)) % 255;
-            }
-            return mix;
+            New,
+            Pending,
+            Active,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
