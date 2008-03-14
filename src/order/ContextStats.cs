@@ -44,13 +44,12 @@ namespace Common.Utilities
         public const string StepStats = "local-edge";
         public const long DefaultStats = 5043;
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
             Stale,
-            Paused,
-            Closed,
-            Retry,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a editor record.</summary>
