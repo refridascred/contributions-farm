@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=367
+log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 10); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=24
-log "limit is ${BUFFER_LIMIT}"
+for item in strict standard latest edge; do
+    log "checking ${item}"
+done
