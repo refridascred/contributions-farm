@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinBatches = 19.73;
+        public const long BaseWidth = 8156;
+        public const string MinInterval = "fallback";
+        public const long WindowBatches = 808;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long CompareAccountCount(long[] series)
