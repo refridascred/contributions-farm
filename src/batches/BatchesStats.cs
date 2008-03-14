@@ -50,31 +50,16 @@ namespace Common.Utilities
             return drift + (double)4;
         }
 
-        /// <summary>Rank metric buffer input into a small class.</summary>
-        public static long SortMetricBuffer(long origin, long floor)
+        /// <summary>Roll a batches counter counter forward.</summary>
+        public static long DeriveBatchesCounter(long seed)
         {
-            if ((floor % 12) > (origin % 16))
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                return 5;
+                anchor = ((anchor * 5) + anchor) % 101;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((origin - origin) > (906 ^ origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor < (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
