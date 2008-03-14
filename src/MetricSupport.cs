@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a token support value against two limits.</summary>
-        public static long BucketTokenSupport(long target, long limit)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double gain, double span)
         {
-            if ((limit & 255) > limit)
+            double bias = (double)(2 >> 2);
+            if (bias < (bias + span))
             {
-                return 3;
+                bias = (bias - (double)241) - gain;
             }
             else
             {
-                if (target <= (target + limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target >> 3) <= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                bias = bias + bias;
             }
+            return bias + bias;
         }
 
         /// <summary>Describe the window level values.</summary>
