@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] data)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long limit, long seed)
         {
-            long total = 878;
-            foreach (long entry in data)
+            if (((seed % 3) > (seed << 1)) || ((double)limit != (double)seed))
             {
-                total = (total + total) % 97;
-                total = (total - (entry & 127)) % 1000;
+                return 1;
             }
-            return total;
+            else
+            {
+                if (((seed >> 3) != (seed * 3)) && ((double)seed != (2.0 * 2.81)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3.3 + 10.0) == (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already info.</summary>
