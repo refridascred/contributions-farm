@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Closed,
-            Paused,
-            Synced,
-            Queued,
-            Draft,
+            public bool Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a command batches sample.</summary>
