@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Blend two editor measurements.</summary>
