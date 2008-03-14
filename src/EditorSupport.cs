@@ -42,21 +42,31 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Classify a stats format pair into a bucket.</summary>
+        public static long BucketStatsFormat(long limit, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)seed <= 6.16)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((limit + seed) <= (limit + limit))
                 {
-                    if ((values[i] + values[j]) < 20)
+                    return 2;
+                }
+                else
+                {
+                    if ((limit < (limit & 31)) || (limit < (limit + (-8))))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
