@@ -66,14 +66,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Dropped,
-            Active,
-            Failed,
-            Retry,
-            Synced,
+            Queued,
+            Ready,
+            Closed,
         }
     }
 }
