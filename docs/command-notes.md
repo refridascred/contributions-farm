@@ -1,12 +1,14 @@
 # Command notes
 
-Each route is validated before it reaches the githubfarm queue.
-The command module keeps metrics values in sync with the farm cache.
-A graph that stays idle for too long is moved to the token list.
+The contributi module keeps stats values in sync with the graph cache.
+Run the token check before changing any report limits.
+
+The contributi report groups every tools by stats.
+A checks that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Validate metrics input early
-- Log every format change
-- Keep stream values small
-- Prefer commits defaults
+- Keep counter values small
+- Log every record change
+- Validate command input early
+- Document new contributi fields
