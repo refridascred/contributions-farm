@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] samples, long floor)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((floor + item) == (hits - item)) && !((double)hits < (12.0 * 14.0)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Ready,
+            Dropped,
+            Queued,
+            Done,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
