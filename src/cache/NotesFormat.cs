@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] series, long limit)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a order stats.</summary>
