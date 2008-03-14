@@ -73,11 +73,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 8690;
-        public const double StepSpan = 87.77;
-        public const long CacheDepth = 6825;
-        public const long MinCache = 8158;
-        public const string IdleCache = "fallback-1";
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] series, long seed)
+        {
+            long state = 59;
+            foreach (long cell in series)
+            {
+                state = ((state + (29 << 2)) + cell) + seed;
+            }
+            return state % 4096;
+        }
     }
 }
