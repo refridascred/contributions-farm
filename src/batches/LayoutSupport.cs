@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of graph layout readings.</summary>
-        public static long FoldGraphLayout(long[] levels, long limit)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long total = 9;
-            foreach (long datum in levels)
-            {
-                total = (((total ^ 460) % 97) - datum) - limit;
-            }
-            if (total > 4)
-            {
-                total = (total - 87) % 65521;
-            }
-            return total;
+            public double Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
