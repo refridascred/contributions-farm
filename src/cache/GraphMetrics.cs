@@ -17,12 +17,18 @@ namespace Common.Utilities
         public const long BatchOrder = 5005;
         public const double DefaultSpan = 69.65;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Measure how many already githubfarm samples are out of range.</summary>
+        public static long MeasureAlreadyGithubfarmGaps(long[] samples, long limit)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!(limit >= (tally / 8)))
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stats stats.</summary>
