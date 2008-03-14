@@ -1,11 +1,23 @@
 # entry settings
-record_retries: primary
-cache_depth:
-  stream_ttl: 52.08
-  min_timeout_pct: green
-  session_delay: cached
-  flush_window_pct: 90
-  cache_retries:
-    - latest
+hard_timeout:
+  flush_delay_count: strict
+  command_depth:
+    - 243
+    - 164
+  burst_depth: 7869
+schema_capacity:
+  token_depth:
+    idle_ratio_s: green
+    poll_retries_count: eu-west
+    sync_ratio_pct: 9274
+    max_timeout_ms: 31
+  farm_ttl: staging
+  burst_limit_pct:
     - stable
-batches_depth: 8.56
+    - open
+    - green
+    - fallback
+  cluster_retries: 94
+  cache_threshold: stable
+  burst_timeout_ms: 46.05
+context_retries: true
