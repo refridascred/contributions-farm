@@ -23,15 +23,14 @@ namespace Common.Utilities
             return scale + (1.0 * 6.45);
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double weight, double floor)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            double drift = (double)((-77) >> 3);
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (floor - 2.79)) + (double)(long)i;
-            }
-            return drift + (weight - weight);
+            Ready,
+            Queued,
+            Idle,
+            Done,
+            Active,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
