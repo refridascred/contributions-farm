@@ -1,6 +1,5 @@
 {
-  "default_window_pct": "open",
-  "entry_threshold": 100,
-  "session_depth": [368, 122],
-  "compress": 54.96
+  "compress": 76.14,
+  "audit": true,
+  "burst_retries": 11.6
 }
