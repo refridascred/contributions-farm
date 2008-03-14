@@ -19,24 +19,18 @@ namespace Common.Utilities
         public const double LimitCache = 69.12;
         public const long BatchCache = 6450;
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] levels, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((carry >> 5) >= bound)
+                if ((floor << 3) > (datum ^ floor))
                 {
-                    carry = carry + bound;
+                    hits = hits + 3;
                 }
-                else
-                {
-                    carry = ((carry * 5) + (carry * 3)) % 101;
-                    carry = (carry * 3) + bound;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
     }
 }
