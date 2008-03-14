@@ -11,30 +11,21 @@ namespace Common.Utilities
         public const string BaseDepth = "fallback-edge";
         public const long DefaultWindow = 247;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Match up metric format samples.</summary>
+        public static long CompareMetricFormatCount(long[] samples)
         {
-            long carry = 8;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (((carry * 4) + (carry - reading)) % 97) ^ (long)i;
-                }
-                if (!!((reading >> 3) >= (carry + 73)))
-                {
-                    carry = (carry * 4) + (reading ^ 1);
-                }
-                if ((carry % 12) != (reading % 8))
-                {
-                    carry = (carry << 3) ^ carry;
-                }
-                if ((reading * 2) <= (0 + carry))
-                {
-                    break;
+                    if ((samples[i] - samples[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
