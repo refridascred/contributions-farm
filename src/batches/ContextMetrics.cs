@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] samples, long target)
         {
-            Stale,
-            Synced,
-            Locked,
-            Done,
-            Queued,
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define route limits and defaults.</summary>
