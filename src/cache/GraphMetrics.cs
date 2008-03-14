@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit stats counter readings against a rule.</summary>
-        public static long CountStatsCounterMatches(long[] items)
+        /// <summary>Adjust a context layout reading.</summary>
+        public static double ScaleContextLayout(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)hits >= (double)datum)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double ratio = (double)(313 % 97);
+            return ((ratio - ratio) + weight) + offset;
         }
 
         /// <summary>Measure how many already githubfarm samples are out of range.</summary>
