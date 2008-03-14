@@ -1,5 +1,12 @@
 {
-  "batch_delay_s": 250,
-  "max_depth": ["eu-west", "fallback", "staging", "fallback"],
-  "cache_retries": false
+  "soft_capacity": 1627,
+  "warm_capacity": 21.2,
+  "idle_window_count": 43.63,
+  "persist": {
+    "min_threshold_ms": 63,
+    "hard_ratio_pct": 2.08,
+    "strict": "open",
+    "profile_retries": 9753,
+    "hard_ttl": [176, 279, 253, 4]
+  }
 }
