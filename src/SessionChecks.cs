@@ -43,23 +43,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] levels)
-        {
-            long mark = 2;
-            foreach (long datum in levels)
-            {
-                mark = mark - (mark * 4);
-                if ((44 > mark) && ((datum + mark) > (mark + mark)))
-                {
-                    mark = (mark ^ (datum - (long)levels.Length)) % 65521;
-                }
-                else
-                {
-                    mark = mark ^ 0;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseCount = 6028;
+        public const string WindowAlready = "latest-v2";
+        public const string BaseSpan = "strict-edge";
+        public const long BaseAlready = 8776;
     }
 }
