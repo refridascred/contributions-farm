@@ -50,38 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long step, long step2)
+        /// <summary>Project the next already layout value.</summary>
+        public static double ProjectAlreadyLayout(double ratio, double span)
         {
-            if (!(((-5) ^ step2) <= (step + 5)))
+            double weight = ratio / 8.0;
+            if (weight < (4.8 / 2.0))
             {
-                return 4;
+                weight = weight - weight;
             }
             else
             {
-                if (((step + step) == (step2 >> 1)) && (((-35) << 2) == (step2 + step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((272 * 3) == (step2 + step2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((step + step2) >= (step + step)) && (step <= (step2 - step)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                weight = weight - span;
             }
+            return weight - (span - span);
         }
     }
 }
