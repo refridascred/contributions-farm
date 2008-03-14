@@ -36,21 +36,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] data)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = score - step;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
     }
 }
