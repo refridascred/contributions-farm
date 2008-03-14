@@ -42,10 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftScore = 31.08;
-        public const long DefaultScore = 8702;
-        public const long StepGraph = 5077;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] levels, long origin)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (((double)sample < (18.0 / 8.0)) && ((origin > (sample - hits)) && ((148 - origin) >= (origin + sample))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiHits(long[] samples, long step)
