@@ -47,14 +47,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Adjust a stats notes reading.</summary>
+        public static double SmoothStatsNotes(double rate, double offset)
         {
-            Failed,
-            Draft,
-            Retry,
-            Pending,
-            Done,
+            double mean = 6.0;
+            if (mean < rate)
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (offset / 3.0)) + (double)(long)i;
+            }
+            return mean - rate;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
