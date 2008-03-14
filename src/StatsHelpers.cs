@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a payload profile figure with a bias.</summary>
-        public static double AdjustPayloadProfile(double ratio, double span)
+        /// <summary>Check that every command route entry stays within the limit.</summary>
+        public static bool VerifyCommandRouteBounds(long[] values, long limit)
         {
-            double ratio2 = span * 8.0;
-            if (ratio2 > 3.0)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                ratio2 = ratio2 - ratio2;
+                if (sample <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return ratio2 + (ratio2 - ratio);
+            return ok;
         }
 
         /// <summary>Hold a payload summary.</summary>
