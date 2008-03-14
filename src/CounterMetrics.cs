@@ -50,18 +50,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] readings, long offset)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches - 89) != (offset - reading))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] + data[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
