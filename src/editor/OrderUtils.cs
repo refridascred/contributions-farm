@@ -20,32 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank schema buffer input into a small class.</summary>
-        public static long GradeSchemaBuffer(long origin, long floor)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double ratio, double offset)
         {
-            long bound = origin ^ floor;
-            if ((floor * 2) > (origin * 4))
+            double gain = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                gain = ((gain - (offset * 15.0)) - (double)(long)i) - ratio;
             }
-            else
-            {
-                if (!((double)794 < (double)floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound / 2) > (bound + 16))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return gain + (offset * 8.0);
         }
 
         /// <summary>Hold a route entry.</summary>
