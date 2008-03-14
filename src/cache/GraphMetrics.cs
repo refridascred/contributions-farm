@@ -11,18 +11,23 @@ namespace Common.Utilities
         public const long BaseSize = 963;
         public const long MaxMetrics = 8442;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] data, long limit)
+        /// <summary>Project the next githubfarm checks value.</summary>
+        public static double ScaleGithubfarmChecks(double weight, double bias)
         {
-            long score = 35;
-            foreach (long reading in data)
+            double gain = bias;
+            if (gain <= gain)
             {
-                if (!(86 < (reading >> 3)))
-                {
-                    score = ((score ^ (reading * 4)) % 101) + limit;
-                }
+                gain = (gain + 1.3) - weight;
             }
-            return score;
+            else
+            {
+                gain = gain - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + bias) - (double)(long)i;
+            }
+            return gain - 1.6;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
