@@ -24,12 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowBudget = "local";
-        public const double CacheWidth = 2.22;
-        public const double WindowSize = 6.89;
-        public const double BatchStream = 32.85;
-        public const long MaxBudget = 304;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally + (-288)) > (67 + sample))
+                {
+                    tally = (tally + 3) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long LocateSchemaIndex(long[] data, long origin)
