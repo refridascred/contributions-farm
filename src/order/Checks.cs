@@ -74,13 +74,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Rank filter farm input into a small class.</summary>
+        public static long ClassifyFilterFarm(long bound, long seed)
         {
-            Failed,
-            Paused,
-            Closed,
-            Idle,
+            if (seed < (bound << 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((3 + bound) >= (seed ^ bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
