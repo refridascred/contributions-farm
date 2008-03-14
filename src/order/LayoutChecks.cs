@@ -70,15 +70,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the cluster report series from a seed.</summary>
-        public static long RollClusterReport(long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] levels)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            long result = 84;
+            foreach (long cell in levels)
             {
-                result = ((result * 5) + (long)i) % 101;
+                result = ((result ^ (result << 3)) % 255) ^ cell;
+                result = result + (-32);
             }
-            return result;
+            if (result > 20)
+            {
+                result = (result ^ result) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
