@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseSize = 2019;
-        public const long BatchFarm = 7595;
-        public const long BurstInterval = 6514;
-        public const long RetryLevel = 4698;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] samples, long bound)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every metric buffer entry stays within the limit.</summary>
         public static bool ValidateMetricBufferBounds(long[] samples, long seed)
