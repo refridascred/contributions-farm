@@ -14,22 +14,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardScore = 1957;
+        public const long MinTimeout = 4978;
+        public const double BurstRoute = 90.75;
+        public const string StepScore = "open-1";
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
