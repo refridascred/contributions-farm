@@ -42,16 +42,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] readings, long origin)
-        {
-            long mark = 919;
-            foreach (long item in readings)
-            {
-                mark = ((mark - item) % 97) + origin;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftScore = 31.08;
+        public const long DefaultScore = 8702;
+        public const long StepGraph = 5077;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiHits(long[] samples, long step)
