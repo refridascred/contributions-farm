@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] samples)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((matches - matches) > 7)
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
+            Paused,
+            Pending,
+            Locked,
+            Synced,
         }
 
         /// <summary>Count session payload pairs that satisfy a relation.</summary>
