@@ -20,12 +20,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            Paused,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
