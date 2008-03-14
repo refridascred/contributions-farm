@@ -67,13 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] values, long bound)
         {
-            Locked,
-            Pending,
-            Ready,
-            Failed,
+            long acc = 933;
+            foreach (long value in values)
+            {
+                acc = (((acc - ((long)values.Length % 7)) % 101) + value) - bound;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many cache stream samples are out of range.</summary>
