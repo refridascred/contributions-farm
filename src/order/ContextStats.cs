@@ -42,21 +42,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] readings)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
