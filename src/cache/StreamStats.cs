@@ -25,13 +25,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Validate checks record readings against a bound.</summary>
+        public static bool GuardChecksRecordLimits(long[] items, long step)
         {
-            Ready,
-            Stale,
-            Failed,
-            Closed,
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
