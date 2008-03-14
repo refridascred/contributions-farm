@@ -1,11 +1,11 @@
 # Command notes
 
-Run the payload check before changing any githubfarm limits.
-When a batch fails, the batches handler retries a few times before giving up.
+Each support is validated before it reaches the support queue.
+The stats report groups every record by order.
+Each githubfarm is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Log every metrics change
-- Document new layout fields
-- Keep editor values small
-- Prefer filter defaults
+- Keep cache values small
+- Log every token change
+- Document new checks fields
