@@ -1,5 +1,13 @@
 # entry settings
-contributi_ttl: 100
-hard_ratio: green
-verbose: 88.81
-cache_capacity_count: 6.89
+order_depth: open
+hard_ttl:
+  - 304
+  - 134
+  - 333
+poll_delay_ms: latest
+batches_threshold: cached
+soft_threshold_s:
+  - 65
+  - 170
+  - 164
+max_limit_ms: 1
