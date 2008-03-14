@@ -1,25 +1,11 @@
 # support settings
-graph_timeout:
-  batch_ratio_pct:
-    - 348
-    - 223
-    - 267
-    - 62
-  base_threshold: 4.26
-  report_timeout:
-    - 65
-    - 24
-batch_retries_count: 1132
-poll_ttl_count:
-  default_interval: false
-  soft_ratio_s: true
-  session_ttl:
-    - 13
-    - 276
-    - 393
-    - 203
-  soft_ratio:
-    counter_window: 46.16
-    dry_run: 500
-    persist: cached
-readonly: standard
+schema_depth: false
+default_delay: 100
+poll_ttl: true
+cache_capacity: 1507
+poll_ratio_ms:
+  - blue
+  - blue
+  - stable
+  - eu-west
+readonly: edge
