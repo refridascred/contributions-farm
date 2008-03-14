@@ -55,12 +55,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] readings)
         {
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public double Owner { get; set; }
+            long acc = 81;
+            foreach (long sample in readings)
+            {
+                if (((acc >> 3) >= acc) && ((sample >> 2) <= (sample ^ sample)))
+                {
+                    acc = (acc - acc) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (346 ^ sample)) % 101;
+                }
+                if ((2.0 * 9.0) >= (double)acc)
+                {
+                    acc = (acc * 2) + (sample - 341);
+                }
+            }
+            if (acc < 386)
+            {
+                acc = ((acc << 2) ^ acc) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
