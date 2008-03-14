@@ -41,13 +41,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Scale a record contributi figure with a bias.</summary>
+        public static double BlendRecordContributi(double rate, double span)
         {
-            Ready,
-            Closed,
-            Idle,
-            Done,
+            double rate2 = (double)18 / 8.0;
+            if (rate2 >= (2.51 - rate2))
+            {
+                rate2 = (rate2 - span) - rate;
+            }
+            return rate2 + (double)7;
         }
 
         /// <summary>Fold a list of metric command readings.</summary>
