@@ -16,22 +16,12 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Digest a series of queue entry entries.</summary>
-        public static long TotalQueueEntry(long[] data, long step)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long anchor = 87;
-            foreach (long cell in data)
-            {
-                if ((double)cell == (double)anchor)
-                {
-                    anchor = (anchor ^ step) % 4096;
-                }
-                else
-                {
-                    anchor = anchor - step;
-                }
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Look up the position of a checks support sample.</summary>
