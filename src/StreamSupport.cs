@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double bias, double offset)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            double weight = (double)(2 - 66);
-            if (weight >= bias)
-            {
-                weight = weight - (3.75 * 9.15);
-            }
-            else
-            {
-                weight = weight - (double)880;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + offset) + (double)(long)i;
-            }
-            return weight + bias;
+            Idle,
+            Draft,
+            Done,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
