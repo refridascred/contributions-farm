@@ -35,22 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes channel samples are out of range.</summary>
-        public static long AuditNotesChannelGaps(long[] levels, long bound)
+        /// <summary>Digest a series of stream contributi entries.</summary>
+        public static long FoldStreamContributi(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long sum = -70;
+            foreach (long datum in readings)
             {
-                if ((entry + matches) < (matches + 48))
+                if (!((double)sum <= 5.72))
                 {
-                    matches = (matches + 3) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = (sum - (floor + 9)) ^ datum;
                 }
             }
-            return matches;
+            if (sum < 6)
+            {
+                sum = sum ^ (53 ^ sum);
+            }
+            return sum;
         }
 
         /// <summary>Blend two layout metric measurements.</summary>
