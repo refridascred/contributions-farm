@@ -1,6 +1,7 @@
-id,label,active,state
-1,449,blue,fallback
-2,staging,925,283
-3,548,30.39,staging
-4,19.75,33.39,153
-5,314,736,cached
+id,rank,region,active,ratio
+1,921,latest,green,local
+2,20,31.24,970,8.26
+3,750,151,34.4,774
+4,589,local,94,primary
+5,227,67.71,51.08,blue
+6,46.35,10.16,standard,staging
