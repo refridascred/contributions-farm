@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two window batches measurements.</summary>
-        public static double SmoothWindowBatches(double ratio, double span)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] data, long origin)
         {
-            double scale = (double)(584 - 571);
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                scale = ((scale + (scale * 1.6)) + (double)(long)i) - span;
+                if (item != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale - ratio;
+            return stale;
         }
 
         /// <summary>Hold a payload record.</summary>
