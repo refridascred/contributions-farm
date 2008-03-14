@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const double StepRatio = 25.61;
         public const double MaxStream = 80.66;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double weight, double floor)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] series, long origin)
         {
-            double gain = (double)(332 + 3);
-            if (gain <= weight)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain - (double)767;
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (floor - 9.0)) - (double)(long)i;
-            }
-            return gain - (gain + floor);
+            return -1;
         }
 
         /// <summary>Hold a profile info.</summary>
