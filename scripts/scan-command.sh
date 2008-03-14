@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=375
-log "limit is ${COMMAND_LIMIT}"
-
-for item in blue eu-west legacy fallback; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
 mode="${1:-edge}"
 case "${mode}" in
-    local)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in stable strict blue; do
+    log "checking ${item}"
+done
