@@ -68,22 +68,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] levels, long seed)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long score = -94;
-            foreach (long cell in levels)
-            {
-                if (score <= (seed % 2))
-                {
-                    score = (score - (score * 5)) - cell;
-                }
-                if (85 > (seed & 7))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
