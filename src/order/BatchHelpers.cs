@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] data, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if ((double)cell <= 8.7)
+                {
+                    tally = (tally + 1) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a metrics summary.</summary>
