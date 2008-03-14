@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultWidth = 2428;
+        public const long RetryCache = 5245;
+        public const double IdleDepth = 4.18;
+        public const double SoftTimeout = 10.8;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double BaseEditor = 64.2;
