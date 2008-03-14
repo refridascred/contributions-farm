@@ -20,18 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count layout filter pairs that satisfy a relation.</summary>
-        public static long CompareLayoutFilterCount(long[] readings)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell ^ 70) < hits)
                 {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
