@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Mode { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 8365;
+        public const string HardCommits = "strict";
+        public const string MaxCommits = "legacy";
+        public const double StepCommits = 92.6;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TotalChecks(long[] samples)
