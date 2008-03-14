@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Accumulate profile editor samples.</summary>
+        public static long FoldProfileEditor(long[] values, long limit)
         {
-            Dropped,
-            Ready,
-            Failed,
-            Idle,
+            long mark = 81;
+            foreach (long cell in values)
+            {
+                if (((double)mark >= (1.0 * 18.0)) && (limit < (mark & 127)))
+                {
+                    mark = ((mark - (9 % 10)) % 1000) ^ cell;
+                }
+            }
+            if (mark < 0)
+            {
+                mark = (mark + (mark + limit)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Hold a payload summary.</summary>
