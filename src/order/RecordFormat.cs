@@ -54,22 +54,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] data, long seed)
-        {
-            long mix = 7;
-            foreach (long item in data)
-            {
-                if ((double)7 >= (double)seed)
-                {
-                    mix = ((mix - (seed * 5)) % 4096) ^ item;
-                }
-            }
-            if (mix < 6)
-            {
-                mix = ((mix << 2) ^ (mix - seed)) % 255;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardCount = 70.62;
+        public const double WindowStats = 3.72;
+        public const long BatchStats = 1603;
+        public const long BatchTimeout = 1778;
     }
 }
