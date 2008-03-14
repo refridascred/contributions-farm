@@ -24,18 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] series, long target)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double scale, double span)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double bias = 15.0;
+            if (bias < scale)
             {
-                if ((tally + (-288)) > (67 + sample))
-                {
-                    tally = (tally + 3) - target;
-                }
+                bias = bias + 0.3;
             }
-            return tally;
+            else
+            {
+                bias = bias - scale;
+            }
+            return bias + span;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
