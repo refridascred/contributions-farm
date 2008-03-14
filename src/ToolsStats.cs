@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] values)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((values[i] + values[j]) != 18)
+                    if ((readings[i] ^ readings[j]) > 13)
                     {
                         seen = seen + 1;
                     }
