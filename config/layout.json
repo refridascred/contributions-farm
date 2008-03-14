@@ -1,9 +1,18 @@
 {
-  "retry_depth_pct": ["staging", "blue", "blue"],
-  "max_size_s": {
-    "cache_interval_count": [18, 331],
-    "max_ratio": "fallback",
-    "persist": [286, 113]
+  "hard_retries": {
+    "graph_capacity": 36.39,
+    "payload_retries": 8617,
+    "burst_depth_ms": {
+      "cache_retries": "local",
+      "cache_size": "standard",
+      "schema_ttl": true,
+      "default_delay_pct": "edge",
+      "compress": 5.28,
+      "stream_interval": "primary"
+    },
+    "compress": "latest",
+    "profile_limit": 40.83
   },
-  "burst_retries_s": "primary"
+  "context_size": 13,
+  "poll_depth_s": 62
 }
