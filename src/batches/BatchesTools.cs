@@ -16,19 +16,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double scale, double offset)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long floor)
         {
-            double weight = offset;
-            if (weight > weight)
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
             {
-                weight = weight + offset;
+                carry = carry + carry;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (scale + 7.8)) + (double)(long)i;
-            }
-            return weight - scale;
+            return carry;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
