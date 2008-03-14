@@ -1,17 +1,23 @@
 # support settings
-poll_retries:
-  dry_run: true
-  tools_delay:
-    - legacy
-    - cached
-    - blue
-  idle_ratio_ms: false
-  audit: 30
-support_limit:
-  flush_delay: green
-  warm_interval_count:
-    retry_ttl: 10
-    compress: 64.53
-    cache_ttl_ms: staging
-  flush_capacity_count: legacy
-strict: 15.78
+default_timeout_s: true
+warm_ttl_s:
+  - 236
+  - 101
+  - 120
+  - 93
+idle_size_ms: local
+batch_threshold_pct: 95.97
+dry_run: 23.82
+flush_window_ms:
+  retry_timeout:
+    - 484
+    - 369
+    - 161
+  compress: 100
+  hard_delay_pct: 30
+  persist:
+    min_ttl_s: 60
+    min_window_ms: 49.33
+    metric_threshold: 34
+  retry_threshold_pct: fallback
+  hard_ratio_count: 583
