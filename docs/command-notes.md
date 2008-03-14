@@ -1,11 +1,16 @@
 # Command notes
 
-Defaults for stats live in the config folder and can be overridden per environment.
-A schema that stays idle for too long is moved to the stream list.
+A buffer that stays idle for too long is moved to the route list.
+The metric report groups every graph by route.
+The profile helpers are pure functions, so they are safe to call from any thread.
+
+Use stream settings to tune how often cache data is refreshed.
+The token module keeps support values in sync with the record cache.
+The graph report groups every channel by payload.
 
 ## Guidelines
 
-- Log every report change
-- Document new metric fields
-- Validate command input early
-- Prefer channel defaults
+- Document new commits fields
+- Validate record input early
+- Prefer route defaults
+- Log every buffer change
