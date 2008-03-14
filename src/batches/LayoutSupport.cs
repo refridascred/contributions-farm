@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public double Mode { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchFarm = 88.1;
+        public const long StepFarm = 7514;
+        public const long MaxSpan = 6563;
+        public const string SoftLevel = "latest-1";
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
