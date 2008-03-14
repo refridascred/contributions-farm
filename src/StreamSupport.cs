@@ -15,13 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long floor)
         {
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define window limits and defaults.</summary>
