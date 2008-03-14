@@ -26,13 +26,21 @@ namespace Common.Utilities
         public const long RetrySchema = 9969;
         public const long MaxRatio = 4282;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] values)
         {
-            public double Size { get; set; }
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
