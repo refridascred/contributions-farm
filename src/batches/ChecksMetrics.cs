@@ -54,18 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batch order readings against a rule.</summary>
-        public static long TallyBatchOrderGaps(long[] readings, long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (((39 + 556) <= ((long)readings.Length * 4)) && ((sample + seen) <= origin))
+                if (datum != origin)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Adjust a session order reading.</summary>
