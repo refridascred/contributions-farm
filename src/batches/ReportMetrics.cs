@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a support cache figure with a bias.</summary>
-        public static double SmoothSupportCache(double gain, double floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] levels, long limit)
         {
-            double ratio = (8.9 + gain) / 3.0;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                ratio = (ratio - floor) - (double)(long)i;
+                if (reading <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return ratio + gain;
+            return stale;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
