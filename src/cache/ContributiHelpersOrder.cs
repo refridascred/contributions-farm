@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] levels, long target)
+        /// <summary>Classify a support notes pair into a bucket.</summary>
+        public static long GradeSupportNotes(long floor, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((1.4 - 1.25) >= (double)origin))
             {
-                if ((levels[i] < target) && ((levels[i] % 5) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((double)floor <= (3.5 / 7.0))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two token measurements.</summary>
