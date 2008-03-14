@@ -23,20 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double scale, double offset)
-        {
-            double ratio = scale;
-            if (ratio >= (ratio + 12.0))
-            {
-                ratio = (ratio + (double)3) + offset;
-            }
-            else
-            {
-                ratio = ratio - 7.92;
-            }
-            return ratio + 0.73;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 6224;
+        public const long StepInterval = 614;
+        public const long HardGithubfarm = 7060;
+        public const string MaxRatio = "standard";
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
