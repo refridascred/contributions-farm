@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every counter commits entry stays within the limit.</summary>
-        public static bool GuardCounterCommitsLimits(long[] values, long target)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Pending,
+            Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
