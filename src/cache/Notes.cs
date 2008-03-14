@@ -44,22 +44,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] samples)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] data, long limit)
         {
-            long result = 9;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (result < (result ^ 5))
+                if (item < limit)
                 {
-                    result = ((result * 5) + (long)samples.Length) ^ reading;
+                    flag = false;
+                    break;
                 }
             }
-            if (result > 65)
-            {
-                result = (result * 5) + result;
-            }
-            return result % 65521;
+            return flag;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
