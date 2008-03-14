@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long BatchToken = 8419;
         public const long SoftBudget = 5494;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] series, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((series[i] >= step) && ((series[i] % 5) == 0))
+                if ((double)sample != (2.1 * 3.4))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of stream contributi entries.</summary>
