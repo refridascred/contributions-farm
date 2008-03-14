@@ -1,7 +1,6 @@
-id,label,score,active
-1,991,47.71,157
-2,708,staging,384
-3,320,141,23.41
-4,63.2,942,primary
-5,blue,5.36,895
-6,57,fallback,81.81
+id,label,active,state
+1,449,blue,fallback
+2,staging,925,283
+3,548,30.39,staging
+4,19.75,33.39,153
+5,314,736,cached
