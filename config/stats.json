@@ -1,18 +1,12 @@
 {
-  "enabled": false,
-  "command_limit": "staging",
-  "order_capacity": [186, 77],
-  "dry_run": {
-    "cache_ratio": false,
-    "retry_depth_pct": "edge",
-    "retry_interval_pct": {
-      "buffer_threshold": true,
-      "payload_interval": "blue",
-      "max_ttl_pct": 84.8,
-      "poll_delay": false,
-      "filter_capacity": 1024
-    },
-    "persist": ["edge", "latest"],
-    "editor_ratio": "blue"
+  "burst_depth": "green",
+  "retry_ttl_ms": "green",
+  "retry_limit": 4,
+  "poll_depth_ms": 5144,
+  "hard_retries": {
+    "idle_timeout_count": 100,
+    "flush_delay_ms": "latest",
+    "cache_size": ["cached", "primary"],
+    "poll_ttl": 47.71
   }
 }
