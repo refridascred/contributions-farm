@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+CHANNEL_LIMIT=9
+log "limit is ${CHANNEL_LIMIT}"
+
 mode="${1:-local}"
 case "${mode}" in
-    blue)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,6 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in eu-west blue green stable; do
+for item in local edge standard primary; do
     log "checking ${item}"
 done
