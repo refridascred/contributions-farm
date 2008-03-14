@@ -1,6 +1,5 @@
 {
-  "strict": true,
-  "flush_threshold_s": false,
-  "max_capacity_pct": 250,
-  "retry_ttl_count": true
+  "route_capacity": 57,
+  "batch_ratio_pct": 26.19,
+  "max_timeout_pct": false
 }
