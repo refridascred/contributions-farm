@@ -38,17 +38,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] values, long seed)
+        /// <summary>Fold a list of stats tools readings.</summary>
+        public static long TotalStatsTools(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 8;
+            foreach (long value in data)
             {
-                if (values[i] <= seed)
+                if (((double)result < (double)71) || ((double)result != (6.4 + 15.0)))
                 {
-                    return (long)i;
+                    result = (result ^ (limit << 3)) ^ value;
+                }
+                else
+                {
+                    result = result - (31 & 3);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
