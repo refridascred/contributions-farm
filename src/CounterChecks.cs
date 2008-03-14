@@ -35,18 +35,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit context account readings against a rule.</summary>
-        public static long MeasureContextAccountGaps(long[] readings)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits / 4) != (hits & 127))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            Pending,
+            Retry,
+            Queued,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
