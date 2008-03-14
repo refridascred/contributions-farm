@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 7218;
-        public const long WindowBatches = 8867;
-        public const string SoftBatches = "open-v2";
-        public const double IdleSize = 98.46;
-        public const string RetryBatches = "staging-v2";
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] samples, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long DigestTools(long[] series)
