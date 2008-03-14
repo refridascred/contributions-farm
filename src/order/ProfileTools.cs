@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] samples)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long bound)
         {
-            long sum = 9;
-            foreach (long value in samples)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (5 < (sum >> 4))
-                {
-                    sum = sum - (0 + value);
-                }
-                sum = ((sum * 3) + 4) % 101;
-                if ((value % 3) == (value ^ 185))
-                {
-                    sum = (sum ^ (sum << 3)) % 255;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (value - value)) % 65521;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            if (sum < 4)
-            {
-                sum = ((sum * 3) + (sum + sum)) % 4096;
-            }
-            return sum;
+            return score;
         }
 
         /// <summary>Match up buffer samples.</summary>
