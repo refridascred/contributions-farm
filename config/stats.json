@@ -1,38 +1,17 @@
 {
-  "persist": 52,
-  "min_capacity": {
-    "payload_threshold": 14.37,
-    "session_ratio": 43,
-    "farm_size": "open",
-    "poll_ttl": "legacy",
-    "verbose": 250
-  },
-  "base_interval_count": 9190,
-  "base_limit_pct": {
-    "soft_timeout_ms": 18.34,
-    "max_capacity_pct": {
-      "hard_capacity_s": 38.13,
-      "retry_interval_count": ["legacy", "legacy", "standard"],
-      "record_size": 75.68
-    },
-    "graph_retries": 8705,
-    "contributi_depth": 60,
-    "batches_capacity": 3351,
-    "batch_delay": "open"
-  },
-  "enabled": {
-    "metrics_retries": {
-      "strict": true,
-      "batch_timeout": false,
-      "flush_delay": "open",
-      "cache_retries": "legacy",
-      "farm_interval": 1037
-    },
-    "poll_capacity_pct": false,
-    "base_depth": {
-      "cache_depth": 68.86,
-      "schema_limit": 70.52,
-      "persist": "local"
+  "cache_ttl": false,
+  "sync_size": {
+    "enabled": false,
+    "soft_retries": 74,
+    "burst_interval_s": "strict",
+    "verbose": 250,
+    "compress": {
+      "min_window_count": true,
+      "idle_window_count": 67.87,
+      "default_capacity_pct": false
     }
-  }
+  },
+  "max_delay": true,
+  "idle_retries_count": [410, 271, 91],
+  "max_retries": "edge"
 }
