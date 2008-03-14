@@ -18,38 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a account batch value against two limits.</summary>
-        public static long BucketAccountBatch(long limit, long seed)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            if ((limit >> 1) > limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed != (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((3.29 / 5.0) > (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit - limit) < limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Active,
+            Failed,
+            Synced,
         }
 
         /// <summary>Locate a already reading by value.</summary>
