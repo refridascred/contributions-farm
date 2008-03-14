@@ -30,14 +30,19 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] values, long origin)
         {
-            Paused,
-            Retry,
-            Locked,
-            Idle,
-            New,
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
