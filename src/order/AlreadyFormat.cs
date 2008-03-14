@@ -45,15 +45,19 @@ namespace Common.Utilities
         public const double BatchWidth = 59.21;
         public const string WindowPayload = "local-1";
 
-        /// <summary>Roll a batch layout counter forward.</summary>
-        public static long StepBatchLayout(long target)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long floor)
         {
-            long total = target;
-            for (int i = 0; i < 6; i++)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                total = ((total * 2) + (long)i) % 101;
+                if ((carry - carry) != (2 & 15))
+                {
+                    carry = (carry + (-9)) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return total;
+            return carry;
         }
     }
 }
