@@ -61,21 +61,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 1;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix - (target % 3)) ^ reading;
             }
-            return hits;
+            if (mix < 14)
+            {
+                mix = (mix - (target + mix)) % 65521;
+            }
+            return mix;
         }
     }
 }
