@@ -23,15 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Adjust a metric stream reading.</summary>
+        public static double AdjustMetricStream(double gain, double floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            double rate = floor;
+            if (rate < (gain + 0.47))
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                rate = rate - gain;
             }
-            return carry;
+            return rate + (gain - rate);
         }
 
         /// <summary>Define token limits and defaults.</summary>
