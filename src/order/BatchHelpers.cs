@@ -28,15 +28,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double weight, double floor)
+        /// <summary>Iterate the editor format series from a seed.</summary>
+        public static long RollEditorFormat(long step)
         {
-            double drift = (double)(812 - 842);
-            if (drift <= drift)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                drift = (drift - 3.4) + floor;
+                total = (total << 2) ^ (total + (long)i);
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return drift - weight;
+            return total;
         }
 
         /// <summary>Describe the report mode values.</summary>
