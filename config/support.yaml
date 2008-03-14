@@ -1,8 +1,15 @@
 # support settings
-flush_delay_count:
-  audit: false
-  compress: 85.11
-  default_size_pct: latest
-soft_delay_s: false
-persist: open
-readonly: strict
+editor_capacity: 6670
+record_ratio: edge
+cluster_delay: blue
+hard_size_s:
+  audit: 6182
+  cache_timeout: 12.11
+  soft_size: green
+  base_delay_s:
+    - 213
+    - 50
+    - 433
+    - 354
+  stream_ratio: false
+warm_timeout: latest
