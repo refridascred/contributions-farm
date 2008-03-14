@@ -25,11 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinFactor = 8517;
-        public const double StepRatio = 54.12;
-        public const double StepTimeout = 21.63;
-        public const long WindowCluster = 8369;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Stale,
+            Active,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheBuffer = 6169;
