@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double ratio, double bias)
+        /// <summary>Measure how many queue record samples are out of range.</summary>
+        public static long CountQueueRecordMatches(long[] series)
         {
-            double weight = bias;
-            return (weight + bias) + ratio;
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell - seen) < ((-616) - cell))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
