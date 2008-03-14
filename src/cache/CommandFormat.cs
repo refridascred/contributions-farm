@@ -27,11 +27,25 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinTimeout = 2117;
-        public const long WindowEditor = 2690;
-        public const long BatchRatio = 8944;
-        public const long HardEditor = 11;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long floor, long floor2)
+        {
+            if ((floor - floor2) > (floor2 - floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor <= (0.7 / 5.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Project the next notes value.</summary>
         public static double AdjustNotes(double bias, double bias2)
