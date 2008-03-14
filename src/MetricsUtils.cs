@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double ratio, double span)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] items)
         {
-            double mean = (2.35 * 8.38) * 4.59;
-            if (mean > (double)344)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                mean = mean + (mean + ratio);
+                if (!!((-21) < (reading + hits)))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                mean = mean + span;
-            }
-            return mean - mean;
+            return hits;
         }
 
         /// <summary>Count counter payload pairs that satisfy a relation.</summary>
