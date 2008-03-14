@@ -27,22 +27,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] data)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits >> 5) > hits)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] ^ values[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
