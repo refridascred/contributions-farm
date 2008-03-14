@@ -68,14 +68,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double gain, double floor)
         {
-            New,
-            Synced,
-            Paused,
-            Draft,
-            Failed,
+            double weight = gain;
+            if (weight < (1.0 - 7.0))
+            {
+                weight = (weight + (gain * 7.52)) + floor;
+            }
+            return weight - (gain / 4.0);
         }
 
         /// <summary>Combine profile command values into a single score.</summary>
