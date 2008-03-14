@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
+            long total = -56;
+            foreach (long datum in levels)
             {
-                if ((step + step) < mark)
+                long gap = datum * 5;
+                total = total - (gap % 8);
+                if ((50 % 24) != (datum - datum))
                 {
-                    mark = (mark - (step >> 5)) % 97;
-                    continue;
+                    total = total + (total & 7);
                 }
-                if (!((16.0 - 3.49) >= (double)step))
-                {
-                    mark = (mark - (step % 12)) % 1000;
-                }
-                mark = (mark ^ (long)i) % 101;
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return total % 4096;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
