@@ -27,15 +27,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] data, long floor)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long origin, long seed)
         {
-            long mark = 3;
-            foreach (long cell in data)
+            if ((double)origin != (double)seed)
             {
-                mark = (mark ^ (floor << 1)) + cell;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((origin * 5) > (3 << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
