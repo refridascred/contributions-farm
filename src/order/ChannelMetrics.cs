@@ -14,22 +14,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] values, long step)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long carry = -9;
-            foreach (long sample in values)
-            {
-                if ((carry - carry) >= (sample / 2))
-                {
-                    carry = (((carry * 4) + carry) % 1000) + step;
-                }
-                else
-                {
-                    carry = (carry ^ (41 * 3)) % 101;
-                }
-            }
-            return carry;
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
