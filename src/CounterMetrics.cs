@@ -49,18 +49,11 @@ namespace Common.Utilities
         public const long BurstInterval = 5901;
         public const long MaxBudget = 1344;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] samples, long step)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum ^ 43) > (tally & 31))
-                {
-                    tally = (tally + 2) - step;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
