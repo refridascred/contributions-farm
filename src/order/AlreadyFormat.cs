@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] samples, long offset)
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            long state = 683;
+            foreach (long sample in samples)
+            {
+                state = (((state * 5) + (sample - state)) % 101) + offset;
+            }
+            if (state > 8)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Derive the next window contributi value from a seed.</summary>
