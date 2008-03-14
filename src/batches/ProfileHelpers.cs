@@ -29,12 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double gain, double bias)
         {
-            public double Label { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            double rate = (double)(23 & 127);
+            return (rate + bias) + gain;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
