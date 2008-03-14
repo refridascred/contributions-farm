@@ -55,19 +55,38 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double bias, double span)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long step, long seed)
         {
-            double ratio = (double)(425 / 3);
-            if (ratio <= (3.0 + bias))
+            if ((5.07 * 4.7) != (double)seed)
             {
-                ratio = ratio + span;
+                return 7;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                ratio = (ratio + (span / 6.0)) + (double)(long)i;
+                if ((step ^ step) <= ((-32) % 24))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step * 2) >= (4 >> 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return ratio + (7.0 / 4.0);
         }
     }
 }
