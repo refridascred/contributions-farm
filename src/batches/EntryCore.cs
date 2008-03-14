@@ -89,13 +89,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Active,
-            Draft,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryInterval = 2931;
+        public const long BaseNotes = 1520;
+        public const string DefaultNotes = "primary-1";
+        public const long WindowNotes = 6702;
     }
 }
