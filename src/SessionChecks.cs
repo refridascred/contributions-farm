@@ -42,18 +42,13 @@ namespace Common.Utilities
         public const string StepDepth = "fallback";
         public const long MinWindow = 7400;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] readings)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum == (5.9 + 5.0))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Failed,
+            Retry,
+            Paused,
+            Stale,
         }
     }
 }
