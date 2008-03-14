@@ -1,19 +1,8 @@
 # githubfarm settings
-persist: true
-readonly:
-  burst_interval_s: eu-west
-  sync_depth:
-    - 414
-    - 301
-  max_limit_ms:
-    poll_timeout_ms: 9754
-    burst_limit: 60
-    contributi_delay: false
-    default_retries_ms: 46.11
-    flush_limit: fallback
-  warm_size_count: fallback
-  batch_size: true
-  channel_size: open
-dry_run: 100
-context_limit: 68.61
-commits_delay: fallback
+strict:
+  - 410
+  - 288
+  - 420
+  - 361
+verbose: 60
+default_depth_pct: 739
