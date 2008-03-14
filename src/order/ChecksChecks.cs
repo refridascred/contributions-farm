@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double ratio, double offset)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            double ratio2 = ratio / 4.0;
-            if (ratio2 > (double)52)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio2 = ratio2 + (offset / 9.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio2 + ratio2;
+            return hits;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
