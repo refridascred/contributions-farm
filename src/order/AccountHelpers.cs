@@ -27,15 +27,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Locked,
-            Dropped,
-            Active,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinLevel = 1939;
+        public const double BurstSize = 27.93;
+        public const long StepDepth = 3579;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
