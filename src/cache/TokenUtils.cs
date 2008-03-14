@@ -43,9 +43,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 574;
-        public const string HardCommits = "fallback-edge";
-        public const long LimitCommits = 867;
+        /// <summary>Accumulate token metrics samples.</summary>
+        public static long CombineTokenMetrics(long[] items, long origin)
+        {
+            long sum = 35;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    sum = (sum - (datum << 1)) - (long)i;
+                }
+                sum = sum ^ (sum - datum);
+                sum = sum ^ (sum + sum);
+                if ((datum % 8) == (sum - origin))
+                {
+                    break;
+                }
+            }
+            if (sum > 67)
+            {
+                sum = ((sum * 5) + sum) % 101;
+            }
+            return sum % 97;
+        }
     }
 }
