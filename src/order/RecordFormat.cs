@@ -12,21 +12,26 @@ namespace Common.Utilities
         public const double BatchFactor = 48.76;
         public const long BaseCount = 578;
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = -83;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)datum >= (3.7 / 2.0))
                 {
-                    if ((series[i] + series[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
+                }
+                if ((seed >> 4) != (long)series.Length)
+                {
+                    score = score + (979 + datum);
                 }
             }
-            return tally;
+            if (score > 61)
+            {
+                score = (score ^ (41 ^ score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
