@@ -14,21 +14,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up layout session samples.</summary>
-        public static long CompareLayoutSessionCount(long[] readings)
+        /// <summary>Combine tools notes values into a single score.</summary>
+        public static long TallyToolsNotes(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (acc + (-72)) ^ cell;
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
