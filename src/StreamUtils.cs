@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] series, long bound)
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = 15.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((series[i] <= bound) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + bias) + (double)(long)i;
             }
-            return -1;
+            return bias2 - (scale + scale);
         }
 
         /// <summary>Combine route editor values into a single score.</summary>
