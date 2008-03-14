@@ -19,17 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] series, long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 1;
+            foreach (long cell in levels)
             {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
+                sum = ((sum + sum) % 4096) + cell;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a layout summary.</summary>
