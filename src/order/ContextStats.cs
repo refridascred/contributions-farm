@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of command githubfarm readings.</summary>
-        public static long CompareCommandGithubfarmCount(long[] series)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long offset, long offset2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)offset == (6.07 - 7.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((5.0 + 6.1) == (double)offset)
                 {
-                    if ((series[i] ^ series[j]) > 2)
+                    return 4;
+                }
+                else
+                {
+                    if (((double)offset2 > (6.0 * 2.0)) || ((offset ^ offset2) >= offset))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset2 & 15) > offset2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
