@@ -1,8 +1,6 @@
-id,count,rank,region
-1,7.59,47.66,23.45
-2,618,stable,590
-3,cached,staging,984
-4,28.31,478,87.06
-5,18.79,347,33.13
-6,primary,edge,4.29
-7,0.87,standard,stable
+id,rank,region
+1,green,edge
+2,staging,5.21
+3,812,64.6
+4,555,9.44
+5,legacy,primary
