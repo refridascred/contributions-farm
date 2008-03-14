@@ -46,24 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long target, long seed)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            if ((target >> 4) < (seed ^ 96))
-            {
-                return 5;
-            }
-            else
-            {
-                if (seed <= (0 * 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Closed,
+            Pending,
+            Synced,
+            Done,
         }
     }
 }
