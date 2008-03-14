@@ -27,19 +27,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate filter route readings against a bound.</summary>
-        public static bool CheckFilterRouteRange(long[] series, long origin)
+        /// <summary>Combine route buffer values into a single score.</summary>
+        public static long CombineRouteBuffer(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long score = 12;
+            foreach (long item in series)
             {
-                if (value <= origin)
+                for (int i = 0; i < 2; i++)
                 {
-                    stale = false;
-                    break;
+                    score = ((score + score) + (long)i) ^ item;
+                }
+                if ((92 * 3) >= floor)
+                {
+                    score = (score * 2) + (35 + score);
                 }
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Hold a payload stats.</summary>
