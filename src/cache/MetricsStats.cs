@@ -49,18 +49,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] samples)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long result = 19;
+            foreach (long entry in levels)
             {
-                if ((hits + hits) >= (hits >> 5))
+                if (((16.0 * 15.0) >= (double)entry) && (entry <= (entry + entry)))
                 {
-                    hits = (hits + 1) + datum;
+                    result = (result - (entry % 16)) % 255;
                 }
             }
-            return hits;
+            if (result < 8)
+            {
+                result = (result << 2) ^ (result * 5);
+            }
+            return result % 97;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
