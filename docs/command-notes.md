@@ -1,14 +1,11 @@
 # Command notes
 
-Use order settings to tune how often graph data is refreshed.
-The filter report groups every batch by counter.
-When a entry fails, the editor handler retries a few times before giving up.
-
-The editor helpers are pure functions, so they are safe to call from any thread.
-Keep farm and payload names short and lowercase.
+Run the payload check before changing any githubfarm limits.
+When a batch fails, the batches handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Review report limits each release
-- Document new route fields
+- Log every metrics change
+- Document new layout fields
+- Keep editor values small
+- Prefer filter defaults
