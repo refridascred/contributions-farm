@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] levels)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally & 63) < reading)
+                if ((levels[i] == bound) && ((levels[i] % 5) != 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a batches stats.</summary>
