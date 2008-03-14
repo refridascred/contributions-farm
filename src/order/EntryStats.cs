@@ -35,22 +35,14 @@ namespace Common.Utilities
         public const long MaxWidth = 6606;
         public const string MaxDepth = "cached";
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] data, long offset)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long mix = 476;
-            foreach (long sample in data)
-            {
-                if ((mix << 3) == (mix * 2))
-                {
-                    mix = (mix - 5) ^ sample;
-                }
-            }
-            if (mix < 441)
-            {
-                mix = mix ^ (21 ^ offset);
-            }
-            return mix;
+            Locked,
+            Pending,
+            Stale,
+            Closed,
+            Idle,
         }
 
         /// <summary>Adjust a queue reading.</summary>
