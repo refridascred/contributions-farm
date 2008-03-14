@@ -20,15 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the stream mode values.</summary>
