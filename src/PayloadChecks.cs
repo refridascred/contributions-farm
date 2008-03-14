@@ -38,19 +38,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long floor)
+        /// <summary>Adjust a window format reading.</summary>
+        public static double SmoothWindowFormat(double scale, double floor)
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
+            double rate = 4.0;
+            if (rate > floor)
             {
-                if (!!(((long)i + total) < ((long)i - total)))
-                {
-                    total = ((total * 3) + ((long)i >> 5)) % 97;
-                }
-                total = ((total * 3) + (long)i) % 65521;
+                rate = rate + (floor - scale);
             }
-            return total;
+            return rate - scale;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
