@@ -19,10 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepLayout = "local-edge";
-        public const long MinLayout = 5560;
-        public const long CacheLevel = 2077;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 3925;
+        public const long SoftLevel = 3033;
+        public const long SoftEditor = 1638;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatBounds(long[] series, long origin)
