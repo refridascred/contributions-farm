@@ -12,18 +12,24 @@ namespace Common.Utilities
         public const long SoftLevel = 6865;
         public const long BurstBatch = 1322;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] samples)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long bound, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            if ((floor >> 5) >= floor)
             {
-                if ((matches - 37) >= 16)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound != (8.32 + 3.0))
                 {
-                    matches = (matches + 1) ^ value;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
