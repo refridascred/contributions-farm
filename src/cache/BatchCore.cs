@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] levels, long seed)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] items)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Count layout filter pairs that satisfy a relation.</summary>
