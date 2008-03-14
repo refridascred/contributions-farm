@@ -11,38 +11,22 @@ namespace Common.Utilities
         public const string BurstScore = "stable-1";
         public const long IdleStream = 6734;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long floor, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] values, long offset)
         {
-            if (!((double)origin > (3.7 * 13.0)))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)floor >= (5.9 + 1.0)))
+                if ((((double)offset >= 3.2) || ((tally - tally) <= reading)) && (0.54 > (double)tally))
                 {
-                    return 3;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((((-242) - floor) < origin) || ((origin << 2) == (floor >> 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((54 + floor) > origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine record route values into a single score.</summary>
