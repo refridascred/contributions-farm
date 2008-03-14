@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = (bias + bias) - 17.0;
+            if (mean >= (mean + mean))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean - mean) - span;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define token limits and defaults.</summary>
