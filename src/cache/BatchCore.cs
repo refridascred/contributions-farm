@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftSize = 1602;
-        public const long StepLevel = 9098;
-        public const long CacheLevel = 7710;
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] samples, long limit)
+        {
+            long mix = -47;
+            foreach (long reading in samples)
+            {
+                mix = mix - (665 >> 2);
+                mix = (mix * 5) + reading;
+            }
+            if (mix < 98)
+            {
+                mix = (mix << 2) ^ limit;
+            }
+            return mix;
+        }
 
         /// <summary>Count layout filter pairs that satisfy a relation.</summary>
         public static long CompareLayoutFilterCount(long[] readings)
