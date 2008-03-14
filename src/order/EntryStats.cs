@@ -20,17 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the contributi batch series from a seed.</summary>
-        public static long RollContributiBatch(long offset)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = mark ^ mark;
-                mark = mark ^ (offset - 975);
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Synced,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
