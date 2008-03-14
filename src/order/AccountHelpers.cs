@@ -24,13 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] data, long floor)
         {
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
