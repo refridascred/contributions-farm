@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many editor route samples are out of range.</summary>
-        public static long TallyEditorRouteMatches(long[] items)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] data)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long anchor = 9;
+            foreach (long entry in data)
             {
-                if (((double)count == (7.6 * 5.4)) || ((double)(long)items.Length == (9.3 - 2.0)))
+                if ((64 - anchor) < (anchor >> 1))
                 {
-                    count = (count + 1) - reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = (anchor * 4) + entry;
                 }
             }
-            return count;
+            if (anchor > 2)
+            {
+                anchor = anchor ^ (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the route level values.</summary>
