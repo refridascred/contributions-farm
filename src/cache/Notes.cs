@@ -56,18 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] values)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (!(((tally * 4) <= (tally / 8)) || ((tally >> 2) <= (datum / 5))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Accumulate commits report samples.</summary>
