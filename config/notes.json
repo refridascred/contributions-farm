@@ -1,5 +1,6 @@
 {
-  "verbose": 21.36,
-  "warm_timeout_ms": false,
-  "tools_depth": 34.95
+  "retry_ratio": 54,
+  "soft_threshold": 78,
+  "dry_run": 24.2,
+  "burst_capacity_ms": true
 }
