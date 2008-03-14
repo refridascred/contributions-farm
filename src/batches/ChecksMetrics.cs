@@ -5,27 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] readings, long step)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long bound, long seed)
         {
-            long acc = 359;
-            foreach (long datum in readings)
+            long edge = bound - seed;
+            if ((0.1 + 7.5) < (double)edge)
             {
-                if (!((acc * 4) < (acc - 8)))
+                return 6;
+            }
+            else
+            {
+                if ((double)edge <= (1.89 / 5.0))
                 {
-                    acc = (((acc << 2) ^ (52 * 5)) % 101) + step;
+                    return 5;
                 }
                 else
                 {
-                    acc = (acc * 5) + (acc + datum);
+                    if ((bound ^ bound) <= (4 / 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed / 5) >= (edge + edge))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
-                acc = (acc + acc) % 4096;
             }
-            if (acc < 145)
-            {
-                acc = (acc << 2) ^ 4;
-            }
-            return acc % 65521;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
