@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public double Region { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardGithubfarm = "primary";
+        public const double CacheDepth = 1.71;
+        public const double StepScore = 94.96;
+        public const double RetryRatio = 39.68;
 
         /// <summary>Roll a metrics queue counter forward.</summary>
         public static long DeriveMetricsQueue(long bound)
