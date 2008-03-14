@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] samples, long bound)
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((double)bound != (double)tally)
+                {
+                    tally = (tally + 3) + sample;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
