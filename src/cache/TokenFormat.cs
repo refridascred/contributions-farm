@@ -26,18 +26,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] series, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((3.47 / 4.0) == (double)offset)
+                if ((-44) <= (limit / 4))
                 {
-                    tally = (tally + 1) + cell;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
