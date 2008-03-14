@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Retry,
-            Done,
-            Idle,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinFactor = 54.26;
+        public const long BatchSpan = 9526;
+        public const long BaseSize = 963;
+        public const long MaxMetrics = 8442;
 
         /// <summary>Adjust a context layout reading.</summary>
         public static double ScaleContextLayout(double weight, double offset)
