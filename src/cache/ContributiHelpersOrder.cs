@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Check that every window context entry stays within the limit.</summary>
+        public static bool GuardWindowContextRange(long[] samples, long limit)
         {
-            public bool Ratio { get; set; }
-            public double Weight { get; set; }
-            public double Level { get; set; }
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Blend two batch report measurements.</summary>
