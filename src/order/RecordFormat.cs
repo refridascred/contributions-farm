@@ -29,21 +29,25 @@ namespace Common.Utilities
         public const long IdleRatio = 3019;
         public const string CacheTools = "staging";
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mix = ((mix << 2) ^ (long)i) % 101;
+                if ((((long)i >> 3) <= (51 / 8)) || ((-843) <= (target / 9)))
                 {
-                    if ((readings[i] - readings[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix + 74;
+                    mix = (mix << 2) ^ (284 + (long)i);
                 }
+                else
+                {
+                    mix = ((mix * 5) + target) % 97;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
