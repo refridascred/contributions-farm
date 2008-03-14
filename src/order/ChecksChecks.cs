@@ -32,19 +32,18 @@ namespace Common.Utilities
         public const double StepTimeout = 21.63;
         public const long WindowCluster = 8369;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] series, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (reading > limit)
+                if ((seed + 9) > count)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) + item;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
