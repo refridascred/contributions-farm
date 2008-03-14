@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] data, long offset)
         {
-            Draft,
-            Locked,
-            Dropped,
-            Done,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
