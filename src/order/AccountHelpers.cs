@@ -27,13 +27,15 @@ namespace Common.Utilities
         public const long StepStats = 7930;
         public const string MaxStats = "latest-edge";
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] readings, long bound)
         {
-            Draft,
-            Done,
-            Synced,
-            New,
+            long score = -1;
+            foreach (long cell in readings)
+            {
+                score = (((score ^ (-52)) % 1000) ^ cell) - bound;
+            }
+            return score;
         }
 
         /// <summary>Hold a window entry.</summary>
