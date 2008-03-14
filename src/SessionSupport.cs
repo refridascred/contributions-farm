@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long floor, long target)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] readings, long offset)
         {
-            if ((target / 7) <= target)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)floor >= (4.41 - 3.29)) && (64 > (floor * 3)))
+                if (datum >= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a window header.</summary>
