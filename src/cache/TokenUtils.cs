@@ -32,11 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitInterval = "stable-1";
-        public const long MinCommand = 8093;
-        public const long BaseCommand = 2860;
-        public const long BatchScore = 8212;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public bool Owner { get; set; }
+            public bool Score { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long RankPayload(long target, long offset)
