@@ -28,10 +28,20 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 8574;
-        public const long StepGithubfarm = 5883;
-        public const double LimitGithubfarm = 1.53;
+        /// <summary>Validate commits cache readings against a bound.</summary>
+        public static bool VerifyCommitsCacheRange(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepToken = 4348;
