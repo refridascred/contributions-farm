@@ -23,23 +23,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double gain, double floor)
+        /// <summary>Classify a stats tools pair into a bucket.</summary>
+        public static long GradeStatsTools(long seed, long seed2)
         {
-            double rate = gain;
-            if (rate >= (double)76)
+            if (68 < (seed & 7))
             {
-                rate = rate - (floor / 6.0);
+                return 1;
             }
             else
             {
-                rate = rate + (3.4 + rate);
+                if ((seed & 255) < (seed % 100))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)seed2 < 9.8) && ((double)seed2 > (double)8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate - gain;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
