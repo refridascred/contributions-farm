@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] samples, long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
+                if ((3.2 + 1.69) > (double)9)
                 {
-                    return (long)i;
+                    hits = ((hits + 2) ^ item) - bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the command state values.</summary>
