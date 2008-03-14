@@ -38,13 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Paused,
-            Failed,
-            Active,
-            Queued,
+            public double Label { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
