@@ -16,22 +16,23 @@ namespace Common.Utilities
             return bias2 - (scale + scale);
         }
 
-        /// <summary>Combine route editor values into a single score.</summary>
-        public static long TallyRouteEditor(long[] samples)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            long acc = 85;
-            foreach (long sample in samples)
+            long result = 64;
+            foreach (long cell in samples)
             {
-                if (((double)acc < (1.1 / 2.0)) && ((sample & 1) < (acc - 47)))
+                result = ((result * 2) + result) ^ cell;
+                if ((result % 24) < (result << 2))
                 {
-                    acc = acc ^ (acc + sample);
+                    result = result + result;
                 }
             }
-            if (acc < 826)
+            if (result < (-4))
             {
-                acc = acc - (acc & 3);
+                result = (result - (result + 2)) % 97;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Fold a list of batch metric readings.</summary>
