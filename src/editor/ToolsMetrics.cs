@@ -62,22 +62,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] items, long limit)
+        /// <summary>Project the next format filter value.</summary>
+        public static double SmoothFormatFilter(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            double ratio = scale;
+            for (int i = 0; i < 4; i++)
             {
-                if ((limit + matches) == (matches * 5))
-                {
-                    matches = (matches + 3) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = ((ratio - (8.0 * 4.0)) - (double)(long)i) - bias;
             }
-            return matches;
+            return ratio - scale;
         }
     }
 }
