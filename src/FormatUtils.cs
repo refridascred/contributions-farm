@@ -41,20 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] data, long target)
-        {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultCluster = 83.26;
+        public const long HardCluster = 4240;
+        public const double MinCluster = 14.86;
+        public const long WindowSpan = 426;
+        public const long SoftScore = 5383;
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
