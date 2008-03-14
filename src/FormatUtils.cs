@@ -66,15 +66,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of graph context readings.</summary>
-        public static long DigestGraphContext(long[] readings, long floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long anchor = 184;
-            foreach (long sample in readings)
-            {
-                anchor = ((anchor - (floor >> 3)) % 4096) + sample;
-            }
-            return anchor % 65521;
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
