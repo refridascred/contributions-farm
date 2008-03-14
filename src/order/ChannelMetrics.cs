@@ -29,14 +29,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Synced,
-            Ready,
-            Draft,
-            Idle,
+            Retry,
+            Stale,
             Locked,
+            Idle,
+            Draft,
         }
     }
 }
