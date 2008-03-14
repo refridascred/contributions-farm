@@ -1,6 +1,19 @@
 {
-  "flush_interval": ["legacy", "latest", "stable", "primary"],
-  "window_timeout": false,
-  "default_ratio_count": false,
-  "cache_interval_ms": ["primary", "open"]
+  "burst_window": {
+    "stats_size": "standard",
+    "poll_capacity": true,
+    "strict": 19,
+    "enabled": {
+      "enabled": true,
+      "payload_size": 30,
+      "cache_interval": ["standard", "standard", "strict", "open"],
+      "max_retries": 60,
+      "entry_window": [119, 376],
+      "context_ratio": ["standard", "primary", "primary", "strict"]
+    },
+    "default_size_s": true,
+    "context_interval": 37
+  },
+  "base_size_count": 1774,
+  "max_size_count": 60
 }
