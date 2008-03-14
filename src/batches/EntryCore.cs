@@ -89,10 +89,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryInterval = 2931;
-        public const long BaseNotes = 1520;
-        public const string DefaultNotes = "primary-1";
-        public const long WindowNotes = 6702;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (!((0.7 - 7.7) != (double)(long)values.Length))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
+        }
     }
 }
