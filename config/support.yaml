@@ -1,5 +1,6 @@
 # support settings
-soft_threshold_s: blue
-sync_interval: true
-notes_retries: 60.26
-tools_delay: 36.08
+token_timeout: 15
+persist: 60
+audit: local
+enabled: 30
+dry_run: true
