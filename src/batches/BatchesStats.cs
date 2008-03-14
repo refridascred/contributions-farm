@@ -42,13 +42,31 @@ namespace Common.Utilities
         public const string LimitChecks = "local-v2";
         public const long MaxChecks = 7518;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Rank metric buffer input into a small class.</summary>
+        public static long SortMetricBuffer(long origin, long floor)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
+            if ((floor % 12) > (origin % 16))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin - origin) > (906 ^ origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor < (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
