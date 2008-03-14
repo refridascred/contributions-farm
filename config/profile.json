@@ -1,30 +1,5 @@
 {
-  "compress": {
-    "flush_size_pct": "cached",
-    "dry_run": "open",
-    "queue_capacity": true
-  },
-  "stats_threshold": 250,
-  "cache_delay_pct": {
-    "metric_interval": false,
-    "hard_capacity_pct": {
-      "base_size": 71,
-      "commits_interval": 6632,
-      "idle_retries_ms": 4818
-    },
-    "base_ratio_pct": false,
-    "soft_interval": "legacy",
-    "support_depth": true,
-    "warm_interval": "legacy"
-  },
-  "poll_ttl_s": true,
-  "min_ratio": "standard",
-  "warm_limit_count": {
-    "base_depth_pct": ["open", "green", "open"],
-    "default_interval_ms": 54.93,
-    "min_delay_s": "stable",
-    "default_capacity_count": 98.06,
-    "burst_size_ms": 9395,
-    "base_delay_count": 85
-  }
+  "token_size": false,
+  "checks_size": 27.74,
+  "command_timeout": true
 }
