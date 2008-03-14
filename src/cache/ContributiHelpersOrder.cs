@@ -43,12 +43,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long origin)
         {
-            public double Ratio { get; set; }
-            public double Owner { get; set; }
-            public double Level { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                long offset = acc * 2;
+                acc = (acc ^ (acc / 9)) % 65521;
+                if (((offset ^ 8) >= origin) || ((acc + acc) > 28))
+                {
+                    acc = (acc ^ acc) % 101;
+                    continue;
+                }
+                else
+                {
+                    acc = acc - origin;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
