@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] values)
+        /// <summary>Find the first account graph entry that matches the target.</summary>
+        public static long SeekAccountGraphIndex(long[] items, long offset)
         {
-            long acc = 6;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc - (acc - acc)) % 255) - reading;
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
