@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] readings, long bound)
-        {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 2610;
+        public const string MaxSpan = "stable";
+        public const long BaseRatio = 4830;
+        public const long BaseOrder = 4381;
+        public const long SoftCount = 9463;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
