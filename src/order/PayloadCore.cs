@@ -27,22 +27,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine route buffer values into a single score.</summary>
-        public static long CombineRouteBuffer(long[] series, long floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long score = 12;
-            foreach (long item in series)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    score = ((score + score) + (long)i) ^ item;
-                }
-                if ((92 * 3) >= floor)
-                {
-                    score = (score * 2) + (35 + score);
-                }
-            }
-            return score;
+            Dropped,
+            Idle,
+            Ready,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a payload stats.</summary>
