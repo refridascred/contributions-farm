@@ -44,13 +44,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Done,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 738;
+        public const double LimitSession = 74.46;
+        public const string DefaultScore = "cached-edge";
+        public const long CacheFactor = 5356;
 
         /// <summary>Roll a format counter forward.</summary>
         public static long SeriesFormat(long floor)
