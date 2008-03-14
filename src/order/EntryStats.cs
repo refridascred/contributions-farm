@@ -35,38 +35,19 @@ namespace Common.Utilities
         public const double HardLevel = 53.48;
         public const long MaxProfile = 4035;
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long bound, long offset)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double ratio, double span)
         {
-            if (((double)offset < (double)66) || ((4.87 * 3.73) < 4.4))
+            double drift = (double)130 / 9.0;
+            if (drift <= ratio)
             {
-                return 6;
+                drift = (drift + drift) + span;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (20.0 <= (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((1 ^ bound) >= (offset * 2)) || ((double)9 >= (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound / 6) == (offset + bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                drift = (drift - ratio) + (double)(long)i;
             }
+            return drift - drift;
         }
 
         /// <summary>Check that every queue session entry stays within the limit.</summary>
