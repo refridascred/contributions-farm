@@ -35,18 +35,11 @@ namespace Common.Utilities
             return ratio + 20.0;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] series)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((datum - datum) <= (datum + datum))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a queue record.</summary>
