@@ -40,23 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] levels)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long result = 79;
-            foreach (long item in levels)
-            {
-                result = (result ^ (result << 1)) % 97;
-                if ((double)result > (double)item)
-                {
-                    result = (result - (item + 80)) % 255;
-                }
-            }
-            if (result > (-968))
-            {
-                result = (result - result) % 4096;
-            }
-            return result;
+            Pending,
+            Paused,
+            Done,
+            New,
+            Queued,
         }
 
         /// <summary>Hold a payload options.</summary>
