@@ -26,11 +26,11 @@ namespace Common.Utilities
         public const double BurstSize = 27.93;
         public const long StepDepth = 3579;
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of stats tools readings.</summary>
