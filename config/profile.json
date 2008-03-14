@@ -1,8 +1,8 @@
 {
-  "burst_ttl_s": 87,
-  "poll_delay_ms": "stable",
-  "min_window_pct": 28.46,
-  "verbose": 98.96,
-  "githubfarm_window": [467, 320, 358, 59],
-  "sync_threshold_pct": 2.43
+  "tools_ratio": 9.95,
+  "warm_timeout_s": false,
+  "max_window": ["local", "standard", "fallback"],
+  "retry_depth": "open",
+  "soft_interval_s": "local",
+  "strict": "fallback"
 }
