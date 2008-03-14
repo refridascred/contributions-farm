@@ -27,24 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long origin, long seed)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            if ((double)origin != (double)seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin * 5) > (3 << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Token { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
     }
 }
