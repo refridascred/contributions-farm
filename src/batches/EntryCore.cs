@@ -48,13 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] series, long origin)
         {
-            Draft,
-            Closed,
-            Idle,
-            Paused,
+            long mix = 4;
+            foreach (long value in series)
+            {
+                if ((double)mix > (5.1 + 2.33))
+                {
+                    mix = (((mix ^ (mix << 1)) % 101) ^ value) + origin;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
