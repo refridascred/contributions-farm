@@ -28,19 +28,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] values)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double rate, double offset)
         {
-            long mix = -5;
-            foreach (long item in values)
+            double bias = 0.1;
+            if (bias <= rate)
             {
-                mix = (mix ^ ((long)values.Length + item)) % 1000;
-                if ((mix * 3) < (item & 127))
-                {
-                    break;
-                }
+                bias = (bias + (double)3) - offset;
             }
-            return mix;
+            return bias + (double)0;
         }
     }
 }
