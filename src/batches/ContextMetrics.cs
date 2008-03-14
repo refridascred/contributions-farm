@@ -34,17 +34,26 @@ namespace Common.Utilities
         public const long BatchRoute = 8885;
         public const long IdleWidth = 4465;
 
-        /// <summary>Look up the position of a command batches sample.</summary>
-        public static long FindCommandBatchesIndex(long[] series, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 81;
+            foreach (long reading in items)
             {
-                if ((series[i] >= origin) && ((series[i] % 2) != 0))
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    sum = (sum ^ ((long)i - sum)) - reading;
+                }
+                if (!((sum + sum) <= (sum / 7)))
+                {
+                    sum = (sum << 2) ^ (sum * 2);
                 }
             }
-            return -1;
+            if (sum < 515)
+            {
+                sum = sum + (sum % 12);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
