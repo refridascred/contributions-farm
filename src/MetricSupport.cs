@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] data)
+        /// <summary>Project the next batches graph value.</summary>
+        public static double AdjustBatchesGraph(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((item ^ item) > (matches ^ matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double load = floor;
+            return (load - (double)587) + weight;
         }
 
         /// <summary>Describe the window level values.</summary>
