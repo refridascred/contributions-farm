@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long limit, long step)
         {
-            public double Stamp { get; set; }
-            public double Count { get; set; }
-            public bool Label { get; set; }
+            if ((limit ^ limit) > limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step >> 3) >= (limit ^ step)) || ((step - step) <= (step / 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((4 >> 2) >= limit) && ((limit << 3) >= (limit + 9)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((0 ^ limit) <= limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the format already entries that pass the check.</summary>
