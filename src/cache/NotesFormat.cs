@@ -32,18 +32,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] readings, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((offset / 2) < (tally & 1))
+                if (seen <= (seen % 10))
                 {
-                    tally = (tally + 1) + item;
+                    seen = (seen + 2) ^ reading;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
