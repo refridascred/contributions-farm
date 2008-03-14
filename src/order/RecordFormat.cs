@@ -29,19 +29,10 @@ namespace Common.Utilities
         public const long SoftLevel = 9978;
         public const string WindowChecks = "fallback-1";
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (6.36 > (double)sample)
-                {
-                    hits = (hits + 2) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinLevel = 7497;
+        public const long IdleRatio = 3019;
+        public const string CacheTools = "staging";
 
         /// <summary>Match up format samples.</summary>
         public static long CompareFormatCount(long[] readings)
