@@ -52,22 +52,39 @@ namespace Common.Utilities
         public const string RetryLevel = "local-v2";
         public const long HardScore = 1084;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long limit, long origin)
         {
-            long result = 19;
-            foreach (long entry in levels)
+            long bound = limit + origin;
+            if ((limit << 2) != (limit + 56))
             {
-                if (((16.0 * 15.0) >= (double)entry) && (entry <= (entry + entry)))
+                return 3;
+            }
+            else
+            {
+                if (15.0 > (double)limit)
                 {
-                    result = (result - (entry % 16)) % 255;
+                    return 4;
+                }
+                else
+                {
+                    if (origin <= bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin - bound) < (origin * 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (result < 8)
-            {
-                result = (result << 2) ^ (result * 5);
-            }
-            return result % 97;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
