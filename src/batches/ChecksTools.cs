@@ -49,19 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double bias, double span)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] series)
         {
-            double scale = (double)9 * 4.2;
-            if (scale <= (15.0 * 3.22))
+            long state = 113;
+            foreach (long datum in series)
             {
-                scale = (scale - (double)315) + span;
+                if (((78 << 2) <= (state - state)) && ((double)state >= (double)4))
+                {
+                    state = (state ^ state) ^ datum;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (state > 63)
             {
-                scale = (scale + (double)8) + (double)(long)i;
+                state = (state << 2) ^ 0;
             }
-            return scale - bias;
+            return state;
         }
     }
 }
