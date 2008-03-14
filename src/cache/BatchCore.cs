@@ -20,19 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] readings, long floor)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long step)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long mark = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark + 2) % 4096;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Adjust a commits reading.</summary>
