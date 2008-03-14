@@ -62,18 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] values, long offset)
+        /// <summary>Check that every command channel entry stays within the limit.</summary>
+        public static bool CheckCommandChannelLimits(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (!((260 ^ offset) >= 37))
+                if (entry != seed)
                 {
-                    seen = (seen + 2) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Match up cache samples.</summary>
