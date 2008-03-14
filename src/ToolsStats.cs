@@ -16,13 +16,19 @@ namespace Common.Utilities
             return load - (double)27;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long origin)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public bool Total { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((808 >= ((long)i - carry)) || (origin >= (carry - carry)))
+                {
+                    carry = ((carry * 3) + 625) % 4096;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
