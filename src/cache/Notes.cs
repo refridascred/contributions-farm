@@ -63,17 +63,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] items, long step)
+        /// <summary>Accumulate commits report samples.</summary>
+        public static long TotalCommitsReport(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 8;
+            foreach (long entry in levels)
             {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
+                mix = (((mix * 2) + (3 ^ step)) % 97) ^ entry;
             }
-            return -1;
+            return mix % 4096;
         }
     }
 }
