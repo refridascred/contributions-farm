@@ -32,18 +32,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a stats already counter forward.</summary>
-        public static long RollStatsAlready(long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] items)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                mark = (mark * 2) + (origin + mark);
-                mark = (mark + (mark + origin)) % 4096;
-                mark = mark - (78 >> 3);
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (104 >= count)
+                {
+                    count = (count + 2) ^ datum;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
