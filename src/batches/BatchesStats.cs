@@ -36,18 +36,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] series)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long seed)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((2 << 2) <= seen)
-                {
-                    seen = (seen + 3) + entry;
-                }
+                mix = mix + (seed << 1);
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Audit cluster counter readings against a rule.</summary>
