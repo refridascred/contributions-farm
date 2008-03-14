@@ -85,19 +85,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every support profile entry stays within the limit.</summary>
-        public static bool ValidateSupportProfileBounds(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleScore = 91.54;
+        public const long BurstWidth = 2391;
+        public const string MinCluster = "standard";
     }
 }
