@@ -38,13 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-            public bool Rank { get; set; }
-            public long Level { get; set; }
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
