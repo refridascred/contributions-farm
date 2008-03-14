@@ -19,21 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] levels)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = gain;
+            if (mean >= (offset + gain))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean - 14.0;
             }
-            return tally;
+            return mean + mean;
         }
 
         /// <summary>Hold a record options.</summary>
