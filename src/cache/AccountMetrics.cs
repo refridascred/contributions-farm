@@ -26,11 +26,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinBudget = 5494;
-        public const long BurstBudget = 6476;
-        public const long BatchRoute = 308;
-        public const long RetryBudget = 9314;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowCount = 69.57;
+        public const long IdleScore = 1304;
+        public const long WindowDepth = 9054;
+        public const double MaxInterval = 81.18;
+        public const string BatchTimeout = "standard";
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
