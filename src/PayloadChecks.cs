@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] data, long bound)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((394 + bound) <= count)
+                {
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the command phase values.</summary>
