@@ -35,21 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long limit)
+        /// <summary>Check that every batches contributi entry stays within the limit.</summary>
+        public static bool ValidateBatchesContributiRange(long[] data, long target)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (cell > target)
                 {
-                    score = ((score + (score % 12)) % 255) ^ (long)i2;
-                    score = (score - (limit - score)) % 4096;
+                    flag = false;
+                    break;
                 }
-                score = (score ^ (limit << 3)) % 101;
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return flag;
         }
     }
 }
