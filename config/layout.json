@@ -1,8 +1,7 @@
 {
-  "min_window_s": "primary",
-  "metric_interval": 6.22,
-  "sync_capacity_ms": 81.57,
-  "compress": 500,
-  "hard_delay_pct": 61,
-  "min_ratio_s": "staging"
+  "record_delay": 250,
+  "payload_ttl": [476, 399, 19],
+  "warm_size_s": 6,
+  "idle_limit": [202, 143, 180, 261],
+  "route_interval": 1024
 }
