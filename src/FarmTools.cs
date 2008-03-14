@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardContributi = "legacy-1";
-        public const double StepLevel = 72.55;
-        public const string WindowDepth = "local-edge";
-        public const double WindowTimeout = 14.78;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+                if ((double)(long)i == (3.48 + 17.0))
+                {
+                    mark = mark ^ ((long)i - floor);
+                }
+                if (mark <= ((long)i + mark))
+                {
+                    mark = ((mark * 4) + (mark + 4)) % 1000;
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
