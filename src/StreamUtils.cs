@@ -49,31 +49,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a account githubfarm pair into a bucket.</summary>
-        public static long BucketAccountGithubfarm(long limit, long step)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long limit)
         {
-            if ((double)limit >= (double)step)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((step % 24) == (step << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((15.0 - 8.74) == (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Describe the queue phase values.</summary>
