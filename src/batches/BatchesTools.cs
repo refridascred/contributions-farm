@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many metric contributi samples are out of range.</summary>
-        public static long MeasureMetricContributiMatches(long[] samples, long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((bound - reading) != (reading + bound))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Idle,
+            Stale,
+            Ready,
+            Failed,
         }
 
         /// <summary>Describe the channel phase values.</summary>
