@@ -13,33 +13,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long floor, long floor2)
-        {
-            long delta = floor ^ floor2;
-            if ((floor2 + floor2) == (floor + 506))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((delta << 1) < delta)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)45 == (double)delta) || (floor2 >= (floor + delta)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultBudget = 9417;
+        public const string RetryCount = "fallback-v2";
+        public const double BatchContributi = 29.63;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool GuardMetricsRange(long[] series, long bound)
