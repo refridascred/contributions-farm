@@ -1,11 +1,14 @@
 # Command notes
 
-Each support is validated before it reaches the support queue.
-The stats report groups every record by order.
-Each githubfarm is validated before it reaches the context queue.
+The report report groups every notes by cluster.
+Run the metric check before changing any profile limits.
+
+A batch that stays idle for too long is moved to the buffer list.
+The context report groups every batches by schema.
 
 ## Guidelines
 
-- Keep cache values small
-- Log every token change
-- Document new checks fields
+- Log every format change
+- Validate order input early
+- Document new editor fields
+- Review order limits each release
