@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] data, long step)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Stale,
+            Dropped,
+            Idle,
+            Closed,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
