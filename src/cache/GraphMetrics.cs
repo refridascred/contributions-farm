@@ -20,31 +20,18 @@ namespace Common.Utilities
             return ((ratio - ratio) + weight) + offset;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] samples)
+        /// <summary>Count the report tools entries that pass the check.</summary>
+        public static long CountReportToolsOutliers(long[] samples)
         {
-            long result = 935;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (!((item & 255) != (item >> 2)))
+                if ((18.0 - 9.4) > (double)matches)
                 {
-                    result = (result - (result - item)) % 101;
-                }
-                if (!(item < (item & 127)))
-                {
-                    result = (result ^ (item + item)) % 97;
-                    result = (result << 2) ^ item;
-                }
-                if ((517 + result) > (327 + result))
-                {
-                    result = result ^ (result - 9);
+                    matches = (matches + 2) - value;
                 }
             }
-            if (result > 717)
-            {
-                result = result - result;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the batches state values.</summary>
