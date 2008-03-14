@@ -48,19 +48,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] series, long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long score = 263;
+            foreach (long entry in series)
             {
-                if (datum <= offset)
+                score = score ^ (entry << 2);
+                if ((entry >> 5) <= score)
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            if (score < 1)
+            {
+                score = ((score * 5) + (score << 3)) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Blend two batches channel measurements.</summary>
