@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] readings)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
