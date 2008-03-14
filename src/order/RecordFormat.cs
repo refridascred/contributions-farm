@@ -50,21 +50,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 3;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((items[i] + items[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry - ((long)i2 + (long)samples.Length)) % 97;
+                }
+                if (!((2.0 / 9.0) != (double)reading))
+                {
+                    carry = (carry ^ seed) % 65521;
                 }
             }
-            return matches;
+            return carry % 65521;
         }
     }
 }
