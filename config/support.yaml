@@ -1,19 +1,5 @@
 # support settings
-burst_capacity_ms: 4.73
-verbose: false
-min_window: true
-editor_threshold: true
-flush_capacity_ms:
-  batch_delay_pct:
-    cluster_ttl: fallback
-    idle_retries_count: true
-    entry_threshold: standard
-    dry_run: 2091
-    payload_ttl: 100
-    notes_capacity: local
-  cache_retries_pct:
-    - edge
-    - standard
-    - local
-  base_timeout: 4569
-poll_limit_s: true
+default_retries_pct: 100
+burst_capacity_count: false
+compress: standard
+flush_interval: 250
