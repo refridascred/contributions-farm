@@ -19,15 +19,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseRatio = 72.75;
+        public const long DefaultWidth = 834;
+        public const string CacheSchema = "staging";
+        public const double BaseInterval = 13.83;
     }
 }
