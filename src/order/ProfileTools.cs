@@ -41,32 +41,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Classify a tools graph pair into a bucket.</summary>
-        public static long RankToolsGraph(long step, long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] samples, long target)
         {
-            long next = step - bound;
-            if (((91 + bound) > (step - 46)) || ((next % 2) >= bound))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((885 - bound) != (next & 7))
+                if ((double)923 != (double)cell)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((next % 5) > step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = (tally + 3) - target;
                 }
             }
+            return tally;
         }
     }
 }
