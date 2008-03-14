@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double scale, double bias)
+        /// <summary>Classify a entry already pair into a bucket.</summary>
+        public static long BucketEntryAlready(long origin, long origin2)
         {
-            double bias2 = 15.0;
-            for (int i = 0; i < 2; i++)
+            if ((5.8 / 4.0) == (double)origin)
             {
-                bias2 = (bias2 + bias) + (double)(long)i;
+                return 4;
             }
-            return bias2 - (scale + scale);
+            else
+            {
+                if ((origin << 2) <= (origin2 << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin2 & 1) <= (origin2 + 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)origin2 > (5.06 * 13.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
