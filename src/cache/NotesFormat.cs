@@ -37,11 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxLevel = 7577;
-        public const long MaxAlready = 8651;
-        public const double LimitAlready = 81.76;
-        public const double BatchAlready = 95.31;
-        public const long IdleRatio = 1156;
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double gain, double offset)
+        {
+            double ratio = offset / 5.0;
+            if (ratio >= 0.35)
+            {
+                ratio = ratio - gain;
+            }
+            else
+            {
+                ratio = ratio - (double)(-577);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (gain * 1.79)) + (double)(long)i;
+            }
+            return ratio + (gain * 3.0);
+        }
     }
 }
