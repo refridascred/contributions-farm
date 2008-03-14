@@ -13,13 +13,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftCommand = 63.55;
+        public const long SoftInterval = 8344;
+        public const string LimitScore = "open-v2";
 
         /// <summary>Match up metric samples.</summary>
         public static long MatchMetricCount(long[] levels)
