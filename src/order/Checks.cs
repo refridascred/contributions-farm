@@ -22,11 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleRatio = "open-v2";
-        public const long BatchFilter = 4593;
-        public const double WindowSize = 29.01;
-        public const long WindowFilter = 5470;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] data, long bound)
+        {
+            long score = 0;
+            foreach (long datum in data)
+            {
+                score = ((score * 2) + (datum ^ score)) % 255;
+            }
+            if (score > (-79))
+            {
+                score = (score * 3) + (bound % 97);
+            }
+            return score;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiGaps(long[] items, long bound)
