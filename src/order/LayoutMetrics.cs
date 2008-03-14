@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 8807;
-        public const double LimitSize = 72.2;
-        public const long RetryFactor = 5967;
-        public const long MaxChannel = 1;
+        /// <summary>Check that every order metric entry stays within the limit.</summary>
+        public static bool CheckOrderMetricLimits(long[] series, long floor)
+        {
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count contributi account pairs that satisfy a relation.</summary>
         public static long CompareContributiAccountCount(long[] levels)
