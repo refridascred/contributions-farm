@@ -20,10 +20,23 @@ namespace Common.Utilities
         public const double DefaultRatio = 9.69;
         public const long SoftDepth = 877;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultCount = 2463;
-        public const long DefaultMetric = 6116;
-        public const double LimitSpan = 63.18;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] levels, long seed)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((-1) % 97) >= seen)
+                {
+                    seen = ((seen + 3) + item) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit batch order readings against a rule.</summary>
         public static long TallyBatchOrderGaps(long[] readings, long origin)
