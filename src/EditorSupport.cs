@@ -32,12 +32,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] readings, long seed)
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public double Level { get; set; }
+            long acc = 219;
+            foreach (long datum in readings)
+            {
+                if ((seed << 3) >= (acc >> 4))
+                {
+                    acc = (acc + (datum * 2)) % 255;
+                }
+                acc = (acc + seed) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the counter notes series from a seed.</summary>
