@@ -63,17 +63,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] levels, long step)
+        /// <summary>Measure how many filter metrics samples are out of range.</summary>
+        public static long AuditFilterMetricsOutliers(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (levels[i] >= step)
+                if ((bound - datum) <= ((-14) << 1))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
