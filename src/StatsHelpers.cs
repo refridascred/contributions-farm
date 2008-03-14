@@ -47,17 +47,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = (sum << 3) ^ (bound ^ bound);
-                sum = sum ^ (bound - 996);
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Queued,
+            Active,
+            Done,
+            Stale,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
