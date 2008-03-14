@@ -46,13 +46,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] series, long target)
         {
-            Draft,
-            Ready,
-            Dropped,
-            Queued,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
