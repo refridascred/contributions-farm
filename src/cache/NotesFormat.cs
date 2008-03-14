@@ -26,18 +26,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] items)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (seen <= (seen % 10))
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
