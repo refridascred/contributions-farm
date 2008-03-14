@@ -14,31 +14,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long floor, long target)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            if ((double)target == (7.96 / 2.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((0 + target) > (5 >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target == (4.2 * 5.47))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Locked,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the layout phase values.</summary>
