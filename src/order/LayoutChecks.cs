@@ -60,13 +60,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
-            public long Level { get; set; }
+            Draft,
+            Closed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Define token limits and defaults.</summary>
