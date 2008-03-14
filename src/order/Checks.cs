@@ -25,22 +25,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] items, long seed)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long seed, long step)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long step2 = seed + step;
+            if ((step - seed) > (48 % 8))
             {
-                if ((seed <= (seed - sample)) || ((100 + 816) != (hits - seed)))
+                return 6;
+            }
+            else
+            {
+                if (!((step2 ^ 1) <= step))
                 {
-                    hits = hits + 2;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
