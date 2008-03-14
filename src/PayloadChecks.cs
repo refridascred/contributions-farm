@@ -65,18 +65,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit payload metric readings against a rule.</summary>
-        public static long TallyPayloadMetricMatches(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((7.0 * 0.85) >= (double)reading)
-                {
-                    tally = (tally + 2) + seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 8690;
+        public const double StepSpan = 87.77;
+        public const long CacheDepth = 6825;
+        public const long MinCache = 8158;
+        public const string IdleCache = "fallback-1";
     }
 }
