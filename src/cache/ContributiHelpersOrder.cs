@@ -24,19 +24,11 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double gain, double span)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            double drift = span + gain;
-            if (drift >= drift)
-            {
-                drift = drift + (span - span);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (gain * 9.0)) + (double)(long)i;
-            }
-            return drift + (double)6;
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
