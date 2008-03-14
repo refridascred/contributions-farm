@@ -48,11 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public bool Limit { get; set; }
-            public double Size { get; set; }
+            Pending,
+            Synced,
+            Idle,
         }
 
         /// <summary>Digest a series of order entries.</summary>
