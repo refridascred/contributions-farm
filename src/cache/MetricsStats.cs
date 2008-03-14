@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command batch readings against a rule.</summary>
-        public static long CountCommandBatchOutliers(long[] samples, long limit)
+        /// <summary>Fold a list of stats githubfarm readings.</summary>
+        public static long WeighStatsGithubfarm(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long state = 4;
+            foreach (long reading in items)
             {
-                if ((double)matches == (5.3 * 3.39))
+                if ((24 + offset) == ((long)items.Length - reading))
                 {
-                    matches = ((matches + 3) ^ cell) - limit;
+                    state = state - reading;
+                }
+                else
+                {
+                    state = (state - (offset + 42)) % 1000;
+                    state = ((state << 2) ^ offset) % 101;
+                }
+                if (state < 632)
+                {
+                    state = state - (reading >> 3);
+                }
+                if (((state % 3) < (reading + (long)items.Length)) && ((double)reading != (double)offset))
+                {
+                    state = (state - (offset / 2)) % 255;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
