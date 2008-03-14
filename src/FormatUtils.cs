@@ -51,18 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] values)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((hits * 5) > sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a record header.</summary>
