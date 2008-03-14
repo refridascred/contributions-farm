@@ -47,13 +47,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Queued,
-            Active,
-            Done,
-            Stale,
+            public double Score { get; set; }
+            public bool Level { get; set; }
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
