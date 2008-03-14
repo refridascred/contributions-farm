@@ -1,6 +1,12 @@
 {
-  "sync_depth": 1257,
-  "idle_limit": true,
-  "idle_delay_ms": "standard",
-  "poll_retries_count": [143, 475, 358, 452]
+  "warm_delay_s": 99,
+  "soft_size_pct": {
+    "support_ratio": "staging",
+    "audit": true,
+    "persist": false,
+    "stream_retries": "edge",
+    "dry_run": "green",
+    "metrics_size": 1024
+  },
+  "batch_size_ms": "primary"
 }
