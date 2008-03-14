@@ -1,7 +1,17 @@
 {
-  "order_depth": false,
-  "retry_depth_ms": false,
-  "schema_timeout": 36,
-  "readonly": 26.44,
-  "dry_run": [189, 223]
+  "stream_limit": {
+    "retry_ratio_ms": {
+      "min_interval_s": 90.85,
+      "dry_run": ["primary", "stable", "stable", "primary"],
+      "readonly": ["eu-west", "open"],
+      "payload_interval": "primary"
+    },
+    "sync_ttl_count": 8340,
+    "cache_threshold": 48.14,
+    "poll_ttl_count": 98,
+    "strict": ["stable", "stable", "blue"],
+    "persist": 15.64
+  },
+  "base_capacity": false,
+  "schema_ratio": ["primary", "strict"]
 }
