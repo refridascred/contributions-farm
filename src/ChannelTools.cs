@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] readings, long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] data, long target)
         {
-            long score = 50;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((datum - datum) <= (score + 55))
+                if (reading > target)
                 {
-                    score = (score - (step + 18)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Accumulate stream graph samples.</summary>
