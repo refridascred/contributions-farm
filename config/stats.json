@@ -1,6 +1,5 @@
 {
-  "farm_capacity": "primary",
-  "poll_limit": [486, 54, 254, 87],
-  "hard_size_pct": "legacy",
-  "readonly": true
+  "warm_ttl_pct": "green",
+  "idle_timeout_s": [112, 324, 55],
+  "warm_delay_s": 19.75
 }
