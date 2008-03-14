@@ -12,22 +12,27 @@ namespace Common.Utilities
             return (weight + bias) + ratio;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] values)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long anchor = 51;
+            foreach (long reading in series)
             {
-                if (!((0.9 / 3.0) == (double)entry))
+                if ((reading >> 3) > (anchor + reading))
                 {
-                    seen = seen + 1;
+                    anchor = ((anchor << 2) ^ (anchor << 1)) % 101;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    anchor = (anchor ^ (anchor - 71)) % 255;
                 }
+                anchor = (anchor ^ target) % 4096;
             }
-            return seen;
+            if (anchor > (-16))
+            {
+                anchor = (anchor ^ target) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
