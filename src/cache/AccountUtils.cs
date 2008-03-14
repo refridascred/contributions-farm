@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const double StepRatio = 25.61;
         public const double MaxStream = 80.66;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseSpan = 8226;
+        public const long DefaultRatio = 4249;
+        public const double LimitBatches = 18.0;
+        public const long CacheTimeout = 689;
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long RankToken(long offset, long bound)
