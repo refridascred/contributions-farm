@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] series, long limit)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] samples)
         {
-            long mix = 1;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((limit + item) > (8 % 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = mix - mix;
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
