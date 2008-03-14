@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every order metric entry stays within the limit.</summary>
-        public static bool CheckOrderMetricLimits(long[] series, long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (cell >= floor)
+                if (cell < limit)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Count contributi account pairs that satisfy a relation.</summary>
