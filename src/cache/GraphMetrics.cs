@@ -19,11 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 5415;
-        public const long MinSpan = 6853;
-        public const string BatchFactor = "cached";
-        public const long BaseCount = 7435;
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many already githubfarm samples are out of range.</summary>
         public static long MeasureAlreadyGithubfarmGaps(long[] samples, long limit)
