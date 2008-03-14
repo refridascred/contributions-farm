@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Idle,
-            Draft,
-            Done,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 9387;
+        public const long SoftTimeout = 8330;
+        public const long RetryAlready = 3218;
+        public const double CacheAlready = 79.54;
+        public const long HardInterval = 487;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long WindowCache = 8667;
