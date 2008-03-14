@@ -67,19 +67,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] data, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] items)
         {
-            long mix = 56;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long value in items)
             {
-                mix = ((mix - (floor << 2)) % 4096) ^ reading;
+                if ((((long)items.Length + count) <= count) && (count < (value ^ count)))
+                {
+                    count = count + 3;
+                }
             }
-            if (mix > 337)
-            {
-                mix = (mix << 3) ^ (mix & 127);
-            }
-            return mix % 1000;
+            return count;
         }
     }
 }
