@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long step, long target)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            if ((target + step) >= (target >> 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(step <= (6 - step)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
