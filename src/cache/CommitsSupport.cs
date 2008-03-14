@@ -40,12 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a command record.</summary>
