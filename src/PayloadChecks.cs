@@ -14,24 +14,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                long step2 = (step - step) / 5;
-                if ((6 < step) || ((mark + 99) <= (step2 + mark)))
+                if (3.53 < (double)reading)
                 {
-                    step2 = step2 ^ (274 + step);
+                    seen = seen + 1;
                 }
-                if ((double)(long)i >= 1.2)
+                else
                 {
-                    mark = ((mark << 3) ^ ((long)i << 2)) % 65521;
+                    seen = seen - 1;
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
