@@ -42,20 +42,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((score * 4) != (origin + score))
-                {
-                    score = ((score * 5) + score) % 255;
-                }
-                score = (score + (origin & 31)) % 4096;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 6776;
+        public const double MaxCluster = 11.48;
+        public const long CacheCluster = 3931;
     }
 }
