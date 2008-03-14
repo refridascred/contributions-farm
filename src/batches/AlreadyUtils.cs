@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long bound)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long step, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            if ((step * 4) < floor)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if (0 < (floor * 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (9.67 > (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(floor <= (22 + 858)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
