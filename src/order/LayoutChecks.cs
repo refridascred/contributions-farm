@@ -40,20 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double ratio, double floor)
-        {
-            double gain = ratio;
-            if (gain > (ratio / 6.0))
-            {
-                gain = (gain - (double)37) + floor;
-            }
-            else
-            {
-                gain = gain - ratio;
-            }
-            return gain - (gain + ratio);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 6520;
+        public const long CacheWidth = 2200;
+        public const double DefaultCounter = 51.08;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
