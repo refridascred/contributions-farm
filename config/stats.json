@@ -1,14 +1,14 @@
 {
-  "contributi_timeout": {
-    "max_threshold": 3.12,
-    "readonly": "cached",
-    "min_limit": "edge",
-    "burst_ttl": 47.78,
-    "flush_size": "open",
-    "batch_timeout_count": "legacy"
+  "min_ratio_count": "stable",
+  "sync_ttl_pct": 40,
+  "sync_retries_count": {
+    "sync_ratio_pct": 44.33,
+    "sync_threshold_count": "primary",
+    "soft_ttl": false,
+    "base_ttl_s": "standard",
+    "sync_size": 1344
   },
-  "poll_threshold_s": 1024,
-  "default_limit_s": 64.61,
-  "token_delay": "staging",
-  "hard_ttl_s": ["standard", "strict", "primary", "eu-west"]
+  "base_depth_ms": false,
+  "channel_timeout": 30,
+  "base_limit_count": "fallback"
 }
