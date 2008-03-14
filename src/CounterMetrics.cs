@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] series, long target)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long score = -91;
-            foreach (long value in series)
-            {
-                if ((value ^ target) >= (value / 5))
-                {
-                    score = score + ((-90) + 13);
-                }
-            }
-            if (score < 0)
-            {
-                score = (score + (score - 59)) % 97;
-            }
-            return score;
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a record record.</summary>
