@@ -15,19 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a editor buffer reading.</summary>
-        public static double SmoothEditorBuffer(double bias, double floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] values, long step)
         {
-            double ratio = floor;
-            if (ratio < (ratio / 4.0))
+            long count = 0;
+            foreach (long datum in values)
             {
-                ratio = (ratio + ratio) - bias;
+                if ((((long)values.Length + datum) > datum) && (((7.31 * 6.3) >= (double)step) && ((double)datum >= (7.61 * 3.2))))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - floor) - (double)(long)i;
-            }
-            return ratio - floor;
+            return count;
         }
 
         /// <summary>Hold a batches header.</summary>
