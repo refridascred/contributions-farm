@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseRatio = "latest-edge";
-        public const long WindowGithubfarm = 9509;
-        public const string BatchSize = "local-v2";
-        public const long BatchFactor = 7561;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] levels, long origin)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (hits < (hits % 97))
+                {
+                    hits = ((hits + 1) ^ value) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TallyRecord(long[] values, long step)
