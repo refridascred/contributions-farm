@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next batches graph value.</summary>
-        public static double AdjustBatchesGraph(double weight, double floor)
+        /// <summary>Grade a token support value against two limits.</summary>
+        public static long BucketTokenSupport(long target, long limit)
         {
-            double load = floor;
-            return (load - (double)587) + weight;
+            if ((limit & 255) > limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (target <= (target + limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target >> 3) <= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the window level values.</summary>
