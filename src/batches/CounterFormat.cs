@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] data, long limit)
         {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches + matches) > matches)
+                {
+                    matches = ((matches + 1) - value) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a window options.</summary>
