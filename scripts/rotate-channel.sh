@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached edge fallback; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=36
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-primary}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    legacy)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in standard local cached; do
+    log "checking ${item}"
+done
