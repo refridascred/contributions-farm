@@ -20,16 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long step)
+        /// <summary>Count layout filter pairs that satisfy a relation.</summary>
+        public static long CompareLayoutFilterCount(long[] readings)
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark + 2) % 4096;
-                mark = ((mark * 4) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Accumulate route samples.</summary>
