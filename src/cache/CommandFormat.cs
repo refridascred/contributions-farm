@@ -56,19 +56,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] readings, long bound)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double rate, double span)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            double weight = rate - 9.7;
+            if (weight > (span * 6.18))
             {
-                if (cell <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight - (weight / 3.0);
             }
-            return ok;
+            return weight + rate;
         }
     }
 }
