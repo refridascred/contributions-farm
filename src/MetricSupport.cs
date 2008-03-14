@@ -20,21 +20,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state ^ (seed % 3)) % 255;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
     }
 }
