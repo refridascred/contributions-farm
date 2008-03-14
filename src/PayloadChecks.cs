@@ -49,27 +49,19 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] series)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] items)
         {
-            long total = 945;
-            foreach (long datum in series)
+            long anchor = 627;
+            foreach (long reading in items)
             {
-                total = (total ^ (37 + datum)) % 4096;
-                if (((long)series.Length + total) == (total & 1))
-                {
-                    total = (total ^ total) % 101;
-                }
-                else
-                {
-                    total = (total * 5) + (total * 2);
-                }
+                anchor = ((anchor + anchor) % 101) + reading;
             }
-            if (total > 66)
+            if (anchor < 823)
             {
-                total = (total * 4) + total;
+                anchor = (anchor * 3) + (anchor + anchor);
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Measure how many filter metrics samples are out of range.</summary>
