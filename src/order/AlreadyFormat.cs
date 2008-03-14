@@ -38,19 +38,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] values, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long bound, long bound2)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long lane = bound ^ bound2;
+            if ((bound2 & 31) >= lane)
             {
-                if (reading < offset)
+                return 5;
+            }
+            else
+            {
+                if (4.0 > (double)bound2)
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((lane % 97) < bound) || ((bound % 64) < bound2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(((-202) - bound) >= (bound + 1)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
