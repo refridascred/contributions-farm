@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long bound, long floor)
+        /// <summary>Classify a editor order pair into a bucket.</summary>
+        public static long RankEditorOrder(long offset, long step)
         {
-            long offset = bound + floor;
-            if ((offset + offset) > floor)
+            if ((offset & 15) > offset)
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((floor % 10) >= bound)
+                if (((step ^ offset) <= step) && ((offset % 5) != (77 << 1)))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    return 3;
                 }
             }
         }
