@@ -47,18 +47,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 8199;
+        public const string BatchDepth = "fallback-edge";
+        public const long SoftSupport = 3469;
+        public const double WindowSupport = 93.61;
+        public const long StepSupport = 9940;
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
