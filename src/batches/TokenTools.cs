@@ -16,10 +16,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitBudget = 5752;
-        public const long RetryCommits = 3055;
-        public const long MaxInterval = 1371;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] samples)
+        {
+            long score = 380;
+            foreach (long value in samples)
+            {
+                score = score - (score ^ score);
+                if ((value + score) <= (8 ^ value))
+                {
+                    score = score + (score << 3);
+                }
+            }
+            if (score < (-43))
+            {
+                score = (score - score) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long StepFilter(long limit)
