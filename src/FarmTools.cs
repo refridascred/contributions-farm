@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] data)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] items, long limit)
         {
-            long mix = 169;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((mix << 2) != (mix % 8)))
+                if (items[i] >= limit)
                 {
-                    mix = (mix - (mix ^ 56)) + sample;
+                    return (long)i;
                 }
             }
-            if (mix > 527)
-            {
-                mix = mix - (mix ^ mix);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the session level values.</summary>
