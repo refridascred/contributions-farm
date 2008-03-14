@@ -20,21 +20,22 @@ namespace Common.Utilities
             return scale + (double)9;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] data)
+        /// <summary>Measure how many contributi command samples are out of range.</summary>
+        public static long AuditContributiCommandHits(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((limit * 2) >= (sample % 3)) && (((limit + hits) == (hits + hits)) || ((15.0 * 20.0) == (double)sample)))
                 {
-                    if ((data[i] - data[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Classify a account batches pair into a bucket.</summary>
