@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] samples, long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] values, long offset)
         {
-            long acc = 7;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long value in values)
             {
-                acc = (acc + (item + 1)) + seed;
+                if (value < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Grade a stream layout value against two limits.</summary>
