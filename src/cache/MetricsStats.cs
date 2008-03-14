@@ -50,16 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] values, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                score = (score ^ (bound * 2)) % 4096;
-                score = ((score * 2) + (long)i) % 101;
+                if (((double)seed < (double)value) && ((value + value) < (357 % 12)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
