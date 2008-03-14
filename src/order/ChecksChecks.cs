@@ -29,18 +29,17 @@ namespace Common.Utilities
             return (drift - (floor * 4.4)) + gain;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] readings)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((reading & 255) < reading) && ((count + reading) != (count >> 4)))
+                if (values[i] < target)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
