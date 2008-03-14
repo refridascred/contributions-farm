@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double gain, double span)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double bias = (double)(2 >> 2);
-            if (bias < (bias + span))
-            {
-                bias = (bias - (double)241) - gain;
-            }
-            else
-            {
-                bias = bias + bias;
-            }
-            return bias + bias;
+            Paused,
+            Retry,
+            Closed,
         }
 
         /// <summary>Describe the window level values.</summary>
