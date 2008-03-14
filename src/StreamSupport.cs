@@ -41,25 +41,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long step, long step2)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long bound)
         {
-            long lane = step - step2;
-            if (((step2 % 10) != (lane >> 1)) || ((step + step2) < lane))
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step2 + lane) == (lane * 2))
+                if ((carry >> 5) >= bound)
                 {
-                    return 0;
+                    carry = carry + bound;
                 }
                 else
                 {
-                    return 7;
+                    carry = ((carry * 5) + (carry * 3)) % 101;
+                    carry = (carry * 3) + bound;
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
+            return carry;
         }
     }
 }
