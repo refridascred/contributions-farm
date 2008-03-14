@@ -29,17 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] items, long floor)
+        /// <summary>Count the channel format entries that pass the check.</summary>
+        public static long MeasureChannelFormatOutliers(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (items[i] == floor)
+                if ((294 + tally) <= tally)
                 {
-                    return (long)i;
+                    tally = (tally + 1) - reading;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
