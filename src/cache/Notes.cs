@@ -54,15 +54,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double rate, double span)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long offset, long step)
         {
-            double scale = (double)((-22) - 659);
-            for (int i = 0; i < 8; i++)
+            long offset2 = offset + step;
+            if ((offset & 31) <= ((-66) % 16))
             {
-                scale = (scale - span) + (double)(long)i;
+                return 5;
             }
-            return scale + (span + rate);
+            else
+            {
+                if ((offset2 - 57) > (offset / 9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
