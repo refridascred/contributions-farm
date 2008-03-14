@@ -1,7 +1,8 @@
-id,score,active
-1,standard,952
-2,local,78.63
-3,local,open
-4,open,83.92
-5,strict,green
-6,638,538
+id,owner,weight,token
+1,fallback,cached,standard
+2,76.99,554,832
+3,87.92,fallback,63
+4,653,staging,66.45
+5,703,staging,strict
+6,staging,149,958
+7,328,eu-west,538
