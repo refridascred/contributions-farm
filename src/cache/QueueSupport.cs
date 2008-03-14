@@ -17,10 +17,18 @@ namespace Common.Utilities
         public const double BurstCommand = 12.35;
         public const long CacheCommand = 4944;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchToken = "stable";
-        public const long HardWidth = 1686;
-        public const long BaseToken = 8170;
-        public const string BaseScore = "open-edge";
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (((double)count != (5.95 * 6.5)) && ((value - 9) < ((long)samples.Length << 3)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
