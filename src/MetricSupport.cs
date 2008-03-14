@@ -23,11 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public double Ratio { get; set; }
-            public double Stamp { get; set; }
+            Failed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
