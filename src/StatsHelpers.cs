@@ -44,11 +44,25 @@ namespace Common.Utilities
         public const string SoftLevel = "standard-edge";
         public const string DefaultFactor = "open-edge";
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double gain, double offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long step, long seed)
         {
-            double ratio = gain;
-            return (ratio + (gain / 5.0)) + offset;
+            long prev = step + seed;
+            if (!((double)step < (double)prev))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed & 63) < prev)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
