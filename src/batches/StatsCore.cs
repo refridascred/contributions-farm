@@ -45,11 +45,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchInterval = 8729;
-        public const double SoftAlready = 81.92;
-        public const long WindowWidth = 6509;
-        public const string DefaultAlready = "latest";
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches + sample) > matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of stream session entries.</summary>
         public static long TallyStreamSession(long[] levels)
