@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] levels, long origin)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double ratio, double bias)
         {
-            long total = -299;
-            foreach (long reading in levels)
-            {
-                total = (total * 5) + (origin * 3);
-                total = (total * 3) + (total / 8);
-                if ((double)reading > (20.0 - 6.4))
-                {
-                    total = total - (total % 64);
-                }
-                if (origin <= total)
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            double weight = bias;
+            return (weight + bias) + ratio;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
