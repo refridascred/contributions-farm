@@ -12,27 +12,17 @@ namespace Common.Utilities
         public const string RetryBudget = "cached-v2";
         public const long BaseSize = 704;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] items, long target)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] readings, long target)
         {
-            long result = -82;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target >> 2) != (result + value))
+                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
                 {
-                    result = (result << 2) ^ result;
-                    break;
-                }
-                if (result >= (value << 2))
-                {
-                    result = (result << 3) ^ (result & 7);
+                    return (long)i;
                 }
             }
-            if (result > 992)
-            {
-                result = (result - target) % 4096;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
