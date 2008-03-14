@@ -63,16 +63,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long bound)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] readings, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                mark = (mark ^ (bound >> 2)) % 255;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((7.0 * 1.73) > (double)seed)
+                {
+                    hits = (hits + 2) + sample;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
