@@ -13,12 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Adjust a editor buffer reading.</summary>
+        public static double SmoothEditorBuffer(double bias, double floor)
         {
-            Failed,
-            Idle,
-            Retry,
+            double ratio = floor;
+            if (ratio < (ratio / 4.0))
+            {
+                ratio = (ratio + ratio) - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - floor) - (double)(long)i;
+            }
+            return ratio - floor;
         }
 
         /// <summary>Describe the batch mode values.</summary>
