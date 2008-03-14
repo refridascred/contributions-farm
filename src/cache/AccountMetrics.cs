@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long limit, long seed)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            if (((seed % 3) > (seed << 1)) || ((double)limit != (double)seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((seed >> 3) != (seed * 3)) && ((double)seed != (2.0 * 2.81)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.3 + 10.0) == (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Check that every metric buffer entry stays within the limit.</summary>
