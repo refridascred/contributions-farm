@@ -1,7 +1,6 @@
 {
-  "cluster_window": ["local", "staging"],
-  "route_depth": false,
-  "strict": 17.68,
-  "default_window_pct": "legacy",
-  "min_threshold": 6586
+  "soft_capacity": 43.59,
+  "batch_window": ["local", "standard"],
+  "readonly": 57,
+  "batch_depth_s": 75.2
 }
