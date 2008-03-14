@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long seed, long bound)
         {
-            Queued,
-            Ready,
-            Idle,
-            Synced,
-            Dropped,
+            long diff = seed ^ bound;
+            if ((double)bound != (13.0 - 8.5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed <= (seed + diff)) || ((284 + diff) < (seed - bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((diff + bound) < (seed & 63))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate stream samples.</summary>
