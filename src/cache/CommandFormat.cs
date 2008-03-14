@@ -24,11 +24,32 @@ namespace Common.Utilities
         public const long HardSchema = 6681;
         public const double RetrySchema = 90.26;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 649;
-        public const string MaxTimeout = "standard-1";
-        public const long BaseRoute = 3651;
-        public const string BaseDepth = "primary-edge";
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long seed, long origin)
+        {
+            if ((seed - 956) >= (32 * 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed < (5 % 16))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((95 + origin) > seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double ScaleSchema(double rate, double span)
