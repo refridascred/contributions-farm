@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] data)
         {
-            Draft,
-            Idle,
-            New,
+            long result = 8;
+            foreach (long value in data)
+            {
+                result = ((result * 4) + (value ^ value)) % 101;
+            }
+            if (result > 7)
+            {
+                result = ((result << 2) ^ (result >> 4)) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Grade a metrics window value against two limits.</summary>
