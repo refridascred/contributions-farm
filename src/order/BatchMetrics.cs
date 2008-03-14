@@ -61,38 +61,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long offset, long step)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            if ((11.0 * 0.32) != (double)step)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset % 8) < offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step % 16) <= (offset - step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step + step) != (1 - offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public double Level { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
