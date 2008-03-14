@@ -61,22 +61,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] samples, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] values)
         {
-            long score = 807;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((((long)samples.Length + item) >= (score << 1)) && ((score & 7) < 709))
+                if ((((tally ^ tally) == (cell * 2)) && ((cell % 3) != (tally + cell))) || ((5 >= (cell + cell)) || (tally >= (tally * 5))))
                 {
-                    score = ((score + (item >> 3)) % 1000) + origin;
+                    tally = tally + 3;
                 }
             }
-            if (score < (-406))
-            {
-                score = (score + (843 << 1)) % 97;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Measure how many filter metrics samples are out of range.</summary>
