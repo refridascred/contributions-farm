@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long BurstLevel = 4702;
         public const long LimitSupport = 8276;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] readings)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long floor)
         {
-            long anchor = 8;
-            foreach (long entry in readings)
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = ((anchor << 3) ^ (entry - 20)) % 1000;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Accumulate session samples.</summary>
