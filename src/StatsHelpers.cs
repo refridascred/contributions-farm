@@ -23,13 +23,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] levels)
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a tools summary.</summary>
