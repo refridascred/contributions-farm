@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Combine schema checks values into a single score.</summary>
+        public static long CombineSchemaChecks(long[] samples, long limit)
         {
-            Synced,
-            Stale,
-            Paused,
+            long mix = 58;
+            foreach (long item in samples)
+            {
+                if ((double)mix < (7.0 * 1.0))
+                {
+                    mix = ((mix << 3) ^ (item + mix)) - limit;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define token limits and defaults.</summary>
