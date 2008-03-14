@@ -20,38 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long limit, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] values)
         {
-            if ((limit >> 5) > (step / 8))
+            long sum = 0;
+            foreach (long value in values)
             {
-                return 1;
+                sum = ((sum * 3) + (value >> 4)) % 1000;
             }
-            else
-            {
-                if ((limit + 56) >= step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit * 5) > step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((step - step) > limit) || ((step % 7) <= (step - step)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
