@@ -20,13 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
