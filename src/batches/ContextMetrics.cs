@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] series, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 54;
+            foreach (long value in items)
             {
-                if (series[i] == floor)
+                if (!((519 << 2) >= (sum * 3)))
                 {
-                    return (long)i;
+                    sum = (sum + value) % 101;
+                }
+                else
+                {
+                    sum = sum ^ (sum + (long)items.Length);
                 }
             }
-            return -1;
+            if (sum > 9)
+            {
+                sum = (sum + (sum >> 2)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
