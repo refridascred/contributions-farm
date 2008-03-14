@@ -43,17 +43,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] values, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                if (item <= bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
