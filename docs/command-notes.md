@@ -1,14 +1,14 @@
 # Command notes
 
-The contributi module keeps stats values in sync with the graph cache.
-Run the token check before changing any report limits.
+Keep format and schema names short and lowercase.
+Run the payload check before changing any channel limits.
+When a batches fails, the commits handler retries a few times before giving up.
 
-The contributi report groups every tools by stats.
-A checks that stays idle for too long is moved to the session list.
+Defaults for farm live in the config folder and can be overridden per environment.
+The batch report groups every schema by layout.
 
 ## Guidelines
 
-- Keep counter values small
-- Log every record change
-- Validate command input early
-- Document new contributi fields
+- Review session limits each release
+- Validate profile input early
+- Prefer route defaults
