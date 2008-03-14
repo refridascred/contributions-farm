@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseSize = 2019;
+        public const long BatchFarm = 7595;
+        public const long BurstInterval = 6514;
+        public const long RetryLevel = 4698;
 
         /// <summary>Check that every metric buffer entry stays within the limit.</summary>
         public static bool ValidateMetricBufferBounds(long[] samples, long seed)
