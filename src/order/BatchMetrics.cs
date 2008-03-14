@@ -65,19 +65,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] values, long seed)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long limit, long seed)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            if ((double)seed != (3.33 * 0.9))
             {
-                if (cell <= seed)
+                return 0;
+            }
+            else
+            {
+                if ((seed / 4) >= (limit << 1))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return stale;
         }
     }
 }
