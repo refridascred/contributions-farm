@@ -72,29 +72,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long target)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((target >> 2) == (target + acc)))
-                {
-                    acc = acc - (95 * 5);
-                    acc = (acc ^ target) % 101;
-                }
-                else
-                {
-                    acc = acc - acc;
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = (acc - (long)i) % 97;
-                    acc = acc - (target + (long)i2);
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Draft,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the record mode values.</summary>
