@@ -1,5 +1,14 @@
 {
-  "metrics_delay": 728,
-  "max_depth_count": 12.92,
-  "min_window": "staging"
+  "checks_threshold": "blue",
+  "enabled": {
+    "default_limit_ms": 60,
+    "readonly": ["standard", "blue"],
+    "enabled": true
+  },
+  "min_capacity": {
+    "cache_delay": "strict",
+    "schema_threshold": false,
+    "hard_threshold_count": 66.78,
+    "persist": 1024
+  }
 }
