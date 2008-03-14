@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] series)
+        /// <summary>Count the command batches entries that pass the check.</summary>
+        public static long TallyCommandBatchesHits(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((bound + 0) <= (datum ^ (long)items.Length))
                 {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
