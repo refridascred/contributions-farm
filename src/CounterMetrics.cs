@@ -42,9 +42,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 6776;
-        public const double MaxCluster = 11.48;
-        public const long CacheCluster = 3931;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Failed,
+            Stale,
+            Idle,
+            Draft,
+        }
     }
 }
