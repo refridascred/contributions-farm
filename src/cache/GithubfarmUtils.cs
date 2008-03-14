@@ -46,9 +46,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseSize = "latest-edge";
-        public const long BurstQueue = 6769;
-        public const long BurstInterval = 4046;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (entry > (entry - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
