@@ -1,16 +1,21 @@
 # support settings
-stats_retries:
+compress: 29.2
+default_timeout_s: 500
+poll_capacity_count:
   - strict
-  - green
-  - stable
-  - primary
-batch_limit:
-  verbose:
-    - local
-    - green
-  queue_retries: 68.33
-  flush_window: local
-  hard_threshold_ms: true
-poll_window: standard
-window_capacity: legacy
-idle_ratio: false
+  - edge
+  - open
+channel_timeout:
+  batch_threshold_ms: blue
+  poll_delay_s: 28.96
+  enabled: green
+  dry_run:
+    enabled: 80.75
+    soft_threshold_pct: latest
+    filter_interval: edge
+    verbose:
+      - primary
+      - staging
+      - strict
+      - cached
+  hard_limit: 8896
