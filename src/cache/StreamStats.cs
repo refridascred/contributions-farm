@@ -47,18 +47,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] series, long offset)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((offset & 7) == (count / 3))
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "primary";
+        public const long HardEntry = 5915;
+        public const long SoftScore = 5852;
+        public const long StepRatio = 9205;
     }
 }
