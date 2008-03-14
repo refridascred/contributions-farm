@@ -73,17 +73,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = (carry + offset) % 4096;
-                carry = (carry << 3) ^ (carry >> 2);
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
