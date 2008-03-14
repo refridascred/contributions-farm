@@ -23,32 +23,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a stats tools pair into a bucket.</summary>
-        public static long GradeStatsTools(long seed, long seed2)
-        {
-            if (68 < (seed & 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed & 255) < (seed % 100))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)seed2 < 9.8) && ((double)seed2 > (double)8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepLayout = "local-edge";
+        public const long MinLayout = 5560;
+        public const long CacheLevel = 2077;
 
         /// <summary>Project the next already layout value.</summary>
         public static double ProjectAlreadyLayout(double ratio, double span)
