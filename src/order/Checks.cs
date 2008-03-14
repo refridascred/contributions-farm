@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 3382;
-        public const long StepSpan = 6912;
-        public const long SoftMetrics = 6761;
-        public const long MaxScore = 3677;
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double ratio, double bias)
+        {
+            double mean = 6.3 / 4.0;
+            if (mean >= 8.6)
+            {
+                mean = (mean + (bias * 7.42)) - ratio;
+            }
+            return mean - (double)107;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string IdleRatio = "open-v2";
