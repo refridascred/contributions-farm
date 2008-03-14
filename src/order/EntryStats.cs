@@ -18,12 +18,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] items, long floor)
         {
-            Synced,
-            Locked,
-            Done,
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
