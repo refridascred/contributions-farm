@@ -46,24 +46,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long limit, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] values, long seed)
         {
-            if ((double)seed != (3.33 * 0.9))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed / 4) >= (limit << 1))
+                if (cell > seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
