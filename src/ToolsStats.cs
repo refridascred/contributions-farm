@@ -85,21 +85,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
     }
 }
