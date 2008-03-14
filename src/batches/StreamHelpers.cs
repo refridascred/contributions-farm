@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Validate cluster editor readings against a bound.</summary>
+        public static bool GuardClusterEditorBounds(long[] data, long origin)
         {
-            Failed,
-            Active,
-            Idle,
-            Retry,
-            Synced,
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the counter state values.</summary>
