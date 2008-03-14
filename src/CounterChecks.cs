@@ -38,18 +38,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many support stream samples are out of range.</summary>
-        public static long AuditSupportStreamGaps(long[] items)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (!((double)count != (2.9 - 3.0)))
-                {
-                    count = (count + 2) - entry;
-                }
-            }
-            return count;
+            Draft,
+            Pending,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
