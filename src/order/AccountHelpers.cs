@@ -14,17 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] series, long origin)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
