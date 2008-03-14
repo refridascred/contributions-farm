@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+mode="${1:-cached}"
 case "${mode}" in
-    fallback)
+    primary)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=410
+COMMAND_LIMIT=144
 log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
