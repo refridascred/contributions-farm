@@ -19,24 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] values)
-        {
-            long state = 1;
-            foreach (long datum in values)
-            {
-                state = ((state << 2) ^ (datum ^ datum)) % 1000;
-                if ((18.0 * 9.25) >= (double)state)
-                {
-                    state = (state - (state + (long)values.Length)) % 1000;
-                }
-                if (!((datum - state) > 650))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 8649;
+        public const long HardSchema = 6681;
+        public const double RetrySchema = 90.26;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MinRoute = 649;
