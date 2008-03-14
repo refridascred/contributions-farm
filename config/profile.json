@@ -1,19 +1,5 @@
 {
-  "record_depth": 1024,
-  "retry_delay_pct": "strict",
-  "persist": 100,
-  "batch_ttl": {
-    "farm_depth": 39.01,
-    "verbose": [486, 88, 405, 182],
-    "max_timeout_s": {
-      "base_capacity": "edge",
-      "dry_run": ["fallback", "blue", "cached"],
-      "default_interval_s": "strict",
-      "enabled": 500,
-      "githubfarm_limit": 8.44,
-      "max_limit": 10
-    },
-    "hard_limit": ["staging", "eu-west", "staging", "local"]
-  },
-  "farm_ratio": true
+  "flush_ratio_ms": "staging",
+  "default_threshold_ms": 81.2,
+  "max_delay": "standard"
 }
