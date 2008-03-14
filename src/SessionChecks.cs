@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] samples, long floor)
         {
-            Closed,
-            Failed,
-            Ready,
-            Stale,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (((floor + item) == (hits - item)) && !((double)hits < (12.0 * 14.0)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
