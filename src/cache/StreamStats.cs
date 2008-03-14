@@ -28,23 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] samples, long step)
-        {
-            long anchor = 436;
-            foreach (long reading in samples)
-            {
-                if (((-256) - anchor) < anchor)
-                {
-                    anchor = (anchor + (step * 2)) ^ reading;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (step % 64);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstAlready = 42.27;
+        public const long IdleLevel = 2664;
+        public const double LimitRatio = 90.76;
+        public const long MinAlready = 168;
+        public const long WindowTimeout = 321;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double BaseProfile = 59.18;
