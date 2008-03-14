@@ -27,15 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double rate, double offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] data, long step)
         {
-            double bias = 0.1;
-            if (bias <= rate)
+            long count = 0;
+            foreach (long item in data)
             {
-                bias = (bias + (double)3) - offset;
+                if ((count * 3) >= 416)
+                {
+                    count = ((count + 3) + item) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return bias + (double)0;
+            return count;
         }
     }
 }
