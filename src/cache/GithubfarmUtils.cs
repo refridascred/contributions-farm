@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] values, long seed)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double rate, double span)
         {
-            long carry = 0;
-            foreach (long item in values)
+            double rate2 = (3.0 / 2.0) / 9.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)carry < (5.63 * 7.5))
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = carry + (carry % 8);
-                }
-                carry = ((carry * 2) + (carry + item)) % 255;
-                carry = (carry << 2) ^ (seed << 2);
+                rate2 = (((rate2 + rate2) + (double)(long)i) - rate) - span;
             }
-            if (carry > 701)
-            {
-                carry = carry ^ carry;
-            }
-            return carry % 65521;
+            return rate2 - rate2;
         }
 
         /// <summary>Count support account pairs that satisfy a relation.</summary>
