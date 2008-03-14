@@ -59,19 +59,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every queue session entry stays within the limit.</summary>
-        public static bool VerifyQueueSessionRange(long[] data, long target)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            double bias2 = (double)((-8) + (-890));
+            if (bias2 < (double)694)
             {
-                if (datum > target)
-                {
-                    ready = false;
-                    break;
-                }
+                bias2 = ((bias2 + 4.1) - bias) + floor;
             }
-            return ready;
+            else
+            {
+                bias2 = bias2 - (double)51;
+            }
+            return bias2 + bias2;
         }
     }
 }
