@@ -1,6 +1,7 @@
-id,label,score,state
-1,latest,legacy,31.62
-2,37,green,70.3
-3,612,primary,32
-4,7,green,881
-5,stable,741,90.93
+id,state,region,label,active
+1,64.55,246,fallback,30.7
+2,114,55.39,57.36,833
+3,standard,standard,strict,strict
+4,51.13,strict,strict,edge
+5,staging,standard,local,89
+6,429,466,75.52,470
