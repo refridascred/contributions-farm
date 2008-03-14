@@ -41,11 +41,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinProfile = "alpha-edge";
-        public const double DefaultScore = 17.7;
-        public const double LimitInterval = 7.36;
-        public const string RetrySpan = "local-v2";
+        /// <summary>Look up the position of a account payload sample.</summary>
+        public static long FindAccountPayloadIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double BlendBatch(double gain, double offset)
