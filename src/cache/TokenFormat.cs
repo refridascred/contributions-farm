@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] values, long limit)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] values, long target)
         {
-            long anchor = 63;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (limit << 3)) % 97;
-                if (limit < (anchor >> 1))
+                if (values[i] < target)
                 {
-                    anchor = ((anchor * 3) + (limit + limit)) % 4096;
-                    anchor = anchor - (limit * 3);
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor * 5) + 42;
-                }
-                anchor = (anchor - (value + limit)) % 255;
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
