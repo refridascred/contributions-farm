@@ -54,12 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Project the next counter value.</summary>
