@@ -43,24 +43,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a cache counter value against two limits.</summary>
-        public static long RankCacheCounter(long step, long origin)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] items, long target)
         {
-            if (!((560 << 1) >= (step - step)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (3 > (origin >> 3))
+                if (items[i] <= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
