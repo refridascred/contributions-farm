@@ -67,11 +67,14 @@ namespace Common.Utilities
         public const long WindowCount = 7050;
         public const long HardBatches = 3486;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxContext = "local-v2";
-        public const long CacheLevel = 6095;
-        public const double DefaultContext = 49.69;
-        public const long IdleContext = 3721;
-        public const double LimitContext = 70.79;
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Stale,
+            Done,
+            Paused,
+            Retry,
+            Active,
+        }
     }
 }
