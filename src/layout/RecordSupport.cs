@@ -27,12 +27,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Blend two checks metrics measurements.</summary>
+        public static double ScaleChecksMetrics(double weight, double bias)
         {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            double rate = (double)(79 & 63);
+            if (rate > bias)
+            {
+                rate = rate - weight;
+            }
+            return rate - (weight / 8.0);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
