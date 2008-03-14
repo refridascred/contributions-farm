@@ -88,12 +88,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchRatio = 2.61;
+        public const long HardTools = 137;
+        public const long DefaultTools = 7950;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long CombineCommits(long[] values, long target)
