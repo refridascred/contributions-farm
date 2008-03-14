@@ -1,6 +1,17 @@
 {
-  "max_size_s": "blue",
-  "enabled": 51.22,
-  "retry_interval": false,
-  "idle_window_ms": "cached"
+  "default_capacity_count": false,
+  "default_retries_s": {
+    "retry_depth_s": 60,
+    "soft_threshold": 66,
+    "record_timeout": 2.6,
+    "command_size": "local",
+    "default_interval": 83.82
+  },
+  "githubfarm_retries": 260,
+  "verbose": true,
+  "stream_timeout": {
+    "cache_delay": 12.87,
+    "base_threshold_count": 500,
+    "default_capacity_s": 72
+  }
 }
