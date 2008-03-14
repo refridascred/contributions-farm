@@ -24,17 +24,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a checks support sample.</summary>
-        public static long LocateChecksSupportIndex(long[] series, long step)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = 2.1 + rate;
+            if (gain >= (gain / 5.0))
             {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
+                gain = gain + (gain - gain);
             }
-            return -1;
+            else
+            {
+                gain = gain - (span - rate);
+            }
+            return gain + rate;
         }
 
         /// <summary>Hold a channel options.</summary>
