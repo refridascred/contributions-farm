@@ -25,11 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxLayout = "fallback-edge";
-        public const long StepLayout = 9601;
-        public const string DefaultLayout = "standard-v2";
-        public const string BurstRatio = "open-1";
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double weight, double bias)
+        {
+            double bias2 = bias * 1.0;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = ((bias2 + (double)5) + (double)(long)i) - weight;
+            }
+            return bias2 - (double)865;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string BaseLevel = "cached-v2";
