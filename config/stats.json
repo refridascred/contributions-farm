@@ -1,12 +1,5 @@
 {
-  "readonly": "staging",
-  "base_interval_s": 500,
-  "cache_depth_pct": 358,
-  "sync_interval": {
-    "compress": 65,
-    "token_ratio": "blue",
-    "cache_threshold_ms": 44.07
-  },
-  "account_threshold": 4258,
-  "strict": "eu-west"
+  "format_ratio": 1024,
+  "stream_retries": 904,
+  "min_ratio_count": 41.35
 }
