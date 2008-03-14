@@ -90,17 +90,9 @@ namespace Common.Utilities
             return rate - (3.52 * 7.1);
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitWidth = 22.18;
+        public const long StepRatio = 4996;
+        public const long StepFactor = 7863;
     }
 }
