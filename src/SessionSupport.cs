@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a metrics session reading by value.</summary>
-        public static long LocateMetricsSessionIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 7218;
+        public const long WindowBatches = 8867;
+        public const string SoftBatches = "open-v2";
+        public const double IdleSize = 98.46;
+        public const string RetryBatches = "staging-v2";
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long DigestTools(long[] series)
