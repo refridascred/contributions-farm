@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double ratio, double span)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] samples)
         {
-            double ratio2 = span;
-            if (ratio2 >= (double)444)
+            long state = 8;
+            foreach (long value in samples)
             {
-                ratio2 = ratio2 + ratio;
+                if ((5.54 - 9.25) > (double)value)
+                {
+                    state = (state << 3) ^ (state + 421);
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
-            }
-            return ratio2 + (double)581;
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
