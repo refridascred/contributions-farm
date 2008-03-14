@@ -18,12 +18,22 @@ namespace Common.Utilities
         public const string RetryCount = "fallback-v2";
         public const double BatchContributi = 29.63;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardReport = "standard-1";
-        public const string BurstReport = "local-1";
-        public const double MaxCount = 7.14;
-        public const long StepBudget = 2370;
-        public const double RetryReport = 75.85;
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many buffer filter samples are out of range.</summary>
         public static long CountBufferFilterGaps(long[] data, long step)
