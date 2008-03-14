@@ -40,11 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stats record measurements.</summary>
-        public static double BlendStatsRecord(double bias, double floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] values)
         {
-            double mean = (double)(67 & 127);
-            return ((mean + (double)260) + bias) + floor;
+            long state = 904;
+            foreach (long value in values)
+            {
+                if (!((double)value > (double)state))
+                {
+                    state = (state ^ (value & 63)) % 1000;
+                }
+                if ((value + 911) <= value)
+                {
+                    state = ((state << 2) ^ (state - state)) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the payload kind values.</summary>
