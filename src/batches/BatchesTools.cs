@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const double StepScore = 94.96;
         public const double RetryRatio = 39.68;
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
