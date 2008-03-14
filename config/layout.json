@@ -1,6 +1,5 @@
 {
-  "enabled": [398, 364, 14],
-  "batch_delay_count": "green",
-  "retry_window_pct": 100,
-  "verbose": 100
+  "record_retries": "stable",
+  "base_timeout_s": 6681,
+  "idle_window_pct": "blue"
 }
