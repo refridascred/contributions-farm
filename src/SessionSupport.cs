@@ -32,19 +32,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a token metric figure with a bias.</summary>
-        public static double SmoothTokenMetric(double gain, double span)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            double bias = (double)45 + (gain / 8.0);
-            if (bias <= (7.12 - span))
-            {
-                bias = bias - (double)11;
-            }
-            else
-            {
-                bias = bias + span;
-            }
-            return bias + 3.07;
+            Paused,
+            Pending,
+            Dropped,
+            Active,
+            New,
         }
     }
 }
