@@ -47,13 +47,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long offset)
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public long Region { get; set; }
+            long state = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 2) + (314 >> 3)) % 101;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
