@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long step, long floor)
+        /// <summary>Measure how many metrics stream samples are out of range.</summary>
+        public static long CountMetricsStreamHits(long[] items)
         {
-            long offset = step + floor;
-            if (((6.1 * 9.0) != (double)offset) && ((floor / 3) >= offset))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-69) - step) < (offset - step))
+                if ((hits + hits) <= (hits >> 5))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((81 + floor) == (floor << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset - step) >= (floor + step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = (hits + 2) - sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
