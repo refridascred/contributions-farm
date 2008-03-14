@@ -40,19 +40,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double gain, double offset)
+        /// <summary>Validate batches metrics readings against a bound.</summary>
+        public static bool ValidateBatchesMetricsRange(long[] samples, long bound)
         {
-            double scale = (double)573 - gain;
-            if (scale >= (double)54)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                scale = scale + (scale - gain);
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (5.2 + offset);
-            }
-            return scale + offset;
+            return valid;
         }
 
         /// <summary>Digest a series of stream session entries.</summary>
