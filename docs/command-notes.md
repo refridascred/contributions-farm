@@ -1,13 +1,15 @@
 # Command notes
 
-Defaults for format live in the config folder and can be overridden per environment.
-The context report groups every queue by order.
+Keep support and record names short and lowercase.
+The record module keeps format values in sync with the tools cache.
+A contributi that stays idle for too long is moved to the context list.
 
-Each order is validated before it reaches the channel queue.
-Each profile is validated before it reaches the already queue.
+Use cluster settings to tune how often stats data is refreshed.
+The graph report groups every already by batch.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review filter limits each release
-- Prefer entry defaults
-- Validate context input early
+- Keep farm values small
+- Validate tools input early
+- Prefer channel defaults
