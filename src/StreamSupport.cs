@@ -28,13 +28,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] levels)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
+            long acc = 6;
+            foreach (long value in levels)
+            {
+                if (((-133) / 8) == (acc % 16))
+                {
+                    acc = (acc + (value >> 2)) % 4096;
+                }
+                else
+                {
+                    acc = (acc - (acc + value)) % 97;
+                }
+            }
+            return acc;
         }
     }
 }
