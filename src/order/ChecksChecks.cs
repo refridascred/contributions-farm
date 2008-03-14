@@ -39,17 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] values, long target)
+        /// <summary>Measure how many record farm samples are out of range.</summary>
+        public static long MeasureRecordFarmGaps(long[] values, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (values[i] < target)
+                if (!(target > (target % 5)))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
