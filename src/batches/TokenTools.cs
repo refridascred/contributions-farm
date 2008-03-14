@@ -32,19 +32,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] items, long target)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Score { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
