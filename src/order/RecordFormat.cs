@@ -69,13 +69,17 @@ namespace Common.Utilities
             return rate + (bias * 5.06);
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long bound)
         {
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            long state = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state * 5) + ((long)i - (long)i)) % 4096;
+                state = (state - (71 - state)) % 101;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
