@@ -1,6 +1,8 @@
 {
-  "cluster_threshold": "primary",
-  "payload_limit": 7.74,
-  "max_capacity": 40.73,
-  "commits_size": 6393
+  "idle_delay_ms": 89.97,
+  "tools_threshold": 87.92,
+  "channel_retries": 30,
+  "sync_capacity": "stable",
+  "enabled": 25,
+  "idle_interval_ms": false
 }
