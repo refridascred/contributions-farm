@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long BurstBudget = 1110;
         public const double SoftStream = 3.36;
 
-        /// <summary>Project the next buffer metric value.</summary>
-        public static double ProjectBufferMetric(double rate, double span)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] readings, long limit)
         {
-            double mean = (double)173 * 2.0;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (((mean - mean) - (double)(long)i) - rate) - span;
+                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - (double)80;
+            return -1;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
