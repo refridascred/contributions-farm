@@ -26,15 +26,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double weight, double bias)
+        /// <summary>Find the first channel buffer entry that matches the target.</summary>
+        public static long FindChannelBufferIndex(long[] series, long bound)
         {
-            double weight2 = bias;
-            if (weight2 < weight2)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = (weight2 + (weight2 - bias)) - weight;
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return weight2 - (17.0 * 6.51);
+            return -1;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
