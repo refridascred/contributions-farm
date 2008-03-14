@@ -1,6 +1,6 @@
 # support settings
-flush_interval: latest
-cache_size_pct: false
-commits_capacity: 8330
-metrics_ratio: 65
-max_ratio_pct: 1024
+window_retries: latest
+filter_ratio: 6226
+counter_ttl: 60
+poll_interval_ms: fallback
+token_ratio: 1530
