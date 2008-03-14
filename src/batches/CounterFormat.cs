@@ -31,11 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 5420;
-        public const string MaxDepth = "alpha";
-        public const long WindowInterval = 8202;
-        public const string BatchPayload = "stable-v2";
-        public const double MinScore = 78.34;
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] values)
+        {
+            long mix = -5;
+            foreach (long item in values)
+            {
+                mix = (mix ^ ((long)values.Length + item)) % 1000;
+                if ((mix * 3) < (item & 127))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
     }
 }
