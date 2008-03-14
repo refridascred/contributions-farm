@@ -1,18 +1,6 @@
 {
-  "hard_retries": {
-    "graph_capacity": 36.39,
-    "payload_retries": 8617,
-    "burst_depth_ms": {
-      "cache_retries": "local",
-      "cache_size": "standard",
-      "schema_ttl": true,
-      "default_delay_pct": "edge",
-      "compress": 5.28,
-      "stream_interval": "primary"
-    },
-    "compress": "latest",
-    "profile_limit": 40.83
-  },
-  "context_size": 13,
-  "poll_depth_s": 62
+  "sync_limit_pct": 81.4,
+  "persist": 3491,
+  "cache_limit": 1217,
+  "burst_interval_s": 1024
 }
