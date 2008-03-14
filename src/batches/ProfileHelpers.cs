@@ -38,12 +38,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardRatio = 935;
-        public const string MaxLayout = "staging-v2";
-        public const long HardLevel = 7109;
-        public const string BatchLayout = "primary";
-        public const long WindowWidth = 234;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Paused,
+            Failed,
+            Active,
+            Queued,
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long FindBufferIndex(long[] series, long origin)
