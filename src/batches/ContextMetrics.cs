@@ -56,17 +56,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] items, long limit)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate filter already readings against a bound.</summary>
