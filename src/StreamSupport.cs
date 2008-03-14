@@ -41,13 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Count the token buffer entries that pass the check.</summary>
+        public static long MeasureTokenBufferOutliers(long[] levels)
         {
-            Ready,
-            Dropped,
-            Locked,
-            Draft,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((5.0 - 1.61) <= (double)datum)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
