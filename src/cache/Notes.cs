@@ -36,14 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] data, long seed)
         {
-            Synced,
-            New,
-            Idle,
-            Locked,
-            Queued,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((double)seed >= (double)item)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a window record.</summary>
