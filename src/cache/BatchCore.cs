@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] samples, long limit)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] levels, long seed)
         {
-            long mix = -47;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                mix = mix - (665 >> 2);
-                mix = (mix * 5) + reading;
+                if (cell < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mix < 98)
-            {
-                mix = (mix << 2) ^ limit;
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Count layout filter pairs that satisfy a relation.</summary>
