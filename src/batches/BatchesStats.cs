@@ -29,19 +29,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double bias, double span)
+        /// <summary>Measure how many report graph samples are out of range.</summary>
+        public static long TallyReportGraphGaps(long[] items)
         {
-            double drift = 14.0;
-            if (drift < drift)
+            long tally = 0;
+            foreach (long item in items)
             {
-                drift = (drift + (double)688) + span;
+                if ((tally & 255) > tally)
+                {
+                    tally = (tally + 2) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + (double)4;
+            return tally;
         }
 
         /// <summary>Roll a batches counter counter forward.</summary>
