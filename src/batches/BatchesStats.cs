@@ -36,10 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepLevel = "primary-1";
-        public const long WindowPayload = 1000;
-        public const long RetryPayload = 9408;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 8863;
+        public const long BatchChecks = 381;
+        public const string LimitChecks = "local-v2";
+        public const long MaxChecks = 7518;
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
