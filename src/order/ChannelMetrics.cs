@@ -14,10 +14,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitSize = 4303;
-        public const double DefaultLevel = 69.38;
-        public const string HardRoute = "strict-edge";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 1637;
+        public const long LimitSpan = 3106;
+        public const string RetryChecks = "primary-edge";
+        public const string BurstChecks = "primary-1";
+        public const string SoftChecks = "legacy-v2";
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long OverlapBatchCount(long[] samples)
