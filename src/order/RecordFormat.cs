@@ -54,17 +54,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long bound)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] data, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
+            long mix = 7;
+            foreach (long item in data)
             {
-                state = ((state * 5) + ((long)i - (long)i)) % 4096;
-                state = (state - (71 - state)) % 101;
-                state = ((state * 2) + (long)i) % 101;
+                if ((double)7 >= (double)seed)
+                {
+                    mix = ((mix - (seed * 5)) % 4096) ^ item;
+                }
             }
-            return state;
+            if (mix < 6)
+            {
+                mix = ((mix << 2) ^ (mix - seed)) % 255;
+            }
+            return mix % 97;
         }
     }
 }
