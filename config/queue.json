@@ -1,13 +1,6 @@
 {
-  "strict": {
-    "hard_size_pct": "fallback",
-    "batch_window": 1309,
-    "flush_retries": 7130,
-    "max_interval": 250,
-    "soft_ratio": "edge",
-    "persist": 30.93
-  },
-  "enabled": true,
-  "default_limit": "latest",
-  "dry_run": "standard"
+  "retry_threshold_pct": true,
+  "cluster_delay": 60,
+  "max_limit_ms": "stable",
+  "already_depth": 9.49
 }
