@@ -1,5 +1,18 @@
 # entry settings
-warm_interval: true
-window_interval: 250
-base_limit: false
-schema_depth: cached
+cache_interval_s:
+  retry_depth_pct: eu-west
+  poll_window_count: false
+  hard_depth: 60
+  idle_ratio_s:
+    - 177
+    - 411
+    - 427
+  notes_limit:
+    enabled: blue
+    compress: 82.89
+    cache_size: edge
+default_size: 60.73
+base_ratio_s: 36.36
+cache_capacity: 97.21
+default_capacity_ms: 26
+persist: legacy
