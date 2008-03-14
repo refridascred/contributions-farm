@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long step, long floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long offset, long step)
         {
-            if ((step * 4) < floor)
+            if ((step + step) < (offset >> 1))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if (0 < (floor * 4))
+                if (((53 << 1) < (offset - 1)) || ((4.0 - 5.9) > (double)step))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if (9.67 > (double)step)
+                    if ((offset + step) > 4)
                     {
                         return 1;
                     }
                     else
                     {
-                        if (!(floor <= (22 + 858)))
+                        if ((step >= (offset & 1)) || ((9.18 / 2.0) > (double)step))
                         {
-                            return 8;
+                            return 5;
                         }
                         else
                         {
-                            return 7;
+                            return 4;
                         }
                     }
                 }
