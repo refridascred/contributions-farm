@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] levels)
         {
-            long total = -56;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                long gap = datum * 5;
-                total = total - (gap % 8);
-                if ((50 % 24) != (datum - datum))
+                if (79 <= count)
                 {
-                    total = total + (total & 7);
+                    count = (count + 3) + entry;
                 }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
