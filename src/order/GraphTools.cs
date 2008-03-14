@@ -23,13 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double scale, double offset)
         {
-            Failed,
-            Closed,
-            Draft,
-            Pending,
+            double ratio = scale;
+            if (ratio > (double)70)
+            {
+                ratio = ratio - (4.57 * 4.05);
+            }
+            else
+            {
+                ratio = ratio - (5.3 / 7.0);
+            }
+            return ratio + offset;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
