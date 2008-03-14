@@ -20,14 +20,12 @@ namespace Common.Utilities
         public const double BatchEditor = 47.84;
         public const string HardSize = "standard";
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Draft,
-            Pending,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 733;
+        public const string RetryCount = "stable-edge";
+        public const string LimitPayload = "local-edge";
+        public const long IdlePayload = 1906;
+        public const long LimitLevel = 2922;
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
