@@ -53,19 +53,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long total = 920;
-            foreach (long cell in series)
-            {
-                total = (total ^ cell) % 1000;
-                if ((double)total != (11.0 * 19.0))
-                {
-                    total = total ^ (294 ^ cell);
-                }
-            }
-            return total;
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
