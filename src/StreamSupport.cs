@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] series, long limit)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)(2 - 66);
+            if (weight >= bias)
             {
-                if ((series[i] < limit) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - (3.75 * 9.15);
             }
-            return -1;
+            else
+            {
+                weight = weight - (double)880;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + offset) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Hold a entry info.</summary>
