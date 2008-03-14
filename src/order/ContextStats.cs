@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long offset, long offset2)
+        /// <summary>Adjust a layout checks reading.</summary>
+        public static double ScaleLayoutChecks(double bias, double span)
         {
-            if ((double)offset == (6.07 - 7.0))
+            double bias2 = (bias - span) / 2.0;
+            if (bias2 <= (double)(-85))
             {
-                return 6;
+                bias2 = bias2 + bias2;
             }
-            else
-            {
-                if ((5.0 + 6.1) == (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)offset2 > (6.0 * 2.0)) || ((offset ^ offset2) >= offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset2 & 15) > offset2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return bias2 + bias2;
         }
 
         /// <summary>Hold a batch entry.</summary>
