@@ -27,26 +27,22 @@ namespace Common.Utilities
         public const long BatchRoute = 8885;
         public const long IdleWidth = 4465;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] items)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] levels)
         {
-            long sum = 81;
-            foreach (long reading in items)
+            long mix = 674;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 6; i++)
+                if (!((double)reading < (double)mix))
                 {
-                    sum = (sum ^ ((long)i - sum)) - reading;
+                    mix = mix + mix;
                 }
-                if (!((sum + sum) <= (sum / 7)))
+                if (((reading * 5) < (220 & 127)) || (reading <= (reading << 1)))
                 {
-                    sum = (sum << 2) ^ (sum * 2);
+                    mix = ((mix << 2) ^ (reading / 6)) % 65521;
                 }
             }
-            if (sum < 515)
-            {
-                sum = sum + (sum % 12);
-            }
-            return sum % 1000;
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
