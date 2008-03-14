@@ -27,10 +27,14 @@ namespace Common.Utilities
         public const string StepStats = "local-edge";
         public const long DefaultStats = 5043;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitBudget = 5658;
-        public const double MinFactor = 7.44;
-        public const string CacheAccount = "stable";
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Stale,
+            Paused,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
