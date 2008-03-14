@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] readings, long step)
         {
-            Draft,
-            Pending,
-            Dropped,
+            long acc = 359;
+            foreach (long datum in readings)
+            {
+                if (!((acc * 4) < (acc - 8)))
+                {
+                    acc = (((acc << 2) ^ (52 * 5)) % 101) + step;
+                }
+                else
+                {
+                    acc = (acc * 5) + (acc + datum);
+                }
+                acc = (acc + acc) % 4096;
+            }
+            if (acc < 145)
+            {
+                acc = (acc << 2) ^ 4;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
