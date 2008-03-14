@@ -1,7 +1,31 @@
 # entry settings
-warm_retries_s: stable
-window_capacity:
-  - fallback
-  - green
-payload_ratio: 95
-base_threshold_count: 30
+max_ttl_ms: 3.25
+readonly: blue
+persist: stable
+farm_timeout:
+  sync_depth_ms: 100
+  dry_run: staging
+  readonly: 30
+  counter_interval:
+    enabled: primary
+    audit:
+      - open
+      - standard
+      - strict
+    cache_window: cached
+  session_depth: 9.41
+  default_delay_pct:
+    min_ratio: latest
+    counter_limit: edge
+    flush_capacity: 39
+    graph_timeout: 5026
+    queue_limit:
+      - 372
+      - 474
+      - 52
+      - 58
+idle_limit_ms: stable
+default_interval_pct:
+  - 195
+  - 465
+  - 45
