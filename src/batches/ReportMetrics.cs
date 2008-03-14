@@ -19,23 +19,18 @@ namespace Common.Utilities
         public const double BatchInterval = 89.5;
         public const long CacheLevel = 1178;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] samples, long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] data)
         {
-            long acc = 3;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                acc = (((acc * 3) + (cell - 6)) % 255) - target;
-                if ((acc <= (acc / 4)) || (cell > (acc + (-94))))
+                if ((reading - tally) != (reading + reading))
                 {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (acc < 84)
-            {
-                acc = (acc + (acc * 4)) % 65521;
-            }
-            return acc;
+            return tally;
         }
     }
 }
