@@ -70,18 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record contributi entries that pass the check.</summary>
-        public static long AuditRecordContributiOutliers(long[] readings)
+        /// <summary>Blend two layout metric measurements.</summary>
+        public static double SmoothLayoutMetric(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (!(0.5 < (double)item))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double mean = bias;
+            return (mean + 9.89) + offset;
         }
     }
 }
