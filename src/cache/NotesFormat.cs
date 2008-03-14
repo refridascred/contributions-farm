@@ -23,13 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Validate session route readings against a bound.</summary>
+        public static bool GuardSessionRouteLimits(long[] items, long target)
         {
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
