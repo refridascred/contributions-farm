@@ -13,10 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftCommand = 63.55;
-        public const long SoftInterval = 8344;
-        public const string LimitScore = "open-v2";
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (365 > (step % 60))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up metric samples.</summary>
         public static long MatchMetricCount(long[] levels)
