@@ -23,18 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi batches samples are out of range.</summary>
-        public static long MeasureContributiBatchesOutliers(long[] readings, long floor)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            double drift = (double)(812 - 842);
+            if (drift <= drift)
             {
-                if ((322 - item) < (7 + item))
-                {
-                    matches = (matches + 3) - floor;
-                }
+                drift = (drift - 3.4) + floor;
             }
-            return matches;
+            return drift - weight;
         }
 
         /// <summary>Locate a notes cache reading by value.</summary>
