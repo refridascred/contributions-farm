@@ -24,31 +24,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a record batches pair into a bucket.</summary>
-        public static long BucketRecordBatches(long seed, long origin)
+        /// <summary>Fold a list of commits queue readings.</summary>
+        public static long DigestCommitsQueue(long[] levels)
         {
-            if (((2.8 + 2.3) >= (double)seed) && ((15.0 * 9.9) >= (double)seed))
+            long acc = 23;
+            foreach (long entry in levels)
             {
-                return 3;
+                acc = (acc + (entry ^ entry)) % 101;
+                acc = (acc - acc) % 101;
             }
-            else
-            {
-                if ((double)seed < (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed == (3.8 * 8.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return acc % 65521;
         }
 
         /// <summary>Roll a window counter forward.</summary>
