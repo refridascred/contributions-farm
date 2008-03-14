@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many metrics stream samples are out of range.</summary>
-        public static long CountMetricsStreamHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits + hits) <= (hits >> 5))
-                {
-                    hits = (hits + 2) - sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryProfile = "strict-v2";
+        public const long CacheProfile = 6756;
+        public const string LimitProfile = "standard";
+        public const long MaxProfile = 4735;
 
         /// <summary>Grade a stream layout value against two limits.</summary>
         public static long RankStreamLayout(long origin, long target)
