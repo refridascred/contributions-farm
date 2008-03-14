@@ -19,18 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] series)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen * 5) == (seen % 16))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) + datum;
+                    if ((data[i] - data[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
