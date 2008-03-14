@@ -29,31 +29,13 @@ namespace Common.Utilities
         public const long WindowSize = 5424;
         public const double RetryLayout = 89.14;
 
-        /// <summary>Rank schema farm input into a small class.</summary>
-        public static long RankSchemaFarm(long limit, long target)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            if ((limit ^ 23) != (limit - limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((5.68 * 1.4) > (double)target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit / 8) == (target - target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Locked,
+            Draft,
+            Paused,
+            Failed,
         }
 
         /// <summary>Audit checks context readings against a rule.</summary>
