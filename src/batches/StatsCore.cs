@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a farm graph reading.</summary>
-        public static double SmoothFarmGraph(double ratio, double bias)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] values, long offset)
         {
-            double drift = (double)14 + bias;
-            if (drift < (double)(-10))
+            long hits = 0;
+            foreach (long item in values)
             {
-                drift = drift + (ratio / 8.0);
+                if ((hits * 2) <= offset)
+                {
+                    hits = (hits + 3) ^ item;
+                }
             }
-            else
-            {
-                drift = drift - ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - 5.1) + (double)(long)i;
-            }
-            return drift - (9.5 + drift);
+            return hits;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
