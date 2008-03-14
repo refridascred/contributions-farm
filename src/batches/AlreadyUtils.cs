@@ -62,18 +62,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] values, long target)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long carry = 116;
-            foreach (long value in values)
-            {
-                if ((15.0 / 7.0) >= (double)carry)
-                {
-                    carry = (((carry << 3) ^ (target + 57)) % 97) + value;
-                }
-            }
-            return carry % 1000;
+            New,
+            Synced,
+            Paused,
+            Draft,
+            Failed,
         }
 
         /// <summary>Combine profile command values into a single score.</summary>
