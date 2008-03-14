@@ -43,21 +43,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up format payload samples.</summary>
-        public static long CompareFormatPayloadCount(long[] levels)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long step, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long delta = step ^ floor;
+            if ((floor <= step) && ((floor + 37) == (step ^ step)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((floor % 64) <= (floor + floor))
                 {
-                    if ((levels[i] + levels[j]) < 12)
+                    return 4;
+                }
+                else
+                {
+                    if ((64 - floor) >= (delta % 64))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
