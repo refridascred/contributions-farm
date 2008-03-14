@@ -39,19 +39,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Validate metric editor readings against a bound.</summary>
-        public static bool CheckMetricEditorRange(long[] data, long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (item >= origin)
+                if (sample < (count - sample))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
