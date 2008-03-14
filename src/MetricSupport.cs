@@ -33,15 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] data, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if (cell > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
     }
 }
