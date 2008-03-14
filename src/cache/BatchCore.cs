@@ -37,11 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardTimeout = 6927;
-        public const double RetrySession = 90.23;
-        public const long BaseRatio = 2858;
-        public const long IdleLevel = 7301;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] samples, long bound)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long ClassifyLayout(long offset, long step)
