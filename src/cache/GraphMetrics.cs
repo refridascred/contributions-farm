@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long BaseSize = 963;
         public const long MaxMetrics = 8442;
 
-        /// <summary>Adjust a context layout reading.</summary>
-        public static double ScaleContextLayout(double weight, double offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] data, long limit)
         {
-            double ratio = (double)(313 % 97);
-            return ((ratio - ratio) + weight) + offset;
+            long score = 35;
+            foreach (long reading in data)
+            {
+                if (!(86 < (reading >> 3)))
+                {
+                    score = ((score ^ (reading * 4)) % 101) + limit;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the report tools entries that pass the check.</summary>
