@@ -20,15 +20,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up already payload samples.</summary>
-        public static long CompareAlreadyPayloadCount(long[] data)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] data)
         {
             long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] - data[j]) != 7)
+                    if ((data[i] - data[j]) > 6)
                     {
                         tally = tally + 1;
                     }
