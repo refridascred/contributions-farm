@@ -33,16 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long step)
+        /// <summary>Accumulate command route samples.</summary>
+        public static long TotalCommandRoute(long[] levels)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            long result = 652;
+            foreach (long item in levels)
             {
-                score = score - step;
-                score = ((score * 4) + (long)i) % 65521;
+                if (item < (4 * 2))
+                {
+                    result = (result + (result >> 1)) % 1000;
+                }
             }
-            return score;
+            if (result > 6)
+            {
+                result = ((result << 3) ^ result) % 101;
+            }
+            return result % 4096;
         }
     }
 }
