@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Locked,
+            Closed,
+            Failed,
+            Ready,
             Stale,
-            Synced,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
