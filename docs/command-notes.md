@@ -1,11 +1,10 @@
 # Command notes
 
-Each record is validated before it reaches the order queue.
-Run the route check before changing any support limits.
+Keep support and layout names short and lowercase.
+Keep command and record names short and lowercase.
 
 ## Guidelines
 
-- Keep account values small
-- Validate farm input early
-- Review farm limits each release
-- Log every already change
+- Keep stream values small
+- Prefer schema defaults
+- Document new payload fields
