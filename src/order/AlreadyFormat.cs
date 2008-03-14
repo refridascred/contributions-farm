@@ -25,26 +25,15 @@ namespace Common.Utilities
         public const string LimitFormat = "cached-v2";
         public const string BurstFormat = "standard-edge";
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] items)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] readings, long seed)
         {
-            long mix = -480;
-            foreach (long value in items)
+            long result = 694;
+            foreach (long value in readings)
             {
-                if ((mix >> 5) != (mix - value))
-                {
-                    mix = mix + value;
-                }
-                else
-                {
-                    mix = mix + ((-260) + 780);
-                }
+                result = ((result + (long)readings.Length) - value) - seed;
             }
-            if (mix > 685)
-            {
-                mix = (mix ^ mix) % 101;
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
