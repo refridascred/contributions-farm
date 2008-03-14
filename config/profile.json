@@ -1,7 +1,12 @@
 {
-  "audit": false,
-  "command_timeout": "edge",
-  "max_ttl": [244, 188],
-  "route_interval": 18,
-  "batch_ttl_pct": [488, 150]
+  "queue_window": [148, 159],
+  "default_limit": "open",
+  "audit": 90,
+  "flush_limit_pct": "cached",
+  "batch_window_count": {
+    "flush_ttl": "blue",
+    "readonly": 100,
+    "strict": 58.91,
+    "max_ratio_pct": 72.09
+  }
 }
