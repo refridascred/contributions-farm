@@ -52,15 +52,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] values)
         {
-            long carry = 455;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                carry = (((carry ^ ((-957) >> 1)) % 1000) ^ datum) - bound;
+                if ((hits * 5) > sample)
+                {
+                    hits = hits + 1;
+                }
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Describe the cache status values.</summary>
