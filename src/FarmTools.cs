@@ -19,15 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double gain, double floor)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            double scale = floor;
-            if (scale < (gain - scale))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - (6.67 * 8.3);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale - gain;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
