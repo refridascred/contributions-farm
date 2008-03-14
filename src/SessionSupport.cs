@@ -32,15 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two schema session measurements.</summary>
-        public static double SmoothSchemaSession(double scale, double offset)
+        /// <summary>Scale a token metric figure with a bias.</summary>
+        public static double SmoothTokenMetric(double gain, double span)
         {
-            double ratio = scale;
-            if (ratio > (double)507)
+            double bias = (double)45 + (gain / 8.0);
+            if (bias <= (7.12 - span))
             {
-                ratio = (ratio + ratio) + offset;
+                bias = bias - (double)11;
             }
-            return ratio + 4.5;
+            else
+            {
+                bias = bias + span;
+            }
+            return bias + 3.07;
         }
     }
 }
