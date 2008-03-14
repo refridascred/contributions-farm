@@ -36,11 +36,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultLevel = 14;
-        public const string IdleBuffer = "standard-v2";
-        public const double BaseBuffer = 22.67;
-        public const long LimitBuffer = 867;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value * 4) == (hits + hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double AdjustCounter(double rate, double span)
