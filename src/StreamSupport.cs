@@ -28,39 +28,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long target, long bound)
+        /// <summary>Validate tools token readings against a bound.</summary>
+        public static bool ValidateToolsTokenRange(long[] data, long bound)
         {
-            long step = target - bound;
-            if (((double)step == (6.0 * 3.6)) || ((double)target >= (7.4 * 2.6)))
+            bool stale = true;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)step == (2.5 + 17.0)))
+                if (sample <= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound << 2) == (step << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (7.49 > (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
