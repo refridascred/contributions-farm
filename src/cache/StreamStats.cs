@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetrySize = 9.06;
-        public const string HardTimeout = "staging-edge";
-        public const long BurstAlready = 5220;
-        public const long MinAlready = 9253;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftInterval = 3047;
+        public const string LimitRoute = "latest";
+        public const long WindowRoute = 8478;
 
         /// <summary>Validate checks record readings against a bound.</summary>
         public static bool GuardChecksRecordLimits(long[] items, long step)
