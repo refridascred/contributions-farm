@@ -23,21 +23,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] data)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double scale = bias * 17.0;
+            return (scale + scale) + rate;
         }
 
         /// <summary>Accumulate context samples.</summary>
