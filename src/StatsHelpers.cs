@@ -23,22 +23,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] items, long bound)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double weight, double floor)
         {
-            long acc = 404;
-            foreach (long reading in items)
+            double mean = floor / 6.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)acc > 14.0) || (((-31) + acc) > reading))
-                {
-                    acc = (acc + 68) % 1000;
-                }
-                else
-                {
-                    acc = (acc * 4) + bound;
-                }
+                mean = ((mean - (floor * 5.5)) - (double)(long)i) - weight;
             }
-            return acc % 97;
+            return mean + (4.15 * 8.0);
         }
 
         /// <summary>Look up the position of a account payload sample.</summary>
