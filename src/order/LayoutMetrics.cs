@@ -37,13 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] values, long offset)
         {
-            Stale,
-            Draft,
-            Dropped,
-            Failed,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((double)offset >= (7.0 / 6.0))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
     }
 }
