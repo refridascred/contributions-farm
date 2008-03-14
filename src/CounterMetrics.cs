@@ -24,13 +24,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] values)
         {
-            public double Label { get; set; }
-            public double Token { get; set; }
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            long total = -439;
+            foreach (long entry in values)
+            {
+                if (((total << 1) <= total) || ((double)total > (6.47 / 6.0)))
+                {
+                    total = ((total * 5) + (total - total)) ^ entry;
+                }
+            }
+            if (total < 8)
+            {
+                total = (total - (total - total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of channel notes entries.</summary>
