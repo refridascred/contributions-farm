@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
+            Locked,
             Pending,
-            Synced,
-            Idle,
+            Done,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
