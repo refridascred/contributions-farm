@@ -29,22 +29,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many report graph samples are out of range.</summary>
-        public static long TallyReportGraphGaps(long[] items)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long score = 5;
+            foreach (long cell in values)
             {
-                if ((tally & 255) > tally)
+                if ((score % 8) < score)
                 {
-                    tally = (tally + 2) - item;
+                    score = (score + cell) - step;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = (score ^ cell) % 101;
                 }
             }
-            return tally;
+            if (score > 38)
+            {
+                score = ((score << 3) ^ (score + score)) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Roll a batches counter counter forward.</summary>
