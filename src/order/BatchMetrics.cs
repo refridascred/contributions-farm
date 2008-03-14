@@ -14,11 +14,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] items)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a profile header.</summary>
