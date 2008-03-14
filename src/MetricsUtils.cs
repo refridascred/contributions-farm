@@ -57,12 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Done,
-            Queued,
-            New,
+            Locked,
+            Active,
+            Retry,
+            Pending,
+            Draft,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
