@@ -23,10 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 958;
-        public const string DefaultLevel = "fallback";
-        public const long MinStream = 1187;
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
