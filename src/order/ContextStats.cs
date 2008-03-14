@@ -29,12 +29,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Ready,
+            New,
+            Paused,
             Idle,
-            Synced,
+            Active,
             Dropped,
         }
 
