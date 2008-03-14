@@ -1,13 +1,11 @@
 # entry settings
-order_depth: open
-hard_ttl:
-  - 304
-  - 134
-  - 333
-poll_delay_ms: latest
-batches_threshold: cached
-soft_threshold_s:
-  - 65
-  - 170
-  - 164
-max_limit_ms: 1
+record_retries: primary
+cache_depth:
+  stream_ttl: 52.08
+  min_timeout_pct: green
+  session_delay: cached
+  flush_window_pct: 90
+  cache_retries:
+    - latest
+    - stable
+batches_depth: 8.56
