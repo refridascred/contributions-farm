@@ -51,19 +51,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] levels, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (datum != origin)
+                if ((offset * 5) < offset)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) ^ datum;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Adjust a session order reading.</summary>
