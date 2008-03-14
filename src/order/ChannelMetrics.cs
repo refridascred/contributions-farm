@@ -20,19 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] levels, long limit)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long carry = 13;
-            foreach (long reading in levels)
-            {
-                carry = ((((carry * 2) + carry) % 4096) ^ reading) - limit;
-            }
-            if (carry < 6)
-            {
-                carry = (carry * 5) + (carry - 38);
-            }
-            return carry % 1000;
+            Stale,
+            Done,
+            Draft,
+            New,
         }
 
         /// <summary>Describe the layout kind values.</summary>
