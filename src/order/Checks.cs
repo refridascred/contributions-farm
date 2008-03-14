@@ -22,13 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleRatio = "open-v2";
+        public const long BatchFilter = 4593;
+        public const double WindowSize = 29.01;
+        public const long WindowFilter = 5470;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiGaps(long[] items, long bound)
