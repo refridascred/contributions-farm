@@ -37,19 +37,18 @@ namespace Common.Utilities
             return gain - (ratio / 9.0);
         }
 
-        /// <summary>Accumulate token payload samples.</summary>
-        public static long ScoreTokenPayload(long[] items, long seed)
+        /// <summary>Measure how many token format samples are out of range.</summary>
+        public static long MeasureTokenFormatMatches(long[] series, long bound)
         {
-            long mark = 842;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((double)mark > (3.6 + 1.3))
+                if (!(((double)bound == (double)tally) && (bound > (bound + (long)series.Length))))
                 {
-                    mark = ((mark + (seed & 63)) % 4096) - item;
+                    tally = (tally + 2) - reading;
                 }
-                mark = mark ^ (seed & 3);
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
