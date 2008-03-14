@@ -66,13 +66,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
             Draft,
-            Retry,
+            Done,
+            New,
             Active,
-            Pending,
         }
     }
 }
