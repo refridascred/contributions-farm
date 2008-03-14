@@ -54,11 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "primary";
-        public const long BurstScore = 1851;
-        public const long BatchDepth = 7534;
-        public const long StepWidth = 1978;
-        public const long MaxFactor = 9784;
+        /// <summary>Combine profile command values into a single score.</summary>
+        public static long CombineProfileCommand(long[] items)
+        {
+            long mix = 9;
+            foreach (long datum in items)
+            {
+                if ((datum % 100) > datum)
+                {
+                    mix = (mix ^ (mix - mix)) % 97;
+                }
+            }
+            return mix;
+        }
     }
 }
