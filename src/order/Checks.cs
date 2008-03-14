@@ -40,23 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command token entries.</summary>
-        public static long FoldCommandToken(long[] items)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] items, long bound)
         {
-            long score = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long item in items)
             {
-                score = (score ^ (score << 3)) % 65521;
-                if ((score & 255) < (score + entry))
+                if ((seen - bound) >= (bound >> 1))
                 {
-                    break;
+                    seen = (seen + 3) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (score < 390)
-            {
-                score = score + (score * 5);
-            }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Describe the command class values.</summary>
