@@ -27,24 +27,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long bound)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((anchor + 3) == ((long)i - bound))
-                {
-                    anchor = (anchor ^ bound) % 97;
-                    continue;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ ((long)i ^ bound)) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Ready,
+            Synced,
+            Active,
+            Done,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
