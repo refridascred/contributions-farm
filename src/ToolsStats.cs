@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinBatches = 19.73;
-        public const long BaseWidth = 8156;
-        public const string MinInterval = "fallback";
-        public const long WindowBatches = 808;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] readings, long target)
+        {
+            long acc = 75;
+            foreach (long reading in readings)
+            {
+                acc = ((acc * 3) + target) ^ reading;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long CompareAccountCount(long[] series)
