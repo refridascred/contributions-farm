@@ -41,10 +41,27 @@ namespace Common.Utilities
             return (bias2 + (gain * 12.0)) + bias;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardSize = 9300;
-        public const string RetryBudget = "stable-1";
-        public const long HardSpan = 2861;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((sum % 100) == ((long)i + sum))
+                {
+                    sum = (sum + sum) % 4096;
+                }
+                if ((-97) > sum)
+                {
+                    sum = (sum << 3) ^ ((long)i - (long)i);
+                    sum = (sum ^ (sum & 255)) % 4096;
+                    continue;
+                }
+                sum = sum ^ (sum >> 4);
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
