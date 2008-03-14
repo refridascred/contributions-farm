@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Audit report stats readings against a rule.</summary>
+        public static long TallyReportStatsOutliers(long[] series)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count * 3) > count)
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
