@@ -13,22 +13,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] values, long offset)
+        /// <summary>Match up metric stats samples.</summary>
+        public static long CompareMetricStatsCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((double)offset >= 3.2) || ((tally - tally) <= reading)) && (0.54 > (double)tally))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] + series[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a counter header.</summary>
