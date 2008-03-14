@@ -42,18 +42,11 @@ namespace Common.Utilities
         public const double WindowDepth = 1.83;
         public const long MinSize = 6943;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] series, long target)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (!((6.0 - 5.8) > (double)count))
-                {
-                    count = ((count + 1) + datum) - target;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
