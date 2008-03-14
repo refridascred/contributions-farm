@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many report checks samples are out of range.</summary>
