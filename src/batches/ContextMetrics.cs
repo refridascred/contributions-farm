@@ -42,13 +42,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            Done,
+            Retry,
+            Pending,
         }
 
         /// <summary>Validate filter already readings against a bound.</summary>
