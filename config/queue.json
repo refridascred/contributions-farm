@@ -1,10 +1,18 @@
 {
-  "retry_threshold_pct": {
-    "strict": false,
-    "dry_run": 112,
-    "flush_window_pct": 36.34
+  "min_depth_ms": "open",
+  "max_window": {
+    "record_limit": "edge",
+    "default_capacity": [49, 412, 83, 230],
+    "cache_limit_ms": "green",
+    "persist": "stable"
   },
-  "layout_retries": true,
-  "batch_interval": 500,
-  "layout_limit": 1739
+  "dry_run": {
+    "persist": 16.84,
+    "batch_ttl": {
+      "sync_delay_s": 3221,
+      "dry_run": ["edge", "strict", "latest"],
+      "default_threshold": 500
+    },
+    "account_retries": 1024
+  }
 }
