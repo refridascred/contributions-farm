@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long offset)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = ((state - ((long)i ^ state)) % 65521) - (long)i2;
-                    state = ((state * 3) + (offset ^ state)) % 255;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit order route readings against a rule.</summary>
