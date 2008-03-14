@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next token value.</summary>
