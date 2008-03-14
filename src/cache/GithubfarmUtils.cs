@@ -23,38 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a support window pair into a bucket.</summary>
-        public static long RankSupportWindow(long offset, long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] readings)
         {
-            if ((offset << 3) <= (43 % 5))
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((8 + offset) > seed))
+                if (!(((reading + reading) <= reading) || ((6 - tally) >= (24 * 2))))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)seed < (double)offset) || ((double)offset >= (1.0 * 10.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((seed + offset) > (seed ^ offset)) && ((offset + offset) < (seed - offset)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
