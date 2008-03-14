@@ -29,15 +29,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit checks batches readings against a rule.</summary>
-        public static long AuditChecksBatchesOutliers(long[] readings)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] items)
         {
             long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (matches <= 4)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) - reading;
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
