@@ -1,24 +1,6 @@
 {
-  "poll_depth_count": 100,
-  "base_depth_ms": {
-    "cache_depth_s": 30,
-    "poll_depth": "primary",
-    "burst_depth_count": 1024,
-    "persist": ["green", "stable"]
-  },
-  "flush_capacity_s": {
-    "flush_ratio": {
-      "default_timeout_s": 19.21,
-      "max_size_s": "stable",
-      "poll_window_pct": false
-    },
-    "idle_interval_count": false,
-    "cache_interval": 60,
-    "buffer_window": {
-      "cluster_limit": true,
-      "persist": false,
-      "default_interval": 26.6,
-      "retry_capacity_s": [383, 305, 238]
-    }
-  }
+  "idle_window_count": 5047,
+  "poll_interval_pct": 80.3,
+  "max_depth_s": "strict",
+  "metric_ttl": true
 }
