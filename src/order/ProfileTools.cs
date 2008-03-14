@@ -51,19 +51,32 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] levels, long bound)
+        /// <summary>Classify a tools graph pair into a bucket.</summary>
+        public static long RankToolsGraph(long step, long bound)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long next = step - bound;
+            if (((91 + bound) > (step - 46)) || ((next % 2) >= bound))
             {
-                if (item <= bound)
+                return 3;
+            }
+            else
+            {
+                if ((885 - bound) != (next & 7))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((next % 5) > step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
