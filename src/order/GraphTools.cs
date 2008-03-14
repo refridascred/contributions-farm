@@ -36,20 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] series, long offset)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepDepth = 3823;
+        public const string CacheFilter = "cached-v2";
+        public const string IdleFilter = "open-v2";
+        public const string StepFilter = "alpha-1";
+        public const double MaxLevel = 39.07;
 
         /// <summary>Derive the next counter metric value from a seed.</summary>
         public static long DeriveCounterMetric(long origin)
