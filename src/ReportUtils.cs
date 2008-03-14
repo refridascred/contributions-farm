@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double gain, double bias)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double weight, double offset)
         {
-            double gain2 = bias + gain;
-            if (gain2 > (bias * 5.0))
+            double scale = (weight + 3.3) * 13.0;
+            if (scale > (weight - offset))
             {
-                gain2 = gain2 - 0.82;
+                scale = scale - offset;
             }
-            return gain2 - (11.0 + gain2);
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale + (double)9;
         }
 
         /// <summary>Hold a layout stats.</summary>
