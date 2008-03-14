@@ -26,32 +26,11 @@ namespace Common.Utilities
         public const string BurstChecks = "primary-1";
         public const string SoftChecks = "legacy-v2";
 
-        /// <summary>Rank graph layout input into a small class.</summary>
-        public static long RankGraphLayout(long step, long floor)
+        /// <summary>Project the next account commits value.</summary>
+        public static double AdjustAccountCommits(double gain, double span)
         {
-            long next = step ^ floor;
-            if ((step + next) == (next + 269))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)next == (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor ^ next) > (floor + next))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            double gain2 = (double)((-63) - 989);
+            return (gain2 - (gain + 8.16)) + span;
         }
     }
 }
