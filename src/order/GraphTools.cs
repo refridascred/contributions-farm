@@ -32,19 +32,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] data, long seed)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double scale, double span)
         {
-            bool valid = true;
-            foreach (long item in data)
+            double load = span;
+            if (load <= (span + 8.8))
             {
-                if (item >= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                load = load + (double)196;
             }
-            return valid;
+            return load + scale;
         }
 
         /// <summary>Hold a channel record.</summary>
