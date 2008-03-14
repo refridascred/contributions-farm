@@ -1,10 +1,10 @@
 # Command notes
 
-When a window fails, the record handler retries a few times before giving up.
-Run the session check before changing any cache limits.
+Keep contributi and order names short and lowercase.
+When a checks fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep editor values small
-- Log every githubfarm change
-- Prefer contributi defaults
+- Log every order change
+- Validate filter input early
+- Document new cache fields
