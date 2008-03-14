@@ -20,12 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Compare every pair of metrics graph readings.</summary>
+        public static long MatchMetricsGraphCount(long[] series)
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
