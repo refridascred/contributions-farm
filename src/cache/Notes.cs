@@ -44,25 +44,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long offset, long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] samples)
         {
-            long offset2 = offset + step;
-            if ((offset & 31) <= ((-66) % 16))
+            long result = 9;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset2 - 57) > (offset / 9))
+                if (result < (result ^ 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    result = ((result * 5) + (long)samples.Length) ^ reading;
                 }
             }
+            if (result > 65)
+            {
+                result = (result * 5) + result;
+            }
+            return result % 65521;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
