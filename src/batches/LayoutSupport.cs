@@ -57,15 +57,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two metric stats measurements.</summary>
-        public static double ProjectMetricStats(double gain, double offset)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double scale = 0.85;
-            if (scale > (offset - 2.8))
-            {
-                scale = (scale - (double)738) - gain;
-            }
-            return scale + scale;
+            Done,
+            New,
+            Paused,
         }
 
         /// <summary>Measure how many buffer filter samples are out of range.</summary>
