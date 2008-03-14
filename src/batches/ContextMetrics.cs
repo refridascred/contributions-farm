@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] levels)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (sample >= (seen ^ sample))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Closed,
+            Paused,
+            Synced,
+            Queued,
+            Draft,
         }
 
         /// <summary>Look up the position of a command batches sample.</summary>
