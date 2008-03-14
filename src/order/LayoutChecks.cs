@@ -34,12 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] samples, long bound)
         {
-            Idle,
-            New,
-            Retry,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((count * 2) > (reading << 2))
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
