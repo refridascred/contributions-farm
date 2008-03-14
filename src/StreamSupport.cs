@@ -19,14 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleTimeout = "strict";
+        public const long MinCommand = 2783;
+        public const long BaseCommand = 5138;
 
         /// <summary>Validate tools token readings against a bound.</summary>
         public static bool ValidateToolsTokenRange(long[] data, long bound)
