@@ -44,23 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double gain, double offset)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] items, long bound)
         {
-            double ratio = offset / 5.0;
-            if (ratio >= 0.35)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                ratio = ratio - gain;
+                if (reading <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)(-577);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (gain * 1.79)) + (double)(long)i;
-            }
-            return ratio + (gain * 3.0);
+            return ok;
         }
     }
 }
