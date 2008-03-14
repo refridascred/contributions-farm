@@ -1,5 +1,11 @@
 {
-  "burst_window": 4896,
-  "cache_timeout": "standard",
-  "flush_delay_ms": 2250
+  "base_limit": [193, 107, 451],
+  "dry_run": {
+    "readonly": 57,
+    "command_capacity": ["cached", "eu-west"],
+    "audit": 3.88,
+    "stream_depth": "latest"
+  },
+  "soft_delay_count": [159, 237, 37],
+  "burst_threshold": "eu-west"
 }
