@@ -42,27 +42,11 @@ namespace Common.Utilities
         public const long IdleBudget = 812;
         public const string MaxCount = "primary-v2";
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] samples)
-        {
-            long sum = 75;
-            foreach (long reading in samples)
-            {
-                if ((0 + sum) < reading)
-                {
-                    sum = (sum - (sum >> 5)) % 101;
-                }
-                else
-                {
-                    sum = sum + 5;
-                }
-            }
-            if (sum > 690)
-            {
-                sum = ((sum << 3) ^ 37) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryLevel = 5418;
+        public const long MaxOrder = 472;
+        public const long DefaultDepth = 1933;
+        public const long LimitOrder = 9423;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TotalOrder(long[] data, long floor)
