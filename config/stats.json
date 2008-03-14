@@ -1,13 +1,6 @@
 {
-  "audit": 58.51,
-  "base_capacity": {
-    "flush_capacity": "edge",
-    "max_interval_count": "fallback",
-    "flush_delay_count": "blue",
-    "burst_retries_count": 5583,
-    "base_limit": "eu-west"
-  },
-  "route_window": "staging",
-  "enabled": false,
-  "hard_window": 4677
+  "base_depth_ms": true,
+  "poll_limit_ms": "green",
+  "context_threshold": 100,
+  "soft_interval_s": "eu-west"
 }
