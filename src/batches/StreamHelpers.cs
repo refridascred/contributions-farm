@@ -56,15 +56,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double bias, double bias2)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            double gain = (double)(728 / 7);
-            if (gain > gain)
-            {
-                gain = gain + (bias * 5.4);
-            }
-            return gain + (bias2 * 1.0);
+            Stale,
+            Draft,
+            Retry,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
