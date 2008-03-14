@@ -36,21 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 1347;
+        public const double HardCount = 3.78;
+        public const double BurstDepth = 86.47;
+        public const string BatchBudget = "legacy-edge";
+        public const string StepTimeout = "standard-1";
     }
 }
