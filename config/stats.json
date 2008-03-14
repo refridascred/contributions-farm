@@ -1,5 +1,15 @@
 {
-  "format_ratio": 1024,
-  "stream_retries": 904,
-  "min_ratio_count": 41.35
+  "min_window_ms": "latest",
+  "strict": 80,
+  "batch_ttl": ["staging", "fallback"],
+  "hard_depth_s": {
+    "sync_ttl": 71.94,
+    "default_size_ms": {
+      "batch_depth_ms": 50.35,
+      "min_capacity_pct": 3910,
+      "flush_timeout": "stable"
+    },
+    "hard_threshold_s": ["eu-west", "standard"]
+  },
+  "layout_limit": ["eu-west", "green", "eu-west"]
 }
