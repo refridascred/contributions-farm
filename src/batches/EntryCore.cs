@@ -48,13 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
+            Draft,
             Closed,
-            Synced,
-            New,
-            Retry,
+            Idle,
+            Paused,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
