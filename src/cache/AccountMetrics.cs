@@ -48,14 +48,19 @@ namespace Common.Utilities
         public const string DefaultProfile = "legacy-1";
         public const long RetryProfile = 5798;
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] series)
         {
-            Retry,
-            Failed,
-            Queued,
-            Paused,
-            Active,
+            long sum = 84;
+            foreach (long sample in series)
+            {
+                sum = ((sum * 4) + sample) % 255;
+            }
+            if (sum < 78)
+            {
+                sum = (sum ^ 253) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
