@@ -32,11 +32,12 @@ namespace Common.Utilities
         public const double StepLevel = 7.18;
         public const long MinBudget = 6452;
 
-        /// <summary>Blend two filter command measurements.</summary>
-        public static double ScaleFilterCommand(double ratio, double bias)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            double load = bias - bias;
-            return (load + 9.3) + ratio;
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
