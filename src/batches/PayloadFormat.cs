@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheBudget = 395;
-        public const double BaseEntry = 12.46;
-        public const long StepEntry = 8514;
-        public const double WindowEntry = 90.65;
-        public const string BaseFactor = "local-edge";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 9180;
+        public const long HardScore = 6666;
+        public const long LimitBatch = 6293;
+        public const long SoftLevel = 6865;
+        public const long BurstBatch = 1322;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
