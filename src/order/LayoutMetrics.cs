@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally ^ datum) >= (tally >> 1))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 8807;
+        public const double LimitSize = 72.2;
+        public const long RetryFactor = 5967;
+        public const long MaxChannel = 1;
 
         /// <summary>Count contributi account pairs that satisfy a relation.</summary>
         public static long CompareContributiAccountCount(long[] levels)
