@@ -1,4 +1,7 @@
 # githubfarm settings
-layout_depth: 33.71
-min_size_s: open
-sync_window: primary
+min_delay_s: legacy
+format_interval:
+  - fallback
+  - legacy
+  - green
+burst_ratio_pct: true
