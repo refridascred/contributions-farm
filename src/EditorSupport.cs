@@ -25,10 +25,14 @@ namespace Common.Utilities
         public const long DefaultWindow = 2285;
         public const long IdleWindow = 4958;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultSize = 7572;
-        public const double WindowCluster = 71.08;
-        public const long MinWidth = 4297;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Synced,
+            Draft,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double BlendQueue(double gain, double bias)
