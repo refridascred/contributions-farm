@@ -62,19 +62,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] series, long step)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long bound)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading > step)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
