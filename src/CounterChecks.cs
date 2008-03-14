@@ -23,19 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every account contributi entry stays within the limit.</summary>
-        public static bool GuardAccountContributiLimits(long[] items, long offset)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the cache phase values.</summary>
