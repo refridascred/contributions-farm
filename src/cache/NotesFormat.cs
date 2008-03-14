@@ -37,18 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (104 >= count)
-                {
-                    count = (count + 2) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxLevel = 7577;
+        public const long MaxAlready = 8651;
+        public const double LimitAlready = 81.76;
+        public const double BatchAlready = 95.31;
+        public const long IdleRatio = 1156;
     }
 }
