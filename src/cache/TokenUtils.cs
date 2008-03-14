@@ -25,22 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] levels, long floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (((hits - datum) < (357 + floor)) && ((hits - datum) > (datum + datum)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Accumulate token metrics samples.</summary>
