@@ -1,8 +1,6 @@
-id,owner
-1,98.72
-2,green
-3,0.85
-4,eu-west
-5,93.9
-6,258
-7,405
+id,label,rank,count
+1,open,82.16,879
+2,cached,928,361
+3,613,30.12,90.41
+4,eu-west,eu-west,42.59
+5,863,15,284
