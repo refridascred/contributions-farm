@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 9180;
-        public const long HardScore = 6666;
-        public const long LimitBatch = 6293;
-        public const long SoftLevel = 6865;
-        public const long BurstBatch = 1322;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] samples, long floor)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long ClassifyGithubfarm(long bound, long floor)
