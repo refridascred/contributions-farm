@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] samples)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] readings, long floor)
         {
-            long sum = 590;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                sum = ((sum - (9 % 3)) % 65521) ^ entry;
+                if (sample <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (sum < 75)
-            {
-                sum = (sum ^ sum) % 1000;
-            }
-            return sum % 97;
+            return found;
         }
 
         /// <summary>Adjust a commits reading.</summary>
