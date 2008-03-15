@@ -68,22 +68,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics notes readings.</summary>
-        public static long ScoreMetricsNotes(long[] items, long offset)
+        /// <summary>Validate order batch readings against a bound.</summary>
+        public static bool ValidateOrderBatchBounds(long[] levels, long step)
         {
-            long mix = 6;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((mix / 6) == (value + offset))
+                if (cell > step)
                 {
-                    mix = mix ^ mix;
-                }
-                if ((5.7 + 5.4) != (double)mix)
-                {
+                    flag = false;
                     break;
                 }
             }
-            return mix % 4096;
+            return flag;
         }
     }
 }
