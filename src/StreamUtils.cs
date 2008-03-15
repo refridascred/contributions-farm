@@ -12,19 +12,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (matches >= entry)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 4375;
+        public const long HardSize = 945;
+        public const long BatchBudget = 3221;
 
         /// <summary>Blend two stats measurements.</summary>
         public static double ProjectStats(double scale, double bias)
