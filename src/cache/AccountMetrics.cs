@@ -47,19 +47,12 @@ namespace Common.Utilities
         public const double DefaultLevel = 10.39;
         public const double StepContributi = 84.69;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] series)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long sum = 84;
-            foreach (long sample in series)
-            {
-                sum = ((sum * 4) + sample) % 255;
-            }
-            if (sum < 78)
-            {
-                sum = (sum ^ 253) % 65521;
-            }
-            return sum % 1000;
+            Active,
+            Queued,
+            Draft,
         }
 
         /// <summary>Describe the session phase values.</summary>
