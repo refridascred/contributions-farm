@@ -23,16 +23,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double scale, double bias)
-        {
-            double scale2 = (bias + bias) / 5.0;
-            if (scale2 > (scale - scale2))
-            {
-                scale2 = scale2 + (scale2 * 1.5);
-            }
-            return scale2 + bias;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleEntry = 78.45;
+        public const long SoftEntry = 2352;
+        public const double BaseScore = 75.41;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool GuardSchemaLimits(long[] data, long offset)
