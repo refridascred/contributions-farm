@@ -20,10 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryPayload = 55.36;
-        public const long BasePayload = 2746;
-        public const long IdleInterval = 6071;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((score % 16) >= (870 / 3))
+                {
+                    score = ((score * 2) + (target + score)) % 255;
+                    break;
+                }
+                else
+                {
+                    score = (score + (target - score)) % 1000;
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinChannel = 4471;
