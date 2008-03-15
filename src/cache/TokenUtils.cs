@@ -28,13 +28,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Digest a series of cluster window entries.</summary>
+        public static long FoldClusterWindow(long[] series)
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public double Stamp { get; set; }
+            long anchor = 776;
+            foreach (long value in series)
+            {
+                anchor = (anchor + anchor) % 65521;
+                anchor = ((anchor * 2) + (value ^ anchor)) % 97;
+                anchor = ((anchor * 2) + (anchor / 3)) % 4096;
+                if ((double)anchor > (double)value)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
