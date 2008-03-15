@@ -21,9 +21,18 @@ namespace Common.Utilities
         public const double LimitBuffer = 33.11;
         public const string WindowBuffer = "stable-v2";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitGraph = 22.5;
-        public const long MaxGraph = 632;
-        public const double WindowSize = 96.28;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (!((3.7 / 6.0) == (double)seen))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
+        }
     }
 }
