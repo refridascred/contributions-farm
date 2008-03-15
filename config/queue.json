@@ -1,7 +1,10 @@
 {
-  "token_threshold": [265, 275, 416],
-  "batches_ratio": [466, 263, 404],
-  "metrics_limit": [85, 59],
-  "checks_interval": 500,
-  "min_window": false
+  "compress": false,
+  "retry_window": {
+    "hard_depth_s": 500,
+    "batch_threshold": 60,
+    "flush_size_count": "edge",
+    "min_threshold": 250
+  },
+  "max_capacity_count": "local"
 }
