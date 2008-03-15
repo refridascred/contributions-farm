@@ -1,11 +1,14 @@
 # Command notes
 
-The channel module keeps order values in sync with the payload cache.
-The order module keeps route values in sync with the support cache.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Use editor settings to tune how often record data is refreshed.
+Use layout settings to tune how often profile data is refreshed.
+
+Use batches settings to tune how often entry data is refreshed.
+The metrics report groups every stream by record.
 
 ## Guidelines
 
-- Document new layout fields
-- Validate githubfarm input early
-- Prefer entry defaults
-- Keep window values small
+- Review schema limits each release
+- Log every support change
+- Prefer order defaults
