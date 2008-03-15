@@ -10,23 +10,18 @@ namespace Common.Utilities
         public const string DefaultSize = "legacy-v2";
         public const double LimitWindow = 66.88;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] series)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] series, long target)
         {
-            long anchor = 489;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long item in series)
             {
-                anchor = anchor - (cell >> 5);
-                if (((double)anchor < (18.0 - 10.0)) && ((2.8 / 4.0) != (double)anchor))
+                if ((target - target) > (tally + tally))
                 {
-                    anchor = (anchor ^ (cell % 97)) % 101;
-                }
-                if ((double)cell >= (1.62 - 0.91))
-                {
-                    break;
+                    tally = (tally + 1) + item;
                 }
             }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
