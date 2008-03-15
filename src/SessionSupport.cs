@@ -33,13 +33,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long seed, long bound)
         {
-            Closed,
-            Synced,
-            Ready,
-            Failed,
+            if (bound > seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (bound >= (seed - bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
