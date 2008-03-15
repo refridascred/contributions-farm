@@ -1,13 +1,12 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
+    label TEXT,
+    created_at TIMESTAMP,
     ratio REAL,
-    count INTEGER NOT NULL DEFAULT 0,
-    created_at TIMESTAMP
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_count ON layout_items (count);
+CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
 
-INSERT INTO layout_items (ratio, count) VALUES (92.24, 89);
-INSERT INTO layout_items (ratio, count) VALUES (7.32, 61);
-INSERT INTO layout_items (ratio, count) VALUES (95.14, 86);
+INSERT INTO layout_items (label, ratio, level) VALUES ('staging', 76.24, 86);
