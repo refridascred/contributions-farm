@@ -48,18 +48,22 @@ namespace Common.Utilities
             return load + (floor / 5.0);
         }
 
-        /// <summary>Count the command commits entries that pass the check.</summary>
-        public static long CountCommandCommitsMatches(long[] series, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((99 ^ hits) <= hits)
+                if ((73 > (value % 3)) && (((double)value >= (5.59 / 9.0)) && ((15.0 + 4.0) != (double)seen)))
                 {
-                    hits = ((hits + 3) + sample) - floor;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
