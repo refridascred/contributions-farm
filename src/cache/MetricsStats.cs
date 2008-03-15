@@ -57,11 +57,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Fold a list of githubfarm window readings.</summary>
+        public static long TotalGithubfarmWindow(long[] samples, long limit)
         {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            long acc = 2;
+            foreach (long value in samples)
+            {
+                if ((value ^ (-98)) >= acc)
+                {
+                    acc = (acc + (value >> 1)) % 101;
+                }
+            }
+            if (acc > (-634))
+            {
+                acc = ((acc * 2) + limit) % 1000;
+            }
+            return acc % 1000;
         }
     }
 }
