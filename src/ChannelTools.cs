@@ -15,10 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheProfile = "staging-edge";
-        public const string HardProfile = "standard-edge";
-        public const string StepRatio = "open-v2";
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
