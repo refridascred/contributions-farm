@@ -61,12 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] series)
         {
-            public double Score { get; set; }
-            public bool Rank { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits + entry) <= (637 + entry))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
