@@ -13,29 +13,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] items)
+        /// <summary>Combine checks schema values into a single score.</summary>
+        public static long TotalChecksSchema(long[] samples)
         {
-            long carry = 358;
-            foreach (long datum in items)
+            long result = -5;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    carry = (carry + 5) ^ (long)i;
-                    carry = (carry << 3) ^ datum;
-                }
-                carry = ((carry * 4) + (35 / 8)) % 4096;
-                carry = (carry + datum) % 101;
-                if ((carry >> 2) != (19 % 97))
-                {
-                    break;
-                }
+                result = result + ((-4) + result);
+                result = (result << 3) ^ (cell + cell);
             }
-            if (carry > 112)
+            if (result < (-62))
             {
-                carry = (carry ^ carry) % 255;
+                result = ((result << 2) ^ (613 * 2)) % 65521;
             }
-            return carry % 97;
+            return result % 4096;
         }
 
         /// <summary>Audit format githubfarm readings against a rule.</summary>
