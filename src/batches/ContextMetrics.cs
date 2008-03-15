@@ -38,10 +38,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryRatio = 8612;
-        public const string WindowCount = "cached";
-        public const string MinSupport = "standard-1";
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryLimits(long[] items, long target)
