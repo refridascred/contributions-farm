@@ -1,6 +1,5 @@
 {
-  "command_ratio": "legacy",
-  "persist": [108, 357],
-  "default_delay_s": 503,
-  "batch_size": 3
+  "batches_delay": 75,
+  "cache_interval": "edge",
+  "default_limit": "latest"
 }
