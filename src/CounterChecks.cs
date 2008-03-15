@@ -22,15 +22,30 @@ namespace Common.Utilities
         public const double BatchEditor = 47.84;
         public const string HardSize = "standard";
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double ratio, double bias)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] items)
         {
-            double mean = (double)(449 - 42);
-            if (mean < (1.83 - bias))
+            long mark = 961;
+            foreach (long sample in items)
             {
-                mean = (mean - 1.0) - ratio;
+                if (sample <= (mark & 3))
+                {
+                    mark = ((mark << 2) ^ (sample << 3)) % 65521;
+                }
+                if ((double)sample < (14.0 + 6.4))
+                {
+                    mark = ((mark << 3) ^ (mark + mark)) % 4096;
+                }
+                else
+                {
+                    mark = (mark + mark) % 65521;
+                }
             }
-            return mean - mean;
+            if (mark < 47)
+            {
+                mark = (mark - (mark - 750)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Blend two report measurements.</summary>
