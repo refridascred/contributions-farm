@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] readings, long floor)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandBounds(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((matches + datum) < datum)
+                if (reading > bound)
                 {
-                    matches = (matches + 1) + floor;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
