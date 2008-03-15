@@ -14,22 +14,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] series)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            long score = 7;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((score % 3) == (value - 4)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score << 3) ^ (95 ^ score);
+                    if ((readings[i] + readings[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score > 0)
-            {
-                score = (score ^ score) % 1000;
-            }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
