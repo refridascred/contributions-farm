@@ -65,12 +65,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinRatio = 74.89;
-        public const long DefaultProfile = 6158;
-        public const string BaseTimeout = "local";
-        public const double MaxProfile = 12.64;
-        public const long StepProfile = 8537;
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long SortRecord(long target, long floor)
