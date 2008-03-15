@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batch editor reading.</summary>
-        public static double ProjectBatchEditor(double scale, double floor)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long target, long origin)
         {
-            double ratio = 20.0 + (scale + scale);
-            if (ratio >= scale)
+            if ((1.5 - 19.0) == (double)origin)
             {
-                ratio = ratio + (double)720;
+                return 2;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                ratio = (ratio - floor) + (double)(long)i;
+                if ((3.0 / 4.0) <= (double)target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return ratio + (ratio * 20.0);
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
