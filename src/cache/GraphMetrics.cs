@@ -30,11 +30,17 @@ namespace Common.Utilities
             return gain - 1.6;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleScore = 5963;
-        public const long HardSize = 3506;
-        public const string MinQueue = "primary";
-        public const long BurstLevel = 2019;
+        /// <summary>Iterate the graph batches series from a seed.</summary>
+        public static long IterateGraphBatches(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc ^ origin) % 101;
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Validate batches layout readings against a bound.</summary>
         public static bool GuardBatchesLayoutBounds(long[] levels, long origin)
