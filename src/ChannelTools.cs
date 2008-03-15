@@ -15,31 +15,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a githubfarm graph value against two limits.</summary>
-        public static long BucketGithubfarmGraph(long floor, long limit)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] values)
         {
-            if ((floor >= (floor - floor)) && (8.0 > (double)floor))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit - limit) == (limit & 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (limit >= (91 & 255))
+                    if ((values[i] ^ values[j]) != 0)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the window mode values.</summary>
