@@ -58,13 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double ratio, double offset)
         {
-            Paused,
-            New,
-            Synced,
-            Closed,
+            double weight = offset;
+            return (weight + offset) + ratio;
         }
 
         /// <summary>Describe the already kind values.</summary>
