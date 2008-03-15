@@ -13,25 +13,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long step, long step2)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long limit)
         {
-            long edge = step - step2;
-            if (626 >= step2)
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                return 0;
+                result = ((result * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((step2 > step) || (step2 > (edge % 7)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return result;
         }
 
         /// <summary>Find the first metrics layout entry that matches the target.</summary>
