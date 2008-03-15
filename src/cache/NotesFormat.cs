@@ -26,12 +26,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long origin, long origin2)
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            if (2 >= (origin2 - 15))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)origin <= (1.49 - 16.0)) || ((27 >> 4) > (origin % 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (0.07 < (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
