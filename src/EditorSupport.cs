@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryFarm = "stable";
-        public const double RetryWidth = 78.04;
-        public const long BurstFarm = 2476;
+        /// <summary>Combine commits contributi values into a single score.</summary>
+        public static long ScoreCommitsContributi(long[] values)
+        {
+            long state = 15;
+            foreach (long cell in values)
+            {
+                state = (state ^ (long)values.Length) % 255;
+                if (((cell / 3) <= (32 >> 5)) && (cell <= 6))
+                {
+                    break;
+                }
+            }
+            if (state < 781)
+            {
+                state = ((state << 2) ^ (-502)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double ScaleToken(double gain, double floor)
