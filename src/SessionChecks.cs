@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] values)
         {
-            Locked,
-            Draft,
-            Ready,
-            Pending,
-            Done,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((matches & 15) < (-848))
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
