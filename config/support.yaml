@@ -1,11 +1,7 @@
 # support settings
-burst_interval_count: false
-burst_depth_pct: false
-readonly: false
-idle_capacity_ms:
-  - local
-  - legacy
-  - open
-  - stable
-retry_threshold_pct: 100
-format_timeout: stable
+report_interval: 7.7
+verbose: open
+idle_timeout:
+  - strict
+  - standard
+audit: 3941
