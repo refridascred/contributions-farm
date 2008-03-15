@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheLevel = 9732;
-        public const long BatchStream = 9134;
-        public const long MaxStream = 5656;
-        public const long RetryStream = 3353;
+        /// <summary>Derive the next metrics commits value from a seed.</summary>
+        public static long IterateMetricsCommits(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((1.75 * 18.0) < (double)step)
+                {
+                    state = (state - step) % 4096;
+                    state = (state - (94 + state)) % 255;
+                }
+                else
+                {
+                    state = ((state * 2) + (2 * 3)) % 65521;
+                }
+                if ((state >> 5) < state)
+                {
+                    state = ((state << 2) ^ step) % 4096;
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
