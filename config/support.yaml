@@ -1,9 +1,4 @@
 # support settings
-max_depth_pct: 29.94
-poll_depth: true
-idle_depth: true
-sync_window_ms:
-  - 129
-  - 54
-  - 207
-  - 97
+cache_interval_s: 939
+default_retries_ms: 1033
+default_threshold_pct: strict
