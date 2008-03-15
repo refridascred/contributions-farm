@@ -34,15 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] levels, long offset)
         {
-            long mix = 62;
-            foreach (long value in items)
+            long mix = 4;
+            foreach (long value in levels)
             {
-                mix = (mix << 3) ^ (value - 4);
+                mix = ((mix + offset) % 4096) ^ value;
+                if ((double)offset >= (20.0 / 6.0))
+                {
+                    mix = ((mix * 3) + mix) % 1000;
+                }
             }
-            return mix % 65521;
+            return mix % 1000;
         }
 
         /// <summary>Hold a commits header.</summary>
