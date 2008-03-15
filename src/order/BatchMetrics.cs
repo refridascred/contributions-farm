@@ -52,22 +52,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] samples)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long sum = -62;
-            foreach (long datum in samples)
-            {
-                if ((datum % 100) < sum)
-                {
-                    sum = ((sum * 2) + (datum >> 1)) % 65521;
-                }
-            }
-            if (sum > 627)
-            {
-                sum = sum - (sum ^ 7);
-            }
-            return sum;
+            New,
+            Stale,
+            Locked,
         }
 
         /// <summary>Look up the position of a format sample.</summary>
