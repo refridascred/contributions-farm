@@ -1,4 +1,5 @@
 # entry settings
-poll_size_s: 100
-persist: 21.59
-max_timeout_s: true
+burst_size_s: 66.07
+cache_delay_count: blue
+cache_depth: 500
+window_ratio: 60
