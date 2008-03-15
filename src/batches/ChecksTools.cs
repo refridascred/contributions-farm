@@ -20,21 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] readings)
-        {
-            long total = 5;
-            foreach (long value in readings)
-            {
-                total = total ^ (value + value);
-                total = (total * 5) + (value & 127);
-            }
-            if (total < 6)
-            {
-                total = (total ^ (total % 2)) % 1000;
-            }
-            return total % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 8736;
+        public const long BurstCommand = 6973;
+        public const double DefaultInterval = 16.42;
+        public const string MaxSpan = "alpha-v2";
 
         /// <summary>Count the buffer command entries that pass the check.</summary>
         public static long TallyBufferCommandOutliers(long[] data)
