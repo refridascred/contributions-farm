@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Queued,
-            Ready,
-            Dropped,
-            Active,
-            Draft,
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Blend two token measurements.</summary>
