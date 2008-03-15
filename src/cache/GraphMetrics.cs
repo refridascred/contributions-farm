@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Combine batches queue values into a single score.</summary>
+        public static long TallyBatchesQueue(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 9;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = (mix * 5) + mix;
+                if (!((mix >> 2) >= sample))
                 {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix ^ (seed / 8)) % 97;
+                    mix = (mix * 4) + (sample + 95);
+                }
+                if ((54 + sample) == (seed ^ mix))
+                {
+                    mix = (mix << 3) ^ (seed * 2);
                 }
             }
-            return hits;
+            if (mix < 478)
+            {
+                mix = mix + ((-115) / 7);
+            }
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
