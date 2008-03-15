@@ -66,18 +66,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] samples)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum - datum) == (hits * 4))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public double Region { get; set; }
         }
     }
 }
