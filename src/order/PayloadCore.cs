@@ -36,10 +36,19 @@ namespace Common.Utilities
         public const long CacheProfile = 4641;
         public const double BatchBudget = 12.94;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepInterval = 70.25;
-        public const string DefaultOrder = "latest-v2";
-        public const double StepOrder = 32.68;
-        public const double MinOrder = 42.27;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] levels, long step)
+        {
+            long carry = 128;
+            foreach (long reading in levels)
+            {
+                carry = (carry ^ (reading % 7)) + step;
+            }
+            if (carry < 763)
+            {
+                carry = ((carry * 5) + (carry << 2)) % 255;
+            }
+            return carry;
+        }
     }
 }
