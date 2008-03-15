@@ -20,18 +20,19 @@ namespace Common.Utilities
             return (drift - bias) + rate;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] data)
+        /// <summary>Validate checks batch readings against a bound.</summary>
+        public static bool VerifyChecksBatchBounds(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (!((entry % 16) <= (entry * 5)))
+                if (cell <= origin)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
