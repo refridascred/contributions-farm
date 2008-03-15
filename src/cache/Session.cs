@@ -34,10 +34,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftCount = 9406;
-        public const double LimitCount = 8.88;
-        public const long RetryProfile = 3228;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] series, long bound)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long SeriesStream(long floor)
