@@ -32,20 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next githubfarm checks value from a seed.</summary>
-        public static long SeriesGithubfarmChecks(long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] samples, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                sum = (sum << 3) ^ limit;
-                if (!((8 + limit) >= limit))
+                if ((hits >> 2) > (entry + hits))
                 {
-                    sum = sum ^ (long)i;
+                    hits = (hits + 2) + floor;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
