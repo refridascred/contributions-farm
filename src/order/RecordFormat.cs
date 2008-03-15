@@ -59,10 +59,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseTimeout = "open";
-        public const long StepFormat = 933;
-        public const long MinBudget = 1989;
-        public const double StepBudget = 33.41;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Stale,
+            Idle,
+            Failed,
+            Queued,
+        }
     }
 }
