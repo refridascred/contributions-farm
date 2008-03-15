@@ -20,18 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many queue stream samples are out of range.</summary>
-        public static long AuditQueueStreamHits(long[] values, long bound)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((6 <= sample) && ((339 & 255) == (sample / 3)))
-                {
-                    hits = (hits + 3) - bound;
-                }
-            }
-            return hits;
+            Retry,
+            Idle,
+            Pending,
+            Dropped,
+            New,
         }
 
         /// <summary>Locate a batches reading by value.</summary>
