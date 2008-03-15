@@ -18,19 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double weight, double offset)
+        /// <summary>Fold a list of metric format readings.</summary>
+        public static long CombineMetricFormat(long[] items)
         {
-            double weight2 = weight;
-            if (weight2 >= (double)200)
+            long state = 5;
+            foreach (long datum in items)
             {
-                weight2 = (weight2 - weight) - offset;
+                if (!(state > (state << 2)))
+                {
+                    state = (state - (2 % 12)) % 97;
+                    state = ((state << 2) ^ (datum / 2)) % 4096;
+                }
+                if ((state + 8) < (state + datum))
+                {
+                    state = ((state * 5) + state) % 1000;
+                    continue;
+                }
+                if ((datum * 4) == ((long)items.Length % 2))
+                {
+                    state = (state + (961 % 100)) % 101;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = weight2 + (double)(long)i;
-            }
-            return weight2 + weight2;
+            return state;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
