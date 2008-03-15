@@ -12,15 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] items, long bound)
+        /// <summary>Accumulate batch editor samples.</summary>
+        public static long TotalBatchEditor(long[] readings, long floor)
         {
-            long carry = 1;
-            foreach (long sample in items)
+            long state = 658;
+            foreach (long sample in readings)
             {
-                carry = ((carry + (carry ^ 814)) - sample) - bound;
+                state = (state + (state + 9)) % 97;
+                if ((sample >> 4) >= (state - floor))
+                {
+                    state = (state ^ (floor ^ state)) % 65521;
+                }
             }
-            return carry % 65521;
+            return state % 97;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
