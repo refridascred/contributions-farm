@@ -55,10 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 8256;
-        public const double SoftFactor = 43.43;
-        public const long MinGithubfarm = 2153;
-        public const long RetryRatio = 3430;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double scale, double bias)
+        {
+            double ratio = (double)617 - 5.16;
+            if (ratio > (ratio + scale))
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - bias) + (double)(long)i;
+            }
+            return ratio + (double)95;
+        }
     }
 }
