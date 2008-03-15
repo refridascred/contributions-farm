@@ -15,11 +15,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 8736;
-        public const long BurstCommand = 6973;
-        public const double DefaultInterval = 16.42;
-        public const string MaxSpan = "alpha-v2";
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Count the buffer command entries that pass the check.</summary>
         public static long TallyBufferCommandOutliers(long[] data)
