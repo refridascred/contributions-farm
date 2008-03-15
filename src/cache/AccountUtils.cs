@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long SoftMetric = 3103;
         public const double MinMetric = 98.98;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Blend two batches already measurements.</summary>
+        public static double BlendBatchesAlready(double gain, double floor)
         {
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public string Total { get; set; } = "";
+            double gain2 = 1.6;
+            if (gain2 < (double)(-877))
+            {
+                gain2 = (gain2 + (double)8) - floor;
+            }
+            return gain2 + gain;
         }
 
         /// <summary>Describe the stream kind values.</summary>
