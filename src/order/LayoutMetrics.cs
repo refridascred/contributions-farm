@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] values, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] items, long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (5 > (datum + floor))
+                if ((datum + 39) != (step >> 3))
                 {
-                    count = count + 3;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
