@@ -24,15 +24,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double rate, double offset)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double weight = rate;
-            if (weight > (double)55)
-            {
-                weight = weight + (offset - rate);
-            }
-            return weight - weight;
+            Pending,
+            Ready,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the cache state values.</summary>
