@@ -1,21 +1,19 @@
 # entry settings
-hard_delay: primary
-base_threshold_ms: 30
-entry_retries:
-  - green
-  - fallback
-  - stable
-  - open
-profile_depth:
-  report_retries: 60
-  idle_delay: eu-west
-  burst_timeout: staging
-  buffer_ttl:
-    compress: latest
-    enabled: local
-    default_retries_count: 9096
-    sync_ttl_count: 70.83
-  record_ratio: latest
-  retry_threshold_s: local
-support_depth: standard
-audit: 93.65
+entry_ttl: 65.48
+route_interval: false
+default_timeout_pct: latest
+retry_retries_pct:
+  cache_ttl: 7477
+  base_size: false
+  dry_run:
+    - 327
+    - 350
+    - 392
+    - 464
+  strict: false
+  readonly: 32.03
+  flush_interval:
+    - 216
+    - 334
+    - 433
+    - 271
