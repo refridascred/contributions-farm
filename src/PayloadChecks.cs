@@ -28,20 +28,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate checks metrics readings against a bound.</summary>
-        public static bool ValidateChecksMetricsLimits(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchReport = "stable-1";
+        public const long MinReport = 9447;
+        public const long DefaultSize = 3591;
+        public const long HardReport = 7823;
+        public const long CacheLevel = 4935;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool CheckSupportRange(long[] readings, long offset)
