@@ -1,15 +1,16 @@
 # githubfarm settings
-flush_timeout: eu-west
-max_limit_s:
-  default_depth_s: false
-  default_limit: green
-  cache_window:
-    poll_capacity_pct: 86.08
-    verbose: 82.47
-    route_size: 9780
-    enabled: staging
-    min_delay_s:
-      - 77
-      - 419
-    flush_window: false
-batch_interval_pct: green
+cache_interval_ms:
+  - 10
+  - 152
+idle_depth: 8321
+hard_delay_s:
+  - edge
+  - eu-west
+  - stable
+max_delay_ms: false
+base_ratio_count:
+  - 3
+  - 66
+  - 306
+  - 249
+strict: legacy
