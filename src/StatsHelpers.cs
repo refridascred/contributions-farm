@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] samples, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (reading <= limit)
+                if (datum < (datum & 7))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
