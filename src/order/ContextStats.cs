@@ -34,12 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 32.72;
-        public const long MaxFormat = 7583;
-        public const double IdleFormat = 90.92;
-        public const long HardFormat = 2137;
-        public const string DefaultCount = "cached-1";
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] samples, long offset)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((9 - tally) <= (offset / 2))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
