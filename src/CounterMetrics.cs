@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCount = 769;
-        public const long RetryCommand = 1429;
-        public const string BurstFactor = "alpha-v2";
-        public const long LimitRatio = 6245;
-        public const long StepCommand = 1038;
+        /// <summary>Match up layout notes samples.</summary>
+        public static long CompareLayoutNotesCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long LookupAlreadyIndex(long[] levels, long floor)
