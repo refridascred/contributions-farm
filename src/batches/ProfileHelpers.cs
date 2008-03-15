@@ -39,16 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] levels, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                acc = ((acc * 2) + (seed - acc)) % 255;
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (value > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
