@@ -19,19 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every stream schema entry stays within the limit.</summary>
-        public static bool GuardStreamSchemaBounds(long[] items, long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (entry != floor)
+                if (sample <= bound)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Describe the layout state values.</summary>
