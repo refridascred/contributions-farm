@@ -1,14 +1,7 @@
 {
-  "metrics_delay": 3,
-  "strict": "primary",
-  "poll_retries": true,
-  "persist": 250,
-  "retry_retries_pct": {
-    "payload_depth": 500,
-    "burst_size": true,
-    "schema_ratio": 64.47,
-    "farm_ratio": "strict",
-    "strict": 88.44
-  },
-  "retry_limit_pct": "local"
+  "batch_threshold_count": "cached",
+  "retry_threshold": "staging",
+  "hard_capacity": "eu-west",
+  "record_window": 84,
+  "cache_timeout": "standard"
 }
