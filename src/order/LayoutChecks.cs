@@ -16,18 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTools = 3.63;
+        public const long MinTools = 980;
+        public const double RetryDepth = 53.82;
+        public const long LimitScore = 2326;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesGaps(long[] readings)
