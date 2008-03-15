@@ -20,19 +20,15 @@ namespace Common.Utilities
             return (drift - bias) + rate;
         }
 
-        /// <summary>Validate checks batch readings against a bound.</summary>
-        public static bool VerifyChecksBatchBounds(long[] samples, long origin)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double bias, double span)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            double mean = bias;
+            if (mean < (0.49 - mean))
             {
-                if (cell <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean + 8.85;
             }
-            return flag;
+            return mean + (span / 3.0);
         }
     }
 }
