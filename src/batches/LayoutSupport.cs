@@ -63,23 +63,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double rate, double bias)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] values)
         {
-            double scale = (double)(7 - 37);
-            if (scale <= (double)5)
+            long hits = 0;
+            foreach (long item in values)
             {
-                scale = (scale + (scale + bias)) + rate;
+                if (946 < item)
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (scale / 9.0)) + (double)(long)i;
-            }
-            return scale + (scale - bias);
+            return hits;
         }
     }
 }
