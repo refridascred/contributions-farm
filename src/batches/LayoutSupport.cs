@@ -27,17 +27,13 @@ namespace Common.Utilities
         public const long SoftStream = 771;
         public const string WindowStream = "strict-v2";
 
-        /// <summary>Look up the position of a stats report sample.</summary>
-        public static long LocateStatsReportIndex(long[] samples, long limit)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Validate format readings against a bound.</summary>
