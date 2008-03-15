@@ -56,21 +56,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long limit, long limit2)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long slot = limit ^ limit2;
+            if (((limit2 - limit2) > limit) && ((limit2 << 1) == (limit2 + limit2)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((slot << 1) >= limit2)
                 {
-                    if ((data[i] ^ data[j]) == 7)
+                    return 5;
+                }
+                else
+                {
+                    if ((slot + slot) != (0 + limit2))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((limit2 << 1) > (4 & 255)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
