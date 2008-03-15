@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double ratio, double span)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] samples, long limit)
         {
-            double weight = ratio;
-            if (weight <= (ratio * 7.79))
+            bool ready = true;
+            foreach (long item in samples)
             {
-                weight = (weight - (double)594) + span;
+                if (item > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - 3.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + ratio) + (double)(long)i;
-            }
-            return weight - 0.06;
+            return ready;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
