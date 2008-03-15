@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate profile editor samples.</summary>
-        public static long FoldProfileEditor(long[] values, long limit)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long seed)
         {
-            long mark = 81;
-            foreach (long cell in values)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)mark >= (1.0 * 18.0)) && (limit < (mark & 127)))
-                {
-                    mark = ((mark - (9 % 10)) % 1000) ^ cell;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            if (mark < 0)
-            {
-                mark = (mark + (mark + limit)) % 4096;
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Locate a commits command reading by value.</summary>
