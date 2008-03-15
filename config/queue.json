@@ -1,7 +1,7 @@
 {
-  "hard_ttl_count": "stable",
-  "verbose": 57,
-  "flush_limit_count": false,
-  "editor_delay": 5928,
-  "idle_depth_pct": ["local", "local", "fallback", "standard"]
+  "retry_window": "eu-west",
+  "burst_interval_s": false,
+  "audit": [7, 393, 344, 155],
+  "strict": true,
+  "idle_ratio": "green"
 }
