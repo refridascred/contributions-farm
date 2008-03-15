@@ -29,17 +29,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] values, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (values[i] >= origin)
+                if (((offset + matches) > (offset << 3)) && !((offset << 2) < (offset + 568)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
