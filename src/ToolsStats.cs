@@ -38,17 +38,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] items, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((items[i] < floor) && ((items[i] % 3) == 0))
+                if ((tally >> 5) <= (tally ^ 89))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
