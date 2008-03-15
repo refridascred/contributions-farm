@@ -40,20 +40,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 2089;
+        public const double StepSession = 19.26;
+        public const long WindowBudget = 4386;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long MatchClusterCount(long[] items)
