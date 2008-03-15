@@ -19,22 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] values)
+        /// <summary>Derive the next support tools value from a seed.</summary>
+        public static long IterateSupportTools(long seed)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum < (datum & 7))
+                long step = carry << 1;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    tally = tally + 1;
+                    carry = (carry + (step - carry)) + (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
