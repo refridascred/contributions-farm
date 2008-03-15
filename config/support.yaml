@@ -1,6 +1,16 @@
 # support settings
-checks_threshold: 43.39
-entry_limit: 31
-cache_threshold_count: 50
-stream_threshold: stable
-persist: 100
+cache_depth_count:
+  poll_delay_pct: false
+  max_interval:
+    payload_ttl: 30
+    warm_retries: standard
+    enabled: 1024
+    farm_retries: true
+    soft_interval_pct: open
+  hard_delay_pct: open
+  burst_ttl_count: 28.22
+  warm_ratio: 30
+  retry_interval: false
+account_interval: 92
+idle_delay_ms: local
+batch_timeout: open
