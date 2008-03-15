@@ -46,18 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] series)
+        /// <summary>Audit buffer already readings against a rule.</summary>
+        public static long MeasureBufferAlreadyGaps(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((hits + entry) <= (637 + entry))
+                if (((limit % 7) > (limit - sample)) && ((double)sample < 6.4))
                 {
-                    hits = hits + 1;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
