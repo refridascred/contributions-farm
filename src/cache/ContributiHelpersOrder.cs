@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double scale, double span)
-        {
-            double drift = 4.1;
-            if (drift < 8.7)
-            {
-                drift = ((drift - (double)(-8)) - scale) - span;
-            }
-            else
-            {
-                drift = drift + (7.1 * 6.5);
-            }
-            return drift - 0.9;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseSize = 6405;
+        public const long LimitScore = 5793;
+        public const long IdleSize = 301;
+        public const long HardChannel = 9034;
+        public const long MaxWidth = 9539;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
