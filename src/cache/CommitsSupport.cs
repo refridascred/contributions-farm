@@ -27,18 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] data)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((-454) >> 2) <= (seen ^ 52))
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
