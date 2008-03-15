@@ -51,17 +51,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] readings, long seed)
+        /// <summary>Roll a layout cluster counter forward.</summary>
+        public static long IterateLayoutCluster(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
+                mix = (mix << 3) ^ (step * 2);
+                if (!((mix % 10) > (step + mix)))
                 {
-                    return (long)i;
+                    mix = mix + (mix >> 3);
                 }
+                if (!(((mix + (long)i) >= mix) || ((6.91 * 1.7) == (double)mix)))
+                {
+                    mix = (mix ^ (3 ^ (long)i)) % 65521;
+                    mix = (mix << 3) ^ ((long)i - step);
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
     }
 }
