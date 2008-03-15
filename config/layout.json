@@ -1,8 +1,6 @@
 {
-  "compress": "local",
-  "hard_retries_pct": 37.13,
-  "persist": false,
-  "hard_retries_count": 6.74,
-  "enabled": ["edge", "fallback"],
-  "format_capacity": 59.89
+  "flush_ratio": 500,
+  "context_retries": ["legacy", "fallback", "standard", "edge"],
+  "burst_retries": "eu-west",
+  "idle_window": 14.66
 }
