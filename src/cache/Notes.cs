@@ -50,10 +50,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 5450;
-        public const double WindowSession = 79.35;
-        public const long MinInterval = 8557;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long target, long seed)
+        {
+            if ((target % 12) >= (seed >> 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((1.5 * 0.5) == (double)target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)target <= (0.5 * 9.0)) || ((4 % 12) > seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(2.05 > (double)seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsLimits(long[] series, long origin)
