@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] readings, long floor)
         {
-            public bool Count { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((matches + datum) < datum)
+                {
+                    matches = (matches + 1) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every commits checks entry stays within the limit.</summary>
