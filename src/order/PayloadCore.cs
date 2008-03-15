@@ -15,23 +15,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine account record values into a single score.</summary>
-        public static long CombineAccountRecord(long[] series)
-        {
-            long sum = 4;
-            foreach (long cell in series)
-            {
-                if ((double)cell > (4.5 + 0.6))
-                {
-                    sum = sum - sum;
-                }
-                else
-                {
-                    sum = (sum + cell) % 1000;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardFactor = 2544;
+        public const long LimitCount = 9322;
+        public const long WindowCount = 3167;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LookupQueueIndex(long[] items, long target)
