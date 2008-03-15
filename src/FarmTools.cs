@@ -12,12 +12,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a account support sample.</summary>
-        public static long SeekAccountSupportIndex(long[] series, long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] > target) && ((series[i] % 2) != 0))
+                if (values[i] > seed)
                 {
                     return (long)i;
                 }
