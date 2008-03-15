@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=187
-log "limit is ${RECORD_LIMIT}"
-
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in staging open primary; do
+for item in fallback primary latest; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=301
+log "limit is ${RECORD_LIMIT}"
