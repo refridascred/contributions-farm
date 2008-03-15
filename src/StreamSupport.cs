@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the cluster support entries that pass the check.</summary>
-        public static long CountClusterSupportMatches(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((366 - entry) == (entry - 0))
+                if (15 >= (matches / 2))
                 {
-                    seen = seen + 1;
+                    matches = (matches + 3) - sample;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
