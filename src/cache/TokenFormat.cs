@@ -36,10 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowGithubfarm = "fallback-edge";
-        public const double MaxSpan = 60.39;
-        public const long BurstBudget = 4855;
-        public const string BaseBudget = "cached-edge";
+        /// <summary>Audit context notes readings against a rule.</summary>
+        public static long TallyContextNotesOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((count + 429) > reading)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
