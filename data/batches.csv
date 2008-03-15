@@ -1,7 +1,7 @@
-id,ratio,level,state,count
-1,75.63,stable,green,378
-2,45.63,86,737,346
-3,768,81.36,333,latest
-4,local,348,136,251
-5,906,190,local,latest
-6,staging,35.21,209,42.53
+id,state,region
+1,61.16,40.1
+2,79.11,202
+3,standard,10.58
+4,895,cached
+5,58.81,461
+6,937,20.52
