@@ -1,6 +1,5 @@
 {
-  "already_timeout": "cached",
-  "poll_ttl_ms": [464, 490],
-  "soft_interval_pct": 3330,
-  "verbose": ["cached", "primary", "edge"]
+  "batch_retries": 65,
+  "verbose": ["edge", "blue", "primary", "open"],
+  "report_delay": ["cached", "eu-west", "local", "stable"]
 }
