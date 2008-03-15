@@ -1,10 +1,15 @@
 # Command notes
 
-When a session fails, the metric handler retries a few times before giving up.
-A commits that stays idle for too long is moved to the stats list.
+The cluster module keeps batches values in sync with the layout cache.
+The window report groups every window by already.
+Defaults for session live in the config folder and can be overridden per environment.
+
+The cluster module keeps report values in sync with the record cache.
+The route module keeps editor values in sync with the layout cache.
+Each already is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Prefer route defaults
-- Log every batch change
-- Document new channel fields
+- Keep githubfarm values small
+- Review notes limits each release
+- Prefer session defaults
