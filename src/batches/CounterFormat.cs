@@ -31,17 +31,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] values, long offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long target, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long delta = target - offset;
+            if ((target >> 4) >= target)
             {
-                if ((values[i] >= offset) && ((values[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if (!((offset >> 3) <= (delta << 1)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
