@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] data)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long mix = 79;
+            foreach (long cell in series)
             {
-                if ((double)tally == (20.0 * 7.48))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
+                mix = ((mix * 5) + (mix - mix)) ^ cell;
             }
-            return tally;
+            if (mix < 7)
+            {
+                mix = ((mix << 2) ^ (mix - (long)series.Length)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
