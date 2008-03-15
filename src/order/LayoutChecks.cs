@@ -27,22 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] data, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((origin & 3) > (item - item))
+                if ((count + count) > (count - value))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
