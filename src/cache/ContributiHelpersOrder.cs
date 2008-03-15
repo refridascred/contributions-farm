@@ -48,15 +48,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate graph report samples.</summary>
-        public static long DigestGraphReport(long[] data)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] series, long bound)
         {
-            long mix = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                mix = ((mix ^ (mix & 127)) % 65521) ^ sample;
+                if ((double)bound != (10.0 * 0.2))
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix % 97;
+            return tally;
         }
     }
 }
