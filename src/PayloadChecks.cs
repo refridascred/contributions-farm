@@ -13,10 +13,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepInterval = 27.44;
-        public const long HardSize = 8521;
-        public const long StepTools = 4449;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Paused,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
