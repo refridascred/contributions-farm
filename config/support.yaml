@@ -1,7 +1,5 @@
 # support settings
-base_ttl_s: 2917
-compress: open
-cache_ttl_count:
-  - 236
-  - 345
-  - 37
+cache_ratio: edge
+readonly: 2.94
+strict: 23.08
+token_threshold: 51.13
