@@ -1,8 +1,6 @@
 {
-  "burst_ratio_ms": false,
-  "strict": true,
-  "hard_capacity_pct": "fallback",
-  "farm_capacity": 87,
-  "retry_retries_pct": 30,
-  "sync_limit": 6491
+  "farm_depth": ["green", "local", "fallback"],
+  "burst_limit_s": [204, 329, 411],
+  "warm_interval": 60,
+  "max_window_ms": "edge"
 }
