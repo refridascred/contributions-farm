@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of batch contributi entries.</summary>
-        public static long CombineBatchContributi(long[] series, long seed)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long mark = 141;
-            foreach (long sample in series)
-            {
-                if ((double)269 <= (double)sample)
-                {
-                    mark = mark ^ (seed + sample);
-                }
-            }
-            return mark % 1000;
+            public bool Score { get; set; }
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
