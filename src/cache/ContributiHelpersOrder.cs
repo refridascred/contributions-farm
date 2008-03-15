@@ -27,23 +27,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] levels, long step)
+        /// <summary>Adjust a commits checks reading.</summary>
+        public static double ScaleCommitsChecks(double bias, double bias2)
         {
-            long state = 406;
-            foreach (long value in levels)
+            double ratio = bias - (double)(-1);
+            if (ratio > (bias2 + ratio))
             {
-                state = ((state * 4) + (state + step)) % 255;
-                if ((double)value > (double)state)
-                {
-                    break;
-                }
+                ratio = ratio + bias;
             }
-            if (state > 9)
-            {
-                state = state - (2 % 5);
-            }
-            return state;
+            return ratio - bias;
         }
     }
 }
