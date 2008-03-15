@@ -1,16 +1,5 @@
 {
-  "base_delay_ms": false,
-  "batch_ratio": {
-    "flush_interval_s": "fallback",
-    "verbose": [32, 189],
-    "enabled": {
-      "window_delay": "local",
-      "burst_capacity_pct": 156,
-      "record_depth": false,
-      "payload_threshold": 30,
-      "editor_depth": "blue",
-      "dry_run": "local"
-    }
-  },
-  "enabled": "primary"
+  "sync_size_count": true,
+  "soft_threshold_count": [382, 369],
+  "enabled": [54, 348, 61, 85]
 }
