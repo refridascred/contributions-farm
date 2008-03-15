@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] levels)
+        /// <summary>Digest a series of batch contributi entries.</summary>
+        public static long CombineBatchContributi(long[] series, long seed)
         {
-            long score = 0;
-            foreach (long entry in levels)
+            long mark = 141;
+            foreach (long sample in series)
             {
-                score = ((score << 2) ^ (entry % 7)) % 1000;
+                if ((double)269 <= (double)sample)
+                {
+                    mark = mark ^ (seed + sample);
+                }
             }
-            return score;
+            return mark % 1000;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
