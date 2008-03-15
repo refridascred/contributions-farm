@@ -32,13 +32,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 53.55;
+        public const long MinRatio = 988;
+        public const double BurstContext = 46.82;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long DigestLayout(long[] readings)
