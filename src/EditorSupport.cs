@@ -50,12 +50,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 32.47;
-        public const long BurstCounter = 8213;
-        public const long SoftCounter = 9970;
-        public const long CacheSize = 9463;
-        public const long HardCounter = 3623;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long DefaultFormat = 6054;
