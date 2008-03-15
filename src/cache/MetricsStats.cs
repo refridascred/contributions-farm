@@ -24,19 +24,11 @@ namespace Common.Utilities
         public const long IdleStats = 2787;
         public const long CacheStats = 9235;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (((double)matches != (double)item) && ((matches / 4) != ((long)levels.Length + 26)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 316;
+        public const double RetryWidth = 79.16;
+        public const string SoftScore = "stable-edge";
+        public const long WindowBuffer = 3228;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double AdjustQueue(double rate, double floor)
