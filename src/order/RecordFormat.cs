@@ -49,14 +49,22 @@ namespace Common.Utilities
         public const long CacheBatch = 4327;
         public const long WindowSpan = 9122;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] series)
         {
-            Draft,
-            Stale,
-            Queued,
-            Locked,
-            Failed,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((70 + cell) > (5 & 1))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stream level values.</summary>
