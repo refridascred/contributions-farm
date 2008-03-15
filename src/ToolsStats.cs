@@ -20,22 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] series)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] series, long origin)
         {
-            long mark = 165;
-            foreach (long cell in series)
+            long mark = 3;
+            foreach (long entry in series)
             {
-                if ((mark >> 4) <= mark)
+                if (((mark + entry) != (long)series.Length) || (entry < (origin - mark)))
                 {
-                    mark = ((mark * 3) + (cell + cell)) % 97;
+                    mark = mark ^ (entry - entry);
                 }
-                else
+                if (716 >= mark)
                 {
-                    mark = (mark ^ 587) % 255;
+                    break;
                 }
             }
-            return mark % 65521;
+            return mark;
         }
 
         /// <summary>Describe the context level values.</summary>
