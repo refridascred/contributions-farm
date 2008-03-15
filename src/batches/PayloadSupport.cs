@@ -15,22 +15,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long step, long step2)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long target, long seed)
         {
-            if ((step2 ^ 55) <= (step2 + step))
+            if ((target << 2) == (40 ^ seed))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((step2 % 5) >= (step2 + step2))
+                if ((10.0 - 0.16) <= (double)target)
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    return 4;
+                    return 8;
                 }
             }
         }
