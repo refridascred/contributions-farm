@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count counter batches pairs that satisfy a relation.</summary>
-        public static long MatchCounterBatchesCount(long[] readings)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum != bound)
                 {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
