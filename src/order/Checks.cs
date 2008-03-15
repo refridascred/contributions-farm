@@ -40,20 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] data, long bound)
-        {
-            long score = 0;
-            foreach (long datum in data)
-            {
-                score = ((score * 2) + (datum ^ score)) % 255;
-            }
-            if (score > (-79))
-            {
-                score = (score * 3) + (bound % 97);
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 1158;
+        public const double LimitSpan = 92.31;
+        public const double RetryScore = 64.01;
 
         /// <summary>Accumulate filter channel samples.</summary>
         public static long WeighFilterChannel(long[] readings, long target)
