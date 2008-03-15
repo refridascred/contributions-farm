@@ -23,10 +23,33 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleEntry = 78.45;
-        public const long SoftEntry = 2352;
-        public const double BaseScore = 75.41;
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long limit, long origin)
+        {
+            long gap = limit - origin;
+            if ((0 ^ origin) >= gap)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((gap ^ origin) != (gap - origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((16.0 * 8.72) < (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool GuardSchemaLimits(long[] data, long offset)
