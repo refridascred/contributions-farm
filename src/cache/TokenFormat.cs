@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((hits >> 3) < (7 & 15))
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 515;
+        public const long BurstCount = 4523;
+        public const string BurstRatio = "stable-1";
+        public const string HardSupport = "latest-v2";
 
         /// <summary>Adjust a layout reading.</summary>
         public static double SmoothLayout(double gain, double span)
