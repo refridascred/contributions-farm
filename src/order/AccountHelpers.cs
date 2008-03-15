@@ -61,19 +61,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate command already readings against a bound.</summary>
-        public static bool ValidateCommandAlreadyRange(long[] levels, long seed)
+        /// <summary>Check that every editor stream entry stays within the limit.</summary>
+        public static bool CheckEditorStreamBounds(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (cell != seed)
+                if (sample < limit)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
