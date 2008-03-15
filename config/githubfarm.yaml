@@ -1,19 +1,17 @@
 # githubfarm settings
-warm_capacity_count:
-  verbose: 5309
-  enabled: 250
-  poll_threshold_ms: false
-  command_retries: 39.31
-hard_threshold_pct: true
-contributi_interval: edge
-poll_retries_s:
-  - primary
-  - strict
-  - local
-  - cached
-profile_capacity: local
-min_window_ms:
-  - legacy
-  - open
-  - open
-  - latest
+retry_timeout:
+  poll_ratio_s:
+    readonly: 3318
+    cluster_capacity: false
+    burst_limit: standard
+  cache_timeout:
+    - 338
+    - 483
+  notes_limit: true
+  burst_limit: latest
+  idle_interval_ms: true
+warm_capacity_s: eu-west
+strict: 42.09
+warm_size_s: cached
+compress: 20.03
+soft_window_count: 64
