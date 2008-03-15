@@ -51,12 +51,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] items)
         {
-            Failed,
-            Retry,
-            Idle,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((((item + item) >= seen) || (item <= (seen + 8))) || (((73 << 1) != (seen - item)) || (item > (seen / 7))))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
