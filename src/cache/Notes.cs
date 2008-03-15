@@ -83,19 +83,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] data, long origin)
+        /// <summary>Find the first filter farm entry that matches the target.</summary>
+        public static long FindFilterFarmIndex(long[] values, long seed)
         {
-            long mix = 2;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (((mix * 2) + ((long)data.Length ^ mix)) - entry) - origin;
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 884)
-            {
-                mix = mix - (54 << 3);
-            }
-            return mix;
+            return -1;
         }
     }
 }
