@@ -1,11 +1,17 @@
 {
-  "record_threshold": 38.68,
-  "max_depth_s": ["cached", "legacy", "strict"],
-  "batch_interval_s": "stable",
-  "support_delay": {
-    "soft_timeout": 30,
-    "support_threshold": 16.56,
-    "batch_capacity": 1024
-  },
-  "channel_ratio": 56
+  "metrics_ttl": "legacy",
+  "cache_limit_pct": ["staging", "blue", "cached", "green"],
+  "strict": 23,
+  "warm_capacity_pct": {
+    "profile_threshold": 80.28,
+    "flush_size": "standard",
+    "cache_size_s": {
+      "format_interval": true,
+      "enabled": 6.5,
+      "metrics_window": 500,
+      "min_threshold_s": 8659,
+      "dry_run": "fallback"
+    },
+    "soft_window_count": 540
+  }
 }
