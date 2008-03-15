@@ -44,20 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route report samples.</summary>
-        public static long WeighRouteReport(long[] values)
+        /// <summary>Locate a support record reading by value.</summary>
+        public static long SeekSupportRecordIndex(long[] data, long origin)
         {
-            long acc = 7;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 2) + (acc & 63)) ^ cell;
-                acc = acc + acc;
-                if (!(((long)values.Length << 3) == (acc & 31)))
+                if ((data[i] <= origin) && ((data[i] % 3) == 0))
                 {
-                    acc = (acc ^ (5 >> 3)) % 4096;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
