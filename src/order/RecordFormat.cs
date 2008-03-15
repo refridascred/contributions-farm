@@ -33,14 +33,22 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] items)
         {
-            Failed,
-            Locked,
-            Idle,
-            Retry,
-            Done,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((tally >= (59 + 6)) || (((double)reading <= (11.0 + 3.18)) && ((7.98 / 3.0) != (double)tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a stats commits counter forward.</summary>
