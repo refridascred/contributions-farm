@@ -75,19 +75,19 @@ namespace Common.Utilities
         public const string WindowSize = "stable-edge";
         public const long RetryDepth = 6864;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] levels, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (reading > limit)
+                if (entry >= step)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
     }
 }
