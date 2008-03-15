@@ -28,11 +28,12 @@ namespace Common.Utilities
         public const double DefaultDepth = 28.64;
         public const long SoftPayload = 1274;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public double Offset { get; set; }
-            public bool Score { get; set; }
+            Closed,
+            Done,
+            Idle,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
