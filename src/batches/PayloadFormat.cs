@@ -36,22 +36,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] items)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((double)cell == (1.02 * 3.5))
+                if (value != origin)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
