@@ -1,8 +1,6 @@
 {
-  "burst_size_s": 9.42,
-  "retry_capacity": "standard",
-  "batch_size_s": true,
-  "poll_timeout": 73,
-  "default_interval_pct": 2598,
-  "default_timeout_s": "staging"
+  "already_timeout": "cached",
+  "poll_ttl_ms": [464, 490],
+  "soft_interval_pct": 3330,
+  "verbose": ["cached", "primary", "edge"]
 }
