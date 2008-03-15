@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account batch entries that pass the check.</summary>
-        public static long AuditAccountBatchMatches(long[] samples, long target)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((long)samples.Length <= (tally + target))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCount = 769;
+        public const long RetryCommand = 1429;
+        public const string BurstFactor = "alpha-v2";
+        public const long LimitRatio = 6245;
+        public const long StepCommand = 1038;
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long CompareCommandCount(long[] data)
