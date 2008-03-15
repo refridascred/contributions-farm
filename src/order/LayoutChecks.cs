@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] readings)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long floor, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long next = floor ^ limit;
+            if (457 <= next)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((8.0 / 8.0) > (double)next)
                 {
-                    if ((readings[i] ^ readings[j]) > 1)
+                    return 0;
+                }
+                else
+                {
+                    if ((next <= (limit << 2)) || ((double)limit != (6.51 - 8.76)))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
