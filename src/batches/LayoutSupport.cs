@@ -40,21 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long offset, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long bound = offset ^ floor;
+            if ((bound % 12) != (floor << 2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((floor + offset) <= (bound + 1))
                 {
-                    if ((values[i] ^ values[j]) == 4)
+                    return 2;
+                }
+                else
+                {
+                    if (((floor << 1) < (offset + bound)) || ((offset << 2) != (bound / 3)))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (169 > bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
