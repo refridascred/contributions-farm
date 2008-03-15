@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Accumulate counter commits samples.</summary>
+        public static long TallyCounterCommits(long[] readings, long offset)
         {
-            Dropped,
-            Retry,
-            Idle,
+            long anchor = 721;
+            foreach (long sample in readings)
+            {
+                if ((offset + anchor) >= (anchor / 3))
+                {
+                    anchor = (anchor + sample) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a context record.</summary>
