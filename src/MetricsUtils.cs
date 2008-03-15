@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Queued,
-            Dropped,
-            Paused,
+            Ready,
+            Stale,
+            New,
         }
 
         /// <summary>Adjust a order metrics reading.</summary>
