@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public double Owner { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            public bool Owner { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
