@@ -28,18 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] readings, long offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((offset & 63) >= hits)
+                if ((((sample & 3) < (count % 10)) && ((-30) <= (sample * 3))) || (2 <= sample))
                 {
-                    hits = (hits + 1) + item;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
