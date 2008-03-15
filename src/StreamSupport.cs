@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] items)
+        /// <summary>Audit tools notes readings against a rule.</summary>
+        public static long MeasureToolsNotesOutliers(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((entry >> 1) > (entry << 1))
+                if (offset > reading)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a queue context figure with a bias.</summary>
