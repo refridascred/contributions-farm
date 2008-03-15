@@ -1,11 +1,6 @@
 {
-  "min_threshold": 7740,
-  "enabled": "primary",
-  "verbose": {
-    "burst_threshold_count": 9126,
-    "hard_timeout_s": 73.94,
-    "max_interval_pct": [19, 150]
-  },
-  "context_size": 1446,
-  "dry_run": 72
+  "dry_run": "eu-west",
+  "sync_retries_s": true,
+  "soft_capacity_count": "edge",
+  "stream_depth": 500
 }
