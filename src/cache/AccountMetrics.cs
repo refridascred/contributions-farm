@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] samples, long bound)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 3790;
+        public const long SoftBatches = 8900;
+        public const long IdleBatches = 7502;
 
         /// <summary>Audit token already readings against a rule.</summary>
         public static long MeasureTokenAlreadyMatches(long[] samples)
