@@ -14,17 +14,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] levels, long offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long bound, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long lane = bound + step;
+            if (((7.2 * 1.29) >= (double)lane) && (bound < (step + step)))
             {
-                if (levels[i] < offset)
+                return 7;
+            }
+            else
+            {
+                if ((step / 6) <= (lane + lane))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
