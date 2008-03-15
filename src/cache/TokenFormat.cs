@@ -35,19 +35,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] series, long origin)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long limit, long bound)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            if (((limit + bound) < limit) && ((limit + bound) >= limit))
             {
-                if (datum <= origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)bound <= (1.9 + 5.8))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((8.0 * 10.0) < (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((bound - bound) < (bound - 5)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
