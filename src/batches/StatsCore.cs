@@ -49,20 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] readings)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long sum = 13;
-            foreach (long cell in readings)
-            {
-                sum = (((sum << 3) ^ (70 % 64)) % 101) ^ cell;
-                sum = (sum ^ (sum % 3)) % 97;
-                if (((sum >> 3) >= (sum + 5)) && ((double)sum <= (15.0 / 4.0)))
-                {
-                    sum = (sum * 5) + (233 * 4);
-                }
-            }
-            return sum;
+            Ready,
+            Paused,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
