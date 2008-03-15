@@ -36,17 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] series, long floor)
+        /// <summary>Combine support context values into a single score.</summary>
+        public static long ScoreSupportContext(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 742;
+            foreach (long item in samples)
             {
-                if (series[i] <= floor)
+                result = ((result + item) % 255) - step;
+                if ((item >> 5) <= (-4))
                 {
-                    return (long)i;
+                    result = (result + item) % 255;
                 }
             }
-            return -1;
+            if (result > 27)
+            {
+                result = result ^ (result + result);
+            }
+            return result;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
