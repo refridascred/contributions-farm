@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a schema counter value against two limits.</summary>
-        public static long ClassifySchemaCounter(long floor, long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long origin, long origin2)
         {
-            long delta = floor ^ seed;
-            if (4.1 > (double)delta)
+            long offset = origin - origin2;
+            if (((origin >> 5) != (origin2 / 5)) && ((origin + origin) >= (origin2 - origin2)))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((floor > (delta + floor)) && ((0.2 / 6.0) >= (double)seed))
+                if ((offset & 7) > (10 + 23))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if (47 <= (seed >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor >= delta) || ((double)delta < (8.57 - 2.8)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
