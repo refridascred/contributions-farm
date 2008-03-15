@@ -1,8 +1,19 @@
 # githubfarm settings
-verbose: true
-readonly: 500
-already_limit:
-  - 369
-  - 279
-base_capacity_ms: 68
-default_delay: false
+warm_capacity_count:
+  verbose: 5309
+  enabled: 250
+  poll_threshold_ms: false
+  command_retries: 39.31
+hard_threshold_pct: true
+contributi_interval: edge
+poll_retries_s:
+  - primary
+  - strict
+  - local
+  - cached
+profile_capacity: local
+min_window_ms:
+  - legacy
+  - open
+  - open
+  - latest
