@@ -27,18 +27,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the stream record entries that pass the check.</summary>
-        public static long AuditStreamRecordOutliers(long[] values)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.1 + 17.0) < (double)sample)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] ^ levels[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
