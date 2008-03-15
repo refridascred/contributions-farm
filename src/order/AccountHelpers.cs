@@ -69,15 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long target)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long score = target;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            New,
+            Synced,
+            Closed,
         }
     }
 }
