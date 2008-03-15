@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryBudget = 7787;
-        public const string BaseContributi = "latest-1";
-        public const string IdleLevel = "alpha-1";
-        public const long DefaultBudget = 3902;
-        public const long SoftSize = 570;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long CacheToken = 171;
