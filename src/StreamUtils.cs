@@ -34,19 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every channel payload entry stays within the limit.</summary>
-        public static bool ValidateChannelPayloadRange(long[] levels, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (datum > offset)
+                if (reading <= seen)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
