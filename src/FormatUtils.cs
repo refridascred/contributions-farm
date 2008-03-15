@@ -24,19 +24,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] data, long step)
+        /// <summary>Grade a format queue value against two limits.</summary>
+        public static long BucketFormatQueue(long origin, long step)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long bound = origin - step;
+            if ((8.8 + 9.04) >= (double)step)
             {
-                if (datum > step)
+                return 7;
+            }
+            else
+            {
+                if (((6.0 + 0.7) <= (double)origin) || ((step % 3) > origin))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((1.45 + 3.2) == (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step >> 3) != (bound + 215))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the checks kind values.</summary>
