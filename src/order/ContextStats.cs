@@ -48,12 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] readings, long floor)
         {
-            Queued,
-            Stale,
-            Failed,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
