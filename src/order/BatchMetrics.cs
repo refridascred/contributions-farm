@@ -49,20 +49,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] readings, long origin)
-        {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 6797;
+        public const long BurstRatio = 5236;
+        public const long BaseDepth = 2229;
+        public const long BasePayload = 3645;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long FindSessionIndex(long[] items, long origin)
