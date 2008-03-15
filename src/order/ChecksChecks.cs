@@ -32,20 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already counter readings against a bound.</summary>
-        public static bool VerifyAlreadyCounterBounds(long[] levels, long bound)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 7856;
+        public const long BatchRoute = 5032;
+        public const long RetryRoute = 895;
 
         /// <summary>Fold a list of notes tools readings.</summary>
         public static long TallyNotesTools(long[] readings, long target)
