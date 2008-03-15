@@ -73,12 +73,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 9487;
-        public const long LimitRatio = 4000;
-        public const string StepSize = "local-1";
-        public const double SoftFarm = 94.6;
-        public const string WindowFactor = "cached-v2";
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((double)hits >= (6.83 / 7.0))
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long DigestReport(long[] samples, long bound)
