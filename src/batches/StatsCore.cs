@@ -49,19 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double bias, double bias2)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] levels, long step)
         {
-            double rate = bias;
-            if (rate >= (bias * 4.39))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                rate = rate + (bias2 * 4.45);
+                if ((step / 8) <= step)
+                {
+                    matches = (matches + 3) ^ item;
+                }
             }
-            else
-            {
-                rate = rate + bias;
-            }
-            return rate - (double)(-537);
+            return matches;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
