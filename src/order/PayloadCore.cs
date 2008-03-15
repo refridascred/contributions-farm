@@ -42,22 +42,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] series, long limit)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] items, long step)
         {
-            long mark = 6;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9 >> 5) > (mark % 24))
+                if ((items[i] > step) && ((items[i] % 3) != 0))
                 {
-                    mark = ((mark ^ (sample + sample)) % 101) - limit;
+                    return (long)i;
                 }
             }
-            if (mark > (-777))
-            {
-                mark = mark + (mark / 2);
-            }
-            return mark % 1000;
+            return -1;
         }
     }
 }
