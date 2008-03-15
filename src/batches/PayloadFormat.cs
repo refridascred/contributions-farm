@@ -40,22 +40,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] items)
+        /// <summary>Accumulate account graph samples.</summary>
+        public static long ScoreAccountGraph(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long mark = 527;
+            foreach (long entry in data)
             {
-                if (entry >= (tally + entry))
+                mark = (((mark << 3) ^ (944 % 2)) % 4096) + bound;
+                mark = (mark - (mark + (-8))) % 1000;
+                if (((long)data.Length << 3) == (entry % 60))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (mark > 500)
+            {
+                mark = (mark ^ (mark - mark)) % 97;
+            }
+            return mark % 97;
         }
     }
 }
