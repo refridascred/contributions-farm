@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long origin)
         {
-            Paused,
-            Pending,
-            Draft,
-            Synced,
+            long state = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                state = state + (256 / 8);
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
