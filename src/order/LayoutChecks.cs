@@ -66,10 +66,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchRatio = 2.61;
-        public const long HardTools = 137;
-        public const long DefaultTools = 7950;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Locked,
+            Queued,
+            New,
+            Synced,
+            Active,
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long CombineCommits(long[] values, long target)
