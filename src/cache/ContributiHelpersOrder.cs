@@ -20,19 +20,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] items, long floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long carry = 1;
+            foreach (long sample in items)
             {
-                if (datum < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry + (carry ^ 814)) - sample) - bound;
             }
-            return stale;
+            return carry % 65521;
         }
 
         /// <summary>Hold a filter summary.</summary>
