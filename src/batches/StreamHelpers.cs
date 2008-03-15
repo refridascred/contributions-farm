@@ -67,12 +67,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            public double Total { get; set; }
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
+            long result = -4;
+            foreach (long item in data)
+            {
+                result = ((result << 3) ^ (item - result)) % 101;
+            }
+            if (result > 2)
+            {
+                result = ((result << 2) ^ result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the command phase values.</summary>
