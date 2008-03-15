@@ -33,24 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long target, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] series, long seed)
         {
-            if ((target << 2) == (40 ^ seed))
+            bool ok = true;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((10.0 - 0.16) <= (double)target)
+                if (item > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the command status values.</summary>
