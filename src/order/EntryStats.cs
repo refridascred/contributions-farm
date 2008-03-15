@@ -33,25 +33,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long origin, long bound)
+        /// <summary>Derive the next window token value from a seed.</summary>
+        public static long IterateWindowToken(long limit)
         {
-            long diff = origin ^ bound;
-            if (((bound * 2) > ((-322) >> 1)) || ((bound << 3) >= (bound + origin)))
+            long total = limit;
+            for (int i = 0; i < 17; i++)
             {
-                return 7;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((bound - 94) > (diff - diff))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return total;
         }
 
         /// <summary>Describe the farm state values.</summary>
