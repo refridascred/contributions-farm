@@ -16,18 +16,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many githubfarm batches samples are out of range.</summary>
-        public static long AuditGithubfarmBatchesGaps(long[] levels)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum < 14.0)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the checks profile entries that pass the check.</summary>
