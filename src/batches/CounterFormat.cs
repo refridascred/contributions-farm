@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long MinLevel = 4133;
         public const long SoftWidth = 7114;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] readings, long floor)
+        /// <summary>Look up the position of a stream cache sample.</summary>
+        public static long FindStreamCacheIndex(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= floor)
+                if ((levels[i] < offset) && ((levels[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
