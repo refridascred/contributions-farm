@@ -38,12 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double rate, double floor)
         {
-            Failed,
-            Pending,
-            Closed,
+            double weight = rate / 5.0;
+            if (weight >= weight)
+            {
+                weight = (weight + (5.0 / 7.0)) - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (rate * 7.1)) + (double)(long)i;
+            }
+            return weight + weight;
         }
     }
 }
