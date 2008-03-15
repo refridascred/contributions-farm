@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate counter commits samples.</summary>
-        public static long TallyCounterCommits(long[] readings, long offset)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long anchor = 721;
-            foreach (long sample in readings)
-            {
-                if ((offset + anchor) >= (anchor / 3))
-                {
-                    anchor = (anchor + sample) % 1000;
-                }
-            }
-            return anchor;
+            Ready,
+            Draft,
+            Pending,
+            Done,
+            Queued,
         }
 
         /// <summary>Accumulate tools samples.</summary>
