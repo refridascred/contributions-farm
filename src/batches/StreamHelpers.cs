@@ -67,19 +67,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] readings, long step)
         {
-            long result = -4;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                result = ((result << 3) ^ (item - result)) % 101;
+                if ((step / 5) != (reading / 2))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (result > 2)
-            {
-                result = ((result << 2) ^ result) % 101;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the command phase values.</summary>
