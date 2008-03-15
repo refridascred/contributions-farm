@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
+            Active,
+            Failed,
+            Idle,
         }
 
         /// <summary>Check that every window batches entry stays within the limit.</summary>
