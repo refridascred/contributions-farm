@@ -1,5 +1,19 @@
 {
-  "burst_depth": [44, 67, 294],
-  "batch_window": 16,
-  "cluster_window": true
+  "stats_ratio": 6412,
+  "counter_window": "strict",
+  "default_window_pct": 1463,
+  "buffer_interval": 79.69,
+  "sync_interval_pct": {
+    "soft_retries": 36.07,
+    "warm_retries": 64.26,
+    "base_ratio_s": true,
+    "burst_limit": 8280,
+    "burst_depth_pct": 82,
+    "editor_threshold": {
+      "flush_threshold": 7,
+      "burst_capacity_s": 5169,
+      "readonly": false,
+      "batch_delay": ["fallback", "edge", "green", "open"]
+    }
+  }
 }
