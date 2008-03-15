@@ -30,10 +30,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxSpan = 5469;
-        public const long MinTools = 8014;
-        public const long BaseTools = 2867;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((tally ^ cell) == (tally * 5))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long origin)
