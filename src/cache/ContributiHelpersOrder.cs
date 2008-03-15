@@ -5,32 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Rank commits order input into a small class.</summary>
+        public static long BucketCommitsOrder(long bound, long offset)
         {
-            long mix = 703;
-            foreach (long sample in readings)
+            if ((568 < (offset - bound)) || ((double)offset == (double)bound))
             {
-                if (((6.44 + 1.0) < (double)sample) && ((13 % 7) >= mix))
+                return 6;
+            }
+            else
+            {
+                if (bound <= (offset * 2))
                 {
-                    mix = mix - (sample & 127);
-                    mix = mix + (sample - mix);
+                    return 7;
                 }
                 else
                 {
-                    mix = (mix + (sample >> 3)) % 1000;
-                    mix = mix + ((long)readings.Length / 6);
-                }
-                if ((double)mix == (8.0 * 9.9))
-                {
-                    mix = ((mix * 4) + (mix + sample)) % 65521;
-                }
-                else
-                {
-                    mix = (mix - mix) % 101;
+                    return 1;
                 }
             }
-            return mix;
         }
 
         /// <summary>Fold a list of window readings.</summary>
