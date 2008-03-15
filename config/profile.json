@@ -1,5 +1,11 @@
 {
-  "buffer_window": [157, 129],
-  "strict": "legacy",
-  "record_size": 1645
+  "record_threshold": 38.68,
+  "max_depth_s": ["cached", "legacy", "strict"],
+  "batch_interval_s": "stable",
+  "support_delay": {
+    "soft_timeout": 30,
+    "support_threshold": 16.56,
+    "batch_capacity": 1024
+  },
+  "channel_ratio": 56
 }
