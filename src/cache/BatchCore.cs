@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long floor, long bound)
         {
-            Draft,
-            Dropped,
-            Synced,
+            if ((5 ^ floor) >= (floor - floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((9 + floor) > ((-51) + (-601)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (810 < (30 + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor <= (floor >> 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a farm reading by value.</summary>
