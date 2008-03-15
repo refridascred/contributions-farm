@@ -42,21 +42,12 @@ namespace Common.Utilities
         public const string StepFilter = "alpha-1";
         public const double MaxLevel = 39.07;
 
-        /// <summary>Derive the next counter metric value from a seed.</summary>
-        public static long DeriveCounterMetric(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = anchor ^ anchor;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = (((anchor << 2) ^ (origin + anchor)) % 97) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 3391;
+        public const double DefaultEntry = 93.43;
+        public const double WindowScore = 69.88;
+        public const double SoftScore = 81.04;
+        public const double BaseSpan = 61.6;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileLimits(long[] levels, long limit)
