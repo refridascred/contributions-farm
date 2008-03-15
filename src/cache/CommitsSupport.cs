@@ -57,13 +57,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            Active,
+            Closed,
+            Idle,
+            Done,
+            Draft,
         }
 
         /// <summary>Accumulate commits samples.</summary>
