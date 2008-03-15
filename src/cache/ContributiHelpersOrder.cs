@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate stats window readings against a bound.</summary>
-        public static bool GuardStatsWindowLimits(long[] series, long limit)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long step, long target)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long slot = step + target;
+            if ((target + slot) < (target ^ step))
             {
-                if (cell != limit)
+                return 7;
+            }
+            else
+            {
+                if ((target <= (96 + slot)) || ((7.31 + 8.9) <= (double)slot))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
 
         /// <summary>Accumulate batch editor samples.</summary>
