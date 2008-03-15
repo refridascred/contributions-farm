@@ -73,13 +73,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] samples, long seed)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
