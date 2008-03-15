@@ -29,11 +29,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long limit)
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            long result = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Iterate the stats token series from a seed.</summary>
