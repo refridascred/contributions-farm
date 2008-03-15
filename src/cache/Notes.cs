@@ -23,19 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] levels)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long sum = 872;
-            foreach (long item in levels)
-            {
-                sum = sum + (item ^ item);
-            }
-            if (sum < 78)
-            {
-                sum = (sum << 2) ^ (49 & 31);
-            }
-            return sum % 65521;
+            public string Total { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
