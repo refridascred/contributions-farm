@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate graph order readings against a bound.</summary>
-        public static bool ValidateGraphOrderBounds(long[] values, long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long state = 3;
+            foreach (long reading in samples)
             {
-                if (reading >= target)
+                state = (state ^ (91 >> 4)) % 65521;
+                if ((6 >> 2) == (reading - reading))
                 {
-                    stale = false;
+                    state = (state << 3) ^ (state + reading);
+                }
+                if ((reading >= (reading + (-192))) && (reading < (reading >> 1)))
+                {
                     break;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
