@@ -12,17 +12,32 @@ namespace Common.Utilities
         public const double BurstStream = 78.28;
         public const long MinStream = 7422;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long seed)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long floor, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            long bound = floor ^ target;
+            if ((bound + 766) <= (target * 2))
             {
-                anchor = anchor ^ (anchor ^ anchor);
-                anchor = anchor ^ (seed - 4);
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((347 > (floor + floor)) || ((floor - bound) >= (target + bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (bound > target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of window readings.</summary>
