@@ -45,32 +45,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long offset, long seed)
-        {
-            if ((offset % 97) > seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((10.0 + 6.8) <= (double)offset) && ((seed + seed) != (21 ^ seed)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset <= (1.5 - 6.52))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseStats = 75.77;
+        public const long MinStats = 2009;
+        public const long WindowStats = 3889;
 
         /// <summary>Iterate the editor notes series from a seed.</summary>
         public static long StepEditorNotes(long target)
