@@ -39,21 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] levels)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double rate, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (double)(93 & 7);
+            if (ratio <= ratio)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio + span;
             }
-            return matches;
+            else
+            {
+                ratio = ratio - (rate / 5.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + (span / 6.0);
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
