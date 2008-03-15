@@ -105,19 +105,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] readings, long floor)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
