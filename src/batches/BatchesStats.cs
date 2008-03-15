@@ -47,11 +47,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] samples, long floor)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
