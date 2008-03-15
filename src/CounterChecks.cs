@@ -57,19 +57,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double rate, double offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] samples, long limit)
         {
-            double ratio = rate;
-            if (ratio >= (0.9 + rate))
+            bool ready = true;
+            foreach (long value in samples)
             {
-                ratio = (ratio - 13.0) + offset;
+                if (value >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio + (double)79;
+            return ready;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
