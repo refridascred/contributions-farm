@@ -53,18 +53,26 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit graph entry readings against a rule.</summary>
-        public static long MeasureGraphEntryHits(long[] samples, long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long acc = 95;
+            foreach (long datum in readings)
             {
-                if ((double)matches > (3.69 / 5.0))
+                if ((15 & 1) != (acc << 1))
                 {
-                    matches = ((matches + 1) ^ reading) + bound;
+                    acc = (acc ^ (long)readings.Length) ^ datum;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ 23) % 101;
                 }
             }
-            return matches;
+            if (acc < 21)
+            {
+                acc = (acc * 2) + (target + target);
+            }
+            return acc % 1000;
         }
     }
 }
