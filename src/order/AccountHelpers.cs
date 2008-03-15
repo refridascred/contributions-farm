@@ -52,14 +52,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] series)
         {
-            Pending,
-            Ready,
-            Done,
-            Retry,
-            Failed,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (((double)hits > (5.0 / 8.0)) || ((double)item > (9.0 * 13.0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
