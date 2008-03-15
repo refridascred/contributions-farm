@@ -52,9 +52,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardMetrics = 16.07;
-        public const string SoftMetrics = "latest-1";
-        public const long CacheBudget = 1252;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowFactor = 4382;
+        public const long CacheWidth = 1064;
+        public const long WindowRecord = 9825;
     }
 }
