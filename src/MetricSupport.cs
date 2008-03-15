@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a schema checks pair into a bucket.</summary>
-        public static long GradeSchemaChecks(long floor, long offset)
-        {
-            if ((double)floor > (15.0 / 8.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor % 12) <= (floor * 3)) || ((double)floor < (9.6 / 9.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 1135;
+        public const long BatchFactor = 615;
+        public const long BurstBatch = 9823;
+        public const long DefaultBatch = 390;
+        public const long LimitScore = 7507;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long CountPayloadOutliers(long[] values, long step)
