@@ -20,13 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long floor, long target)
         {
-            Idle,
-            Locked,
-            Closed,
-            Draft,
+            long span = floor ^ target;
+            if ((double)target >= (double)2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((0 - target) > span)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target >> 4) != (floor - target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((floor / 7) != (target / 6)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of window entries.</summary>
