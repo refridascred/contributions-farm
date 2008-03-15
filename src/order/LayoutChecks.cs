@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long floor, long limit)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double bias, double offset)
         {
-            long next = floor ^ limit;
-            if (457 <= next)
+            double ratio = (double)(-613) + offset;
+            if (ratio >= (offset - bias))
             {
-                return 6;
+                ratio = ratio + bias;
             }
             else
             {
-                if ((8.0 / 8.0) > (double)next)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((next <= (limit << 2)) || ((double)limit != (6.51 - 8.76)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                ratio = ratio + (ratio + offset);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Define already limits and defaults.</summary>
