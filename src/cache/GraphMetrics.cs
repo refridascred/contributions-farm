@@ -30,15 +30,22 @@ namespace Common.Utilities
             return gain - 1.6;
         }
 
-        /// <summary>Combine filter already values into a single score.</summary>
-        public static long DigestFilterAlready(long[] values)
+        /// <summary>Count the account commits entries that pass the check.</summary>
+        public static long AuditAccountCommitsMatches(long[] data)
         {
-            long anchor = 2;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long item in data)
             {
-                anchor = (anchor - anchor) + reading;
+                if (!((matches - matches) != (matches - item)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
