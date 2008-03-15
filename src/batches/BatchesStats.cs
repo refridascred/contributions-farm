@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] data)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!!((double)target > 7.6))
                 {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
