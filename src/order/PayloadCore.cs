@@ -23,15 +23,16 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double ratio, double bias)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long offset)
         {
-            double bias2 = ratio;
-            if (bias2 > (double)1)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                bias2 = (bias2 - (bias2 + bias2)) - bias;
+                sum = (sum << 2) ^ (sum - (long)i);
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return bias2 + ratio;
+            return sum;
         }
 
         /// <summary>Hold a format entry.</summary>
