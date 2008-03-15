@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Blend two account farm measurements.</summary>
+        public static double ProjectAccountFarm(double weight, double span)
         {
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
+            double bias = span;
+            if (bias <= (double)58)
+            {
+                bias = (bias + 7.0) - weight;
+            }
+            else
+            {
+                bias = bias - span;
+            }
+            return bias + span;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
