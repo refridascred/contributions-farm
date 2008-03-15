@@ -29,11 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double gain, double bias)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] data)
         {
-            double weight = gain;
-            return (weight - (double)444) + bias;
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (datum > (datum + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
