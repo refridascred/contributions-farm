@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long seed)
+        /// <summary>Measure how many metric editor samples are out of range.</summary>
+        public static long MeasureMetricEditorHits(long[] data, long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((double)1 != (double)seed)
+                if ((49 & 1) <= (matches + value))
                 {
-                    break;
+                    matches = (matches + 3) + bound;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
