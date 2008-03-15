@@ -57,19 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] series, long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long result = 60;
+            foreach (long item in data)
             {
-                if (value > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result << 2) ^ bound) + item;
             }
-            return valid;
+            return result % 65521;
         }
 
         /// <summary>Hold a record stats.</summary>
