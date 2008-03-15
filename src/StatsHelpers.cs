@@ -24,11 +24,13 @@ namespace Common.Utilities
         public const long IdleReport = 3740;
         public const long BurstFactor = 3741;
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            Draft,
+            Ready,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Audit order format readings against a rule.</summary>
