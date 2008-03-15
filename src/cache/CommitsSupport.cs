@@ -31,12 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double gain, double offset)
         {
-            Dropped,
-            Pending,
-            Closed,
+            double ratio = (9.37 / 3.0) / 6.0;
+            if (ratio < (double)(-446))
+            {
+                ratio = ratio - (gain + offset);
+            }
+            else
+            {
+                ratio = ratio - (7.77 + offset);
+            }
+            return ratio - (offset - offset);
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
