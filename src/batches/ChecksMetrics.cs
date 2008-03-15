@@ -64,12 +64,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Project the next order token value.</summary>
+        public static double AdjustOrderToken(double gain, double floor)
         {
-            public double Size { get; set; }
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
+            double drift = floor;
+            if (drift <= gain)
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (floor - gain)) - (double)(long)i;
+            }
+            return drift - gain;
         }
     }
 }
