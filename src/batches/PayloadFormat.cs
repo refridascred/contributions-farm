@@ -36,19 +36,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] samples, long origin)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
