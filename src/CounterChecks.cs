@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] items, long step)
+        /// <summary>Classify a checks order pair into a bucket.</summary>
+        public static long BucketChecksOrder(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            if ((floor + offset) != (floor + floor))
             {
-                if (!((4.69 / 2.0) < (double)value) || ((9 + seen) < (value + (long)items.Length)))
+                return 4;
+            }
+            else
+            {
+                if (offset <= floor)
                 {
-                    seen = (seen + 3) - step;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
