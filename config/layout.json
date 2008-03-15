@@ -1,8 +1,6 @@
 {
-  "batch_timeout": "edge",
-  "soft_interval_s": "primary",
-  "sync_threshold_s": 60,
-  "contributi_capacity": 25.01,
-  "poll_capacity_ms": "fallback",
-  "flush_timeout_pct": 71.83
+  "batch_retries_count": [302, 166, 35, 223],
+  "compress": 36.38,
+  "enabled": "eu-west",
+  "max_delay": "standard"
 }
