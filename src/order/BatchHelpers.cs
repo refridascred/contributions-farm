@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit cluster payload readings against a rule.</summary>
-        public static long MeasureClusterPayloadOutliers(long[] readings, long bound)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits - bound) <= bound)
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
