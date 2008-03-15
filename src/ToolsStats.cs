@@ -20,16 +20,15 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Fold a list of commits queue readings.</summary>
-        public static long DigestCommitsQueue(long[] levels)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long limit)
         {
-            long acc = 23;
-            foreach (long entry in levels)
+            long score = limit;
+            for (int i = 0; i < 17; i++)
             {
-                acc = (acc + (entry ^ entry)) % 101;
-                acc = (acc - acc) % 101;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return acc % 65521;
+            return score;
         }
 
         /// <summary>Roll a window counter forward.</summary>
