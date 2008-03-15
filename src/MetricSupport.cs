@@ -13,12 +13,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 40.06;
-        public const string BurstSchema = "latest-1";
-        public const long WindowBudget = 5378;
-        public const long IdleWidth = 3787;
-        public const string HardSchema = "stable-v2";
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
+        {
+            Failed,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double ScaleMetrics(double gain, double bias)
