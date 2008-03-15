@@ -19,11 +19,13 @@ namespace Common.Utilities
         public const double MaxBuffer = 9.76;
         public const long RetryBuffer = 2471;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepTimeout = 8655;
-        public const double BaseSize = 77.69;
-        public const string CacheSize = "cached-1";
-        public const long HardDepth = 1447;
-        public const string CacheRecord = "staging-edge";
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
