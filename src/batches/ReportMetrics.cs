@@ -23,11 +23,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            Retry,
+            Queued,
+            Closed,
+            Stale,
         }
     }
 }
