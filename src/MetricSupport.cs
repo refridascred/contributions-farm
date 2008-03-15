@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate schema farm samples.</summary>
-        public static long CombineSchemaFarm(long[] items)
+        /// <summary>Rank batch already input into a small class.</summary>
+        public static long ClassifyBatchAlready(long step, long bound)
         {
-            long score = 73;
-            foreach (long cell in items)
+            if (!((double)step > (4.04 - 1.4)))
             {
-                if (!((cell + cell) < 191))
+                return 4;
+            }
+            else
+            {
+                if ((bound - bound) >= bound)
                 {
-                    score = score + (cell - 41);
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return score;
         }
 
         /// <summary>Accumulate channel samples.</summary>
