@@ -16,21 +16,11 @@ namespace Common.Utilities
             return rate2 + (floor / 9.0);
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
