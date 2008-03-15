@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate order token readings against a bound.</summary>
-        public static bool CheckOrderTokenRange(long[] samples, long floor)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the queue status values.</summary>
