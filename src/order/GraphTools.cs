@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine route stream values into a single score.</summary>
-        public static long DigestRouteStream(long[] levels)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long origin)
         {
-            long state = 96;
-            foreach (long datum in levels)
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (((double)state < (1.0 - 1.39)) || (datum > (datum >> 3)))
-                {
-                    state = ((state << 3) ^ (datum + state)) % 97;
-                }
-                else
-                {
-                    state = (state + (datum << 2)) % 1000;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            if (state < (-64))
-            {
-                state = (state - (113 ^ (-5))) % 4096;
-            }
-            return state % 1000;
+            return sum;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
