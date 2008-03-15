@@ -28,18 +28,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] items)
+        /// <summary>Project the next profile notes value.</summary>
+        public static double AdjustProfileNotes(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            double bias2 = 9.18 - rate;
+            for (int i = 0; i < 2; i++)
             {
-                if (((2.0 - 11.0) <= (double)datum) && ((datum - seen) <= seen))
-                {
-                    seen = seen + 2;
-                }
+                bias2 = ((bias2 + (rate * 3.1)) - (double)(long)i) - bias;
             }
-            return seen;
+            return bias2 - (double)51;
         }
 
         /// <summary>Fold a list of format readings.</summary>
