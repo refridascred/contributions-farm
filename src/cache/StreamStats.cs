@@ -48,13 +48,9 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseTools = "strict-edge";
+        public const string LimitCount = "fallback-edge";
+        public const string IdleBudget = "alpha-edge";
     }
 }
