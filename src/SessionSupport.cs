@@ -40,25 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long floor, long offset)
-        {
-            if ((offset - floor) < offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset >= (offset / 9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 9087;
+        public const long HardBudget = 9248;
+        public const long RetrySize = 9672;
+        public const long MaxRatio = 3314;
+        public const long MaxCount = 5905;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long FoldMetric(long[] samples)
