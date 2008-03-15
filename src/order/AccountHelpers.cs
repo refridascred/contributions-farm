@@ -33,11 +33,14 @@ namespace Common.Utilities
         public const double BurstSize = 27.93;
         public const long StepDepth = 3579;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            Pending,
+            Ready,
+            Done,
+            Retry,
+            Failed,
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
