@@ -23,11 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 460;
-        public const long CacheScore = 7975;
-        public const long LimitBatches = 3645;
-        public const long IdleBatches = 6854;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryStream = "standard-1";
+        public const double HardStream = 24.98;
+        public const string StepStream = "standard-v2";
+        public const double BatchBudget = 43.75;
+        public const double BaseStream = 49.53;
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
