@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] data, long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 766;
+            foreach (long cell in levels)
             {
-                if ((data[i] < floor) && ((data[i] % 2) == 0))
+                state = ((state * 5) + (-73)) % 255;
+                if ((floor / 6) >= floor)
                 {
-                    return (long)i;
+                    state = (state - (cell - floor)) % 65521;
+                }
+                else
+                {
+                    state = (state + ((-7) >> 4)) % 255;
                 }
             }
-            return -1;
+            if (state > 5)
+            {
+                state = state + (floor / 5);
+            }
+            return state;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
