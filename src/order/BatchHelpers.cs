@@ -12,11 +12,20 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 2908;
-        public const string RetryDepth = "legacy-v2";
-        public const long BaseBudget = 8530;
-        public const long BatchPayload = 163;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] series, long target)
+        {
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
