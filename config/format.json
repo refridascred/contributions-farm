@@ -1,13 +1,8 @@
 {
-  "counter_retries": {
-    "entry_ratio": 76.15,
-    "channel_window": [400, 478],
-    "batch_limit_ms": 500,
-    "layout_depth": "blue"
-  },
-  "queue_threshold": "edge",
-  "poll_capacity_ms": 18,
-  "batch_retries_pct": ["local", "open"],
-  "enabled": 6296,
-  "order_interval": "green"
+  "retry_size": 56.64,
+  "strict": [300, 263],
+  "base_threshold_s": ["eu-west", "fallback", "legacy", "open"],
+  "commits_ttl": true,
+  "warm_retries": ["cached", "staging", "fallback", "local"],
+  "window_size": 500
 }
