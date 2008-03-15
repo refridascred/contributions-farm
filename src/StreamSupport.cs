@@ -15,15 +15,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] levels, long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            long total = -33;
+            foreach (long sample in levels)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                for (int i = 0; i < 2; i++)
+                {
+                    total = (((total * 4) + (1 << 1)) ^ (long)i) - origin;
+                }
+                total = (total * 4) + (sample + sample);
             }
-            return acc;
+            if (total < 709)
+            {
+                total = total + (total + 2);
+            }
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
