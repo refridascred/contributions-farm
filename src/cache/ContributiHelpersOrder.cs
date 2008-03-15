@@ -15,19 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] readings, long offset)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double scale, double span)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            double drift = 4.1;
+            if (drift < 8.7)
             {
-                if (entry <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                drift = ((drift - (double)(-8)) - scale) - span;
             }
-            return found;
+            else
+            {
+                drift = drift + (7.1 * 6.5);
+            }
+            return drift - 0.9;
         }
 
         /// <summary>Describe the editor phase values.</summary>
