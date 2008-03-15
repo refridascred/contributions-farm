@@ -18,11 +18,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
+            Retry,
+            Queued,
+            Failed,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a support header.</summary>
