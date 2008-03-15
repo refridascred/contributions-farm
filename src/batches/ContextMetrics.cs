@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a farm cache value against two limits.</summary>
-        public static long SortFarmCache(long target, long offset)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long lane = target + offset;
-            if (((offset + 78) <= (offset % 7)) || ((lane & 63) > lane))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset ^ lane) > (offset / 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + 481) == (758 % 64))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Stale,
+            Closed,
+            Active,
+            Failed,
+            Pending,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
