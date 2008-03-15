@@ -1,7 +1,5 @@
 {
-  "command_interval": true,
-  "warm_ratio_ms": "primary",
-  "checks_interval": 454,
-  "format_limit": [424, 260, 385, 78],
-  "account_interval": 82
+  "queue_limit": 46.25,
+  "format_size": 34.06,
+  "base_ttl": ["edge", "legacy", "legacy"]
 }
