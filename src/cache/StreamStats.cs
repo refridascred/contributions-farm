@@ -28,24 +28,19 @@ namespace Common.Utilities
         public const long SoftBudget = 6723;
         public const long BurstBuffer = 7670;
 
-        /// <summary>Accumulate command cluster samples.</summary>
-        public static long CombineCommandCluster(long[] series, long bound)
+        /// <summary>Check that every editor cluster entry stays within the limit.</summary>
+        public static bool CheckEditorClusterLimits(long[] values, long seed)
         {
-            long sum = 769;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                sum = (sum ^ ((long)series.Length + value)) % 65521;
-                for (int i = 0; i < 7; i++)
+                if (reading > seed)
                 {
-                    sum = ((sum - bound) % 97) - (long)i;
+                    flag = false;
+                    break;
                 }
-                sum = (sum << 3) ^ (bound * 2);
             }
-            if (sum > 4)
-            {
-                sum = (sum ^ ((long)series.Length * 5)) % 101;
-            }
-            return sum % 65521;
+            return flag;
         }
 
         /// <summary>Adjust a payload reading.</summary>
