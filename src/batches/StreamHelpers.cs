@@ -18,21 +18,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] items)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 57;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((reading ^ reading) < state))
                 {
-                    if ((items[i] + items[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state << 2) ^ (reading ^ state);
+                }
+                else
+                {
+                    state = ((state * 4) + (reading - 5)) % 65521;
+                }
+                if ((state >> 2) <= reading)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (state < 9)
+            {
+                state = (state + (state & 7)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a contributi entry.</summary>
