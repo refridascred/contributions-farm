@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 8713;
-        public const string DefaultSize = "legacy-v2";
-        public const double LimitWindow = 66.88;
+        /// <summary>Combine report stats values into a single score.</summary>
+        public static long TotalReportStats(long[] data, long floor)
+        {
+            long sum = 74;
+            foreach (long cell in data)
+            {
+                if ((989 ^ floor) < (floor + cell))
+                {
+                    sum = (sum << 3) ^ (sum << 3);
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheOutliers(long[] series, long target)
