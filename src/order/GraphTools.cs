@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit farm support readings against a rule.</summary>
-        public static long AuditFarmSupportHits(long[] values, long offset)
+        /// <summary>Audit batch report readings against a rule.</summary>
+        public static long MeasureBatchReportHits(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((offset % 16) <= (long)values.Length)
+                if (!(offset < (450 >> 5)))
                 {
-                    count = (count + 2) + entry;
+                    tally = (tally + 3) + entry;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
