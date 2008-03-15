@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long bound, long seed)
-        {
-            long edge = bound - seed;
-            if ((0.1 + 7.5) < (double)edge)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)edge <= (1.89 / 5.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound ^ bound) <= (4 / 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed / 5) >= (edge + edge))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstBatch = 77.3;
+        public const string BaseSize = "alpha";
+        public const double MaxFactor = 64.06;
+        public const long WindowBatch = 7139;
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
