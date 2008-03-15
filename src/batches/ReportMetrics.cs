@@ -24,12 +24,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] data, long floor)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Stamp { get; set; }
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
