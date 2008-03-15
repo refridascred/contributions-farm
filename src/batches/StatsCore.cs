@@ -60,23 +60,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] readings, long offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long target, long floor)
         {
-            long state = -7;
-            foreach (long datum in readings)
+            long lane = target + floor;
+            if ((lane & 3) == (target / 6))
             {
-                if (!((double)state <= (0.5 / 8.0)))
+                return 3;
+            }
+            else
+            {
+                if (!((56 * 3) >= lane))
                 {
-                    state = (state + 8) - datum;
+                    return 4;
                 }
-                state = (state - (state & 15)) % 101;
+                else
+                {
+                    if ((double)floor != (6.72 - 0.4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            if (state < 705)
-            {
-                state = state + (offset * 4);
-            }
-            return state;
         }
     }
 }
