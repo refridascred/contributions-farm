@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Check that every editor format entry stays within the limit.</summary>
+        public static bool CheckEditorFormatBounds(long[] series, long limit)
         {
-            long acc = 8;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((item <= (item - acc)) && ((acc + item) > acc))
+                if (value >= limit)
                 {
-                    acc = (acc - (acc / 5)) % 1000;
-                }
-                if ((item % 8) != (4 + acc))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (acc < 54)
-            {
-                acc = ((acc * 5) + 8) % 1000;
-            }
-            return acc;
+            return stale;
         }
 
         /// <summary>Fold a list of support metrics readings.</summary>
