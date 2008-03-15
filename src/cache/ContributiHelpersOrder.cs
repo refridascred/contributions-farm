@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] items, long origin)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 879;
+            foreach (long value in values)
             {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
+                state = ((state << 2) ^ (origin << 2)) ^ value;
             }
-            return -1;
+            if (state > (-75))
+            {
+                state = state - origin;
+            }
+            return state % 97;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
