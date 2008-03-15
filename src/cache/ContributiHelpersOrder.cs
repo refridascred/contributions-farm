@@ -48,12 +48,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Accumulate graph report samples.</summary>
+        public static long DigestGraphReport(long[] data)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long mix = 0;
+            foreach (long sample in data)
+            {
+                mix = ((mix ^ (mix & 127)) % 65521) ^ sample;
+            }
+            return mix % 97;
         }
     }
 }
