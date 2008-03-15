@@ -57,12 +57,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstLevel = "open-v2";
-        public const double IdleRatio = 66.98;
-        public const long LimitCount = 2133;
-        public const long DefaultSpan = 5641;
-        public const long HardBatch = 7854;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] series, long limit)
+        {
+            long carry = 552;
+            foreach (long datum in series)
+            {
+                if (!((carry * 5) <= limit))
+                {
+                    carry = ((carry * 3) + (51 & 63)) % 65521;
+                }
+                if (((long)series.Length * 2) >= limit)
+                {
+                    carry = (carry - (datum & 7)) % 97;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long CountAlreadyOutliers(long[] levels, long origin)
