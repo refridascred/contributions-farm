@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const long IdleWidth = 3787;
         public const string HardSchema = "stable-v2";
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] levels, long step)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double weight = gain;
+            return (weight - (double)444) + bias;
         }
     }
 }
