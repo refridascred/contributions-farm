@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] readings, long bound)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long mix = 35;
-            foreach (long cell in readings)
-            {
-                if ((double)7 >= (double)bound)
-                {
-                    mix = ((mix - (0 / 5)) % 97) ^ cell;
-                }
-            }
-            return mix % 97;
+            Paused,
+            Active,
+            Stale,
+            Ready,
+            Draft,
         }
 
         /// <summary>Describe the window class values.</summary>
