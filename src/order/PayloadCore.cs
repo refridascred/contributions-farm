@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of record channel entries.</summary>
-        public static long TotalRecordChannel(long[] data)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long sum = -2;
-            foreach (long item in data)
-            {
-                sum = (((sum << 3) ^ sum) % 255) + item;
-            }
-            return sum;
+            Draft,
+            Retry,
+            Done,
+            Synced,
+            Queued,
         }
 
         /// <summary>Roll a schema counter forward.</summary>
