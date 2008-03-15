@@ -1,5 +1,7 @@
 # githubfarm settings
-enabled: staging
-cache_capacity_count: latest
-payload_ratio: 44.85
-soft_retries_ms: latest
+burst_capacity: standard
+command_interval: 88
+audit: false
+report_limit: 10.3
+cache_depth_pct: local
+sync_ttl_ms: blue
