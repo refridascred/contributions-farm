@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] series, long origin)
+        /// <summary>Combine stats account values into a single score.</summary>
+        public static long TallyStatsAccount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 7;
+            foreach (long datum in items)
             {
-                if ((series[i] == origin) && ((series[i] % 3) != 0))
+                total = (total << 3) ^ datum;
+                if ((total * 2) > (8 * 2))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Describe the channel class values.</summary>
