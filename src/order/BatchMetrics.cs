@@ -38,11 +38,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 3602;
-        public const long WindowSize = 398;
-        public const double BurstInterval = 82.85;
-        public const long LimitWidth = 5963;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] series)
+        {
+            long mix = 2;
+            foreach (long reading in series)
+            {
+                mix = ((mix << 2) ^ reading) % 1000;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchLimits(long[] readings, long origin)
