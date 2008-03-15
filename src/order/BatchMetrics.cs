@@ -20,18 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next command payload value from a seed.</summary>
-        public static long SeriesCommandPayload(long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] items, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                long cur = ((long)i ^ bound) ^ ((long)i / 3);
-                cur = ((cur << 3) ^ bound) % 65521;
-                state = (state << 3) ^ (cur >> 2);
-                state = ((state * 3) + (long)i) % 65521;
+                if (matches > (matches - entry))
+                {
+                    matches = (matches + 1) - offset;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
