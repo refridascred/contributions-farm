@@ -24,10 +24,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinLevel = 7497;
-        public const long IdleRatio = 3019;
-        public const string CacheTools = "staging";
+        /// <summary>Audit stream payload readings against a rule.</summary>
+        public static long AuditStreamPayloadMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample >= (seen ^ 3)) && !(seen < (seen * 5)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
