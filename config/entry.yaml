@@ -1,12 +1,9 @@
 # entry settings
-retry_capacity_s: 93.77
-commits_window: stable
-burst_window: 3576
-report_timeout:
-  - 326
-  - 142
-editor_limit: true
-max_interval_s:
-  - strict
-  - standard
-  - strict
+flush_capacity: edge
+verbose:
+  - 389
+  - 109
+  - 484
+  - 186
+default_timeout: 92
+enabled: 1249
