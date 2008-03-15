@@ -19,11 +19,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftFactor = 9186;
-        public const long CacheScore = 6182;
-        public const string DefaultRatio = "fallback-1";
-        public const long CacheLayout = 7029;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Draft,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
