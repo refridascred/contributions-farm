@@ -59,10 +59,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepScore = 8233;
-        public const string RetrySpan = "stable";
-        public const string BaseStats = "cached";
-        public const double StepStats = 31.23;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((item * 2) < (7 + item))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
