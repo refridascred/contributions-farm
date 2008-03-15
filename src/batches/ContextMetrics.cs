@@ -24,39 +24,18 @@ namespace Common.Utilities
         public const string StepCache = "latest-edge";
         public const long DefaultCache = 6899;
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long limit, long floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] values)
         {
-            long lane = limit + floor;
-            if ((845 + floor) >= floor)
+            long mix = -9;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit >> 3) <= limit)
+                if ((mix ^ reading) < (reading << 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (21 > lane)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((limit + lane) >= limit) && (floor <= (265 + 1)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mix = (mix + reading) % 97;
                 }
             }
+            return mix;
         }
 
         /// <summary>Define support limits and defaults.</summary>
