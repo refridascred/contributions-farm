@@ -15,13 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Audit channel cache readings against a rule.</summary>
+        public static long AuditChannelCacheMatches(long[] readings)
         {
-            New,
-            Paused,
-            Synced,
-            Idle,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((count >> 3) < count)
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
