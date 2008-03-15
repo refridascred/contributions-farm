@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] samples, long target)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long mix = 553;
-            foreach (long entry in samples)
-            {
-                if ((target - entry) >= (entry % 5))
-                {
-                    mix = ((mix << 2) ^ 5) % 65521;
-                }
-            }
-            return mix;
+            New,
+            Failed,
+            Locked,
+            Retry,
+            Closed,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
