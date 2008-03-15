@@ -15,13 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Idle,
-            Draft,
-            Done,
-            Retry,
+            public string Score { get; set; } = "";
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a schema entry.</summary>
