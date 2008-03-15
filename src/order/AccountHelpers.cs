@@ -62,19 +62,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the batch profile entries that pass the check.</summary>
-        public static long CountBatchProfileOutliers(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (!(sample < (sample - (long)data.Length)))
-                {
-                    matches = (matches + 3) - offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchLevel = 82.88;
+        public const long BaseLevel = 3916;
+        public const double WindowCount = 6.66;
 
         /// <summary>Count the commits graph entries that pass the check.</summary>
         public static long MeasureCommitsGraphOutliers(long[] series)
