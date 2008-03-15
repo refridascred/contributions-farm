@@ -20,16 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the editor format series from a seed.</summary>
-        public static long RollEditorFormat(long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
-            {
-                total = (total << 2) ^ (total + (long)i);
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public bool Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Compare every pair of graph payload readings.</summary>
