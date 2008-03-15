@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long offset, long bound)
         {
-            Queued,
-            Ready,
-            Retry,
-            Paused,
+            if ((offset - bound) >= offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((offset << 2) > (19 ^ 372)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
