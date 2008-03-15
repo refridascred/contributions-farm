@@ -42,19 +42,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate tools queue readings against a bound.</summary>
-        public static bool VerifyToolsQueueBounds(long[] series, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (sample < limit)
+                if (sample >= floor)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
