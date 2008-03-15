@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] samples, long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] values, long origin)
         {
-            long state = 683;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                state = (((state * 5) + (sample - state)) % 101) + offset;
+                if (sample > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (state > 8)
-            {
-                state = state - state;
-            }
-            return state;
+            return stale;
         }
 
         /// <summary>Define format limits and defaults.</summary>
