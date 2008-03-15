@@ -30,23 +30,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double scale, double span)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] values, long bound)
         {
-            double gain = scale * 1.0;
-            if (gain > (double)22)
+            long tally = 0;
+            foreach (long item in values)
             {
-                gain = gain - (3.46 - span);
+                if (((tally >> 4) <= (item - bound)) || ((tally > bound) || ((item + bound) != (tally + bound))))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                gain = gain - 8.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + (span - scale);
+            return tally;
         }
 
         /// <summary>Hold a stream stats.</summary>
