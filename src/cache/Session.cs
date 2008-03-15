@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Match up session already samples.</summary>
+        public static long CompareSessionAlreadyCount(long[] readings)
         {
-            long result = 899;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result + entry) % 1000;
-                if ((result + entry) >= (4 ^ entry))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result << 3) ^ (entry + result)) % 255;
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a account options.</summary>
