@@ -1,9 +1,6 @@
-id,rank,token,weight,owner
-1,fallback,212,62.22,34.37
-2,edge,primary,179,57.96
-3,92.31,812,426,26.96
-4,green,open,989,653
-5,731,865,local,980
-6,staging,47.6,local,primary
-7,10.32,2.17,fallback,811
-8,508,cached,96.53,116
+id,token,level,rank
+1,263,431,91.94
+2,13.43,18.67,37.58
+3,cached,730,blue
+4,41.78,edge,399
+5,legacy,22.11,411
