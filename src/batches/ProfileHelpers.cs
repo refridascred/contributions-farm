@@ -13,19 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every window batches entry stays within the limit.</summary>
-        public static bool VerifyWindowBatchesRange(long[] values, long origin)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] values)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a already snapshot.</summary>
