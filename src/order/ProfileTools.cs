@@ -78,13 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] series, long origin)
         {
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
