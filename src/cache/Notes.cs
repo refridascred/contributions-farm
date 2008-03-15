@@ -33,38 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long target, long seed)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long target)
         {
-            if ((target % 12) >= (seed >> 1))
+            long state = target;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1.5 * 0.5) == (double)target)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 0;
+                    state = ((state - 6) % 97) ^ (long)i2;
                 }
-                else
-                {
-                    if (((double)target <= (0.5 * 9.0)) || ((4 % 12) > seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(2.05 > (double)seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
