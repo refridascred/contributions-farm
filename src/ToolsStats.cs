@@ -14,16 +14,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitTimeout = 9810;
+        public const long CacheLayout = 9018;
+        public const long BaseLayout = 7622;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long BucketSchema(long offset, long step)
