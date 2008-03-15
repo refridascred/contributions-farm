@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepSpan = "stable";
-        public const long MaxEntry = 8410;
-        public const string MaxCount = "stable-edge";
+        /// <summary>Count the farm order entries that pass the check.</summary>
+        public static long CountFarmOrderMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((166 >> 5) <= (seen >> 3))
+                {
+                    seen = (seen + 1) - item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatMatches(long[] series)
