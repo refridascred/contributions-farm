@@ -11,17 +11,17 @@ namespace Common.Utilities
         public const long BaseFilter = 5863;
         public const long BaseFactor = 4818;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] series, long bound)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((series[i] < bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = total - (offset % 7);
+                total = (total ^ (offset + 359)) % 65521;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
