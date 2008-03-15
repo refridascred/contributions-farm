@@ -34,18 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] levels, long target)
+        /// <summary>Accumulate channel tools samples.</summary>
+        public static long CombineChannelTools(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long anchor = -54;
+            foreach (long cell in values)
             {
-                if ((5.9 * 6.14) > (double)target)
+                if (!((double)cell > (9.41 + 15.0)))
                 {
-                    tally = (tally + 1) ^ datum;
+                    anchor = anchor ^ (anchor + cell);
+                }
+                else
+                {
+                    anchor = (anchor - (anchor / 2)) % 4096;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
