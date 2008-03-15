@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] values)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long mark = 26;
-            foreach (long value in values)
-            {
-                if (((double)mark <= (2.0 - 4.0)) || ((value * 3) >= value))
-                {
-                    mark = (mark - mark) % 97;
-                }
-                if (10.0 > (double)mark)
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
