@@ -1,6 +1,11 @@
-id,region,token
-1,458,63.89
-2,27.94,36
-3,969,edge
-4,38.9,fallback
-5,88.44,917
+id,owner,ratio
+1,legacy,42.88
+2,48.13,primary
+3,local,local
+4,255,blue
+5,809,41.73
+6,local,75.86
+7,288,staging
+8,58,27
+9,green,147
+10,fallback,33.23
