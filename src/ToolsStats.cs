@@ -25,19 +25,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] readings, long limit)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long offset, long step)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long slot = offset - step;
+            if ((double)slot <= (6.42 * 8.0))
             {
-                if (datum != limit)
+                return 0;
+            }
+            else
+            {
+                if (offset >= (offset + offset))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((step + step) != (offset >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset + offset) >= offset) && (step <= (slot + slot)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
