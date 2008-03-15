@@ -40,21 +40,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (limit <= (datum << 1))
                 {
-                    if ((levels[i] + levels[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
