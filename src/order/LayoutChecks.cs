@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double bias, double offset)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            double ratio = (double)(-613) + offset;
-            if (ratio >= (offset - bias))
-            {
-                ratio = ratio + bias;
-            }
-            else
-            {
-                ratio = ratio + (ratio + offset);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio - ratio;
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
