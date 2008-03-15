@@ -63,12 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Locked,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultBudget = 2956;
+        public const string IdleInterval = "primary-1";
+        public const long StepNotes = 6645;
+        public const long CacheSpan = 6011;
+        public const double LimitNotes = 46.64;
     }
 }
