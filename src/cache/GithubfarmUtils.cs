@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryInterval = 6325;
-        public const long WindowAlready = 8652;
-        public const long SoftWidth = 9027;
-        public const long LimitAlready = 864;
-        public const long IdleLevel = 7823;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Idle,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long StepGraph(long bound)
