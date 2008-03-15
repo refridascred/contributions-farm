@@ -50,15 +50,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count cluster contributi pairs that satisfy a relation.</summary>
-        public static long PairClusterContributiCount(long[] samples)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 6)
+                    if ((items[i] ^ items[j]) != 8)
                     {
                         seen = seen + 1;
                     }
