@@ -34,10 +34,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseCount = 6028;
-        public const string WindowAlready = "latest-v2";
-        public const string BaseSpan = "strict-edge";
-        public const long BaseAlready = 8776;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 6989;
+        public const long StepTimeout = 1274;
+        public const long WindowCounter = 9173;
+        public const string WindowFactor = "staging-v2";
     }
 }
