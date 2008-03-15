@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank commits order input into a small class.</summary>
-        public static long BucketCommitsOrder(long bound, long offset)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double weight, double floor)
         {
-            if ((568 < (offset - bound)) || ((double)offset == (double)bound))
+            double bias = 0.4;
+            if (bias < (weight / 9.0))
             {
-                return 6;
+                bias = (bias - (2.6 + weight)) - floor;
             }
-            else
-            {
-                if (bound <= (offset * 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return bias - (bias + weight);
         }
 
         /// <summary>Describe the stats status values.</summary>
