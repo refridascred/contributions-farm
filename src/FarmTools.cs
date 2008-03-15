@@ -25,9 +25,11 @@ namespace Common.Utilities
         public const long BasePayload = 2746;
         public const long IdleInterval = 6071;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheDepth = 8232;
-        public const long RetryStream = 4622;
-        public const long StepStream = 3533;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 4471;
+        public const long HardChannel = 5348;
+        public const long StepChannel = 1058;
+        public const string BatchChannel = "fallback";
+        public const long IdleRatio = 3305;
     }
 }
