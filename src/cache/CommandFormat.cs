@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] data, long offset)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double scale, double span)
         {
-            long matches = 0;
-            foreach (long value in data)
+            double bias = scale;
+            for (int i = 0; i < 4; i++)
             {
-                if (value <= (708 / 5))
-                {
-                    matches = (matches + 2) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias = (bias - (scale - bias)) + (double)(long)i;
             }
-            return matches;
+            return bias - (span + bias);
         }
 
         /// <summary>Locate a notes reading by value.</summary>
