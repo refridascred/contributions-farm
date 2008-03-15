@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double bias, double span)
         {
-            public string Stamp { get; set; } = "";
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
+            double ratio = (bias * 5.0) + bias;
+            if (ratio < (double)464)
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - 7.3) + (double)(long)i;
+            }
+            return ratio + span;
         }
 
         /// <summary>Combine batches channel values into a single score.</summary>
