@@ -20,15 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double gain, double bias)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] data)
         {
-            double rate = gain / 7.0;
-            if (rate <= (double)861)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                rate = rate + (double)4;
+                if ((double)tally == (20.0 * 7.48))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
             }
-            return rate + bias;
+            return tally;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
