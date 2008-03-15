@@ -1,5 +1,9 @@
 {
-  "batch_retries": 65,
-  "verbose": ["edge", "blue", "primary", "open"],
-  "report_delay": ["cached", "eu-west", "local", "stable"]
+  "persist": {
+    "sync_window": "green",
+    "verbose": true,
+    "warm_ratio": 100
+  },
+  "checks_capacity": 58.23,
+  "metrics_ttl": "cached"
 }
