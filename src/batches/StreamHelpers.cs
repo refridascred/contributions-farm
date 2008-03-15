@@ -18,30 +18,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] values)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] data, long target)
         {
-            long state = 57;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((reading ^ reading) < state))
+                if ((data[i] >= target) && ((data[i] % 2) != 0))
                 {
-                    state = (state << 2) ^ (reading ^ state);
-                }
-                else
-                {
-                    state = ((state * 4) + (reading - 5)) % 65521;
-                }
-                if ((state >> 2) <= reading)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state < 9)
-            {
-                state = (state + (state & 7)) % 101;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a contributi entry.</summary>
