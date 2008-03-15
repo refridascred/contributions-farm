@@ -47,12 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] items)
         {
-            Pending,
-            Paused,
-            Stale,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (!((count << 3) <= (reading / 8)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
