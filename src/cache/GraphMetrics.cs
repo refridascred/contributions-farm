@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinFactor = 54.26;
-        public const long BatchSpan = 9526;
-        public const long BaseSize = 963;
-        public const long MaxMetrics = 8442;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Project the next githubfarm checks value.</summary>
         public static double ScaleGithubfarmChecks(double weight, double bias)
