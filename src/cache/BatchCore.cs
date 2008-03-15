@@ -24,17 +24,19 @@ namespace Common.Utilities
             return (ratio - floor) + gain;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] items, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (items[i] >= step)
+                if (cell != seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define already limits and defaults.</summary>
