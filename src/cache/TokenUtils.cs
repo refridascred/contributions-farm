@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank checks metrics input into a small class.</summary>
-        public static long BucketChecksMetrics(long floor, long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] items, long origin)
         {
-            if (4.11 < (4.2 * 10.0))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor == (8.4 + 18.0))
+                if (((tally >= item) && (tally >= item)) && (tally <= (origin >> 3)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
