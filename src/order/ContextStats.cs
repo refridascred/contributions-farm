@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of farm metrics readings.</summary>
-        public static long CombineFarmMetrics(long[] values)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long acc = -9;
-            foreach (long sample in values)
-            {
-                if (((-8) & 3) > (acc % 60))
-                {
-                    acc = (acc ^ (sample ^ sample)) % 97;
-                }
-            }
-            if (acc < (-7))
-            {
-                acc = acc - (acc - 265);
-            }
-            return acc % 4096;
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
