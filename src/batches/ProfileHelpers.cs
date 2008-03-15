@@ -63,14 +63,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long bound, long bound2)
         {
-            New,
-            Ready,
-            Queued,
-            Done,
-            Idle,
+            if (9.0 > (double)bound2)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound2 * 3) != (bound ^ (-2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
