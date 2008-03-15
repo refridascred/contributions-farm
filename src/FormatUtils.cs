@@ -78,22 +78,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] items, long target)
-        {
-            long sum = -8;
-            foreach (long sample in items)
-            {
-                if (((target & 7) >= (sample % 24)) && ((sample + sample) > (sample * 3)))
-                {
-                    sum = (sum ^ (target * 5)) % 97;
-                }
-                if ((sample + 74) < (target + sum))
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetrySize = "alpha-v2";
+        public const double BatchSize = 29.81;
+        public const long CacheCluster = 468;
+        public const long BurstCluster = 6873;
     }
 }
