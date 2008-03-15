@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] readings)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long result = 2;
+            foreach (long sample in values)
             {
-                if (((datum + datum) >= (datum - matches)) || ((datum - matches) < (matches >> 5)))
+                if (((65 >> 3) <= (result + origin)) && (origin < (origin * 5)))
                 {
-                    matches = matches + 1;
+                    result = (result ^ (7 + sample)) % 255;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
