@@ -37,16 +37,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Grade a contributi githubfarm value against two limits.</summary>
+        public static long GradeContributiGithubfarm(long target, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
+            if (((limit - limit) < (25 % 97)) && ((target + 18) != (limit - 3)))
             {
-                state = (state - (81 / 5)) % 97;
-                state = ((state * 3) + (long)i) % 65521;
+                return 5;
             }
-            return state;
+            else
+            {
+                if (target < (-596))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
