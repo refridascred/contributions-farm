@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double bias, double bias2)
         {
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
+            double load = bias2 / 9.0;
+            for (int i = 0; i < 9; i++)
+            {
+                load = ((load + (load - load)) + (double)(long)i) + bias;
+            }
+            return load - (double)6;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
