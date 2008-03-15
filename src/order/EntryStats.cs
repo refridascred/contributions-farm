@@ -18,26 +18,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] readings, long limit)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long result = 187;
-            foreach (long item in readings)
-            {
-                if ((double)limit < 0.5)
-                {
-                    result = ((result << 2) ^ (limit % 8)) % 65521;
-                }
-                else
-                {
-                    result = result ^ limit;
-                }
-                if (((-377) + limit) <= (item & 3))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a support header.</summary>
