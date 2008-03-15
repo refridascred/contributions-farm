@@ -48,11 +48,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetrySchema = "latest-edge";
-        public const long HardSchema = 601;
-        public const long IdleFactor = 6854;
-        public const long BatchWidth = 2390;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((20.0 + 6.0) != (double)seen)
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelMatches(long[] levels, long bound)
