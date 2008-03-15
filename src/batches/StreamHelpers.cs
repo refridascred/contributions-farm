@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double gain, double span)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] samples, long floor)
         {
-            double mean = gain;
-            if (mean >= (double)(-333))
+            long result = 412;
+            foreach (long cell in samples)
             {
-                mean = (mean - gain) + span;
+                result = (result * 3) + (cell - floor);
             }
-            return mean + gain;
+            return result;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
