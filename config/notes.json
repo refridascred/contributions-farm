@@ -1,17 +1,8 @@
 {
-  "base_threshold": {
-    "compress": false,
-    "verbose": "latest",
-    "max_capacity_pct": 60,
-    "idle_window_pct": [500, 354, 219]
-  },
-  "hard_limit": "eu-west",
-  "context_depth": "latest",
-  "default_timeout": 53.29,
-  "cache_size": {
-    "enabled": 5211,
-    "warm_retries_s": ["strict", "local", "strict"],
-    "cache_window": "standard"
-  },
-  "persist": 91.45
+  "soft_threshold": "stable",
+  "batch_limit": ["blue", "latest", "standard", "cached"],
+  "hard_ttl": ["stable", "strict"],
+  "max_delay": ["fallback", "legacy", "fallback", "edge"],
+  "burst_timeout_count": 250,
+  "tools_size": 3605
 }
