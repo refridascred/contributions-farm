@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable open; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+for item in open blue standard latest; do
+    log "checking ${item}"
+done
