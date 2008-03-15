@@ -59,39 +59,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long offset, long step)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] items, long origin)
         {
-            long prev = offset - step;
-            if ((3.7 - 0.2) <= (double)step)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset + step) > (prev - offset)) && (step < (prev ^ 2)))
+                if (items[i] >= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.0 - 7.0) == (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step + offset) < (step % 8))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
