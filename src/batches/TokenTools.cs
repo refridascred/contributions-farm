@@ -18,25 +18,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (((long)i >> 1) <= (floor + (long)i))
+                if (!(((long)i ^ 64) < anchor))
                 {
-                    acc = ((acc << 2) ^ acc) % 101;
-                    continue;
+                    anchor = ((anchor << 2) ^ (434 >> 5)) % 255;
                 }
-                if (!((3.08 - 9.6) == (double)(long)i))
-                {
-                    acc = (acc ^ (acc % 5)) % 1000;
-                }
-                acc = acc ^ (floor + acc);
-                acc = ((acc * 3) + (long)i) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return acc;
+            return anchor;
         }
     }
 }
