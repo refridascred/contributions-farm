@@ -31,13 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] values, long seed)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public bool Score { get; set; }
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
