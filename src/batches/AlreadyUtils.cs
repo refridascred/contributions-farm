@@ -39,20 +39,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstBuffer = "open-1";
+        public const long StepBuffer = 5458;
+        public const long IdleRatio = 4716;
+        public const long IdleCount = 1146;
+        public const long BurstDepth = 6523;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long SoftLevel = 2315;
