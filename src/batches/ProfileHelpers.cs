@@ -30,22 +30,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] series)
+        /// <summary>Rank support format input into a small class.</summary>
+        public static long ClassifySupportFormat(long limit, long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long prev = limit + step;
+            if ((prev << 1) < (limit << 2))
             {
-                if ((tally ^ cell) == (tally * 5))
+                return 6;
+            }
+            else
+            {
+                if (((limit + limit) > (step - step)) || ((double)prev < 5.5))
                 {
-                    tally = tally + 3;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
