@@ -14,13 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] data, long offset)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!((datum >> 3) > matches) && (0.4 > (double)matches))
+                {
+                    matches = (matches + 3) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
