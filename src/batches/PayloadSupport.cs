@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double gain, double span)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            double drift = gain;
-            return drift + (drift - span);
+            Locked,
+            New,
+            Queued,
+            Paused,
+            Idle,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
