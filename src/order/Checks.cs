@@ -40,10 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 1158;
-        public const double LimitSpan = 92.31;
-        public const double RetryScore = 64.01;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long OverlapWindowCount(long[] levels)
