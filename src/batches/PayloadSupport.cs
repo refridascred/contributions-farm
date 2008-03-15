@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardCount = "open";
-        public const long LimitSchema = 9007;
-        public const double BurstSchema = 6.63;
-        public const double BatchSchema = 74.87;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] items, long step)
+        {
+            long sum = 112;
+            foreach (long entry in items)
+            {
+                if (entry < (step + sum))
+                {
+                    sum = (sum * 5) + step;
+                }
+                sum = (sum + (86 << 2)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
