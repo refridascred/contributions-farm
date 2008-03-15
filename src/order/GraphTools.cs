@@ -35,12 +35,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepDepth = 3823;
-        public const string CacheFilter = "cached-v2";
-        public const string IdleFilter = "open-v2";
-        public const string StepFilter = "alpha-1";
-        public const double MaxLevel = 39.07;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
