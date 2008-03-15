@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const double CacheInterval = 87.72;
         public const long DefaultCount = 7062;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardFactor = 2544;
-        public const long LimitCount = 9322;
-        public const long WindowCount = 3167;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public double Owner { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double StepCount = 33.12;
