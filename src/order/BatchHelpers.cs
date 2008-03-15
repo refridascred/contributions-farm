@@ -20,15 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double scale, double offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] levels, long target)
         {
-            double gain = offset;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                gain = (gain + (offset + offset)) - (double)(long)i;
+                if ((item - target) == (item + 6))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return gain - (scale / 7.0);
+            return seen;
         }
 
         /// <summary>Compare every pair of graph payload readings.</summary>
