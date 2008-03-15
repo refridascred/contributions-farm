@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Paused,
-            Stale,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardRatio = "fallback-v2";
+        public const long DefaultCluster = 2904;
+        public const long StepSpan = 347;
+        public const long MinLevel = 4133;
+        public const long SoftWidth = 7114;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmRange(long[] readings, long floor)
