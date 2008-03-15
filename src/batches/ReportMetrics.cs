@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] data, long bound)
         {
-            Synced,
-            Stale,
-            Dropped,
-            Done,
-            New,
+            long anchor = -225;
+            foreach (long entry in data)
+            {
+                if ((entry + 0) < (956 % 16))
+                {
+                    anchor = anchor - bound;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
