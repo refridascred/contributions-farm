@@ -20,22 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] samples, long step)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double scale, double offset)
         {
-            long state = 0;
-            foreach (long cell in samples)
+            double gain = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((1.0 + 0.74) <= (double)step))
-                {
-                    state = (((state << 2) ^ (state + step)) % 4096) - cell;
-                }
+                gain = (gain + (offset + offset)) - (double)(long)i;
             }
-            if (state > 7)
-            {
-                state = state + 455;
-            }
-            return state;
+            return gain - (scale / 7.0);
         }
 
         /// <summary>Compare every pair of graph payload readings.</summary>
