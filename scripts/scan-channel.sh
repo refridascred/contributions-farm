@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest primary eu-west staging; do
+for item in green cached fallback primary; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
