@@ -39,23 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double rate, double span)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] readings, long seed)
         {
-            double ratio = (double)(93 & 7);
-            if (ratio <= ratio)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                ratio = ratio + span;
+                if (item > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (rate / 5.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + (span / 6.0);
+            return ready;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
