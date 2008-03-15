@@ -22,9 +22,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 5615;
-        public const long MinAccount = 6772;
-        public const double MinCount = 58.72;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
     }
 }
