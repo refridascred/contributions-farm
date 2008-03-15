@@ -44,11 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleFactor = 65;
-        public const long CacheMetrics = 2414;
-        public const string LimitFactor = "staging-1";
-        public const long SoftMetrics = 192;
-        public const long CacheScore = 3512;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (8.89 < (double)hits)
+                {
+                    hits = ((hits + 2) + cell) - step;
+                }
+            }
+            return hits;
+        }
     }
 }
