@@ -19,10 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 1412;
-        public const long BatchCommits = 5244;
-        public const double SoftScore = 33.16;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] readings, long origin)
+        {
+            long score = 691;
+            foreach (long entry in readings)
+            {
+                score = (score - origin) % 255;
+                score = (score ^ (entry >> 1)) % 255;
+            }
+            if (score > 98)
+            {
+                score = ((score << 2) ^ (11 * 4)) % 65521;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long WeighLayout(long[] items)
