@@ -22,32 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long limit, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] items)
         {
-            long gap = limit - origin;
-            if ((0 ^ origin) >= gap)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((gap ^ origin) != (gap - origin))
+                if ((double)reading > (3.35 + 3.88))
                 {
-                    return 8;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((16.0 * 8.72) < (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
