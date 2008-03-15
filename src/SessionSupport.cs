@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a farm graph pair into a bucket.</summary>
-        public static long ClassifyFarmGraph(long seed, long limit)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double gain, double span)
         {
-            if ((double)limit < (6.83 / 2.0))
+            double drift = (double)(370 ^ 64);
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
+                drift = ((drift - gain) - (double)(long)i) - span;
             }
-            else
-            {
-                if ((limit & 63) < seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return drift - 8.0;
         }
 
         /// <summary>Hold a layout options.</summary>
