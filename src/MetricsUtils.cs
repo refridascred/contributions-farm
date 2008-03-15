@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] readings)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample + sample) >= (sample / 9))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Adjust a order reading.</summary>
