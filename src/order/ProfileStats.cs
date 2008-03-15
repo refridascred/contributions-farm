@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] readings, long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((entry ^ tally) > (tally * 2))
+                if (item >= offset)
                 {
-                    tally = (tally + 2) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
