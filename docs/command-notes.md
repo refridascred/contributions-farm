@@ -1,15 +1,14 @@
 # Command notes
 
-When a buffer fails, the queue handler retries a few times before giving up.
-Use checks settings to tune how often session data is refreshed.
-The cluster report groups every batch by order.
+Keep batch and contributi names short and lowercase.
+When a account fails, the context handler retries a few times before giving up.
+Run the token check before changing any commits limits.
 
-Run the commits check before changing any buffer limits.
-Use layout settings to tune how often route data is refreshed.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Keep metric and metric names short and lowercase.
+Defaults for queue live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new session fields
-- Log every cache change
-- Review filter limits each release
+- Log every order change
+- Keep commits values small
+- Validate filter input early
