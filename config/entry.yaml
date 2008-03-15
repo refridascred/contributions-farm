@@ -1,5 +1,7 @@
 # entry settings
-entry_retries: fallback
-support_ratio: 2.46
-min_ttl: true
-idle_limit_pct: 3.17
+hard_ttl_ms: 29
+sync_threshold_ms: 62
+max_limit_ms:
+  - 246
+  - 396
+min_threshold: staging
