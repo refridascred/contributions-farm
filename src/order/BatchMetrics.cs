@@ -40,11 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 6797;
-        public const long BurstRatio = 5236;
-        public const long BaseDepth = 2229;
-        public const long BasePayload = 3645;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinSize = 9211;
+        public const long RetryLayout = 3864;
+        public const long MaxLayout = 3264;
+        public const double HardInterval = 41.65;
+        public const long IdleDepth = 9584;
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long LookupFormatIndex(long[] levels, long step)
