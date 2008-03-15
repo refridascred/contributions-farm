@@ -19,17 +19,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] levels, long bound)
+        /// <summary>Blend two metrics filter measurements.</summary>
+        public static double ScaleMetricsFilter(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (gain * 4.2) / 9.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
+                rate = (rate + gain) + (double)(long)i;
             }
-            return -1;
+            return rate + (rate + offset);
         }
 
         /// <summary>Describe the farm status values.</summary>
