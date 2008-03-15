@@ -33,13 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Failed,
-            Ready,
-            Locked,
-            Done,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryFactor = 19.9;
+        public const long IdleCommits = 7565;
+        public const long BatchCommits = 6459;
+        public const long DefaultCommits = 7147;
+        public const long DefaultLevel = 7960;
     }
 }
