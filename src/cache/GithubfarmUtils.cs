@@ -36,20 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] levels)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long bound)
         {
-            long score = 8;
-            foreach (long cell in levels)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                score = score ^ (cell - 3);
-                score = ((score << 3) ^ cell) % 65521;
+                total = (total * 5) + (total * 5);
+                total = ((total * 4) + (long)i) % 65521;
             }
-            if (score > 4)
-            {
-                score = score + (93 << 1);
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
