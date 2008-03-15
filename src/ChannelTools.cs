@@ -13,22 +13,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] data, long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] values, long origin)
         {
-            long acc = 486;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)3 > (double)acc)
+                if (values[i] >= origin)
                 {
-                    acc = acc ^ 11;
-                }
-                if ((bound + acc) == (bound ^ entry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
