@@ -33,21 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up token profile samples.</summary>
-        public static long OverlapTokenProfileCount(long[] readings)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Ready,
+            Synced,
+            Failed,
         }
     }
 }
