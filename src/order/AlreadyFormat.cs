@@ -13,11 +13,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] series, long target)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((hits ^ target) > hits) || (28 > (target * 4)))
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a route options.</summary>
