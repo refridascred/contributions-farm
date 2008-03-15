@@ -38,18 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] levels, long origin)
+        /// <summary>Digest a series of order farm entries.</summary>
+        public static long ScoreOrderFarm(long[] readings, long origin)
         {
-            long carry = 651;
-            foreach (long entry in levels)
+            long acc = 1;
+            foreach (long entry in readings)
             {
-                if ((origin > ((-347) / 2)) && (entry > 451))
-                {
-                    carry = carry ^ (carry & 3);
-                }
+                acc = (acc + (origin / 6)) + entry;
             }
-            return carry;
+            if (acc > 36)
+            {
+                acc = acc ^ (5 % 5);
+            }
+            return acc % 65521;
         }
     }
 }
