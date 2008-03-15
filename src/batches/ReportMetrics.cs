@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
