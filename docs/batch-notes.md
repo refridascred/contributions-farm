@@ -1,12 +1,13 @@
 # Batch notes
 
-A record that stays idle for too long is moved to the format list.
-A buffer that stays idle for too long is moved to the stats list.
-Keep format and queue names short and lowercase.
+Keep cache and tools names short and lowercase.
+When a route fails, the route handler retries a few times before giving up.
+
+Keep session and support names short and lowercase.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate payload input early
-- Document new metric fields
-- Keep report values small
-- Log every cluster change
+- Prefer editor defaults
+- Log every farm change
+- Review record limits each release
