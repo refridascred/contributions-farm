@@ -40,20 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long floor)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double scale, double bias)
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
+            double scale2 = (bias + bias) / 5.0;
+            if (scale2 > (scale - scale2))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    acc = (acc ^ (long)i) ^ (long)i2;
-                    acc = acc ^ (acc ^ floor);
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                scale2 = scale2 + (scale2 * 1.5);
             }
-            return acc;
+            return scale2 + bias;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
