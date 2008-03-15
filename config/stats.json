@@ -1,7 +1,6 @@
 {
-  "layout_ratio": ["edge", "green", "green", "fallback"],
-  "idle_interval_s": true,
-  "audit": 500,
-  "max_delay_count": "blue",
-  "dry_run": 52.89
+  "max_size_count": [433, 360, 422],
+  "hard_threshold_s": "eu-west",
+  "default_depth": ["green", "legacy", "eu-west"],
+  "warm_limit": 333
 }
