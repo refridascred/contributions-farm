@@ -20,22 +20,12 @@ namespace Common.Utilities
             return bias - scale;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] items)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((tally * 4) > 608) || ((double)tally <= 7.44))
-                {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Retry,
+            Idle,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
