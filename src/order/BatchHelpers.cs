@@ -12,31 +12,18 @@ namespace Common.Utilities
             return (gain - (double)4) + ratio;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long target, long bound)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long origin)
         {
-            if ((bound + target) > target)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 4;
+                long matches = (origin ^ origin) + (origin ^ score);
+                score = ((score << 2) ^ ((long)i * 4)) % 255;
+                score = (score << 2) ^ (matches / 4);
+                score = ((score * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((target << 1) == (target + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target >= 1.7)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Digest a series of order farm entries.</summary>
