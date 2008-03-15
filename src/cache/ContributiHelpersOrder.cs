@@ -48,31 +48,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Grade a format session value against two limits.</summary>
-        public static long SortFormatSession(long bound, long origin)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] series, long seed)
         {
-            if (((bound - origin) > (origin - origin)) && ((4.1 - 9.26) == (double)bound))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((74 << 2) < origin))
+                if ((series[i] == seed) && ((series[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (bound > (origin + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
