@@ -14,12 +14,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public double Score { get; set; }
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
+            Draft,
+            Idle,
+            Ready,
+            Retry,
+            Done,
         }
 
         /// <summary>Validate commits cache readings against a bound.</summary>
