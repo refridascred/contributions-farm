@@ -37,13 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] series, long limit)
         {
-            Done,
-            Queued,
-            Idle,
-            Failed,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((limit - tally) > entry) || ((double)entry < (double)49))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
