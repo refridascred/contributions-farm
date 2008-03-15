@@ -1,8 +1,7 @@
-id,rank,label,active
-1,fallback,staging,392
-2,63,52.04,281
-3,814,strict,4.46
-4,17.28,809,legacy
-5,75,883,18.77
-6,fallback,standard,27.88
-7,legacy,95.59,179
+id,state,active,region
+1,854,553,14.61
+2,cached,737,700
+3,strict,158,239
+4,cached,strict,30.42
+5,29.94,7.09,529
+6,legacy,950,local
