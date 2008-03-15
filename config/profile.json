@@ -1,8 +1,14 @@
 {
-  "soft_window_pct": 54.16,
-  "format_delay": "open",
-  "audit": "eu-west",
-  "cache_threshold": "strict",
-  "warm_interval_ms": ["blue", "cached", "legacy"],
-  "flush_depth_count": false
+  "metrics_delay": 3,
+  "strict": "primary",
+  "poll_retries": true,
+  "persist": 250,
+  "retry_retries_pct": {
+    "payload_depth": 500,
+    "burst_size": true,
+    "schema_ratio": 64.47,
+    "farm_ratio": "strict",
+    "strict": 88.44
+  },
+  "retry_limit_pct": "local"
 }
