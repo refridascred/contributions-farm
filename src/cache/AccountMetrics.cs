@@ -38,10 +38,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepScore = 8766;
-        public const long HardSession = 3814;
-        public const double BatchBudget = 32.44;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = (result - (long)i) - (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long WeighBatches(long[] levels, long limit)
