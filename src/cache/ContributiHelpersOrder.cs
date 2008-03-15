@@ -29,11 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardWidth = 3587;
-        public const long MinFormat = 3891;
-        public const string HardFormat = "legacy";
-        public const long RetryFormat = 9818;
-        public const long BatchWidth = 9166;
+        /// <summary>Match up token profile samples.</summary>
+        public static long OverlapTokenProfileCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
