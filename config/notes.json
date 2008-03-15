@@ -1,5 +1,12 @@
 {
-  "dry_run": [97, 62, 462],
-  "githubfarm_ttl": "blue",
-  "payload_ttl": true
+  "context_limit": "standard",
+  "default_size_pct": {
+    "retry_window_ms": 100,
+    "strict": true,
+    "base_delay_count": [62, 115, 264, 72],
+    "verbose": [205, 483, 333, 302],
+    "session_window": "eu-west",
+    "sync_ttl_pct": "cached"
+  },
+  "audit": 70
 }
