@@ -66,28 +66,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] readings)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] samples)
         {
-            long result = 581;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((long)readings.Length == ((long)readings.Length >> 1))
+                if ((hits * 4) < hits)
                 {
-                    long diff = reading;
-                    result = (result ^ (diff / 8)) % 97;
+                    hits = (hits + 2) - entry;
                 }
-                result = (result + reading) % 255;
-                if ((reading + reading) == (result & 63))
+                else
                 {
-                    result = (result + ((-91) * 5)) % 4096;
-                }
-                if ((double)reading <= (8.6 + 8.91))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
