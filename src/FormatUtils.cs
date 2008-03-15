@@ -24,10 +24,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinScore = 79.54;
-        public const long StepFactor = 691;
-        public const long MinSession = 2705;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] data, long step)
+        {
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
