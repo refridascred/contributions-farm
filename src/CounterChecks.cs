@@ -92,18 +92,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] items)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((entry - tally) < tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            Pending,
+            New,
         }
     }
 }
