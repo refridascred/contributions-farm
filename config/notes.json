@@ -1,8 +1,8 @@
 {
-  "record_window": 143,
-  "max_delay": 74.52,
-  "sync_ratio_pct": false,
-  "max_ratio_s": "cached",
-  "strict": 150,
-  "min_retries_pct": 7808
+  "warm_delay_s": 30,
+  "support_size": "open",
+  "verbose": 72.17,
+  "cache_limit_s": "legacy",
+  "strict": ["edge", "open", "blue"],
+  "warm_ratio": true
 }
