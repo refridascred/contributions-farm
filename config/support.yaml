@@ -1,7 +1,28 @@
 # support settings
-poll_capacity:
-  - 191
-  - 316
-dry_run: 4946
-graph_capacity: edge
-enabled: staging
+compress: fallback
+sync_timeout: 5000
+warm_ttl_pct:
+  report_capacity: 7
+  idle_interval_pct: 4583
+  dry_run: cached
+  default_window_s: 54
+default_timeout_s: edge
+soft_delay_count:
+  queue_threshold: false
+  counter_size:
+    batches_timeout: open
+    hard_window_s: false
+    sync_capacity: blue
+    retry_threshold_pct: true
+    persist: stable
+  readonly:
+    - 292
+    - 309
+    - 194
+    - 89
+  max_window_pct: 39.89
+  idle_ratio_pct: false
+  soft_window_ms:
+    - 165
+    - 446
+graph_window: 60
