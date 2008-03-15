@@ -23,13 +23,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public double Owner { get; set; }
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Total { get; set; }
+            public double Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
