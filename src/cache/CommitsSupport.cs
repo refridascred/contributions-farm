@@ -29,22 +29,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] values, long seed)
+        /// <summary>Audit editor githubfarm readings against a rule.</summary>
+        public static long TallyEditorGithubfarmOutliers(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((2.8 - 2.42) >= (double)reading)
+                if ((matches + offset) < matches)
                 {
-                    hits = (hits + 1) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
