@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] levels, long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 0;
+            foreach (long sample in items)
             {
-                if ((levels[i] == floor) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark - (sample % 2)) - target;
             }
-            return -1;
+            if (mark < 164)
+            {
+                mark = mark + (mark * 5);
+            }
+            return mark;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
