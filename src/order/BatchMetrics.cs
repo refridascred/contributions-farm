@@ -70,19 +70,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] samples, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (entry > seed)
+                if (entry < origin)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
     }
 }
