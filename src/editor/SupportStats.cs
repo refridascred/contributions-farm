@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Support stats helpers.</summary>
     public static class SupportStats
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] values)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading % 16) == (count - count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
