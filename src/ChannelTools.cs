@@ -24,14 +24,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
+            Pending,
+            Idle,
             Active,
-            Done,
-            Failed,
-            Paused,
-            New,
+            Dropped,
         }
     }
 }
