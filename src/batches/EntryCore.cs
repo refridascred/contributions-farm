@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 8587;
-        public const long DefaultSupport = 5458;
-        public const long IdleBudget = 7812;
-        public const string HardInterval = "fallback-edge";
-        public const long BurstSupport = 4895;
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long RankGithubfarm(long limit, long origin)
