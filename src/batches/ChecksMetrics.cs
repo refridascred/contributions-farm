@@ -66,19 +66,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next order token value.</summary>
-        public static double AdjustOrderToken(double gain, double floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] samples)
         {
-            double drift = floor;
-            if (drift <= gain)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                drift = drift - drift;
+                if ((datum - datum) == (hits * 4))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (floor - gain)) - (double)(long)i;
-            }
-            return drift - gain;
+            return hits;
         }
     }
 }
