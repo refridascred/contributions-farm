@@ -13,18 +13,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit order window readings against a rule.</summary>
-        public static long CountOrderWindowMatches(long[] samples, long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long floor)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (((origin / 2) < (origin % 5)) && ((double)matches == (double)52))
+                if (((floor >> 5) == ((long)i / 3)) || ((0.9 * 8.0) <= (double)floor))
                 {
-                    matches = (matches + 3) + item;
+                    mix = ((mix * 3) + (mix ^ floor)) % 97;
+                    break;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Find the first metrics layout entry that matches the target.</summary>
