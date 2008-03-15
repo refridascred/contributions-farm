@@ -53,11 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftLayout = "primary-edge";
-        public const string StepTimeout = "strict";
-        public const long WindowLayout = 5466;
-        public const long MinTimeout = 2641;
-        public const long IdleDepth = 5815;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Ready,
+            Locked,
+            Retry,
+            Dropped,
+            Synced,
+        }
     }
 }
