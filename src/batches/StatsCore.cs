@@ -20,12 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryLayout = 62.95;
-        public const string HardDepth = "legacy-1";
-        public const string IdleLayout = "standard-1";
-        public const long IdleSpan = 278;
-        public const long HardLayout = 9348;
+        /// <summary>Count token notes pairs that satisfy a relation.</summary>
+        public static long OverlapTokenNotesCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long SeekBatchesIndex(long[] items, long seed)
