@@ -42,16 +42,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long bound, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 23; i++)
+            long cur = bound + step;
+            if ((cur + step) >= (cur << 3))
             {
-                carry = ((carry * 2) + (bound << 2)) % 255;
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((cur >> 5) != (step ^ cur))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step >> 2) != (47 + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)bound >= (double)cur)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
