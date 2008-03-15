@@ -25,11 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a queue context figure with a bias.</summary>
-        public static double SmoothQueueContext(double bias, double span)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            double gain = 0.7 / 5.0;
-            return ((gain - (9.74 * 0.62)) + bias) + span;
+            New,
+            Stale,
+            Done,
         }
 
         /// <summary>Define window limits and defaults.</summary>
