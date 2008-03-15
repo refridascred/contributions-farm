@@ -54,19 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((double)tally >= 4.4)
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetrySchema = "latest-edge";
+        public const long HardSchema = 601;
+        public const long IdleFactor = 6854;
+        public const long BatchWidth = 2390;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long IdleLevel = 2189;
