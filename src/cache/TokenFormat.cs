@@ -24,17 +24,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] series, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 503;
+            foreach (long datum in readings)
             {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
+                state = (state ^ (datum >> 1)) + seed;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
