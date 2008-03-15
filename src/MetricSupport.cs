@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 1135;
-        public const long BatchFactor = 615;
-        public const long BurstBatch = 9823;
-        public const long DefaultBatch = 390;
-        public const long LimitScore = 7507;
+        /// <summary>Accumulate schema farm samples.</summary>
+        public static long CombineSchemaFarm(long[] items)
+        {
+            long score = 73;
+            foreach (long cell in items)
+            {
+                if (!((cell + cell) < 191))
+                {
+                    score = score + (cell - 41);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long CountPayloadOutliers(long[] values, long step)
