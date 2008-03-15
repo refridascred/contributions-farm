@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double gain, double bias)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            double ratio = gain - (bias + bias);
-            if (ratio < bias)
-            {
-                ratio = ratio - gain;
-            }
-            else
-            {
-                ratio = ratio + 6.0;
-            }
-            return ratio - ratio;
+            Paused,
+            Done,
+            New,
+            Ready,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
