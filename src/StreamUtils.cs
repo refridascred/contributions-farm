@@ -40,18 +40,19 @@ namespace Common.Utilities
         public const double CacheWidth = 97.27;
         public const long BaseOrder = 325;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] series, long floor)
+        /// <summary>Validate tools queue readings against a bound.</summary>
+        public static bool VerifyToolsQueueBounds(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((tally ^ tally) == (floor + tally))
+                if (sample < limit)
                 {
-                    tally = (tally + 3) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define report limits and defaults.</summary>
