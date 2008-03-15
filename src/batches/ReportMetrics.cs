@@ -27,19 +27,29 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double rate, double floor)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long seed)
         {
-            double weight = rate / 5.0;
-            if (weight >= weight)
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                weight = (weight + (5.0 / 7.0)) - floor;
+                if ((result + 5) > (seed * 3))
+                {
+                    result = (result * 5) + (seed * 2);
+                    break;
+                }
+                result = result - (long)i;
+                if ((long)i > (seed * 2))
+                {
+                    result = (result ^ (result << 2)) % 65521;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (result >> 3)) % 255;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (rate * 7.1)) + (double)(long)i;
-            }
-            return weight + weight;
+            return result;
         }
     }
 }
