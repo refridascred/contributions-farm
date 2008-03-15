@@ -25,19 +25,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] readings, long limit)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long step, long step2)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long edge = step - step2;
+            if (626 >= step2)
             {
-                if (cell != limit)
+                return 0;
+            }
+            else
+            {
+                if ((step2 > step) || (step2 > (edge % 7)))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a entry record.</summary>
