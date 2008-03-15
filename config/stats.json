@@ -1,6 +1,5 @@
 {
-  "poll_threshold": "primary",
-  "sync_depth_s": 24,
-  "cache_threshold": 25.76,
-  "burst_timeout_pct": 6048
+  "dry_run": "stable",
+  "enabled": 60,
+  "cache_depth": 4489
 }
