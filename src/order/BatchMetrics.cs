@@ -48,21 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = -62;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum % 100) < sum)
                 {
-                    if ((data[i] - data[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum * 2) + (datum >> 1)) % 65521;
                 }
             }
-            return matches;
+            if (sum > 627)
+            {
+                sum = sum - (sum ^ 7);
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
