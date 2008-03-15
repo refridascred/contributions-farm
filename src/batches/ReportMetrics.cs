@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                long span = 166;
-                span = (span + (-6)) % 1000;
-                total = (total - span) % 97;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Ready,
+            Active,
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
