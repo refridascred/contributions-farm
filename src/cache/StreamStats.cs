@@ -19,19 +19,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every editor cluster entry stays within the limit.</summary>
-        public static bool CheckEditorClusterLimits(long[] values, long seed)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading > seed)
+                if (levels[i] >= bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the farm status values.</summary>
