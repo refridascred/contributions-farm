@@ -1,8 +1,12 @@
 # entry settings
-dry_run:
-  - 416
-  - 345
-  - 347
-  - 487
-stream_window: 3918
-flush_limit_count: true
+soft_threshold: 21
+min_limit: standard
+enabled: stable
+command_threshold: 1.86
+strict:
+  payload_threshold: eu-west
+  sync_delay_count: 4448
+  notes_depth: standard
+  strict: blue
+  route_delay: blue
+max_ttl: 23
