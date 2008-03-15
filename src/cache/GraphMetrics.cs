@@ -16,23 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next githubfarm checks value.</summary>
-        public static double ScaleGithubfarmChecks(double weight, double bias)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double gain = bias;
-            if (gain <= gain)
-            {
-                gain = (gain + 1.3) - weight;
-            }
-            else
-            {
-                gain = gain - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + bias) - (double)(long)i;
-            }
-            return gain - 1.6;
+            Closed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
