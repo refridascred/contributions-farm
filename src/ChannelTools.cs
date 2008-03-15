@@ -18,12 +18,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardTimeout = 2771;
+        public const long IdleBatch = 4515;
+        public const double SoftBatch = 22.28;
     }
 }
