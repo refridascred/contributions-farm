@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long bound, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long step = bound - origin;
+            if (origin > (step + step))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((816 / 9) == (bound / 2)) && ((bound << 2) < (bound % 60)))
                 {
-                    if ((samples[i] + samples[j]) == 12)
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin >> 3) <= (step + origin)))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank order farm input into a small class.</summary>
