@@ -48,15 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long step)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double gain, double offset)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            double load = (1.96 / 7.0) - 7.0;
+            if (load >= (load * 2.0))
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                load = load - (gain + offset);
             }
-            return mix;
+            return load - (offset / 7.0);
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
