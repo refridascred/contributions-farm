@@ -16,15 +16,23 @@ namespace Common.Utilities
             return rate - (rate / 2.0);
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] series, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] items, long step)
         {
-            long state = -4;
-            foreach (long entry in series)
+            long result = 603;
+            foreach (long reading in items)
             {
-                state = (state + (entry / 3)) + bound;
+                result = ((result * 3) + (reading + result)) % 65521;
+                if (((550 + result) > ((-3) << 2)) || (result >= (result / 7)))
+                {
+                    result = (result - step) % 4096;
+                }
+                else
+                {
+                    result = (result - (reading + step)) % 4096;
+                }
             }
-            return state;
+            return result;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
