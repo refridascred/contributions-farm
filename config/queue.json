@@ -1,5 +1,7 @@
 {
-  "batch_delay": false,
-  "retry_interval_count": [196, 178, 49, 221],
-  "max_ttl_count": "local"
+  "githubfarm_capacity": 45,
+  "warm_delay": 47.1,
+  "burst_ttl_pct": "cached",
+  "sync_ttl": 86,
+  "order_window": "green"
 }
