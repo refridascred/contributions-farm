@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] levels, long seed)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long bound, long step)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if (step > (bound + bound))
             {
-                if ((datum <= seed) || (((seed << 3) > (hits << 1)) || ((seed / 8) > (518 ^ hits))))
+                return 0;
+            }
+            else
+            {
+                if ((step + bound) <= bound)
                 {
-                    hits = hits + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (step >= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many queue stream samples are out of range.</summary>
