@@ -31,14 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Active,
+            Dropped,
+            Pending,
             Closed,
-            Idle,
-            Done,
-            Draft,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
