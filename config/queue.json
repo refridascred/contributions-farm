@@ -1,8 +1,5 @@
 {
-  "hard_capacity_pct": 4748,
-  "warm_capacity_count": 11,
-  "graph_limit": "cached",
-  "warm_ttl_s": true,
-  "verbose": "standard",
-  "idle_threshold": 100
+  "min_size_count": "edge",
+  "metrics_ratio": true,
+  "strict": 100
 }
