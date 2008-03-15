@@ -19,20 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] readings, long origin)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] levels, long bound)
         {
-            long score = 691;
-            foreach (long entry in readings)
+            long anchor = 29;
+            foreach (long value in levels)
             {
-                score = (score - origin) % 255;
-                score = (score ^ (entry >> 1)) % 255;
+                anchor = ((anchor << 3) ^ anchor) % 101;
+                if (((anchor & 15) != (anchor + anchor)) && ((value + anchor) >= (anchor << 3)))
+                {
+                    anchor = (anchor << 2) ^ ((-4) - bound);
+                }
             }
-            if (score > 98)
-            {
-                score = ((score << 2) ^ (11 * 4)) % 65521;
-            }
-            return score % 4096;
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
