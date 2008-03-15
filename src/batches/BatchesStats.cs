@@ -44,19 +44,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] samples, long floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
