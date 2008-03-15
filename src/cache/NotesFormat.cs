@@ -13,19 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate order route readings against a bound.</summary>
-        public static bool VerifyOrderRouteBounds(long[] items, long step)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
