@@ -46,19 +46,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] samples, long floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long sum = 65;
+            foreach (long datum in values)
             {
-                if (datum < floor)
+                if ((datum << 2) <= datum)
                 {
-                    stale = false;
-                    break;
+                    sum = (sum ^ (datum * 3)) % 97;
                 }
+                sum = (sum + (sum * 5)) % 101;
             }
-            return stale;
+            return sum % 1000;
         }
     }
 }
