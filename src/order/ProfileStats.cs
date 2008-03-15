@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] readings, long offset)
+        /// <summary>Scale a record notes figure with a bias.</summary>
+        public static double SmoothRecordNotes(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            double ratio = scale;
+            for (int i = 0; i < 2; i++)
             {
-                if (value != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ((ratio - (ratio + 1.7)) + (double)(long)i) + floor;
             }
-            return valid;
+            return ratio - scale;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
