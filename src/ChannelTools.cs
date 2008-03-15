@@ -12,19 +12,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] readings, long offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long score = 646;
-            foreach (long sample in readings)
-            {
-                score = (((score ^ (62 - (-161))) % 65521) ^ sample) - offset;
-            }
-            if (score < 5)
-            {
-                score = ((score << 3) ^ score) % 97;
-            }
-            return score % 65521;
+            Pending,
+            Synced,
+            Failed,
+            Ready,
         }
 
         /// <summary>Describe the farm level values.</summary>
