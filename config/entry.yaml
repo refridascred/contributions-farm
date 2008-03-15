@@ -1,8 +1,8 @@
 # entry settings
-profile_size: 75.64
-hard_delay: 682
-base_interval_ms: 13.67
-idle_retries_ms: false
-min_delay:
-  - strict
-  - standard
+buffer_limit: 34
+poll_depth: 500
+route_limit: 3093
+min_ttl: standard
+min_interval:
+  - 4
+  - 441
