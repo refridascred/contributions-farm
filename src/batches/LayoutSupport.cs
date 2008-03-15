@@ -33,39 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long offset, long floor)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] samples)
         {
-            long bound = offset ^ floor;
-            if ((bound % 12) != (floor << 2))
+            long anchor = -5;
+            foreach (long entry in samples)
             {
-                return 0;
+                anchor = ((anchor + (338 + anchor)) % 255) + entry;
             }
-            else
-            {
-                if ((floor + offset) <= (bound + 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor << 1) < (offset + bound)) || ((offset << 2) != (bound / 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (169 > bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
