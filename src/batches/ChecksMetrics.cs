@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstBatch = 77.3;
-        public const string BaseSize = "alpha";
-        public const double MaxFactor = 64.06;
-        public const long WindowBatch = 7139;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
