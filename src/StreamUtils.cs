@@ -30,13 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Check that every channel payload entry stays within the limit.</summary>
+        public static bool ValidateChannelPayloadRange(long[] levels, long offset)
         {
-            Failed,
-            Draft,
-            Queued,
-            Done,
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
