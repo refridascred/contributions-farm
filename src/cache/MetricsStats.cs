@@ -55,22 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] series)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] series)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long total = 903;
+            foreach (long entry in series)
             {
-                if ((73 > (value % 3)) && (((double)value >= (5.59 / 9.0)) && ((15.0 + 4.0) != (double)seen)))
+                if ((entry * 2) <= entry)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = (total + 148) % 97;
                 }
             }
-            return seen;
+            return total;
         }
     }
 }
