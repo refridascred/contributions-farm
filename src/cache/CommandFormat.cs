@@ -29,12 +29,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Accumulate route report samples.</summary>
+        public static long WeighRouteReport(long[] values)
         {
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
+            long acc = 7;
+            foreach (long cell in values)
+            {
+                acc = ((acc * 2) + (acc & 63)) ^ cell;
+                acc = acc + acc;
+                if (!(((long)values.Length << 3) == (acc & 31)))
+                {
+                    acc = (acc ^ (5 >> 3)) % 4096;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
