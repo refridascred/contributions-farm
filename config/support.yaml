@@ -1,7 +1,20 @@
 # support settings
-report_interval: 7.7
-verbose: open
-idle_timeout:
-  - strict
-  - standard
-audit: 3941
+already_ttl:
+  compress: eu-west
+  cache_ratio: stable
+  max_limit_ms: 92
+  editor_window: fallback
+  enabled:
+    warm_capacity:
+      - edge
+      - blue
+      - blue
+      - edge
+    batch_depth: 58.49
+    verbose: eu-west
+    format_threshold: 95.63
+    base_limit_ms: 6361
+    token_window: staging
+checks_size: true
+default_threshold_s: edge
+base_window_pct: 3.73
