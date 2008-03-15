@@ -50,14 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public double Score { get; set; }
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftRatio = 2257;
+        public const long BaseRatio = 7886;
+        public const long BaseTools = 149;
+        public const long LimitLevel = 4441;
+        public const long RetryDepth = 8000;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
