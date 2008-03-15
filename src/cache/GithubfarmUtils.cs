@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MinLevel = "stable-v2";
-        public const long BaseMetrics = 5851;
-        public const double HardLevel = 74.34;
-        public const long IdleSpan = 2779;
-        public const double BurstMetrics = 67.68;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryInterval = 6325;
+        public const long WindowAlready = 8652;
+        public const long SoftWidth = 9027;
+        public const long LimitAlready = 864;
+        public const long IdleLevel = 7823;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long StepGraph(long bound)
