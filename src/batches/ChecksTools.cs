@@ -29,18 +29,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the buffer command entries that pass the check.</summary>
-        public static long TallyBufferCommandOutliers(long[] data)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((double)tally <= (1.0 + 7.0))
+                if ((double)sample >= (13.0 * 20.0))
                 {
-                    tally = (tally + 1) - cell;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
