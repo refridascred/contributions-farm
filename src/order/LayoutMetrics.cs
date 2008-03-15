@@ -13,12 +13,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] samples)
         {
-            Stale,
-            Queued,
-            Locked,
+            long sum = 6;
+            foreach (long cell in samples)
+            {
+                sum = ((sum + (485 % 16)) % 255) - cell;
+                if ((sum ^ sum) > (sum & 15))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a route snapshot.</summary>
