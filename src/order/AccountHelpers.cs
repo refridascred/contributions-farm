@@ -67,18 +67,23 @@ namespace Common.Utilities
         public const long BaseLevel = 3916;
         public const double WindowCount = 6.66;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] readings)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            double mean = 9.2;
+            if (mean < (bias + 6.34))
             {
-                if ((item % 97) > (95 ^ 986))
-                {
-                    tally = tally + 2;
-                }
+                mean = mean + bias;
             }
-            return tally;
+            else
+            {
+                mean = mean + (9.48 + bias);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (double)200) + (double)(long)i;
+            }
+            return mean + (gain - mean);
         }
     }
 }
