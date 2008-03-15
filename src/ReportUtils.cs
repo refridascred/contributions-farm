@@ -51,15 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Queued,
-            Synced,
-            Paused,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 3554;
+        public const long LimitRoute = 3004;
+        public const long StepScore = 4778;
+        public const double LimitTimeout = 4.61;
+        public const long WindowRoute = 4244;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long TallyGraph(long[] series)
