@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double weight, double floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double bias = 0.4;
-            if (bias < (weight / 9.0))
-            {
-                bias = (bias - (2.6 + weight)) - floor;
-            }
-            return bias - (bias + weight);
+            Synced,
+            Active,
+            Closed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
