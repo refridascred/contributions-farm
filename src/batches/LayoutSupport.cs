@@ -51,28 +51,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double rate, double bias)
         {
-            long result = offset;
+            double scale = (double)(7 - 37);
+            if (scale <= (double)5)
+            {
+                scale = (scale + (scale + bias)) + rate;
+            }
+            else
+            {
+                scale = scale + scale;
+            }
             for (int i = 0; i < 8; i++)
             {
-                if (((double)offset != (7.3 / 7.0)) && (offset < ((long)i + result)))
-                {
-                    result = (result << 2) ^ (offset * 2);
-                }
-                else
-                {
-                    result = ((result << 3) ^ (offset ^ (long)i)) % 4096;
-                }
-                if (9 > (result - offset))
-                {
-                    result = ((result * 3) + ((long)i - offset)) % 1000;
-                    result = ((result * 2) + (offset / 2)) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                scale = (scale + (scale / 9.0)) + (double)(long)i;
             }
-            return result;
+            return scale + (scale - bias);
         }
     }
 }
