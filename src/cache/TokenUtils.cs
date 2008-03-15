@@ -19,19 +19,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] data, long offset)
+        /// <summary>Audit payload account readings against a rule.</summary>
+        public static long TallyPayloadAccountOutliers(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (item != offset)
+                if (730 <= target)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the metrics state values.</summary>
