@@ -76,18 +76,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many filter metrics samples are out of range.</summary>
-        public static long AuditFilterMetricsOutliers(long[] series, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((bound - datum) <= ((-14) << 1))
+                if ((floor & 31) != (floor + floor))
                 {
-                    tally = tally + 2;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
