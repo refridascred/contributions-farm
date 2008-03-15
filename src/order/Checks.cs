@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long seed, long seed2)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] readings, long origin)
         {
-            long next = seed - seed2;
-            if (((double)next > (9.2 * 4.57)) || ((double)3 < (double)next))
+            long sum = 90;
+            foreach (long value in readings)
             {
-                return 7;
+                sum = (((sum - (72 & 255)) % 101) ^ value) - origin;
             }
-            else
+            if (sum < 747)
             {
-                if (((next / 8) == (seed2 + 52)) && ((seed + next) < (seed2 - seed2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (674 > (next - next))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed > (seed2 << 3)) && ((5.0 / 8.0) < (double)next))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                sum = ((sum << 2) ^ (sum - sum)) % 1000;
             }
+            return sum % 97;
         }
 
         /// <summary>Hold a command stats.</summary>
