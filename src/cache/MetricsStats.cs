@@ -20,11 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            Ready,
+            Paused,
+            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
