@@ -25,30 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches channel values into a single score.</summary>
-        public static long CombineBatchesChannel(long[] items, long step)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long anchor = 57;
-            foreach (long entry in items)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    anchor = ((anchor << 3) ^ (entry + step)) ^ (long)i2;
-                }
-                if ((anchor % 7) <= entry)
-                {
-                    anchor = anchor + (anchor + entry);
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor * 3)) % 101;
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = (anchor - anchor) % 4096;
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
