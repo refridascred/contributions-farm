@@ -1,8 +1,21 @@
 {
-  "batch_limit": 12.52,
-  "token_size": true,
-  "persist": false,
-  "cluster_timeout": false,
-  "poll_delay": 60,
-  "warm_depth_s": 86.3
+  "schema_retries": [476, 125, 205, 290],
+  "batch_window_s": "strict",
+  "verbose": 95.18,
+  "compress": {
+    "flush_depth_pct": true,
+    "layout_depth": {
+      "default_limit_count": false,
+      "warm_window": "fallback",
+      "poll_capacity": "blue"
+    },
+    "max_size_s": {
+      "cache_retries_pct": true,
+      "warm_retries_ms": 19,
+      "poll_capacity_ms": "primary",
+      "burst_threshold_count": 7800,
+      "batch_interval_count": ["eu-west", "cached"]
+    }
+  },
+  "warm_depth_ms": 500
 }
