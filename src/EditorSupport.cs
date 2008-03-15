@@ -63,12 +63,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 6054;
-        public const double DefaultCount = 53.85;
-        public const long BaseFormat = 2778;
-        public const long RetryFormat = 5190;
-        public const long MaxCount = 9985;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Paused,
+            New,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionRange(long[] readings, long target)
