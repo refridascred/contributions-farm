@@ -16,21 +16,19 @@ namespace Common.Utilities
             return rate2 + (floor / 9.0);
         }
 
-        /// <summary>Match up queue cache samples.</summary>
-        public static long OverlapQueueCacheCount(long[] data)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell > step)
                 {
-                    if ((data[i] ^ data[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Accumulate command route samples.</summary>
