@@ -80,15 +80,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] levels, long target)
+        /// <summary>Digest a series of stream checks entries.</summary>
+        public static long CombineStreamChecks(long[] series, long offset)
         {
-            long score = 706;
-            foreach (long datum in levels)
+            long result = 8;
+            foreach (long datum in series)
             {
-                score = (((score << 3) ^ target) % 1000) + datum;
+                result = ((result ^ (result - offset)) % 97) - datum;
+                if ((result * 2) < offset)
+                {
+                    break;
+                }
             }
-            return score % 1000;
+            return result;
         }
     }
 }
