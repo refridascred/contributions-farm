@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] readings, long limit)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            long anchor = 40;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (entry + limit)) % 101;
-                if (anchor < (anchor % 12))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor * 3) + anchor) % 4096;
-                }
-                else
-                {
-                    anchor = anchor - (anchor % 10);
+                    if ((items[i] - items[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor > 110)
-            {
-                anchor = (anchor + anchor) % 97;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Count the account batch entries that pass the check.</summary>
