@@ -22,18 +22,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] readings, long seed)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)readings.Length + seed) <= (sample / 8))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((samples[i] ^ samples[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Match up token samples.</summary>
