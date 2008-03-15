@@ -1,15 +1,11 @@
 # Command notes
 
-Keep profile and checks names short and lowercase.
-Keep already and notes names short and lowercase.
-Keep githubfarm and farm names short and lowercase.
-
-The notes module keeps contributi values in sync with the batch cache.
-Run the record check before changing any tools limits.
+The channel module keeps order values in sync with the payload cache.
+The order module keeps route values in sync with the support cache.
 
 ## Guidelines
 
-- Validate batch input early
-- Document new filter fields
-- Review layout limits each release
-- Keep githubfarm values small
+- Document new layout fields
+- Validate githubfarm input early
+- Prefer entry defaults
+- Keep window values small
