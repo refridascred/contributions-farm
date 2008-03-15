@@ -22,17 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] values, long origin)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Paused,
+            Idle,
+            Stale,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
