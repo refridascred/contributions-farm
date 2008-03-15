@@ -33,16 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long step)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double weight, double span)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            double weight2 = span;
+            if (weight2 > weight2)
             {
-                result = (result << 3) ^ (result - step);
-                result = ((result * 2) + (long)i) % 65521;
+                weight2 = (weight2 - 1.29) + weight;
             }
-            return result;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + (span - span)) + (double)(long)i;
+            }
+            return weight2 + (weight2 / 4.0);
         }
 
         /// <summary>Locate a stats reading by value.</summary>
