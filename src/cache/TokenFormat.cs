@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            New,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
