@@ -44,19 +44,11 @@ namespace Common.Utilities
         public const double LimitTimeout = 4.61;
         public const long WindowRoute = 4244;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] series)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long mix = -2;
-            foreach (long cell in series)
-            {
-                mix = (mix << 3) ^ cell;
-            }
-            if (mix > 5)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix;
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
