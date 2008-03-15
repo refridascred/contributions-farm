@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
+            New,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
