@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] items)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long carry = 37;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    carry = ((carry << 3) ^ ((long)i & 15)) + item;
-                }
-                carry = (carry * 5) + carry;
-            }
-            return carry % 65521;
+            public double Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
