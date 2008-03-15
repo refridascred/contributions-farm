@@ -1,11 +1,7 @@
 {
-  "verbose": 60,
-  "cache_capacity_pct": 38.82,
-  "schema_window": "staging",
-  "idle_size_s": {
-    "tools_interval": 250,
-    "buffer_interval": 500,
-    "schema_ratio": 23.51
-  },
-  "sync_ttl_ms": "blue"
+  "githubfarm_delay": 100,
+  "default_timeout": 76.76,
+  "base_depth": 79.37,
+  "warm_ttl_ms": false,
+  "githubfarm_depth": false
 }
