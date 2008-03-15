@@ -1,5 +1,12 @@
 # support settings
-cache_ratio: edge
-readonly: 2.94
-strict: 23.08
-token_threshold: 51.13
+order_ttl: 1750
+sync_interval_pct:
+  - cached
+  - staging
+  - stable
+  - green
+cache_limit_ms: local
+cluster_retries: true
+poll_window:
+  - 170
+  - 437
