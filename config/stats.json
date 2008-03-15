@@ -1,12 +1,7 @@
 {
-  "verbose": ["green", "staging"],
-  "max_timeout": "standard",
-  "sync_threshold_pct": {
-    "flush_delay": true,
-    "poll_threshold_s": true,
-    "default_delay_pct": 91.37,
-    "audit": 100
-  },
-  "burst_window": "open",
-  "max_delay_ms": ["blue", "edge", "local", "local"]
+  "support_timeout": "fallback",
+  "counter_timeout": "latest",
+  "warm_ttl_pct": 4055,
+  "audit": "standard",
+  "base_ttl": false
 }
