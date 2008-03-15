@@ -34,19 +34,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long seed)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long floor, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            if (((floor + target) != (floor + floor)) || ((83 % 3) == (target ^ floor)))
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = ((state << 2) ^ (seed + 5)) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 97;
+                return 5;
             }
-            return state;
+            else
+            {
+                if (((floor + floor) <= (target >> 1)) || ((target << 2) > target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
