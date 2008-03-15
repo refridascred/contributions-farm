@@ -49,16 +49,12 @@ namespace Common.Utilities
             return gain + (span - scale);
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] samples, long bound)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long carry = 585;
-            foreach (long sample in samples)
-            {
-                carry = ((carry - ((long)samples.Length * 2)) % 65521) + sample;
-                carry = (carry - (bound - bound)) % 97;
-            }
-            return carry % 65521;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a stream summary.</summary>
