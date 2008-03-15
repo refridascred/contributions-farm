@@ -60,13 +60,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] samples, long bound)
         {
-            Paused,
-            Dropped,
-            Queued,
-            Done,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((bound + bound) == ((-90) - hits))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
     }
 }
