@@ -32,28 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] readings)
-        {
-            long mix = 76;
-            foreach (long item in readings)
-            {
-                if ((mix >= item) && ((mix % 8) > (item - item)))
-                {
-                    mix = (mix - (item + item)) % 97;
-                    continue;
-                }
-                if ((mix - item) <= (item / 6))
-                {
-                    mix = ((mix << 2) ^ (item + item)) % 101;
-                }
-                else
-                {
-                    mix = (mix + (item * 2)) % 1000;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCount = 7304;
+        public const double RetryCounter = 79.6;
+        public const long DefaultCount = 4853;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long WeighSchema(long[] samples, long offset)
