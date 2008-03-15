@@ -1,16 +1,10 @@
 # githubfarm settings
-cache_interval_ms:
-  - 10
-  - 152
-idle_depth: 8321
-hard_delay_s:
-  - edge
-  - eu-west
-  - stable
-max_delay_ms: false
-base_ratio_count:
-  - 3
-  - 66
-  - 306
-  - 249
-strict: legacy
+batch_ratio_count: local
+max_interval:
+  - 166
+  - 219
+  - 460
+enabled: 62.67
+stream_interval: true
+cluster_depth: 500
+min_limit_pct: 7.98
