@@ -33,32 +33,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a payload schema value against two limits.</summary>
-        public static long ClassifyPayloadSchema(long step, long origin)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] data)
         {
-            long slot = step - origin;
-            if ((step / 9) != (step + origin))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step >> 5) <= (slot % 97))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)step < (double)slot) || ((5.97 / 2.0) < (double)step))
+                    if ((data[i] - data[j]) != 18)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
