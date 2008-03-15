@@ -1,17 +1,15 @@
 # githubfarm settings
-flush_ttl_pct:
-  sync_window_s: 7117
-  max_threshold_pct:
-    enabled:
-      - 283
-      - 101
-    strict: latest
-    max_limit_s: 2522
-    dry_run: 250
-    idle_capacity_ms: 25
-    burst_size_ms: 1984
-  compress: 500
-  retry_interval: 15
-hard_interval: stable
-order_threshold: fallback
-max_depth: false
+channel_ttl: legacy
+flush_capacity_s:
+  report_ratio:
+    - eu-west
+    - latest
+  checks_depth:
+    - 160
+    - 60
+  strict: 98
+  soft_size_ms: 61
+max_size: stable
+retry_capacity_ms: blue
+batch_delay_s: true
+soft_capacity_ms: 5668
