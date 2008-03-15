@@ -67,18 +67,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] series, long floor)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((count + cell) < cell)
-                {
-                    count = (count + 3) - floor;
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the command phase values.</summary>
