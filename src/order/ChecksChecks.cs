@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a tools checks counter forward.</summary>
-        public static long SeriesToolsChecks(long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] series)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((437 ^ seed) > (seed & 31))
+                if ((matches >> 4) >= 1)
                 {
-                    state = (state + seed) % 97;
+                    matches = (matches + 3) + item;
                 }
-                state = ((state * 2) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
