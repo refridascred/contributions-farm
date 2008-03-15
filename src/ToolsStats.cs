@@ -20,17 +20,15 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] values, long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((values[i] >= origin) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Project the next checks value.</summary>
