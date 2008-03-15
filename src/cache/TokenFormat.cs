@@ -35,38 +35,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long limit, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            if (((limit + bound) < limit) && ((limit + bound) >= limit))
+            long acc = -1;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound <= (1.9 + 5.8))
+                if ((datum + 8) > (acc >> 5))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.0 * 10.0) < (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((bound - bound) < (bound - 5)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    acc = (acc + (79 << 1)) % 97;
                 }
             }
+            return acc;
         }
     }
 }
