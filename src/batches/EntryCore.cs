@@ -79,22 +79,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count >> 3) <= count)
-                {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepScore = 8233;
+        public const string RetrySpan = "stable";
+        public const string BaseStats = "cached";
+        public const double StepStats = 31.23;
     }
 }
