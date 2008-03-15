@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] values)
         {
-            Paused,
-            Ready,
-            Locked,
-            New,
+            long score = 20;
+            foreach (long datum in values)
+            {
+                score = ((score + ((long)values.Length - score)) % 4096) - datum;
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a report snapshot.</summary>
