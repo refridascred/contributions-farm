@@ -1,4 +1,9 @@
 # support settings
-sync_threshold: true
-default_depth_s: 43
-profile_depth: 75.52
+max_depth_pct: 29.94
+poll_depth: true
+idle_depth: true
+sync_window_ms:
+  - 129
+  - 54
+  - 207
+  - 97
