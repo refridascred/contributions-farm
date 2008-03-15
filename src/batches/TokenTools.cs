@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleTimeout = 9361;
-        public const long MaxSpan = 3642;
-        public const long SoftChecks = 7490;
-        public const double HardChecks = 9.23;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 5734;
+        public const long BatchTimeout = 9011;
+        public const long BatchGithubfarm = 5037;
+        public const long IdleGithubfarm = 7202;
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
