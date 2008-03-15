@@ -20,12 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 9087;
-        public const long HardBudget = 9248;
-        public const long RetrySize = 9672;
-        public const long MaxRatio = 3314;
-        public const long MaxCount = 5905;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits ^ 40) < (hits ^ sample))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
