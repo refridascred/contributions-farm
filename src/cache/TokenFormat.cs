@@ -19,17 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] data, long bound)
+        /// <summary>Combine context metrics values into a single score.</summary>
+        public static long CombineContextMetrics(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 50;
+            foreach (long cell in samples)
             {
-                if (data[i] == bound)
+                mix = (mix - cell) % 65521;
+                mix = (mix + (mix + cell)) % 4096;
+                if (!((double)cell <= (14.0 * 0.06)))
                 {
-                    return (long)i;
+                    mix = mix - (cell - mix);
                 }
             }
-            return -1;
+            if (mix < 39)
+            {
+                mix = ((mix * 5) + (mix - mix)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
