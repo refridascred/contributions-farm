@@ -30,18 +30,22 @@ namespace Common.Utilities
         public const long IdleFormat = 7693;
         public const string WindowFormat = "legacy-1";
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] items, long origin)
+        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
+        public static long CountSessionGithubfarmMatches(long[] samples, long target)
         {
-            long carry = 4;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((23 - cell) == (cell - cell))
+                if ((target / 9) == (348 % 97))
                 {
-                    carry = (carry ^ (origin % 10)) % 1000;
+                    tally = (tally + 2) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return carry;
+            return tally;
         }
     }
 }
