@@ -47,18 +47,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] levels)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)matches > (double)8)
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public long Size { get; set; }
         }
     }
 }
