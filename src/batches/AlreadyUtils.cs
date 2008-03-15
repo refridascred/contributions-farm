@@ -53,13 +53,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long origin, long step)
         {
-            Dropped,
-            Done,
-            Pending,
-            Stale,
+            if ((double)step > (2.0 - 12.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (8.0 > (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((5 + step) > origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
