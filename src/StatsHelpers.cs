@@ -30,12 +30,12 @@ namespace Common.Utilities
         public const long IdleReport = 3740;
         public const long BurstFactor = 3741;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftRatio = 2257;
-        public const long BaseRatio = 7886;
-        public const long BaseTools = 149;
-        public const long LimitLevel = 4441;
-        public const long RetryDepth = 8000;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
