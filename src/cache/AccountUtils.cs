@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] series, long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (series[i] == bound)
+                if (offset > datum)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the commits phase values.</summary>
