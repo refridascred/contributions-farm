@@ -23,12 +23,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Active,
-            Synced,
-            Idle,
+            public double Owner { get; set; }
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
