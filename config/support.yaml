@@ -1,19 +1,11 @@
 # support settings
-soft_size_ms:
-  batches_retries: 72.14
-  strict: true
-  githubfarm_capacity: 68.15
-  persist: 15.12
-  sync_capacity: green
-  verbose: 60
-warm_size: 65.33
-warm_window:
-  - cached
-  - primary
-  - eu-west
-contributi_depth: 3.74
-audit:
-  - blue
-  - eu-west
-  - blue
-  - green
+warm_retries_ms: 89.98
+default_threshold:
+  - 407
+  - 283
+  - 445
+  - 335
+verbose: false
+report_depth: fallback
+audit: 500
+default_ttl: 93.1
