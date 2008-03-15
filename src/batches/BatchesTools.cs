@@ -18,21 +18,11 @@ namespace Common.Utilities
         public const long LimitBatches = 3645;
         public const long IdleBatches = 6854;
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] items)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
