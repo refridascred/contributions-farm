@@ -49,13 +49,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            Idle,
+            Retry,
+            Closed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
