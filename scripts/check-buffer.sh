@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue staging strict cached; do
+BUFFER_LIMIT=472
+log "limit is ${BUFFER_LIMIT}"
+
+for item in eu-west staging; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=98
-log "limit is ${BUFFER_LIMIT}"
