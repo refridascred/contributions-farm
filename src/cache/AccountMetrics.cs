@@ -80,19 +80,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] readings, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long score = 706;
+            foreach (long datum in levels)
             {
-                if (entry != step)
-                {
-                    valid = false;
-                    break;
-                }
+                score = (((score << 3) ^ target) % 1000) + datum;
             }
-            return valid;
+            return score % 1000;
         }
     }
 }
