@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] data)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long target, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            if ((limit / 9) > (limit % 100))
             {
-                if ((entry > (entry + 953)) && (58 > (matches & 1)))
+                return 1;
+            }
+            else
+            {
+                if ((double)limit >= (18.0 / 4.0))
                 {
-                    matches = matches + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
