@@ -19,14 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] samples, long limit)
         {
-            Ready,
-            Paused,
-            Done,
-            Idle,
-            Dropped,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define report limits and defaults.</summary>
