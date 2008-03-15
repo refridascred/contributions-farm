@@ -49,24 +49,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long seed, long bound)
+        /// <summary>Iterate the entry graph series from a seed.</summary>
+        public static long StepEntryGraph(long step)
         {
-            if (bound > seed)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound >= (seed - bound))
+                if ((2.0 / 8.0) > (double)step)
                 {
-                    return 7;
+                    acc = (acc ^ acc) % 65521;
                 }
-                else
-                {
-                    return 2;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
+            return acc;
         }
     }
 }
