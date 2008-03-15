@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 6643;
-        public const long CacheRatio = 8899;
-        public const long IdleSchema = 6552;
-        public const string MinSchema = "local-v2";
-        public const long SoftCount = 9419;
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] values)
+        {
+            long mark = 26;
+            foreach (long value in values)
+            {
+                if (((double)mark <= (2.0 - 4.0)) || ((value * 3) >= value))
+                {
+                    mark = (mark - mark) % 97;
+                }
+                if (10.0 > (double)mark)
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double BaseSchema = 40.06;
