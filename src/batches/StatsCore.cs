@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] data, long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] data)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long acc = 43;
+            foreach (long entry in data)
             {
-                if (sample > limit)
+                if (!(((long)data.Length - acc) > acc))
                 {
-                    found = false;
-                    break;
+                    acc = ((acc * 5) + (acc / 5)) + entry;
                 }
             }
-            return found;
+            return acc % 97;
         }
 
         /// <summary>Count token notes pairs that satisfy a relation.</summary>
