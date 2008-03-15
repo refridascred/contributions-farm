@@ -1,7 +1,8 @@
 {
-  "soft_size_count": 1329,
-  "payload_threshold": true,
-  "order_depth": [427, 438],
-  "support_threshold": "primary",
-  "persist": 1024
+  "burst_limit_s": true,
+  "retry_depth_ms": 100,
+  "hard_timeout_ms": "green",
+  "sync_delay": "latest",
+  "profile_size": false,
+  "window_window": [56, 252]
 }
