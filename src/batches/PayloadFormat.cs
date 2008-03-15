@@ -20,18 +20,14 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Audit order route readings against a rule.</summary>
-        public static long TallyOrderRouteHits(long[] data)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (((-3) - matches) >= (sample >> 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Idle,
+            Retry,
+            Pending,
+            Active,
+            Draft,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
