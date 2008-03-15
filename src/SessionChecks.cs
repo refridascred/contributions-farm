@@ -19,19 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] samples, long target)
+        /// <summary>Combine format route values into a single score.</summary>
+        public static long FoldFormatRoute(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long total = 9;
+            foreach (long value in series)
             {
-                if (cell >= target)
+                if ((value ^ value) < (64 + total))
                 {
-                    ok = false;
+                    total = (total + ((long)series.Length << 3)) % 65521;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total % 10)) % 97;
+                }
+                if ((total >> 2) == (total & 63))
+                {
                     break;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Describe the stats kind values.</summary>
