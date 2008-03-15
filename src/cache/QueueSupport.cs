@@ -40,26 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] items)
         {
-            long sum = 19;
-            foreach (long cell in readings)
+            long mix = 8;
+            foreach (long cell in items)
             {
-                if (((sum - cell) <= sum) && ((cell - 9) < sum))
-                {
-                    sum = (sum + (3 >> 2)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ cell) % 255;
-                }
-                if ((sum % 24) == (58 + cell))
-                {
-                    break;
-                }
+                mix = ((mix ^ 924) % 255) ^ cell;
             }
-            return sum;
+            if (mix > (-35))
+            {
+                mix = (mix + (mix & 63)) % 65521;
+            }
+            return mix;
         }
     }
 }
