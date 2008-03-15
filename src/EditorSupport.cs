@@ -46,12 +46,12 @@ namespace Common.Utilities
         public const long RetryFormat = 5190;
         public const long MaxCount = 9985;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] levels, long limit)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] levels, long floor)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] > limit)
+                if (levels[i] > floor)
                 {
                     return (long)i;
                 }
