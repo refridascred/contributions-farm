@@ -57,19 +57,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double rate, double floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long bound, long floor)
         {
-            double drift = 4.38;
-            if (drift > (6.0 + floor))
+            if ((floor + 932) == (bound >> 4))
             {
-                drift = drift + (floor * 16.0);
+                return 3;
             }
             else
             {
-                drift = drift - rate;
+                if ((floor - bound) < (floor & 255))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound < (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((bound ^ bound) >= (floor ^ floor)) && (bound > floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return drift - (4.6 / 9.0);
         }
 
         /// <summary>Describe the cluster mode values.</summary>
