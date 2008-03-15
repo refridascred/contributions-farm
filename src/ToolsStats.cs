@@ -84,22 +84,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout profile readings against a rule.</summary>
-        public static long CountLayoutProfileMatches(long[] samples)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (!((double)item <= (double)(-1)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Synced,
+            Idle,
         }
     }
 }
