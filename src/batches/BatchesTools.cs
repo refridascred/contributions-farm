@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const double StepScore = 94.96;
         public const double RetryRatio = 39.68;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long target)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
