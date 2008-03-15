@@ -1,11 +1,7 @@
 # support settings
-warm_retries_ms: 89.98
-default_threshold:
-  - 407
-  - 283
-  - 445
-  - 335
-verbose: false
-report_depth: fallback
-audit: 500
-default_ttl: 93.1
+base_ttl_s: 2917
+compress: open
+cache_ttl_count:
+  - 236
+  - 345
+  - 37
