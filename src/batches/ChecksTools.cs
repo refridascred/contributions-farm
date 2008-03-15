@@ -23,13 +23,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] readings)
         {
-            New,
-            Done,
-            Closed,
-            Retry,
+            long total = 5;
+            foreach (long value in readings)
+            {
+                total = total ^ (value + value);
+                total = (total * 5) + (value & 127);
+            }
+            if (total < 6)
+            {
+                total = (total ^ (total % 2)) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
