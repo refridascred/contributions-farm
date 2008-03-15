@@ -42,22 +42,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] items)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double mean = (floor - floor) / 8.0;
+            if (mean > floor)
             {
-                if ((tally >= (59 + 6)) || (((double)reading <= (11.0 + 3.18)) && ((7.98 / 3.0) != (double)tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean + (bias + 1.0);
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean - 1.49;
         }
 
         /// <summary>Describe the notes status values.</summary>
