@@ -36,22 +36,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] samples, long floor)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((36 + 92) < value)
-                {
-                    tally = (tally + 3) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepInterval = 298;
+        public const double IdleCount = 24.87;
+        public const long BurstSupport = 9218;
+        public const long BaseSupport = 5296;
     }
 }
