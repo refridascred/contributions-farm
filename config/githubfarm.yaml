@@ -1,6 +1,6 @@
 # githubfarm settings
-compress: 64
-batch_threshold_ms: 82
-burst_retries: strict
-min_delay_count: staging
-poll_delay_pct: legacy
+stats_delay: false
+compress: standard
+min_retries_pct:
+  - eu-west
+  - legacy
