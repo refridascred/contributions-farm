@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] items, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (((double)tally == (5.84 * 6.9)) || ((double)value >= (double)origin))
+                if (value <= (708 / 5))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 2) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
