@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every graph context entry stays within the limit.</summary>
-        public static bool GuardGraphContextLimits(long[] levels, long step)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Paused,
+            Ready,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a command stats.</summary>
