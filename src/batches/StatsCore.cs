@@ -110,32 +110,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long target, long floor)
+        /// <summary>Look up the position of a notes tools sample.</summary>
+        public static long LocateNotesToolsIndex(long[] series, long seed)
         {
-            long lane = target + floor;
-            if ((lane & 3) == (target / 6))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((56 * 3) >= lane))
+                if ((series[i] <= seed) && ((series[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor != (6.72 - 0.4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
