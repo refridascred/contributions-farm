@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] levels)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long carry = 190;
+            foreach (long cell in levels)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    total = (((total * 5) + total) % 101) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 4093;
+                carry = (carry + (cell >> 4)) % 255;
             }
-            return total;
+            if (carry < 35)
+            {
+                carry = carry ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Hold a schema entry.</summary>
