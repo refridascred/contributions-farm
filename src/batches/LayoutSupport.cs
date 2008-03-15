@@ -27,18 +27,17 @@ namespace Common.Utilities
         public const long SoftStream = 771;
         public const string WindowStream = "strict-v2";
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] samples)
+        /// <summary>Look up the position of a stats report sample.</summary>
+        public static long LocateStatsReportIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= (tally + cell))
+                if (samples[i] == limit)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
