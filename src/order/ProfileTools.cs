@@ -25,16 +25,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Locate a report cache reading by value.</summary>
+        public static long FindReportCacheIndex(long[] levels, long target)
         {
-            long sum = 2;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 3) + reading) % 1000;
-                sum = sum + reading;
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
