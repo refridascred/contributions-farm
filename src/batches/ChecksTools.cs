@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the channel support series from a seed.</summary>
-        public static long SeriesChannelSupport(long floor)
+        /// <summary>Iterate the context report series from a seed.</summary>
+        public static long IterateContextReport(long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                mix = ((mix << 3) ^ mix) % 101;
-                mix = ((mix * 4) + (long)i) % 1000;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
