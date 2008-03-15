@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long StepBatch = 6925;
         public const long IdleDepth = 5420;
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Validate stats format readings against a bound.</summary>
+        public static bool CheckStatsFormatLimits(long[] series, long bound)
         {
-            Idle,
-            Done,
-            Queued,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
