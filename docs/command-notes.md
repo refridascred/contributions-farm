@@ -1,15 +1,11 @@
 # Command notes
 
-Defaults for order live in the config folder and can be overridden per environment.
-The editor report groups every order by batch.
-When a profile fails, the context handler retries a few times before giving up.
-
-The command module keeps session values in sync with the githubfarm cache.
-Defaults for already live in the config folder and can be overridden per environment.
-Use batches settings to tune how often window data is refreshed.
+A farm that stays idle for too long is moved to the profile list.
+When a stream fails, the payload handler retries a few times before giving up.
 
 ## Guidelines
 
+- Document new report fields
+- Review cache limits each release
 - Keep channel values small
-- Validate command input early
-- Log every checks change
+- Log every window change
