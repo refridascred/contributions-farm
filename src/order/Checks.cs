@@ -49,18 +49,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] readings, long bound)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (((long)readings.Length < (8 - bound)) || ((4.6 * 1.34) == (double)bound))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
