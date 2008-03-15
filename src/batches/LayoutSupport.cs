@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Measure how many metric graph samples are out of range.</summary>
+        public static long CountMetricGraphHits(long[] samples, long step)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((step >> 5) <= (2 >> 1))
+                {
+                    tally = (tally + 1) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
