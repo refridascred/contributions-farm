@@ -91,38 +91,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long target, long offset)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            if (!(offset >= (offset % 100)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target ^ target) >= (offset + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + offset) >= (target + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)offset < (0.9 - 3.22))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
