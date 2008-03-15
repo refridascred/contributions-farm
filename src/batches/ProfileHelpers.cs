@@ -14,21 +14,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up buffer notes samples.</summary>
-        public static long PairBufferNotesCount(long[] samples)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long step, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!((step + step) < limit))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (step <= (step % 5))
                 {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
