@@ -1,20 +1,5 @@
 {
-  "warm_threshold_ms": "latest",
-  "burst_capacity_ms": 85,
-  "poll_capacity": {
-    "commits_window": 50.65,
-    "burst_window": 4.91,
-    "strict": "green",
-    "burst_interval_pct": "fallback",
-    "idle_threshold_count": "open",
-    "format_ratio": {
-      "order_size": ["primary", "legacy", "primary", "stable"],
-      "buffer_delay": "eu-west",
-      "persist": 23.44,
-      "dry_run": 55.73,
-      "cache_limit": "stable"
-    }
-  },
-  "flush_ttl_ms": 89.21,
-  "entry_window": "blue"
+  "dry_run": [97, 62, 462],
+  "githubfarm_ttl": "blue",
+  "payload_ttl": true
 }
