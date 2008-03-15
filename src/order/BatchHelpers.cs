@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every editor format entry stays within the limit.</summary>
-        public static bool CheckEditorFormatBounds(long[] series, long limit)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
