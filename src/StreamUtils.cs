@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] series)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((double)hits != (14.0 + 0.04))
+                if (matches >= entry)
                 {
-                    hits = (hits + 3) + entry;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
