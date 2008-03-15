@@ -20,12 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public double Owner { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryCache = "legacy-1";
+        public const long DefaultCache = 2420;
+        public const long StepFactor = 4505;
+        public const long IdleDepth = 6843;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long SortMetric(long limit, long floor)
