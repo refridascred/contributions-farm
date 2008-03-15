@@ -1,7 +1,6 @@
 # githubfarm settings
-max_size:
-  - 403
-  - 19
-cache_ttl: 60.11
-stream_depth: open
-batch_timeout_count: 50.28
+compress: latest
+filter_capacity: strict
+tools_ttl: blue
+buffer_size: edge
+already_ratio: true
