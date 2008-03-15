@@ -19,19 +19,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] readings, long origin)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] + values[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Classify a buffer editor pair into a bucket.</summary>
