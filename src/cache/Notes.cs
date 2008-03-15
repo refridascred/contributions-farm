@@ -62,20 +62,10 @@ namespace Common.Utilities
             return (mean - (floor + floor)) + rate;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] values, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardFactor = 932;
+        public const long SoftBudget = 6345;
+        public const long LimitNotes = 5634;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TotalBuffer(long[] data, long origin)
