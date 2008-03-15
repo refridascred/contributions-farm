@@ -19,22 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token already readings against a rule.</summary>
-        public static long MeasureTokenAlreadyMatches(long[] samples)
+        /// <summary>Count the stats notes entries that pass the check.</summary>
+        public static long MeasureStatsNotesGaps(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((708 * 4) <= (count / 8))
+                if ((datum <= (matches - matches)) && ((66 < matches) && (8 <= datum)))
                 {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 2) - limit;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a metric info.</summary>
