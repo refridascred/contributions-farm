@@ -14,17 +14,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] data, long origin)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Ready,
+            Done,
+            Retry,
         }
 
         /// <summary>Hold a context options.</summary>
