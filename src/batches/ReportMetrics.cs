@@ -27,29 +27,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((result + 5) > (seed * 3))
-                {
-                    result = (result * 5) + (seed * 2);
-                    break;
-                }
-                result = result - (long)i;
-                if ((long)i > (seed * 2))
-                {
-                    result = (result ^ (result << 2)) % 65521;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result >> 3)) % 255;
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 5615;
+        public const long MinAccount = 6772;
+        public const double MinCount = 58.72;
     }
 }
