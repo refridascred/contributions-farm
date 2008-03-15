@@ -1,15 +1,25 @@
 # support settings
-warm_ttl_ms: 61
-layout_limit: 250
-verbose:
-  idle_interval_pct: 6406
-  compress: local
-  poll_threshold_pct:
-    - 484
-    - 50
-    - 454
-    - 59
-  cache_depth: 69.53
-token_depth: 22
-compress: local
-max_depth_count: stable
+poll_ratio:
+  - 11
+  - 221
+  - 268
+idle_delay: 37
+max_capacity:
+  - 70
+  - 210
+max_ratio_pct:
+  enabled:
+    - 379
+    - 253
+  flush_timeout: true
+  stream_depth: eu-west
+  min_timeout_pct:
+    - 198
+    - 18
+    - 188
+  command_interval: latest
+  readonly: strict
+min_ttl:
+  - 275
+  - 364
+cache_depth_count: true
