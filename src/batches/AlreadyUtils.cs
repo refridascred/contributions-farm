@@ -43,12 +43,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            Done,
+            Queued,
+            Ready,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
