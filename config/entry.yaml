@@ -1,47 +1,8 @@
 # entry settings
-default_retries:
-  - 324
-  - 390
-  - 307
-  - 389
-command_threshold:
-  max_timeout: 9743
-  max_window_count:
-    - 64
-    - 26
-    - 331
-    - 447
-  cache_interval:
-    min_depth_ms: strict
-    cache_size_ms: true
-    retry_limit_s: fallback
-    stream_delay: 50
-    command_ratio: 6919
-    default_limit: standard
-  strict: 500
-readonly: 69.57
-poll_capacity: 64
-warm_retries_count:
-  strict:
-    - 254
-    - 159
-    - 154
-    - 304
-  batch_size_count: false
-  default_retries_s:
-    - stable
-    - green
-    - eu-west
-    - local
-  burst_delay_ms: 30
-  graph_window:
-    checks_window: 44.22
-    idle_timeout: latest
-    poll_window_ms: 84
-    sync_interval_ms:
-      - fallback
-      - legacy
-      - strict
-    default_ratio: 2521
-  flush_limit: 7446
-poll_capacity_s: standard
+poll_ttl_ms: 16
+default_threshold:
+  - 431
+  - 343
+  - 468
+retry_ratio_pct: true
+format_depth: open
