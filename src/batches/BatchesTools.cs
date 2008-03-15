@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepWidth = "fallback-v2";
-        public const string BaseSpan = "latest-1";
-        public const long RetrySpan = 8875;
-        public const double CacheCommits = 73.85;
-        public const long DefaultCommits = 5369;
+        /// <summary>Accumulate record format samples.</summary>
+        public static long DigestRecordFormat(long[] series, long step)
+        {
+            long sum = 305;
+            foreach (long item in series)
+            {
+                if ((1 + step) < (sum - (long)series.Length))
+                {
+                    sum = (((sum * 5) + step) % 101) - item;
+                }
+                if ((5.72 - 1.2) <= (double)sum)
+                {
+                    sum = ((sum * 4) + (step & 255)) % 1000;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BurstBatches = 460;
