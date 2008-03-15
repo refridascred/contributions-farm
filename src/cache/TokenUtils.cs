@@ -39,12 +39,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Closed,
-            Failed,
-            Stale,
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
