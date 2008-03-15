@@ -1,8 +1,6 @@
 # support settings
-window_size: 10
-soft_ttl:
-  - staging
-  - blue
-soft_capacity_s: false
-batches_size: 73
-flush_window: 59.33
+sync_window: standard
+batch_window_count: 5792
+cache_size_ms: false
+verbose: 60
+readonly: 29.55
