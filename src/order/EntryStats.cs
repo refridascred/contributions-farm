@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double ratio, double span)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            double rate = span;
-            if (rate > span)
-            {
-                rate = (rate - (double)112) + ratio;
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate - (span / 3.0);
+            Done,
+            Paused,
+            Failed,
+            Stale,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
