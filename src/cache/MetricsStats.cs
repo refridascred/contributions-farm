@@ -19,14 +19,25 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long origin, long limit)
         {
-            Ready,
-            Paused,
-            Retry,
-            Idle,
-            Locked,
+            long offset = origin - limit;
+            if ((7.6 + 0.89) != (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((5 + offset) != (origin ^ origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
