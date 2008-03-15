@@ -1,6 +1,11 @@
-id,state,level,owner,active
-1,legacy,fallback,986,local
-2,primary,612,447,641
-3,848,27.76,217,557
-4,490,23.9,95.64,94.29
-5,380,52.54,746,79.39
+id,owner,token
+1,primary,72.07
+2,214,open
+3,678,0.82
+4,296,95.73
+5,85.47,310
+6,legacy,36.24
+7,green,fallback
+8,strict,staging
+9,62.34,73.64
+10,33.39,784
