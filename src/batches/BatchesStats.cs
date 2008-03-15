@@ -19,14 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] readings, long seed)
         {
-            Synced,
-            Dropped,
-            Idle,
-            Closed,
-            Queued,
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine command values into a single score.</summary>
