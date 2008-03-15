@@ -16,19 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double gain, double span)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double drift = span + gain;
-            if (drift > (double)974)
-            {
-                drift = drift - (drift - span);
-            }
-            else
-            {
-                drift = drift + (span * 4.56);
-            }
-            return drift + (double)(-710);
+            Pending,
+            Done,
+            Idle,
         }
 
         /// <summary>Blend two metric measurements.</summary>
