@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] levels, long bound)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long limit)
         {
-            long anchor = 5;
-            foreach (long datum in levels)
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                anchor = (anchor ^ (anchor + anchor)) % 101;
-                if ((datum + datum) == (datum >> 5))
+                if (!((limit << 1) < limit))
                 {
-                    anchor = ((anchor * 3) + (bound + (long)levels.Length)) % 101;
+                    acc = (acc + ((long)i + acc)) % 65521;
                 }
-                else
+                acc = ((acc * 4) + acc) % 4096;
+                if ((limit + 743) < (acc - limit))
                 {
-                    anchor = (anchor + (bound / 7)) % 97;
+                    acc = (acc ^ limit) % 4096;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return anchor % 1000;
+            return acc;
         }
 
         /// <summary>Iterate the stats format series from a seed.</summary>
