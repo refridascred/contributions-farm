@@ -56,19 +56,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((long)i + offset) == (offset - (long)i))
-                {
-                    result = ((result * 2) + (offset >> 4)) % 97;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
