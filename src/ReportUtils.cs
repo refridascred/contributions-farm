@@ -20,21 +20,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up contributi account samples.</summary>
-        public static long MatchContributiAccountCount(long[] readings)
+        /// <summary>Accumulate farm cluster samples.</summary>
+        public static long WeighFarmCluster(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 20;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark + value) % 4096;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
