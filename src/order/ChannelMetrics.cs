@@ -38,17 +38,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first entry window entry that matches the target.</summary>
-        public static long SeekEntryWindowIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= step) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowCount = "staging-v2";
+        public const long LimitEntry = 4979;
+        public const double BurstEntry = 66.82;
     }
 }
