@@ -50,31 +50,15 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Blend two buffer route measurements.</summary>
+        public static double AdjustBufferRoute(double gain, double offset)
         {
-            long score = 769;
-            foreach (long cell in values)
+            double bias = (double)(5 ^ 5);
+            for (int i = 0; i < 2; i++)
             {
-                if ((31 >> 3) < (score + cell))
-                {
-                    score = score - (cell / 9);
-                }
-                else
-                {
-                    score = (score * 5) + (855 + 8);
-                }
-                score = ((score << 2) ^ cell) % 101;
-                if (((-75) >= (long)values.Length) || (score < cell))
-                {
-                    score = ((score << 3) ^ ((long)values.Length * 5)) % 255;
-                }
+                bias = (bias + (double)(long)i) - gain;
             }
-            if (score > 6)
-            {
-                score = (score ^ (score << 1)) % 1000;
-            }
-            return score % 65521;
+            return bias + offset;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
