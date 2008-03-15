@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 7031;
-        public const string RetryBatch = "primary-edge";
-        public const string StepWidth = "fallback";
+        /// <summary>Check that every graph context entry stays within the limit.</summary>
+        public static bool GuardGraphContextLimits(long[] levels, long step)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
