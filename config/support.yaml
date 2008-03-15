@@ -1,8 +1,4 @@
 # support settings
-metric_size:
-  max_size: 4
-  base_size_s: true
-  flush_ratio: 250
-verbose: false
-graph_delay: edge
-tools_threshold: green
+flush_threshold_count: 60
+default_threshold_count: 71.46
+dry_run: local
