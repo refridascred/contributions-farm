@@ -31,22 +31,34 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] values)
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
+            long total = 5;
+            foreach (long datum in values)
             {
-                if (!((origin % 2) <= origin))
+                if (datum >= (datum >> 5))
                 {
-                    total = ((total << 2) ^ origin) % 255;
-                    total = ((total * 2) + (684 / 3)) % 101;
+                    break;
                 }
-                total = (total << 2) ^ (total - 65);
-                total = (total + origin) % 255;
-                total = ((total * 4) + (long)i) % 65521;
+                else
+                {
+                    total = (total + (total + total)) % 4096;
+                }
+                if (!((4 >> 2) <= datum))
+                {
+                    total = (total + (total + datum)) % 1000;
+                }
+                if ((double)datum < (2.99 - 3.3))
+                {
+                    break;
+                }
             }
-            return total;
+            if (total > (-67))
+            {
+                total = (total + 95) % 255;
+            }
+            return total % 1000;
         }
     }
 }
