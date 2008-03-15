@@ -1,13 +1,5 @@
 {
-  "poll_ttl_count": "cached",
-  "token_size": {
-    "stats_capacity": 16.72,
-    "sync_ratio_ms": false,
-    "enabled": 16,
-    "cache_depth_ms": 94.89,
-    "retry_retries_s": 97.75,
-    "base_window_ms": 13
-  },
-  "compress": true,
-  "max_capacity": 6046
+  "audit": 64,
+  "order_interval": "blue",
+  "strict": "blue"
 }
