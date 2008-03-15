@@ -28,26 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] levels)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] levels, long limit)
         {
-            long score = 62;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((double)score >= (15.0 + 4.0))
+                if (cell != limit)
                 {
+                    ok = false;
                     break;
                 }
-                if (score < (score / 5))
-                {
-                    score = score - (score - item);
-                }
-                else
-                {
-                    score = (score + item) % 4096;
-                }
             }
-            return score % 65521;
+            return ok;
         }
     }
 }
