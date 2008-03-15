@@ -30,20 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowScore = 2898;
+        public const double SoftCounter = 18.36;
+        public const long MinCounter = 1255;
+        public const string BurstLevel = "stable";
+        public const double CacheCounter = 49.75;
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
