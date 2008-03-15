@@ -32,11 +32,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 9149;
-        public const double MinSpan = 26.3;
-        public const string WindowDepth = "primary-edge";
-        public const long RetryTimeout = 3919;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Paused,
+            Done,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Combine farm payload values into a single score.</summary>
         public static long WeighFarmPayload(long[] data, long offset)
