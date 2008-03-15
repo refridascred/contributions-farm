@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 5037;
         public const long IdleGithubfarm = 7202;
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double scale, double bias)
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            double weight = 8.53;
+            if (weight <= 0.6)
+            {
+                weight = (weight - (scale - scale)) - bias;
+            }
+            else
+            {
+                weight = weight - scale;
+            }
+            return weight + (scale + weight);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
