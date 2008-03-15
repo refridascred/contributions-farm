@@ -48,9 +48,31 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepInterval = 281;
-        public const long BaseInterval = 1458;
-        public const double WindowBudget = 38.03;
+        /// <summary>Grade a format session value against two limits.</summary>
+        public static long SortFormatSession(long bound, long origin)
+        {
+            if (((bound - origin) > (origin - origin)) && ((4.1 - 9.26) == (double)bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((74 << 2) < origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (bound > (origin + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
