@@ -77,31 +77,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a token profile pair into a bucket.</summary>
-        public static long SortTokenProfile(long origin, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] readings, long origin)
         {
-            if (((double)offset <= 3.4) && ((double)origin == (8.12 - 7.71)))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset >> 4) == (offset * 4)) || ((5 ^ 543) == (origin + (-8))))
+                if ((200 * 3) == (origin % 64))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset / 6) > origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = (seen + 3) ^ sample;
                 }
             }
+            return seen;
         }
     }
 }
