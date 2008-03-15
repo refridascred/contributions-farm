@@ -47,13 +47,10 @@ namespace Common.Utilities
         public const double DefaultLevel = 10.39;
         public const double StepContributi = 84.69;
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Active,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepCommand = "legacy";
+        public const long BatchBudget = 675;
+        public const long IdleCommand = 7263;
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
