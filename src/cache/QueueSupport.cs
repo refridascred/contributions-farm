@@ -23,12 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 2942;
-        public const double BurstBudget = 89.12;
-        public const long SoftMetric = 7825;
-        public const long MinMetric = 9953;
-        public const string StepInterval = "strict-edge";
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
