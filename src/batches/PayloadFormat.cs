@@ -27,13 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Closed,
-            Draft,
-            Done,
-            Retry,
+            public bool Token { get; set; }
+            public bool Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count buffer format pairs that satisfy a relation.</summary>
