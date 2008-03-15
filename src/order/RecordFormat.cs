@@ -60,17 +60,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stats commits counter forward.</summary>
-        public static long StepStatsCommits(long floor)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = (carry + (carry >> 3)) % 97;
-                carry = (carry ^ (carry * 4)) % 255;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Draft,
+            Stale,
+            Queued,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define format limits and defaults.</summary>
