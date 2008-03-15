@@ -62,18 +62,18 @@ namespace Common.Utilities
             return (drift - (double)17) + scale;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] data)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long score = 48;
+            foreach (long cell in items)
             {
-                if ((item * 2) < (7 + item))
+                if ((double)919 > (double)cell)
                 {
-                    matches = matches + 3;
+                    score = (score * 5) + (cell ^ score);
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
