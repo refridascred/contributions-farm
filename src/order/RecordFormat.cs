@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] series)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double weight, double offset)
         {
-            long mix = 79;
-            foreach (long cell in series)
+            double weight2 = weight;
+            if (weight2 >= (double)200)
             {
-                mix = ((mix * 5) + (mix - mix)) ^ cell;
+                weight2 = (weight2 - weight) - offset;
             }
-            if (mix < 7)
+            for (int i = 0; i < 3; i++)
             {
-                mix = ((mix << 2) ^ (mix - (long)series.Length)) % 4096;
+                weight2 = weight2 + (double)(long)i;
             }
-            return mix;
+            return weight2 + weight2;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
