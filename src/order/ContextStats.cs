@@ -34,18 +34,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] samples, long offset)
+        /// <summary>Find the first metrics layout entry that matches the target.</summary>
+        public static long LookupMetricsLayoutIndex(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9 - tally) <= (offset / 2))
+                if ((items[i] >= target) && ((items[i] % 2) == 0))
                 {
-                    tally = (tally + 1) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
