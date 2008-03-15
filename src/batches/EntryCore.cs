@@ -66,17 +66,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a metrics token sample.</summary>
-        public static long LocateMetricsTokenIndex(long[] samples, long step)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
