@@ -14,12 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] readings, long offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] > offset)
+                if (levels[i] < offset)
                 {
                     return (long)i;
                 }
