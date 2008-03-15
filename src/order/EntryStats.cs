@@ -14,18 +14,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] data, long floor)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (((long)data.Length + 9) != (tally - reading))
-                {
-                    tally = (tally + 3) + floor;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a session options.</summary>
