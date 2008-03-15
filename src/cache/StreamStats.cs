@@ -19,15 +19,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two metrics filter measurements.</summary>
-        public static double ScaleMetricsFilter(double gain, double offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] series, long target)
         {
-            double rate = (gain * 4.2) / 9.0;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                rate = (rate + gain) + (double)(long)i;
+                if (entry >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate + (rate + offset);
+            return found;
         }
 
         /// <summary>Describe the farm status values.</summary>
