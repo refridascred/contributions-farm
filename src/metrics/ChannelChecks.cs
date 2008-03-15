@@ -73,15 +73,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Failed,
-            Paused,
-            Locked,
-            Active,
-            Retry,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 9487;
+        public const long LimitRatio = 4000;
+        public const string StepSize = "local-1";
+        public const double SoftFarm = 94.6;
+        public const string WindowFactor = "cached-v2";
 
         /// <summary>Combine report values into a single score.</summary>
         public static long DigestReport(long[] samples, long bound)
