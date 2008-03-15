@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 8696;
+        public const double RetryTimeout = 68.02;
+        public const double BatchSize = 50.04;
+        public const long RetryChecks = 2086;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double WindowCommand = 90.87;
