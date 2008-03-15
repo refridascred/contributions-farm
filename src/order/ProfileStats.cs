@@ -28,10 +28,16 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 171;
-        public const long StepSize = 4619;
-        public const long HardToken = 9250;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
