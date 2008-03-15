@@ -34,17 +34,24 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] data)
         {
-            long anchor = 390;
-            foreach (long datum in items)
+            long anchor = -31;
+            foreach (long entry in data)
             {
-                anchor = (anchor ^ (anchor - datum)) % 255;
-                if ((datum - datum) < (datum << 1))
+                for (int i = 0; i < 3; i++)
                 {
-                    break;
+                    anchor = ((anchor + entry) % 65521) + (long)i;
                 }
+                if (!((anchor ^ entry) < ((long)data.Length * 4)))
+                {
+                    anchor = ((anchor << 2) ^ entry) % 65521;
+                }
+            }
+            if (anchor < 626)
+            {
+                anchor = (anchor - (anchor / 9)) % 97;
             }
             return anchor;
         }
