@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine commits farm values into a single score.</summary>
-        public static long TallyCommitsFarm(long[] data)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] values)
         {
-            long anchor = 32;
-            foreach (long datum in data)
+            long result = 2;
+            foreach (long datum in values)
             {
-                anchor = (anchor * 4) + (datum << 2);
-                if ((-3) > (anchor >> 3))
-                {
-                    break;
-                }
+                result = (result ^ (datum + datum)) % 65521;
             }
-            if (anchor < 534)
+            if (result > 472)
             {
-                anchor = (anchor ^ anchor) % 255;
+                result = result ^ (result >> 5);
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
