@@ -39,13 +39,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] samples, long bound)
         {
-            Closed,
-            Retry,
-            Pending,
-            Queued,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((3.0 - 2.6) < (double)matches)
+                {
+                    matches = ((matches + 2) + reading) + bound;
+                }
+            }
+            return matches;
         }
     }
 }
