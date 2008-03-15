@@ -30,19 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a route profile figure with a bias.</summary>
-        public static double SmoothRouteProfile(double scale, double span)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double rate, double span)
         {
-            double rate = span * 20.0;
-            if (rate <= 2.9)
+            double rate2 = rate;
+            if (rate2 >= 7.0)
             {
-                rate = rate + rate;
+                rate2 = rate2 + (span / 8.0);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (scale / 2.0)) - (double)(long)i;
-            }
-            return rate + (double)2;
+            return rate2 - 6.9;
         }
     }
 }
