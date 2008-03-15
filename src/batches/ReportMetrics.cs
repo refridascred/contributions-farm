@@ -15,12 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] series, long limit)
         {
-            public string Score { get; set; } = "";
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define account limits and defaults.</summary>
