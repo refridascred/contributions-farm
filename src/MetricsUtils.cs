@@ -22,10 +22,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowCache = 55.15;
-        public const long BatchFactor = 5909;
-        public const long BurstFactor = 3028;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] readings, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((long)readings.Length + seed) <= (sample / 8))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long PairTokenCount(long[] samples)
