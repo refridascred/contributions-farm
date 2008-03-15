@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] samples)
         {
-            Pending,
-            Paused,
-            Ready,
-            Idle,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a command stats.</summary>
