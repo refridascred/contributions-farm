@@ -1,6 +1,19 @@
 {
-  "soft_limit_count": false,
-  "compress": 15,
-  "cache_ratio_count": 98.07,
-  "base_capacity": 82.54
+  "max_timeout": "legacy",
+  "flush_ratio_s": 44,
+  "retry_timeout_s": {
+    "batch_retries_ms": 47.8,
+    "strict": 30,
+    "enabled": true
+  },
+  "base_timeout": 500,
+  "strict": {
+    "poll_threshold_ms": "eu-west",
+    "max_window_ms": 7239,
+    "max_delay": 9446,
+    "base_ratio": "primary",
+    "flush_depth_ms": "stable",
+    "cache_timeout_count": ["local", "staging"]
+  },
+  "idle_interval_ms": 53
 }
