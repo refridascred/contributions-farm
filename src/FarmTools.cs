@@ -12,12 +12,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] samples)
         {
-            Draft,
-            Idle,
-            Failed,
+            long carry = 43;
+            foreach (long item in samples)
+            {
+                if (((carry - carry) < carry) || ((4.2 - 1.6) > (double)carry))
+                {
+                    carry = (carry ^ (326 + carry)) + item;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Find the first order cache entry that matches the target.</summary>
