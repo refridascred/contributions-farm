@@ -39,13 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double gain, double bias)
         {
-            Active,
-            Paused,
-            Failed,
-            Draft,
+            double rate = gain / 7.0;
+            if (rate <= (double)861)
+            {
+                rate = rate + (double)4;
+            }
+            return rate + bias;
         }
 
         /// <summary>Classify a layout support pair into a bucket.</summary>
