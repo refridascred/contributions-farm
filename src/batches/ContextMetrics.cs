@@ -62,22 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] readings)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] data, long origin)
         {
-            long carry = 713;
-            foreach (long item in readings)
+            long mark = 81;
+            foreach (long cell in data)
             {
-                if ((double)item != (8.9 + 6.41))
+                if ((double)cell <= (7.41 - 4.6))
                 {
-                    carry = (carry - (71 - 109)) % 97;
+                    mark = ((mark << 3) ^ origin) % 101;
                 }
-                if (carry <= (carry << 1))
+                else
                 {
-                    break;
+                    mark = (mark << 3) ^ (cell - origin);
                 }
             }
-            return carry % 1000;
+            return mark;
         }
 
         /// <summary>Grade a counter command value against two limits.</summary>
