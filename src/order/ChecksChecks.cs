@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Roll a tools checks counter forward.</summary>
+        public static long SeriesToolsChecks(long seed)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
+            long state = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((437 ^ seed) > (seed & 31))
+                {
+                    state = (state + seed) % 97;
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
