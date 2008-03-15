@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] levels, long step)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double bias = 8.02;
+            if (bias <= (double)8)
             {
-                if ((value & 15) == (value << 2))
-                {
-                    matches = (matches + 2) + step;
-                }
+                bias = (bias + bias) - offset;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (bias * 2.7)) - (double)(long)i;
+            }
+            return bias - scale;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
