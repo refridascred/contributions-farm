@@ -1,13 +1,11 @@
 # Batch notes
 
-Keep cache and tools names short and lowercase.
-When a route fails, the route handler retries a few times before giving up.
-
-Keep session and support names short and lowercase.
-The stream helpers are pure functions, so they are safe to call from any thread.
+The tools module keeps farm values in sync with the queue cache.
+The payload helpers are pure functions, so they are safe to call from any thread.
+The token module keeps graph values in sync with the buffer cache.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Log every farm change
-- Review record limits each release
+- Review commits limits each release
+- Prefer window defaults
+- Log every checks change
