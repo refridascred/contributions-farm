@@ -40,10 +40,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepQueue = 26.32;
-        public const long HardRatio = 4651;
-        public const long WindowQueue = 2176;
-        public const string DefaultTimeout = "standard";
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Queued,
+            Stale,
+            Failed,
+        }
     }
 }
