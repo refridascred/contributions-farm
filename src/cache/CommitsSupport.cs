@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public double Level { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 9513;
+        public const string StepCount = "primary-v2";
+        public const double SoftMetrics = 59.03;
+        public const long RetryBudget = 2495;
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
