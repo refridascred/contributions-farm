@@ -47,28 +47,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of notes tools readings.</summary>
-        public static long TallyNotesTools(long[] readings, long target)
-        {
-            long score = 1;
-            foreach (long cell in readings)
-            {
-                score = (score - target) % 255;
-                score = score - (cell % 10);
-                if ((target << 3) > (79 % 100))
-                {
-                    score = (score ^ target) % 65521;
-                }
-                else
-                {
-                    score = score + ((-238) - target);
-                }
-            }
-            if (score < 558)
-            {
-                score = score + (target >> 1);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchMetric = 43.5;
+        public const long HardRatio = 409;
+        public const long BaseCount = 9953;
     }
 }
