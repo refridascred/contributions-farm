@@ -1,7 +1,5 @@
 {
-  "counter_interval": [33, 339],
-  "min_delay": "strict",
-  "warm_limit_s": [500, 47, 148],
-  "dry_run": 11,
-  "burst_depth_s": "stable"
+  "idle_retries_s": 77,
+  "base_ttl_s": 47.15,
+  "batch_capacity_s": true
 }
