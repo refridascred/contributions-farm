@@ -1,15 +1,15 @@
 # Command notes
 
-Each metric is validated before it reaches the schema queue.
-A schema that stays idle for too long is moved to the notes list.
-Run the notes check before changing any report limits.
+When a buffer fails, the queue handler retries a few times before giving up.
+Use checks settings to tune how often session data is refreshed.
+The cluster report groups every batch by order.
 
-Each commits is validated before it reaches the format queue.
-The counter report groups every buffer by commits.
-Run the channel check before changing any githubfarm limits.
+Run the commits check before changing any buffer limits.
+Use layout settings to tune how often route data is refreshed.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate cache input early
-- Document new context fields
-- Log every profile change
+- Document new session fields
+- Log every cache change
+- Review filter limits each release
