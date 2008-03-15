@@ -40,23 +40,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((item & 3) == (896 >> 4))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 59.16;
+        public const long LimitScore = 9588;
+        public const double StepCount = 2.74;
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long GradeContext(long bound, long floor)
