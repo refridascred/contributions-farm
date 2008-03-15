@@ -22,12 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowWidth = "stable-1";
-        public const string IdleDepth = "latest-1";
-        public const long MinCache = 4457;
-        public const string HardCache = "alpha-v2";
-        public const string SoftLevel = "latest";
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] series)
+        {
+            long anchor = 489;
+            foreach (long cell in series)
+            {
+                anchor = anchor - (cell >> 5);
+                if (((double)anchor < (18.0 - 10.0)) && ((2.8 / 4.0) != (double)anchor))
+                {
+                    anchor = (anchor ^ (cell % 97)) % 101;
+                }
+                if ((double)cell >= (1.62 - 0.91))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long LookupAlreadyIndex(long[] levels, long floor)
