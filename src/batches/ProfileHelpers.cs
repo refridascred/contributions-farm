@@ -34,22 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 1934;
+        public const long BurstBudget = 8212;
+        public const string HardLevel = "primary";
+        public const string BatchWindow = "stable";
+        public const long MaxWindow = 4767;
 
         /// <summary>Adjust a stats notes reading.</summary>
         public static double SmoothStatsNotes(double rate, double offset)
