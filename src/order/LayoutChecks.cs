@@ -22,24 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double bias, double offset)
-        {
-            double scale = (double)(24 + (-413));
-            if (scale >= (double)(-839))
-            {
-                scale = (scale + (double)79) - offset;
-            }
-            else
-            {
-                scale = scale + (double)741;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (9.44 / 6.0)) + (double)(long)i;
-            }
-            return scale - bias;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string CacheAlready = "local";
+        public const long MinRatio = 543;
+        public const long BurstSpan = 380;
+        public const long LimitAlready = 8972;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesGaps(long[] readings)
