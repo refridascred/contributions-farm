@@ -43,19 +43,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long offset)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading < offset)
+                if (levels[i] >= target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
