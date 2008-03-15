@@ -47,14 +47,20 @@ namespace Common.Utilities
         public const long SoftInterval = 1561;
         public const long SoftFormat = 2172;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long target)
         {
-            Retry,
-            Failed,
-            Active,
-            Stale,
-            Paused,
+            long carry = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if (target <= ((long)i * 2))
+                {
+                    carry = carry - (583 << 1);
+                }
+                carry = carry + carry;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
