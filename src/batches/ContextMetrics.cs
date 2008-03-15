@@ -82,18 +82,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (hits < ((-584) / 8))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 1521;
+        public const long RetryProfile = 1461;
+        public const double BurstRatio = 73.48;
+        public const long MaxProfile = 815;
     }
 }
