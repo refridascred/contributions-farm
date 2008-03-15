@@ -31,18 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] values)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry > (entry + entry))
                 {
-                    if ((values[i] ^ values[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
