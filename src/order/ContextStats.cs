@@ -37,19 +37,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] readings, long floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long target)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (value <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (sum ^ (target % 64)) % 101;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return found;
+            return sum;
         }
     }
 }
