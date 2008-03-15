@@ -20,23 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Validate already counter readings against a bound.</summary>
+        public static bool VerifyAlreadyCounterBounds(long[] levels, long bound)
         {
-            long anchor = 937;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor << 2) ^ anchor) % 1000;
-                if (((item << 2) <= ((-8) >> 3)) || ((8.75 * 6.0) > (double)item))
+                if (entry != bound)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (anchor > 36)
-            {
-                anchor = (anchor * 3) + anchor;
-            }
-            return anchor % 1000;
+            return found;
         }
 
         /// <summary>Fold a list of notes tools readings.</summary>
