@@ -22,12 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Match up batches githubfarm samples.</summary>
+        public static long MatchBatchesGithubfarmCount(long[] levels)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
