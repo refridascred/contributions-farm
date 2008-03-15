@@ -54,23 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double bias, double bias2)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] data)
         {
-            double gain = bias + bias;
-            if (gain < (bias / 9.0))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                gain = gain - gain;
+                if ((double)tally >= 4.4)
+                {
+                    tally = (tally + 1) ^ reading;
+                }
             }
-            else
-            {
-                gain = gain - (double)7;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (double)584) + (double)(long)i;
-            }
-            return gain - bias2;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
