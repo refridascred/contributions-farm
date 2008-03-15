@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a batch support counter forward.</summary>
-        public static long IterateBatchSupport(long seed)
+        /// <summary>Count the cluster support entries that pass the check.</summary>
+        public static long CountClusterSupportMatches(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (!((mark + mark) < mark))
+                if ((366 - entry) == (entry - 0))
                 {
-                    mark = (mark - (seed ^ 55)) % 255;
-                    mark = mark - (mark / 5);
+                    seen = seen + 1;
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
