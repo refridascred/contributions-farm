@@ -1,11 +1,8 @@
 {
-  "poll_ttl_count": "stable",
-  "soft_capacity": 1024,
-  "context_interval": {
-    "support_threshold": "edge",
-    "batch_interval_pct": 32.62,
-    "enabled": false,
-    "persist": "standard"
-  },
-  "persist": true
+  "burst_ratio_ms": false,
+  "strict": true,
+  "hard_capacity_pct": "fallback",
+  "farm_capacity": 87,
+  "retry_retries_pct": 30,
+  "sync_limit": 6491
 }
