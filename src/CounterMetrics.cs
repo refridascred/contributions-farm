@@ -22,22 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up layout notes samples.</summary>
-        public static long CompareLayoutNotesCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowWidth = "stable-1";
+        public const string IdleDepth = "latest-1";
+        public const long MinCache = 4457;
+        public const string HardCache = "alpha-v2";
+        public const string SoftLevel = "latest";
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long LookupAlreadyIndex(long[] levels, long floor)
