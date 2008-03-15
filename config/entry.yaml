@@ -1,7 +1,10 @@
 # entry settings
-soft_ttl_count: staging
-enabled: blue
-dry_run: primary
-sync_window_ms: false
-base_size_pct: eu-west
-hard_limit_count: 500
+flush_ttl: cached
+default_delay:
+  - 398
+  - 354
+  - 284
+poll_limit: 250
+readonly: true
+min_capacity_pct: strict
+burst_retries_s: 49.04
