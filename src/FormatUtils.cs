@@ -70,12 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] levels, long bound)
         {
-            Done,
-            Dropped,
-            Draft,
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
