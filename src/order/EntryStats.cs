@@ -53,19 +53,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double bias, double floor)
+        /// <summary>Audit graph entry readings against a rule.</summary>
+        public static long MeasureGraphEntryHits(long[] samples, long bound)
         {
-            double bias2 = (double)((-8) + (-890));
-            if (bias2 < (double)694)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                bias2 = ((bias2 + 4.1) - bias) + floor;
+                if ((double)matches > (3.69 / 5.0))
+                {
+                    matches = ((matches + 1) ^ reading) + bound;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (double)51;
-            }
-            return bias2 + bias2;
+            return matches;
         }
     }
 }
