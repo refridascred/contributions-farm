@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] readings, long bound)
+        /// <summary>Validate schema stream readings against a bound.</summary>
+        public static bool VerifySchemaStreamRange(long[] samples, long bound)
         {
-            long anchor = 1;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if ((5.6 - 20.0) <= (double)bound)
+                if (value >= bound)
                 {
-                    anchor = ((anchor - bound) % 4096) + entry;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor * 3)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
