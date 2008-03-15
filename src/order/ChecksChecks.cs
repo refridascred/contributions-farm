@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a stream editor figure with a bias.</summary>
-        public static double BlendStreamEditor(double weight, double offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] items, long step)
         {
-            double drift = weight;
-            if (drift < drift)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                drift = (drift - drift) - offset;
+                if ((2.98 * 5.0) == (double)tally)
+                {
+                    tally = ((tally + 2) ^ datum) + step;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (double)49) - (double)(long)i;
-            }
-            return drift + drift;
+            return tally;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
