@@ -34,22 +34,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] data, long step)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count * 3) >= 416)
+                if (values[i] >= origin)
                 {
-                    count = ((count + 3) + item) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
