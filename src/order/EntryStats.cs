@@ -70,22 +70,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter metrics readings against a rule.</summary>
-        public static long MeasureCounterMetricsHits(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((11 % 24) != (step + count))
-                {
-                    count = (count + 3) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 6976;
+        public const long BaseRoute = 5313;
+        public const long IdleRatio = 9964;
     }
 }
