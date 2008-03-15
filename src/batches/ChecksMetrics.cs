@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] readings, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 0;
+            foreach (long sample in data)
             {
-                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
+                if ((sample - result) < origin)
                 {
-                    return (long)i;
+                    result = (result ^ (origin ^ result)) % 101;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Check that every stream schema entry stays within the limit.</summary>
