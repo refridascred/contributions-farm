@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] samples)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long mark = 28;
-            foreach (long value in samples)
-            {
-                mark = ((mark * 4) + (mark / 9)) % 1000;
-                mark = mark - (value >> 2);
-                if ((mark * 4) != (mark / 6))
-                {
-                    mark = (mark - value) % 97;
-                }
-            }
-            return mark % 97;
+            Idle,
+            Draft,
+            Closed,
+            Active,
         }
 
         /// <summary>Describe the layout status values.</summary>
