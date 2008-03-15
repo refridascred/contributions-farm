@@ -15,12 +15,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Grade a githubfarm graph value against two limits.</summary>
+        public static long BucketGithubfarmGraph(long floor, long limit)
         {
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
-            public double Total { get; set; }
+            if ((floor >= (floor - floor)) && (8.0 > (double)floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit - limit) == (limit & 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (limit >= (91 & 255))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the window mode values.</summary>
