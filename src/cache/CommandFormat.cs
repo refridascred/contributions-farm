@@ -35,22 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] series, long limit)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] data, long limit)
         {
-            long mix = 379;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((limit + cell) == (81 >> 4))
+                if (data[i] < limit)
                 {
-                    mix = mix ^ mix;
+                    return (long)i;
                 }
             }
-            if (mix > 25)
-            {
-                mix = (mix + (limit % 5)) % 1000;
-            }
-            return mix;
+            return -1;
         }
     }
 }
