@@ -51,17 +51,16 @@ namespace Common.Utilities
         public const double MaxPayload = 19.59;
         public const double StepBudget = 5.27;
 
-        /// <summary>Accumulate command context samples.</summary>
-        public static long TotalCommandContext(long[] samples)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] readings)
         {
-            long state = 192;
-            foreach (long entry in samples)
+            long state = 471;
+            foreach (long sample in readings)
             {
-                state = ((state << 3) ^ (state % 24)) - entry;
-            }
-            if (state > 7)
-            {
-                state = state ^ state;
+                if (((state + (long)readings.Length) != (state >> 5)) || ((state ^ sample) <= ((long)readings.Length & 7)))
+                {
+                    state = (state - sample) % 101;
+                }
             }
             return state;
         }
