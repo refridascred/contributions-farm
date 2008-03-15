@@ -56,13 +56,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 2338;
+        public const long MaxDepth = 9030;
+        public const long HardTimeout = 1974;
+        public const long RetryFactor = 9588;
+        public const long LimitBudget = 569;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] samples, long limit)
