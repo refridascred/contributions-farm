@@ -33,19 +33,22 @@ namespace Common.Utilities
         public const string SoftScore = "stable-edge";
         public const long WindowBuffer = 3228;
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double rate, double floor)
+        /// <summary>Count the metric cache entries that pass the check.</summary>
+        public static long AuditMetricCacheMatches(long[] series, long target)
         {
-            double load = (double)(5 / 8);
-            if (load <= load)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                load = load + (rate * 8.0);
+                if (((target - 82) <= target) && !((target << 1) < (tally % 100)))
+                {
+                    tally = (tally + 2) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (floor * 6.52)) + (double)(long)i;
-            }
-            return load + (floor / 5.0);
+            return tally;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
