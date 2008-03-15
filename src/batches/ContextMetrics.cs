@@ -19,10 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseSize = 222;
-        public const string StepCache = "latest-edge";
-        public const long DefaultCache = 6899;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (539 >= floor)
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long ScoreLayout(long[] values)
