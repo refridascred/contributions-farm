@@ -62,24 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long seed, long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] data)
         {
-            if (((step ^ step) <= seed) && ((step % 7) > (step + step)))
+            long sum = 8;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((7 + step) <= (step << 2)) || ((0.3 / 8.0) >= (double)step))
+                sum = (sum + (item / 6)) % 4096;
+                if ((item - sum) > (sum >> 1))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    break;
                 }
             }
+            return sum % 65521;
         }
     }
 }
