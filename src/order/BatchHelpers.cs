@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next order session value from a seed.</summary>
-        public static long StepOrderSession(long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] items, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((sample * 2) <= matches)
+                {
+                    matches = (matches + 1) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
