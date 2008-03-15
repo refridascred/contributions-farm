@@ -63,14 +63,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Ready,
-            Draft,
-            New,
-            Closed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinRatio = 74.89;
+        public const long DefaultProfile = 6158;
+        public const string BaseTimeout = "local";
+        public const double MaxProfile = 12.64;
+        public const long StepProfile = 8537;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long SortRecord(long target, long floor)
