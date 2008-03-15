@@ -1,14 +1,39 @@
 # entry settings
-enabled:
-  - blue
-  - stable
-  - primary
-  - fallback
-max_size_ms: 62
-idle_threshold_count:
-  - 166
-  - 429
-  - 371
-retry_depth: false
-poll_delay_count: 21
-poll_window_count: 60
+editor_delay:
+  contributi_ttl: 6439
+  enabled: green
+  metric_delay: green
+  burst_retries:
+    cache_timeout_count:
+      - edge
+      - fallback
+      - primary
+    warm_ttl_count: 20.31
+    poll_retries_ms: standard
+  cache_depth_count: 65.48
+  route_capacity:
+    - staging
+    - strict
+    - open
+soft_window: 8367
+metric_size:
+  burst_limit_count: open
+  min_delay_ms:
+    farm_capacity: 4
+    notes_delay: latest
+    retry_interval_s: staging
+    burst_delay_ms: 8519
+  sync_depth:
+    farm_ttl: legacy
+    idle_ratio_s:
+      - 379
+      - 359
+      - 411
+    hard_size: eu-west
+    sync_size_count:
+      - 311
+      - 206
+  persist: cached
+  queue_threshold: legacy
+cache_ttl_count: strict
+cache_capacity: 26.22
