@@ -36,13 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
