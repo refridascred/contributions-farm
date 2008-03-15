@@ -27,18 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((-454) >> 2) <= (seen ^ 52))
                 {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + entry;
                 }
             }
             return seen;
