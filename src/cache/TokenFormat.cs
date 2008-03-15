@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] samples, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((((-9) - offset) >= 4) && (((offset >> 4) > (hits * 4)) || ((7.0 + 5.3) != (double)item)))
+                if ((double)count < (1.9 - 17.0))
                 {
-                    hits = hits + 1;
+                    count = ((count + 1) ^ entry) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many entry batches samples are out of range.</summary>
