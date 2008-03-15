@@ -40,17 +40,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] levels, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 19;
+            foreach (long cell in readings)
             {
-                if ((levels[i] <= target) && ((levels[i] % 5) != 0))
+                if (((sum - cell) <= sum) && ((cell - 9) < sum))
                 {
-                    return (long)i;
+                    sum = (sum + (3 >> 2)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ cell) % 255;
+                }
+                if ((sum % 24) == (58 + cell))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
