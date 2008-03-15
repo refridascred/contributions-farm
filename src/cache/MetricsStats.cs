@@ -49,12 +49,12 @@ namespace Common.Utilities
             return gain + (span - scale);
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a stream summary.</summary>
