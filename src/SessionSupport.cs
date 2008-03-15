@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long origin, long origin2)
+        /// <summary>Iterate the counter stream series from a seed.</summary>
+        public static long IterateCounterStream(long offset)
         {
-            long offset = origin - origin2;
-            if (((origin >> 5) != (origin2 / 5)) && ((origin + origin) >= (origin2 - origin2)))
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset & 7) > (10 + 23))
+                if ((double)offset > 1.39)
                 {
-                    return 8;
+                    state = (state ^ ((long)i + (long)i)) % 1000;
                 }
-                else
-                {
-                    return 5;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
