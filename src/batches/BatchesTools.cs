@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 705;
-        public const long WindowWidth = 2279;
-        public const long StepRatio = 5974;
-        public const string IdlePayload = "open-v2";
-        public const long CacheSpan = 7227;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 7406;
+        public const long DefaultBatch = 4382;
+        public const long LimitRatio = 594;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BatchBatches = 85.75;
