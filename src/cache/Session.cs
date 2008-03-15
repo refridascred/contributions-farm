@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit batches layout readings against a rule.</summary>
-        public static long AuditBatchesLayoutGaps(long[] samples)
+        /// <summary>Compare every pair of context metrics readings.</summary>
+        public static long PairContextMetricsCount(long[] series)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((8 + tally) > value) && !(4 <= (tally * 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
