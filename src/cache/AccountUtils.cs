@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long SoftMetric = 3103;
         public const double MinMetric = 98.98;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] items, long step)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (365 > (step % 60))
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the stream kind values.</summary>
