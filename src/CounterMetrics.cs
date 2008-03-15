@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine report stats values into a single score.</summary>
-        public static long TotalReportStats(long[] data, long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] series, long limit)
         {
-            long sum = 74;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((989 ^ floor) < (floor + cell))
+                if ((tally * 3) <= cell)
                 {
-                    sum = (sum << 3) ^ (sum << 3);
+                    tally = (tally + 3) - limit;
                 }
             }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
