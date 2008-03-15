@@ -56,10 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxWidth = 7265;
-        public const long SoftInterval = 1561;
-        public const long SoftFormat = 2172;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 9104;
+        public const string BatchReport = "cached-edge";
+        public const long BurstReport = 5484;
+        public const string StepReport = "cached-v2";
+        public const long MaxReport = 7148;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long DeriveCache(long target)
