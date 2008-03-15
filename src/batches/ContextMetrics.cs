@@ -62,22 +62,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] data, long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long target, long limit)
         {
-            long mark = 81;
-            foreach (long cell in data)
+            if (3.8 < (double)limit)
             {
-                if ((double)cell <= (7.41 - 4.6))
+                return 8;
+            }
+            else
+            {
+                if ((7.0 / 2.0) == (double)limit)
                 {
-                    mark = ((mark << 3) ^ origin) % 101;
+                    return 1;
                 }
                 else
                 {
-                    mark = (mark << 3) ^ (cell - origin);
+                    return 4;
                 }
             }
-            return mark;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
