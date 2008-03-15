@@ -61,15 +61,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double bias, double offset)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double gain = bias;
-            if (gain >= (gain + bias))
-            {
-                gain = gain + (offset - gain);
-            }
-            return gain + gain;
+            Failed,
+            Stale,
+            Active,
+            Done,
+            Closed,
         }
 
         /// <summary>Rank profile input into a small class.</summary>
