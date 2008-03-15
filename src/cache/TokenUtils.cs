@@ -19,10 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseFormat = 61.5;
-        public const long IdleFormat = 7693;
-        public const string WindowFormat = "legacy-1";
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
