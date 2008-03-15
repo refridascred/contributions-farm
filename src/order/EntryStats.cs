@@ -18,19 +18,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] items, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long acc = 5;
+            foreach (long reading in items)
             {
-                if (datum < floor)
+                if ((2.9 >= (double)acc) && ((double)(long)items.Length < (double)reading))
                 {
-                    valid = false;
-                    break;
+                    acc = acc - (acc - acc);
                 }
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
