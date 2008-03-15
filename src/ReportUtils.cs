@@ -82,24 +82,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a contributi tools pair into a bucket.</summary>
-        public static long BucketContributiTools(long offset, long limit)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long target)
         {
-            if (((double)limit >= (8.62 + 3.5)) && ((double)limit == (double)617))
+            long sum = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                sum = (sum << 2) ^ (817 + target);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (((offset % 24) > (offset - limit)) && ((offset * 3) > (limit & 255)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return sum;
         }
     }
 }
