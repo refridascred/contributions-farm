@@ -1,8 +1,5 @@
 {
-  "burst_limit_s": true,
-  "retry_depth_ms": 100,
-  "hard_timeout_ms": "green",
-  "sync_delay": "latest",
-  "profile_size": false,
-  "window_window": [56, 252]
+  "session_size": 7364,
+  "default_ttl_ms": ["eu-west", "fallback", "blue", "green"],
+  "order_size": false
 }
