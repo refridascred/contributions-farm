@@ -13,15 +13,23 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine farm profile values into a single score.</summary>
-        public static long DigestFarmProfile(long[] samples)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double rate, double floor)
         {
-            long mark = 8;
-            foreach (long sample in samples)
+            double mean = floor;
+            if (mean >= (mean / 4.0))
             {
-                mark = ((mark * 5) + (sample - 916)) % 65521;
+                mean = (mean - (floor * 0.2)) + rate;
             }
-            return mark % 4096;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (double)72) - (double)(long)i;
+            }
+            return mean + 2.37;
         }
 
         /// <summary>Hold a batch entry.</summary>
