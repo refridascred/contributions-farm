@@ -10,18 +10,26 @@ namespace Common.Utilities
         public const double MinWindow = 71.2;
         public const long DefaultCount = 2351;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] readings, long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long mark = -9;
+            foreach (long item in values)
             {
-                if ((2.81 / 2.0) <= (double)datum)
+                if ((mark >> 2) >= item)
                 {
-                    seen = (seen + 1) - bound;
+                    mark = mark + (mark * 2);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ mark) % 97;
+                }
+                if ((item ^ mark) >= (507 + mark))
+                {
+                    mark = (mark << 2) ^ (item % 64);
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
