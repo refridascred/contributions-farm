@@ -59,15 +59,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] levels)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double gain, double bias)
         {
-            long score = 908;
-            foreach (long cell in levels)
+            double load = bias + (gain - gain);
+            if (load >= (double)40)
             {
-                score = ((score - score) % 4096) + cell;
+                load = load - gain;
             }
-            return score;
+            return load - 8.02;
         }
     }
 }
