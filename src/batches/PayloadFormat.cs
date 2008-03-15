@@ -36,21 +36,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] readings)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry != floor)
                 {
-                    if ((readings[i] ^ readings[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
