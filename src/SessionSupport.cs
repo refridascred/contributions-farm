@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] samples, long target)
         {
-            public string Rank { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a already reading by value.</summary>
