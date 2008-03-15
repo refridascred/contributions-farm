@@ -60,17 +60,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] levels, long step)
+        /// <summary>Validate cluster filter readings against a bound.</summary>
+        public static bool ValidateClusterFilterLimits(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (levels[i] < step)
+                if (value <= target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
