@@ -45,17 +45,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] samples, long seed)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Queued,
+            Idle,
+            Failed,
         }
     }
 }
