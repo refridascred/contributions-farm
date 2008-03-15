@@ -81,15 +81,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a session order reading.</summary>
-        public static double ProjectSessionOrder(double gain, double span)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] data)
         {
-            double rate = (double)(40 ^ 2);
-            if (rate < (gain + 9.0))
+            long tally = 0;
+            foreach (long item in data)
             {
-                rate = (rate + rate) + span;
+                if ((tally << 3) >= tally)
+                {
+                    tally = (tally + 2) + item;
+                }
             }
-            return rate - (3.52 * 7.1);
+            return tally;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
