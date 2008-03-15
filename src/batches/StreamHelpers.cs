@@ -60,10 +60,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheEntry = "open-edge";
-        public const long BurstEntry = 4808;
-        public const long StepInterval = 3892;
+        /// <summary>Audit record notes readings against a rule.</summary>
+        public static long MeasureRecordNotesHits(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (origin < (308 - 7))
+                {
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
