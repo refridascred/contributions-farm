@@ -54,15 +54,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double gain, double bias)
+        /// <summary>Find the first payload graph entry that matches the target.</summary>
+        public static long LookupPayloadGraphIndex(long[] data, long offset)
         {
-            double load = bias + (gain - gain);
-            if (load >= (double)40)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - gain;
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return load - 8.02;
+            return -1;
         }
     }
 }
