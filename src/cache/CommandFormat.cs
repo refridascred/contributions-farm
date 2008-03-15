@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Locate a schema metrics reading by value.</summary>
+        public static long SeekSchemaMetricsIndex(long[] series, long step)
         {
-            Pending,
-            Paused,
-            Retry,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == step) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the session phase values.</summary>
