@@ -36,15 +36,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Adjust a commits checks reading.</summary>
-        public static double ScaleCommitsChecks(double bias, double bias2)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] samples, long floor)
         {
-            double ratio = bias - (double)(-1);
-            if (ratio > (bias2 + ratio))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                ratio = ratio + bias;
+                if ((36 + 92) < value)
+                {
+                    tally = (tally + 3) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return ratio - bias;
+            return tally;
         }
     }
 }
