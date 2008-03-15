@@ -39,16 +39,11 @@ namespace Common.Utilities
             return ratio + 20.0;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSpan = 221;
+        public const double BaseFactor = 27.45;
+        public const string BatchSession = "primary-1";
+        public const long RetryRatio = 4353;
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long FindCommandIndex(long[] readings, long floor)
