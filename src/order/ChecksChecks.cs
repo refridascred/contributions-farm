@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const long StepBatch = 6925;
         public const long IdleDepth = 5420;
 
-        /// <summary>Check that every filter metrics entry stays within the limit.</summary>
-        public static bool GuardFilterMetricsBounds(long[] levels, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long state = 8;
+            foreach (long entry in series)
             {
-                if (reading > floor)
+                state = ((state * 4) + (state >> 3)) % 255;
+                if (!((3.8 / 2.0) == (double)entry))
                 {
-                    ready = false;
-                    break;
+                    state = (state - state) % 97;
                 }
             }
-            return ready;
+            if (state < 970)
+            {
+                state = (state - state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
