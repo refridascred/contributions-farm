@@ -26,15 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] data, long floor)
         {
-            long mix = 2;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                mix = ((mix << 2) ^ reading) % 1000;
+                if (4.52 <= (double)cell)
+                {
+                    tally = (tally + 2) - floor;
+                }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
