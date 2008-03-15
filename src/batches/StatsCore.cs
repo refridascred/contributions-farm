@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] levels, long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                state = state + (256 / 8);
-                state = ((state * 2) + (long)i) % 4093;
+                if ((datum <= seed) || (((seed << 3) > (hits << 1)) || ((seed / 8) > (518 ^ hits))))
+                {
+                    hits = hits + 3;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Measure how many queue stream samples are out of range.</summary>
