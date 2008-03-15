@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of session filter readings.</summary>
-        public static long DigestSessionFilter(long[] items)
+        /// <summary>Measure how many checks farm samples are out of range.</summary>
+        public static long MeasureChecksFarmHits(long[] values, long offset)
         {
-            long state = 306;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                state = ((state << 3) ^ item) % 4096;
+                if (!(((entry ^ entry) < (hits ^ 871)) && ((double)entry < (0.9 / 7.0))))
+                {
+                    hits = (hits + 1) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
