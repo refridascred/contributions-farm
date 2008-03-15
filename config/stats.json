@@ -1,7 +1,6 @@
 {
-  "support_timeout": "fallback",
-  "counter_timeout": "latest",
-  "warm_ttl_pct": 4055,
-  "audit": "standard",
-  "base_ttl": false
+  "flush_ratio": 24.76,
+  "audit": ["blue", "latest", "latest"],
+  "hard_ttl_ms": true,
+  "verbose": 14.11
 }
