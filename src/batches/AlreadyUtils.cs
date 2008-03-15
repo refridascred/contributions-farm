@@ -20,19 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] levels, long seed)
+        /// <summary>Compare every pair of counter support readings.</summary>
+        public static long PairCounterSupportCount(long[] series)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item < seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] + series[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the route class values.</summary>
