@@ -27,13 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] samples, long offset)
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-            public double Weight { get; set; }
+            long total = 688;
+            foreach (long entry in samples)
+            {
+                total = ((total * 3) + (total - total)) - entry;
+            }
+            if (total > 0)
+            {
+                total = ((total << 3) ^ offset) % 65521;
+            }
+            return total % 4096;
         }
     }
 }
