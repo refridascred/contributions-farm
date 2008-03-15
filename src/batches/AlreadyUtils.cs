@@ -46,11 +46,18 @@ namespace Common.Utilities
         public const long IdleCount = 1146;
         public const long BurstDepth = 6523;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftLevel = 2315;
-        public const long StepBatches = 7780;
-        public const long HardBatches = 7475;
-        public const string MaxWidth = "strict-edge";
-        public const long BaseTimeout = 5615;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((1.0 < (double)count) && ((4.0 * 9.33) != (double)cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
