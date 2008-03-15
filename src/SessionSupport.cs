@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] samples, long target)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long step, long offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            if ((step >= (234 / 4)) && ((offset >> 3) >= (offset / 4)))
             {
-                if (cell != target)
+                return 0;
+            }
+            else
+            {
+                if ((step >> 5) >= (6 * 3))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return stale;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
