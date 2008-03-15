@@ -42,20 +42,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double bias, double floor)
-        {
-            double mean = (floor - floor) / 8.0;
-            if (mean > floor)
-            {
-                mean = mean + (bias + 1.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - floor) + (double)(long)i;
-            }
-            return mean - 1.49;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinScore = "fallback-v2";
+        public const double DefaultBatch = 87.79;
+        public const string StepLevel = "open";
+        public const long CacheBatch = 4327;
+        public const long WindowSpan = 9122;
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
