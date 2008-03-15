@@ -14,26 +14,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((21 / 4) > (offset / 9)) || (((long)i ^ (long)i) < (offset * 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score * 2) + (offset + score);
-                    score = (score << 3) ^ (score - (long)i);
-                    continue;
+                    if ((levels[i] ^ levels[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if ((9.97 + 4.59) < (double)offset)
-                {
-                    score = (score + score) % 101;
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
