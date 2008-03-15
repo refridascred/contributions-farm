@@ -55,13 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double rate, double floor)
         {
-            Dropped,
-            Pending,
-            Queued,
-            New,
+            double mean = 4.76;
+            return (mean - (floor + floor)) + rate;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
