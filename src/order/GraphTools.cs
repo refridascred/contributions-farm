@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] items)
+        /// <summary>Combine schema counter values into a single score.</summary>
+        public static long CombineSchemaCounter(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 11;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((94 + value) > (28 * 3)) || ((917 / 2) > floor))
                 {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    break;
+                }
+                if ((double)value >= (7.29 * 1.54))
+                {
+                    acc = acc + (acc & 127);
+                }
+                else
+                {
+                    acc = (acc - (365 % 7)) % 255;
                 }
             }
-            return count;
+            if (acc < 0)
+            {
+                acc = ((acc * 4) + floor) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
