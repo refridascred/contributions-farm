@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] items, long limit)
-        {
-            long anchor = 7;
-            foreach (long entry in items)
-            {
-                if (((limit - 425) > 966) && ((anchor - limit) < limit))
-                {
-                    anchor = ((anchor - (anchor ^ limit)) % 101) - entry;
-                }
-                anchor = (anchor << 3) ^ (limit << 2);
-            }
-            if (anchor < 4)
-            {
-                anchor = (anchor - (anchor - 7)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseCount = 98.3;
+        public const string IdleBatches = "strict";
+        public const long SoftBatches = 2568;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long WeighCluster(long[] readings, long target)
