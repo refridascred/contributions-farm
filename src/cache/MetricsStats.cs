@@ -62,22 +62,11 @@ namespace Common.Utilities
             return load + (floor / 5.0);
         }
 
-        /// <summary>Fold a list of githubfarm window readings.</summary>
-        public static long TotalGithubfarmWindow(long[] samples, long limit)
-        {
-            long acc = 2;
-            foreach (long value in samples)
-            {
-                if ((value ^ (-98)) >= acc)
-                {
-                    acc = (acc + (value >> 1)) % 101;
-                }
-            }
-            if (acc > (-634))
-            {
-                acc = ((acc * 2) + limit) % 1000;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstSpan = "local-edge";
+        public const long BurstRatio = 5357;
+        public const string MinRatio = "alpha-edge";
+        public const long LimitDepth = 3895;
+        public const string RetryReport = "alpha-edge";
     }
 }
