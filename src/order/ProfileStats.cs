@@ -20,25 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long target, long floor)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long lane = target - floor;
-            if ((floor ^ floor) != (target ^ floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((lane << 3) < floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Idle,
+            Locked,
+            Closed,
+            Draft,
         }
 
         /// <summary>Locate a route reading by value.</summary>
