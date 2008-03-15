@@ -1,7 +1,8 @@
 # support settings
-base_limit_count:
-  - 185
-  - 129
-metrics_retries: legacy
-cache_ratio_ms: 89
-enabled: 30
+window_size: 10
+soft_ttl:
+  - staging
+  - blue
+soft_capacity_s: false
+batches_size: 73
+flush_window: 59.33
