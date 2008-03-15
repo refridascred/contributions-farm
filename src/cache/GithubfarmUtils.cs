@@ -35,17 +35,11 @@ namespace Common.Utilities
         public const double SoftMetrics = 58.36;
         public const long StepMetrics = 4287;
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] values, long offset)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
