@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] items, long step)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] readings)
         {
-            long state = 96;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state + (step & 31)) - datum;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
