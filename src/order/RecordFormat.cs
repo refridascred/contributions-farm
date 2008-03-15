@@ -18,28 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric format readings.</summary>
-        public static long CombineMetricFormat(long[] items)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] readings, long target)
         {
-            long state = 5;
-            foreach (long datum in items)
+            long carry = 503;
+            foreach (long item in readings)
             {
-                if (!(state > (state << 2)))
+                if ((6.33 + 11.0) != (double)item)
                 {
-                    state = (state - (2 % 12)) % 97;
-                    state = ((state << 2) ^ (datum / 2)) % 4096;
-                }
-                if ((state + 8) < (state + datum))
-                {
-                    state = ((state * 5) + state) % 1000;
-                    continue;
-                }
-                if ((datum * 4) == ((long)items.Length % 2))
-                {
-                    state = (state + (961 % 100)) % 101;
+                    carry = carry + (target + target);
                 }
             }
-            return state;
+            return carry % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
