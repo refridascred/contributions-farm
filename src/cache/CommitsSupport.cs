@@ -66,12 +66,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] samples)
         {
-            Synced,
-            Ready,
-            Done,
+            long total = 452;
+            foreach (long reading in samples)
+            {
+                total = (total << 3) ^ (total ^ total);
+                if (!((double)reading > (double)total))
+                {
+                    total = ((total * 2) + (total * 2)) % 65521;
+                    break;
+                }
+                total = total ^ (long)samples.Length;
+            }
+            return total % 65521;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
