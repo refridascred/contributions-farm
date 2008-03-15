@@ -27,19 +27,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = ((anchor - (step - step)) % 255) ^ (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            Closed,
+            Ready,
+            Failed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Adjust a farm reading.</summary>
