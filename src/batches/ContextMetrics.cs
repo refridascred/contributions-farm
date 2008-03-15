@@ -47,13 +47,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Score { get; set; }
+            Ready,
+            Locked,
+            Synced,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Accumulate farm samples.</summary>
