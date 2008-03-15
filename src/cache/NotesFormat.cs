@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] series, long limit)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long result = -112;
-            foreach (long reading in series)
-            {
-                if ((reading + limit) > (reading % 24))
-                {
-                    result = ((result * 5) + result) % 4096;
-                }
-                if ((reading - result) >= reading)
-                {
-                    result = ((result * 2) + (reading ^ limit)) % 97;
-                }
-                if ((97 >> 2) != (result - reading))
-                {
-                    break;
-                }
-            }
-            if (result > 119)
-            {
-                result = (result * 4) + (long)series.Length;
-            }
-            return result;
+            Dropped,
+            Draft,
+            Pending,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the farm phase values.</summary>
