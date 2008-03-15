@@ -24,19 +24,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] data, long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (entry >= floor)
+                if (!(9 > (69 + seen)) || ((6.0 * 7.4) == (double)seen))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) - value;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
