@@ -28,19 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
-        public static bool CheckBufferGithubfarmLimits(long[] items, long bound)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Pending,
+            Synced,
+            Failed,
         }
     }
 }
