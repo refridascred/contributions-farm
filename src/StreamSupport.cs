@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] series, long seed)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] values)
         {
-            long sum = 20;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum + (seed / 5)) % 255;
-                sum = (sum << 3) ^ (item & 127);
-                if ((4.26 <= (double)seed) || ((item + sum) <= (sum * 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] + values[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum < 3)
-            {
-                sum = (sum + (seed + 228)) % 97;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
