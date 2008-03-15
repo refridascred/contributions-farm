@@ -81,10 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 1521;
-        public const long RetryProfile = 1461;
-        public const double BurstRatio = 73.48;
-        public const long MaxProfile = 815;
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double weight, double bias)
+        {
+            double load = 8.7;
+            if (load <= (load * 3.4))
+            {
+                load = ((load + (14.0 * 7.0)) - weight) - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - (double)(-84);
+        }
     }
 }
