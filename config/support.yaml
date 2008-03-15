@@ -1,4 +1,32 @@
 # support settings
-cache_interval_s: 939
-default_retries_ms: 1033
-default_threshold_pct: strict
+commits_ratio:
+  cache_threshold: 68
+  strict: 75.8
+  metric_timeout: true
+  flush_ratio:
+    - 335
+    - 122
+    - 407
+    - 199
+  checks_limit:
+    - 190
+    - 123
+    - 43
+    - 284
+burst_window_s: 47.32
+min_ratio: 74
+persist:
+  stream_depth:
+    base_ratio_ms: 6938
+    already_delay: 27.86
+    cache_ratio_pct: edge
+  compress: stable
+  poll_threshold_pct:
+    - 313
+    - 130
+  audit: 27.12
+  flush_capacity_ms: cached
+context_interval:
+  - 317
+  - 129
+  - 490
