@@ -12,19 +12,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] series, long target)
+        /// <summary>Fold a list of support metrics readings.</summary>
+        public static long FoldSupportMetrics(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long value in series)
+            long acc = 2;
+            foreach (long value in readings)
             {
-                if (value >= target)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc + (1 << 3)) + value) + target;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Describe the tools level values.</summary>
