@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double weight, double span)
         {
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
+            double weight2 = (double)3 - (weight / 5.0);
+            if (weight2 > weight)
+            {
+                weight2 = (weight2 + (weight2 + weight2)) + span;
+            }
+            else
+            {
+                weight2 = weight2 - (weight2 / 9.0);
+            }
+            return weight2 - weight;
         }
 
         /// <summary>Audit order route readings against a rule.</summary>
