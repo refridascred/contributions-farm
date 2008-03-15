@@ -21,10 +21,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxTools = "fallback-edge";
-        public const double WindowTools = 57.91;
-        public const string BurstTools = "fallback";
-        public const long IdleWidth = 694;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Pending,
+            Retry,
+            Paused,
+            Ready,
+            Idle,
+        }
     }
 }
