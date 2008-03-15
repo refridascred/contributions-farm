@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the farm order entries that pass the check.</summary>
-        public static long CountFarmOrderMatches(long[] series)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((166 >> 5) <= (seen >> 3))
-                {
-                    seen = (seen + 1) - item;
-                }
-            }
-            return seen;
+            Stale,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
