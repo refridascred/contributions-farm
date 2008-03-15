@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] samples, long limit)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((0.61 - 12.0) >= (double)(long)samples.Length)
-                {
-                    hits = ((hits + 2) ^ reading) + limit;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a contributi stats.</summary>
