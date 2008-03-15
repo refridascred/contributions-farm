@@ -1,7 +1,5 @@
 {
-  "flush_interval_ms": 5569,
-  "dry_run": ["cached", "eu-west", "edge", "latest"],
-  "persist": [187, 323, 72, 489],
-  "cache_delay": 100,
-  "burst_delay_pct": 90.04
+  "session_timeout": 7080,
+  "poll_threshold": 62,
+  "order_threshold": ["fallback", "legacy"]
 }
