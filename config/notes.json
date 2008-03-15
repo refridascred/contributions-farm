@@ -1,8 +1,8 @@
 {
-  "soft_threshold": "stable",
-  "batch_limit": ["blue", "latest", "standard", "cached"],
-  "hard_ttl": ["stable", "strict"],
-  "max_delay": ["fallback", "legacy", "fallback", "edge"],
-  "burst_timeout_count": 250,
-  "tools_size": 3605
+  "max_retries": "cached",
+  "already_window": 5401,
+  "editor_size": ["legacy", "eu-west", "open"],
+  "audit": 100,
+  "burst_window_ms": "latest",
+  "compress": 500
 }
