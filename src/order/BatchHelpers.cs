@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Derive the next order session value from a seed.</summary>
+        public static long StepOrderSession(long origin)
         {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
