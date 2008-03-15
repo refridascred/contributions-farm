@@ -58,18 +58,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] data, long floor)
+        /// <summary>Iterate the account farm series from a seed.</summary>
+        public static long DeriveAccountFarm(long target)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long sum = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((floor & 31) != (floor + floor))
-                {
-                    seen = (seen + 3) + sample;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
     }
 }
