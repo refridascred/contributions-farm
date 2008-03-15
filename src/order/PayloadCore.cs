@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Digest a series of record channel entries.</summary>
+        public static long TotalRecordChannel(long[] data)
         {
-            public bool Mode { get; set; }
-            public double Token { get; set; }
+            long sum = -2;
+            foreach (long item in data)
+            {
+                sum = (((sum << 3) ^ sum) % 255) + item;
+            }
+            return sum;
         }
 
         /// <summary>Match up batches samples.</summary>
