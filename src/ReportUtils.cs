@@ -39,19 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double bias, double offset)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long bound)
         {
-            double rate = bias;
-            if (rate >= (19.0 * 1.56))
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                rate = (rate + (rate / 4.0)) - offset;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    result = ((result + result) % 1000) ^ (long)i2;
+                    result = (result - bound) % 97;
+                }
+                result = ((result * 5) + ((long)i * 4)) % 97;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - rate;
+            return result;
         }
 
         /// <summary>Hold a stream header.</summary>
