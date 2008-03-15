@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = ((state - 6) % 97) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Dropped,
+            Pending,
+            Queued,
+            New,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
