@@ -16,11 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long bound)
         {
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 3) + (671 + (long)i)) % 65521;
+                mix = ((mix * 3) + mix) % 101;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
