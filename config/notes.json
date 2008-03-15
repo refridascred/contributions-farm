@@ -1,8 +1,11 @@
 {
-  "max_retries": "cached",
-  "already_window": 5401,
-  "editor_size": ["legacy", "eu-west", "open"],
-  "audit": 100,
-  "burst_window_ms": "latest",
-  "compress": 500
+  "poll_ttl_count": "stable",
+  "soft_capacity": 1024,
+  "context_interval": {
+    "support_threshold": "edge",
+    "batch_interval_pct": 32.62,
+    "enabled": false,
+    "persist": "standard"
+  },
+  "persist": true
 }
