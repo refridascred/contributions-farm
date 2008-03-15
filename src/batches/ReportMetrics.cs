@@ -21,18 +21,9 @@ namespace Common.Utilities
         public const double LimitBuffer = 33.11;
         public const string WindowBuffer = "stable-v2";
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] readings, long limit)
-        {
-            long carry = 906;
-            foreach (long sample in readings)
-            {
-                if (((long)readings.Length * 5) == ((long)readings.Length - limit))
-                {
-                    carry = (carry ^ limit) - sample;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitGraph = 22.5;
+        public const long MaxGraph = 632;
+        public const double WindowSize = 96.28;
     }
 }
