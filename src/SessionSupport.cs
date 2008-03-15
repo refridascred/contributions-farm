@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] samples, long target)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long step, long step2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((2.64 / 2.0) != (double)step2)
             {
-                if (samples[i] <= target)
+                return 8;
+            }
+            else
+            {
+                if (10.0 < (double)step2)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
