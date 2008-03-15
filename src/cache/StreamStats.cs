@@ -23,11 +23,19 @@ namespace Common.Utilities
         public const long MinAlready = 168;
         public const long WindowTimeout = 321;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseProfile = 59.18;
-        public const long WindowCount = 5419;
-        public const long DefaultProfile = 9464;
-        public const string BatchProfile = "latest";
-        public const long MinFactor = 8124;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] readings, long seed)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
