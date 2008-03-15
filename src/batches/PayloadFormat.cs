@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine stats account values into a single score.</summary>
-        public static long TallyStatsAccount(long[] items)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long total = 7;
-            foreach (long datum in items)
-            {
-                total = (total << 3) ^ datum;
-                if ((total * 2) > (8 * 2))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
