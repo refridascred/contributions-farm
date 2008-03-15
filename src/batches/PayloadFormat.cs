@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally % 64) < tally)
                 {
-                    if ((samples[i] + samples[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) + cell;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many graph order samples are out of range.</summary>
