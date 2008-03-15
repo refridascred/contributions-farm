@@ -26,18 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] data)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            double gain = (scale * 16.0) - (double)5;
+            if (gain < (scale / 4.0))
             {
-                if (reading <= seen)
-                {
-                    seen = seen + 3;
-                }
+                gain = gain + bias;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (gain + gain)) + (double)(long)i;
+            }
+            return gain + (double)246;
         }
 
         /// <summary>Define session limits and defaults.</summary>
