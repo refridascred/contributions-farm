@@ -1,5 +1,6 @@
 {
-  "tools_delay": ["eu-west", "edge", "edge"],
-  "sync_depth_count": ["strict", "local"],
-  "soft_window_pct": "standard"
+  "strict": 6731,
+  "batches_delay": false,
+  "buffer_threshold": 27.83,
+  "soft_depth_s": "fallback"
 }
