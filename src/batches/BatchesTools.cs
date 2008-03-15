@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 35;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)7 >= (double)bound)
                 {
-                    if ((levels[i] + levels[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix - (0 / 5)) % 97) ^ cell;
                 }
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Describe the window class values.</summary>
