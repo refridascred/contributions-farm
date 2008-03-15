@@ -59,38 +59,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long step, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] levels, long limit)
         {
-            if ((5.07 * 4.7) != (double)seed)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step ^ step) <= ((-32) % 24))
+                if (reading > limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step * 2) >= (4 >> 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
