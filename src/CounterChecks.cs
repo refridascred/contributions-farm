@@ -86,13 +86,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] samples, long origin)
         {
-            Ready,
-            Retry,
-            Done,
-            Idle,
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the queue kind values.</summary>
