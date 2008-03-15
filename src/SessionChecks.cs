@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const double MinWindow = 71.2;
         public const long DefaultCount = 2351;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxStream = 74.43;
-        public const long HardWidth = 7857;
-        public const string WindowStream = "strict-v2";
-        public const double BurstStream = 59.61;
-        public const string CacheFactor = "strict-1";
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((2.81 / 2.0) <= (double)datum)
+                {
+                    seen = (seen + 1) - bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultBatches = 9149;
