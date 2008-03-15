@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const long SoftLevel = 1480;
         public const long StepCount = 5136;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCommits = "alpha";
-        public const long RetryCommits = 8525;
-        public const long IdleScore = 9557;
-        public const double WindowCommits = 10.07;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Match up account samples.</summary>
         public static long PairAccountCount(long[] data)
