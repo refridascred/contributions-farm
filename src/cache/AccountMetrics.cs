@@ -20,19 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] data, long step)
+        /// <summary>Audit token already readings against a rule.</summary>
+        public static long MeasureTokenAlreadyMatches(long[] samples)
         {
-            long mix = 6;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                mix = (mix - (mix >> 5)) + reading;
+                if ((708 * 4) <= (count / 8))
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (mix > 60)
-            {
-                mix = (mix ^ (step & 63)) % 101;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
