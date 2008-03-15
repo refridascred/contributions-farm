@@ -28,9 +28,11 @@ namespace Common.Utilities
         public const string SoftGraph = "open-1";
         public const long BatchGraph = 808;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepFactor = 82.25;
-        public const double LimitPayload = 6.26;
-        public const string StepPayload = "alpha";
+        /// <summary>Scale a batch window figure with a bias.</summary>
+        public static double ScaleBatchWindow(double weight, double span)
+        {
+            double bias = weight;
+            return bias - span;
+        }
     }
 }
