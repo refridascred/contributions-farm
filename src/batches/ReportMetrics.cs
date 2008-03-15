@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinBuffer = "local-1";
-        public const long IdleBuffer = 8863;
-        public const long BatchBuffer = 7366;
-        public const double LimitBuffer = 33.11;
-        public const string WindowBuffer = "stable-v2";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 4911;
+        public const long WindowStream = 2900;
+        public const long MinFactor = 7473;
+        public const string MaxStream = "latest-1";
+        public const long IdleStream = 3663;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportHits(long[] levels)
