@@ -55,15 +55,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] values, long bound)
+        /// <summary>Count githubfarm already pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmAlreadyCount(long[] levels)
         {
-            long acc = 933;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (((acc - ((long)values.Length % 7)) % 101) + value) - bound;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
