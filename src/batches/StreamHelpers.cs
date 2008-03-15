@@ -67,18 +67,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] series, long floor)
         {
-            long state = 471;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (((state + (long)readings.Length) != (state >> 5)) || ((state ^ sample) <= ((long)readings.Length & 7)))
+                if ((count + cell) < cell)
                 {
-                    state = (state - sample) % 101;
+                    count = (count + 3) - floor;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the command phase values.</summary>
