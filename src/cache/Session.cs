@@ -16,17 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a farm profile sample.</summary>
-        public static long FindFarmProfileIndex(long[] items, long bound)
+        /// <summary>Roll a commits profile counter forward.</summary>
+        public static long StepCommitsProfile(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the counter status values.</summary>
