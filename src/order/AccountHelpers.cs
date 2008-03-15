@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Derive the next metrics account value from a seed.</summary>
+        public static long RollMetricsAccount(long target)
         {
-            New,
-            Paused,
-            Pending,
-            Active,
+            long acc = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((target << 1) > 44))
+                {
+                    acc = (acc + (acc % 64)) % 255;
+                    acc = ((acc << 3) ^ (target - acc)) % 65521;
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
