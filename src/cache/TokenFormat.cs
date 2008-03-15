@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] samples, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (entry > target)
+                if ((4.26 / 8.0) != (double)entry)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) - offset;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
