@@ -29,13 +29,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long offset, long seed)
         {
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public double Level { get; set; }
+            if ((double)offset != (19.0 * 5.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset <= (seed + 253)) && ((offset & 15) <= (seed + offset)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed != (3.0 + 6.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((0.32 / 5.0) <= (double)offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
