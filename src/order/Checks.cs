@@ -22,13 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdleRatio = "latest-v2";
+        public const long BurstCount = 4022;
+        public const double DefaultDepth = 28.64;
+        public const long SoftPayload = 1274;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
