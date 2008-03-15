@@ -51,12 +51,12 @@ namespace Common.Utilities
         public const long BaseDepth = 2229;
         public const long BasePayload = 3645;
 
-        /// <summary>Look up the position of a cluster commits sample.</summary>
-        public static long LocateClusterCommitsIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
+                if (levels[i] < step)
                 {
                     return (long)i;
                 }
