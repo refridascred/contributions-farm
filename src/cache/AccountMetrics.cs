@@ -37,23 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next counter buffer value from a seed.</summary>
-        public static long IterateCounterBuffer(long step)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long total = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((39 - (long)i) <= ((long)i >> 5)) || (step <= (15 / 9)))
-                {
-                    total = (total + (long)i) % 97;
-                }
-                else
-                {
-                    total = ((total * 2) + step) % 101;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Roll a layout counter forward.</summary>
