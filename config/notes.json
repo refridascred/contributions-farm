@@ -1,5 +1,7 @@
 {
-  "audit": 60,
-  "strict": 46.52,
-  "entry_limit": "green"
+  "persist": 17.88,
+  "already_limit": true,
+  "audit": 30,
+  "buffer_size": "latest",
+  "default_ttl_pct": 8407
 }
