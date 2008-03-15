@@ -20,10 +20,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryCache = "legacy-1";
-        public const long DefaultCache = 2420;
-        public const long StepFactor = 4505;
-        public const long IdleDepth = 6843;
+        public const long BaseSize = 222;
+        public const string StepCache = "latest-edge";
+        public const long DefaultCache = 6899;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long SortMetric(long limit, long floor)
