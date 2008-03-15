@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
