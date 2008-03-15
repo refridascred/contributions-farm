@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Iterate the channel support series from a seed.</summary>
+        public static long SeriesChannelSupport(long floor)
         {
-            public bool Limit { get; set; }
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix << 3) ^ mix) % 101;
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
