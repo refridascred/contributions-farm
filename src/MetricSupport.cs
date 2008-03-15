@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank batch already input into a small class.</summary>
-        public static long ClassifyBatchAlready(long step, long bound)
-        {
-            if (!((double)step > (4.04 - 1.4)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound - bound) >= bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 83;
+        public const long IdleGraph = 4271;
+        public const long RetryDepth = 8503;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
