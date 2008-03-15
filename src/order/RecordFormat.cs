@@ -46,22 +46,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of stream entry entries.</summary>
-        public static long TotalStreamEntry(long[] values)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] readings, long floor)
         {
-            long anchor = 648;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((anchor - anchor) <= sample)
+                if (item != floor)
                 {
-                    anchor = (anchor * 5) + (anchor & 15);
-                }
-                else
-                {
-                    anchor = (anchor * 5) + anchor;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return valid;
         }
     }
 }
