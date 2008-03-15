@@ -46,22 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit buffer already readings against a rule.</summary>
-        public static long MeasureBufferAlreadyGaps(long[] values, long limit)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((limit % 7) > (limit - sample)) && ((double)sample < 6.4))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
