@@ -39,15 +39,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] values, long offset)
-        {
-            long mix = 510;
-            foreach (long entry in values)
-            {
-                mix = (((mix - 938) % 4096) - entry) - offset;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowGithubfarm = "fallback-edge";
+        public const double MaxSpan = 60.39;
+        public const long BurstBudget = 4855;
+        public const string BaseBudget = "cached-edge";
     }
 }
