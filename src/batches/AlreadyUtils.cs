@@ -38,13 +38,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Rank queue buffer input into a small class.</summary>
+        public static long GradeQueueBuffer(long target, long step)
         {
-            public double Total { get; set; }
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            long slot = target ^ step;
+            if ((14.0 * 8.19) <= (0.33 * 3.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((368 - step) <= slot) || ((58 ^ target) >= (step + target)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the report level values.</summary>
