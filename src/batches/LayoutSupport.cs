@@ -77,12 +77,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Classify a token profile pair into a bucket.</summary>
+        public static long SortTokenProfile(long origin, long offset)
         {
-            Idle,
-            Draft,
-            Dropped,
+            if (((double)offset <= 3.4) && ((double)origin == (8.12 - 7.71)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((offset >> 4) == (offset * 4)) || ((5 ^ 543) == (origin + (-8))))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset / 6) > origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
