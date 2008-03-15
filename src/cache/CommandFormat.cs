@@ -19,32 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long seed, long bound)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] series, long seed)
         {
-            long offset = seed + bound;
-            if (seed <= (offset % 10))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed >= (seed + seed))
+                if ((series[i] == seed) && ((series[i] % 5) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound >> 3) > (seed % 64))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next githubfarm checks value from a seed.</summary>
