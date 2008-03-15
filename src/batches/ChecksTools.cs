@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long step)
         {
-            Retry,
-            Failed,
-            Done,
-            Closed,
-            Queued,
+            long total = step;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    total = (((total * 5) + total) % 101) ^ (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Hold a schema entry.</summary>
