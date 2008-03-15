@@ -1,10 +1,17 @@
 {
-  "retry_ttl_pct": "latest",
-  "entry_ttl": 68.6,
-  "strict": {
-    "cache_window_ms": 91,
-    "token_interval": ["strict", "latest"],
-    "hard_size": 62.18,
-    "dry_run": [164, 356, 437, 420]
+  "hard_depth_pct": {
+    "hard_ttl_s": ["edge", "open", "cached", "standard"],
+    "base_window": false,
+    "notes_interval": "primary",
+    "batch_ttl_ms": "strict",
+    "compress": 1024
+  },
+  "enabled": 5407,
+  "notes_delay": {
+    "soft_timeout_s": 98,
+    "burst_retries_s": 33,
+    "warm_interval": false,
+    "githubfarm_retries": false,
+    "metric_capacity": [249, 268]
   }
 }
