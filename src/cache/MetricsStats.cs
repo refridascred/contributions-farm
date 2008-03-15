@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] readings, long bound)
-        {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxScore = 29.83;
+        public const string CacheLayout = "legacy-1";
+        public const double LimitRatio = 14.51;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
