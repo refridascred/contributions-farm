@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double gain, double span)
+        /// <summary>Measure how many entry batches samples are out of range.</summary>
+        public static long CountEntryBatchesGaps(long[] samples, long offset)
         {
-            double weight = span - (span - span);
-            if (weight >= (weight / 3.0))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                weight = weight - (gain / 3.0);
+                if (!!(((long)samples.Length * 3) >= seen))
+                {
+                    seen = ((seen + 1) + entry) + offset;
+                }
             }
-            return weight + (double)4;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
