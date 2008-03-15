@@ -28,21 +28,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of cluster window entries.</summary>
-        public static long FoldClusterWindow(long[] series)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] items)
         {
-            long anchor = 776;
-            foreach (long value in series)
+            long mix = 992;
+            foreach (long value in items)
             {
-                anchor = (anchor + anchor) % 65521;
-                anchor = ((anchor * 2) + (value ^ anchor)) % 97;
-                anchor = ((anchor * 2) + (anchor / 3)) % 4096;
-                if ((double)anchor > (double)value)
-                {
-                    break;
-                }
+                mix = ((mix ^ (mix + mix)) % 101) - value;
             }
-            return anchor;
+            return mix % 65521;
         }
 
         /// <summary>Describe the schema state values.</summary>
