@@ -1,7 +1,6 @@
 {
-  "retry_window": "eu-west",
-  "burst_interval_s": false,
-  "audit": [7, 393, 344, 155],
-  "strict": true,
-  "idle_ratio": "green"
+  "farm_interval": 95.21,
+  "hard_retries_ms": [478, 36, 27],
+  "min_limit_pct": 24.49,
+  "max_threshold_count": 1024
 }
