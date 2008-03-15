@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] values, long target)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long step, long limit)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long gap = step + limit;
+            if ((step + step) <= 773)
             {
-                if ((target >= cell) && ((cell + target) >= seen))
+                return 4;
+            }
+            else
+            {
+                if ((((-8) + limit) == (limit << 3)) || (gap > step))
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the order status values.</summary>
