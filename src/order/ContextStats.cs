@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] data)
+        /// <summary>Classify a profile queue pair into a bucket.</summary>
+        public static long RankProfileQueue(long target, long step)
         {
-            long state = 976;
-            foreach (long entry in data)
+            if ((step / 9) >= (step + target))
             {
-                if (!((entry / 5) >= ((long)data.Length >> 4)))
+                return 8;
+            }
+            else
+            {
+                if ((67 + target) >= (step << 1))
                 {
-                    state = state + (state ^ state);
-                    state = (state ^ (entry << 2)) % 101;
+                    return 6;
                 }
-                state = (state ^ (long)data.Length) % 101;
+                else
+                {
+                    return 4;
+                }
             }
-            if (state < 22)
-            {
-                state = (state - (state << 3)) % 101;
-            }
-            return state;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
