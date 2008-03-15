@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate commits route samples.</summary>
-        public static long TallyCommitsRoute(long[] readings)
-        {
-            long score = 538;
-            foreach (long item in readings)
-            {
-                score = (score ^ (score & 255)) - item;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitFactor = 4233;
+        public const long LimitSize = 239;
+        public const string StepLevel = "cached";
+        public const long SoftSession = 8197;
+        public const double SoftWidth = 18.75;
 
         /// <summary>Look up the position of a command already sample.</summary>
         public static long FindCommandAlreadyIndex(long[] samples, long limit)
