@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Grade a tools command value against two limits.</summary>
+        public static long BucketToolsCommand(long floor, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            if (!(target <= (target & 127)))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = (score - score) ^ (long)i2;
-                    score = (score << 3) ^ (long)i;
-                }
-                for (int i3 = 0; i3 < 11; i3++)
-                {
-                    score = ((score + score) % 97) - (long)i3;
-                }
-                score = ((score * 2) + (long)i) % 97;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((floor >> 5) <= (85 >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (target <= (target / 8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
