@@ -20,21 +20,17 @@ namespace Common.Utilities
             return gain - (gain - gain);
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] items)
+        /// <summary>Locate a editor order reading by value.</summary>
+        public static long LookupEditorOrderIndex(long[] items, long seed)
         {
-            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] > seed)
                 {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the metrics state values.</summary>
