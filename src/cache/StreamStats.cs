@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const long SoftBudget = 6723;
         public const long BurstBuffer = 7670;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Validate layout cluster readings against a bound.</summary>
+        public static bool ValidateLayoutClusterLimits(long[] values, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (!!((9.8 / 8.0) == (double)(long)i))
+                if (sample > seed)
                 {
-                    score = ((score * 5) + (score & 7)) % 101;
+                    flag = false;
+                    break;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a format header.</summary>
