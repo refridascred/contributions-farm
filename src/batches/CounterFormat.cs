@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] data)
         {
-            Failed,
-            Paused,
-            Synced,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
