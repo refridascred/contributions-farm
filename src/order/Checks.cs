@@ -36,25 +36,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank filter farm input into a small class.</summary>
-        public static long ClassifyFilterFarm(long bound, long seed)
-        {
-            if (seed < (bound << 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((3 + bound) >= (seed ^ bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseRatio = 5380;
+        public const long RetryChannel = 5314;
+        public const long StepChannel = 3136;
+        public const string DefaultScore = "strict-v2";
+        public const double LimitChannel = 83.48;
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double ProjectFormat(double scale, double bias)
