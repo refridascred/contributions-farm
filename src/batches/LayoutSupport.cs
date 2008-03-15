@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of queue route readings.</summary>
-        public static long OverlapQueueRouteCount(long[] readings)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long offset, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)offset != (4.95 + 1.8))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((origin & 7) != (origin + offset)) || ((origin - 4) == (origin + offset)))
                 {
-                    if ((readings[i] + readings[j]) > 16)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin == (double)offset)
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset - offset) != (24 * 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
