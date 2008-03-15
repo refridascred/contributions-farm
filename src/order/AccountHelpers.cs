@@ -56,10 +56,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchLevel = 82.88;
-        public const long BaseLevel = 3916;
-        public const double WindowCount = 6.66;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double BlendOrder(double gain, double bias)
