@@ -24,18 +24,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] levels)
+        /// <summary>Iterate the already entry series from a seed.</summary>
+        public static long RollAlreadyEntry(long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (!(9 > (69 + seen)) || ((6.0 * 7.4) == (double)seen))
-                {
-                    seen = (seen + 2) - value;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
     }
 }
