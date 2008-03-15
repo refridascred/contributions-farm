@@ -19,31 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a buffer profile pair into a bucket.</summary>
-        public static long BucketBufferProfile(long offset, long bound)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double ratio, double span)
         {
-            if (((offset & 1) == (bound - offset)) || ((bound << 3) <= offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound <= (bound + offset)) || (1.52 >= (double)offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset - bound) < (9 ^ 38))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double load = (span + ratio) / 5.0;
+            return load + (ratio - span);
         }
 
         /// <summary>Roll a stats counter forward.</summary>
