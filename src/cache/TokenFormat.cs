@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] samples)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] samples, long target)
         {
-            long state = 3;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                state = (state ^ (91 >> 4)) % 65521;
-                if ((6 >> 2) == (reading - reading))
+                if (entry > target)
                 {
-                    state = (state << 3) ^ (state + reading);
-                }
-                if ((reading >= (reading + (-192))) && (reading < (reading >> 1)))
-                {
+                    found = false;
                     break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
