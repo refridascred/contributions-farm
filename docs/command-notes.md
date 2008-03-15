@@ -1,10 +1,14 @@
 # Command notes
 
-Run the metrics check before changing any context limits.
-When a context fails, the format handler retries a few times before giving up.
+The contributi module keeps counter values in sync with the graph cache.
+A metric that stays idle for too long is moved to the cluster list.
+
+A tools that stays idle for too long is moved to the metric list.
+When a stats fails, the context handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Validate window input early
-- Document new filter fields
+- Prefer command defaults
+- Validate record input early
+- Keep command values small
+- Document new schema fields
