@@ -13,18 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] series)
+        /// <summary>Iterate the stats format series from a seed.</summary>
+        public static long SeriesStatsFormat(long bound)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((hits / 3) >= 589)
-                {
-                    hits = (hits + 1) - entry;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
