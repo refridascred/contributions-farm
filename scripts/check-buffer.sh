@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local strict; do
+for item in cached green standard; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=100
-log "limit is ${BUFFER_LIMIT}"
-
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
