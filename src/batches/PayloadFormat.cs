@@ -34,18 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] values, long bound)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((9.94 / 9.0) < (double)bound)
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            Failed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
