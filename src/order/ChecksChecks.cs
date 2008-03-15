@@ -31,17 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a farm session sample.</summary>
-        public static long LookupFarmSessionIndex(long[] values, long step)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < step) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public double Score { get; set; }
         }
     }
 }
