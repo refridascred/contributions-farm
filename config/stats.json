@@ -1,18 +1,7 @@
 {
-  "window_retries": false,
-  "idle_delay_count": ["staging", "edge", "fallback", "eu-west"],
-  "compress": 30,
-  "min_ratio_pct": 14,
-  "sync_timeout_pct": {
-    "persist": "open",
-    "batch_limit_count": {
-      "soft_ttl": "blue",
-      "audit": [345, 296, 231],
-      "editor_timeout": 75.54,
-      "poll_retries_pct": "local"
-    },
-    "default_retries_ms": ["staging", "stable"],
-    "verbose": "primary",
-    "retry_size": "stable"
-  }
+  "command_interval": true,
+  "warm_ratio_ms": "primary",
+  "checks_interval": 454,
+  "format_limit": [424, 260, 385, 78],
+  "account_interval": 82
 }
