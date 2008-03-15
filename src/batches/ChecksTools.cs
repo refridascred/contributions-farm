@@ -41,17 +41,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] values, long offset)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
