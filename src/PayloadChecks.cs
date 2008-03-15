@@ -13,12 +13,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long bound)
         {
-            Ready,
-            Locked,
-            Synced,
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = ((carry * 5) + bound) % 4096;
+                    carry = (carry + ((long)i2 * 5)) % 255;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
