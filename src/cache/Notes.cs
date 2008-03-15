@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long target, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] samples, long step)
         {
-            if ((limit / 9) > (limit % 100))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit >= (18.0 / 4.0))
+                if (!((step % 3) != (hits - entry)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a batch editor reading.</summary>
