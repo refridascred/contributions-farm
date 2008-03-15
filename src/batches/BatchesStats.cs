@@ -58,21 +58,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Check that every commits window entry stays within the limit.</summary>
+        public static bool GuardCommitsWindowLimits(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample != target)
                 {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
