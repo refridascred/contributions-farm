@@ -37,26 +37,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of report buffer entries.</summary>
-        public static long TallyReportBuffer(long[] items, long floor)
-        {
-            long anchor = 44;
-            foreach (long item in items)
-            {
-                if ((anchor >> 1) > (16 % 7))
-                {
-                    anchor = (anchor - item) % 255;
-                }
-                else
-                {
-                    anchor = anchor + (-5);
-                }
-            }
-            if (anchor > 81)
-            {
-                anchor = (anchor + (floor - 7)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 3833;
+        public const long CacheCount = 8720;
+        public const long HardEditor = 702;
+        public const long IdleEditor = 8381;
     }
 }
