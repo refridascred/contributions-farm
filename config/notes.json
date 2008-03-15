@@ -1,6 +1,6 @@
 {
-  "farm_depth": ["green", "local", "fallback"],
-  "burst_limit_s": [204, 329, 411],
-  "warm_interval": 60,
-  "max_window_ms": "edge"
+  "max_limit_pct": "strict",
+  "retry_depth": false,
+  "stream_size": 26,
+  "already_capacity": "edge"
 }
