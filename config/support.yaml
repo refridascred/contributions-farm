@@ -1,26 +1,4 @@
 # support settings
-hard_window: false
-compress:
-  - 444
-  - 406
-  - 471
-  - 468
-enabled:
-  cache_ttl_s: false
-  idle_ratio:
-    - blue
-    - stable
-    - blue
-  poll_size_pct: false
-  cache_ratio_count: 0.27
-verbose: false
-hard_size_s:
-  enabled: 30
-  warm_ttl: 12
-  flush_capacity:
-    batch_capacity_s: staging
-    compress: eu-west
-    warm_ttl:
-      - 80
-      - 334
-strict: 60
+sync_interval_count: 31
+batch_size: 53.2
+sync_depth_count: cached
