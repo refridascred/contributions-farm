@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next order checks value from a seed.</summary>
-        public static long RollOrderChecks(long offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] readings, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                long edge = (carry >> 5) - (long)i;
-                carry = (carry - (edge + edge)) % 1000;
-                carry = ((carry * 4) + (long)i) % 1000;
+                if (reading <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Hold a cache header.</summary>
