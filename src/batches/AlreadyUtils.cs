@@ -45,25 +45,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank queue buffer input into a small class.</summary>
-        public static long GradeQueueBuffer(long target, long step)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long slot = target ^ step;
-            if ((14.0 * 8.19) <= (0.33 * 3.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((368 - step) <= slot) || ((58 ^ target) >= (step + target)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the report level values.</summary>
