@@ -1,33 +1,4 @@
 # entry settings
-burst_size: true
-min_depth_ms:
-  poll_window_s: 85.74
-  strict: false
-  warm_threshold: 56.63
-  sync_threshold:
-    dry_run: 2105
-    cache_delay_ms: 65
-    cache_depth_s: 5137
-    max_ttl: 2592
-  idle_delay_s:
-    - edge
-    - legacy
-    - open
-    - cached
-  queue_interval: 1022
-poll_capacity_pct:
-  audit:
-    strict:
-      - 11
-      - 476
-      - 496
-      - 409
-    poll_size_ms: strict
-    sync_retries_ms:
-      - 195
-      - 273
-    burst_ttl_s: 31.63
-    sync_capacity: 2689
-  burst_delay_pct: 22.84
-  strict: 1230
-sync_interval_s: 4.57
+poll_capacity_count: 27.39
+hard_interval_count: stable
+min_interval_pct: 26
