@@ -83,26 +83,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream report values into a single score.</summary>
-        public static long CombineStreamReport(long[] samples)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] levels)
         {
-            long mark = 62;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (datum >= (datum + datum))
+                if ((3.61 * 9.0) >= (double)entry)
                 {
-                    mark = (mark ^ (mark / 2)) % 65521;
+                    seen = seen + 1;
                 }
-                if ((datum > (datum << 2)) && ((4.8 + 8.04) >= (double)datum))
+                else
                 {
-                    mark = ((mark << 3) ^ datum) % 97;
+                    seen = seen - 1;
                 }
             }
-            if (mark < (-3))
-            {
-                mark = ((mark * 5) + (818 - mark)) % 4096;
-            }
-            return mark;
+            return seen;
         }
     }
 }
