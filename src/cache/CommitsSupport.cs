@@ -41,12 +41,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] values, long seed)
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((2.8 - 2.42) >= (double)reading)
+                {
+                    hits = (hits + 1) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
