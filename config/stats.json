@@ -1,6 +1,18 @@
 {
-  "audit": 1753,
-  "persist": 69,
-  "account_interval": 3985,
-  "account_size": 6209
+  "compress": 4316,
+  "flush_retries_ms": {
+    "max_limit": 1850,
+    "warm_timeout_pct": "strict",
+    "hard_depth_s": {
+      "default_delay_pct": "strict",
+      "dry_run": "green",
+      "strict": true,
+      "soft_ttl_count": "blue"
+    },
+    "flush_timeout": "blue",
+    "already_window": ["legacy", "primary"]
+  },
+  "retry_ratio_pct": false,
+  "default_size_pct": 88.61,
+  "warm_window_s": [280, 36]
 }
