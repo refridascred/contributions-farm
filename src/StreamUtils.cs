@@ -62,12 +62,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] items, long seed)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] > seed)
+                if ((values[i] >= seed) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
