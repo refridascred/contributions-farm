@@ -14,24 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long step, long limit)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double scale, double bias)
         {
-            if (!((step + step) < limit))
+            double weight = bias;
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
+                weight = ((weight - 11.0) + (double)(long)i) + scale;
             }
-            else
-            {
-                if (step <= (step % 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return weight + (weight - weight);
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
