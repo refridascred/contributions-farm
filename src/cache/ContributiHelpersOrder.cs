@@ -30,10 +30,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepInterval = 298;
-        public const double IdleCount = 24.87;
-        public const long BurstSupport = 9218;
-        public const long BaseSupport = 5296;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
