@@ -1,19 +1,15 @@
 # githubfarm settings
-min_timeout_ms:
-  profile_limit: 30
-  flush_interval_ms:
-    already_capacity: 34
-    report_threshold: standard
-    order_capacity: primary
-  checks_size:
-    farm_capacity: 4356
-    idle_ttl: 24
-    min_limit_pct:
-      - cached
-      - latest
-      - staging
-      - eu-west
-    hard_capacity_ms: 1
-    max_limit: true
-poll_capacity_pct: 250
-queue_size: latest
+flush_timeout: eu-west
+max_limit_s:
+  default_depth_s: false
+  default_limit: green
+  cache_window:
+    poll_capacity_pct: 86.08
+    verbose: 82.47
+    route_size: 9780
+    enabled: staging
+    min_delay_s:
+      - 77
+      - 419
+    flush_window: false
+batch_interval_pct: green
