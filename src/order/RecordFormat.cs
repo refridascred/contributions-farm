@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double gain, double span)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] items, long bound)
         {
-            double mean = span;
-            if (mean <= (mean / 5.0))
+            bool flag = true;
+            foreach (long cell in items)
             {
-                mean = (mean + span) + gain;
+                if (cell <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (double)91;
-            }
-            return mean - mean;
+            return flag;
         }
 
         /// <summary>Project the next entry value.</summary>
