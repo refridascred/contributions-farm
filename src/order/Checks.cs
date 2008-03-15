@@ -20,11 +20,20 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdleRatio = "latest-v2";
-        public const long BurstCount = 4022;
-        public const double DefaultDepth = 28.64;
-        public const long SoftPayload = 1274;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] levels, long step)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
