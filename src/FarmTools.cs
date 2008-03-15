@@ -26,12 +26,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first order cache entry that matches the target.</summary>
-        public static long SeekOrderCacheIndex(long[] readings, long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] <= step)
+                if (levels[i] >= target)
                 {
                     return (long)i;
                 }
