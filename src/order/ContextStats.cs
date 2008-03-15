@@ -30,11 +30,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRatio = 9586;
-        public const long BaseRatio = 224;
-        public const string BaseRecord = "primary";
-        public const double RetryRecord = 34.0;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorOutliers(long[] series, long floor)
