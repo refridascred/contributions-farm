@@ -1,30 +1,28 @@
 # githubfarm settings
-farm_ratio:
-  - 324
-  - 90
-  - 74
-  - 232
-min_limit: 91
-support_limit: green
-profile_interval:
-  burst_ttl_count: local
-  max_ttl:
-    hard_threshold_ms: blue
-    warm_retries: 57.02
-    warm_interval_s: 93
-    verbose: 66
-    soft_capacity_pct:
+channel_timeout:
+  session_ttl: 2725
+  warm_interval: 20
+  retry_threshold_ms:
+    - 324
+    - 494
+    - 2
+    - 298
+  burst_size: green
+  flush_depth:
+    burst_window: 250
+    session_retries: eu-west
+    default_depth_pct: legacy
+    warm_capacity: edge
+    min_interval_ms:
       - 496
-      - 451
-      - 219
-  audit: 683
-  poll_window_ms: 7
-  base_timeout_count:
-    idle_limit: 88.16
-    checks_capacity: primary
-    soft_limit_pct:
-      - 244
-      - 316
-      - 23
-    profile_size: legacy
-    idle_retries: standard
+      - 184
+      - 303
+      - 167
+  counter_limit: stable
+default_ratio:
+  - 270
+  - 230
+  - 210
+cache_retries_count: legacy
+persist: 68
+sync_ttl: local
