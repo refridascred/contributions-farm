@@ -16,15 +16,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] samples, long target)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] values, long seed)
         {
-            long result = 8;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                result = (((result << 3) ^ result) ^ value) + target;
+                if (sample > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Accumulate account samples.</summary>
