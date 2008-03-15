@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Paused,
-            Active,
-            Stale,
-            Ready,
-            Draft,
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
