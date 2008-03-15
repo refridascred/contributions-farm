@@ -32,10 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSize = 9306;
-        public const long DefaultSession = 3612;
-        public const string MinFactor = "primary-v2";
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Draft,
+            Done,
+            Stale,
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long SeekCommitsIndex(long[] items, long step)
