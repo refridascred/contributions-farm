@@ -46,18 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches tools samples are out of range.</summary>
-        public static long TallyBatchesToolsGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((1 - sample) <= (49 - sample))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 31.0;
+        public const long BaseSize = 9672;
+        public const string BaseLevel = "latest-1";
+        public const long MinCounter = 7689;
     }
 }
