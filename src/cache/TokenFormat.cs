@@ -19,24 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context metrics values into a single score.</summary>
-        public static long CombineContextMetrics(long[] samples)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long mix = 50;
-            foreach (long cell in samples)
-            {
-                mix = (mix - cell) % 65521;
-                mix = (mix + (mix + cell)) % 4096;
-                if (!((double)cell <= (14.0 * 0.06)))
-                {
-                    mix = mix - (cell - mix);
-                }
-            }
-            if (mix < 39)
-            {
-                mix = ((mix * 5) + (mix - mix)) % 255;
-            }
-            return mix % 65521;
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
