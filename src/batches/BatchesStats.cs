@@ -46,12 +46,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long target)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            long mark = target;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = mark + (target / 7);
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a record stats.</summary>
