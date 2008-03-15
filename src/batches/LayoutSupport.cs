@@ -57,12 +57,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long step)
         {
-            Done,
-            New,
-            Paused,
+            long mix = step;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = (mix + (mix ^ (long)i)) % 1000;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many buffer filter samples are out of range.</summary>
