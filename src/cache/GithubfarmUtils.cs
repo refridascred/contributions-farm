@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] samples)
+        /// <summary>Fold a list of schema context readings.</summary>
+        public static long TallySchemaContext(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 8;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((score + (-2)) < score) && ((9.0 * 7.94) >= (double)sample))
                 {
-                    if ((samples[i] + samples[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score - offset) % 4096;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (sample / 4)) % 1000;
                 }
             }
-            return matches;
+            return score % 65521;
         }
 
         /// <summary>Match up batches githubfarm samples.</summary>
