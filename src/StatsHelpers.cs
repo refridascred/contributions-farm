@@ -19,21 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next support tools value from a seed.</summary>
-        public static long IterateSupportTools(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                long step = carry << 1;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = (carry + (step - carry)) + (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchSpan = 54.41;
+        public const string BatchAlready = "standard-1";
+        public const long DefaultTimeout = 8590;
+        public const double LimitScore = 40.19;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultSpan = 2468;
