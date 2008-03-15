@@ -1,21 +1,9 @@
 # entry settings
-readonly: true
-record_depth: true
-flush_delay_s:
-  enabled: 250
-  verbose:
-    entry_window:
-      - staging
-      - eu-west
-      - primary
-    counter_depth: 14
-    metric_interval:
-      - stable
-      - local
-    cache_capacity: false
-  default_interval_count: 95.42
-  persist: strict
-  max_timeout_pct: primary
-batch_delay_count: latest
-default_retries: 75
-enabled: true
+min_ttl: 9966
+token_window: 44
+default_limit_count: 100
+min_depth_count: 10.37
+readonly:
+  - strict
+  - latest
+  - edge
