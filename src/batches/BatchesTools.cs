@@ -19,11 +19,13 @@ namespace Common.Utilities
         public const long SoftBatches = 6536;
         public const string BurstBatches = "open-edge";
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
