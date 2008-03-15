@@ -13,14 +13,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Closed,
-            Paused,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxEntry = 46.23;
+        public const double BaseEntry = 19.23;
+        public const long DefaultSpan = 3556;
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long RankFormat(long target, long offset)
