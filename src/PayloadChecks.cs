@@ -56,15 +56,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the account farm series from a seed.</summary>
-        public static long DeriveAccountFarm(long target)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long target, long bound)
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
+            long next = target ^ bound;
+            if (next <= (next * 5))
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if (((double)target >= (10.0 * 1.48)) || ((next << 2) > (74 - next)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((target / 8) != (bound ^ target)) && ((double)target > (5.0 / 7.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
