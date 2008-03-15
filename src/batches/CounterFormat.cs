@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double rate, double floor)
+        /// <summary>Look up the position of a tools report sample.</summary>
+        public static long LookupToolsReportIndex(long[] series, long seed)
         {
-            double load = (floor + rate) * 7.7;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load - (7.4 / 2.0)) + (double)(long)i;
+                if ((series[i] < seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + (double)890;
+            return -1;
         }
 
         /// <summary>Describe the session phase values.</summary>
