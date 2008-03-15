@@ -29,13 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double bias, double floor)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
+            double rate = bias;
+            if (rate >= rate)
+            {
+                rate = (rate + bias) - floor;
+            }
+            return rate + (bias / 9.0);
         }
 
         /// <summary>Hold a payload stats.</summary>
