@@ -20,14 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheCommits = "alpha";
+        public const long RetryCommits = 8525;
+        public const long IdleScore = 9557;
+        public const double WindowCommits = 10.07;
 
         /// <summary>Match up account samples.</summary>
         public static long PairAccountCount(long[] data)
