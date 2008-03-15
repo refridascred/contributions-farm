@@ -13,19 +13,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] samples)
+        /// <summary>Measure how many already profile samples are out of range.</summary>
+        public static long AuditAlreadyProfileHits(long[] readings, long floor)
         {
-            long sum = 6;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                sum = ((sum + (485 % 16)) % 255) - cell;
-                if ((sum ^ sum) > (sum & 15))
+                if (hits < (14 & 63))
                 {
-                    break;
+                    hits = ((hits + 1) + entry) - floor;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a route snapshot.</summary>
