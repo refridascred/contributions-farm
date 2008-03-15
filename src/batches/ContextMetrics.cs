@@ -47,12 +47,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] items, long limit)
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
+            long mix = 690;
+            foreach (long entry in items)
+            {
+                if ((3 + limit) == (entry - entry))
+                {
+                    mix = (mix ^ (mix - entry)) % 4096;
+                }
+                else
+                {
+                    mix = mix + (limit << 1);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
