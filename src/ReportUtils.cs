@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            Dropped,
+            Draft,
+            Ready,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
