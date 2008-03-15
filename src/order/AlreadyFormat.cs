@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long origin)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double bias, double span)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            double load = bias;
+            if (load >= (bias * 6.0))
             {
-                anchor = (anchor + anchor) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                load = load - bias;
             }
-            return anchor;
+            return load - span;
         }
 
         /// <summary>Hold a commits info.</summary>
