@@ -66,22 +66,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit record notes readings against a rule.</summary>
-        public static long MeasureRecordNotesHits(long[] values, long origin)
+        /// <summary>Compare every pair of batch context readings.</summary>
+        public static long OverlapBatchContextCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (origin < (308 - 7))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] + readings[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the command phase values.</summary>
