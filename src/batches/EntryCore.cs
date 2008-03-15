@@ -41,17 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first token cluster entry that matches the target.</summary>
-        public static long SeekTokenClusterIndex(long[] values, long seed)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Pending,
+            Draft,
         }
 
         /// <summary>Blend two format measurements.</summary>
