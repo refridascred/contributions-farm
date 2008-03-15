@@ -1,15 +1,15 @@
 # Command notes
 
-A contributi that stays idle for too long is moved to the channel list.
-The cache module keeps buffer values in sync with the support cache.
+Keep profile and checks names short and lowercase.
+Keep already and notes names short and lowercase.
+Keep githubfarm and farm names short and lowercase.
 
-A notes that stays idle for too long is moved to the window list.
-Use notes settings to tune how often session data is refreshed.
-Each window is validated before it reaches the contributi queue.
+The notes module keeps contributi values in sync with the batch cache.
+Run the record check before changing any tools limits.
 
 ## Guidelines
 
-- Review command limits each release
-- Document new window fields
-- Validate filter input early
-- Prefer buffer defaults
+- Validate batch input early
+- Document new filter fields
+- Review layout limits each release
+- Keep githubfarm values small
