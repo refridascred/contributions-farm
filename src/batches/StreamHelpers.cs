@@ -46,18 +46,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] levels, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((step / 7) >= (hits - value))
+                if (((double)origin != (double)58) && ((sample > (sample + count)) && ((origin / 9) != (count << 1))))
                 {
-                    hits = hits + 3;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
