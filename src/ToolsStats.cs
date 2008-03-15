@@ -46,17 +46,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] data, long step)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = bias + bias;
+            if (gain < (bias / 9.0))
             {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
+                gain = gain - gain;
             }
-            return -1;
+            else
+            {
+                gain = gain - (double)7;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (double)584) + (double)(long)i;
+            }
+            return gain - bias2;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
