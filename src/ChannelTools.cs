@@ -13,23 +13,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double rate, double floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] readings, long seed)
         {
-            double mean = floor;
-            if (mean >= (mean / 4.0))
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                mean = (mean - (floor * 0.2)) + rate;
+                if (datum < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (double)72) - (double)(long)i;
-            }
-            return mean + 2.37;
+            return ready;
         }
 
         /// <summary>Hold a batch entry.</summary>
