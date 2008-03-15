@@ -18,12 +18,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Pending,
-            Idle,
-            Done,
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
