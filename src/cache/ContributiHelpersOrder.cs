@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] values, long origin)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long state = 879;
-            foreach (long value in values)
-            {
-                state = ((state << 2) ^ (origin << 2)) ^ value;
-            }
-            if (state > (-75))
-            {
-                state = state - origin;
-            }
-            return state % 97;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine metric values into a single score.</summary>
