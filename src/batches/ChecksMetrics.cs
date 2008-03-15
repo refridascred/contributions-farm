@@ -34,13 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] items)
         {
-            Locked,
-            Done,
-            Failed,
-            Active,
+            long mix = 62;
+            foreach (long value in items)
+            {
+                mix = (mix << 3) ^ (value - 4);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a commits header.</summary>
