@@ -15,19 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] data)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] samples)
         {
-            long mix = 76;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 4) + (mix ^ mix)) - value;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix > 8)
-            {
-                mix = mix ^ (mix ^ mix);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the metric state values.</summary>
