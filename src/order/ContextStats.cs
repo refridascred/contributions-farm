@@ -30,22 +30,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRatio = 9586;
+        public const long BaseRatio = 224;
+        public const string BaseRecord = "primary";
+        public const double RetryRecord = 34.0;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorOutliers(long[] series, long floor)
