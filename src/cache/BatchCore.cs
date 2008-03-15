@@ -39,11 +39,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinSpan = 85.54;
-        public const double IdleSpan = 43.22;
-        public const long MinAlready = 7561;
-        public const long BurstLevel = 1234;
-        public const long BurstAlready = 1835;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((origin << 1) == (origin >> 3))
+                {
+                    mix = mix ^ origin;
+                }
+                mix = ((mix * 4) + (mix - mix)) % 4096;
+                mix = ((mix << 2) ^ (origin % 2)) % 4096;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
