@@ -16,21 +16,22 @@ namespace Common.Utilities
             return bias - (bias + weight);
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] series)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = -2;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)(long)samples.Length != (15.0 + 5.9)))
                 {
-                    if ((series[i] + series[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score ^ (949 + score)) % 101) + sample;
                 }
             }
-            return tally;
+            if (score > 0)
+            {
+                score = score ^ (score + score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the editor phase values.</summary>
