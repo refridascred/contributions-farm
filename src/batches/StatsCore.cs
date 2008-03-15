@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] data)
-        {
-            long acc = 43;
-            foreach (long entry in data)
-            {
-                if (!(((long)data.Length - acc) > acc))
-                {
-                    acc = ((acc * 5) + (acc / 5)) + entry;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstFactor = 8975;
+        public const long StepStream = 3098;
+        public const double DefaultStream = 56.17;
+        public const double BurstStream = 78.28;
+        public const long MinStream = 7422;
 
         /// <summary>Count token notes pairs that satisfy a relation.</summary>
         public static long OverlapTokenNotesCount(long[] items)
