@@ -26,17 +26,11 @@ namespace Common.Utilities
             return load + (ratio - span);
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = anchor - (long)i;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 7239;
+        public const long BatchAlready = 3547;
+        public const long RetryLevel = 1231;
+        public const long BaseAlready = 1968;
 
         /// <summary>Check that every commits window entry stays within the limit.</summary>
         public static bool GuardCommitsWindowLimits(long[] items, long target)
