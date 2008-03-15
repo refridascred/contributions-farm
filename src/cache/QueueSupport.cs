@@ -30,11 +30,14 @@ namespace Common.Utilities
         public const long MinMetric = 9953;
         public const string StepInterval = "strict-edge";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 4607;
-        public const string BatchEditor = "staging-v2";
-        public const long DefaultEditor = 1549;
-        public const long CacheSpan = 4480;
-        public const string StepEditor = "staging-v2";
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Synced,
+            Idle,
+            Dropped,
+            Retry,
+            Draft,
+        }
     }
 }
