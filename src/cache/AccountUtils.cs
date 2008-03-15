@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] levels, long target)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((10.0 - 13.0) < (double)5)
-                {
-                    hits = ((hits + 2) + sample) - target;
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
