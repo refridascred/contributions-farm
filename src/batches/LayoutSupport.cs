@@ -27,12 +27,18 @@ namespace Common.Utilities
         public const long SoftStream = 771;
         public const string WindowStream = "strict-v2";
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (cell <= (tally + cell))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
