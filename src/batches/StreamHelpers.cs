@@ -20,15 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] samples, long floor)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] items)
         {
-            long result = 412;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result * 3) + (cell - floor);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
