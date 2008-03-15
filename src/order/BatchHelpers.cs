@@ -27,21 +27,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] series)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            Active,
+            Queued,
         }
     }
 }
