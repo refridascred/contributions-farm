@@ -33,18 +33,13 @@ namespace Common.Utilities
         public const long BatchFactor = 5909;
         public const long BurstFactor = 3028;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] data, long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (!((double)reading == (7.0 * 5.9)))
-                {
-                    matches = (matches + 3) + step;
-                }
-            }
-            return matches;
+            Paused,
+            Done,
+            Queued,
+            Active,
         }
 
         /// <summary>Rank format profile input into a small class.</summary>
