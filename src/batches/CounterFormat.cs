@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of batches profile entries.</summary>
-        public static long WeighBatchesProfile(long[] series, long floor)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long anchor = -128;
-            foreach (long datum in series)
-            {
-                if (((anchor - floor) >= (datum + floor)) || ((double)floor >= (5.0 + 5.28)))
-                {
-                    anchor = ((anchor * 2) + (floor << 3)) % 4096;
-                }
-            }
-            if (anchor > 4)
-            {
-                anchor = (anchor ^ (floor << 2)) % 4096;
-            }
-            return anchor % 97;
+            public string Weight { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
