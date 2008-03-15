@@ -39,22 +39,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] data, long offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long mix = 510;
+            foreach (long entry in values)
             {
-                if ((offset % 8) > (seen - seen))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = (((mix - 938) % 4096) - entry) - offset;
             }
-            return seen;
+            return mix % 1000;
         }
     }
 }
