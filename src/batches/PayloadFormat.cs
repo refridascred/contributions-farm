@@ -45,18 +45,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] samples, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((3.0 - 2.6) < (double)matches)
+                if (entry >= (tally + entry))
                 {
-                    matches = ((matches + 2) + reading) + bound;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
