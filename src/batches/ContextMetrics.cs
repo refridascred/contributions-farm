@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] samples, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (sample > target)
+                if (((datum + datum) >= (datum - matches)) || ((datum - matches) < (matches >> 5)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
