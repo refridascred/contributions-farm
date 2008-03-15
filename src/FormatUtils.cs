@@ -70,18 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] levels, long origin)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((hits + hits) <= (datum - hits))
-                {
-                    hits = (hits + 1) + origin;
-                }
-            }
-            return hits;
+            Done,
+            Dropped,
+            Draft,
         }
     }
 }
