@@ -1,5 +1,5 @@
 {
-  "payload_threshold": true,
-  "cache_retries_s": "strict",
-  "soft_retries_pct": 60
+  "audit": 60,
+  "strict": 46.52,
+  "entry_limit": "green"
 }
