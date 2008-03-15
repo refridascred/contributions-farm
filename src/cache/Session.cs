@@ -42,22 +42,14 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] data)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (((double)tally < (2.0 + 3.34)) || ((double)reading < 5.0))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            New,
+            Synced,
+            Done,
+            Locked,
         }
     }
 }
