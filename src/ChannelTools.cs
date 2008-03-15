@@ -31,21 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((2.92 + 3.3) > (double)seed)
-                {
-                    state = (state ^ (seed ^ state)) % 97;
-                    state = (state - (state << 2)) % 101;
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepTimeout = 8655;
+        public const double BaseSize = 77.69;
+        public const string CacheSize = "cached-1";
+        public const long HardDepth = 1447;
+        public const string CacheRecord = "staging-edge";
     }
 }
