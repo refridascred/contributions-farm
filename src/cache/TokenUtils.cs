@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] data, long seed)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((((double)seen != (8.3 / 4.0)) || ((19.0 + 7.64) >= (double)seen)) && ((value / 3) >= (1 + value)))
-                {
-                    seen = (seen + 1) + seed;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Match up tools batches samples.</summary>
