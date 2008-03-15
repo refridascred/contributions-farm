@@ -20,19 +20,15 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] levels, long step)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            double load = 8.6;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading != step)
-                {
-                    flag = false;
-                    break;
-                }
+                load = ((load - (weight * 2.7)) + (double)(long)i) + bias;
             }
-            return flag;
+            return load + (weight - load);
         }
 
         /// <summary>Describe the metric class values.</summary>
