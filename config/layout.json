@@ -1,5 +1,15 @@
 {
-  "audit": 64,
-  "order_interval": "blue",
-  "strict": "blue"
+  "graph_size": 7862,
+  "compress": 482,
+  "enabled": {
+    "readonly": {
+      "enabled": 100,
+      "warm_limit_ms": 37,
+      "hard_timeout_count": 60,
+      "metrics_size": 32.44
+    },
+    "session_capacity": "staging",
+    "cache_depth": true,
+    "farm_ttl": 500
+  }
 }
