@@ -40,13 +40,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long limit)
         {
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
+            long score = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                score = (score - (limit << 2)) % 4096;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
