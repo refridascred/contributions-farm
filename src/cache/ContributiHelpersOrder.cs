@@ -25,27 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] samples)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long mark = 3;
-            foreach (long cell in samples)
-            {
-                mark = (mark + (cell + 6)) % 255;
-                if ((mark + mark) >= 78)
-                {
-                    continue;
-                }
-                if (!((935 - mark) < mark))
-                {
-                    mark = (mark - (mark + mark)) % 65521;
-                }
-                else
-                {
-                    mark = mark + cell;
-                }
-            }
-            return mark % 97;
+            Closed,
+            Stale,
+            Ready,
+            Synced,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
