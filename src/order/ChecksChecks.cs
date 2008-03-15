@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] items, long offset)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long step, long seed)
         {
-            bool found = true;
-            foreach (long datum in items)
+            if ((double)7 <= (double)seed)
             {
-                if (datum < offset)
+                return 4;
+            }
+            else
+            {
+                if ((double)step > (0.8 / 7.0))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (step < (step - 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Validate already counter readings against a bound.</summary>
