@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long step, long seed)
+        /// <summary>Classify a counter format pair into a bucket.</summary>
+        public static long BucketCounterFormat(long offset, long floor)
         {
-            long lane = step + seed;
-            if (!(((-1) + seed) > step))
+            if ((double)offset >= (18.0 - 9.43))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (seed >= (lane >> 5))
+                if ((double)offset == (3.05 * 8.44))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if (!(lane >= (seed + seed)))
+                    if (floor < (offset * 4))
                     {
-                        return 8;
+                        return 7;
                     }
                     else
                     {
-                        return 5;
+                        return 4;
                     }
                 }
             }
