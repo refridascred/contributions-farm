@@ -27,19 +27,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] samples, long offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long total = 688;
-            foreach (long entry in samples)
-            {
-                total = ((total * 3) + (total - total)) - entry;
-            }
-            if (total > 0)
-            {
-                total = ((total << 3) ^ offset) % 65521;
-            }
-            return total % 4096;
+            Active,
+            Done,
+            Failed,
+            Paused,
+            New,
         }
     }
 }
