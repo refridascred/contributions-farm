@@ -53,19 +53,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double ratio, double floor)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double bias, double floor)
         {
-            double load = ratio;
-            if (load >= load)
-            {
-                load = (load + load) - floor;
-            }
-            else
-            {
-                load = load - (double)64;
-            }
-            return load - ratio;
+            double bias2 = floor;
+            return (bias2 + (floor / 8.0)) + bias;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
