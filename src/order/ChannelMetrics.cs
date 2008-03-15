@@ -22,11 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepTimeout = 8028;
-        public const long BaseWidth = 4434;
-        public const string SoftGraph = "open-1";
-        public const long BatchGraph = 808;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] values)
+        {
+            long carry = -95;
+            foreach (long sample in values)
+            {
+                carry = ((carry << 3) ^ (2 & 15)) % 255;
+                carry = ((carry * 4) + (sample - (-62))) % 101;
+            }
+            if (carry < 2)
+            {
+                carry = carry + carry;
+            }
+            return carry;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long StepMetric(long target)
