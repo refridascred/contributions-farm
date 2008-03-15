@@ -27,18 +27,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] levels)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)count <= 3.0)
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            Draft,
+            Done,
+            Synced,
+            Active,
+            Stale,
         }
 
         /// <summary>Describe the filter status values.</summary>
