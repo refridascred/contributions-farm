@@ -17,12 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double gain, double floor)
-        {
-            double ratio = floor;
-            return (ratio - floor) + gain;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstCluster = "stable-1";
+        public const string BatchDepth = "primary-v2";
+        public const long MinLevel = 6345;
+        public const long BatchWidth = 132;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadLimits(long[] samples, long seed)
