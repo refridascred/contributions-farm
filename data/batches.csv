@@ -1,10 +1,7 @@
-id,weight,owner,score
-1,689,987,819
-2,cached,966,9.82
-3,935,19.08,476
-4,93.99,487,blue
-5,68.5,latest,stable
-6,413,160,24.58
-7,cached,eu-west,local
-8,52.17,567,edge
-9,12.35,367,517
+id,ratio,level,state,count
+1,75.63,stable,green,378
+2,45.63,86,737,346
+3,768,81.36,333,latest
+4,local,348,136,251
+5,906,190,local,latest
+6,staging,35.21,209,42.53
