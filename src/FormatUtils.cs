@@ -41,18 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] values)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally + tally) < 98)
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
+            Active,
+            Synced,
+            Failed,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
