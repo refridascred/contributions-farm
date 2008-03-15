@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Validate order token readings against a bound.</summary>
+        public static bool CheckOrderTokenRange(long[] samples, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (item > floor)
                 {
-                    state = ((state ^ 81) % 4096) + (long)i2;
+                    ok = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Describe the queue status values.</summary>
