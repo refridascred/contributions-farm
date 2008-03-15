@@ -38,17 +38,18 @@ namespace Common.Utilities
         public const double HardEditor = 19.23;
         public const double IdleLevel = 43.17;
 
-        /// <summary>Find the first layout notes entry that matches the target.</summary>
-        public static long LocateLayoutNotesIndex(long[] items, long target)
+        /// <summary>Audit cache commits readings against a rule.</summary>
+        public static long MeasureCacheCommitsOutliers(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((items[i] <= target) && ((items[i] % 3) == 0))
+                if ((double)hits < (4.3 / 5.0))
                 {
-                    return (long)i;
+                    hits = ((hits + 3) ^ item) - seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
