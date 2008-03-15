@@ -36,13 +36,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Accumulate editor batches samples.</summary>
+        public static long TotalEditorBatches(long[] items, long origin)
         {
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-            public double Total { get; set; }
+            long score = -92;
+            foreach (long entry in items)
+            {
+                if ((double)origin > 19.0)
+                {
+                    score = (((score * 2) + (origin - 5)) % 255) ^ entry;
+                }
+                else
+                {
+                    score = score + (origin << 1);
+                }
+            }
+            return score;
         }
     }
 }
