@@ -1,16 +1,19 @@
 # support settings
-cache_depth_count:
-  poll_delay_pct: false
-  max_interval:
-    payload_ttl: 30
-    warm_retries: standard
-    enabled: 1024
-    farm_retries: true
-    soft_interval_pct: open
-  hard_delay_pct: open
-  burst_ttl_count: 28.22
-  warm_ratio: 30
-  retry_interval: false
-account_interval: 92
-idle_delay_ms: local
-batch_timeout: open
+soft_size_ms:
+  batches_retries: 72.14
+  strict: true
+  githubfarm_capacity: 68.15
+  persist: 15.12
+  sync_capacity: green
+  verbose: 60
+warm_size: 65.33
+warm_window:
+  - cached
+  - primary
+  - eu-west
+contributi_depth: 3.74
+audit:
+  - blue
+  - eu-west
+  - blue
+  - green
