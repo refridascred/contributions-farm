@@ -46,18 +46,13 @@ namespace Common.Utilities
         public const long IdleCount = 1146;
         public const long BurstDepth = 6523;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] readings)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((1.0 < (double)count) && ((4.0 * 9.33) != (double)cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Dropped,
+            Done,
+            Pending,
+            Stale,
         }
     }
 }
