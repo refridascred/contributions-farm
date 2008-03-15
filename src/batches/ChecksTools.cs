@@ -44,18 +44,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many route record samples are out of range.</summary>
-        public static long TallyRouteRecordHits(long[] series, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long carry = -877;
+            foreach (long reading in readings)
             {
-                if ((double)entry >= (7.0 + 5.5))
-                {
-                    tally = (tally + 1) - seed;
-                }
+                carry = (carry - (carry + reading)) % 65521;
             }
-            return tally;
+            return carry;
         }
     }
 }
