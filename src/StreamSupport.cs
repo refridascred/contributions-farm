@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] series, long floor)
+        /// <summary>Roll a batch support counter forward.</summary>
+        public static long IterateBatchSupport(long seed)
         {
-            long sum = 90;
-            foreach (long value in series)
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((sum << 1) == (value + 38))
+                if (!((mark + mark) < mark))
                 {
-                    sum = (((sum << 3) ^ (sum + value)) % 65521) + floor;
+                    mark = (mark - (seed ^ 55)) % 255;
+                    mark = mark - (mark / 5);
                 }
-                else
-                {
-                    sum = ((sum * 2) + (sum + sum)) % 101;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            if (sum > (-97))
-            {
-                sum = (sum + (sum >> 3)) % 255;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
