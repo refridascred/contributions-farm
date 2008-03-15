@@ -34,19 +34,14 @@ namespace Common.Utilities
             return ratio + 8.8;
         }
 
-        /// <summary>Check that every batches record entry stays within the limit.</summary>
-        public static bool CheckBatchesRecordBounds(long[] values, long limit)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Idle,
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Hold a session info.</summary>
