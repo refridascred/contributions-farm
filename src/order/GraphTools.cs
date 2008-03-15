@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long origin, long bound)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] items)
         {
-            if ((bound + origin) < origin)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin + bound) >= 824)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate command samples.</summary>
