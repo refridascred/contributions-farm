@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double gain, double span)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            double rate = span;
-            if (rate <= (rate + rate))
-            {
-                rate = (rate - (rate + 4.6)) - gain;
-            }
-            return rate - (rate / 2.0);
+            Pending,
+            Closed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Fold a list of already readings.</summary>
