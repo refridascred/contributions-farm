@@ -54,19 +54,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double gain, double bias)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double rate = (gain - bias) / 6.0;
-            if (rate >= bias)
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (7.8 * 5.0);
+            Queued,
+            Retry,
+            Paused,
+            Active,
+            Locked,
         }
     }
 }
