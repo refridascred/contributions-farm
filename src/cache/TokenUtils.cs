@@ -37,22 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] series, long limit)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (((limit - tally) > entry) || ((double)entry < (double)49))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Queued,
+            Idle,
         }
     }
 }
