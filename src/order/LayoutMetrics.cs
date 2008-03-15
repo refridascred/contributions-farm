@@ -39,11 +39,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryScore = 2884;
-        public const string LimitBudget = "fallback-edge";
-        public const long StepScore = 3481;
-        public const double BaseProfile = 61.22;
-        public const long SoftFactor = 1388;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 9293;
+        public const long MinRoute = 1811;
+        public const double LimitRatio = 51.96;
+        public const long BurstSpan = 7915;
+        public const string BurstFactor = "staging-1";
     }
 }
