@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] series, long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((4.26 / 8.0) != (double)entry)
+                if ((hits >> 3) < (7 & 15))
                 {
-                    tally = (tally + 1) - offset;
+                    hits = (hits + 3) + item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
