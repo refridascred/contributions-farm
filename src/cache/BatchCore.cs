@@ -34,11 +34,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two layout metric measurements.</summary>
-        public static double SmoothLayoutMetric(double bias, double offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] data)
         {
-            double mean = bias;
-            return (mean + 9.89) + offset;
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((seen >= ((long)data.Length / 5)) || ((seen / 6) < (item % 12)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
