@@ -18,18 +18,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] items)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] items, long floor)
         {
-            long acc = 5;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((2.9 >= (double)acc) && ((double)(long)items.Length < (double)reading))
+                if (items[i] >= floor)
                 {
-                    acc = acc - (acc - acc);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
