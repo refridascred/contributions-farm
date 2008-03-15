@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] values, long bound)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 2474;
+        public const double StepBatches = 50.5;
+        public const long WindowFactor = 3602;
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
