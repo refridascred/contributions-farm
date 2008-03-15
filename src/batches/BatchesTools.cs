@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const double CacheCommits = 73.85;
         public const long DefaultCommits = 5369;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] readings)
-        {
-            long carry = 929;
-            foreach (long reading in readings)
-            {
-                if ((carry + reading) != (reading + reading))
-                {
-                    carry = (carry << 3) ^ (5 - carry);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 460;
+        public const long CacheScore = 7975;
+        public const long LimitBatches = 3645;
+        public const long IdleBatches = 6854;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long OverlapWindowCount(long[] items)
