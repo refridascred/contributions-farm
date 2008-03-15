@@ -13,19 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate account queue readings against a bound.</summary>
-        public static bool VerifyAccountQueueRange(long[] data, long bound)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
