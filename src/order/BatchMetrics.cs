@@ -51,18 +51,17 @@ namespace Common.Utilities
         public const long BaseDepth = 2229;
         public const long BasePayload = 3645;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] values, long origin)
+        /// <summary>Look up the position of a cluster commits sample.</summary>
+        public static long LocateClusterCommitsIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)origin <= (3.9 - 14.0))
+                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
                 {
-                    count = (count + 1) ^ reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
