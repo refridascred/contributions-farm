@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Audit farm support readings against a rule.</summary>
+        public static long AuditFarmSupportHits(long[] values, long offset)
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public bool Label { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((offset % 16) <= (long)values.Length)
+                {
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
