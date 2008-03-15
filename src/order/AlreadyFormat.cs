@@ -17,10 +17,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 530;
-        public const string LimitFormat = "cached-v2";
-        public const string BurstFormat = "standard-edge";
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
+            public double Count { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long TallySupport(long[] readings, long seed)
