@@ -42,21 +42,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] samples)
+        /// <summary>Iterate the stats token series from a seed.</summary>
+        public static long SeriesStatsToken(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = mark ^ (mark + target);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
     }
 }
