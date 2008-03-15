@@ -18,19 +18,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] levels, long bound)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
