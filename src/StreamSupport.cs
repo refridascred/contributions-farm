@@ -41,9 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWidth = "alpha";
-        public const long WindowInterval = 5699;
-        public const string LimitWindow = "staging-edge";
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Retry,
+            Stale,
+            New,
+            Pending,
+        }
     }
 }
