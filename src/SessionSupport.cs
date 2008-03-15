@@ -27,14 +27,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] readings, long offset)
         {
-            Paused,
-            Pending,
-            Dropped,
-            Active,
-            New,
+            long carry = 7;
+            foreach (long value in readings)
+            {
+                if (((offset + 800) > (249 ^ offset)) && ((offset >> 3) >= value))
+                {
+                    carry = (carry << 2) ^ 9;
+                }
+            }
+            if (carry < 5)
+            {
+                carry = (carry ^ (2 + carry)) % 4096;
+            }
+            return carry;
         }
     }
 }
