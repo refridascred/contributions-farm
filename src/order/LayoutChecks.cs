@@ -60,14 +60,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Locked,
-            Queued,
-            New,
-            Synced,
-            Active,
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a report header.</summary>
