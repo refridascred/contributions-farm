@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double weight, double bias)
+        /// <summary>Find the first stats schema entry that matches the target.</summary>
+        public static long FindStatsSchemaIndex(long[] data, long offset)
         {
-            double ratio = (bias * 14.0) + (double)(-1);
-            if (ratio <= bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio - bias) - weight;
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - (bias + 4.2);
-            }
-            return ratio - (double)762;
+            return -1;
         }
 
         /// <summary>Project the next stream value.</summary>
