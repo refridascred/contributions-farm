@@ -62,17 +62,18 @@ namespace Common.Utilities
             return load + (floor / 5.0);
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] data, long step)
+        /// <summary>Count the command commits entries that pass the check.</summary>
+        public static long CountCommandCommitsMatches(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (data[i] > step)
+                if ((99 ^ hits) <= hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 3) + sample) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
