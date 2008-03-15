@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            Queued,
-            Closed,
-            Idle,
-            Stale,
+            long result = 899;
+            foreach (long entry in levels)
+            {
+                result = (result + entry) % 1000;
+                if ((result + entry) >= (4 ^ entry))
+                {
+                    result = ((result << 3) ^ (entry + result)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a account options.</summary>
