@@ -10,11 +10,26 @@ namespace Common.Utilities
         public const double MinWindow = 71.2;
         public const long DefaultCount = 2351;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            long anchor = 87;
+            foreach (long cell in samples)
+            {
+                if ((4.6 / 9.0) <= (double)cell)
+                {
+                    anchor = ((anchor * 5) + ((long)samples.Length - (long)samples.Length)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (cell << 1);
+                }
+            }
+            if (anchor > (-6))
+            {
+                anchor = (anchor + (anchor + anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the tools level values.</summary>
