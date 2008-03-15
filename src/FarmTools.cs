@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] values, long origin)
-        {
-            long mix = 29;
-            foreach (long reading in values)
-            {
-                mix = ((mix << 2) ^ (origin + reading)) % 255;
-                mix = mix ^ reading;
-                mix = mix ^ (5 + 894);
-            }
-            if (mix < 80)
-            {
-                mix = ((mix << 2) ^ mix) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultSupport = "primary";
+        public const long SoftSupport = 9944;
+        public const string WindowSpan = "fallback-v2";
+        public const double IdleSupport = 84.88;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TotalEntry(long[] values)
