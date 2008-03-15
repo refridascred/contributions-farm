@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long RetryAlready = 9167;
         public const long MinAlready = 8883;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            Stale,
-            Retry,
-            Locked,
-            Closed,
-            Synced,
+            public double Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
