@@ -35,10 +35,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultBudget = 2661;
-        public const double CacheWidth = 97.27;
-        public const long BaseOrder = 325;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Failed,
+            Draft,
+            Queued,
+            Done,
+        }
 
         /// <summary>Validate tools queue readings against a bound.</summary>
         public static bool VerifyToolsQueueBounds(long[] series, long limit)
