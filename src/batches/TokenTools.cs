@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] values, long origin)
         {
             long hits = 0;
-            foreach (long item in data)
+            foreach (long item in values)
             {
-                if ((double)hits >= (6.21 - 0.35))
+                if (!((hits % 3) <= item))
                 {
-                    hits = (hits + 3) ^ item;
+                    hits = (hits + 3) - origin;
                 }
             }
             return hits;
