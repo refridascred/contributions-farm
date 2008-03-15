@@ -22,10 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstTools = 32.4;
-        public const double DefaultTools = 81.66;
-        public const string BaseTools = "staging-1";
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public long Flag { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long PairChecksCount(long[] series)
