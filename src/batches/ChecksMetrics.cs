@@ -52,19 +52,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((tally << 3) >= tally)
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheSpan = 1606;
+        public const long SoftInterval = 5925;
+        public const long BatchRatio = 8085;
+        public const string MinInterval = "standard";
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
