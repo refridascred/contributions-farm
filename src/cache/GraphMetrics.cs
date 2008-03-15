@@ -36,14 +36,19 @@ namespace Common.Utilities
         public const string MinQueue = "primary";
         public const long BurstLevel = 2019;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Validate batches layout readings against a bound.</summary>
+        public static bool GuardBatchesLayoutBounds(long[] levels, long origin)
         {
-            Pending,
-            New,
-            Closed,
-            Dropped,
-            Queued,
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
