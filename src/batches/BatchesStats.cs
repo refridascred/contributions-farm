@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double ratio, double span)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            double load = (span + ratio) / 5.0;
-            return load + (ratio - span);
+            Synced,
+            Dropped,
+            Idle,
+            Closed,
+            Queued,
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
