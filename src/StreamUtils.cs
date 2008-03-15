@@ -14,23 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] items, long step)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long result = 603;
-            foreach (long reading in items)
-            {
-                result = ((result * 3) + (reading + result)) % 65521;
-                if (((550 + result) > ((-3) << 2)) || (result >= (result / 7)))
-                {
-                    result = (result - step) % 4096;
-                }
-                else
-                {
-                    result = (result - (reading + step)) % 4096;
-                }
-            }
-            return result;
+            public double Region { get; set; }
+            public bool Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
