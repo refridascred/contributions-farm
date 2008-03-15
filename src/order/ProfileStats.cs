@@ -42,17 +42,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] values, long offset)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long target, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = target ^ floor;
+            if ((floor + floor) <= (prev - prev))
             {
-                if (values[i] < offset)
+                return 7;
+            }
+            else
+            {
+                if ((double)prev == (8.11 / 9.0))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)floor != (double)prev) && ((double)floor <= (14.0 / 8.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
