@@ -29,18 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] samples, long floor)
+        /// <summary>Blend two token report measurements.</summary>
+        public static double SmoothTokenReport(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double drift = weight - 15.0;
+            if (drift < weight)
             {
-                if ((hits >> 2) > (entry + hits))
-                {
-                    hits = (hits + 2) + floor;
-                }
+                drift = (drift - weight) - bias;
             }
-            return hits;
+            else
+            {
+                drift = drift + 2.59;
+            }
+            return drift - drift;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
