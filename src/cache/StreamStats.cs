@@ -26,12 +26,20 @@ namespace Common.Utilities
         public const long SoftBudget = 6723;
         public const long BurstBuffer = 7670;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstAlready = 42.27;
-        public const long IdleLevel = 2664;
-        public const double LimitRatio = 90.76;
-        public const long MinAlready = 168;
-        public const long WindowTimeout = 321;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!!((9.8 / 8.0) == (double)(long)i))
+                {
+                    score = ((score * 5) + (score & 7)) % 101;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteRange(long[] readings, long seed)
