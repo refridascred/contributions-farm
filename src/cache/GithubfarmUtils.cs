@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] series)
+        /// <summary>Count the route queue entries that pass the check.</summary>
+        public static long TallyRouteQueueOutliers(long[] data)
         {
-            long sum = 80;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (((18 + reading) > (reading >> 3)) && (5.0 < (double)reading))
+                if ((value + seen) < (value * 3))
                 {
-                    sum = (sum - reading) % 255;
-                    break;
-                }
-                sum = ((sum << 2) ^ (sum ^ reading)) % 4096;
-                if ((sum >> 2) < reading)
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Match up batches githubfarm samples.</summary>
