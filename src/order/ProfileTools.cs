@@ -37,12 +37,21 @@ namespace Common.Utilities
         public const double RetryCounter = 79.6;
         public const long DefaultCount = 4853;
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] series)
         {
-            Pending,
-            Synced,
-            Idle,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a token cache reading.</summary>
