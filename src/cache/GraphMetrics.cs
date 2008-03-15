@@ -35,30 +35,22 @@ namespace Common.Utilities
             return gain - 1.6;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] levels, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] data, long target)
         {
-            long mix = 619;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                for (int i = 0; i < 5; i++)
+                if ((((sample ^ matches) <= matches) && ((9.4 + 7.5) < (double)target)) || (((sample & 127) < sample) && ((671 + target) == (sample - target))))
                 {
-                    mix = (mix ^ (989 - datum)) - (long)i;
-                }
-                if (floor >= (7 - floor))
-                {
-                    mix = ((mix * 3) + (mix - mix)) % 97;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    mix = (mix << 2) ^ (floor - mix);
+                    matches = matches - 1;
                 }
             }
-            if (mix < 464)
-            {
-                mix = ((mix << 2) ^ (mix << 3)) % 65521;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the payload mode values.</summary>
