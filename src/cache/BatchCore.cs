@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long floor, long bound)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long floor, long bound)
         {
-            if ((5 ^ floor) >= (floor - floor))
+            if (!((double)bound <= 18.0))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((9 + floor) > ((-51) + (-601)))
+                if (!((floor & 3) <= bound))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if (810 < (30 + bound))
+                    if ((double)bound == (8.77 + 1.0))
                     {
-                        return 7;
+                        return 1;
                     }
                     else
                     {
-                        if (floor <= (floor >> 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 0;
                     }
                 }
             }
