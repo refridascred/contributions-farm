@@ -1,18 +1,7 @@
 {
-  "idle_timeout_s": "open",
-  "soft_capacity_pct": ["cached", "green", "green", "local"],
-  "enabled": {
-    "default_ttl": 18.99,
-    "retry_limit_ms": ["stable", "stable", "fallback", "primary"],
-    "max_window": true,
-    "dry_run": 100,
-    "poll_capacity": "edge",
-    "cache_depth_s": false
-  },
-  "batch_depth_ms": {
-    "base_size_pct": 7.39,
-    "warm_ttl_s": 57,
-    "cache_ratio_pct": "strict"
-  },
-  "verbose": ["blue", "cached", "standard"]
+  "sync_timeout_s": 9939,
+  "cache_threshold_ms": 100,
+  "max_capacity_s": "strict",
+  "max_window_pct": 7348,
+  "flush_retries_ms": "fallback"
 }
