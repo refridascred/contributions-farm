@@ -35,12 +35,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowScore = 2898;
-        public const double SoftCounter = 18.36;
-        public const long MinCounter = 1255;
-        public const string BurstLevel = "stable";
-        public const double CacheCounter = 49.75;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultBudget = 2661;
+        public const double CacheWidth = 97.27;
+        public const long BaseOrder = 325;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportHits(long[] series, long floor)
