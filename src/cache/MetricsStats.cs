@@ -18,19 +18,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two layout context measurements.</summary>
-        public static double ProjectLayoutContext(double rate, double floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            double ratio = rate;
-            if (ratio <= (double)(-27))
-            {
-                ratio = (ratio - (rate * 2.0)) - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (rate - rate)) + (double)(long)i;
-            }
-            return ratio - (ratio / 7.0);
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
