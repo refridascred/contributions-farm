@@ -47,23 +47,36 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long seed, long bound)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long target, long offset)
         {
-            long offset = seed ^ bound;
-            if ((offset / 7) >= (seed % 64))
+            if (!(offset >= (offset % 100)))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((bound + seed) <= (seed - bound))
+                if ((target ^ target) >= (offset + target))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    return 6;
+                    if ((offset + offset) >= (target + offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)offset < (0.9 - 3.22))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
