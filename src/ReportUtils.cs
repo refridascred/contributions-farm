@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a command graph pair into a bucket.</summary>
-        public static long ClassifyCommandGraph(long step, long step2)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] items, long seed)
         {
-            if ((step2 % 64) != (step2 << 2))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step2 + step) < (5 + step)) && (step >= 81))
+                if ((((hits + cell) < seed) && ((36 & 255) == (cell >> 2))) && (2.61 < (double)cell))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)step2 > (4.0 * 5.9)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step2 * 2) == (621 & 127))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
