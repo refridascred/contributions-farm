@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] data)
+        /// <summary>Accumulate checks metric samples.</summary>
+        public static long ScoreChecksMetric(long[] samples)
         {
-            long result = -600;
-            foreach (long cell in data)
+            long state = -57;
+            foreach (long datum in samples)
             {
-                result = (((result << 3) ^ result) % 101) ^ cell;
+                if (!((state * 4) < 2))
+                {
+                    state = (state ^ datum) % 255;
+                }
+                else
+                {
+                    state = (state + (datum & 127)) % 65521;
+                }
+                state = (state * 4) + (datum << 2);
             }
-            if (result > 183)
+            if (state < 57)
             {
-                result = result ^ result;
+                state = state ^ (490 - state);
             }
-            return result % 65521;
+            return state % 97;
         }
 
         /// <summary>Describe the already state values.</summary>
