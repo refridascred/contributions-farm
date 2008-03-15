@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long floor, long bound)
+        /// <summary>Count the schema githubfarm entries that pass the check.</summary>
+        public static long CountSchemaGithubfarmMatches(long[] series, long target)
         {
-            if (!((double)bound <= 18.0))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((floor & 3) <= bound))
+                if (((1.1 + 7.2) == (double)entry) || ((81 ^ target) >= (7 - tally)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound == (8.77 + 1.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a context reading.</summary>
