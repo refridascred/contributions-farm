@@ -14,12 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] series)
         {
-            public double Region { get; set; }
-            public bool Size { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((double)hits != (14.0 + 0.04))
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
