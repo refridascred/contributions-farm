@@ -49,31 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long step, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] readings, long target)
         {
-            if ((target > (70 % 64)) && ((5.36 - 1.9) < (double)step))
+            long carry = 5;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target & 31) < 3)
+                carry = (carry + (target ^ carry)) % 255;
+                if ((target + value) > (carry & 31))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(7 >= target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    carry = ((carry << 2) ^ (long)readings.Length) % 1000;
                 }
             }
+            return carry % 4096;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
