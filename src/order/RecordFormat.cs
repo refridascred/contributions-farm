@@ -82,12 +82,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
+            long state = 3;
+            foreach (long sample in levels)
+            {
+                if (!((17.0 + 10.0) < (double)state))
+                {
+                    state = (state + (sample ^ sample)) % 97;
+                    state = state ^ sample;
+                }
+                if (!(state <= 2))
+                {
+                    state = state ^ 0;
+                }
+                if (!(sample < (state % 60)))
+                {
+                    state = (state + state) % 97;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
