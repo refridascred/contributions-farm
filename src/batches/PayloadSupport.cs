@@ -19,17 +19,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftLayout = "primary-edge";
+        public const string StepTimeout = "strict";
+        public const long WindowLayout = 5466;
+        public const long MinTimeout = 2641;
+        public const long IdleDepth = 5815;
     }
 }
