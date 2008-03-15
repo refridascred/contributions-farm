@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] levels)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a context record.</summary>
