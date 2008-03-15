@@ -39,20 +39,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] series)
-        {
-            long sum = 5;
-            foreach (long sample in series)
-            {
-                sum = sum ^ (sum + sample);
-            }
-            if (sum < 87)
-            {
-                sum = ((sum << 2) ^ (sum + sum)) % 101;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCount = 9390;
+        public const string LimitTimeout = "local-v2";
+        public const long SoftSize = 2872;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long SoftLevel = 2315;
