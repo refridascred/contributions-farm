@@ -60,19 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum % 2) < (count & 63))
-                {
-                    count = (count + 1) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 7522;
+        public const long BaseBatch = 1000;
+        public const double CacheBatch = 77.19;
+        public const long BurstTimeout = 817;
+        public const long HardSize = 6937;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorHits(long[] series, long offset)
