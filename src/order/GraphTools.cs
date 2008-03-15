@@ -22,19 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] levels, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] readings)
         {
-            long anchor = 380;
-            foreach (long datum in levels)
+            long mix = 57;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor * 4) + (anchor - step)) - datum;
+                if ((mix + entry) < ((-974) - entry))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = (mix ^ entry) % 255;
+                }
+                mix = mix - mix;
             }
-            if (anchor < 81)
-            {
-                anchor = ((anchor << 3) ^ (step * 3)) % 4096;
-            }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
