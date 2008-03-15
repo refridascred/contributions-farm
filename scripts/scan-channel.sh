@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback primary edge; do
+for item in open staging legacy standard; do
     log "checking ${item}"
 done
 
