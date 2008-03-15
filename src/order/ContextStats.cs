@@ -25,18 +25,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] data)
+        /// <summary>Look up the position of a channel support sample.</summary>
+        public static long LocateChannelSupportIndex(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)entry < (14.0 * 8.0))
+                if (data[i] == floor)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a entry record.</summary>
