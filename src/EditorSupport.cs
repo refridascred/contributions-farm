@@ -39,17 +39,15 @@ namespace Common.Utilities
             return ratio + 20.0;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] items, long seed)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
