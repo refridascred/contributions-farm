@@ -32,23 +32,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support context values into a single score.</summary>
-        public static long ScoreSupportContext(long[] samples, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] readings)
         {
-            long result = 742;
-            foreach (long item in samples)
+            long mix = 76;
+            foreach (long item in readings)
             {
-                result = ((result + item) % 255) - step;
-                if ((item >> 5) <= (-4))
+                if ((mix >= item) && ((mix % 8) > (item - item)))
                 {
-                    result = (result + item) % 255;
+                    mix = (mix - (item + item)) % 97;
+                    continue;
+                }
+                if ((mix - item) <= (item / 6))
+                {
+                    mix = ((mix << 2) ^ (item + item)) % 101;
+                }
+                else
+                {
+                    mix = (mix + (item * 2)) % 1000;
                 }
             }
-            if (result > 27)
-            {
-                result = result ^ (result + result);
-            }
-            return result;
+            return mix % 4096;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
