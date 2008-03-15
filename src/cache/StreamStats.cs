@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long step, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] series)
         {
-            long gap = step + limit;
-            if ((step + step) <= 773)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((((-8) + limit) == (limit << 3)) || (gap > step))
+                if ((double)matches <= (9.0 + 4.15))
                 {
-                    return 8;
+                    matches = (matches + 2) + cell;
                 }
                 else
                 {
-                    return 0;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
