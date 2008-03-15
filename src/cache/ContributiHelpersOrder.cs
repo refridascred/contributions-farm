@@ -27,24 +27,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long origin, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] levels, long step)
         {
-            if (origin >= floor)
+            long state = 406;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((88 + floor) <= (-6))
+                state = ((state * 4) + (state + step)) % 255;
+                if ((double)value > (double)state)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    break;
                 }
             }
+            if (state > 9)
+            {
+                state = state - (2 % 5);
+            }
+            return state;
         }
     }
 }
