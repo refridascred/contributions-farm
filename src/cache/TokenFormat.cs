@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 515;
-        public const long BurstCount = 4523;
-        public const string BurstRatio = "stable-1";
-        public const string HardSupport = "latest-v2";
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] samples, long step)
+        {
+            long score = 97;
+            foreach (long entry in samples)
+            {
+                score = (score - (entry >> 5)) + step;
+            }
+            return score;
+        }
 
         /// <summary>Adjust a layout reading.</summary>
         public static double SmoothLayout(double gain, double span)
