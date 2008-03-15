@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] series)
-        {
-            long acc = 119;
-            foreach (long item in series)
-            {
-                if (((acc << 3) > (acc - 3)) && ((acc & 255) >= item))
-                {
-                    acc = acc - (7 >> 3);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheCount = 4483;
+        public const long RetrySize = 2666;
+        public const long RetryLevel = 1328;
+        public const long BurstWidth = 5165;
+        public const double IdleChannel = 58.27;
 
         /// <summary>Locate a report cache reading by value.</summary>
         public static long FindReportCacheIndex(long[] levels, long target)
