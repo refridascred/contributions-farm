@@ -28,11 +28,29 @@ namespace Common.Utilities
         public const string SoftGraph = "open-1";
         public const long BatchGraph = 808;
 
-        /// <summary>Scale a batch window figure with a bias.</summary>
-        public static double ScaleBatchWindow(double weight, double span)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long target)
         {
-            double bias = weight;
-            return bias - span;
+            long sum = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((6 ^ sum) >= (98 + target))
+                {
+                    sum = (sum * 4) + ((long)i / 3);
+                }
+                long count = sum * 3;
+                if ((long)i > (target + count))
+                {
+                    sum = ((sum * 4) + target) % 4096;
+                    sum = (sum * 5) + (target + sum);
+                }
+                else
+                {
+                    count = count - sum;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
