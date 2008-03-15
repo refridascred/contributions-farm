@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Active,
-            New,
-            Queued,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 3789;
+        public const long CacheDepth = 6594;
+        public const long MaxLevel = 9551;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
