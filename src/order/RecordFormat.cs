@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long step, long floor)
         {
-            Failed,
-            Active,
-            Pending,
-            Dropped,
-            Locked,
+            if ((12.0 * 4.3) != (double)floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((18 >= step) || ((floor % 3) > (step ^ floor)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor >> 4) >= (343 / 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step >= (4.0 - 1.6))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile class values.</summary>
