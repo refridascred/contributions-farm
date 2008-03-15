@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Classify a contributi editor pair into a bucket.</summary>
+        public static long BucketContributiEditor(long origin, long limit)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long step = origin + limit;
+            if ((step - (-585)) >= limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin - step) < (limit % 100))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a order stats.</summary>
