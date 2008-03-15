@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Validate stats window readings against a bound.</summary>
+        public static bool GuardStatsWindowLimits(long[] series, long limit)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate batch editor samples.</summary>
