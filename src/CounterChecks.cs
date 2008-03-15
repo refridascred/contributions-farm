@@ -86,19 +86,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] samples, long origin)
+        /// <summary>Validate tools stats readings against a bound.</summary>
+        public static bool CheckToolsStatsRange(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if (datum > origin)
+                if (reading > target)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Hold a report options.</summary>
