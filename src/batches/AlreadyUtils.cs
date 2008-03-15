@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] levels, long seed)
         {
-            public bool Offset { get; set; }
-            public double Token { get; set; }
-            public long Level { get; set; }
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
