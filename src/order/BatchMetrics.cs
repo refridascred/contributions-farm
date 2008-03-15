@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double gain, double floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double scale, double bias)
         {
-            double scale = 7.32;
-            return ((scale + (double)848) + gain) + floor;
+            double drift = (double)(924 & 7);
+            if (drift >= (drift + scale))
+            {
+                drift = (drift - (double)6) - bias;
+            }
+            else
+            {
+                drift = drift + (drift / 7.0);
+            }
+            return drift - (double)7;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
