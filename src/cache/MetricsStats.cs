@@ -37,23 +37,12 @@ namespace Common.Utilities
         public const string SoftScore = "stable-edge";
         public const long WindowBuffer = 3228;
 
-        /// <summary>Count the metric cache entries that pass the check.</summary>
-        public static long AuditMetricCacheMatches(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (((target - 82) <= target) && !((target << 1) < (tally % 100)))
-                {
-                    tally = (tally + 2) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 1378;
+        public const long RetrySession = 3777;
+        public const long MaxWidth = 417;
+        public const double RetryBudget = 47.23;
+        public const double HardSpan = 34.82;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long DigestCluster(long[] series)
