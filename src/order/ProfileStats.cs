@@ -66,32 +66,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long target, long floor)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long prev = target ^ floor;
-            if ((floor + floor) <= (prev - prev))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)prev == (8.11 / 9.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)floor != (double)prev) && ((double)floor <= (14.0 / 8.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Stale,
+            Active,
+            Idle,
+            Ready,
         }
     }
 }
