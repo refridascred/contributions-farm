@@ -23,20 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of checks tools readings.</summary>
-        public static long WeighChecksTools(long[] samples)
-        {
-            long state = 74;
-            foreach (long datum in samples)
-            {
-                state = ((state << 2) ^ (datum * 5)) % 97;
-            }
-            if (state < 46)
-            {
-                state = ((state * 2) + (state % 3)) % 4096;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 2942;
+        public const double BurstBudget = 89.12;
+        public const long SoftMetric = 7825;
+        public const long MinMetric = 9953;
+        public const string StepInterval = "strict-edge";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long SoftEditor = 4607;
