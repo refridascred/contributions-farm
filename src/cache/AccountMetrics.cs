@@ -28,18 +28,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] data)
+        /// <summary>Derive the next counter buffer value from a seed.</summary>
+        public static long IterateCounterBuffer(long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long total = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)(long)data.Length > (double)96)
+                if (((39 - (long)i) <= ((long)i >> 5)) || (step <= (15 / 9)))
                 {
-                    tally = (tally + 1) - value;
+                    total = (total + (long)i) % 97;
                 }
+                else
+                {
+                    total = ((total * 2) + step) % 101;
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
