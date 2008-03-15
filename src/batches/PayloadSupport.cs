@@ -26,11 +26,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 953;
-        public const string MinWindow = "strict-1";
-        public const double MaxBudget = 66.57;
-        public const long DefaultCount = 513;
-        public const long CacheSpan = 5155;
+        /// <summary>Derive the next channel graph value from a seed.</summary>
+        public static long RollChannelGraph(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark << 3) ^ (2 + target)) % 101;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
