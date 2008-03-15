@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter account entries that pass the check.</summary>
-        public static long MeasureFilterAccountGaps(long[] samples)
+        /// <summary>Audit editor schema readings against a rule.</summary>
+        public static long AuditEditorSchemaHits(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (((hits / 6) <= (reading + reading)) || (reading >= (reading / 2)))
+                if ((1.89 * 16.0) <= (double)tally)
                 {
-                    hits = hits + 3;
+                    tally = ((tally + 3) ^ datum) - bound;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
