@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long bound, long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] data, long limit)
         {
-            if (step > (bound + bound))
+            bool found = true;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step + bound) <= bound)
+                if (sample > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (step >= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many queue stream samples are out of range.</summary>
