@@ -62,17 +62,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long seed)
+        /// <summary>Roll a cache contributi counter forward.</summary>
+        public static long StepCacheContributi(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (data[i] > seed)
+                sum = (sum + (sum >> 4)) % 1000;
+                if (((double)sum >= (11.0 * 2.43)) || ((limit & 15) >= 47))
                 {
-                    return (long)i;
+                    sum = (sum + ((long)i + (long)i)) % 101;
                 }
+                else
+                {
+                    sum = (sum ^ limit) % 1000;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
     }
 }
