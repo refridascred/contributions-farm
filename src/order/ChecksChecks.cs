@@ -31,24 +31,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of metrics tools entries.</summary>
-        public static long DigestMetricsTools(long[] readings)
+        /// <summary>Look up the position of a farm session sample.</summary>
+        public static long LookupFarmSessionIndex(long[] values, long step)
         {
-            long mix = 829;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix + (item << 3)) % 255;
-                mix = (mix << 3) ^ item;
-                if (((double)mix < 14.0) || ((7.5 + 1.58) > (0.53 / 5.0)))
+                if ((values[i] < step) && ((values[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 898)
-            {
-                mix = (mix + mix) % 4096;
-            }
-            return mix;
+            return -1;
         }
     }
 }
