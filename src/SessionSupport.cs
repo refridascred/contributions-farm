@@ -34,9 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSize = 105;
-        public const double RetrySupport = 59.3;
-        public const double DefaultSupport = 73.29;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Pending,
+            Closed,
+            Synced,
+        }
     }
 }
