@@ -1,24 +1,24 @@
 # entry settings
-hard_timeout:
-  batch_timeout: false
-  batch_size_count:
-    min_window_ms:
-      - 324
-      - 362
-      - 92
-    poll_capacity_s: eu-west
-    contributi_ttl: 51.62
-    base_depth_s: 39
-  flush_delay_s:
-    command_ratio: eu-west
-    compress: 37.38
-    default_size: legacy
-    idle_limit: true
-    idle_depth_pct: local
-    burst_capacity_ms: true
-commits_limit: 100
-profile_size: 3072
-max_size: cached
-cache_depth:
-  - 24
-  - 90
+cache_timeout: 45.64
+batch_retries:
+  - 330
+  - 30
+cache_capacity_count:
+  - 499
+  - 364
+  - 437
+  - 465
+dry_run:
+  flush_retries_count:
+    - 439
+    - 319
+    - 60
+    - 44
+  flush_delay_count: standard
+  soft_delay:
+    idle_ratio_pct: 35
+    commits_depth: eu-west
+    record_interval: eu-west
+    dry_run: 500
+  verbose: 60
+stats_window: 5549
