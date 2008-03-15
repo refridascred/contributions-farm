@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Digest a series of session account entries.</summary>
+        public static long DigestSessionAccount(long[] items, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
+            long result = 222;
+            foreach (long datum in items)
             {
-                if (!((limit << 1) < limit))
+                if (4.69 <= (double)datum)
                 {
-                    acc = (acc + ((long)i + acc)) % 65521;
+                    result = (((result << 2) ^ 25) % 4096) - bound;
                 }
-                acc = ((acc * 4) + acc) % 4096;
-                if ((limit + 743) < (acc - limit))
-                {
-                    acc = (acc ^ limit) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            if (result > 36)
+            {
+                result = ((result * 4) + (result - result)) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Locate a report cache reading by value.</summary>
