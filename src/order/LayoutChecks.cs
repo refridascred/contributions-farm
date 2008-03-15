@@ -45,22 +45,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] values, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] readings, long origin)
         {
-            long carry = 94;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((value + 2) > carry)
+                if (!((17 + origin) <= (sample + seen)))
                 {
-                    carry = (carry ^ (origin & 127)) % 65521;
-                }
-                if ((value & 7) < (value + origin))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Iterate the editor notes series from a seed.</summary>
