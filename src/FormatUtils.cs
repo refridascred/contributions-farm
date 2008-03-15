@@ -20,22 +20,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] readings)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long result = 30;
-            foreach (long sample in readings)
-            {
-                if (((result >> 3) == (sample << 1)) && ((sample - result) != (sample + (long)readings.Length)))
-                {
-                    result = (result ^ (sample + sample)) % 97;
-                }
-                else
-                {
-                    result = ((result * 5) + (8 * 5)) % 255;
-                }
-            }
-            return result;
+            Closed,
+            Queued,
+            Ready,
+            Paused,
         }
 
         /// <summary>Hold a tools header.</summary>
