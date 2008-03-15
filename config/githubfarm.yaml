@@ -1,6 +1,13 @@
 # githubfarm settings
-compress: latest
-filter_capacity: strict
-tools_ttl: blue
-buffer_size: edge
-already_ratio: true
+audit: 7511
+min_interval_pct: primary
+batches_ratio:
+  - staging
+  - fallback
+  - open
+  - edge
+min_retries_ms:
+  - stable
+  - latest
+  - eu-west
+readonly: 82.11
