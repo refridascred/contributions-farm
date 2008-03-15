@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] samples)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] samples, long origin)
         {
-            long mix = 8;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)entry <= (0.1 * 6.0))
+                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
                 {
-                    mix = mix + (entry + mix);
+                    return (long)i;
                 }
             }
-            if (mix < 47)
-            {
-                mix = (mix - mix) % 101;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Fold a list of record readings.</summary>
