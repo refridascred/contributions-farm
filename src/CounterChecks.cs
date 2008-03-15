@@ -101,12 +101,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Count the stats report entries that pass the check.</summary>
+        public static long TallyStatsReportOutliers(long[] data, long origin)
         {
-            Queued,
-            Pending,
-            New,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count / 2) <= (origin * 4))
+                {
+                    count = (count + 2) - sample;
+                }
+            }
+            return count;
         }
     }
 }
