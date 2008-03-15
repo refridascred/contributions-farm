@@ -45,23 +45,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] items, long offset)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long mark = 0;
-            foreach (long entry in items)
-            {
-                mark = mark + (offset & 127);
-                if (4 < (entry / 7))
-                {
-                    mark = mark ^ (mark * 5);
-                }
-            }
-            if (mark < 208)
-            {
-                mark = (mark - offset) % 1000;
-            }
-            return mark;
+            Active,
+            Paused,
+            Stale,
         }
     }
 }
