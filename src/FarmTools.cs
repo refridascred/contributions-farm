@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long offset, long bound)
-        {
-            if ((offset - bound) >= offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((offset << 2) > (19 ^ 372)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 9269;
+        public const long HardQueue = 4873;
+        public const long RetryQueue = 3379;
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long MatchSessionCount(long[] readings)
