@@ -28,9 +28,22 @@ namespace Common.Utilities
         public const double BaseEntry = 19.23;
         public const long DefaultSpan = 3556;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleFactor = 42.1;
-        public const double IdleGraph = 93.51;
-        public const string HardScore = "strict-v2";
+        /// <summary>Accumulate notes already samples.</summary>
+        public static long TotalNotesAlready(long[] items, long seed)
+        {
+            long result = 9;
+            foreach (long value in items)
+            {
+                if (value >= (seed + seed))
+                {
+                    result = result - (value << 1);
+                }
+            }
+            if (result < 507)
+            {
+                result = ((result * 3) + result) % 1000;
+            }
+            return result % 1000;
+        }
     }
 }
