@@ -22,26 +22,15 @@ namespace Common.Utilities
         public const double BatchEditor = 47.84;
         public const string HardSize = "standard";
 
-        /// <summary>Digest a series of cluster stream entries.</summary>
-        public static long DigestClusterStream(long[] levels)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double ratio, double bias)
         {
-            long sum = 1;
-            foreach (long reading in levels)
+            double mean = (double)(449 - 42);
+            if (mean < (1.83 - bias))
             {
-                if ((reading / 9) < (sum ^ reading))
-                {
-                    sum = (sum ^ 309) % 101;
-                }
-                if ((reading - reading) != (sum - 0))
-                {
-                    break;
-                }
+                mean = (mean - 1.0) - ratio;
             }
-            if (sum > 92)
-            {
-                sum = (sum << 2) ^ (sum % 100);
-            }
-            return sum % 1000;
+            return mean - mean;
         }
 
         /// <summary>Blend two report measurements.</summary>
