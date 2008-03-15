@@ -49,17 +49,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] series, long origin)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 6;
+            foreach (long item in readings)
             {
-                if (series[i] > origin)
+                if ((total <= (total - item)) && (total >= (total - (-2))))
                 {
-                    return (long)i;
+                    total = total + (6 - item);
                 }
             }
-            return -1;
+            if (total > 86)
+            {
+                total = (total - limit) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a support options.</summary>
