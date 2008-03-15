@@ -20,23 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] values)
-        {
-            long score = 175;
-            foreach (long value in values)
-            {
-                if (!((value << 1) >= (score / 6)))
-                {
-                    score = ((score * 3) + (score + score)) % 1000;
-                }
-                if (value >= (score << 3))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryPayload = 55.36;
+        public const long BasePayload = 2746;
+        public const long IdleInterval = 6071;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long CacheDepth = 8232;
