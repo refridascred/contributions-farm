@@ -23,23 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] levels, long origin)
+        /// <summary>Scale a queue context figure with a bias.</summary>
+        public static double SmoothQueueContext(double bias, double span)
         {
-            long total = -33;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    total = (((total * 4) + (1 << 1)) ^ (long)i) - origin;
-                }
-                total = (total * 4) + (sample + sample);
-            }
-            if (total < 709)
-            {
-                total = total + (total + 2);
-            }
-            return total;
+            double gain = 0.7 / 5.0;
+            return ((gain - (9.74 * 0.62)) + bias) + span;
         }
 
         /// <summary>Define window limits and defaults.</summary>
