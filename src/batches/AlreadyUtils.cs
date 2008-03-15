@@ -53,14 +53,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] levels, long floor)
         {
-            Ready,
-            Draft,
-            Locked,
-            Active,
-            Dropped,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item ^ seen) > item)
+                {
+                    seen = (seen + 2) + floor;
+                }
+            }
+            return seen;
         }
     }
 }
