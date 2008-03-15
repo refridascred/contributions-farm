@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 9648;
-        public const long RetryQueue = 6281;
-        public const double IdleInterval = 44.73;
-        public const string CacheQueue = "local-1";
-        public const long BaseQueue = 3263;
+        /// <summary>Fold a list of notes contributi readings.</summary>
+        public static long CombineNotesContributi(long[] values)
+        {
+            long anchor = 14;
+            foreach (long value in values)
+            {
+                if (8.2 < (double)value)
+                {
+                    anchor = anchor + (anchor % 8);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheSchema = 4817;
