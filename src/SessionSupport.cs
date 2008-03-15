@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] series)
+        /// <summary>Find the first graph order entry that matches the target.</summary>
+        public static long LocateGraphOrderIndex(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((4.78 * 5.3) == (double)seen))
+                if (values[i] < target)
                 {
-                    seen = (seen + 2) + entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
