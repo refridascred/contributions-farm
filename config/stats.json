@@ -1,6 +1,13 @@
 {
-  "strict": 6.25,
-  "profile_limit": 46,
-  "sync_timeout_ms": 2002,
-  "flush_delay_ms": 91
+  "idle_interval": "standard",
+  "readonly": {
+    "base_window": true,
+    "account_limit": "latest",
+    "dry_run": "strict",
+    "account_ratio": [297, 213],
+    "strict": 30,
+    "sync_window_s": "open"
+  },
+  "batch_retries_s": "strict",
+  "batch_ratio_ms": "strict"
 }
