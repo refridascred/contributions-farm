@@ -1,9 +1,8 @@
-id,level,label
-1,59,90.32
-2,464,828
-3,50,402
-4,43.34,45.18
-5,368,primary
-6,staging,edge
-7,cached,462
-8,fallback,fallback
+id,level,score
+1,21.76,green
+2,cached,522
+3,45.13,34.64
+4,313,354
+5,85.86,47.71
+6,cached,116
+7,64,37.61
