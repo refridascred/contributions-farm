@@ -28,18 +28,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of graph cluster readings.</summary>
-        public static long TallyGraphCluster(long[] levels, long step)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long state = 179;
-            foreach (long reading in levels)
-            {
-                if ((double)(-5) == (double)reading)
-                {
-                    state = (((state * 5) + (state / 7)) % 101) + step;
-                }
-            }
-            return state;
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a schema snapshot.</summary>
