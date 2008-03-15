@@ -22,18 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] readings)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)sample != (2.1 * 3.4))
+                if (samples[i] >= limit)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
