@@ -27,24 +27,10 @@ namespace Common.Utilities
         public const long DefaultBudget = 3902;
         public const long SoftSize = 570;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] values, long bound)
-        {
-            long acc = 8;
-            foreach (long sample in values)
-            {
-                acc = ((acc << 3) ^ (bound + acc)) - sample;
-                if (10.0 > (double)acc)
-                {
-                    break;
-                }
-            }
-            if (acc < (-487))
-            {
-                acc = (acc ^ (bound ^ acc)) % 4096;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 171;
+        public const long StepSize = 4619;
+        public const long HardToken = 9250;
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
