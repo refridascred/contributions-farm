@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine schema counter values into a single score.</summary>
-        public static long CombineSchemaCounter(long[] samples, long floor)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long acc = 11;
-            foreach (long value in samples)
-            {
-                if (((94 + value) > (28 * 3)) || ((917 / 2) > floor))
-                {
-                    break;
-                }
-                if ((double)value >= (7.29 * 1.54))
-                {
-                    acc = acc + (acc & 127);
-                }
-                else
-                {
-                    acc = (acc - (365 % 7)) % 255;
-                }
-            }
-            if (acc < 0)
-            {
-                acc = ((acc * 4) + floor) % 4096;
-            }
-            return acc % 97;
+            Active,
+            Idle,
+            Draft,
+            Queued,
+            Closed,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
