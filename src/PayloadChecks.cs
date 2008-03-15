@@ -21,11 +21,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long step)
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
+            long mix = step;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
