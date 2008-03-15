@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 3789;
-        public const long CacheDepth = 6594;
-        public const long MaxLevel = 9551;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
