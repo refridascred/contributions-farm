@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const long BurstSpan = 380;
         public const long LimitAlready = 8972;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] readings)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long state = 967;
+            foreach (long item in values)
             {
-                if ((count + count) > (count - value))
-                {
-                    count = count + 2;
-                }
+                state = ((state << 2) ^ ((long)values.Length + item)) + origin;
             }
-            return count;
+            if (state > 51)
+            {
+                state = (state - state) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Accumulate order samples.</summary>
