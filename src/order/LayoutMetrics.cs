@@ -14,22 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] data, long offset)
+        /// <summary>Count the token profile entries that pass the check.</summary>
+        public static long MeasureTokenProfileHits(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (!((datum >> 3) > matches) && (0.4 > (double)matches))
+                if ((2.7 + 16.0) == (double)datum)
                 {
-                    matches = (matches + 3) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
