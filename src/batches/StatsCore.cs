@@ -59,25 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stream already input into a small class.</summary>
-        public static long SortStreamAlready(long floor, long limit)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long delta = floor ^ limit;
-            if ((floor + floor) >= (381 + floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((delta + delta) <= (floor >> 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Size { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
