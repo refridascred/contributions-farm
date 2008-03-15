@@ -19,16 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] samples)
-        {
-            long anchor = -5;
-            foreach (long entry in samples)
-            {
-                anchor = ((anchor + (338 + anchor)) % 255) + entry;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 4729;
+        public const long SoftStream = 771;
+        public const string WindowStream = "strict-v2";
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
