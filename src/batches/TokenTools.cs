@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "primary-1";
-        public const long SoftSpan = 3414;
-        public const long WindowCounter = 599;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleTimeout = 9361;
+        public const long MaxSpan = 3642;
+        public const long SoftChecks = 7490;
+        public const double HardChecks = 9.23;
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
