@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long seed)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] values, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if (((reading - reading) == (origin / 6)) || (((hits * 4) >= (hits << 1)) && ((hits - reading) != (origin - hits))))
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the stream kind values.</summary>
