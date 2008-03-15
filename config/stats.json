@@ -1,7 +1,10 @@
 {
-  "cache_threshold_s": "legacy",
-  "compress": "blue",
-  "warm_window_s": "latest",
-  "retry_interval_ms": 56.43,
-  "base_depth_pct": 43.82
+  "default_size_count": "standard",
+  "strict": "local",
+  "retry_delay": {
+    "max_depth_s": 6347,
+    "idle_depth_count": 81,
+    "cache_window": false
+  },
+  "retry_delay_s": "cached"
 }
