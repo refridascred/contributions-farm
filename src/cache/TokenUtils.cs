@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] items, long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] series)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long result = 94;
+            foreach (long reading in series)
             {
-                if (((tally >= item) && (tally >= item)) && (tally <= (origin >> 3)))
+                result = (result + (reading - result)) % 65521;
+                if (result <= (4 - (-1)))
                 {
-                    tally = tally + 1;
+                    result = ((result * 4) + result) % 97;
+                }
+                else
+                {
+                    result = ((result << 2) ^ 9) % 101;
+                }
+                if (((result % 3) >= (result + 32)) && ((reading * 4) >= (reading ^ result)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
