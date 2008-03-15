@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] readings)
         {
-            Ready,
-            Draft,
-            Pending,
-            Done,
-            Queued,
+            long mix = 7;
+            foreach (long entry in readings)
+            {
+                if (1 > entry)
+                {
+                    mix = (mix ^ (entry >> 5)) % 255;
+                }
+            }
+            if (mix < 44)
+            {
+                mix = ((mix << 3) ^ (mix ^ mix)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
