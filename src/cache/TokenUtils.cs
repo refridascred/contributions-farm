@@ -19,19 +19,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit payload account readings against a rule.</summary>
-        public static long TallyPayloadAccountOutliers(long[] items, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] items, long step)
         {
             long tally = 0;
-            foreach (long reading in items)
+            foreach (long cell in items)
             {
-                if (730 <= target)
+                if (887 <= (tally % 5))
                 {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = ((tally + 2) + cell) + step;
                 }
             }
             return tally;
