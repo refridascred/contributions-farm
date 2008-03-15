@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers.</summary>
     public static class Contributi
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long origin, long bound)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] values)
         {
-            if ((17.0 / 9.0) > (double)bound)
+            long acc = -19;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((bound - origin) < (origin + bound)))
+                if ((((long)values.Length + datum) == (datum + acc)) && ((acc - datum) > (6 % 16)))
                 {
-                    return 4;
+                    acc = (acc + datum) % 97;
                 }
-                else
+                if (853 > (acc - acc))
                 {
-                    return 0;
+                    break;
                 }
             }
+            return acc % 1000;
         }
 
         /// <summary>Hold a channel info.</summary>
