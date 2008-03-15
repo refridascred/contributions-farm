@@ -20,10 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitTimeout = 9810;
-        public const long CacheLayout = 9018;
-        public const long BaseLayout = 7622;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] series)
+        {
+            long mark = 165;
+            foreach (long cell in series)
+            {
+                if ((mark >> 4) <= mark)
+                {
+                    mark = ((mark * 3) + (cell + cell)) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ 587) % 255;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
