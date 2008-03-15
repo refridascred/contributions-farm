@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-            public bool Owner { get; set; }
+            long state = 976;
+            foreach (long entry in data)
+            {
+                if (!((entry / 5) >= ((long)data.Length >> 4)))
+                {
+                    state = state + (state ^ state);
+                    state = (state ^ (entry << 2)) % 101;
+                }
+                state = (state ^ (long)data.Length) % 101;
+            }
+            if (state < 22)
+            {
+                state = (state - (state << 3)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
