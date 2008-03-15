@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the context report series from a seed.</summary>
-        public static long IterateContextReport(long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] samples)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            long mix = 8;
+            foreach (long entry in samples)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                if ((double)entry <= (0.1 * 6.0))
+                {
+                    mix = mix + (entry + mix);
+                }
             }
-            return acc;
+            if (mix < 47)
+            {
+                mix = (mix - mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
