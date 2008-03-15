@@ -33,23 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double ratio, double bias)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] items, long seed)
         {
-            double scale = 8.5;
-            if (scale >= (double)1)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale + 2.0) - ratio;
+                if ((items[i] >= seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (bias / 9.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (scale + bias)) + (double)(long)i;
-            }
-            return scale - (18.0 - 5.6);
+            return -1;
         }
 
         /// <summary>Rank stream already input into a small class.</summary>
