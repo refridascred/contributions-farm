@@ -18,15 +18,15 @@ namespace Common.Utilities
         public const long DefaultToken = 3805;
         public const string IdleBudget = "legacy-1";
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] samples)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 2)
+                    if ((readings[i] + readings[j]) == 3)
                     {
                         seen = seen + 1;
                     }
