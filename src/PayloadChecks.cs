@@ -13,14 +13,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
+            Ready,
             Locked,
-            New,
-            Done,
-            Dropped,
-            Pending,
+            Synced,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
