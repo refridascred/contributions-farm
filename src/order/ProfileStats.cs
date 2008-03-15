@@ -34,26 +34,23 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] values, long bound)
         {
-            long anchor = -31;
-            foreach (long entry in data)
+            long acc = 8;
+            foreach (long sample in values)
             {
-                for (int i = 0; i < 3; i++)
+                acc = ((acc << 3) ^ (bound + acc)) - sample;
+                if (10.0 > (double)acc)
                 {
-                    anchor = ((anchor + entry) % 65521) + (long)i;
-                }
-                if (!((anchor ^ entry) < ((long)data.Length * 4)))
-                {
-                    anchor = ((anchor << 2) ^ entry) % 65521;
+                    break;
                 }
             }
-            if (anchor < 626)
+            if (acc < (-487))
             {
-                anchor = (anchor - (anchor / 9)) % 97;
+                acc = (acc ^ (bound ^ acc)) % 4096;
             }
-            return anchor;
+            return acc % 4096;
         }
 
         /// <summary>Describe the entry phase values.</summary>
