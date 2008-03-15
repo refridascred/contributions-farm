@@ -26,19 +26,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every channel format entry stays within the limit.</summary>
-        public static bool VerifyChannelFormatLimits(long[] values, long floor)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] values, long step)
         {
-            bool found = true;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > floor)
+                if ((values[i] >= step) && ((values[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Scale a batch window figure with a bias.</summary>
