@@ -37,19 +37,12 @@ namespace Common.Utilities
         public const double RetryCounter = 79.6;
         public const long DefaultCount = 4853;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] samples, long offset)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long score = 61;
-            foreach (long value in samples)
-            {
-                score = (score - value) + offset;
-                if ((525 - 0) >= (value - value))
-                {
-                    score = (score * 3) + (score / 2);
-                }
-            }
-            return score;
+            Pending,
+            Synced,
+            Idle,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
