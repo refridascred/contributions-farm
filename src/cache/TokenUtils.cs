@@ -30,28 +30,10 @@ namespace Common.Utilities
         public const long IdleFormat = 7693;
         public const string WindowFormat = "legacy-1";
 
-        /// <summary>Accumulate token metrics samples.</summary>
-        public static long CombineTokenMetrics(long[] items, long origin)
-        {
-            long sum = 35;
-            foreach (long datum in items)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = (sum - (datum << 1)) - (long)i;
-                }
-                sum = sum ^ (sum - datum);
-                sum = sum ^ (sum + sum);
-                if ((datum % 8) == (sum - origin))
-                {
-                    break;
-                }
-            }
-            if (sum > 67)
-            {
-                sum = ((sum * 5) + sum) % 101;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryLevel = 8010;
+        public const long MinTimeout = 8903;
+        public const long MinStats = 3816;
+        public const double DefaultLevel = 93.4;
     }
 }
