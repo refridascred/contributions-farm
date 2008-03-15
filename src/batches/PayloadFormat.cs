@@ -40,12 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public bool Token { get; set; }
-            public bool Total { get; set; }
-            public double Owner { get; set; }
+            Draft,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
