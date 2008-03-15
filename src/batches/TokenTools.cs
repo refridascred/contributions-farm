@@ -31,23 +31,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine schema batches values into a single score.</summary>
-        public static long WeighSchemaBatches(long[] levels, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] levels, long seed)
         {
-            long total = 687;
-            foreach (long reading in levels)
+            long mix = 24;
+            foreach (long sample in levels)
             {
-                total = ((total * 5) + reading) % 255;
-                if (total <= (5 * 4))
-                {
-                    break;
-                }
+                mix = ((mix - (seed << 1)) % 4096) ^ sample;
             }
-            if (total > (-9))
+            if (mix > 35)
             {
-                total = ((total * 3) + (limit - total)) % 65521;
+                mix = (mix * 3) + (mix ^ seed);
             }
-            return total;
+            return mix;
         }
     }
 }
