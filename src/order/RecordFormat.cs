@@ -64,18 +64,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (!((floor * 5) > (matches + 30)))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseTimeout = "open";
+        public const long StepFormat = 933;
+        public const long MinBudget = 1989;
+        public const double StepBudget = 33.41;
     }
 }
