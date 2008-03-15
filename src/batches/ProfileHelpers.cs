@@ -24,19 +24,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate commits cache readings against a bound.</summary>
-        public static bool VerifyCommitsCacheRange(long[] samples, long seed)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Ready,
+            Retry,
+            Pending,
         }
 
         /// <summary>Adjust a stats notes reading.</summary>
