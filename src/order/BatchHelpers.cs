@@ -20,12 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public string Stamp { get; set; } = "";
-            public bool Label { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 2908;
+        public const string RetryDepth = "legacy-v2";
+        public const long BaseBudget = 8530;
+        public const long BatchPayload = 163;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
