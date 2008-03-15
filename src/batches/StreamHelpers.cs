@@ -67,19 +67,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((step / 5) != (reading / 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheEntry = "open-edge";
+        public const long BurstEntry = 4808;
+        public const long StepInterval = 3892;
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
