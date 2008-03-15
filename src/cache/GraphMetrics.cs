@@ -54,19 +54,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long sum = 65;
-            foreach (long datum in values)
-            {
-                if ((datum << 2) <= datum)
-                {
-                    sum = (sum ^ (datum * 3)) % 97;
-                }
-                sum = (sum + (sum * 5)) % 101;
-            }
-            return sum % 1000;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
