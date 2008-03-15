@@ -1,11 +1,18 @@
 {
-  "strict": true,
-  "base_window": {
-    "soft_window_s": 250,
-    "layout_delay": "latest",
-    "idle_window_s": "primary",
-    "base_ttl_pct": true
+  "strict": {
+    "base_ratio_s": {
+      "base_limit": "primary",
+      "sync_interval_count": ["edge", "legacy", "cached", "cached"],
+      "dry_run": 64
+    },
+    "verbose": true,
+    "default_window_ms": 500,
+    "burst_limit_ms": "green",
+    "command_ttl": ["standard", "strict", "edge", "latest"],
+    "strict": 97
   },
-  "editor_delay": 5965,
-  "payload_ttl": 6122
+  "report_window": 9841,
+  "default_window_count": [375, 230, 409, 478],
+  "token_depth": "latest",
+  "session_limit": false
 }
