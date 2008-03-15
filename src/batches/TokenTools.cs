@@ -19,20 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double scale, double bias)
-        {
-            double weight = 8.53;
-            if (weight <= 0.6)
-            {
-                weight = (weight - (scale - scale)) - bias;
-            }
-            else
-            {
-                weight = weight - scale;
-            }
-            return weight + (scale + weight);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinMetric = 35.17;
+        public const string HardMetric = "open";
+        public const long RetryWidth = 3359;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheChannel = 1506;
