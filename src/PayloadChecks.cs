@@ -21,12 +21,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Retry,
-            Locked,
-            New,
+            public double Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate checks metrics readings against a bound.</summary>
