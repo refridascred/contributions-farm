@@ -20,19 +20,15 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Validate stats format readings against a bound.</summary>
-        public static bool CheckStatsFormatLimits(long[] series, long bound)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] items, long limit)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long acc = 41;
+            foreach (long value in items)
             {
-                if (entry != bound)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (((acc + acc) % 4096) + value) + limit;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Digest a series of metrics tools entries.</summary>
