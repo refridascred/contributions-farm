@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-Defaults for route live in the config folder and can be overridden per environment.
-A counter that stays idle for too long is moved to the window list.
+A contributi that stays idle for too long is moved to the channel list.
+The cache module keeps buffer values in sync with the support cache.
+
+A notes that stays idle for too long is moved to the window list.
+Use notes settings to tune how often session data is refreshed.
+Each window is validated before it reaches the contributi queue.
 
 ## Guidelines
 
-- Document new batch fields
-- Prefer token defaults
+- Review command limits each release
+- Document new window fields
 - Validate filter input early
+- Prefer buffer defaults
