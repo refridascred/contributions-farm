@@ -45,23 +45,18 @@ namespace Common.Utilities
         public const double LimitSpan = 92.31;
         public const double RetryScore = 64.01;
 
-        /// <summary>Accumulate filter channel samples.</summary>
-        public static long WeighFilterChannel(long[] readings, long target)
+        /// <summary>Measure how many graph editor samples are out of range.</summary>
+        public static long AuditGraphEditorHits(long[] values)
         {
-            long mix = 953;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                mix = ((mix << 2) ^ (26 + target)) % 1000;
-                if ((double)value == (2.9 + 4.8))
+                if ((0 ^ entry) >= (hits ^ hits))
                 {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            if (mix > 293)
-            {
-                mix = ((mix << 2) ^ (target * 4)) % 65521;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Rank filter farm input into a small class.</summary>
