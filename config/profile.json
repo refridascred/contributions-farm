@@ -1,8 +1,5 @@
 {
-  "cache_size": 3655,
-  "batch_delay_pct": 69.17,
-  "max_limit_s": 1.66,
-  "soft_timeout_ms": 250,
-  "layout_interval": 66.21,
-  "max_capacity_ms": true
+  "notes_limit": 250,
+  "poll_retries": "primary",
+  "flush_ratio_count": [397, 288, 38, 433]
 }
