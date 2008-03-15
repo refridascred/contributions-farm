@@ -13,19 +13,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] samples, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long anchor = 5;
+            foreach (long item in samples)
             {
-                if (reading < target)
+                if (((origin ^ item) >= 82) && ((item ^ anchor) <= (anchor & 63)))
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor * 5) + (long)samples.Length) % 101;
+                    continue;
                 }
+                else
+                {
+                    anchor = anchor - (origin + origin);
+                }
+                anchor = (anchor ^ (40 + 622)) % 255;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
