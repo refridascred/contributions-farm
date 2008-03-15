@@ -86,26 +86,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] values)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] readings, long step)
         {
-            long total = 1;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (!((double)cell > (10.0 + 8.52)))
+                if (entry != step)
                 {
-                    total = total ^ (cell / 8);
-                }
-                if (!(total < (cell << 1)))
-                {
-                    total = ((total * 4) + (cell + total)) % 65521;
-                }
-                else
-                {
-                    total = (total ^ cell) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return valid;
         }
     }
 }
