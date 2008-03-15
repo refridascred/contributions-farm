@@ -39,22 +39,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many batches cluster samples are out of range.</summary>
-        public static long AuditBatchesClusterOutliers(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((5.91 * 0.5) > (double)reading)
-                {
-                    hits = (hits + 2) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryScore = 2884;
+        public const string LimitBudget = "fallback-edge";
+        public const long StepScore = 3481;
+        public const double BaseProfile = 61.22;
+        public const long SoftFactor = 1388;
     }
 }
