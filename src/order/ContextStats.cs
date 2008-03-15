@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] values, long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] data)
         {
-            long acc = 97;
-            foreach (long entry in values)
+            long result = -600;
+            foreach (long cell in data)
             {
-                if (entry > (entry - 99))
-                {
-                    acc = acc ^ (limit % 5);
-                }
+                result = (((result << 3) ^ result) % 101) ^ cell;
             }
-            return acc % 97;
+            if (result > 183)
+            {
+                result = result ^ result;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the already state values.</summary>
