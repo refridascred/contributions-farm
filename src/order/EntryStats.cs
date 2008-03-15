@@ -63,9 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 6976;
-        public const long BaseRoute = 5313;
-        public const long IdleRatio = 9964;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((matches > (matches - 26)) && !(datum > (matches << 2)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
