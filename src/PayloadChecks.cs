@@ -13,18 +13,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] data, long offset)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)(long)data.Length <= (12.0 - 4.03))
-                {
-                    count = ((count + 3) + datum) + offset;
-                }
-            }
-            return count;
+            Locked,
+            New,
+            Done,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
