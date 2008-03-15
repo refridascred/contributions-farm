@@ -50,38 +50,14 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Classify a layout support pair into a bucket.</summary>
-        public static long GradeLayoutSupport(long target, long target2)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            if (((-361) - target2) != (target >> 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((target2 + 513) <= (target2 - 71)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target2 % 97) < (target >> 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target2 / 5) >= (52 + target2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Active,
+            Idle,
+            Pending,
+            Ready,
+            Done,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
