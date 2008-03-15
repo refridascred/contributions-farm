@@ -13,19 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double scale, double offset)
+        /// <summary>Adjust a order metrics reading.</summary>
+        public static double AdjustOrderMetrics(double gain, double offset)
         {
-            double bias = scale;
-            if (bias >= (scale * 7.7))
+            double bias = (double)(756 >> 2);
+            if (bias <= (double)7)
             {
-                bias = bias + 1.0;
+                bias = bias + (offset - gain);
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                bias = (bias - scale) - (double)(long)i;
+                bias = bias + offset;
             }
-            return bias + (offset + bias);
+            return bias - gain;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
