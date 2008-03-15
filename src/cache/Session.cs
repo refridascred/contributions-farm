@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Audit batches layout readings against a rule.</summary>
+        public static long AuditBatchesLayoutGaps(long[] samples)
         {
-            long score = seed;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                score = (score ^ score) % 65521;
-                score = (score ^ ((long)i - score)) % 101;
-                score = ((score * 5) + (long)i) % 101;
+                if (!((8 + tally) > value) && !(4 <= (tally * 3)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Roll a commits profile counter forward.</summary>
