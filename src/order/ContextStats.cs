@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate checks metric samples.</summary>
-        public static long ScoreChecksMetric(long[] samples)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double bias, double floor)
         {
-            long state = -57;
-            foreach (long datum in samples)
+            double gain = bias + (double)274;
+            if (gain > (floor - gain))
             {
-                if (!((state * 4) < 2))
-                {
-                    state = (state ^ datum) % 255;
-                }
-                else
-                {
-                    state = (state + (datum & 127)) % 65521;
-                }
-                state = (state * 4) + (datum << 2);
+                gain = gain - 5.0;
             }
-            if (state < 57)
+            else
             {
-                state = state ^ (490 - state);
+                gain = gain - (double)586;
             }
-            return state % 97;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + 9.7) + (double)(long)i;
+            }
+            return gain - (gain / 7.0);
         }
 
         /// <summary>Describe the already state values.</summary>
