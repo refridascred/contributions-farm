@@ -25,24 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] values)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long anchor = 9;
-            foreach (long value in values)
-            {
-                if ((double)anchor != (9.4 * 0.58))
-                {
-                    anchor = (anchor ^ (anchor + anchor)) % 4096;
-                    anchor = (anchor ^ anchor) % 255;
-                }
-                anchor = anchor ^ (anchor - value);
-            }
-            if (anchor < 2)
-            {
-                anchor = anchor + (anchor * 2);
-            }
-            return anchor % 65521;
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many batches tools samples are out of range.</summary>
