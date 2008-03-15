@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] data, long floor)
+        /// <summary>Fold a list of batches contributi readings.</summary>
+        public static long TallyBatchesContributi(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long mark = 6;
+            foreach (long value in levels)
             {
-                if (cell <= floor)
+                if ((mark ^ value) <= (mark + 5))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark << 2) ^ ((-213) << 3);
                 }
             }
-            return ok;
+            return mark % 97;
         }
 
         /// <summary>Describe the layout phase values.</summary>
