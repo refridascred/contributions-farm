@@ -27,38 +27,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long offset, long seed)
-        {
-            if ((double)offset != (19.0 * 5.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset <= (seed + 253)) && ((offset & 15) <= (seed + offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed != (3.0 + 6.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((0.32 / 5.0) <= (double)offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardDepth = "local-1";
+        public const long StepRoute = 44;
+        public const long BatchTimeout = 4680;
+        public const long CacheRoute = 67;
+        public const double BatchSpan = 74.47;
     }
 }
