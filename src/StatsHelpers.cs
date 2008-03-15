@@ -12,11 +12,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the checks kind values.</summary>
