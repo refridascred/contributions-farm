@@ -44,19 +44,14 @@ namespace Common.Utilities
             return mean + (double)7;
         }
 
-        /// <summary>Validate cluster filter readings against a bound.</summary>
-        public static bool ValidateClusterFilterLimits(long[] readings, long target)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Synced,
+            Failed,
+            Active,
+            Pending,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
