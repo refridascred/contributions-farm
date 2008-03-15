@@ -41,19 +41,16 @@ namespace Common.Utilities
         public const long SoftFilter = 6857;
         public const string CacheFilter = "stable-v2";
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] levels, long bound)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long offset)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long result = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                result = (result + (long)i) % 1000;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return ok;
+            return result;
         }
     }
 }
