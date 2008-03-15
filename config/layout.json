@@ -1,15 +1,6 @@
 {
-  "graph_size": 7862,
-  "compress": 482,
-  "enabled": {
-    "readonly": {
-      "enabled": 100,
-      "warm_limit_ms": 37,
-      "hard_timeout_count": 60,
-      "metrics_size": 32.44
-    },
-    "session_capacity": "staging",
-    "cache_depth": true,
-    "farm_ttl": 500
-  }
+  "warm_ratio": 46.46,
+  "githubfarm_window": "blue",
+  "batch_delay_ms": 18,
+  "idle_window_s": ["green", "cached", "latest", "latest"]
 }
