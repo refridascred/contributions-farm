@@ -51,31 +51,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long origin, long step)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] samples, long offset)
         {
-            if ((2.5 <= (double)step) && ((-877) < (origin << 2)))
+            long score = 61;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin < (7.1 * 8.59))
+                score = (score - value) + offset;
+                if ((525 - 0) >= (value - value))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step << 1) >= 31)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    score = (score * 3) + (score / 2);
                 }
             }
+            return score;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
