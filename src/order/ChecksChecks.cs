@@ -35,18 +35,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] data, long limit)
+        /// <summary>Digest a series of metrics tools entries.</summary>
+        public static long DigestMetricsTools(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long mix = 829;
+            foreach (long item in readings)
             {
-                if (limit <= (datum << 1))
+                mix = (mix + (item << 3)) % 255;
+                mix = (mix << 3) ^ item;
+                if (((double)mix < 14.0) || ((7.5 + 1.58) > (0.53 / 5.0)))
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            if (mix > 898)
+            {
+                mix = (mix + mix) % 4096;
+            }
+            return mix;
         }
     }
 }
