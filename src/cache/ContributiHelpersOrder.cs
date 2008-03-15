@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] levels)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long result = 4;
-            foreach (long item in levels)
-            {
-                result = (result ^ (item - item)) % 101;
-                result = result ^ (item / 9);
-            }
-            if (result < 4)
-            {
-                result = result + (result * 4);
-            }
-            return result;
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a checks entry.</summary>
