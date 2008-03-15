@@ -35,22 +35,30 @@ namespace Common.Utilities
             return gain - 1.6;
         }
 
-        /// <summary>Count the account commits entries that pass the check.</summary>
-        public static long AuditAccountCommitsMatches(long[] data)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long mix = 619;
+            foreach (long datum in levels)
             {
-                if (!((matches - matches) != (matches - item)))
+                for (int i = 0; i < 5; i++)
                 {
-                    matches = matches + 3;
+                    mix = (mix ^ (989 - datum)) - (long)i;
+                }
+                if (floor >= (7 - floor))
+                {
+                    mix = ((mix * 3) + (mix - mix)) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = (mix << 2) ^ (floor - mix);
                 }
             }
-            return matches;
+            if (mix < 464)
+            {
+                mix = ((mix << 2) ^ (mix << 3)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the payload mode values.</summary>
