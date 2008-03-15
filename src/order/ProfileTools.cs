@@ -43,18 +43,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the stream commits entries that pass the check.</summary>
-        public static long AuditStreamCommitsHits(long[] values, long limit)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (cell > seen)
-                {
-                    seen = (seen + 1) - limit;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
