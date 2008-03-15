@@ -22,11 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 6224;
-        public const long StepInterval = 614;
-        public const long HardGithubfarm = 7060;
-        public const string MaxRatio = "standard";
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long LimitSize = 8649;
