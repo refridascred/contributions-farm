@@ -41,17 +41,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long floor)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the stats token series from a seed.</summary>
