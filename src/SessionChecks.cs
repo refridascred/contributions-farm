@@ -26,19 +26,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine farm payload values into a single score.</summary>
-        public static long WeighFarmPayload(long[] data, long offset)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long mix = 3;
-            foreach (long entry in data)
-            {
-                mix = (((mix ^ ((-980) & 255)) % 101) + entry) - offset;
-            }
-            if (mix < 635)
-            {
-                mix = (mix * 4) + mix;
-            }
-            return mix % 1000;
+            Draft,
+            Paused,
+            Active,
+            Ready,
         }
     }
 }
