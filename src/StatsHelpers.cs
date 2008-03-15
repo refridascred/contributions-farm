@@ -16,17 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a commits command reading by value.</summary>
-        public static long LocateCommitsCommandIndex(long[] items, long limit)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Paused,
+            Done,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Grade a route value against two limits.</summary>
