@@ -13,12 +13,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Measure how many graph order samples are out of range.</summary>
+        public static long MeasureGraphOrderGaps(long[] levels, long floor)
         {
-            Stale,
-            Active,
-            Retry,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((7.7 * 16.0) != (double)floor)
+                {
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a account stats.</summary>
