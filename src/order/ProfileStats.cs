@@ -34,20 +34,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long bound)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] values, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (values[i] < offset)
                 {
-                    mark = ((mark << 2) ^ (bound % 2)) + (long)i2;
+                    return (long)i;
                 }
-                mark = (mark << 2) ^ mark;
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
     }
 }
