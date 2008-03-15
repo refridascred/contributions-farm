@@ -31,10 +31,32 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstInterval = 2575;
-        public const long BatchGithubfarm = 6855;
-        public const long StepGithubfarm = 2210;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long step, long bound)
+        {
+            if ((step + bound) >= (85 + bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step <= (8.47 / 2.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)bound <= (16.0 / 5.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double IdleInterval = 49.6;
