@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] samples, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (reading <= bound)
+                if (sample != target)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
