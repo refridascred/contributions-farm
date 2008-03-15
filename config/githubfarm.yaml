@@ -1,9 +1,8 @@
 # githubfarm settings
-contributi_limit:
-  retry_ratio_ms: 41
-  warm_retries_pct: 30
-  compress: local
-  base_ttl_ms: 18.52
-  base_capacity: open
-compress: edge
-support_interval: standard
+verbose: true
+readonly: 500
+already_limit:
+  - 369
+  - 279
+base_capacity_ms: 68
+default_delay: false
