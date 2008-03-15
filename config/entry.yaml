@@ -1,5 +1,9 @@
 # entry settings
-burst_size_s: 66.07
-cache_delay_count: blue
-cache_depth: 500
-window_ratio: 60
+farm_timeout: 1014
+payload_ttl: 30
+cache_ratio: 30
+poll_capacity_ms: 36.03
+buffer_window:
+  - fallback
+  - green
+enabled: 30.02
