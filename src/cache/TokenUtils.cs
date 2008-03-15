@@ -24,19 +24,12 @@ namespace Common.Utilities
         public const long IdleFormat = 7693;
         public const string WindowFormat = "legacy-1";
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double scale, double floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double ratio = scale + scale;
-            if (ratio <= (ratio / 3.0))
-            {
-                ratio = (ratio + scale) + floor;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio - ratio;
+            Closed,
+            Failed,
+            Stale,
         }
     }
 }
