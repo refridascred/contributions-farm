@@ -40,15 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long carry = -877;
-            foreach (long reading in readings)
-            {
-                carry = (carry - (carry + reading)) % 65521;
-            }
-            return carry;
+            public string Flag { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
