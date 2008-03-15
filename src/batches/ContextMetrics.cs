@@ -60,10 +60,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 2949;
-        public const long HardRatio = 7344;
-        public const long BaseSpan = 5604;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryRatio = 8612;
+        public const string WindowCount = "cached";
+        public const string MinSupport = "standard-1";
 
         /// <summary>Project the next profile value.</summary>
         public static double ScaleProfile(double weight, double bias)
