@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleWidth = 90.88;
-        public const long SoftMetric = 3103;
-        public const double MinMetric = 98.98;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] levels, long target)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((10.0 - 13.0) < (double)5)
+                {
+                    hits = ((hits + 2) + sample) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two batches already measurements.</summary>
         public static double BlendBatchesAlready(double gain, double floor)
