@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const double StepScore = 94.96;
         public const double RetryRatio = 39.68;
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public bool Token { get; set; }
+            Failed,
+            Stale,
+            Queued,
+            Paused,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
