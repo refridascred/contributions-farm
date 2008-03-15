@@ -17,22 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] samples, long bound)
+        /// <summary>Measure how many queue stream samples are out of range.</summary>
+        public static long AuditQueueStreamHits(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((double)bound >= (9.13 * 6.0))
+                if ((6 <= sample) && ((339 & 255) == (sample / 3)))
                 {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 3) - bound;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a buffer options.</summary>
