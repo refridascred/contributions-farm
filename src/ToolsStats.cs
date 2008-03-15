@@ -87,12 +87,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Stale,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseScore = 2313;
+        public const double LimitPayload = 67.31;
+        public const long IdleInterval = 162;
+        public const double RetrySpan = 49.75;
+        public const double StepFactor = 72.97;
     }
 }
