@@ -29,21 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of record payload readings.</summary>
-        public static long CompareRecordPayloadCount(long[] readings)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = ratio;
+            if (bias2 > (double)1)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = (bias2 - (bias2 + bias2)) - bias;
             }
-            return hits;
+            return bias2 + ratio;
         }
 
         /// <summary>Hold a format entry.</summary>
