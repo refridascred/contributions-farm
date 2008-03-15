@@ -40,17 +40,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Find the first contributi editor entry that matches the target.</summary>
-        public static long SeekContributiEditorIndex(long[] items, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 92;
+            foreach (long datum in readings)
             {
-                if ((items[i] > origin) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum * 2) + datum;
             }
-            return -1;
+            if (sum > 1)
+            {
+                sum = sum - (sum / 3);
+            }
+            return sum % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
