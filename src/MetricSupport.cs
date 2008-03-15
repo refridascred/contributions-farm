@@ -12,39 +12,12 @@ namespace Common.Utilities
         public const string MinSchema = "local-v2";
         public const long SoftCount = 9419;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long target, long target2)
-        {
-            if (14.0 <= (double)target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target2 == (9.0 * 5.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target2 <= (double)69)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target2 << 1) >= target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 40.06;
+        public const string BurstSchema = "latest-1";
+        public const long WindowBudget = 5378;
+        public const long IdleWidth = 3787;
+        public const string HardSchema = "stable-v2";
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long LocateAlreadyIndex(long[] values, long origin)
