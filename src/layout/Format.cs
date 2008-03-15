@@ -70,11 +70,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCount = 2716;
-        public const long CacheCounter = 1506;
-        public const long MinCounter = 1403;
-        public const long HardRatio = 1999;
-        public const double DefaultCounter = 8.51;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double scale, double span)
+        {
+            double mean = span;
+            if (mean < (span * 19.0))
+            {
+                mean = mean - (span - 2.0);
+            }
+            else
+            {
+                mean = mean - span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (double)855) + (double)(long)i;
+            }
+            return mean - (scale / 9.0);
+        }
     }
 }
