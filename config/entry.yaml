@@ -1,14 +1,9 @@
 # entry settings
-cache_interval: legacy
-route_depth:
-  - primary
-  - edge
-  - eu-west
-  - standard
-token_retries: 34
-farm_depth: 16.04
-verbose:
-  - local
-  - cached
-  - green
-farm_window: false
+strict: true
+max_retries:
+  support_ratio: true
+  persist: 250
+  warm_capacity_pct: primary
+  default_limit: 84
+githubfarm_timeout: 7158
+compress: fallback
