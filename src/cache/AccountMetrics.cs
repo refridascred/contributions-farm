@@ -20,12 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryToken = 78.35;
-        public const long StepWidth = 5333;
-        public const long RetryTimeout = 132;
-        public const double MaxDepth = 91.69;
-        public const long BatchToken = 4717;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] data, long step)
+        {
+            long mix = 6;
+            foreach (long reading in data)
+            {
+                mix = (mix - (mix >> 5)) + reading;
+            }
+            if (mix > 60)
+            {
+                mix = (mix ^ (step & 63)) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool VerifyGraphLimits(long[] data, long limit)
