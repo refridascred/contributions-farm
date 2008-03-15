@@ -29,12 +29,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] values)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define booking limits and defaults.</summary>
