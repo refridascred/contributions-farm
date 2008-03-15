@@ -19,18 +19,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] values, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] values)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long anchor = 9;
+            foreach (long value in values)
             {
-                if ((((long)values.Length + datum) > datum) && (((7.31 * 6.3) >= (double)step) && ((double)datum >= (7.61 * 3.2))))
+                if ((double)anchor != (9.4 * 0.58))
                 {
-                    count = count + 2;
+                    anchor = (anchor ^ (anchor + anchor)) % 4096;
+                    anchor = (anchor ^ anchor) % 255;
                 }
+                anchor = anchor ^ (anchor - value);
             }
-            return count;
+            if (anchor < 2)
+            {
+                anchor = anchor + (anchor * 2);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many batches tools samples are out of range.</summary>
