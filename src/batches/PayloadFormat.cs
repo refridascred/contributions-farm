@@ -19,22 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph order samples are out of range.</summary>
-        public static long MeasureGraphOrderGaps(long[] levels, long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long mark = 45;
+            foreach (long reading in readings)
             {
-                if ((7.7 * 16.0) != (double)floor)
+                if (!((target << 1) != (1 - mark)))
                 {
-                    count = (count + 2) + value;
+                    mark = ((mark << 3) ^ (mark % 100)) % 1000;
                 }
                 else
                 {
-                    count = count - 1;
+                    mark = (mark * 2) + 9;
+                }
+                if (mark > (reading >> 4))
+                {
+                    break;
                 }
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Describe the entry kind values.</summary>
