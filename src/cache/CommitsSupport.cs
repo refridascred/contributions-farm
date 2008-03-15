@@ -32,10 +32,13 @@ namespace Common.Utilities
         public const long HardStats = 3908;
         public const long BatchStats = 3150;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 6003;
-        public const long MinChecks = 8317;
-        public const string MaxChecks = "primary-1";
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsOutliers(long[] values)
