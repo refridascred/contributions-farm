@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Active,
-            Idle,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheLevel = 9732;
+        public const long BatchStream = 9134;
+        public const long MaxStream = 5656;
+        public const long RetryStream = 3353;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool CheckFilterRange(long[] samples, long limit)
