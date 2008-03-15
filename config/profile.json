@@ -1,8 +1,7 @@
 {
-  "token_retries": 100,
-  "default_ttl_s": 1.61,
-  "session_ratio": "green",
-  "poll_capacity_pct": "edge",
-  "cache_ttl_count": 16,
-  "strict": 60
+  "soft_size_count": 1329,
+  "payload_threshold": true,
+  "order_depth": [427, 438],
+  "support_threshold": "primary",
+  "persist": 1024
 }
