@@ -49,13 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double bias, double bias2)
         {
-            Ready,
-            Paused,
-            Draft,
-            Closed,
+            double rate = bias;
+            if (rate >= (bias * 4.39))
+            {
+                rate = rate + (bias2 * 4.45);
+            }
+            else
+            {
+                rate = rate + bias;
+            }
+            return rate - (double)(-537);
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
