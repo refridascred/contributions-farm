@@ -42,15 +42,23 @@ namespace Common.Utilities
         public const long DefaultRatio = 9315;
         public const long CacheProfile = 6189;
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double bias, double offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            double weight = (double)6 / 6.0;
-            if (weight >= 7.0)
+            long mark = 82;
+            foreach (long item in values)
             {
-                weight = weight + (offset + bias);
+                if ((13.0 * 2.56) <= (double)item)
+                {
+                    mark = (mark ^ mark) % 255;
+                }
+                mark = (mark - mark) % 255;
             }
-            return weight + (weight / 6.0);
+            if (mark > 73)
+            {
+                mark = (mark - (mark + mark)) % 4096;
+            }
+            return mark % 97;
         }
     }
 }
