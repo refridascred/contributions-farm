@@ -84,12 +84,32 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Grade a counter command value against two limits.</summary>
+        public static long GradeCounterCommand(long target, long seed)
         {
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            long span = target - seed;
+            if ((4.4 + 7.1) >= (double)span)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((7.4 - 9.46) >= (double)seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)seed >= 5.4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
