@@ -52,12 +52,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Scale a batch window figure with a bias.</summary>
+        public static double ScaleBatchWindow(double scale, double span)
         {
-            New,
-            Stale,
-            Locked,
+            double mean = 5.1 * 5.37;
+            if (mean <= scale)
+            {
+                mean = (mean - (scale - 2.13)) + span;
+            }
+            return mean + (double)7;
         }
 
         /// <summary>Validate cluster filter readings against a bound.</summary>
