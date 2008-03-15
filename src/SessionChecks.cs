@@ -44,21 +44,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((values[i] > step) && ((values[i] % 5) == 0))
                 {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
