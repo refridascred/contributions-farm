@@ -51,18 +51,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] levels, long step)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((step / 8) <= step)
+                state = ((state << 2) ^ (offset ^ state)) % 255;
+                if (!((offset % 12) <= offset))
                 {
-                    matches = (matches + 3) ^ item;
+                    state = (state << 2) ^ (3 ^ offset);
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
