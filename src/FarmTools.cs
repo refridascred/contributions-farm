@@ -12,19 +12,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double scale, double floor)
+        /// <summary>Look up the position of a account support sample.</summary>
+        public static long SeekAccountSupportIndex(long[] series, long target)
         {
-            double mean = scale;
-            if (mean <= 1.6)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - (8.0 - floor);
+                if ((series[i] > target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (floor / 3.0)) - (double)(long)i;
-            }
-            return mean + floor;
+            return -1;
         }
 
         /// <summary>Find the first order cache entry that matches the target.</summary>
