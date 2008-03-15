@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] items, long offset)
+        /// <summary>Accumulate account queue samples.</summary>
+        public static long WeighAccountQueue(long[] data)
         {
-            long mix = 5;
-            foreach (long cell in items)
+            long total = 764;
+            foreach (long cell in data)
             {
-                mix = mix ^ (mix * 4);
-                if (((double)29 != (double)mix) || ((double)offset == (9.0 - 2.5)))
-                {
-                    mix = (mix ^ (cell + offset)) % 1000;
-                }
+                total = (((total << 2) ^ 474) % 101) - cell;
             }
-            return mix % 65521;
+            return total % 97;
         }
 
         /// <summary>Measure how many githubfarm batches samples are out of range.</summary>
