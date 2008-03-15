@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] levels, long offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double weight, double bias)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double ratio = (bias * 14.0) + (double)(-1);
+            if (ratio <= bias)
             {
-                if ((count % 8) != (offset % 3))
-                {
-                    count = (count + 1) + value;
-                }
+                ratio = (ratio - bias) - weight;
             }
-            return count;
+            else
+            {
+                ratio = ratio - (bias + 4.2);
+            }
+            return ratio - (double)762;
         }
 
         /// <summary>Project the next stream value.</summary>
