@@ -32,25 +32,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a buffer editor pair into a bucket.</summary>
-        public static long RankBufferEditor(long target, long step)
-        {
-            long slot = target ^ step;
-            if ((slot - slot) > (78 + 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((slot + step) >= (target / 7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitTimeout = "local-v2";
+        public const long DefaultProfile = 1002;
+        public const string MaxProfile = "strict-1";
+        public const double RetryProfile = 35.01;
     }
 }
