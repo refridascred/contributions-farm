@@ -28,21 +28,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] levels)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Synced,
+            Idle,
         }
 
         /// <summary>Rank filter farm input into a small class.</summary>
