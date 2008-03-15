@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge eu-west green primary; do
+for item in local strict; do
     log "checking ${item}"
 done
 
+BUFFER_LIMIT=100
+log "limit is ${BUFFER_LIMIT}"
+
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-BUFFER_LIMIT=308
-log "limit is ${BUFFER_LIMIT}"
