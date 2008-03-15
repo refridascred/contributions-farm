@@ -28,22 +28,21 @@ namespace Common.Utilities
         public const double BaseEntry = 19.23;
         public const long DefaultSpan = 3556;
 
-        /// <summary>Accumulate notes already samples.</summary>
-        public static long TotalNotesAlready(long[] items, long seed)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] items)
         {
-            long result = 9;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= (seed + seed))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = result - (value << 1);
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result < 507)
-            {
-                result = ((result * 3) + result) % 1000;
-            }
-            return result % 1000;
+            return count;
         }
     }
 }
