@@ -1,11 +1,5 @@
 {
-  "default_delay_count": {
-    "githubfarm_depth": "fallback",
-    "graph_ratio": 100,
-    "max_ttl_ms": true,
-    "warm_ttl": 30,
-    "order_limit": 100
-  },
-  "metrics_size": 46.14,
-  "persist": "eu-west"
+  "warm_ttl_pct": true,
+  "metric_limit": "edge",
+  "stream_threshold": "stable"
 }
