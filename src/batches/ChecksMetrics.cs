@@ -21,14 +21,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Idle,
-            Paused,
-            Dropped,
-            Draft,
-            Queued,
+            Locked,
+            Done,
+            Failed,
+            Active,
         }
 
         /// <summary>Match up report samples.</summary>
