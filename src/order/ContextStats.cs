@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] data)
         {
-            Queued,
-            Stale,
-            Active,
-            Ready,
-            Failed,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry < (14.0 * 8.0))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a entry record.</summary>
