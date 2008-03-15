@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] items)
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((entry - matches) >= (matches / 9))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the farm class values.</summary>
