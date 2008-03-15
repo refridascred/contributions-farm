@@ -50,19 +50,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((double)3 > (double)sample)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxWidth = 7265;
+        public const long SoftInterval = 1561;
+        public const long SoftFormat = 2172;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
