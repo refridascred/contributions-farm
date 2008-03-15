@@ -36,10 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinLevel = 1939;
-        public const double BurstSize = 27.93;
-        public const long StepDepth = 3579;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] samples, long seed)
+        {
+            long total = -15;
+            foreach (long sample in samples)
+            {
+                if (seed <= total)
+                {
+                    total = (total - (sample << 1)) % 1000;
+                }
+            }
+            if (total > 75)
+            {
+                total = (total - (total - seed)) % 4096;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
