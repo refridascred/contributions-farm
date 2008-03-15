@@ -32,12 +32,20 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinScore = "fallback-v2";
-        public const double DefaultBatch = 87.79;
-        public const string StepLevel = "open";
-        public const long CacheBatch = 4327;
-        public const long WindowSpan = 9122;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if (0.9 < (double)target)
+                {
+                    sum = (sum + (target % 100)) % 65521;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandGaps(long[] series)
