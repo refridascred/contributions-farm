@@ -50,15 +50,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Count cluster contributi pairs that satisfy a relation.</summary>
+        public static long PairClusterContributiCount(long[] samples)
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
