@@ -19,19 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((target - target) > (tally + tally))
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 2499;
+        public const string DefaultFactor = "latest-1";
+        public const double SoftWidth = 3.82;
 
         /// <summary>Digest a series of contributi context entries.</summary>
         public static long FoldContributiContext(long[] levels)
