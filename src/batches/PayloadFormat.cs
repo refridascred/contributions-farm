@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] levels)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long anchor = 7;
+            foreach (long entry in items)
             {
-                if ((tally % 64) < tally)
+                if (((limit - 425) > 966) && ((anchor - limit) < limit))
                 {
-                    tally = (tally + 2) + cell;
+                    anchor = ((anchor - (anchor ^ limit)) % 101) - entry;
                 }
+                anchor = (anchor << 3) ^ (limit << 2);
             }
-            return tally;
+            if (anchor < 4)
+            {
+                anchor = (anchor - (anchor - 7)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
