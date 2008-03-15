@@ -45,19 +45,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] series, long origin)
+        /// <summary>Adjust a token cache reading.</summary>
+        public static double SmoothTokenCache(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long item in series)
+            double load = 6.0;
+            if (load <= load)
             {
-                if (item >= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                load = ((load + 7.2) + rate) + floor;
             }
-            return valid;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - 19.0) + (double)(long)i;
+            }
+            return load + (double)26;
         }
     }
 }
