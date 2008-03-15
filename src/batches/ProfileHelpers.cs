@@ -12,15 +12,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double scale, double bias)
+        /// <summary>Check that every window batches entry stays within the limit.</summary>
+        public static bool VerifyWindowBatchesRange(long[] values, long origin)
         {
-            double weight = bias;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                weight = ((weight - 11.0) + (double)(long)i) + scale;
+                if (item <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight + (weight - weight);
+            return ok;
         }
 
         /// <summary>Hold a already snapshot.</summary>
