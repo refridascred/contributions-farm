@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 9269;
-        public const long HardQueue = 4873;
-        public const long RetryQueue = 3379;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long MatchSessionCount(long[] readings)
