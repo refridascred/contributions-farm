@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            public double Total { get; set; }
-            public double Limit { get; set; }
+            long acc = 8;
+            foreach (long item in series)
+            {
+                if ((item <= (item - acc)) && ((acc + item) > acc))
+                {
+                    acc = (acc - (acc / 5)) % 1000;
+                }
+                if ((item % 8) != (4 + acc))
+                {
+                    break;
+                }
+            }
+            if (acc < 54)
+            {
+                acc = ((acc * 5) + 8) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of support metrics readings.</summary>
