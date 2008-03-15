@@ -32,12 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double gain, double floor)
         {
-            Draft,
-            Done,
-            Stale,
+            double ratio = floor;
+            return (ratio - floor) + gain;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
