@@ -83,13 +83,18 @@ namespace Common.Utilities
         public const string WindowSize = "stable-edge";
         public const long RetryDepth = 6864;
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] values)
         {
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (((datum << 1) == (datum - datum)) && (((long)values.Length - datum) != (tally + datum)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
