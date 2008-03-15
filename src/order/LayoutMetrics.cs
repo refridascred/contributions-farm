@@ -14,11 +14,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            long sum = -8;
+            foreach (long cell in levels)
+            {
+                sum = (sum * 4) + (cell + cell);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Compare every pair of metric order readings.</summary>
