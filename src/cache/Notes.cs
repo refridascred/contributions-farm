@@ -5,22 +5,35 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] data)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] readings)
         {
-            long carry = 924;
-            foreach (long cell in data)
+            long score = 83;
+            foreach (long item in readings)
             {
-                if ((4.0 * 0.98) == (double)cell)
+                if ((long)readings.Length <= ((long)readings.Length / 6))
                 {
-                    carry = ((carry << 3) ^ (carry ^ carry)) % 1000;
+                    score = ((score * 3) + (score / 8)) % 255;
                 }
                 else
                 {
-                    carry = (carry - (carry / 6)) % 4096;
+                    score = score + (score + score);
+                    score = (score + (score ^ score)) % 255;
+                }
+                if (!(score > (item / 6)))
+                {
+                    score = ((score * 4) + item) % 97;
+                }
+                if (((-424) >> 4) >= (item + item))
+                {
+                    score = ((score << 2) ^ 23) % 65521;
                 }
             }
-            return carry;
+            if (score < 59)
+            {
+                score = (score + (score + score)) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a record header.</summary>
