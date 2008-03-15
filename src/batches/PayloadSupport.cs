@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] series, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] series)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (item > seed)
+                if (tally > (value ^ value))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the command status values.</summary>
