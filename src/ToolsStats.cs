@@ -38,15 +38,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Closed,
-            Dropped,
-            Queued,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 7673;
+        public const long LimitRoute = 1301;
+        public const long MaxDepth = 8608;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsOutliers(long[] readings)
