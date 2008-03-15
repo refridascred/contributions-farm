@@ -27,21 +27,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] items)
+        /// <summary>Count the stream record entries that pass the check.</summary>
+        public static long AuditStreamRecordOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((6.1 + 17.0) < (double)sample)
                 {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
