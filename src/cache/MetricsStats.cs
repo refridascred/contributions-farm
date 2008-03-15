@@ -44,11 +44,12 @@ namespace Common.Utilities
             return gain + (span - scale);
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
+            Paused,
+            Synced,
+            Pending,
         }
 
         /// <summary>Adjust a profile reading.</summary>
