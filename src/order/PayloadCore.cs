@@ -33,18 +33,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] values)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((datum + datum) <= (datum * 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
