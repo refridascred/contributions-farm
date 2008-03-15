@@ -30,11 +30,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long score = 8;
+            foreach (long cell in levels)
+            {
+                score = score ^ (cell - 3);
+                score = ((score << 3) ^ cell) % 65521;
+            }
+            if (score > 4)
+            {
+                score = score + (93 << 1);
+            }
+            return score;
         }
 
         /// <summary>Describe the metric class values.</summary>
