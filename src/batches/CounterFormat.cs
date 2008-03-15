@@ -22,19 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] data, long seed)
+        /// <summary>Project the next commits channel value.</summary>
+        public static double SmoothCommitsChannel(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            double bias = 6.74 / 8.0;
+            if (bias <= (gain / 4.0))
             {
-                if (reading > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias + (gain + floor);
             }
-            return flag;
+            else
+            {
+                bias = bias + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (double)1) - (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Match up contributi samples.</summary>
