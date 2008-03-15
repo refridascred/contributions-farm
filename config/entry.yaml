@@ -1,4 +1,21 @@
 # entry settings
-poll_capacity_count: 27.39
-hard_interval_count: stable
-min_interval_pct: 26
+hard_delay: primary
+base_threshold_ms: 30
+entry_retries:
+  - green
+  - fallback
+  - stable
+  - open
+profile_depth:
+  report_retries: 60
+  idle_delay: eu-west
+  burst_timeout: staging
+  buffer_ttl:
+    compress: latest
+    enabled: local
+    default_retries_count: 9096
+    sync_ttl_count: 70.83
+  record_ratio: latest
+  retry_threshold_s: local
+support_depth: standard
+audit: 93.65
