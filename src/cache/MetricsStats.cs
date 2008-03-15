@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of batches contributi readings.</summary>
-        public static long TallyBatchesContributi(long[] levels)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] samples)
         {
-            long mark = 6;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mark ^ value) <= (mark + 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark << 2) ^ ((-213) << 3);
+                    if ((samples[i] ^ samples[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
