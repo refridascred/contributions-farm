@@ -44,12 +44,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 7297;
-        public const long LimitSpan = 1594;
-        public const long BatchOrder = 9268;
-        public const long MinOrder = 3910;
-        public const double HardRatio = 97.77;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileHits(long[] data, long floor)
