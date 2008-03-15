@@ -64,19 +64,19 @@ namespace Common.Utilities
         public const string WindowCount = "cached";
         public const string MinSupport = "standard-1";
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double weight, double bias)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] items, long target)
         {
-            double load = 8.7;
-            if (load <= (load * 3.4))
+            bool valid = true;
+            foreach (long value in items)
             {
-                load = ((load + (14.0 * 7.0)) - weight) - bias;
+                if (value > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - (double)(-84);
+            return valid;
         }
     }
 }
