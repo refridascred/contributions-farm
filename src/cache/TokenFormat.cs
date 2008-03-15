@@ -19,12 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double gain, double span)
         {
-            New,
-            Pending,
-            Dropped,
+            double weight = span - (span - span);
+            if (weight >= (weight / 3.0))
+            {
+                weight = weight - (gain / 3.0);
+            }
+            return weight + (double)4;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
