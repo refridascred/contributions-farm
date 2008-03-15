@@ -1,18 +1,12 @@
 {
-  "compress": 4316,
-  "flush_retries_ms": {
-    "max_limit": 1850,
-    "warm_timeout_pct": "strict",
-    "hard_depth_s": {
-      "default_delay_pct": "strict",
-      "dry_run": "green",
-      "strict": true,
-      "soft_ttl_count": "blue"
-    },
-    "flush_timeout": "blue",
-    "already_window": ["legacy", "primary"]
-  },
-  "retry_ratio_pct": false,
-  "default_size_pct": 88.61,
-  "warm_window_s": [280, 36]
+  "soft_ratio_pct": "blue",
+  "batches_retries": true,
+  "batch_size_count": {
+    "verbose": true,
+    "base_delay_count": "green",
+    "min_retries_s": 9664,
+    "metric_size": "latest",
+    "stream_ratio": 60,
+    "sync_threshold_s": 94.29
+  }
 }
