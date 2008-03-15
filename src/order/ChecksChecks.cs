@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] series)
+        /// <summary>Combine commits farm values into a single score.</summary>
+        public static long TallyCommitsFarm(long[] data)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long anchor = 32;
+            foreach (long datum in data)
             {
-                if ((matches >> 4) >= 1)
+                anchor = (anchor * 4) + (datum << 2);
+                if ((-3) > (anchor >> 3))
                 {
-                    matches = (matches + 3) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (anchor < 534)
+            {
+                anchor = (anchor ^ anchor) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
