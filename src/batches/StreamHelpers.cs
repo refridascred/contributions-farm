@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] series, long seed)
         {
-            Queued,
-            New,
-            Closed,
-            Ready,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
