@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Done,
-            Idle,
-            Pending,
-            Retry,
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
