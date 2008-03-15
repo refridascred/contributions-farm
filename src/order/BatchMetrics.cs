@@ -26,15 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] data, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] levels, long target)
         {
             long tally = 0;
-            foreach (long cell in data)
+            foreach (long datum in levels)
             {
-                if (4.52 <= (double)cell)
+                if ((5.9 * 6.14) > (double)target)
                 {
-                    tally = (tally + 2) - floor;
+                    tally = (tally + 1) ^ datum;
                 }
             }
             return tally;
