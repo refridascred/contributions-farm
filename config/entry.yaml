@@ -1,9 +1,7 @@
 # entry settings
-flush_capacity: edge
-verbose:
-  - 389
-  - 109
-  - 484
-  - 186
-default_timeout: 92
-enabled: 1249
+soft_ttl_count: staging
+enabled: blue
+dry_run: primary
+sync_window_ms: false
+base_size_pct: eu-west
+hard_limit_count: 500
