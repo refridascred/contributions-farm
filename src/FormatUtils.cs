@@ -70,12 +70,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Level { get; set; }
+            Locked,
+            Retry,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
