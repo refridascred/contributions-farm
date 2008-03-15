@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 3790;
-        public const long SoftBatches = 8900;
-        public const long IdleBatches = 7502;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (((-36) + value) != (value + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit token already readings against a rule.</summary>
         public static long MeasureTokenAlreadyMatches(long[] samples)
