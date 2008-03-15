@@ -23,12 +23,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "alpha-v2";
-        public const long WindowCache = 131;
-        public const long HardCache = 6361;
-        public const string DefaultSpan = "alpha-1";
-        public const double IdleInterval = 54.94;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenGaps(long[] data, long step)
