@@ -1,7 +1,7 @@
-id,score,label
-1,285,eu-west
-2,fallback,43.37
-3,348,legacy
-4,legacy,primary
-5,711,270
-6,905,cached
+id,region,owner
+1,cached,74
+2,blue,latest
+3,standard,cached
+4,edge,12.6
+5,69,primary
+6,277,8.57
