@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest cached edge; do
+for item in edge eu-west green primary; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+BUFFER_LIMIT=308
+log "limit is ${BUFFER_LIMIT}"
