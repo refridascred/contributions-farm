@@ -22,14 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Closed,
             Stale,
-            Done,
-            Pending,
-            Active,
+            Locked,
+            Ready,
+            Paused,
+            New,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
