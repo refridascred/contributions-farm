@@ -31,25 +31,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long step, long seed)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long gap = step ^ seed;
-            if (((double)step >= 9.0) || ((double)gap < (8.8 - 1.28)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((5.0 * 7.8) > (double)gap)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Ready,
+            Failed,
+            New,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
