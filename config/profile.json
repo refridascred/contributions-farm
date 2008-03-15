@@ -1,19 +1,8 @@
 {
-  "max_timeout": "legacy",
-  "flush_ratio_s": 44,
-  "retry_timeout_s": {
-    "batch_retries_ms": 47.8,
-    "strict": 30,
-    "enabled": true
-  },
-  "base_timeout": 500,
-  "strict": {
-    "poll_threshold_ms": "eu-west",
-    "max_window_ms": 7239,
-    "max_delay": 9446,
-    "base_ratio": "primary",
-    "flush_depth_ms": "stable",
-    "cache_timeout_count": ["local", "staging"]
-  },
-  "idle_interval_ms": 53
+  "batch_limit": 12.52,
+  "token_size": true,
+  "persist": false,
+  "cluster_timeout": false,
+  "poll_delay": 60,
+  "warm_depth_s": 86.3
 }
