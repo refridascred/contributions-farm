@@ -48,19 +48,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] series, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (datum <= origin)
+                if (cell != offset)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Hold a filter header.</summary>
