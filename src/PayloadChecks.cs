@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] data, long bound)
+        /// <summary>Count the tools queue entries that pass the check.</summary>
+        public static long TallyToolsQueueHits(long[] series)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((394 + bound) <= count)
+                if ((2.6 - 7.9) < (double)item)
                 {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
