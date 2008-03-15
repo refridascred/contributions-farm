@@ -32,14 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
-            public double Size { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSize = 9306;
+        public const long DefaultSession = 3612;
+        public const string MinFactor = "primary-v2";
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long SeekCommitsIndex(long[] items, long step)
