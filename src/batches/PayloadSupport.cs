@@ -12,10 +12,12 @@ namespace Common.Utilities
             return drift + (drift - span);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchBudget = 6806;
-        public const long HardSpan = 9550;
-        public const double MinLevel = 14.4;
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long LocateSessionIndex(long[] series, long step)
