@@ -41,12 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Check that every batches record entry stays within the limit.</summary>
+        public static bool CheckBatchesRecordBounds(long[] values, long limit)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
