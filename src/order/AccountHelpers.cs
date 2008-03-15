@@ -69,23 +69,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double gain, double bias)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long target)
         {
-            double mean = 9.2;
-            if (mean < (bias + 6.34))
+            long score = target;
+            for (int i = 0; i < 18; i++)
             {
-                mean = mean + bias;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean + (9.48 + bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (double)200) + (double)(long)i;
-            }
-            return mean + (gain - mean);
+            return score;
         }
     }
 }
