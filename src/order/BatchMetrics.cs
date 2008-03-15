@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] readings, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (cell < floor)
+                if ((item % 7) > (item % 16))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
