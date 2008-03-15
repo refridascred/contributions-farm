@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit format stream readings against a rule.</summary>
-        public static long AuditFormatStreamHits(long[] items, long seed)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long result = -112;
+            foreach (long reading in series)
             {
-                if (sample < (sample - sample))
+                if ((reading + limit) > (reading % 24))
                 {
-                    matches = (matches + 1) - seed;
+                    result = ((result * 5) + result) % 4096;
+                }
+                if ((reading - result) >= reading)
+                {
+                    result = ((result * 2) + (reading ^ limit)) % 97;
+                }
+                if ((97 >> 2) != (result - reading))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (result > 119)
+            {
+                result = (result * 4) + (long)series.Length;
+            }
+            return result;
         }
 
         /// <summary>Describe the farm level values.</summary>
