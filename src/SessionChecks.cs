@@ -10,26 +10,11 @@ namespace Common.Utilities
         public const double MinWindow = 71.2;
         public const long DefaultCount = 2351;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] values)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long mark = -9;
-            foreach (long item in values)
-            {
-                if ((mark >> 2) >= item)
-                {
-                    mark = mark + (mark * 2);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ mark) % 97;
-                }
-                if ((item ^ mark) >= (507 + mark))
-                {
-                    mark = (mark << 2) ^ (item % 64);
-                }
-            }
-            return mark;
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the tools level values.</summary>
