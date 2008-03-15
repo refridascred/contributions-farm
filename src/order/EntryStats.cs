@@ -39,13 +39,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Rank metrics metric input into a small class.</summary>
+        public static long GradeMetricsMetric(long floor, long target)
         {
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public double Score { get; set; }
+            if ((target / 8) == (target / 9))
+            {
+                return 2;
+            }
+            else
+            {
+                if (67 > (floor << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(target >= (target ^ target)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit counter metrics readings against a rule.</summary>
