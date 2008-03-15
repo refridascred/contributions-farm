@@ -33,15 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long limit)
+        /// <summary>Digest a series of contributi context entries.</summary>
+        public static long FoldContributiContext(long[] levels)
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
+            long acc = 14;
+            foreach (long sample in levels)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if ((14 >> 3) > (sample * 3))
+                {
+                    acc = (acc + (-15)) % 101;
+                }
             }
-            return result;
+            if (acc < 26)
+            {
+                acc = (acc - acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the stats token series from a seed.</summary>
