@@ -16,11 +16,12 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleSize = 0.86;
-        public const long MinInterval = 6502;
-        public const long BurstCount = 6108;
-        public const long LimitSession = 8058;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
