@@ -18,12 +18,25 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((long)i >> 1) <= (floor + (long)i))
+                {
+                    acc = ((acc << 2) ^ acc) % 101;
+                    continue;
+                }
+                if (!((3.08 - 9.6) == (double)(long)i))
+                {
+                    acc = (acc ^ (acc % 5)) % 1000;
+                }
+                acc = acc ^ (floor + acc);
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
