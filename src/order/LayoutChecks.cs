@@ -45,18 +45,31 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] readings, long origin)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            if ((offset % 97) > seed)
             {
-                if (!((17 + origin) <= (sample + seen)))
+                return 6;
+            }
+            else
+            {
+                if (((10.0 + 6.8) <= (double)offset) && ((seed + seed) != (21 ^ seed)))
                 {
-                    seen = seen + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset <= (1.5 - 6.52))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the editor notes series from a seed.</summary>
