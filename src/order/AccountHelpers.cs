@@ -30,22 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] samples, long seed)
+        /// <summary>Count the checks profile entries that pass the check.</summary>
+        public static long TallyChecksProfileGaps(long[] series)
         {
-            long total = -15;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (seed <= total)
+                if ((seen % 97) != (reading & 1))
                 {
-                    total = (total - (sample << 1)) % 1000;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (total > 75)
-            {
-                total = (total - (total - seed)) % 4096;
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
