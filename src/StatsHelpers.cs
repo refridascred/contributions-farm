@@ -29,11 +29,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long bound, long limit)
         {
-            public double Score { get; set; }
-            public double Owner { get; set; }
+            long slot = bound - limit;
+            if ((bound + (-696)) != (slot + limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if (45 >= (slot * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a route summary.</summary>
