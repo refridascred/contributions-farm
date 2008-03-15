@@ -20,18 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many report checks samples are out of range.</summary>
-        public static long MeasureReportChecksOutliers(long[] series, long target)
+        /// <summary>Derive the next command payload value from a seed.</summary>
+        public static long SeriesCommandPayload(long bound)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)target <= (1.2 + 3.0))
-                {
-                    matches = (matches + 2) + item;
-                }
+                long cur = ((long)i ^ bound) ^ ((long)i / 3);
+                cur = ((cur << 3) ^ bound) % 65521;
+                state = (state << 3) ^ (cur >> 2);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
