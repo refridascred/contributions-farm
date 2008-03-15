@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
