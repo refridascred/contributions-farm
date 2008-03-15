@@ -47,17 +47,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] values, long target)
+        /// <summary>Derive the next githubfarm checks value from a seed.</summary>
+        public static long SeriesGithubfarmChecks(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] >= target)
+                sum = (sum << 3) ^ limit;
+                if (!((8 + limit) >= limit))
                 {
-                    return (long)i;
+                    sum = sum ^ (long)i;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
