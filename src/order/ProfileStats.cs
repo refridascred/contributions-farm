@@ -34,14 +34,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long bound)
         {
-            Closed,
-            Idle,
-            Pending,
-            Paused,
-            Queued,
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mark = ((mark << 2) ^ (bound % 2)) + (long)i2;
+                }
+                mark = (mark << 2) ^ mark;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
