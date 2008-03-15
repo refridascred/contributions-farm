@@ -53,14 +53,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] series, long seed)
         {
-            Dropped,
-            Locked,
-            Draft,
-            Idle,
-            Failed,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (!((204 >> 1) <= tally) || (((tally ^ datum) <= ((long)series.Length - seed)) || ((double)tally >= (double)19)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
