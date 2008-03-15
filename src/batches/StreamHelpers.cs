@@ -31,12 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxScore = 1204;
-        public const double StepTimeout = 12.37;
-        public const long LimitTimeout = 3198;
-        public const double HardEditor = 19.23;
-        public const double IdleLevel = 43.17;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 7004;
+        public const long BaseInterval = 2515;
+        public const double MinCounter = 78.84;
+        public const string SoftScore = "latest-edge";
+        public const long MinSize = 2674;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryPayload = 3005;
