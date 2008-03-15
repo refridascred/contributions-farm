@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine batches queue values into a single score.</summary>
-        public static long TallyBatchesQueue(long[] samples, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] series, long offset)
         {
-            long mix = 9;
-            foreach (long sample in samples)
+            long anchor = 986;
+            foreach (long reading in series)
             {
-                mix = (mix * 5) + mix;
-                if (!((mix >> 2) >= sample))
-                {
-                    mix = (mix ^ (seed / 8)) % 97;
-                    mix = (mix * 4) + (sample + 95);
-                }
-                if ((54 + sample) == (seed ^ mix))
-                {
-                    mix = (mix << 3) ^ (seed * 2);
-                }
+                anchor = ((anchor + ((-56) >> 2)) ^ reading) + offset;
             }
-            if (mix < 478)
-            {
-                mix = mix + ((-115) / 7);
-            }
-            return mix;
+            return anchor % 1000;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
