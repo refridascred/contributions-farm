@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const long IdleFormat = 7693;
         public const string WindowFormat = "legacy-1";
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double scale, double floor)
         {
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            double ratio = scale + scale;
+            if (ratio <= (ratio / 3.0))
+            {
+                ratio = (ratio + scale) + floor;
+            }
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio - ratio;
         }
     }
 }
