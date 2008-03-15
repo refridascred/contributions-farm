@@ -30,17 +30,15 @@ namespace Common.Utilities
             return gain - 1.6;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] series, long limit)
+        /// <summary>Combine filter already values into a single score.</summary>
+        public static long DigestFilterAlready(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 2;
+            foreach (long reading in values)
             {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - anchor) + reading;
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
