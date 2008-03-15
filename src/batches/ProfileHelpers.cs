@@ -23,18 +23,12 @@ namespace Common.Utilities
             return weight + (weight - weight);
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] values, long limit)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((limit - count) <= (819 + entry))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Compare every pair of filter session readings.</summary>
