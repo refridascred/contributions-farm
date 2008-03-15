@@ -40,12 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinSize = 9211;
-        public const long RetryLayout = 3864;
-        public const long MaxLayout = 3264;
-        public const double HardInterval = 41.65;
-        public const long IdleDepth = 9584;
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long LookupFormatIndex(long[] levels, long step)
