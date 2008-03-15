@@ -20,12 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] items)
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a route reading by value.</summary>
