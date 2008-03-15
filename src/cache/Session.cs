@@ -37,20 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] series, long bound)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowRatio = 1772;
+        public const string IdleFactor = "strict";
+        public const long MaxScore = 3062;
+        public const long StepNotes = 3061;
+        public const long IdleScore = 2588;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long SeriesStream(long floor)
