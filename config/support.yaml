@@ -1,4 +1,11 @@
 # support settings
-flush_threshold_count: 60
-default_threshold_count: 71.46
-dry_run: local
+burst_interval_count: false
+burst_depth_pct: false
+readonly: false
+idle_capacity_ms:
+  - local
+  - legacy
+  - open
+  - stable
+retry_threshold_pct: 100
+format_timeout: stable
