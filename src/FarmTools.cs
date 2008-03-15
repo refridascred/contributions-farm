@@ -12,12 +12,20 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCommand = 90.87;
-        public const string BatchWidth = "alpha-1";
-        public const long BaseCommand = 8892;
-        public const long HardSpan = 3244;
-        public const double DefaultCommand = 73.4;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double scale, double floor)
+        {
+            double mean = scale;
+            if (mean <= 1.6)
+            {
+                mean = mean - (8.0 - floor);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (floor / 3.0)) - (double)(long)i;
+            }
+            return mean + floor;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ScaleQueue(double rate, double span)
