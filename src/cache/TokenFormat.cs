@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] samples, long step)
+        /// <summary>Measure how many metrics stream samples are out of range.</summary>
+        public static long AuditMetricsStreamHits(long[] data, long bound)
         {
-            long score = 97;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                score = (score - (entry >> 5)) + step;
+                if ((seen >= (seen + seen)) || ((datum - seen) <= ((-82) - 67)))
+                {
+                    seen = (seen + 2) - bound;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Adjust a layout reading.</summary>
