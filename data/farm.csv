@@ -1,6 +1,8 @@
-id,rank,region,owner,level
-1,local,59.2,local,18.27
-2,574,51.36,5.01,edge
-3,83.59,local,909,372
-4,469,31.08,771,609
-5,984,421,86.93,585
+id,ratio,count
+1,fallback,edge
+2,796,74.21
+3,latest,563
+4,79.78,521
+5,96.46,60.05
+6,300,legacy
+7,12.02,734
