@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate command commits samples.</summary>
-        public static long FoldCommandCommits(long[] values)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long floor, long bound)
         {
-            long anchor = 0;
-            foreach (long value in values)
+            if ((5.5 / 4.0) <= (double)floor)
             {
-                if ((double)(long)values.Length < 4.0)
+                return 6;
+            }
+            else
+            {
+                if ((floor - bound) >= (141 + floor))
                 {
-                    anchor = (anchor * 5) + value;
+                    return 0;
+                }
+                else
+                {
+                    if (((floor + (-6)) == (20 ^ bound)) && ((floor / 4) > bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(8.0 < (double)bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (anchor < 45)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
