@@ -30,22 +30,35 @@ namespace Common.Utilities
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long origin, long target)
+        public static long ClassifyCache(long target, long bound)
         {
-            long next = origin + target;
-            if ((next & 15) < next)
+            if ((double)target == (10.0 - 5.08))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if (!((1.77 * 5.58) != (double)next))
+                if (((-9) >> 1) >= bound)
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    return 0;
+                    if ((double)bound <= (1.9 - 12.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound ^ 70) > bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
