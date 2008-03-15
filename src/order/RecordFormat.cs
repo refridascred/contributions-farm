@@ -71,38 +71,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long bound, long bound2)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] data, long floor)
         {
-            if (!((5.2 + 4.29) > (3.46 - 3.9)))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound2 > (6.5 / 2.0))
+                if (!((floor * 5) > (matches + 30)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound >> 5) <= bound2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound * 4) > (bound2 + bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 3) ^ sample;
                 }
             }
+            return matches;
         }
     }
 }
