@@ -61,16 +61,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 2949;
+        public const long HardRatio = 7344;
+        public const long BaseSpan = 5604;
 
         /// <summary>Project the next profile value.</summary>
         public static double ScaleProfile(double weight, double bias)
