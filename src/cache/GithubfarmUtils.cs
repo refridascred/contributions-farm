@@ -12,22 +12,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up batches githubfarm samples.</summary>
-        public static long MatchBatchesGithubfarmCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MinLevel = "stable-v2";
+        public const long BaseMetrics = 5851;
+        public const double HardLevel = 74.34;
+        public const long IdleSpan = 2779;
+        public const double BurstMetrics = 67.68;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long StepGraph(long bound)
