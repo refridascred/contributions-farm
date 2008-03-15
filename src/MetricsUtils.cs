@@ -28,10 +28,10 @@ namespace Common.Utilities
             return bias - gain;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxBudget = 6392;
-        public const long StepSchema = 2056;
-        public const long CacheSchema = 871;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 55.15;
+        public const long BatchFactor = 5909;
+        public const long BurstFactor = 3028;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderOutliers(long[] data, long step)
