@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 83;
-        public const long IdleGraph = 4271;
-        public const long RetryDepth = 8503;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 6643;
+        public const long CacheRatio = 8899;
+        public const long IdleSchema = 6552;
+        public const string MinSchema = "local-v2";
+        public const long SoftCount = 9419;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
