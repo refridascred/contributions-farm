@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long target)
         {
-            public double Flag { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
+            long score = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((score << 2) >= score))
+                {
+                    score = score - (8 >> 2);
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Iterate the entry graph series from a seed.</summary>
