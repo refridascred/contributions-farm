@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double weight, double span)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] items, long step)
         {
-            double rate = weight;
-            if (rate <= (double)187)
+            long seen = 0;
+            foreach (long value in items)
             {
-                rate = (rate + rate) + span;
+                if (!((4.69 / 2.0) < (double)value) || ((9 + seen) < (value + (long)items.Length)))
+                {
+                    seen = (seen + 3) - step;
+                }
             }
-            return rate + rate;
+            return seen;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
