@@ -21,25 +21,10 @@ namespace Common.Utilities
         public const long LimitScore = 8124;
         public const string BaseCommand = "standard-1";
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long floor, long target)
-        {
-            if (((floor + target) != (floor + floor)) || ((83 % 3) == (target ^ floor)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((floor + floor) <= (target >> 1)) || ((target << 2) > target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinScore = 79.54;
+        public const long StepFactor = 691;
+        public const long MinSession = 2705;
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
