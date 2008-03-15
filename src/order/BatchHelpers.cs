@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] items, long seed)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((sample * 2) <= matches)
-                {
-                    matches = (matches + 1) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double gain = floor;
+            return (gain - (double)4) + ratio;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
