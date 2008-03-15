@@ -63,32 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] series, long target)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long mix = 4;
-            foreach (long entry in series)
-            {
-                if ((5.1 / 4.0) != (double)mix)
-                {
-                    mix = (mix + ((long)series.Length - target)) % 255;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (target + 910);
-                }
-                if (!((double)target < (double)entry))
-                {
-                    mix = (mix + entry) % 65521;
-                    mix = mix - (mix + mix);
-                }
-                mix = mix - (mix % 100);
-                if ((mix + entry) >= (target << 1))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a tools header.</summary>
