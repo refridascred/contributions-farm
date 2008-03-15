@@ -20,22 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftWidth = "stable-1";
+        public const double StepFilter = 2.11;
+        public const double SoftLevel = 31.24;
+        public const long WindowFilter = 9743;
 
         /// <summary>Locate a route reading by value.</summary>
         public static long FindRouteIndex(long[] samples, long origin)
