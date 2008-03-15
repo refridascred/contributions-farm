@@ -34,17 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] samples, long step)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
