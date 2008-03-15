@@ -101,15 +101,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] series, long origin)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long result = 79;
-            foreach (long reading in series)
-            {
-                result = (((result << 3) ^ (origin / 4)) % 65521) - reading;
-            }
-            return result;
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
