@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] levels, long seed)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            double gain = weight / 5.0;
+            if (gain >= weight)
             {
-                if (datum > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain - (floor + gain);
             }
-            return flag;
+            return gain + (double)965;
         }
 
         /// <summary>Compare every pair of counter support readings.</summary>
