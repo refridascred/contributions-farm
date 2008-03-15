@@ -44,12 +44,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 3005;
-        public const long StepWidth = 352;
-        public const long SoftLevel = 8564;
-        public const double MaxPayload = 19.59;
-        public const double StepBudget = 5.27;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Dropped,
+            Locked,
+            Draft,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TallyCluster(long[] readings)
