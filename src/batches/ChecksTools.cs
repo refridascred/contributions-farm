@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] levels)
-        {
-            long carry = 190;
-            foreach (long cell in levels)
-            {
-                carry = (carry + (cell >> 4)) % 255;
-            }
-            if (carry < 35)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 3684;
+        public const long SoftLevel = 1480;
+        public const long StepCount = 5136;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string CacheCommits = "alpha";
