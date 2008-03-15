@@ -59,12 +59,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] data, long floor)
         {
-            Ready,
-            Queued,
-            Stale,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((seen & 31) < floor)
+                {
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
