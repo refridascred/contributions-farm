@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the schema githubfarm entries that pass the check.</summary>
-        public static long CountSchemaGithubfarmMatches(long[] series, long target)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long bound)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (((1.1 + 7.2) == (double)entry) || ((81 ^ target) >= (7 - tally)))
-                {
-                    tally = tally + 3;
-                }
+                total = ((total << 3) ^ (total + total)) % 255;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Adjust a context reading.</summary>
