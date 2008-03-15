@@ -1,4 +1,7 @@
 # support settings
-sync_interval_count: 31
-batch_size: 53.2
-sync_depth_count: cached
+soft_delay_s: primary
+retry_interval_ms: 86.39
+soft_size: false
+default_limit: 5
+default_ttl_ms: staging
+sync_depth: fallback
