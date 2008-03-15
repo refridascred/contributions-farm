@@ -23,12 +23,12 @@ namespace Common.Utilities
         public const long CacheProfile = 4641;
         public const double BatchBudget = 12.94;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] items, long step)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] series, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] > step) && ((items[i] % 3) != 0))
+                if (series[i] > floor)
                 {
                     return (long)i;
                 }
