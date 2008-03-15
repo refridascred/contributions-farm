@@ -14,21 +14,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] samples)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((21 / 4) > (offset / 9)) || (((long)i ^ (long)i) < (offset * 5)))
                 {
-                    if ((samples[i] + samples[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score * 2) + (offset + score);
+                    score = (score << 3) ^ (score - (long)i);
+                    continue;
                 }
+                if ((9.97 + 4.59) < (double)offset)
+                {
+                    score = (score + score) % 101;
+                    break;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
