@@ -1,5 +1,7 @@
 {
-  "batches_delay": 75,
-  "cache_interval": "edge",
-  "default_limit": "latest"
+  "layout_ratio": ["edge", "green", "green", "fallback"],
+  "idle_interval_s": true,
+  "audit": 500,
+  "max_delay_count": "blue",
+  "dry_run": 52.89
 }
