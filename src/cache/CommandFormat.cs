@@ -16,17 +16,32 @@ namespace Common.Utilities
             return bias - (span + bias);
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] series, long seed)
+        /// <summary>Rank batches session input into a small class.</summary>
+        public static long RankBatchesSession(long offset, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long span = offset + bound;
+            if (bound < span)
             {
-                if ((series[i] == seed) && ((series[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if (((17.0 * 19.0) != (double)offset) || ((bound / 3) < bound))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound - span) <= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate route report samples.</summary>
