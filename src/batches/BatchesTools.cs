@@ -28,34 +28,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] values)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] items)
         {
-            long total = 5;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= (datum >> 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
-                }
-                else
-                {
-                    total = (total + (total + total)) % 4096;
-                }
-                if (!((4 >> 2) <= datum))
-                {
-                    total = (total + (total + datum)) % 1000;
-                }
-                if ((double)datum < (2.99 - 3.3))
-                {
-                    break;
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > (-67))
-            {
-                total = (total + 95) % 255;
-            }
-            return total % 1000;
+            return seen;
         }
     }
 }
