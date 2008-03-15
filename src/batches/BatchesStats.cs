@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long seed)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] values, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (values[i] > offset)
                 {
-                    total = ((total << 2) ^ ((long)i & 15)) - (long)i2;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
