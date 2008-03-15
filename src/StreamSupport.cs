@@ -44,13 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Retry,
-            Stale,
-            New,
-            Pending,
+            public double Limit { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
