@@ -38,17 +38,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] values, long limit)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (values[i] > limit)
+                if (!((double)origin <= (3.8 / 5.0)))
                 {
-                    return (long)i;
+                    result = (result << 2) ^ (result / 8);
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the checks status values.</summary>
