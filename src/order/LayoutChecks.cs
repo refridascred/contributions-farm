@@ -30,17 +30,19 @@ namespace Common.Utilities
         public const long BurstSpan = 380;
         public const long LimitAlready = 8972;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long seed)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((items[i] == seed) && ((items[i] % 5) == 0))
+                if (sample < seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Project the next account value.</summary>
