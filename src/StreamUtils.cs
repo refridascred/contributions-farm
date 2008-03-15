@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Validate report order readings against a bound.</summary>
+        public static bool ValidateReportOrderBounds(long[] series, long seed)
         {
-            Pending,
-            Closed,
-            Paused,
-            Queued,
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
