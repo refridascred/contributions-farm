@@ -47,11 +47,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
