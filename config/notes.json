@@ -1,7 +1,16 @@
 {
-  "warm_delay_pct": 6116,
-  "context_ratio": "stable",
-  "audit": true,
-  "soft_timeout": 35.71,
-  "burst_depth": false
+  "dry_run": {
+    "githubfarm_interval": {
+      "cache_ttl": 8898,
+      "warm_capacity_count": ["local", "eu-west"],
+      "default_retries_s": false,
+      "verbose": true
+    },
+    "default_ratio_s": "cached",
+    "warm_window_s": 12.3
+  },
+  "strict": 7302,
+  "stats_timeout": ["legacy", "green"],
+  "verbose": [113, 354],
+  "default_retries_pct": "cached"
 }
