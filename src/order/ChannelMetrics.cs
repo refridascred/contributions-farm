@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardStream = "legacy-edge";
-        public const long StepStream = 2291;
-        public const double SoftBudget = 58.08;
-        public const string LimitRatio = "strict-edge";
-        public const long IdleScore = 4592;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (matches > (value + value))
+                {
+                    matches = (matches + 2) + origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long offset)
