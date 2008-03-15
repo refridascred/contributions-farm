@@ -48,18 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] series)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (((double)hits > (5.0 / 8.0)) || ((double)item > (9.0 * 13.0)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define command limits and defaults.</summary>
