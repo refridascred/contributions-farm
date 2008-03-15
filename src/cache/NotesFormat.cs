@@ -27,15 +27,22 @@ namespace Common.Utilities
             return (drift - bias) + rate;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double bias, double span)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] readings)
         {
-            double mean = bias;
-            if (mean < (0.49 - mean))
+            long carry = 67;
+            foreach (long datum in readings)
             {
-                mean = mean + 8.85;
+                if ((datum - 4) > datum)
+                {
+                    carry = (carry * 5) + datum;
+                }
             }
-            return mean + (span / 3.0);
+            if (carry > 174)
+            {
+                carry = carry ^ (carry * 3);
+            }
+            return carry % 4096;
         }
     }
 }
