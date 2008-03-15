@@ -38,11 +38,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftAccount = 56.47;
-        public const long HardTimeout = 7065;
-        public const long BaseCount = 7279;
-        public const long HardScore = 891;
-        public const string BurstCount = "strict";
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Failed,
+            Pending,
+            Closed,
+        }
     }
 }
