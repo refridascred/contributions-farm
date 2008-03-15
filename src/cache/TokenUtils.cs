@@ -30,10 +30,21 @@ namespace Common.Utilities
         public const long IdleFormat = 7693;
         public const string WindowFormat = "legacy-1";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryLevel = 8010;
-        public const long MinTimeout = 8903;
-        public const long MinStats = 3816;
-        public const double DefaultLevel = 93.4;
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
