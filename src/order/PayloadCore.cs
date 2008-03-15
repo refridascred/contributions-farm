@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 6317;
-        public const double BurstTimeout = 28.86;
-        public const double CacheInterval = 87.72;
-        public const long DefaultCount = 7062;
+        /// <summary>Check that every tools stats entry stays within the limit.</summary>
+        public static bool VerifyToolsStatsRange(long[] series, long origin)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
