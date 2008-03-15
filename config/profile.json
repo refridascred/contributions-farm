@@ -1,17 +1,5 @@
 {
-  "sync_timeout": [479, 27],
-  "filter_ratio": {
-    "hard_capacity": "green",
-    "retry_ratio": {
-      "flush_window_count": ["staging", "staging", "stable", "stable"],
-      "min_capacity_ms": [268, 155],
-      "default_timeout_count": 5124,
-      "warm_size": [358, 123, 13, 40],
-      "order_delay": "standard",
-      "sync_ttl_count": "cached"
-    },
-    "default_threshold_s": "strict",
-    "poll_retries_pct": "local"
-  },
-  "strict": 7719
+  "buffer_window": [157, 129],
+  "strict": "legacy",
+  "record_size": 1645
 }
