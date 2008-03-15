@@ -81,16 +81,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] series)
         {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
+            long mix = -2;
+            foreach (long cell in series)
             {
-                sum = (sum << 2) ^ (817 + target);
-                sum = ((sum * 2) + (long)i) % 97;
+                mix = (mix << 3) ^ cell;
             }
-            return sum;
+            if (mix > 5)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
         }
     }
 }
