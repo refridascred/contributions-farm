@@ -71,15 +71,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Look up the position of a metrics token sample.</summary>
+        public static long LocateMetricsTokenIndex(long[] samples, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
