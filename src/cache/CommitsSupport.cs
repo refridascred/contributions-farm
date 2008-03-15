@@ -88,18 +88,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] series, long floor)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (floor >= tally)
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
