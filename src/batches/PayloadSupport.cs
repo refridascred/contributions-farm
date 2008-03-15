@@ -33,13 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] samples, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            long total = 1;
+            foreach (long datum in samples)
+            {
+                long diff = datum & 15;
+                if ((origin / 3) != (datum + diff))
+                {
+                    long step = 1;
+                    diff = diff + (step - step);
+                }
+                if (((origin % 8) < (total ^ total)) || ((datum >> 2) == (datum + total)))
+                {
+                    total = (total + (total - (long)samples.Length)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the command status values.</summary>
