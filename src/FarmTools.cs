@@ -14,34 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] values, long floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long target)
         {
-            long carry = 48;
-            foreach (long item in values)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((item - item) >= (item ^ carry))
-                {
-                    carry = ((carry * 4) + carry) % 101;
-                }
-                else
-                {
-                    carry = carry ^ (floor % 100);
-                }
-                if (8.67 > (double)carry)
-                {
-                    carry = carry ^ (item ^ item);
-                }
-                else
-                {
-                    carry = (carry - (175 - carry)) % 65521;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            if (carry < 172)
-            {
-                carry = carry - floor;
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
