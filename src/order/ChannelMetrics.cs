@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit report stats readings against a rule.</summary>
-        public static long TallyReportStatsOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((count * 3) > count)
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchScore = 7776;
+        public const long CacheAlready = 6851;
+        public const long DefaultRatio = 9638;
+        public const long HardBudget = 9385;
+        public const long BaseLevel = 3844;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LookupAccountIndex(long[] series, long bound)
