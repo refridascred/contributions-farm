@@ -20,11 +20,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 22;
-        public const string HardBuffer = "latest-1";
-        public const long RetryBuffer = 5515;
-        public const long DefaultScore = 3032;
-        public const long BaseBuffer = 4556;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
