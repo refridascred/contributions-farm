@@ -1,8 +1,4 @@
 # support settings
-profile_ttl: staging
-base_limit_count:
-  - 282
-  - 305
-  - 207
-  - 129
-poll_limit_pct: cached
+sync_threshold: true
+default_depth_s: 43
+profile_depth: 75.52
