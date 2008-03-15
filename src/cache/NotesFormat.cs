@@ -26,19 +26,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] levels, long limit)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
