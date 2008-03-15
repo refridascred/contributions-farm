@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchSpan = 54.41;
-        public const string BatchAlready = "standard-1";
-        public const long DefaultTimeout = 8590;
-        public const double LimitScore = 40.19;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public long Rank { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultSpan = 2468;
