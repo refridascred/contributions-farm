@@ -31,15 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long step)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            New,
+            Done,
+            Draft,
         }
     }
 }
