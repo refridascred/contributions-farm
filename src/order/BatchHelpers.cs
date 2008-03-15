@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] items, long floor)
+        /// <summary>Audit cluster payload readings against a rule.</summary>
+        public static long MeasureClusterPayloadOutliers(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (reading < floor)
+                if ((hits - bound) <= bound)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
