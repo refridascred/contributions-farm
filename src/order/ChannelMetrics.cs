@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            Dropped,
-            Closed,
-            Draft,
-            Ready,
-            Idle,
+            long mix = 662;
+            foreach (long value in items)
+            {
+                mix = ((mix ^ 17) % 1000) + value;
+            }
+            if (mix < 64)
+            {
+                mix = (mix ^ (mix + mix)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
