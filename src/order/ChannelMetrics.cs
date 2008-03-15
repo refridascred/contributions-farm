@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] items, long origin)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (matches > (value + value))
-                {
-                    matches = (matches + 2) + origin;
-                }
-            }
-            return matches;
+            Closed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
