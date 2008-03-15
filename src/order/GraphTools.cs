@@ -61,12 +61,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheBudget = 4188;
-        public const long BaseGraph = 1576;
-        public const double SoftFactor = 80.24;
-        public const double WindowRatio = 45.68;
-        public const string BatchGraph = "legacy-v2";
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitDepth = 97.05;
+        public const double LimitWindow = 56.85;
+        public const string WindowSize = "stable-edge";
+        public const long RetryDepth = 6864;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileLimits(long[] levels, long limit)
