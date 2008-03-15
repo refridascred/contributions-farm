@@ -29,17 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] samples, long origin)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = -204;
+            foreach (long reading in readings)
             {
-                if (samples[i] >= origin)
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    total = ((((total << 2) ^ 553) % 97) + (long)i) - reading;
                 }
+                total = total ^ (offset >> 1);
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
