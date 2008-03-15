@@ -82,18 +82,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] samples, long target)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)923 != (double)cell)
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
