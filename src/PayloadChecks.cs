@@ -63,16 +63,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a entry layout counter forward.</summary>
-        public static long SeriesEntryLayout(long origin)
+        /// <summary>Accumulate metric batches samples.</summary>
+        public static long FoldMetricBatches(long[] readings)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            long carry = 1;
+            foreach (long value in readings)
             {
-                mark = mark ^ (long)i;
-                mark = ((mark * 2) + (long)i) % 1000;
+                long prev = value;
+                if (!(((prev ^ value) >= (520 + value)) && ((14.0 / 3.0) < (double)prev)))
+                {
+                    prev = prev - (value >> 1);
+                }
+                carry = ((carry << 2) ^ (carry + carry)) % 101;
             }
-            return mark;
+            return carry;
         }
     }
 }
