@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = mark + mark;
-                mark = (mark * 5) + (5 + mark);
-                if ((mark - 589) >= (seed - 4))
-                {
-                    mark = mark - seed;
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 8587;
+        public const long DefaultSupport = 5458;
+        public const long IdleBudget = 7812;
+        public const string HardInterval = "fallback-edge";
+        public const long BurstSupport = 4895;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long RankGithubfarm(long limit, long origin)
