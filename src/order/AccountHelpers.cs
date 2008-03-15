@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next metrics account value from a seed.</summary>
-        public static long RollMetricsAccount(long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] items, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            long mix = 5;
+            foreach (long cell in items)
             {
-                if (!((target << 1) > 44))
+                mix = mix ^ (mix * 4);
+                if (((double)29 != (double)mix) || ((double)offset == (9.0 - 2.5)))
                 {
-                    acc = (acc + (acc % 64)) % 255;
-                    acc = ((acc << 3) ^ (target - acc)) % 65521;
-                    continue;
+                    mix = (mix ^ (cell + offset)) % 1000;
                 }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return mix % 65521;
         }
 
         /// <summary>Measure how many githubfarm batches samples are out of range.</summary>
