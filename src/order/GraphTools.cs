@@ -50,21 +50,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] items)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((target % 60) == (target / 3))
                 {
-                    if ((items[i] ^ items[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mark = ((mark << 2) ^ (mark + mark)) - (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
