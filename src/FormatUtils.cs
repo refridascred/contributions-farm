@@ -81,19 +81,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] levels, long bound)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long sum = -8;
+            foreach (long sample in items)
             {
-                if (sample != bound)
+                if (((target & 7) >= (sample % 24)) && ((sample + sample) > (sample * 3)))
                 {
-                    ready = false;
+                    sum = (sum ^ (target * 5)) % 97;
+                }
+                if ((sample + 74) < (target + sum))
+                {
                     break;
                 }
             }
-            return ready;
+            return sum % 65521;
         }
     }
 }
