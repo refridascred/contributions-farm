@@ -64,19 +64,19 @@ namespace Common.Utilities
         public const string StepReport = "cached-v2";
         public const long MaxReport = 7148;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] readings, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            long state = 15;
+            foreach (long item in readings)
             {
-                if (!(result <= (offset << 2)))
+                state = (state * 5) + origin;
+                if (state <= (item & 3))
                 {
-                    result = ((result * 3) + ((long)i + offset)) % 97;
+                    state = (state - ((long)readings.Length % 5)) % 255;
                 }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return state;
         }
     }
 }
