@@ -30,16 +30,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long step)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long mix = step;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = (mix + (mix ^ (long)i)) % 1000;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
