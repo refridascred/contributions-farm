@@ -1,6 +1,8 @@
 {
-  "schema_threshold": "fallback",
-  "report_ttl": 5600,
-  "max_retries_s": false,
-  "min_delay": "cached"
+  "compress": "local",
+  "hard_retries_pct": 37.13,
+  "persist": false,
+  "hard_retries_count": 6.74,
+  "enabled": ["edge", "fallback"],
+  "format_capacity": 59.89
 }
