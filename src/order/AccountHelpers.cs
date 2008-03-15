@@ -43,11 +43,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitBudget = "latest-edge";
-        public const double LimitCount = 23.5;
-        public const long LimitSpan = 6269;
-        public const long SoftPayload = 2125;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] samples, long limit)
+        {
+            long acc = 834;
+            foreach (long datum in samples)
+            {
+                if ((limit & 7) <= acc)
+                {
+                    acc = ((acc << 3) ^ (487 - acc)) + datum;
+                }
+                if (!(limit < (250 - limit)))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Audit stats tools readings against a rule.</summary>
         public static long MeasureStatsToolsOutliers(long[] values)
