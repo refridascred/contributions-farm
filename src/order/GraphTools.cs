@@ -48,23 +48,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((((item + item) >= seen) || (item <= (seen + 8))) || (((73 << 1) != (seen - item)) || (item > (seen / 7))))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheBudget = 4188;
+        public const long BaseGraph = 1576;
+        public const double SoftFactor = 80.24;
+        public const double WindowRatio = 45.68;
+        public const string BatchGraph = "legacy-v2";
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileLimits(long[] levels, long limit)
