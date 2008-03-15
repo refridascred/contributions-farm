@@ -29,22 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((double)bound != (10.0 * 0.2))
-                {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardWidth = 3587;
+        public const long MinFormat = 3891;
+        public const string HardFormat = "legacy";
+        public const long RetryFormat = 9818;
+        public const long BatchWidth = 9166;
     }
 }
