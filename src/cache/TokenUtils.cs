@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] items, long step)
+        /// <summary>Match up tools batches samples.</summary>
+        public static long OverlapToolsBatchesCount(long[] values)
         {
             long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (887 <= (tally % 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = ((tally + 2) + cell) + step;
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
