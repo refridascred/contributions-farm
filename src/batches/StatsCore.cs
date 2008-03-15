@@ -36,17 +36,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] items, long seed)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long origin, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long next = origin + target;
+            if ((next & 15) < next)
             {
-                if ((items[i] >= seed) && ((items[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if (!((1.77 * 5.58) != (double)next))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
