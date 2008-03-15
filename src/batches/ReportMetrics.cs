@@ -21,11 +21,18 @@ namespace Common.Utilities
         public const double LimitBuffer = 33.11;
         public const string WindowBuffer = "stable-v2";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 4817;
-        public const double HardLevel = 86.51;
-        public const long HardScore = 8112;
-        public const long RetryFactor = 8652;
-        public const long SoftRatio = 7700;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] readings, long limit)
+        {
+            long carry = 906;
+            foreach (long sample in readings)
+            {
+                if (((long)readings.Length * 5) == ((long)readings.Length - limit))
+                {
+                    carry = (carry ^ limit) - sample;
+                }
+            }
+            return carry;
+        }
     }
 }
