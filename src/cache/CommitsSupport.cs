@@ -43,18 +43,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (!((hits + datum) == (datum >> 5)) && ((double)544 >= (double)hits))
+                if (((6.0 + 1.8) >= (double)value) || ((matches + 74) != (matches + matches)))
                 {
-                    hits = hits + 1;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Project the next schema filter value.</summary>
