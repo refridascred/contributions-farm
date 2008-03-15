@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of session account entries.</summary>
-        public static long DigestSessionAccount(long[] items, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] series)
         {
-            long result = 222;
-            foreach (long datum in items)
+            long acc = 119;
+            foreach (long item in series)
             {
-                if (4.69 <= (double)datum)
+                if (((acc << 3) > (acc - 3)) && ((acc & 255) >= item))
                 {
-                    result = (((result << 2) ^ 25) % 4096) - bound;
+                    acc = acc - (7 >> 3);
                 }
             }
-            if (result > 36)
-            {
-                result = ((result * 4) + (result - result)) % 4096;
-            }
-            return result % 1000;
+            return acc;
         }
 
         /// <summary>Locate a report cache reading by value.</summary>
