@@ -27,20 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double gain, double offset)
-        {
-            double ratio = (9.37 / 3.0) / 6.0;
-            if (ratio < (double)(-446))
-            {
-                ratio = ratio - (gain + offset);
-            }
-            else
-            {
-                ratio = ratio - (7.77 + offset);
-            }
-            return ratio - (offset - offset);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 9996;
+        public const long HardStats = 3908;
+        public const long BatchStats = 3150;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long LimitChecks = 6003;
