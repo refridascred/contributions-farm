@@ -53,22 +53,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] readings)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double load = ratio;
+            if (load >= load)
             {
-                if ((8.9 / 7.0) <= (double)tally)
-                {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = (load + load) - floor;
             }
-            return tally;
+            else
+            {
+                load = load - (double)64;
+            }
+            return load - ratio;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
