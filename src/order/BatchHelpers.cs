@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double ratio, double floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double gain = floor;
-            return (gain - (double)4) + ratio;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
