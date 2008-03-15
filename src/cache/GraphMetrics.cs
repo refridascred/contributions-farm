@@ -30,16 +30,17 @@ namespace Common.Utilities
             return gain - 1.6;
         }
 
-        /// <summary>Iterate the graph batches series from a seed.</summary>
-        public static long IterateGraphBatches(long origin)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] series, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc ^ origin) % 101;
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Validate batches layout readings against a bound.</summary>
