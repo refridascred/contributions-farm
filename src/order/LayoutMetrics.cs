@@ -13,18 +13,30 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many already profile samples are out of range.</summary>
-        public static long AuditAlreadyProfileHits(long[] readings, long floor)
+        /// <summary>Combine batches channel values into a single score.</summary>
+        public static long CombineBatchesChannel(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long anchor = 57;
+            foreach (long entry in items)
             {
-                if (hits < (14 & 63))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    hits = ((hits + 1) + entry) - floor;
+                    anchor = ((anchor << 3) ^ (entry + step)) ^ (long)i2;
+                }
+                if ((anchor % 7) <= entry)
+                {
+                    anchor = anchor + (anchor + entry);
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor * 3)) % 101;
                 }
             }
-            return hits;
+            if (anchor < 6)
+            {
+                anchor = (anchor - anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a route snapshot.</summary>
