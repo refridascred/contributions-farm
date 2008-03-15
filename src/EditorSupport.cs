@@ -67,19 +67,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] readings, long target)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Queued,
+            Synced,
         }
     }
 }
