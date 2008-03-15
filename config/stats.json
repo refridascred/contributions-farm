@@ -1,5 +1,26 @@
 {
-  "dry_run": "stable",
-  "enabled": 60,
-  "cache_depth": 4489
+  "retry_ttl": "edge",
+  "poll_timeout_count": {
+    "poll_ttl_pct": {
+      "readonly": "blue",
+      "commits_ttl": "strict",
+      "farm_ratio": 17.59,
+      "flush_timeout_ms": true,
+      "poll_timeout_pct": 30,
+      "verbose": ["latest", "fallback", "cached", "cached"]
+    },
+    "route_depth": {
+      "command_depth": "staging",
+      "audit": 7463,
+      "batch_timeout_ms": ["blue", "green", "eu-west", "edge"],
+      "soft_interval": 73,
+      "sync_ratio": false
+    },
+    "cache_threshold": "staging",
+    "idle_ratio": true,
+    "readonly": "stable"
+  },
+  "burst_threshold": "cached",
+  "account_ttl": 50.32,
+  "default_ttl": 250
 }
