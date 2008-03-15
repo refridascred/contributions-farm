@@ -29,10 +29,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 701;
-        public const long BaseReport = 9961;
-        public const long DefaultDepth = 41;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((bound % 60) < (bound + bound)) && (((seen * 5) == (925 + seen)) || ((seen - seen) < seen)))
+                {
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate editor batches samples.</summary>
         public static long TotalEditorBatches(long[] items, long origin)
