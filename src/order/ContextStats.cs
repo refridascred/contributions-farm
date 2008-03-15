@@ -34,13 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 32.72;
+        public const long MaxFormat = 7583;
+        public const double IdleFormat = 90.92;
+        public const long HardFormat = 2137;
+        public const string DefaultCount = "cached-1";
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
