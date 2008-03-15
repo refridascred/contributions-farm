@@ -31,12 +31,24 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long origin, long floor)
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public double Level { get; set; }
+            if (origin >= floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((88 + floor) <= (-6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
