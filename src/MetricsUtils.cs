@@ -57,12 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 7522;
-        public const long BaseBatch = 1000;
-        public const double CacheBatch = 77.19;
-        public const long BurstTimeout = 817;
-        public const long HardSize = 6937;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (!((double)reading == (7.0 * 5.9)))
+                {
+                    matches = (matches + 3) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank format profile input into a small class.</summary>
         public static long BucketFormatProfile(long step, long origin)
