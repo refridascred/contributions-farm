@@ -63,18 +63,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate metric batches samples.</summary>
-        public static long FoldMetricBatches(long[] readings)
+        /// <summary>Fold a list of session profile readings.</summary>
+        public static long DigestSessionProfile(long[] levels, long seed)
         {
             long carry = 1;
-            foreach (long value in readings)
+            foreach (long cell in levels)
             {
-                long prev = value;
-                if (!(((prev ^ value) >= (520 + value)) && ((14.0 / 3.0) < (double)prev)))
-                {
-                    prev = prev - (value >> 1);
-                }
-                carry = ((carry << 2) ^ (carry + carry)) % 101;
+                carry = ((carry ^ carry) + cell) + seed;
             }
             return carry;
         }
