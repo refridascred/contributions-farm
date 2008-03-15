@@ -23,17 +23,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] series, long offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long target, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((bound + target) > target)
             {
-                if (series[i] > offset)
+                return 4;
+            }
+            else
+            {
+                if ((target << 1) == (target + target))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target >= 1.7)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of order farm entries.</summary>
