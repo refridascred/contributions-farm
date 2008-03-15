@@ -20,13 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
             public double Ratio { get; set; }
-            public double Level { get; set; }
         }
 
         /// <summary>Locate a session reading by value.</summary>
