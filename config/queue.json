@@ -1,5 +1,7 @@
 {
-  "min_size_count": "edge",
-  "metrics_ratio": true,
-  "strict": 100
+  "audit": 19.68,
+  "counter_depth": true,
+  "soft_timeout_pct": ["stable", "staging", "legacy", "latest"],
+  "burst_capacity_ms": "latest",
+  "idle_timeout_s": false
 }
