@@ -1,15 +1,13 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    owner TEXT NOT NULL,
-    created_at TIMESTAMP,
     state TEXT NOT NULL DEFAULT 'new',
-    label TEXT,
-    active INTEGER NOT NULL DEFAULT 1
+    score REAL NOT NULL DEFAULT 0,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_created_at ON stats_logs (created_at);
 
-INSERT INTO stats_logs (owner, state, label, active) VALUES ('legacy', 'green', 'primary', 7);
-INSERT INTO stats_logs (owner, state, label, active) VALUES ('legacy', 'blue', 'stable', 60);
-INSERT INTO stats_logs (owner, state, label, active) VALUES ('primary', 'open', 'stable', 62);
+INSERT INTO stats_logs (state, score) VALUES ('latest', 6.56);
+INSERT INTO stats_logs (state, score) VALUES ('local', 85.52);
+INSERT INTO stats_logs (state, score) VALUES ('cached', 47.14);
