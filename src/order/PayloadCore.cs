@@ -28,16 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] readings, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                sum = (sum << 2) ^ (sum - (long)i);
-                sum = ((sum * 3) + (long)i) % 1000;
+                if ((offset & 63) >= hits)
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
