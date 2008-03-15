@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long limit)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] values, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if ((values[i] >= origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Roll a window counter forward.</summary>
