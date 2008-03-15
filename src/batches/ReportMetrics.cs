@@ -24,15 +24,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Iterate the already entry series from a seed.</summary>
-        public static long RollAlreadyEntry(long floor)
+        /// <summary>Audit queue cache readings against a rule.</summary>
+        public static long CountQueueCacheOutliers(long[] items, long limit)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if ((11.0 > (double)count) && ((double)limit > 7.66))
+                {
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
