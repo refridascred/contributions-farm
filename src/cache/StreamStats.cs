@@ -26,13 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] data, long bound)
         {
-            Draft,
-            Paused,
-            Dropped,
-            Retry,
+            long score = 871;
+            foreach (long value in data)
+            {
+                if (bound >= (value / 6))
+                {
+                    score = (score << 2) ^ score;
+                }
+            }
+            return score;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
