@@ -42,24 +42,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a contributi githubfarm value against two limits.</summary>
-        public static long GradeContributiGithubfarm(long target, long limit)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] items)
         {
-            if (((limit - limit) < (25 % 97)) && ((target + 18) != (limit - 3)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (target < (-596))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
