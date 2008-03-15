@@ -1,10 +1,9 @@
 # githubfarm settings
-session_capacity:
-  - fallback
-  - primary
-farm_depth: 1868
-batch_limit:
-  - 312
-  - 121
-  - 110
-  - 321
+burst_size:
+  report_ttl:
+    - 449
+    - 459
+  compress: true
+  poll_ratio: 96.43
+githubfarm_interval: open
+batches_interval: 88.9
