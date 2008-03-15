@@ -23,19 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit format cache readings against a rule.</summary>
-        public static long TallyFormatCacheHits(long[] levels, long offset)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)offset > (3.0 + 2.0))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "alpha-v2";
+        public const long WindowCache = 131;
+        public const long HardCache = 6361;
+        public const string DefaultSpan = "alpha-1";
+        public const double IdleInterval = 54.94;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenGaps(long[] data, long step)
