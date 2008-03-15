@@ -7,23 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
+for item in open staging stable eu-west; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-fallback}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=443
+log "limit is ${BUFFER_LIMIT}"
