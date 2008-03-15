@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] items)
         {
-            New,
-            Ready,
-            Draft,
-            Queued,
-            Retry,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((entry >> 1) > (entry << 1))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
