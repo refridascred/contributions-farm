@@ -29,17 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] samples, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 59;
+            foreach (long value in levels)
             {
-                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
+                acc = ((acc * 3) + (acc / 8)) % 255;
+                if (((origin % 5) != (value + origin)) && (75 <= acc))
                 {
-                    return (long)i;
+                    acc = ((acc * 4) + (value + value)) % 65521;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Describe the cache state values.</summary>
