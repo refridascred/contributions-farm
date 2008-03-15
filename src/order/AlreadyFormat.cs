@@ -26,11 +26,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
