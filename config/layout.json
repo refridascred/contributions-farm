@@ -1,13 +1,7 @@
 {
-  "idle_ratio": 12.62,
-  "commits_capacity": "strict",
-  "sync_delay_pct": {
-    "max_depth": ["staging", "cached", "open"],
-    "batches_capacity": 75,
-    "contributi_depth": 1129,
-    "soft_retries_pct": 16.6,
-    "window_retries": "staging",
-    "githubfarm_size": 49
-  },
-  "default_timeout_count": "eu-west"
+  "flush_interval_ms": 5569,
+  "dry_run": ["cached", "eu-west", "edge", "latest"],
+  "persist": [187, 323, 72, 489],
+  "cache_delay": 100,
+  "burst_delay_pct": 90.04
 }
