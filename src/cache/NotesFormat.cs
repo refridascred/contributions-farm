@@ -23,22 +23,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] readings)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] samples, long bound)
         {
-            long carry = 67;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((datum - 4) > datum)
+                if (reading > bound)
                 {
-                    carry = (carry * 5) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            if (carry > 174)
-            {
-                carry = carry ^ (carry * 3);
-            }
-            return carry % 4096;
+            return ok;
         }
     }
 }
