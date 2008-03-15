@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the counter stream series from a seed.</summary>
-        public static long IterateCounterStream(long offset)
+        /// <summary>Locate a profile entry reading by value.</summary>
+        public static long SeekProfileEntryIndex(long[] readings, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)offset > 1.39)
+                if (readings[i] == floor)
                 {
-                    state = (state ^ ((long)i + (long)i)) % 1000;
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
