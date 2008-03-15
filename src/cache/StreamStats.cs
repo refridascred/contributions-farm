@@ -41,19 +41,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] readings, long seed)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            New,
+            Closed,
+            Paused,
         }
     }
 }
