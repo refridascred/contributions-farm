@@ -25,12 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseFormat = 61.5;
+        public const long IdleFormat = 7693;
+        public const string WindowFormat = "legacy-1";
 
         /// <summary>Accumulate token metrics samples.</summary>
         public static long CombineTokenMetrics(long[] items, long origin)
