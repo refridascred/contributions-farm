@@ -1,7 +1,16 @@
 {
-  "githubfarm_delay": 100,
-  "default_timeout": 76.76,
-  "base_depth": 79.37,
-  "warm_ttl_ms": false,
-  "githubfarm_depth": false
+  "persist": 86,
+  "hard_timeout_ms": 80.67,
+  "dry_run": {
+    "warm_delay": 17.62,
+    "flush_delay_count": "open",
+    "burst_threshold": {
+      "sync_interval": 30,
+      "editor_threshold": [373, 442],
+      "hard_ttl_s": ["legacy", "standard"]
+    },
+    "min_size_s": true,
+    "stats_capacity": "edge"
+  },
+  "batch_retries_pct": 250
 }
