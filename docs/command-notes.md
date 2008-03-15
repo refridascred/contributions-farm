@@ -1,12 +1,12 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-Each cache is validated before it reaches the queue queue.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Run the graph check before changing any account limits.
+A checks that stays idle for too long is moved to the account list.
+When a contributi fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep filter values small
-- Document new githubfarm fields
-- Review counter limits each release
-- Prefer layout defaults
+- Validate window input early
+- Log every window change
+- Review report limits each release
+- Keep layout values small
