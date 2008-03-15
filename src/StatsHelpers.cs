@@ -27,13 +27,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] samples, long target)
         {
-            public bool Label { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((target >> 2) >= seen)
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate editor batches samples.</summary>
