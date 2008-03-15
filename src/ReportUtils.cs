@@ -57,13 +57,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] readings)
         {
-            Closed,
-            New,
-            Failed,
-            Dropped,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (!((tally + tally) == (sample << 1)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a channel info.</summary>
