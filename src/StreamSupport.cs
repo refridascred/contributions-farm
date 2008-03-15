@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] samples, long bound)
         {
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
