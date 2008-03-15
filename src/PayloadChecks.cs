@@ -13,12 +13,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] data, long offset)
         {
-            Paused,
-            Failed,
-            Synced,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)(long)data.Length <= (12.0 - 4.03))
+                {
+                    count = ((count + 3) + datum) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
