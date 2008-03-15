@@ -56,11 +56,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] levels, long limit)
         {
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
