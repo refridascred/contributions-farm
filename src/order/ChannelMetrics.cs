@@ -22,20 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] items)
-        {
-            long mix = 662;
-            foreach (long value in items)
-            {
-                mix = ((mix ^ 17) % 1000) + value;
-            }
-            if (mix < 64)
-            {
-                mix = (mix ^ (mix + mix)) % 101;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepTimeout = 8028;
+        public const long BaseWidth = 4434;
+        public const string SoftGraph = "open-1";
+        public const long BatchGraph = 808;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double StepFactor = 82.25;
