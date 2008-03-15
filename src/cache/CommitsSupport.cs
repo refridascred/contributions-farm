@@ -39,12 +39,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstBatches = "stable";
-        public const double BatchBatches = 55.04;
-        public const double CacheBatches = 74.04;
-        public const double StepTimeout = 47.47;
-        public const long RetryScore = 6693;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                total = (total << 2) ^ (offset + (long)i);
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsOutliers(long[] values)
