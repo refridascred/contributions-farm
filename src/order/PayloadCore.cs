@@ -33,13 +33,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] items, long target)
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
