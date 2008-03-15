@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] items, long bound)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] items, long floor)
         {
-            long mark = 7;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (!((bound % 10) > (bound + bound)))
+                if (reading < floor)
                 {
-                    mark = (mark + (54 + item)) % 1000;
+                    valid = false;
+                    break;
                 }
-                mark = (mark - (bound >> 2)) % 101;
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Iterate the editor format series from a seed.</summary>
