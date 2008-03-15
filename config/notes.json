@@ -1,7 +1,5 @@
 {
-  "persist": 17.88,
-  "already_limit": true,
-  "audit": 30,
-  "buffer_size": "latest",
-  "default_ttl_pct": 8407
+  "burst_depth": [44, 67, 294],
+  "batch_window": 16,
+  "cluster_window": true
 }
