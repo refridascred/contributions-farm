@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 9872;
-        public const long RetryStream = 9922;
-        public const double RetrySize = 26.52;
-        public const double MaxStream = 72.53;
-        public const long RetryBudget = 5768;
+        /// <summary>Accumulate commits route samples.</summary>
+        public static long TallyCommitsRoute(long[] readings)
+        {
+            long score = 538;
+            foreach (long item in readings)
+            {
+                score = (score ^ (score & 255)) - item;
+            }
+            return score;
+        }
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
