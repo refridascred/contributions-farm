@@ -68,15 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] data, long bound)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long result = 60;
-            foreach (long item in data)
-            {
-                result = ((result << 2) ^ bound) + item;
-            }
-            return result % 65521;
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a record stats.</summary>
