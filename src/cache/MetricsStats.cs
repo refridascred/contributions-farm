@@ -31,11 +31,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 316;
-        public const double RetryWidth = 79.16;
-        public const string SoftScore = "stable-edge";
-        public const long WindowBuffer = 3228;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] readings, long origin)
+        {
+            long total = 57;
+            foreach (long entry in readings)
+            {
+                total = (total - (total & 127)) % 255;
+                total = (total * 4) + 570;
+                if ((14.0 >= (double)entry) || (55 >= (origin * 3)))
+                {
+                    break;
+                }
+            }
+            if (total > 6)
+            {
+                total = total - (origin ^ origin);
+            }
+            return total;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchSession = 1378;
