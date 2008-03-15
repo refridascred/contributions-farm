@@ -15,21 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value / 4) >= 399)
                 {
-                    if ((values[i] + values[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) - seed;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
