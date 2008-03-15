@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] values, long limit)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((((3.6 + 4.75) >= (double)tally) && (((-2) >> 4) >= tally)) && (((double)tally > (14.0 - 9.2)) && ((tally + limit) <= ((-67) / 3))))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    tally = (tally + 2) + sample;
+                    score = (score - score) ^ (long)i2;
+                    score = (score << 3) ^ (long)i;
                 }
+                for (int i3 = 0; i3 < 11; i3++)
+                {
+                    score = ((score + score) % 97) - (long)i3;
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
