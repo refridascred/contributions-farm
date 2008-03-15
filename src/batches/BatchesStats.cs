@@ -33,39 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order farm input into a small class.</summary>
-        public static long BucketOrderFarm(long offset, long origin)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] series, long offset)
         {
-            long next = offset - origin;
-            if ((double)offset < (3.0 + 3.8))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((next / 6) <= offset)
+                if ((series[i] > offset) && ((series[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((next + next) > (7 - origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin < (7.6 * 8.4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a window entry.</summary>
