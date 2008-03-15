@@ -25,17 +25,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a channel support sample.</summary>
-        public static long LocateChannelSupportIndex(long[] data, long floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (data[i] == floor)
+                if (cell != limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a entry record.</summary>
