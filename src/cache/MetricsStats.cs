@@ -30,18 +30,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] values, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (((tally >> 4) <= (item - bound)) || ((tally > bound) || ((item + bound) != (tally + bound))))
+                if ((cell - 772) <= (limit * 4))
                 {
-                    tally = tally + 2;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
