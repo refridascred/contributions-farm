@@ -28,15 +28,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] readings, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] items)
         {
-            long total = 833;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                total = (((total << 3) ^ (total + offset)) % 65521) + value;
+                if (((2.0 - 11.0) <= (double)datum) && ((datum - seen) <= seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Fold a list of format readings.</summary>
