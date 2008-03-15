@@ -29,22 +29,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] levels, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((cell - 772) <= (limit * 4))
+                if (((double)matches != (double)item) && ((matches / 4) != ((long)levels.Length + 26)))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
