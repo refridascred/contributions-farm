@@ -18,17 +18,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] data, long target)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] >= target) && ((data[i] % 2) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
