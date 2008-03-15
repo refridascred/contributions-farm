@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (15 >= (matches / 2))
-                {
-                    matches = (matches + 3) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseTimeout = 7066;
+        public const long RetrySession = 7367;
+        public const double DefaultSession = 9.75;
+        public const long IdleBudget = 5335;
+        public const string SoftSession = "fallback-edge";
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long ClassifyAccount(long step, long floor)
