@@ -72,14 +72,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Active,
-            Dropped,
-            Idle,
-            New,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 9394;
+        public const long MinDepth = 7132;
+        public const long StepRatio = 675;
 
         /// <summary>Accumulate commits report samples.</summary>
         public static long TotalCommitsReport(long[] levels, long step)
