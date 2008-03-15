@@ -56,15 +56,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a metrics cache reading.</summary>
-        public static double BlendMetricsCache(double ratio, double bias)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] data)
         {
-            double drift = ratio;
-            if (drift <= (ratio / 3.0))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift - 8.3;
+            return seen;
         }
     }
 }
