@@ -13,18 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many stream batch samples are out of range.</summary>
-        public static long TallyStreamBatchHits(long[] data)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + seen) > (cell / 6))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
