@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftInterval = 57.63;
-        public const long BurstFilter = 5100;
-        public const long BaseFilter = 5863;
-        public const long BaseFactor = 4818;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] readings, long target)
+        {
+            long acc = 612;
+            foreach (long reading in readings)
+            {
+                if ((3.21 > (double)target) && ((double)target < (4.0 - 4.95)))
+                {
+                    acc = (acc + (reading / 3)) % 101;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (target - reading);
+                }
+                if (!((target - 18) != (reading << 1)))
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long offset)
