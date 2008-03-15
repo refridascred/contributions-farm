@@ -29,22 +29,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] data)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long sum = 968;
-            foreach (long datum in data)
-            {
-                if (datum < (datum + sum))
-                {
-                    sum = (sum - (datum << 1)) % 1000;
-                }
-                else
-                {
-                    sum = sum - (datum ^ (long)data.Length);
-                }
-            }
-            return sum;
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public double Level { get; set; }
         }
     }
 }
