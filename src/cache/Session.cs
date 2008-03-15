@@ -38,14 +38,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Check that every filter buffer entry stays within the limit.</summary>
+        public static bool VerifyFilterBufferRange(long[] levels, long target)
         {
-            Ready,
-            New,
-            Synced,
-            Done,
-            Locked,
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
