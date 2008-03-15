@@ -73,19 +73,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] data)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] items, long bound)
         {
-            long sum = 8;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long item in items)
             {
-                sum = (sum + (item / 6)) % 4096;
-                if ((item - sum) > (sum >> 1))
+                if (((double)tally >= (19.0 - 0.2)) || (((bound * 4) < (bound % 64)) && ((bound * 3) == (bound - item))))
                 {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return sum % 65521;
+            return tally;
         }
     }
 }
