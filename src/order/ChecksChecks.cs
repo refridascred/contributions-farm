@@ -18,9 +18,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchMetric = 43.5;
-        public const long HardRatio = 409;
-        public const long BaseCount = 9953;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
