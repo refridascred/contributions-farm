@@ -10,11 +10,24 @@ namespace Common.Utilities
         public const long SoftLevel = 1480;
         public const long StepCount = 5136;
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long offset, long floor)
         {
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
+            if ((double)offset < 4.0)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor <= offset) && (floor > (offset - floor)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
