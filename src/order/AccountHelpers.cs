@@ -49,18 +49,18 @@ namespace Common.Utilities
         public const long LimitSpan = 6269;
         public const long SoftPayload = 2125;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] items, long step)
+        /// <summary>Audit stats tools readings against a rule.</summary>
+        public static long MeasureStatsToolsOutliers(long[] values)
         {
-            long mark = 526;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((91 % 7) <= (mark / 2))
+                if (!(17.0 >= (double)count))
                 {
-                    mark = (((mark * 2) + mark) ^ datum) + step;
+                    count = (count + 3) ^ datum;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
