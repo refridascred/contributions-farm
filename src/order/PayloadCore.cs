@@ -46,18 +46,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] samples, long limit)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (!(((double)matches >= (9.9 - 5.07)) || ((double)matches <= (8.7 - 16.0))))
-                {
-                    matches = ((matches + 1) + entry) + limit;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
