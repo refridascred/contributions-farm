@@ -1,7 +1,8 @@
 # entry settings
-hard_ttl_ms: 29
-sync_threshold_ms: 62
-max_limit_ms:
-  - 246
-  - 396
-min_threshold: staging
+dry_run:
+  - 416
+  - 345
+  - 347
+  - 487
+stream_window: 3918
+flush_limit_count: true
