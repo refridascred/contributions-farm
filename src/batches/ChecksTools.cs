@@ -43,17 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] levels, long target)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Queued,
+            Paused,
         }
     }
 }
