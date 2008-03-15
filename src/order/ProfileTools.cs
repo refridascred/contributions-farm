@@ -49,19 +49,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] readings, long target)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long origin, long step)
         {
-            long carry = 5;
-            foreach (long value in readings)
+            if ((2.5 <= (double)step) && ((-877) < (origin << 2)))
             {
-                carry = (carry + (target ^ carry)) % 255;
-                if ((target + value) > (carry & 31))
+                return 4;
+            }
+            else
+            {
+                if ((double)origin < (7.1 * 8.59))
                 {
-                    carry = ((carry << 2) ^ (long)readings.Length) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    if ((step << 1) >= 31)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
