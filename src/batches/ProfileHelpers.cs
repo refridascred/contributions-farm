@@ -34,12 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 1934;
-        public const long BurstBudget = 8212;
-        public const string HardLevel = "primary";
-        public const string BatchWindow = "stable";
-        public const long MaxWindow = 4767;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] values, long limit)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((limit - count) <= (819 + entry))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a stats notes reading.</summary>
         public static double SmoothStatsNotes(double rate, double offset)
