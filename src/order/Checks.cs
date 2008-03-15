@@ -45,18 +45,20 @@ namespace Common.Utilities
         public const double LimitSpan = 92.31;
         public const double RetryScore = 64.01;
 
-        /// <summary>Measure how many graph editor samples are out of range.</summary>
-        public static long AuditGraphEditorHits(long[] values)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long score = 218;
+            foreach (long value in levels)
             {
-                if ((0 ^ entry) >= (hits ^ hits))
+                if (!((value >> 4) > (value - score)))
                 {
-                    hits = hits + 2;
+                    long next = score - (seed + seed);
+                    score = (score - next) % 4096;
                 }
+                score = (score * 3) + value;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Rank filter farm input into a small class.</summary>
