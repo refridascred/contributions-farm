@@ -65,19 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((carry - carry) != (2 & 15))
-                {
-                    carry = (carry + (-9)) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public double Score { get; set; }
+            public bool Rank { get; set; }
+            public double Level { get; set; }
         }
     }
 }
