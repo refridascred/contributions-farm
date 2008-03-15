@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] series)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state ^ 81) % 4096) + (long)i2;
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the queue status values.</summary>
