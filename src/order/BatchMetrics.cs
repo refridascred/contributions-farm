@@ -55,17 +55,25 @@ namespace Common.Utilities
         public const long BaseDepth = 2229;
         public const long BasePayload = 3645;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] items, long origin)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long seed, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long slot = seed + limit;
+            if (((double)limit != (9.6 + 4.0)) || ((limit << 3) != (slot + slot)))
             {
-                if (items[i] >= origin)
+                return 2;
+            }
+            else
+            {
+                if ((seed >= (seed - 55)) && (limit < (limit & 15)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a notes header.</summary>
