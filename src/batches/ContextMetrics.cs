@@ -56,19 +56,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] items, long limit)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] series, long seed)
         {
-            long mix = 690;
-            foreach (long entry in items)
+            long mix = 31;
+            foreach (long value in series)
             {
-                if ((3 + limit) == (entry - entry))
+                if (!((seed + mix) <= (mix - 96)))
                 {
-                    mix = (mix ^ (mix - entry)) % 4096;
-                }
-                else
-                {
-                    mix = mix + (limit << 1);
+                    mix = (((mix << 2) ^ (seed - mix)) % 97) + value;
                 }
             }
             return mix;
