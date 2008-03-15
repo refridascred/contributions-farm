@@ -1,6 +1,12 @@
 {
-  "readonly": 4037,
-  "max_capacity_ms": 30,
-  "min_ratio": false,
-  "burst_window_s": "staging"
+  "dry_run": false,
+  "account_delay": true,
+  "strict": "standard",
+  "report_ttl": {
+    "batch_delay": 69.77,
+    "burst_capacity_count": 7058,
+    "metric_size": ["local", "cached"],
+    "retry_delay_pct": "fallback"
+  },
+  "max_depth_s": 83.92
 }
