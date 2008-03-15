@@ -38,19 +38,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every filter buffer entry stays within the limit.</summary>
-        public static bool VerifyFilterBufferRange(long[] levels, long target)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long floor)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (item >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return ok;
+            return anchor;
         }
     }
 }
