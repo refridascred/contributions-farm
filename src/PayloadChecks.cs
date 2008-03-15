@@ -23,11 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
+            public bool Count { get; set; }
+            public long Mode { get; set; }
             public bool Flag { get; set; }
-            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the layout phase values.</summary>
