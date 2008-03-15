@@ -1,15 +1,6 @@
 # githubfarm settings
-channel_ttl: legacy
-flush_capacity_s:
-  report_ratio:
-    - eu-west
-    - latest
-  checks_depth:
-    - 160
-    - 60
-  strict: 98
-  soft_size_ms: 61
-max_size: stable
-retry_capacity_ms: blue
-batch_delay_s: true
-soft_capacity_ms: 5668
+compress: 64
+batch_threshold_ms: 82
+burst_retries: strict
+min_delay_count: staging
+poll_delay_pct: legacy
