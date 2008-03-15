@@ -75,13 +75,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            Queued,
+            Synced,
+            Paused,
+            Stale,
+            Idle,
         }
 
         /// <summary>Classify a contributi tools pair into a bucket.</summary>
