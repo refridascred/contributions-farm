@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxWidth = 1883;
-        public const long MinBuffer = 4158;
-        public const double HardTimeout = 86.18;
-        public const string MaxBuffer = "primary";
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Locked,
+            Draft,
+            Ready,
+            Pending,
+            Done,
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiLimits(long[] samples, long target)
