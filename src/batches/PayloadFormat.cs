@@ -46,12 +46,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Draft,
-            Dropped,
-            Stale,
+            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
