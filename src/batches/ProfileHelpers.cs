@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] levels)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((long)i < (offset - sum)))
                 {
-                    if ((levels[i] - levels[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = sum - (offset & 15);
                 }
+                sum = (sum ^ (offset / 3)) % 4096;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
