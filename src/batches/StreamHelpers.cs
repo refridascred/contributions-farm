@@ -31,23 +31,12 @@ namespace Common.Utilities
             return mean + gain;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] values)
-        {
-            long state = 904;
-            foreach (long value in values)
-            {
-                if (!((double)value > (double)state))
-                {
-                    state = (state ^ (value & 63)) % 1000;
-                }
-                if ((value + 911) <= value)
-                {
-                    state = ((state << 2) ^ (state - state)) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxScore = 1204;
+        public const double StepTimeout = 12.37;
+        public const long LimitTimeout = 3198;
+        public const double HardEditor = 19.23;
+        public const double IdleLevel = 43.17;
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool CheckAlreadyRange(long[] series, long target)
