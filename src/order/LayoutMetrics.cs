@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] readings, long bound)
+        /// <summary>Fold a list of metric cluster readings.</summary>
+        public static long TallyMetricCluster(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long carry = 260;
+            foreach (long item in items)
             {
-                if (reading > bound)
+                if ((13.0 + 1.5) < (double)item)
                 {
-                    valid = false;
-                    break;
+                    carry = ((carry << 3) ^ ((-642) + origin)) % 1000;
                 }
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
