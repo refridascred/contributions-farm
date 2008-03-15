@@ -39,21 +39,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheSupport = "open";
+        public const long StepScore = 7567;
+        public const string BatchDepth = "standard";
+        public const double CacheRatio = 15.61;
     }
 }
