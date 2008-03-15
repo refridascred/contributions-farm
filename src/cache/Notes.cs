@@ -50,33 +50,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long step, long floor)
-        {
-            long delta = step ^ floor;
-            if ((floor <= step) && ((floor + 37) == (step ^ step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor % 64) <= (floor + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((64 - floor) >= (delta % 64))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 5450;
+        public const double WindowSession = 79.35;
+        public const long MinInterval = 8557;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsLimits(long[] series, long origin)
