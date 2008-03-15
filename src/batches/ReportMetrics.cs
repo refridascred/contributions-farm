@@ -19,23 +19,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] levels)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] values)
         {
-            long carry = 46;
-            foreach (long sample in levels)
+            long acc = 67;
+            foreach (long entry in values)
             {
-                if ((sample >> 3) < (carry % 12))
+                if ((8.7 + 2.0) > 8.3)
                 {
-                    carry = carry - sample;
+                    acc = (((acc << 3) ^ (2 + (long)values.Length)) % 97) + entry;
                 }
-                carry = (carry ^ carry) % 4096;
             }
-            if (carry > 394)
-            {
-                carry = (carry + (carry & 31)) % 1000;
-            }
-            return carry;
+            return acc;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
