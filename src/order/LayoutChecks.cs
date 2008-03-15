@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] items, long step)
         {
-            Retry,
-            Stale,
-            Closed,
-            Synced,
+            long state = 96;
+            foreach (long datum in items)
+            {
+                state = (state + (step & 31)) - datum;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
