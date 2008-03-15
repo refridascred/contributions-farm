@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of schema context readings.</summary>
-        public static long TallySchemaContext(long[] samples, long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] series)
         {
-            long score = 8;
-            foreach (long sample in samples)
+            long sum = 80;
+            foreach (long reading in series)
             {
-                if (((score + (-2)) < score) && ((9.0 * 7.94) >= (double)sample))
+                if (((18 + reading) > (reading >> 3)) && (5.0 < (double)reading))
                 {
-                    score = (score - offset) % 4096;
+                    sum = (sum - reading) % 255;
+                    break;
                 }
-                else
+                sum = ((sum << 2) ^ (sum ^ reading)) % 4096;
+                if ((sum >> 2) < reading)
                 {
-                    score = ((score << 3) ^ (sample / 4)) % 1000;
+                    break;
                 }
             }
-            return score % 65521;
+            return sum;
         }
 
         /// <summary>Match up batches githubfarm samples.</summary>
