@@ -1,25 +1,5 @@
 {
-  "compress": {
-    "min_limit": "fallback",
-    "compress": {
-      "burst_window_s": 7,
-      "sync_size": true,
-      "route_ttl": [416, 46, 293, 29],
-      "soft_threshold": 100,
-      "queue_size": false,
-      "poll_delay": "staging"
-    },
-    "base_delay_pct": false,
-    "poll_window": 30,
-    "schema_depth": "primary",
-    "min_delay_ms": false
-  },
-  "cache_retries_count": 60,
-  "default_threshold_s": {
-    "min_retries_s": true,
-    "base_capacity": "strict",
-    "payload_ratio": "strict",
-    "default_size_ms": false
-  },
-  "soft_delay": 500
+  "readonly": "eu-west",
+  "context_limit": "latest",
+  "audit": 39.7
 }
