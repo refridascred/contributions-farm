@@ -32,31 +32,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long step, long bound)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            if ((step + bound) >= (85 + bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)step <= (8.47 / 2.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)bound <= (16.0 / 5.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Failed,
+            Locked,
+            Idle,
+            Retry,
+            Done,
         }
 
         /// <summary>Roll a stats commits counter forward.</summary>
