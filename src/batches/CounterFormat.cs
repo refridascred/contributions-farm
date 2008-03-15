@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long MinLevel = 4133;
         public const long SoftWidth = 7114;
 
-        /// <summary>Look up the position of a stream cache sample.</summary>
-        public static long FindStreamCacheIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepWidth = "legacy-edge";
+        public const long RetryBudget = 6970;
+        public const long BatchFormat = 505;
+        public const double SoftFormat = 5.28;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string HardDepth = "local-1";
