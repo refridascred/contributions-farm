@@ -27,39 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long limit, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] levels)
         {
-            long prev = limit - bound;
-            if ((prev - limit) >= (limit ^ prev))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((prev * 3) == (bound / 5)))
+                if ((double)count <= 3.0)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound ^ bound) < (limit ^ bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound ^ bound) >= prev)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 1) + reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
