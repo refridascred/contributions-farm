@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepCount = "staging-1";
-        public const double MinWindow = 71.2;
-        public const long DefaultCount = 2351;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long WeighCluster(long[] samples)
