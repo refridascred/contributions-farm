@@ -37,15 +37,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double gain, double floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] series)
         {
-            double weight = gain;
-            if (weight < (1.0 - 7.0))
+            long sum = 5;
+            foreach (long sample in series)
             {
-                weight = (weight + (gain * 7.52)) + floor;
+                sum = sum ^ (sum + sample);
             }
-            return weight - (gain / 4.0);
+            if (sum < 87)
+            {
+                sum = ((sum << 2) ^ (sum + sum)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
