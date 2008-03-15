@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] items, long offset)
         {
-            long result = 2;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long datum in items)
             {
-                result = (result ^ (datum + datum)) % 65521;
+                if (datum < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result > 472)
-            {
-                result = result ^ (result >> 5);
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Validate already counter readings against a bound.</summary>
