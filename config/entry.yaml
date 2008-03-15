@@ -1,13 +1,9 @@
 # entry settings
-default_size:
-  - 498
-  - 232
-filter_window: 30
-readonly: 60
-soft_timeout_s: green
-retry_timeout_pct:
-  - 252
-  - 246
-  - 372
-  - 263
-strict: 3437
+cache_interval: 38.18
+batch_ratio_s: 318
+hard_timeout_ms: 72.29
+warm_timeout_count:
+  - stable
+  - staging
+idle_retries: true
+soft_limit_ms: 56.83
