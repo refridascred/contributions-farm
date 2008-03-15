@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a schema metrics reading by value.</summary>
-        public static long SeekSchemaMetricsIndex(long[] series, long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((series[i] == step) && ((series[i] % 3) != 0))
+                if (((double)tally == (5.84 * 6.9)) || ((double)value >= (double)origin))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the session phase values.</summary>
