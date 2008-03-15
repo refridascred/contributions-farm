@@ -62,19 +62,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double weight, double span)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] items, long seed)
         {
-            double bias = span;
-            if (bias < (double)621)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias - 5.0) - weight;
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (double)(-38);
-            }
-            return bias + (bias - bias);
+            return -1;
         }
     }
 }
