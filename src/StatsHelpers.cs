@@ -27,12 +27,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Closed,
-            New,
-            Locked,
+            public bool Label { get; set; }
+            public double Level { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
