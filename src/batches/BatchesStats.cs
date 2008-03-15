@@ -32,19 +32,21 @@ namespace Common.Utilities
         public const long RetryLevel = 1231;
         public const long BaseAlready = 1968;
 
-        /// <summary>Check that every commits window entry stays within the limit.</summary>
-        public static bool GuardCommitsWindowLimits(long[] items, long target)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample != target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
