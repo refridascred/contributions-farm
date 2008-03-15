@@ -23,19 +23,12 @@ namespace Common.Utilities
         public const long MinLevel = 6345;
         public const long BatchWidth = 132;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] samples, long seed)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
