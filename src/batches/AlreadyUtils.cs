@@ -57,16 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next tools context value from a seed.</summary>
-        public static long RollToolsContext(long bound)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 2) + sum) % 97;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
