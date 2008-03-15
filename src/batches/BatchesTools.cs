@@ -31,18 +31,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] samples, long offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long origin)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((9.0 + 7.23) >= (double)cell)
+                if (!((origin % 2) <= origin))
                 {
-                    matches = (matches + 1) - offset;
+                    total = ((total << 2) ^ origin) % 255;
+                    total = ((total * 2) + (684 / 3)) % 101;
                 }
+                total = (total << 2) ^ (total - 65);
+                total = (total + origin) % 255;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
     }
 }
