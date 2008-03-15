@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] readings, long offset)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((offset - hits) != ((-809) - offset))
-                {
-                    hits = (hits + 3) - datum;
-                }
-            }
-            return hits;
+            Draft,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the profile phase values.</summary>
