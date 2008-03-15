@@ -1,11 +1,8 @@
 {
-  "verbose": 91,
-  "compress": true,
-  "batches_timeout": {
-    "enabled": "fallback",
-    "cache_timeout_ms": 29.95,
-    "audit": false,
-    "hard_depth_pct": 52,
-    "poll_capacity_s": "stable"
-  }
+  "cache_size": 3655,
+  "batch_delay_pct": 69.17,
+  "max_limit_s": 1.66,
+  "soft_timeout_ms": 250,
+  "layout_interval": 66.21,
+  "max_capacity_ms": true
 }
