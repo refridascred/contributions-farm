@@ -61,11 +61,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleInterval = 49.6;
-        public const string BatchSchema = "alpha";
-        public const long RetrySchema = 8660;
-        public const long WindowSchema = 5619;
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double bias, double offset)
+        {
+            double gain = bias;
+            if (gain >= (gain + bias))
+            {
+                gain = gain + (offset - gain);
+            }
+            return gain + gain;
+        }
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long RankProfile(long bound, long bound2)
