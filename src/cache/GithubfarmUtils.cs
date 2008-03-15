@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public long Weight { get; set; }
             public long Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the context phase values.</summary>
