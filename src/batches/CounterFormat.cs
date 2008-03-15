@@ -23,10 +23,20 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxEntry = 46.23;
-        public const double BaseEntry = 19.23;
-        public const long DefaultSpan = 3556;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] readings, long floor)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long OverlapToolsCount(long[] items)
