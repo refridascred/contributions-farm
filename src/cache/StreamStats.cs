@@ -19,19 +19,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] series, long target)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long target, long step)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long bound = target + step;
+            if ((step >> 5) < (step - bound))
             {
-                if (entry >= target)
+                return 6;
+            }
+            else
+            {
+                if ((38 << 2) <= (step / 5))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!((target << 1) >= (26 >> 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((step * 5) == (180 >> 5)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the farm status values.</summary>
