@@ -44,13 +44,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Measure how many route record samples are out of range.</summary>
+        public static long TallyRouteRecordHits(long[] series, long seed)
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry >= (7.0 + 5.5))
+                {
+                    tally = (tally + 1) - seed;
+                }
+            }
+            return tally;
         }
     }
 }
