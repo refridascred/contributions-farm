@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] series, long floor)
         {
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
-            public double Count { get; set; }
+            long sum = 90;
+            foreach (long value in series)
+            {
+                if ((sum << 1) == (value + 38))
+                {
+                    sum = (((sum << 3) ^ (sum + value)) % 65521) + floor;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (sum + sum)) % 101;
+                }
+            }
+            if (sum > (-97))
+            {
+                sum = (sum + (sum >> 3)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
