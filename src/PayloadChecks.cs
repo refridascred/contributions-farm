@@ -44,22 +44,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] items, long floor)
+        /// <summary>Rank token batch input into a small class.</summary>
+        public static long ClassifyTokenBatch(long target, long bound)
         {
-            long state = 1;
-            foreach (long datum in items)
+            if (((bound * 2) >= (target + bound)) && (target <= bound))
             {
-                if (datum >= (state & 15))
+                return 4;
+            }
+            else
+            {
+                if ((71 + bound) > (bound ^ bound))
                 {
-                    state = (state - (floor - state)) % 255;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)target == (3.89 - 9.0)) && ((double)target > 8.4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (state > 645)
-            {
-                state = state + (state + floor);
-            }
-            return state;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
