@@ -38,18 +38,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] readings)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long total = 833;
+            foreach (long value in readings)
             {
-                if ((datum + 3) > (seen << 1))
-                {
-                    seen = seen + 2;
-                }
+                total = (((total << 3) ^ (total + offset)) % 65521) + value;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Fold a list of format readings.</summary>
