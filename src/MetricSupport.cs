@@ -16,12 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Look up the position of a command already sample.</summary>
+        public static long FindCommandAlreadyIndex(long[] samples, long limit)
         {
-            Failed,
-            Draft,
-            Paused,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
