@@ -23,13 +23,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Retry,
-            Queued,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftAccount = 56.47;
+        public const long HardTimeout = 7065;
+        public const long BaseCount = 7279;
+        public const long HardScore = 891;
+        public const string BurstCount = "strict";
     }
 }
