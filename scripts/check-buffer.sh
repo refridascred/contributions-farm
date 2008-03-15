@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue legacy fallback; do
+mode="${1:-stable}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in latest green; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=214
-log "limit is ${BUFFER_LIMIT}"
