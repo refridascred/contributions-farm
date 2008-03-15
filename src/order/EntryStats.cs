@@ -40,17 +40,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] items, long step)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public bool Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Rank metrics metric input into a small class.</summary>
