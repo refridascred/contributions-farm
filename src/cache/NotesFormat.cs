@@ -13,12 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Validate order route readings against a bound.</summary>
+        public static bool VerifyOrderRouteBounds(long[] items, long step)
         {
-            Pending,
-            Ready,
-            Retry,
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the graph mode values.</summary>
