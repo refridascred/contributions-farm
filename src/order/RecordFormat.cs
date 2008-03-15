@@ -60,27 +60,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] items, long offset)
         {
-            long state = 3;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (!((17.0 + 10.0) < (double)state))
+                if ((offset + count) <= (607 * 5))
                 {
-                    state = (state + (sample ^ sample)) % 97;
-                    state = state ^ sample;
-                }
-                if (!(state <= 2))
-                {
-                    state = state ^ 0;
-                }
-                if (!(sample < (state % 60)))
-                {
-                    state = (state + state) % 97;
+                    count = (count + 1) + cell;
                 }
             }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Hold a report record.</summary>
