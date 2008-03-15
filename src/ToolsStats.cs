@@ -65,18 +65,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] levels, long bound)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] readings)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long result = 581;
+            foreach (long reading in readings)
             {
-                if (!((1 / 3) == (value * 5)))
+                if ((long)readings.Length == ((long)readings.Length >> 1))
                 {
-                    count = (count + 1) + bound;
+                    long diff = reading;
+                    result = (result ^ (diff / 8)) % 97;
+                }
+                result = (result + reading) % 255;
+                if ((reading + reading) == (result & 63))
+                {
+                    result = (result + ((-91) * 5)) % 4096;
+                }
+                if ((double)reading <= (8.6 + 8.91))
+                {
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
