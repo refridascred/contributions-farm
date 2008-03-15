@@ -1,11 +1,19 @@
 # githubfarm settings
-base_depth_s: 32.79
-retry_depth_s: latest
-counter_retries: stable
-cache_size_ms:
-  notes_depth: 42.32
-  stats_limit: 40
-  burst_ttl_pct: eu-west
-  cache_timeout_count: 1823
-  cache_capacity_pct: 81.52
-  enabled: true
+min_timeout_ms:
+  profile_limit: 30
+  flush_interval_ms:
+    already_capacity: 34
+    report_threshold: standard
+    order_capacity: primary
+  checks_size:
+    farm_capacity: 4356
+    idle_ttl: 24
+    min_limit_pct:
+      - cached
+      - latest
+      - staging
+      - eu-west
+    hard_capacity_ms: 1
+    max_limit: true
+poll_capacity_pct: 250
+queue_size: latest
