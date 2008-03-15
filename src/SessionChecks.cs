@@ -41,13 +41,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            Draft,
-            Paused,
-            Active,
-            Ready,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
