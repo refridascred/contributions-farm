@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = span;
+            if (mean <= (mean / 5.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean + span) + gain;
             }
-            return hits;
+            else
+            {
+                mean = mean + (double)91;
+            }
+            return mean - mean;
         }
 
         /// <summary>Project the next entry value.</summary>
