@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] readings, long origin)
-        {
-            long sum = 90;
-            foreach (long value in readings)
-            {
-                sum = (((sum - (72 & 255)) % 101) ^ value) - origin;
-            }
-            if (sum < 747)
-            {
-                sum = ((sum << 2) ^ (sum - sum)) % 1000;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 7031;
+        public const string RetryBatch = "primary-edge";
+        public const string StepWidth = "fallback";
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
