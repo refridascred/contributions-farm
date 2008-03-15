@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] values, long origin)
+        /// <summary>Grade a farm cache value against two limits.</summary>
+        public static long SortFarmCache(long target, long offset)
         {
-            long result = 2;
-            foreach (long sample in values)
+            long lane = target + offset;
+            if (((offset + 78) <= (offset % 7)) || ((lane & 63) > lane))
             {
-                if (((65 >> 3) <= (result + origin)) && (origin < (origin * 5)))
+                return 2;
+            }
+            else
+            {
+                if ((offset ^ lane) > (offset / 5))
                 {
-                    result = (result ^ (7 + sample)) % 255;
+                    return 3;
+                }
+                else
+                {
+                    if ((target + 481) == (758 % 64))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
