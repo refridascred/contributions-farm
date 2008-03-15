@@ -41,19 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] data, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long carry = 94;
+            foreach (long value in values)
             {
-                if (datum != offset)
+                if ((value + 2) > carry)
                 {
-                    stale = false;
+                    carry = (carry ^ (origin & 127)) % 65521;
+                }
+                if ((value & 7) < (value + origin))
+                {
                     break;
                 }
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Describe the report status values.</summary>
