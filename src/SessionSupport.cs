@@ -55,19 +55,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the entry graph series from a seed.</summary>
-        public static long StepEntryGraph(long step)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long floor, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
+            if (!((step + step) <= (floor * 2)))
             {
-                if ((2.0 / 8.0) > (double)step)
-                {
-                    acc = (acc ^ acc) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((double)floor > (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((86 - floor) <= floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
