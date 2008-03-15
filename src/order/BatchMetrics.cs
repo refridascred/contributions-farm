@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] items, long limit)
         {
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
+            long acc = 2;
+            foreach (long value in items)
+            {
+                acc = (acc ^ (acc - value)) - limit;
+                if ((576 + value) < acc)
+                {
+                    acc = (acc + acc) % 101;
+                }
+                if ((double)value < (7.59 / 2.0))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Measure how many report checks samples are out of range.</summary>
