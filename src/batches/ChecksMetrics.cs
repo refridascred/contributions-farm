@@ -31,12 +31,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] values)
         {
-            Ready,
-            Failed,
-            New,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
