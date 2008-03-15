@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] data)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] items, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((39 > (count - datum)) && (count >= (count % 16)))
+                if (datum >= step)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the stats kind values.</summary>
