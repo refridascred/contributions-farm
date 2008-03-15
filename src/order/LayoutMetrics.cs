@@ -22,18 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metric cluster readings.</summary>
-        public static long TallyMetricCluster(long[] items, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] readings, long offset)
         {
-            long carry = 260;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((13.0 + 1.5) < (double)item)
+                if (count < (entry - count))
                 {
-                    carry = ((carry << 3) ^ ((-642) + origin)) % 1000;
+                    count = (count + 2) - offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
