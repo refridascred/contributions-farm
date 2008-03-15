@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every cluster batches entry stays within the limit.</summary>
-        public static bool GuardClusterBatchesRange(long[] items, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 5985;
+        public const long StepBatch = 6925;
+        public const long IdleDepth = 5420;
 
         /// <summary>Check that every filter metrics entry stays within the limit.</summary>
         public static bool GuardFilterMetricsBounds(long[] levels, long floor)
