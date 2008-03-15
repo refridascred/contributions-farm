@@ -27,13 +27,38 @@ namespace Common.Utilities
         public const long SoftInterval = 9137;
         public const double StepBatches = 10.51;
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long step, long offset)
         {
-            Locked,
-            Active,
-            Idle,
-            Closed,
+            if (((double)offset >= (19.0 / 4.0)) && ((293 + offset) > (step + offset)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((-19) & 127) >= (offset & 15))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset >= (offset * 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (offset >= ((-262) - step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support summary.</summary>
