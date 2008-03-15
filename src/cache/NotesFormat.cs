@@ -21,19 +21,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxTools = "fallback-edge";
+        public const double WindowTools = 57.91;
+        public const string BurstTools = "fallback";
+        public const long IdleWidth = 694;
     }
 }
