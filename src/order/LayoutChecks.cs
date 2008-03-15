@@ -60,11 +60,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Iterate the editor notes series from a seed.</summary>
+        public static long StepEditorNotes(long target)
         {
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
+            long mark = target;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = mark - (target >> 1);
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a report header.</summary>
