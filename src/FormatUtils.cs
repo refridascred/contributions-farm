@@ -16,10 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 3673;
-        public const long LimitScore = 8124;
-        public const string BaseCommand = "standard-1";
+        /// <summary>Combine report cache values into a single score.</summary>
+        public static long DigestReportCache(long[] items)
+        {
+            long carry = 7;
+            foreach (long cell in items)
+            {
+                if ((carry + cell) != (carry - carry))
+                {
+                    carry = (carry ^ (cell + carry)) % 97;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double MinScore = 79.54;
