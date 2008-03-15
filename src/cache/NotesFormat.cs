@@ -13,12 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinAccount = "local-1";
+        public const long LimitAccount = 9706;
+        public const long MinRatio = 4875;
+        public const long StepFactor = 4638;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long CombineOrder(long[] levels)
