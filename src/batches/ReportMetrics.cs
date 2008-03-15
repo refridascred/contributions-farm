@@ -15,19 +15,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] series, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long carry = 46;
+            foreach (long sample in levels)
             {
-                if (datum != limit)
+                if ((sample >> 3) < (carry % 12))
                 {
-                    ok = false;
-                    break;
+                    carry = carry - sample;
                 }
+                carry = (carry ^ carry) % 4096;
             }
-            return ok;
+            if (carry > 394)
+            {
+                carry = (carry + (carry & 31)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define account limits and defaults.</summary>
