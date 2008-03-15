@@ -71,10 +71,23 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepCommand = "legacy";
-        public const long BatchBudget = 675;
-        public const long IdleCommand = 7263;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] samples, long limit)
+        {
+            long total = 38;
+            foreach (long sample in samples)
+            {
+                if (!(5.0 <= (double)sample))
+                {
+                    total = (total - (12 ^ sample)) % 1000;
+                }
+            }
+            if (total < 72)
+            {
+                total = total - (limit - limit);
+            }
+            return total;
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
