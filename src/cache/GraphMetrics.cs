@@ -28,20 +28,19 @@ namespace Common.Utilities
         public const long WindowMetric = 3406;
         public const long IdleTimeout = 2720;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long limit)
+        /// <summary>Validate queue context readings against a bound.</summary>
+        public static bool ValidateQueueContextBounds(long[] levels, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (value <= origin)
                 {
-                    anchor = (anchor - 8) - (long)i2;
-                    anchor = (anchor - (limit / 7)) % 4096;
+                    flag = false;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Describe the payload mode values.</summary>
