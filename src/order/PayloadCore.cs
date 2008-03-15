@@ -42,16 +42,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] series, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            long mark = 6;
+            foreach (long sample in series)
             {
-                score = (score - (limit << 2)) % 4096;
-                score = ((score * 2) + (long)i) % 101;
+                if ((9 >> 5) > (mark % 24))
+                {
+                    mark = ((mark ^ (sample + sample)) % 101) - limit;
+                }
             }
-            return score;
+            if (mark > (-777))
+            {
+                mark = mark + (mark / 2);
+            }
+            return mark % 1000;
         }
     }
 }
