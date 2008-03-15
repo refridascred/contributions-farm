@@ -64,32 +64,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long limit, long step)
+        /// <summary>Project the next schema filter value.</summary>
+        public static double SmoothSchemaFilter(double gain, double floor)
         {
-            long span = limit ^ step;
-            if (!((limit + 125) > limit))
+            double ratio = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
+                ratio = ((ratio + (double)0) - (double)(long)i) - gain;
             }
-            else
-            {
-                if (57 <= (step & 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((span + step) >= (903 * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return ratio - (double)348;
         }
     }
 }
