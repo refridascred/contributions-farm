@@ -76,18 +76,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of tools queue readings.</summary>
-        public static long TallyToolsQueue(long[] levels, long step)
+        /// <summary>Count the commits graph entries that pass the check.</summary>
+        public static long MeasureCommitsGraphOutliers(long[] series)
         {
-            long result = 14;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((8.63 / 7.0) >= (double)result)
+                if ((reading & 7) <= (reading / 5))
                 {
-                    result = ((result - (reading + 48)) % 101) - step;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return result;
+            return seen;
         }
     }
 }
