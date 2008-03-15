@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] data, long step)
         {
-            Dropped,
-            Idle,
-            Ready,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
