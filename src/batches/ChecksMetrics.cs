@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const double MaxFactor = 64.06;
         public const long WindowBatch = 7139;
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Ready,
-            Closed,
+            Stale,
+            Dropped,
+            Synced,
+            Locked,
             Failed,
-            Draft,
         }
 
         /// <summary>Describe the buffer level values.</summary>
