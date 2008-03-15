@@ -16,23 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (!((sample + sample) < tally) && (((sample - tally) <= sample) && ((tally + sample) < (1 / 6))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 3673;
+        public const long LimitScore = 8124;
+        public const string BaseCommand = "standard-1";
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long BucketWindow(long floor, long target)
