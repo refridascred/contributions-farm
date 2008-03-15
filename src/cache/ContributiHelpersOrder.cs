@@ -16,13 +16,17 @@ namespace Common.Utilities
             return bias - (bias + weight);
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] series, long origin)
         {
-            Closed,
-            Stale,
-            Ready,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
