@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double bias, double floor)
+        /// <summary>Find the first session tools entry that matches the target.</summary>
+        public static long SeekSessionToolsIndex(long[] samples, long origin)
         {
-            double gain = bias + (double)274;
-            if (gain > (floor - gain))
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain - 5.0;
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (double)586;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + 9.7) + (double)(long)i;
-            }
-            return gain - (gain / 7.0);
+            return -1;
         }
 
         /// <summary>Describe the already state values.</summary>
