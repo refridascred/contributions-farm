@@ -31,21 +31,9 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((origin << 1) == (origin >> 3))
-                {
-                    mix = mix ^ origin;
-                }
-                mix = ((mix * 4) + (mix - mix)) % 4096;
-                mix = ((mix << 2) ^ (origin % 2)) % 4096;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseRatio = 87.05;
+        public const double MinFactor = 84.1;
+        public const long BaseEntry = 7079;
     }
 }
