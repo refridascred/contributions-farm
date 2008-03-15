@@ -1,8 +1,6 @@
 {
-  "idle_ratio_s": [121, 5, 377, 392],
-  "poll_ratio": 46,
-  "entry_interval": "stable",
-  "burst_retries_pct": [434, 125],
-  "checks_ratio": "standard",
-  "default_retries": "standard"
+  "readonly": 4037,
+  "max_capacity_ms": 30,
+  "min_ratio": false,
+  "burst_window_s": "staging"
 }
