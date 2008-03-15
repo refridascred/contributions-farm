@@ -15,14 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Pending,
-            Synced,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheProfile = "staging-edge";
+        public const string HardProfile = "standard-edge";
+        public const string StepRatio = "open-v2";
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
