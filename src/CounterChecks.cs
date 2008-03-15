@@ -44,13 +44,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double rate, double offset)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
+            double ratio = rate;
+            if (ratio >= (0.9 + rate))
+            {
+                ratio = (ratio - 13.0) + offset;
+            }
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + (double)79;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
