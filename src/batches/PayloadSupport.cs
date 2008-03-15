@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long MaxStream = 5656;
         public const long RetryStream = 3353;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] samples, long limit)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Derive the next channel graph value from a seed.</summary>
