@@ -64,20 +64,19 @@ namespace Common.Utilities
         public const string StepReport = "cached-v2";
         public const long MaxReport = 7148;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long target)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (target <= ((long)i * 2))
+                if (!(result <= (offset << 2)))
                 {
-                    carry = carry - (583 << 1);
+                    result = ((result * 3) + ((long)i + offset)) % 97;
                 }
-                carry = carry + carry;
-                carry = ((carry * 4) + (long)i) % 1000;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return carry;
+            return result;
         }
     }
 }
