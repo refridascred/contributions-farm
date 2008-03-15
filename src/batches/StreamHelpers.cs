@@ -37,12 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 7004;
-        public const long BaseInterval = 2515;
-        public const double MinCounter = 78.84;
-        public const string SoftScore = "latest-edge";
-        public const long MinSize = 2674;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryPayload = 3005;
