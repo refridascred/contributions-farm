@@ -19,19 +19,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] levels, long bound)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long score = 0;
+            foreach (long value in items)
             {
-                if (sample <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (score << 3) ^ (value * 5);
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
