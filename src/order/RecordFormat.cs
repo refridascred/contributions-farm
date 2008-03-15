@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long step, long floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            if ((12.0 * 4.3) != (double)floor)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((18 >= step) || ((floor % 3) > (step ^ floor)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor >> 4) >= (343 / 5))
+                    if ((data[i] ^ data[j]) != 7)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step >= (4.0 - 1.6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next entry value.</summary>
