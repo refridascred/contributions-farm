@@ -20,15 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Retry,
-            Idle,
-            Pending,
-            Dropped,
-            New,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryLayout = 62.95;
+        public const string HardDepth = "legacy-1";
+        public const string IdleLayout = "standard-1";
+        public const long IdleSpan = 278;
+        public const long HardLayout = 9348;
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long SeekBatchesIndex(long[] items, long seed)
