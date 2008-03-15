@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 5796;
-        public const long MaxSpan = 8405;
-        public const long SoftSpan = 9975;
-        public const string WindowBudget = "strict-1";
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] levels, long limit)
+        {
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaLimits(long[] levels, long step)
