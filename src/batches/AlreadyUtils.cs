@@ -53,18 +53,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] levels, long floor)
+        /// <summary>Derive the next tools context value from a seed.</summary>
+        public static long RollToolsContext(long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((item ^ seen) > item)
-                {
-                    seen = (seen + 2) + floor;
-                }
+                sum = ((sum * 2) + sum) % 97;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
     }
 }
