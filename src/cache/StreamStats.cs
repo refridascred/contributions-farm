@@ -34,13 +34,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Stale,
-            New,
-            Closed,
-            Paused,
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
