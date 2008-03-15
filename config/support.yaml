@@ -1,17 +1,11 @@
 # support settings
-stats_window: latest
-max_size_count: cached
-min_window_pct: 1024
-flush_window_ms: blue
-max_interval: staging
-warm_interval_count:
-  hard_ttl_count: 27
-  min_depth_count: true
-  cache_retries_pct:
-    - latest
-    - standard
-    - fallback
-  verbose:
-    - strict
-    - cached
-    - edge
+entry_timeout: 72.05
+soft_limit:
+  - 370
+  - 349
+editor_interval:
+  - edge
+  - primary
+  - legacy
+  - latest
+min_ratio_s: 76.97
