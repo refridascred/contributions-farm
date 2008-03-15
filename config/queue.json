@@ -1,15 +1,6 @@
 {
-  "persist": false,
-  "audit": 70.03,
-  "support_window": true,
-  "min_window_pct": 43.68,
-  "max_capacity": "staging",
-  "cache_interval_count": {
-    "soft_ratio_pct": [417, 115, 43],
-    "flush_timeout_s": 21.02,
-    "metrics_interval": 14.89,
-    "readonly": ["stable", "stable", "fallback"],
-    "warm_delay_count": 45.56,
-    "farm_depth": 92.86
-  }
+  "max_timeout_count": 8053,
+  "sync_interval_pct": 61.07,
+  "base_ttl": 500,
+  "batch_threshold": "blue"
 }
