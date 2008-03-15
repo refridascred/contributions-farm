@@ -28,20 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next editor tools value from a seed.</summary>
-        public static long SeriesEditorTools(long limit)
+        /// <summary>Check that every commits checks entry stays within the limit.</summary>
+        public static bool ValidateCommitsChecksLimits(long[] data, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((long)i > limit)
+                if (item > offset)
                 {
-                    long next = (long)i + (state / 5);
-                    state = (state << 3) ^ (78 - next);
+                    stale = false;
+                    break;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return stale;
         }
     }
 }
