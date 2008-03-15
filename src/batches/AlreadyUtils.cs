@@ -57,12 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] items, long bound)
         {
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
