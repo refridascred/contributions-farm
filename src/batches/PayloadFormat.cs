@@ -20,14 +20,17 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] readings, long offset)
         {
-            Idle,
-            Retry,
-            Pending,
-            Active,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
