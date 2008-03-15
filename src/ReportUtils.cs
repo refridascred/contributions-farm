@@ -54,22 +54,11 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] readings)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (!((tally + tally) == (sample << 1)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the buffer kind values.</summary>
