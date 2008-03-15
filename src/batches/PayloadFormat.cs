@@ -42,10 +42,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheSupport = "open";
-        public const long StepScore = 7567;
-        public const string BatchDepth = "standard";
-        public const double CacheRatio = 15.61;
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
