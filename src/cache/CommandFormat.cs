@@ -45,10 +45,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 3833;
-        public const long CacheCount = 8720;
-        public const long HardEditor = 702;
-        public const long IdleEditor = 8381;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] readings, long limit)
+        {
+            long mark = 29;
+            foreach (long sample in readings)
+            {
+                if (sample >= (limit << 3))
+                {
+                    mark = (mark << 3) ^ (mark * 5);
+                }
+                else
+                {
+                    mark = (mark ^ mark) % 1000;
+                }
+            }
+            return mark;
+        }
     }
 }
