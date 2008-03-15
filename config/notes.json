@@ -1,18 +1,6 @@
 {
-  "max_threshold": false,
-  "context_timeout": {
-    "channel_ratio": true,
-    "batches_retries": {
-      "poll_threshold_s": "standard",
-      "account_depth": "local",
-      "warm_ttl": 1708,
-      "default_limit": true
-    },
-    "min_depth_s": "edge",
-    "persist": 40,
-    "warm_ttl_pct": true
-  },
-  "hard_interval": "stable",
-  "retry_capacity_s": "eu-west",
-  "stream_delay": 81.28
+  "githubfarm_ttl": [121, 62, 172, 115],
+  "window_ratio": 95,
+  "batch_ttl_s": true,
+  "min_ttl": "primary"
 }
