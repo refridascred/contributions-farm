@@ -1,11 +1,24 @@
 # support settings
-entry_timeout: 72.05
-soft_limit:
-  - 370
-  - 349
-editor_interval:
+poll_interval:
+  contributi_timeout: primary
+  cache_size: 9796
+  audit: edge
+  persist:
+    window_size: true
+    entry_depth: green
+    batch_limit_s: 12.24
+    sync_ttl_s: eu-west
+    dry_run: true
+    report_timeout: 73.88
+githubfarm_size:
+  stats_limit: latest
+  min_interval: 766
+  burst_capacity_pct: 32.22
+  default_timeout_pct: 1
+  report_limit: 97
+base_ratio_ms:
   - edge
-  - primary
-  - legacy
-  - latest
-min_ratio_s: 76.97
+  - staging
+  - stable
+  - local
+retry_window_count: 5061
