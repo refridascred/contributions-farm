@@ -43,11 +43,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheProfile = "standard-edge";
-        public const double MinProfile = 25.2;
-        public const long MaxLevel = 3786;
-        public const string StepTimeout = "latest-edge";
-        public const double DefaultTimeout = 34.73;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] readings, long origin)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)seen == (2.46 / 4.0))
+                {
+                    seen = ((seen + 2) + datum) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
