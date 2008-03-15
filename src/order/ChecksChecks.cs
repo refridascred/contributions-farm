@@ -24,17 +24,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] samples, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 937;
+            foreach (long item in series)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
+                anchor = ((anchor << 2) ^ anchor) % 1000;
+                if (((item << 2) <= ((-8) >> 3)) || ((8.75 * 6.0) > (double)item))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 36)
+            {
+                anchor = (anchor * 3) + anchor;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Fold a list of notes tools readings.</summary>
