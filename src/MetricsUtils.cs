@@ -65,31 +65,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank format profile input into a small class.</summary>
-        public static long BucketFormatProfile(long step, long origin)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double gain, double bias)
         {
-            if (((step % 97) <= (origin ^ step)) || ((step >> 4) == (step * 5)))
+            double rate = (gain - bias) / 6.0;
+            if (rate >= bias)
             {
-                return 4;
+                rate = rate + bias;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (!((6.1 * 8.7) >= (double)step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((9 / 3) == (origin + origin)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                rate = rate + (double)(long)i;
             }
+            return rate + (7.8 * 5.0);
         }
     }
 }
