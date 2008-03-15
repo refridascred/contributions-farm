@@ -1,26 +1,8 @@
 {
-  "warm_limit": 7,
-  "retry_interval_s": [268, 356],
-  "token_size": ["standard", "fallback", "open", "standard"],
-  "flush_size_count": 5122,
-  "order_capacity": {
-    "dry_run": {
-      "warm_threshold_s": 65.89,
-      "default_limit_count": [237, 432],
-      "base_retries_pct": 100,
-      "default_limit_s": "stable",
-      "route_window": "green",
-      "strict": 30
-    },
-    "audit": "standard",
-    "cache_threshold_ms": ["blue", "eu-west", "latest", "stable"],
-    "persist": {
-      "default_capacity": "local",
-      "sync_size": 68,
-      "hard_limit": "eu-west",
-      "counter_ttl": 6801,
-      "persist": "local",
-      "account_delay": 41.02
-    }
-  }
+  "record_window": 143,
+  "max_delay": 74.52,
+  "sync_ratio_pct": false,
+  "max_ratio_s": "cached",
+  "strict": 150,
+  "min_retries_pct": 7808
 }
