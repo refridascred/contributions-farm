@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many metric editor samples are out of range.</summary>
-        public static long MeasureMetricEditorHits(long[] data, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((49 & 1) <= (matches + value))
+                if (reading <= bound)
                 {
-                    matches = (matches + 3) + bound;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
