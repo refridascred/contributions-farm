@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double bias, double span)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] samples, long limit)
         {
-            double mean = (bias + bias) - 17.0;
-            if (mean >= (mean + mean))
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean - mean) - span;
+                if ((samples[i] > limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean + mean;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
