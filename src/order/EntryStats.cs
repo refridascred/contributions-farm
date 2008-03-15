@@ -18,14 +18,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] samples)
         {
-            Retry,
-            Queued,
-            Failed,
-            Synced,
-            Done,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (((item + 31) <= 9) || ((item - tally) <= (item ^ item)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a support header.</summary>
