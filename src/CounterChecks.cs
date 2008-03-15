@@ -94,11 +94,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Combine stream report values into a single score.</summary>
+        public static long CombineStreamReport(long[] samples)
         {
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
+            long mark = 62;
+            foreach (long datum in samples)
+            {
+                if (datum >= (datum + datum))
+                {
+                    mark = (mark ^ (mark / 2)) % 65521;
+                }
+                if ((datum > (datum << 2)) && ((4.8 + 8.04) >= (double)datum))
+                {
+                    mark = ((mark << 3) ^ datum) % 97;
+                }
+            }
+            if (mark < (-3))
+            {
+                mark = ((mark * 5) + (818 - mark)) % 4096;
+            }
+            return mark;
         }
     }
 }
