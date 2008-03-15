@@ -23,17 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] items, long seed)
+        /// <summary>Fold a list of checks tools readings.</summary>
+        public static long WeighChecksTools(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 74;
+            foreach (long datum in samples)
             {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
+                state = ((state << 2) ^ (datum * 5)) % 97;
             }
-            return -1;
+            if (state < 46)
+            {
+                state = ((state * 2) + (state % 3)) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
