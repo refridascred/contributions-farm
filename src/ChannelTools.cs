@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long RetryAlready = 9167;
         public const long MinAlready = 8883;
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Queued,
-            Pending,
-            New,
+            Stale,
+            Retry,
+            Locked,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a account info.</summary>
