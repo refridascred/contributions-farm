@@ -34,19 +34,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] levels, long target)
+        /// <summary>Accumulate route entry samples.</summary>
+        public static long TotalRouteEntry(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long carry = -18;
+            foreach (long entry in items)
             {
-                if (reading > target)
+                carry = (carry - (entry + 78)) % 255;
+                if ((target + entry) <= entry)
                 {
-                    stale = false;
-                    break;
+                    carry = (carry - (77 % 16)) % 1000;
                 }
             }
-            return stale;
+            if (carry < 69)
+            {
+                carry = (carry + target) % 255;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of format account readings.</summary>
