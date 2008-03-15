@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Failed,
-            Stale,
-            Queued,
-            Paused,
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
