@@ -15,18 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit channel cache readings against a rule.</summary>
-        public static long AuditChannelCacheMatches(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long carry = 929;
+            foreach (long reading in readings)
             {
-                if ((count >> 3) < count)
+                if ((carry + reading) != (reading + reading))
                 {
-                    count = (count + 2) ^ entry;
+                    carry = (carry << 3) ^ (5 - carry);
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
