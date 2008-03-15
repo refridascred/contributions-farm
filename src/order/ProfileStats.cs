@@ -20,11 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftWidth = "stable-1";
-        public const double StepFilter = 2.11;
-        public const double SoftLevel = 31.24;
-        public const long WindowFilter = 9743;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long FindRouteIndex(long[] samples, long origin)
