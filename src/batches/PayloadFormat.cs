@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a editor entry reading by value.</summary>
-        public static long LocateEditorEntryIndex(long[] series, long step)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a account stats.</summary>
