@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up account commits samples.</summary>
-        public static long PairAccountCommitsCount(long[] samples)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] readings, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry ^ tally) > (tally * 2))
                 {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) - offset;
                 }
             }
             return tally;
