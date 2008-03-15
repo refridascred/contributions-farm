@@ -59,14 +59,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
+            Ready,
             Queued,
-            Retry,
-            Paused,
-            Active,
-            Locked,
+            Stale,
         }
     }
 }
