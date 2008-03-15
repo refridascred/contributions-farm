@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] readings)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((matches - entry) == ((long)readings.Length ^ matches)) || (((294 + entry) > 244) && ((matches >> 3) >= (matches >> 5))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Failed,
+            Paused,
+            Synced,
+            Closed,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
