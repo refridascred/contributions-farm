@@ -36,13 +36,14 @@ namespace Common.Utilities
         public const string MinQueue = "primary";
         public const long BurstLevel = 2019;
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Done,
-            Ready,
+            Pending,
+            New,
+            Closed,
+            Dropped,
             Queued,
-            Idle,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
