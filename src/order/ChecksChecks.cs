@@ -30,11 +30,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
+            Stale,
+            Retry,
+            Idle,
+            Done,
         }
     }
 }
