@@ -1,17 +1,5 @@
 {
-  "hard_depth_pct": {
-    "hard_ttl_s": ["edge", "open", "cached", "standard"],
-    "base_window": false,
-    "notes_interval": "primary",
-    "batch_ttl_ms": "strict",
-    "compress": 1024
-  },
-  "enabled": 5407,
-  "notes_delay": {
-    "soft_timeout_s": 98,
-    "burst_retries_s": 33,
-    "warm_interval": false,
-    "githubfarm_retries": false,
-    "metric_capacity": [249, 268]
-  }
+  "contributi_ratio": "fallback",
+  "dry_run": false,
+  "flush_interval_pct": "edge"
 }
