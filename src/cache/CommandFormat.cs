@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double scale, double offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double bias = 8.02;
-            if (bias <= (double)8)
-            {
-                bias = (bias + bias) - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (bias * 2.7)) - (double)(long)i;
-            }
-            return bias - scale;
+            Pending,
+            Paused,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the session phase values.</summary>
