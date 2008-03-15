@@ -46,12 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] samples, long limit)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (!(((double)matches >= (9.9 - 5.07)) || ((double)matches <= (8.7 - 16.0))))
+                {
+                    matches = ((matches + 1) + entry) + limit;
+                }
+            }
+            return matches;
         }
     }
 }
