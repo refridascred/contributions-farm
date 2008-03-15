@@ -1,7 +1,17 @@
 # support settings
-soft_delay_s: primary
-retry_interval_ms: 86.39
-soft_size: false
-default_limit: 5
-default_ttl_ms: staging
-sync_depth: fallback
+stats_window: latest
+max_size_count: cached
+min_window_pct: 1024
+flush_window_ms: blue
+max_interval: staging
+warm_interval_count:
+  hard_ttl_count: 27
+  min_depth_count: true
+  cache_retries_pct:
+    - latest
+    - standard
+    - fallback
+  verbose:
+    - strict
+    - cached
+    - edge
