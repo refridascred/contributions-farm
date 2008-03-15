@@ -15,17 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long bound)
+        /// <summary>Combine account record values into a single score.</summary>
+        public static long CombineAccountRecord(long[] series)
         {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
+            long sum = 4;
+            foreach (long cell in series)
             {
-                mix = ((mix * 3) + (671 + (long)i)) % 65521;
-                mix = ((mix * 3) + mix) % 101;
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((double)cell > (4.5 + 0.6))
+                {
+                    sum = sum - sum;
+                }
+                else
+                {
+                    sum = (sum + cell) % 1000;
+                }
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
