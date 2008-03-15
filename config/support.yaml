@@ -1,12 +1,7 @@
 # support settings
-already_threshold: 19.4
-burst_timeout_s:
-  session_limit: 97.93
-  retry_timeout_count: 14
-  channel_interval: 62.29
-  retry_depth: 1024
-max_timeout_ms:
-  - 478
-  - 355
-  - 476
-  - 466
+poll_capacity:
+  - 191
+  - 316
+dry_run: 4946
+graph_capacity: edge
+enabled: staging
