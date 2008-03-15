@@ -36,19 +36,11 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 6855;
         public const long StepGithubfarm = 2210;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] items, long offset)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((offset + count) <= (607 * 5))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleInterval = 49.6;
+        public const string BatchSchema = "alpha";
+        public const long RetrySchema = 8660;
+        public const long WindowSchema = 5619;
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
