@@ -38,11 +38,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the support status values.</summary>
