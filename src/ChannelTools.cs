@@ -13,10 +13,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepCounter = "fallback";
-        public const double WindowCounter = 87.3;
-        public const long StepSize = 1032;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowDepth = "legacy-edge";
+        public const string CacheBuffer = "stable-v2";
+        public const double MaxBuffer = 9.76;
+        public const long RetryBuffer = 2471;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long StepTimeout = 8655;
