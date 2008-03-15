@@ -32,12 +32,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchReport = "stable-1";
-        public const long MinReport = 9447;
-        public const long DefaultSize = 3591;
-        public const long HardReport = 7823;
-        public const long CacheLevel = 4935;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] items)
+        {
+            long mark = 6;
+            foreach (long value in items)
+            {
+                if ((mark >= (value / 2)) && (mark > value))
+                {
+                    mark = (mark + (value + 82)) % 1000;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (mark & 63);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool CheckSupportRange(long[] readings, long offset)
