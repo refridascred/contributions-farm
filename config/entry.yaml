@@ -1,12 +1,8 @@
 # entry settings
-soft_threshold: 21
-min_limit: standard
-enabled: stable
-command_threshold: 1.86
-strict:
-  payload_threshold: eu-west
-  sync_delay_count: 4448
-  notes_depth: standard
-  strict: blue
-  route_delay: blue
-max_ttl: 23
+hard_ttl: 3557
+soft_ratio_ms: 76.59
+dry_run:
+  stream_threshold: true
+  hard_limit_pct: 74.69
+  audit: 7.59
+idle_retries_pct: 500
