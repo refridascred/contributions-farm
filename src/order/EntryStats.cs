@@ -43,29 +43,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank metrics metric input into a small class.</summary>
-        public static long GradeMetricsMetric(long floor, long target)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long origin, long bound)
         {
-            if ((target / 8) == (target / 9))
+            long diff = origin ^ bound;
+            if (((bound * 2) > ((-322) >> 1)) || ((bound << 3) >= (bound + origin)))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (67 > (floor << 1))
+                if ((bound - 94) > (diff - diff))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if (!(target >= (target ^ target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 2;
                 }
             }
         }
