@@ -25,12 +25,11 @@ namespace Common.Utilities
         public const string DefaultRatio = "fallback-1";
         public const long CacheLayout = 7029;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Draft,
-            Ready,
-            Dropped,
+            Closed,
+            New,
             Locked,
         }
 
