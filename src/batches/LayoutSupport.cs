@@ -77,18 +77,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] readings, long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long carry = 64;
+            foreach (long entry in items)
             {
-                if ((200 * 3) == (origin % 64))
+                if (((entry & 1) < (carry + carry)) && ((206 - carry) >= (entry & 7)))
                 {
-                    seen = (seen + 3) ^ sample;
+                    carry = carry - carry;
                 }
             }
-            return seen;
+            if (carry > 0)
+            {
+                carry = ((carry << 3) ^ carry) % 4096;
+            }
+            return carry;
         }
     }
 }
