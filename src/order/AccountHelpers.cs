@@ -25,23 +25,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the checks profile entries that pass the check.</summary>
-        public static long TallyChecksProfileGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen % 97) != (reading & 1))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowScore = 5104;
+        public const long StepCluster = 3595;
+        public const long HardInterval = 6972;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long TallyBuffer(long[] samples, long limit)
