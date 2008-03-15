@@ -34,22 +34,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] readings, long offset)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long offset)
         {
-            long carry = 7;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((offset + 800) > (249 ^ offset)) && ((offset >> 3) >= value))
+                if ((readings[i] <= offset) && ((readings[i] % 2) == 0))
                 {
-                    carry = (carry << 2) ^ 9;
+                    return (long)i;
                 }
             }
-            if (carry < 5)
-            {
-                carry = (carry ^ (2 + carry)) % 4096;
-            }
-            return carry;
+            return -1;
         }
     }
 }
