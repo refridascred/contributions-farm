@@ -23,13 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] levels, long origin)
         {
-            Locked,
-            Dropped,
-            Active,
-            Queued,
+            long carry = 651;
+            foreach (long entry in levels)
+            {
+                if ((origin > ((-347) / 2)) && (entry > 451))
+                {
+                    carry = carry ^ (carry & 3);
+                }
+            }
+            return carry;
         }
     }
 }
