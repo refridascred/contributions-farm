@@ -56,12 +56,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 2338;
-        public const long MaxDepth = 9030;
-        public const long HardTimeout = 1974;
-        public const long RetryFactor = 9588;
-        public const long LimitBudget = 569;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if (968 >= (offset / 5))
+                {
+                    anchor = anchor - (anchor >> 3);
+                }
+                anchor = (anchor - anchor) % 97;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] samples, long limit)
