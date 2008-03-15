@@ -64,19 +64,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order batch readings against a bound.</summary>
-        public static bool ValidateOrderBatchBounds(long[] levels, long step)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Size { get; set; }
+            public double Region { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
