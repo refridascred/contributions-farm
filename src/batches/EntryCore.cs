@@ -52,18 +52,19 @@ namespace Common.Utilities
             return (drift - (double)17) + scale;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] readings, long floor)
         {
-            long score = 48;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((double)919 > (double)cell)
+                if (entry < floor)
                 {
-                    score = (score * 5) + (cell ^ score);
+                    stale = false;
+                    break;
                 }
             }
-            return score;
+            return stale;
         }
     }
 }
