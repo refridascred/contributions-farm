@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] levels)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] readings)
         {
-            long sum = 23;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((sum + reading) != (sum << 2))
+                if (((matches - entry) == ((long)readings.Length ^ matches)) || (((294 + entry) > 244) && ((matches >> 3) >= (matches >> 5))))
                 {
-                    sum = (sum ^ (reading >> 2)) % 4096;
-                }
-                if (((sum - reading) != (reading - 19)) && (reading > (sum << 1)))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
