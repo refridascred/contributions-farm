@@ -67,18 +67,31 @@ namespace Common.Utilities
         public const long BurstTimeout = 817;
         public const long HardSize = 6937;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] series, long offset)
+        /// <summary>Rank format profile input into a small class.</summary>
+        public static long BucketFormatProfile(long step, long origin)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            if (((step % 97) <= (origin ^ step)) || ((step >> 4) == (step * 5)))
             {
-                if ((67 >> 5) != (offset ^ 3))
+                return 4;
+            }
+            else
+            {
+                if (!((6.1 * 8.7) >= (double)step))
                 {
-                    seen = (seen + 3) ^ cell;
+                    return 2;
+                }
+                else
+                {
+                    if (!((9 / 3) == (origin + origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
