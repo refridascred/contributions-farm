@@ -25,15 +25,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stats format series from a seed.</summary>
-        public static long SeriesStatsFormat(long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            long sum = 2;
+            foreach (long reading in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                sum = ((sum * 3) + reading) % 1000;
+                sum = sum + reading;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
