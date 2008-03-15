@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] samples, long limit)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double gain, double span)
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double drift = gain;
+            return drift + (drift - span);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
