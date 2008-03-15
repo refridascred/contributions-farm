@@ -57,17 +57,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first payload graph entry that matches the target.</summary>
-        public static long LookupPayloadGraphIndex(long[] data, long offset)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
