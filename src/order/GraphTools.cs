@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double gain, double span)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double mean = span + gain;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + gain) + (double)(long)i;
-            }
-            return mean - (6.1 * 4.0);
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
