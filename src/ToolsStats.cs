@@ -19,39 +19,14 @@ namespace Common.Utilities
         public const long CacheLayout = 9018;
         public const long BaseLayout = 7622;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long offset, long step)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long slot = offset - step;
-            if ((double)slot <= (6.42 * 8.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset >= (offset + offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + step) != (offset >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset + offset) >= offset) && (step <= (slot + slot)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Dropped,
+            Queued,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
