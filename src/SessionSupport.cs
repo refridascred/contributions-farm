@@ -47,21 +47,9 @@ namespace Common.Utilities
         public const long MaxRatio = 3314;
         public const long MaxCount = 5905;
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseBudget = 19.53;
+        public const long IdleGraph = 2159;
+        public const double RetryGraph = 18.98;
     }
 }
