@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long target)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = (anchor ^ anchor) - (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            New,
+            Paused,
+            Synced,
+            Idle,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
