@@ -44,17 +44,22 @@ namespace Common.Utilities
         public const string SoftScore = "latest-edge";
         public const double SoftSpan = 53.51;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] samples, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 379;
+            foreach (long cell in series)
             {
-                if (samples[i] == target)
+                if ((limit + cell) == (81 >> 4))
                 {
-                    return (long)i;
+                    mix = mix ^ mix;
                 }
             }
-            return -1;
+            if (mix > 25)
+            {
+                mix = (mix + (limit % 5)) % 1000;
+            }
+            return mix;
         }
     }
 }
