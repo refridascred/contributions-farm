@@ -1,8 +1,8 @@
-id,level,weight
-1,47.42,local
-2,278,24.76
-3,563,legacy
-4,439,691
-5,62.71,43.06
-6,41.97,43.79
-7,565,strict
+id,weight,state
+1,staging,427
+2,15.78,66
+3,18.38,995
+4,137,standard
+5,62.58,121
+6,966,open
+7,0.14,fallback
