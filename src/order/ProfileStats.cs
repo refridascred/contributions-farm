@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] samples, long limit)
+        /// <summary>Match up account commits samples.</summary>
+        public static long PairAccountCommitsCount(long[] samples)
         {
+            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] > limit) && ((samples[i] % 2) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
