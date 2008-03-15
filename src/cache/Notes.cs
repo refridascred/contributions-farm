@@ -62,10 +62,26 @@ namespace Common.Utilities
             return (mean - (floor + floor)) + rate;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardFactor = 932;
-        public const long SoftBudget = 6345;
-        public const long LimitNotes = 5634;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long limit, long offset)
+        {
+            long bound = limit + offset;
+            if ((limit <= offset) && ((double)bound == (8.0 * 9.87)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit + bound) > (bound % 7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TotalBuffer(long[] data, long origin)
