@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long bound, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] data, long seed)
         {
-            long lane = bound ^ seed;
-            if ((bound - bound) > 458)
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((lane ^ seed) < bound)
+                if ((((double)seen != (8.3 / 4.0)) || ((19.0 + 7.64) >= (double)seen)) && ((value / 3) >= (1 + value)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((lane < (seed << 2)) || ((double)lane < (8.3 - 8.02)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)bound == (3.5 + 16.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = (seen + 1) + seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
