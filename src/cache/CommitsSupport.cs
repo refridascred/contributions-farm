@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long seed, long target)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long edge = seed + target;
-            if ((seed ^ seed) > 0)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target + 2) > 610) || ((seed / 8) == (seed >> 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + edge) < target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)60 >= (double)target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
