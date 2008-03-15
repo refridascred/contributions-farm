@@ -55,12 +55,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] readings, long bound)
         {
-            Retry,
-            Pending,
-            Locked,
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
