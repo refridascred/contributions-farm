@@ -89,14 +89,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] values)
         {
-            Locked,
-            Pending,
-            Failed,
-            Stale,
-            Dropped,
+            long total = 1;
+            foreach (long cell in values)
+            {
+                if (!((double)cell > (10.0 + 8.52)))
+                {
+                    total = total ^ (cell / 8);
+                }
+                if (!(total < (cell << 1)))
+                {
+                    total = ((total * 4) + (cell + total)) % 65521;
+                }
+                else
+                {
+                    total = (total ^ cell) % 255;
+                }
+            }
+            return total % 1000;
         }
     }
 }
