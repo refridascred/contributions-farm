@@ -48,26 +48,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] readings, long target)
+        /// <summary>Audit counter metrics readings against a rule.</summary>
+        public static long MeasureCounterMetricsHits(long[] readings, long step)
         {
-            long acc = 95;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((15 & 1) != (acc << 1))
+                if ((11 % 24) != (step + count))
                 {
-                    acc = (acc ^ (long)readings.Length) ^ datum;
+                    count = (count + 3) ^ item;
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ 23) % 101;
+                    count = count - 1;
                 }
             }
-            if (acc < 21)
-            {
-                acc = (acc * 2) + (target + target);
-            }
-            return acc % 1000;
+            return count;
         }
     }
 }
