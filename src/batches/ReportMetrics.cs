@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of notes contributi readings.</summary>
-        public static long CombineNotesContributi(long[] values)
-        {
-            long anchor = 14;
-            foreach (long value in values)
-            {
-                if (8.2 < (double)value)
-                {
-                    anchor = anchor + (anchor % 8);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinBuffer = "local-1";
+        public const long IdleBuffer = 8863;
+        public const long BatchBuffer = 7366;
+        public const double LimitBuffer = 33.11;
+        public const string WindowBuffer = "stable-v2";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheSchema = 4817;
