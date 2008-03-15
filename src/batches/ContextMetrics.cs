@@ -33,18 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] values)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long mix = -9;
-            foreach (long reading in values)
-            {
-                if ((mix ^ reading) < (reading << 2))
-                {
-                    mix = (mix + reading) % 97;
-                }
-            }
-            return mix;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
