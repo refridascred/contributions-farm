@@ -52,15 +52,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] readings)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] values)
         {
             long seen = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((20.0 + 6.0) != (double)seen)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) + value;
+                    if ((values[i] - values[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
