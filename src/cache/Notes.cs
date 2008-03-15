@@ -20,22 +20,37 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long target, long origin)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long seed, long origin)
         {
-            if ((1.5 - 19.0) == (double)origin)
+            long prev = seed - origin;
+            if ((seed & 127) < (2 ^ 44))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((3.0 / 4.0) <= (double)target)
+                if (!((prev ^ origin) < (seed % 64)))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    return 3;
+                    if (9 >= (origin >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((seed << 2) < (seed >> 2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
