@@ -12,11 +12,24 @@ namespace Common.Utilities
             return drift + (drift - span);
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long step, long step2)
         {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            if ((step2 ^ 55) <= (step2 + step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step2 % 5) >= (step2 + step2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
