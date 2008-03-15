@@ -33,13 +33,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] values)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long datum in values)
             {
-                if ((((sample & 3) < (count % 10)) && ((-30) <= (sample * 3))) || (2 <= sample))
+                if ((datum + datum) <= (datum * 2))
                 {
                     count = count + 2;
                 }
