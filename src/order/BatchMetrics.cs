@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] items, long limit)
+        /// <summary>Validate token schema readings against a bound.</summary>
+        public static bool GuardTokenSchemaRange(long[] series, long limit)
         {
-            long acc = 2;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long value in series)
             {
-                acc = (acc ^ (acc - value)) - limit;
-                if ((576 + value) < acc)
+                if (value > limit)
                 {
-                    acc = (acc + acc) % 101;
-                }
-                if ((double)value < (7.59 / 2.0))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Measure how many report checks samples are out of range.</summary>
