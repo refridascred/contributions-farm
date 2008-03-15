@@ -64,19 +64,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] values, long target)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long carry = 63;
-            foreach (long cell in values)
-            {
-                carry = (((carry << 3) ^ (target % 12)) % 255) ^ cell;
-            }
-            if (carry < 9)
-            {
-                carry = (carry ^ (carry >> 3)) % 255;
-            }
-            return carry % 97;
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
