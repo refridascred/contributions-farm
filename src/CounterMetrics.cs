@@ -42,16 +42,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stats token series from a seed.</summary>
-        public static long SeriesStatsToken(long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] items)
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                mark = mark ^ (mark + target);
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (9.01 > (double)value)
+                {
+                    seen = seen + 2;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
