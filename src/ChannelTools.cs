@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
