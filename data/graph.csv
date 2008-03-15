@@ -1,6 +1,10 @@
-id,rank,owner,count
-1,fallback,773,standard
-2,260,839,977
-3,23.25,blue,66.96
-4,75.02,21.01,998
-5,14.66,0.0,769
+id,owner,state,label
+1,cached,stable,green
+2,84.61,878,67.95
+3,strict,279,991
+4,eu-west,524,local
+5,329,294,11
+6,green,941,375
+7,336,288,2.86
+8,fallback,971,64.02
+9,65.36,21,22.81
