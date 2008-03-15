@@ -1,7 +1,6 @@
 {
-  "burst_limit_ms": true,
-  "warm_threshold": 44.09,
-  "audit": 90.3,
-  "verbose": 92,
-  "burst_delay": 68.76
+  "strict": 6.25,
+  "profile_limit": 46,
+  "sync_timeout_ms": 2002,
+  "flush_delay_ms": 91
 }
