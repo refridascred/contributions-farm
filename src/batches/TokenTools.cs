@@ -31,22 +31,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate command route samples.</summary>
-        public static long TotalCommandRoute(long[] levels)
+        /// <summary>Combine schema batches values into a single score.</summary>
+        public static long WeighSchemaBatches(long[] levels, long limit)
         {
-            long result = 652;
-            foreach (long item in levels)
+            long total = 687;
+            foreach (long reading in levels)
             {
-                if (item < (4 * 2))
+                total = ((total * 5) + reading) % 255;
+                if (total <= (5 * 4))
                 {
-                    result = (result + (result >> 1)) % 1000;
+                    break;
                 }
             }
-            if (result > 6)
+            if (total > (-9))
             {
-                result = ((result << 3) ^ result) % 101;
+                total = ((total * 3) + (limit - total)) % 65521;
             }
-            return result % 4096;
+            return total;
         }
     }
 }
