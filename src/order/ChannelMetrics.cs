@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchScore = 7776;
-        public const long CacheAlready = 6851;
-        public const long DefaultRatio = 9638;
-        public const long HardBudget = 9385;
-        public const long BaseLevel = 3844;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Paused,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LookupAccountIndex(long[] series, long bound)
