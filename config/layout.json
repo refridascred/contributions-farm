@@ -1,5 +1,8 @@
 {
-  "default_threshold_count": 60,
-  "warm_retries_ms": false,
-  "hard_depth": "stable"
+  "batch_timeout": "edge",
+  "soft_interval_s": "primary",
+  "sync_threshold_s": 60,
+  "contributi_capacity": 25.01,
+  "poll_capacity_ms": "fallback",
+  "flush_timeout_pct": 71.83
 }
