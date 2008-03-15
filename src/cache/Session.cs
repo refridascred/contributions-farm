@@ -40,23 +40,32 @@ namespace Common.Utilities
         public const long DefaultRatio = 9315;
         public const long CacheProfile = 6189;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] values)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long offset, long origin)
         {
-            long mark = 82;
-            foreach (long item in values)
+            long edge = offset ^ origin;
+            if (origin < (58 & 15))
             {
-                if ((13.0 * 2.56) <= (double)item)
+                return 2;
+            }
+            else
+            {
+                if ((edge & 1) >= edge)
                 {
-                    mark = (mark ^ mark) % 255;
+                    return 5;
                 }
-                mark = (mark - mark) % 255;
+                else
+                {
+                    if (origin <= (origin ^ origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            if (mark > 73)
-            {
-                mark = (mark - (mark + mark)) % 4096;
-            }
-            return mark % 97;
         }
     }
 }
