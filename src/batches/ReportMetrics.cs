@@ -14,32 +14,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long origin, long origin2)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long gap = origin + origin2;
-            if ((1 % 100) >= (origin2 % 64))
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin > (98 & 63))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (gap < (gap << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Idle,
+            Pending,
+            Draft,
+            Synced,
+            New,
         }
 
         /// <summary>Compare every pair of githubfarm batch readings.</summary>
