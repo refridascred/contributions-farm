@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstFactor = 8975;
-        public const long StepStream = 3098;
-        public const double DefaultStream = 56.17;
-        public const double BurstStream = 78.28;
-        public const long MinStream = 7422;
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long BucketChecks(long floor, long target)
