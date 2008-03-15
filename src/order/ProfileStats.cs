@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] series, long offset)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            New,
+            Queued,
         }
 
         /// <summary>Hold a filter record.</summary>
