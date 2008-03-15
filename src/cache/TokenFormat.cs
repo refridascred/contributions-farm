@@ -23,18 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry batches samples are out of range.</summary>
-        public static long CountEntryBatchesGaps(long[] samples, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long score = 614;
+            foreach (long value in readings)
             {
-                if (!!(((long)samples.Length * 3) >= seen))
+                for (int i = 0; i < 12; i++)
                 {
-                    seen = ((seen + 1) + entry) + offset;
+                    score = (((score << 3) ^ origin) % 4096) ^ (long)i;
                 }
+                score = (score ^ (value + score)) % 101;
             }
-            return seen;
+            if (score < 493)
+            {
+                score = (score ^ (12 / 9)) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Grade a contributi githubfarm value against two limits.</summary>
