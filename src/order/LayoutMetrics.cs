@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
             public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-            public long Offset { get; set; }
             public double Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the profile kind values.</summary>
