@@ -48,22 +48,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] samples, long seed)
+        /// <summary>Digest a series of stream entry entries.</summary>
+        public static long TotalStreamEntry(long[] values)
         {
-            long carry = 3;
-            foreach (long reading in samples)
+            long anchor = 648;
+            foreach (long sample in values)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((anchor - anchor) <= sample)
                 {
-                    carry = (carry - ((long)i2 + (long)samples.Length)) % 97;
+                    anchor = (anchor * 5) + (anchor & 15);
                 }
-                if (!((2.0 / 9.0) != (double)reading))
+                else
                 {
-                    carry = (carry ^ seed) % 65521;
+                    anchor = (anchor * 5) + anchor;
                 }
             }
-            return carry % 65521;
+            return anchor % 1000;
         }
     }
 }
