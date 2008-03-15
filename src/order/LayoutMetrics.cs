@@ -39,15 +39,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double weight, double bias)
+        /// <summary>Measure how many batches cluster samples are out of range.</summary>
+        public static long AuditBatchesClusterOutliers(long[] readings, long seed)
         {
-            double drift = (double)9 * 5.23;
-            if (drift <= (0.39 / 8.0))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                drift = drift + bias;
+                if ((5.91 * 0.5) > (double)reading)
+                {
+                    hits = (hits + 2) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return drift + weight;
+            return hits;
         }
     }
 }
