@@ -16,18 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine report cache values into a single score.</summary>
-        public static long DigestReportCache(long[] items)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long carry = 7;
-            foreach (long cell in items)
-            {
-                if ((carry + cell) != (carry - carry))
-                {
-                    carry = (carry ^ (cell + carry)) % 97;
-                }
-            }
-            return carry;
+            Idle,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
