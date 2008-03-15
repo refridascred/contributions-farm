@@ -43,12 +43,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Ready,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftReport = "strict";
+        public const long WindowInterval = 745;
+        public const long BaseReport = 9272;
+        public const long MaxReport = 6624;
     }
 }
