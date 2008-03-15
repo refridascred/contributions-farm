@@ -20,18 +20,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] readings, long bound)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long bound, long floor)
         {
-            long total = 0;
-            foreach (long datum in readings)
+            if (((bound & 31) <= (108 + floor)) && ((9.0 / 9.0) != (double)bound))
             {
-                if (!(total < (43 % 10)))
+                return 6;
+            }
+            else
+            {
+                if ((4.0 * 10.0) > (double)floor)
                 {
-                    total = (((total + (1 + total)) % 4096) + datum) + bound;
+                    return 3;
+                }
+                else
+                {
+                    if (((bound / 6) <= (bound / 3)) || ((268 + floor) >= floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return total % 97;
         }
 
         /// <summary>Measure how many schema graph samples are out of range.</summary>
