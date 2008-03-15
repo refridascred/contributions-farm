@@ -1,18 +1,13 @@
 # entry settings
-cache_size_count: 32.55
-retry_depth:
-  - edge
-  - latest
-  - open
-  - local
-flush_interval_count:
-  filter_ttl: 92
-  default_capacity_s: 93.44
-  persist: eu-west
-  warm_depth_s:
-    - fallback
-    - edge
-    - legacy
-    - local
-  order_limit: 26.87
-  idle_limit_s: fallback
+default_size:
+  - 498
+  - 232
+filter_window: 30
+readonly: 60
+soft_timeout_s: green
+retry_timeout_pct:
+  - 252
+  - 246
+  - 372
+  - 263
+strict: 3437
