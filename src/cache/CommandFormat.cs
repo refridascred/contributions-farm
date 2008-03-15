@@ -19,12 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long seed, long bound)
         {
-            New,
-            Retry,
-            Idle,
+            long offset = seed + bound;
+            if (seed <= (offset % 10))
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed >= (seed + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound >> 3) > (seed % 64))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
