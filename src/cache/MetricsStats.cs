@@ -19,18 +19,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] series, long origin)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin - cell) < (matches - matches))
+                if (values[i] >= origin)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
