@@ -88,12 +88,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 8521;
+        public const long MinChannel = 1018;
+        public const long BatchChannel = 4526;
+        public const long LimitChannel = 9045;
+        public const long BatchTimeout = 3158;
     }
 }
