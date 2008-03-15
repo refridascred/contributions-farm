@@ -1,6 +1,7 @@
 {
-  "cache_ttl_pct": "green",
-  "warm_capacity_pct": 18.57,
-  "cache_interval": "edge",
-  "soft_interval_ms": "cached"
+  "persist": "open",
+  "notes_ttl": 8026,
+  "enabled": 19.8,
+  "max_ratio_pct": 5.05,
+  "default_depth": true
 }
