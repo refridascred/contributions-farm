@@ -33,24 +33,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long bound)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] items, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (total >= (bound ^ 915))
+                if (items[i] < step)
                 {
-                    total = (total * 4) + (bound >> 2);
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    total = (total * 4) + (bound + 52);
-                }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
