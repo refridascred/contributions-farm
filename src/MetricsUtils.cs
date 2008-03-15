@@ -13,12 +13,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchCount = "staging";
-        public const long BatchSize = 7097;
-        public const string IdleScore = "open-v2";
-        public const string StepGraph = "alpha";
-        public const long BaseGraph = 5340;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 6663;
+        public const long DefaultToken = 3805;
+        public const string IdleBudget = "legacy-1";
 
         /// <summary>Match up counter samples.</summary>
         public static long OverlapCounterCount(long[] samples)
