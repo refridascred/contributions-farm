@@ -39,13 +39,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double weight, double bias)
         {
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
+            double drift = (double)9 * 5.23;
+            if (drift <= (0.39 / 8.0))
+            {
+                drift = drift + bias;
+            }
+            return drift + weight;
         }
     }
 }
