@@ -1,7 +1,14 @@
 # entry settings
-window_timeout: 1.99
-report_retries: green
-route_ratio: 89.1
-strict: green
-filter_interval: fallback
-batch_depth: local
+enabled:
+  - blue
+  - stable
+  - primary
+  - fallback
+max_size_ms: 62
+idle_threshold_count:
+  - 166
+  - 429
+  - 371
+retry_depth: false
+poll_delay_count: 21
+poll_window_count: 60
