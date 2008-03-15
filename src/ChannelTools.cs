@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long target)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long carry = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if (carry > 139)
+                {
+                    carry = (carry << 3) ^ (target & 127);
+                    continue;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the payload mode values.</summary>
