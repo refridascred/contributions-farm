@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the route queue entries that pass the check.</summary>
-        public static long TallyRouteQueueOutliers(long[] data)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value + seen) < (value * 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Match up batches githubfarm samples.</summary>
