@@ -41,12 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] items, long limit)
         {
-            Active,
-            Pending,
-            Draft,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (limit <= (hits << 2))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two format measurements.</summary>
