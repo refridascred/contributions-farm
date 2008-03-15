@@ -1,4 +1,5 @@
 # entry settings
-strict: false
-max_depth: primary
-token_delay: 55
+entry_retries: fallback
+support_ratio: 2.46
+min_ttl: true
+idle_limit_pct: 3.17
