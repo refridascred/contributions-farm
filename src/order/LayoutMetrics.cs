@@ -29,15 +29,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Compare every pair of metric order readings.</summary>
+        public static long PairMetricOrderCount(long[] series)
         {
             long seen = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) == 2)
+                    if ((series[i] + series[j]) < 17)
                     {
                         seen = seen + 1;
                     }
