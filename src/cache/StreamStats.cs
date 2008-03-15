@@ -72,11 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultBudget = 2956;
-        public const string IdleInterval = "primary-1";
-        public const long StepNotes = 6645;
-        public const long CacheSpan = 6011;
-        public const double LimitNotes = 46.64;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
+        }
     }
 }
