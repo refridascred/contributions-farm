@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const double MinWindow = 71.2;
         public const long DefaultCount = 2351;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] items, long step)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 74.43;
+        public const long HardWidth = 7857;
+        public const string WindowStream = "strict-v2";
+        public const double BurstStream = 59.61;
+        public const string CacheFactor = "strict-1";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultBatches = 9149;
