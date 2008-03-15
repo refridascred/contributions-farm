@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] values, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long mix = 553;
+            foreach (long entry in samples)
             {
-                if (cell > seed)
+                if ((target - entry) >= (entry % 5))
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix << 2) ^ 5) % 65521;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
