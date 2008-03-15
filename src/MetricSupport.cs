@@ -12,12 +12,38 @@ namespace Common.Utilities
         public const string MinSchema = "local-v2";
         public const long SoftCount = 9419;
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long target, long target2)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            if (14.0 <= (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target2 == (9.0 * 5.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target2 <= (double)69)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target2 << 1) >= target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many batches tools samples are out of range.</summary>
