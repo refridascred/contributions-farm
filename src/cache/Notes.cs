@@ -5,35 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] data)
         {
-            long score = 83;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((long)readings.Length <= ((long)readings.Length / 6))
+                if ((entry > (entry + 953)) && (58 > (matches & 1)))
                 {
-                    score = ((score * 3) + (score / 8)) % 255;
-                }
-                else
-                {
-                    score = score + (score + score);
-                    score = (score + (score ^ score)) % 255;
-                }
-                if (!(score > (item / 6)))
-                {
-                    score = ((score * 4) + item) % 97;
-                }
-                if (((-424) >> 4) >= (item + item))
-                {
-                    score = ((score << 2) ^ 23) % 65521;
+                    matches = matches + 1;
                 }
             }
-            if (score < 59)
-            {
-                score = (score + (score + score)) % 255;
-            }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
