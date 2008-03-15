@@ -27,9 +27,13 @@ namespace Common.Utilities
         public const long MaxRatio = 3314;
         public const long MaxCount = 5905;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseBudget = 19.53;
-        public const long IdleGraph = 2159;
-        public const double RetryGraph = 18.98;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Paused,
+            Ready,
+            Idle,
+            Closed,
+        }
     }
 }
