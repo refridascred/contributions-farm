@@ -27,15 +27,17 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double rate, double span)
+        /// <summary>Find the first order cache entry that matches the target.</summary>
+        public static long SeekOrderCacheIndex(long[] readings, long step)
         {
-            double rate2 = rate;
-            if (rate2 >= 7.0)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = rate2 + (span / 8.0);
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return rate2 - 6.9;
+            return -1;
         }
     }
 }
