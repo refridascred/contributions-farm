@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Classify a farm graph pair into a bucket.</summary>
+        public static long ClassifyFarmGraph(long seed, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)limit < (6.83 / 2.0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((limit & 63) < seed)
                 {
-                    if ((data[i] - data[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a layout options.</summary>
