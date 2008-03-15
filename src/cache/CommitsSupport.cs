@@ -67,22 +67,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] samples)
-        {
-            long total = 452;
-            foreach (long reading in samples)
-            {
-                total = (total << 3) ^ (total ^ total);
-                if (!((double)reading > (double)total))
-                {
-                    total = ((total * 2) + (total * 2)) % 65521;
-                    break;
-                }
-                total = total ^ (long)samples.Length;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstBatches = "stable";
+        public const double BatchBatches = 55.04;
+        public const double CacheBatches = 74.04;
+        public const double StepTimeout = 47.47;
+        public const long RetryScore = 6693;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsOutliers(long[] values)
