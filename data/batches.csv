@@ -1,6 +1,9 @@
-id,ratio,count
-1,58.63,736
-2,800,32.47
-3,99,green
-4,76.84,139
-5,458,193
+id,active,token
+1,32.94,97.34
+2,228,697
+3,blue,653
+4,112,strict
+5,1.77,strict
+6,open,stable
+7,855,65.15
+8,green,960
