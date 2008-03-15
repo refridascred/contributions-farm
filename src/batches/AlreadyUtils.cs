@@ -43,12 +43,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Done,
-            Queued,
+            Retry,
+            Stale,
+            Synced,
             Ready,
+            Dropped,
         }
 
         /// <summary>Describe the graph mode values.</summary>
