@@ -16,13 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Closed,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardSpan = 686;
+        public const double MinMetric = 47.9;
+        public const long WindowMetric = 3406;
+        public const long IdleTimeout = 2720;
 
         /// <summary>Count the queue cache entries that pass the check.</summary>
         public static long AuditQueueCacheOutliers(long[] items)
