@@ -43,14 +43,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] data)
         {
-            Retry,
-            Stale,
-            Synced,
-            Ready,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((tally % 60) <= (cell & 1)) && (((tally + tally) > cell) && ((cell % 60) == (29 >> 3))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next tools context value from a seed.</summary>
