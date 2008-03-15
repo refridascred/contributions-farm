@@ -38,20 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                mark = (mark - step) % 4096;
-                if ((mark & 3) >= (mark - step))
+                if (reading < offset)
                 {
-                    continue;
+                    stale = false;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return stale;
         }
     }
 }
