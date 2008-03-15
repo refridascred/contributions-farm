@@ -20,15 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] readings, long bound)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long result = 3;
-            foreach (long datum in readings)
-            {
-                result = ((result << 2) ^ (datum ^ bound)) % 255;
-            }
-            return result;
+            public double Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
