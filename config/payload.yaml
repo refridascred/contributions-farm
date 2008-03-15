@@ -1,11 +1,6 @@
 # payload settings
-flush_retries: open
-persist: false
-audit: 32.61
-base_threshold_pct:
-  - 213
-  - 151
-  - 453
-  - 305
-max_threshold_count: standard
-format_size: standard
+warm_delay_pct: 28
+cache_limit_ms: standard
+dry_run: 1767
+max_interval_count: false
+token_interval: 64.95
