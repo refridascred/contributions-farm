@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every contributi entry entry stays within the limit.</summary>
-        public static bool CheckContributiEntryLimits(long[] values, long seed)
+        /// <summary>Rank batches contributi input into a small class.</summary>
+        public static long BucketBatchesContributi(long seed, long step)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            if ((double)seed <= (1.92 - 5.7))
             {
-                if (cell < seed)
+                return 7;
+            }
+            else
+            {
+                if (!((double)seed < (2.0 - 4.18)))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
