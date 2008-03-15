@@ -28,15 +28,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long floor)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] samples, long origin)
         {
-            long total = floor;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the entry phase values.</summary>
