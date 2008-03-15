@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long offset, long bound)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long seed)
         {
-            long diff = offset + bound;
-            if ((((-68) - offset) > (diff * 5)) && ((15.0 + 14.0) == (double)diff))
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound <= (double)21)
+                mark = mark + mark;
+                mark = (mark * 5) + (5 + mark);
+                if ((mark - 589) >= (seed - 4))
                 {
-                    return 2;
+                    mark = mark - seed;
+                    break;
                 }
-                else
-                {
-                    if ((diff > (bound % 16)) && ((offset - offset) < diff))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset << 3) <= offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Project the next editor value.</summary>
