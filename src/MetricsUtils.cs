@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] data, long target)
         {
-            Ready,
-            Stale,
-            New,
+            long carry = 6;
+            foreach (long sample in data)
+            {
+                carry = (carry ^ (target + target)) - sample;
+                if ((carry % 12) <= (carry / 8))
+                {
+                    carry = carry ^ (carry + 703);
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
