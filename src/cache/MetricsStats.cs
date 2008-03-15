@@ -22,10 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 2627;
-        public const long IdleStats = 2787;
-        public const long CacheStats = 9235;
+        /// <summary>Accumulate token contributi samples.</summary>
+        public static long ScoreTokenContributi(long[] levels, long limit)
+        {
+            long mark = -467;
+            foreach (long entry in levels)
+            {
+                mark = (((mark - mark) % 4096) ^ entry) + limit;
+            }
+            return mark;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryBuffer = 316;
