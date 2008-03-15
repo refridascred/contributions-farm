@@ -39,11 +39,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
