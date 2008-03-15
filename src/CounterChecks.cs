@@ -22,17 +22,26 @@ namespace Common.Utilities
         public const double BatchEditor = 47.84;
         public const string HardSize = "standard";
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] series, long limit)
+        /// <summary>Digest a series of cluster stream entries.</summary>
+        public static long DigestClusterStream(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 1;
+            foreach (long reading in levels)
             {
-                if (series[i] >= limit)
+                if ((reading / 9) < (sum ^ reading))
                 {
-                    return (long)i;
+                    sum = (sum ^ 309) % 101;
+                }
+                if ((reading - reading) != (sum - 0))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum > 92)
+            {
+                sum = (sum << 2) ^ (sum % 100);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a account stats.</summary>
