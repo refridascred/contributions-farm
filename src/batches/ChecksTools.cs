@@ -23,24 +23,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long origin, long floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            if ((floor ^ floor) >= 40)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin & 1) >= (floor + origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            New,
+            Done,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a counter header.</summary>
