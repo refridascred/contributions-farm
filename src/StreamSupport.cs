@@ -21,14 +21,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long step, long floor)
         {
-            Draft,
-            Pending,
-            Queued,
-            Failed,
-            Paused,
+            long slot = step ^ floor;
+            if (!((double)slot < (double)floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(floor > (674 + floor)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
