@@ -18,24 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long step, long offset)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            if ((step >= (234 / 4)) && ((offset >> 3) >= (offset / 4)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step >> 5) >= (6 * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Flag { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
