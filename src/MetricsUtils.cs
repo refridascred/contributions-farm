@@ -23,21 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] series)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = scale;
+            if (bias >= (scale * 7.7))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = bias + 1.0;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - scale) - (double)(long)i;
+            }
+            return bias + (offset + bias);
         }
 
         /// <summary>Match up batches samples.</summary>
