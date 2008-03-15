@@ -22,21 +22,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of metric order readings.</summary>
-        public static long PairMetricOrderCount(long[] series)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
