@@ -38,15 +38,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Audit order format readings against a rule.</summary>
+        public static long MeasureOrderFormatHits(long[] levels)
         {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (!(hits > (value % 97)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
