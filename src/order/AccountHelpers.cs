@@ -54,17 +54,18 @@ namespace Common.Utilities
         public const long LimitSpan = 6269;
         public const long SoftPayload = 2125;
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] series, long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 526;
+            foreach (long datum in items)
             {
-                if (series[i] <= origin)
+                if ((91 % 7) <= (mark / 2))
                 {
-                    return (long)i;
+                    mark = (((mark * 2) + mark) ^ datum) + step;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
