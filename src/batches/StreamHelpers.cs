@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate cluster editor readings against a bound.</summary>
-        public static bool GuardClusterEditorBounds(long[] data, long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long step)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (sample != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = sum ^ (long)i;
+                sum = (sum - ((-207) - step)) % 101;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Match up report samples.</summary>
