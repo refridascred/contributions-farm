@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] levels)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long seed)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long total = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (matches <= (1 + cell))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                long span = 166;
+                span = (span + (-6)) % 1000;
+                total = (total - span) % 97;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a report snapshot.</summary>
