@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Failed,
+            Queued,
+            Ready,
+            Dropped,
             Active,
-            Paused,
-            Synced,
+            Draft,
         }
 
         /// <summary>Blend two token measurements.</summary>
