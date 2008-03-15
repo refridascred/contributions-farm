@@ -101,18 +101,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the stats report entries that pass the check.</summary>
-        public static long TallyStatsReportOutliers(long[] data, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long result = 79;
+            foreach (long reading in series)
             {
-                if ((count / 2) <= (origin * 4))
-                {
-                    count = (count + 2) - sample;
-                }
+                result = (((result << 3) ^ (origin / 4)) % 65521) - reading;
             }
-            return count;
+            return result;
         }
     }
 }
