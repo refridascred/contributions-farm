@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double scale, double floor)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            double mean = (8.0 * 0.57) * 8.0;
-            if (mean >= scale)
-            {
-                mean = (mean - (double)787) - floor;
-            }
-            return mean + (double)6;
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of stream entries.</summary>
