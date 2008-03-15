@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Draft,
-            Retry,
-            Done,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 6317;
+        public const double BurstTimeout = 28.86;
+        public const double CacheInterval = 87.72;
+        public const long DefaultCount = 7062;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long HardFactor = 2544;
