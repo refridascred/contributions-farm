@@ -19,18 +19,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 2627;
+        public const long IdleStats = 2787;
+        public const long CacheStats = 9235;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsMatches(long[] levels)
