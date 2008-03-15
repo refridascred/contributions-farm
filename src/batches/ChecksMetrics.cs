@@ -30,18 +30,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] values, long floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long step, long seed)
         {
-            long sum = -4;
-            foreach (long cell in values)
+            long gap = step ^ seed;
+            if (((double)step >= 9.0) || ((double)gap < (8.8 - 1.28)))
             {
-                if (floor <= (cell << 3))
+                return 1;
+            }
+            else
+            {
+                if ((5.0 * 7.8) > (double)gap)
                 {
-                    sum = sum + (floor ^ cell);
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return sum % 4096;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
