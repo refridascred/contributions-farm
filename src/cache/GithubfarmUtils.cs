@@ -37,11 +37,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
+            Pending,
+            Active,
+            Failed,
+            Closed,
+            Locked,
         }
     }
 }
