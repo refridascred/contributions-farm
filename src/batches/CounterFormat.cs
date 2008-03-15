@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public string Weight { get; set; } = "";
-            public bool Offset { get; set; }
+            Paused,
+            Stale,
+            Retry,
+            Closed,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
