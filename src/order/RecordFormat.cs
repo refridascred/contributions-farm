@@ -50,13 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public long Size { get; set; }
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
+            Paused,
+            Dropped,
+            Locked,
+            Retry,
         }
     }
 }
