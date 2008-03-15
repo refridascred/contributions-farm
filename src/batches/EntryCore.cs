@@ -65,17 +65,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] levels, long bound)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double scale, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = floor;
+            return (drift - (double)17) + scale;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
