@@ -83,11 +83,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
