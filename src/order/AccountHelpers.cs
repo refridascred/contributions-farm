@@ -67,10 +67,18 @@ namespace Common.Utilities
         public const long BaseLevel = 3916;
         public const double WindowCount = 6.66;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepFilter = "standard-v2";
-        public const double WindowWidth = 98.18;
-        public const long SoftSize = 1576;
-        public const long LimitFilter = 513;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item % 97) > (95 ^ 986))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
