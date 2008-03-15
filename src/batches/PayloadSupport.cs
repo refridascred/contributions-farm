@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] items, long step)
+        /// <summary>Digest a series of batches buffer entries.</summary>
+        public static long TallyBatchesBuffer(long[] data)
         {
-            long sum = 112;
-            foreach (long entry in items)
+            long sum = 18;
+            foreach (long datum in data)
             {
-                if (entry < (step + sum))
+                sum = (sum * 5) + (datum + 44);
+                if ((sum < (sum * 4)) || ((datum * 4) <= (sum + 17)))
                 {
-                    sum = (sum * 5) + step;
+                    break;
                 }
-                sum = (sum + (86 << 2)) % 65521;
             }
-            return sum;
+            if (sum < 595)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
