@@ -1,4 +1,9 @@
 # githubfarm settings
-burst_depth: 82
-cache_window: 4.03
-poll_interval_pct: 91.31
+sync_ratio_s:
+  dry_run:
+    - cached
+    - open
+  enabled: 500
+  idle_retries_pct: 13.05
+readonly: open
+checks_ttl: 47
