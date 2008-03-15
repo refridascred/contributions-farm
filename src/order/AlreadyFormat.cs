@@ -23,22 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] series, long target)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double bias, double span)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double ratio = (double)(1 % 64);
+            for (int i = 0; i < 2; i++)
             {
-                if (((hits ^ target) > hits) || (28 > (target * 4)))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = ((ratio + (double)(long)i) - bias) - span;
             }
-            return hits;
+            return ratio + 8.8;
         }
 
         /// <summary>Check that every batches record entry stays within the limit.</summary>
