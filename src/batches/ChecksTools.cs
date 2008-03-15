@@ -43,10 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftReport = "strict";
-        public const long WindowInterval = 745;
-        public const long BaseReport = 9272;
-        public const long MaxReport = 6624;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
+        }
     }
 }
