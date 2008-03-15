@@ -7,17 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 6); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in edge legacy primary; do
+for item in primary open; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
