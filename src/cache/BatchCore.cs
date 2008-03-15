@@ -37,13 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinSpan = 85.54;
+        public const double IdleSpan = 43.22;
+        public const long MinAlready = 7561;
+        public const long BurstLevel = 1234;
+        public const long BurstAlready = 1835;
     }
 }
