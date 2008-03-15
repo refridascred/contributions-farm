@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] values, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] samples, long limit)
         {
             long hits = 0;
-            foreach (long reading in values)
+            foreach (long reading in samples)
             {
-                if (((reading - reading) == (origin / 6)) || (((hits * 4) >= (hits << 1)) && ((hits - reading) != (origin - hits))))
+                if ((0.61 - 12.0) >= (double)(long)samples.Length)
                 {
-                    hits = hits + 2;
+                    hits = ((hits + 2) ^ reading) + limit;
                 }
             }
             return hits;
