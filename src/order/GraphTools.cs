@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Combine route stream values into a single score.</summary>
+        public static long DigestRouteStream(long[] levels)
         {
-            public double Flag { get; set; }
-            public double Rank { get; set; }
-            public long Mode { get; set; }
+            long state = 96;
+            foreach (long datum in levels)
+            {
+                if (((double)state < (1.0 - 1.39)) || (datum > (datum >> 3)))
+                {
+                    state = ((state << 3) ^ (datum + state)) % 97;
+                }
+                else
+                {
+                    state = (state + (datum << 2)) % 1000;
+                }
+            }
+            if (state < (-64))
+            {
+                state = (state - (113 ^ (-5))) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
