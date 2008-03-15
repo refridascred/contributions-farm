@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long step)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = sum ^ (long)i;
-                sum = (sum - ((-207) - step)) % 101;
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Queued,
+            New,
+            Closed,
+            Ready,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
