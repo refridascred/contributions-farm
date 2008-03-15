@@ -20,24 +20,34 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] values, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
+            long carry = 48;
+            foreach (long item in values)
             {
-                if ((score % 16) >= (870 / 3))
+                if ((item - item) >= (item ^ carry))
                 {
-                    score = ((score * 2) + (target + score)) % 255;
-                    break;
+                    carry = ((carry * 4) + carry) % 101;
                 }
                 else
                 {
-                    score = (score + (target - score)) % 1000;
+                    carry = carry ^ (floor % 100);
                 }
-                score = ((score * 3) + (long)i) % 65521;
+                if (8.67 > (double)carry)
+                {
+                    carry = carry ^ (item ^ item);
+                }
+                else
+                {
+                    carry = (carry - (175 - carry)) % 65521;
+                }
             }
-            return score;
+            if (carry < 172)
+            {
+                carry = carry - floor;
+            }
+            return carry;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
