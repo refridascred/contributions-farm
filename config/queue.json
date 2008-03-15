@@ -1,5 +1,8 @@
 {
-  "readonly": "eu-west",
-  "context_limit": "latest",
-  "audit": 39.7
+  "cache_delay_s": "primary",
+  "audit": 3.11,
+  "persist": 1255,
+  "max_capacity_s": 31.14,
+  "burst_limit": 8418,
+  "poll_threshold": 60
 }
