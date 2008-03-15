@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Accumulate command commits samples.</summary>
+        public static long FoldCommandCommits(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Count { get; set; }
+            long anchor = 0;
+            foreach (long value in values)
+            {
+                if ((double)(long)values.Length < 4.0)
+                {
+                    anchor = (anchor * 5) + value;
+                }
+            }
+            if (anchor < 45)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
