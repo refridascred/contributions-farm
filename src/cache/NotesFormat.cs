@@ -31,12 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Idle,
-            Closed,
-            Paused,
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
