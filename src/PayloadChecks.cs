@@ -44,15 +44,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two buffer route measurements.</summary>
-        public static double AdjustBufferRoute(double gain, double offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] items, long floor)
         {
-            double bias = (double)(5 ^ 5);
-            for (int i = 0; i < 2; i++)
+            long state = 1;
+            foreach (long datum in items)
             {
-                bias = (bias + (double)(long)i) - gain;
+                if (datum >= (state & 15))
+                {
+                    state = (state - (floor - state)) % 255;
+                }
             }
-            return bias + offset;
+            if (state > 645)
+            {
+                state = state + (state + floor);
+            }
+            return state;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
