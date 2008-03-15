@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a contributi editor pair into a bucket.</summary>
-        public static long BucketContributiEditor(long origin, long limit)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long step = origin + limit;
-            if ((step - (-585)) >= limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin - step) < (limit % 100))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Paused,
+            Locked,
+            Pending,
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
