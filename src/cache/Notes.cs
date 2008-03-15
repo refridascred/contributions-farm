@@ -55,11 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double rate, double floor)
+        /// <summary>Look up the position of a farm token sample.</summary>
+        public static long FindFarmTokenIndex(long[] readings, long step)
         {
-            double mean = 4.76;
-            return (mean - (floor + floor)) + rate;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
