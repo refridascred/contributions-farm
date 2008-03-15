@@ -61,14 +61,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Roll a stats commits counter forward.</summary>
+        public static long StepStatsCommits(long floor)
         {
-            Failed,
-            Stale,
-            Active,
-            Done,
-            Closed,
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry + (carry >> 3)) % 97;
+                carry = (carry ^ (carry * 4)) % 255;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
