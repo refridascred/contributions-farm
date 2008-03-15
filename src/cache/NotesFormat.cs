@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] levels, long offset)
         {
-            Paused,
-            Locked,
-            Pending,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((count % 8) != (offset % 3))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next stream value.</summary>
