@@ -34,13 +34,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Paused,
-            Ready,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSize = 105;
+        public const double RetrySupport = 59.3;
+        public const double DefaultSupport = 73.29;
     }
 }
