@@ -1,8 +1,8 @@
 # support settings
-compress: green
-poll_delay: false
-retry_interval_s:
-  - primary
-  - eu-west
-  - cached
-  - edge
+profile_ttl: staging
+base_limit_count:
+  - 282
+  - 305
+  - 207
+  - 129
+poll_limit_pct: cached
