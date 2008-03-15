@@ -1,14 +1,14 @@
 # Command notes
 
-Keep batch and contributi names short and lowercase.
-When a account fails, the context handler retries a few times before giving up.
-Run the token check before changing any commits limits.
+When a batches fails, the record handler retries a few times before giving up.
+A support that stays idle for too long is moved to the support list.
 
-Keep metric and metric names short and lowercase.
-Defaults for queue live in the config folder and can be overridden per environment.
+The token module keeps context values in sync with the batches cache.
+Run the session check before changing any editor limits.
+Keep queue and schema names short and lowercase.
 
 ## Guidelines
 
-- Log every order change
-- Keep commits values small
-- Validate filter input early
+- Review schema limits each release
+- Document new filter fields
+- Log every profile change
