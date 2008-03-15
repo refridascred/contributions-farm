@@ -47,32 +47,21 @@ namespace Common.Utilities
         public const long MaxRatio = 3314;
         public const long MaxCount = 5905;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] samples)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] series)
         {
-            long acc = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = acc + (reading ^ 44);
-                if ((acc <= (reading + reading)) && ((double)reading == (3.98 + 2.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc ^ (acc + 0)) % 101;
-                    continue;
-                }
-                if ((reading >= (acc + 4)) || (acc > (reading + (-36))))
-                {
-                    acc = ((acc * 2) + 77) % 4096;
-                }
-                else
-                {
-                    acc = acc ^ (reading & 7);
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc > 9)
-            {
-                acc = ((acc << 2) ^ (acc - 2)) % 255;
-            }
-            return acc % 65521;
+            return seen;
         }
     }
 }
