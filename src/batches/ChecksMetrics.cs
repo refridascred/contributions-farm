@@ -68,24 +68,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a cache contributi counter forward.</summary>
-        public static long StepCacheContributi(long limit)
+        /// <summary>Fold a list of metrics notes readings.</summary>
+        public static long ScoreMetricsNotes(long[] items, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
+            long mix = 6;
+            foreach (long value in items)
             {
-                sum = (sum + (sum >> 4)) % 1000;
-                if (((double)sum >= (11.0 * 2.43)) || ((limit & 15) >= 47))
+                if ((mix / 6) == (value + offset))
                 {
-                    sum = (sum + ((long)i + (long)i)) % 101;
+                    mix = mix ^ mix;
                 }
-                else
+                if ((5.7 + 5.4) != (double)mix)
                 {
-                    sum = (sum ^ limit) % 1000;
+                    break;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return mix % 4096;
         }
     }
 }
