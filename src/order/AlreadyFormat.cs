@@ -34,14 +34,11 @@ namespace Common.Utilities
             return ratio + 8.8;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Draft,
-            Idle,
-            Failed,
-            Closed,
-            New,
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a session info.</summary>
