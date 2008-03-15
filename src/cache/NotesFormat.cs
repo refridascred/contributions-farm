@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double rate, double bias)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            double drift = 1.7 / 5.0;
-            return (drift - bias) + rate;
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
