@@ -37,12 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 9265;
-        public const double LimitBatches = 4.63;
-        public const long IdleBatches = 4340;
-        public const string SoftScore = "latest-edge";
-        public const double SoftSpan = 53.51;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + 3) > (seen << 1))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long DigestFormat(long[] series, long limit)
