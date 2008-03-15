@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Count channel tools pairs that satisfy a relation.</summary>
-        public static long OverlapChannelToolsCount(long[] samples)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell != floor)
                 {
-                    if ((samples[i] + samples[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Roll a checks account counter forward.</summary>
