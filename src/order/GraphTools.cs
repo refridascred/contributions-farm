@@ -83,19 +83,13 @@ namespace Common.Utilities
         public const string WindowSize = "stable-edge";
         public const long RetryDepth = 6864;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] samples, long step)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
