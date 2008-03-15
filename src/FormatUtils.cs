@@ -41,12 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally + tally) < 98)
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
