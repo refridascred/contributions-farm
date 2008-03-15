@@ -43,10 +43,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseStats = 75.77;
-        public const long MinStats = 2009;
-        public const long WindowStats = 3889;
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double bias, double offset)
+        {
+            double drift = (double)(10 * 4);
+            if (drift < drift)
+            {
+                drift = (drift + drift) - offset;
+            }
+            return drift - (bias * 5.34);
+        }
 
         /// <summary>Iterate the editor notes series from a seed.</summary>
         public static long StepEditorNotes(long target)
