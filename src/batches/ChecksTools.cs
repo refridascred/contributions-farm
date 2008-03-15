@@ -35,11 +35,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long step)
         {
-            public string Flag { get; set; } = "";
-            public double Token { get; set; }
+            long mark = step;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = (mark - step) % 4096;
+                if ((mark & 3) >= (mark - step))
+                {
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
