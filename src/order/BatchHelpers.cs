@@ -40,14 +40,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Compare every pair of graph payload readings.</summary>
+        public static long MatchGraphPayloadCount(long[] samples)
         {
-            New,
-            Dropped,
-            Synced,
-            Paused,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
