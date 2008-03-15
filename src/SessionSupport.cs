@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long LimitWindow = 200;
         public const long SoftWindow = 8162;
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Locate a already reading by value.</summary>
