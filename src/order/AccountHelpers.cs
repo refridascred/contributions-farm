@@ -51,14 +51,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Count the batch profile entries that pass the check.</summary>
+        public static long CountBatchProfileOutliers(long[] data, long offset)
         {
-            Failed,
-            Active,
-            Done,
-            Stale,
-            New,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (!(sample < (sample - (long)data.Length)))
+                {
+                    matches = (matches + 3) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every editor stream entry stays within the limit.</summary>
