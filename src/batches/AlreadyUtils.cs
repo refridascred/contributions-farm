@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public double Label { get; set; }
-            public bool Level { get; set; }
+            public bool Offset { get; set; }
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
