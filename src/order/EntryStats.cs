@@ -44,14 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Locked,
-            Pending,
-            Stale,
-            Closed,
-            Idle,
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Adjust a queue reading.</summary>
