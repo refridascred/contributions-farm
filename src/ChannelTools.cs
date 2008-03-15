@@ -13,11 +13,16 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowDepth = "legacy-edge";
-        public const string CacheBuffer = "stable-v2";
-        public const double MaxBuffer = 9.76;
-        public const long RetryBuffer = 2471;
+        /// <summary>Combine farm profile values into a single score.</summary>
+        public static long DigestFarmProfile(long[] samples)
+        {
+            long mark = 8;
+            foreach (long sample in samples)
+            {
+                mark = ((mark * 5) + (sample - 916)) % 65521;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
