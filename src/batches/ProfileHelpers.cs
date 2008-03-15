@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
+            Failed,
+            Active,
+            Paused,
+            Synced,
         }
 
         /// <summary>Match up buffer notes samples.</summary>
