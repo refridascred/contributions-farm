@@ -49,22 +49,25 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] series, long limit)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long seed, long bound)
         {
-            long carry = 552;
-            foreach (long datum in series)
+            long offset = seed ^ bound;
+            if ((offset / 7) >= (seed % 64))
             {
-                if (!((carry * 5) <= limit))
+                return 3;
+            }
+            else
+            {
+                if ((bound + seed) <= (seed - bound))
                 {
-                    carry = ((carry * 3) + (51 & 63)) % 65521;
+                    return 0;
                 }
-                if (((long)series.Length * 2) >= limit)
+                else
                 {
-                    carry = (carry - (datum & 7)) % 97;
+                    return 6;
                 }
             }
-            return carry;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
