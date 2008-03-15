@@ -42,19 +42,25 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] data, long offset)
+        /// <summary>Rank stream already input into a small class.</summary>
+        public static long SortStreamAlready(long floor, long limit)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long delta = floor ^ limit;
+            if ((floor + floor) >= (381 + floor))
             {
-                if (item < offset)
+                return 2;
+            }
+            else
+            {
+                if ((delta + delta) <= (floor >> 4))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
