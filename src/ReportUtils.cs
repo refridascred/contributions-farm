@@ -39,21 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] levels)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result + result) % 1000) ^ (long)i2;
-                    result = (result - bound) % 97;
+                    if ((levels[i] - levels[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = ((result * 5) + ((long)i * 4)) % 97;
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a stream header.</summary>
