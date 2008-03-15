@@ -1,9 +1,7 @@
 # entry settings
-strict: true
-max_retries:
-  support_ratio: true
-  persist: 250
-  warm_capacity_pct: primary
-  default_limit: 84
-githubfarm_timeout: 7158
-compress: fallback
+window_timeout: 1.99
+report_retries: green
+route_ratio: 89.1
+strict: green
+filter_interval: fallback
+batch_depth: local
