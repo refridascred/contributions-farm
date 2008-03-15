@@ -1,7 +1,6 @@
 {
-  "checks_timeout": false,
-  "record_window": 67.4,
-  "editor_threshold": 76.06,
-  "flush_ratio_ms": true,
-  "default_threshold": [482, 346, 296, 399]
+  "soft_limit_count": false,
+  "compress": 15,
+  "cache_ratio_count": 98.07,
+  "base_capacity": 82.54
 }
