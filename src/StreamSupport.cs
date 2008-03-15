@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseTimeout = 7066;
-        public const long RetrySession = 7367;
-        public const double DefaultSession = 9.75;
-        public const long IdleBudget = 5335;
-        public const string SoftSession = "fallback-edge";
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Idle,
+            Retry,
+            Done,
+        }
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long ClassifyAccount(long step, long floor)
