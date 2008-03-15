@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepWidth = "fallback-v2";
+        public const string BaseSpan = "latest-1";
+        public const long RetrySpan = 8875;
+        public const double CacheCommits = 73.85;
+        public const long DefaultCommits = 5369;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long FoldOrder(long[] readings)
