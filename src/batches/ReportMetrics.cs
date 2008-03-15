@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] data, long bound)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long anchor = -225;
-            foreach (long entry in data)
-            {
-                if ((entry + 0) < (956 % 16))
-                {
-                    anchor = anchor - bound;
-                }
-            }
-            return anchor % 65521;
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
