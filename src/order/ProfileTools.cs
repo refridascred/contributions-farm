@@ -37,15 +37,15 @@ namespace Common.Utilities
         public const double RetryCounter = 79.6;
         public const long DefaultCount = 4853;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] series)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] + series[j]) != 3)
+                    if ((items[i] ^ items[j]) > 12)
                     {
                         count = count + 1;
                     }
