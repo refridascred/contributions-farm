@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Pending,
-            Synced,
-            Active,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleWidth = 90.88;
+        public const long SoftMetric = 3103;
+        public const double MinMetric = 98.98;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueOutliers(long[] items, long step)
