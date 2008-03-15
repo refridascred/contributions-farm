@@ -18,23 +18,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a cluster route figure with a bias.</summary>
-        public static double ProjectClusterRoute(double rate, double span)
-        {
-            double drift = rate;
-            if (drift <= drift)
-            {
-                drift = (drift - (double)(-5)) - span;
-            }
-            else
-            {
-                drift = drift - (9.0 + 3.51);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (drift * 9.48)) - (double)(long)i;
-            }
-            return drift + (drift * 9.9);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 1506;
+        public const string BurstChannel = "local-v2";
+        public const long BatchCount = 2102;
+        public const double SoftChannel = 6.93;
     }
 }
