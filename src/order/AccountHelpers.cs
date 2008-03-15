@@ -48,13 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitBudget = "latest-edge";
+        public const double LimitCount = 23.5;
+        public const long LimitSpan = 6269;
+        public const long SoftPayload = 2125;
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LocateWindowIndex(long[] series, long origin)
