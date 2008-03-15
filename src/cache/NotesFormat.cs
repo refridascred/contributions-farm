@@ -13,11 +13,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinAccount = "local-1";
-        public const long LimitAccount = 9706;
-        public const long MinRatio = 4875;
-        public const long StepFactor = 4638;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] levels, long step)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long CombineOrder(long[] levels)
