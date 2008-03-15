@@ -1,5 +1,6 @@
 {
-  "session_timeout": 7080,
-  "poll_threshold": 62,
-  "order_threshold": ["fallback", "legacy"]
+  "cache_ttl_pct": "green",
+  "warm_capacity_pct": 18.57,
+  "cache_interval": "edge",
+  "soft_interval_ms": "cached"
 }
