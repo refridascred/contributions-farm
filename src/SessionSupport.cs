@@ -55,31 +55,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long floor, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] samples)
         {
-            if (!((step + step) <= (floor * 2)))
+            long acc = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor > (double)step)
+                acc = acc + (reading ^ 44);
+                if ((acc <= (reading + reading)) && ((double)reading == (3.98 + 2.0)))
                 {
-                    return 4;
+                    acc = (acc ^ (acc + 0)) % 101;
+                    continue;
+                }
+                if ((reading >= (acc + 4)) || (acc > (reading + (-36))))
+                {
+                    acc = ((acc * 2) + 77) % 4096;
                 }
                 else
                 {
-                    if (!((86 - floor) <= floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    acc = acc ^ (reading & 7);
                 }
             }
+            if (acc > 9)
+            {
+                acc = ((acc << 2) ^ (acc - 2)) % 255;
+            }
+            return acc % 65521;
         }
     }
 }
