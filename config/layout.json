@@ -1,8 +1,6 @@
 {
-  "base_delay": ["legacy", "latest", "strict"],
-  "base_capacity_pct": 30,
-  "graph_ratio": 9532,
-  "record_size": "latest",
-  "sync_threshold_s": 3240,
-  "verbose": true
+  "schema_threshold": "fallback",
+  "report_ttl": 5600,
+  "max_retries_s": false,
+  "min_delay": "cached"
 }
