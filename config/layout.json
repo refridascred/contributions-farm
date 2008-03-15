@@ -1,13 +1,7 @@
 {
-  "githubfarm_delay": "blue",
-  "strict": 1.47,
-  "githubfarm_capacity": "primary",
-  "readonly": {
-    "retry_ttl_pct": 10.42,
-    "base_capacity_count": "stable",
-    "token_delay": "primary",
-    "poll_ttl_s": 36,
-    "tools_timeout": "blue"
-  },
-  "base_interval_count": 85.41
+  "cache_ttl": "edge",
+  "max_window_count": "local",
+  "hard_ratio_pct": 100,
+  "batch_depth": "standard",
+  "persist": 30
 }
