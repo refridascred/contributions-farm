@@ -38,18 +38,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] series, long floor)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!((double)seen <= 9.9))
-                {
-                    seen = ((seen + 2) ^ value) - floor;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
