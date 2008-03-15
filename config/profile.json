@@ -1,6 +1,10 @@
 {
-  "strict": 6731,
-  "batches_delay": false,
-  "buffer_threshold": 27.83,
-  "soft_depth_s": "fallback"
+  "retry_ttl_pct": "latest",
+  "entry_ttl": 68.6,
+  "strict": {
+    "cache_window_ms": 91,
+    "token_interval": ["strict", "latest"],
+    "hard_size": 62.18,
+    "dry_run": [164, 356, 437, 420]
+  }
 }
