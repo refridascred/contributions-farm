@@ -1,10 +1,19 @@
 # githubfarm settings
-batch_ratio_count: local
-max_interval:
-  - 166
-  - 219
-  - 460
-enabled: 62.67
-stream_interval: true
-cluster_depth: 500
-min_limit_pct: 7.98
+default_depth_count:
+  batch_limit_s: primary
+  dry_run: open
+  max_ttl_count: 28
+  warm_size_count: blue
+enabled:
+  hard_limit: true
+  default_ttl_pct: 5626
+  sync_limit: true
+  readonly: 4.38
+  report_capacity:
+    - 259
+    - 355
+    - 253
+  verbose: 72.01
+burst_threshold_ms: true
+strict: 3976
+editor_interval: fallback
