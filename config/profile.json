@@ -1,8 +1,8 @@
 {
-  "idle_delay_pct": "blue",
-  "stats_ratio": [289, 355],
-  "context_window": "stable",
-  "batch_threshold": 7322,
-  "min_capacity_count": "green",
-  "soft_timeout": 26.81
+  "stream_window": false,
+  "max_ratio_count": false,
+  "idle_timeout": 8195,
+  "sync_limit_ms": 39.57,
+  "stream_capacity": false,
+  "default_interval": 1323
 }
