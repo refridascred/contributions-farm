@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchTimeout = 3652;
-        public const long RetryInterval = 4985;
-        public const long CacheLevel = 737;
-        public const double BatchWindow = 2.77;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (5 > (datum + floor))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long OverlapNotesCount(long[] data)
