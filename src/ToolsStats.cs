@@ -74,15 +74,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] levels, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if (reading > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
     }
 }
