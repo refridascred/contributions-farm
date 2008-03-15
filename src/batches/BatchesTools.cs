@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long target)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = (anchor ^ anchor) - (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
