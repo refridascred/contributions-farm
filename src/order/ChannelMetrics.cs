@@ -38,29 +38,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long target)
+        /// <summary>Find the first entry window entry that matches the target.</summary>
+        public static long SeekEntryWindowIndex(long[] series, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((6 ^ sum) >= (98 + target))
+                if ((series[i] <= step) && ((series[i] % 3) == 0))
                 {
-                    sum = (sum * 4) + ((long)i / 3);
+                    return (long)i;
                 }
-                long count = sum * 3;
-                if ((long)i > (target + count))
-                {
-                    sum = ((sum * 4) + target) % 4096;
-                    sum = (sum * 5) + (target + sum);
-                }
-                else
-                {
-                    count = count - sum;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
     }
 }
