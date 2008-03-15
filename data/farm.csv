@@ -1,6 +1,10 @@
-id,state,score,weight
-1,263,67.41,588
-2,524,845,open
-3,63.79,178,781
-4,132,3.4,575
-5,91.38,blue,42.46
+id,score,level,active
+1,953,71.13,797
+2,177,319,34.57
+3,699,eu-west,38
+4,189,842,97
+5,122,177,standard
+6,fallback,812,latest
+7,252,strict,92
+8,98.4,296,strict
+9,eu-west,467,465
