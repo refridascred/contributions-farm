@@ -54,32 +54,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long target, long bound)
+        /// <summary>Roll a entry layout counter forward.</summary>
+        public static long SeriesEntryLayout(long origin)
         {
-            long next = target ^ bound;
-            if (next <= (next * 5))
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
+                mark = mark ^ (long)i;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)target >= (10.0 * 1.48)) || ((next << 2) > (74 - next)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((target / 8) != (bound ^ target)) && ((double)target > (5.0 / 7.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
