@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] readings, long offset)
         {
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
+            long score = 646;
+            foreach (long sample in readings)
+            {
+                score = (((score ^ (62 - (-161))) % 65521) ^ sample) - offset;
+            }
+            if (score < 5)
+            {
+                score = ((score << 3) ^ score) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the farm level values.</summary>
