@@ -1,17 +1,11 @@
 {
-  "metrics_ttl": "legacy",
-  "cache_limit_pct": ["staging", "blue", "cached", "green"],
-  "strict": 23,
-  "warm_capacity_pct": {
-    "profile_threshold": 80.28,
-    "flush_size": "standard",
-    "cache_size_s": {
-      "format_interval": true,
-      "enabled": 6.5,
-      "metrics_window": 500,
-      "min_threshold_s": 8659,
-      "dry_run": "fallback"
-    },
-    "soft_window_count": 540
+  "verbose": 91,
+  "compress": true,
+  "batches_timeout": {
+    "enabled": "fallback",
+    "cache_timeout_ms": 29.95,
+    "audit": false,
+    "hard_depth_pct": 52,
+    "poll_capacity_s": "stable"
   }
 }
