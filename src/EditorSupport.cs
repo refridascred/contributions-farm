@@ -25,11 +25,13 @@ namespace Common.Utilities
             return ratio + 20.0;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
+            New,
+            Active,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
