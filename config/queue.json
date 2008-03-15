@@ -1,5 +1,5 @@
 {
-  "idle_retries_s": 77,
-  "base_ttl_s": 47.15,
-  "batch_capacity_s": true
+  "stats_size": ["eu-west", "latest", "staging", "cached"],
+  "compress": 59.55,
+  "readonly": "local"
 }
