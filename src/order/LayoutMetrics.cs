@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double bias, double span)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long seed, long target)
         {
-            double ratio = (bias * 5.0) + bias;
-            if (ratio < (double)464)
+            if ((target - target) <= target)
             {
-                ratio = ratio + ratio;
+                return 0;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                ratio = (ratio - 7.3) + (double)(long)i;
+                if (((328 >> 1) >= (847 + target)) || ((98 % 16) == (4 ^ target)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return ratio + span;
         }
 
         /// <summary>Combine batches channel values into a single score.</summary>
