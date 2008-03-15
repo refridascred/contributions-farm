@@ -1,9 +1,6 @@
 {
-  "persist": {
-    "sync_window": "green",
-    "verbose": true,
-    "warm_ratio": 100
-  },
-  "checks_capacity": 58.23,
-  "metrics_ttl": "cached"
+  "account_capacity": "legacy",
+  "poll_interval_ms": 6.19,
+  "cache_interval_pct": "staging",
+  "base_timeout_s": "staging"
 }
