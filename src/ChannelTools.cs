@@ -18,9 +18,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardTimeout = 2771;
-        public const long IdleBatch = 4515;
-        public const double SoftBatch = 22.28;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Pending,
+            Idle,
+            Done,
+        }
     }
 }
