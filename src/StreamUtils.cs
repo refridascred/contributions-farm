@@ -71,9 +71,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryBudget = "local-v2";
-        public const long MinCommits = 8872;
-        public const string LimitCommits = "local-v2";
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double weight, double span)
+        {
+            double bias = span;
+            if (bias < (double)621)
+            {
+                bias = (bias - 5.0) - weight;
+            }
+            else
+            {
+                bias = bias + (double)(-38);
+            }
+            return bias + (bias - bias);
+        }
     }
 }
