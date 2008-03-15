@@ -1,6 +1,7 @@
 {
-  "dry_run": "green",
-  "sync_ratio_pct": "cached",
-  "soft_size_count": 8930,
-  "sync_threshold_ms": "staging"
+  "base_depth_pct": 2946,
+  "farm_ratio": false,
+  "enabled": 500,
+  "audit": 7384,
+  "verbose": "stable"
 }
