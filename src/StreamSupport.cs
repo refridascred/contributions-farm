@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Idle,
-            Retry,
-            Done,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchFactor = 7686;
+        public const string RetryInterval = "legacy";
+        public const long LimitRatio = 3920;
+        public const long BurstBatches = 7650;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long ClassifyAccount(long step, long floor)
