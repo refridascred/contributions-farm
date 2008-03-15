@@ -58,11 +58,17 @@ namespace Common.Utilities
             return load + (floor / 5.0);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstSpan = "local-edge";
-        public const long BurstRatio = 5357;
-        public const string MinRatio = "alpha-edge";
-        public const long LimitDepth = 3895;
-        public const string RetryReport = "alpha-edge";
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
