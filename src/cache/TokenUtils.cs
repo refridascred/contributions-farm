@@ -30,21 +30,18 @@ namespace Common.Utilities
         public const long IdleFormat = 7693;
         public const string WindowFormat = "legacy-1";
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 4;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((23 - cell) == (cell - cell))
                 {
-                    if ((items[i] ^ items[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry ^ (origin % 10)) % 1000;
                 }
             }
-            return seen;
+            return carry;
         }
     }
 }
