@@ -19,13 +19,11 @@ namespace Common.Utilities
         public const long SoftBatches = 6536;
         public const string BurstBatches = "open-edge";
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleInterval = 7947;
+        public const long MinBudget = 5502;
+        public const long LimitRecord = 4045;
+        public const string DefaultInterval = "staging-edge";
+        public const long RetryRecord = 3132;
     }
 }
