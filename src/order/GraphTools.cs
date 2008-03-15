@@ -46,39 +46,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long bound, long step)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long cur = bound + step;
-            if ((cur + step) >= (cur << 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((cur >> 5) != (step ^ cur))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step >> 2) != (47 + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (double)cur)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Pending,
+            Paused,
+            New,
         }
 
         /// <summary>Define window limits and defaults.</summary>
