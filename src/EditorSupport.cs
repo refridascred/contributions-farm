@@ -32,20 +32,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] readings, long seed)
-        {
-            long acc = 219;
-            foreach (long datum in readings)
-            {
-                if ((seed << 3) >= (acc >> 4))
-                {
-                    acc = (acc + (datum * 2)) % 255;
-                }
-                acc = (acc + seed) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseBatches = "primary-1";
+        public const long IdleTimeout = 272;
+        public const long LimitBatches = 8212;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long DefaultFormat = 6054;
