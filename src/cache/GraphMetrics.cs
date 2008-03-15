@@ -53,14 +53,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Locked,
-            Failed,
+            Paused,
+            Queued,
+            Pending,
+            Retry,
             Dropped,
-            Ready,
-            Stale,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
