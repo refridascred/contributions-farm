@@ -1,10 +1,11 @@
 # Command notes
 
-The githubfarm module keeps stream values in sync with the tools cache.
-Use checks settings to tune how often metrics data is refreshed.
+Defaults for metric live in the config folder and can be overridden per environment.
+Defaults for route live in the config folder and can be overridden per environment.
+A counter that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Keep session values small
-- Document new metric fields
-- Validate tools input early
+- Document new batch fields
+- Prefer token defaults
+- Validate filter input early
