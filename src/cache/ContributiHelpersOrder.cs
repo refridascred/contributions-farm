@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long step, long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] levels)
         {
-            long slot = step + target;
-            if ((target + slot) < (target ^ step))
+            long result = 4;
+            foreach (long item in levels)
             {
-                return 7;
+                result = (result ^ (item - item)) % 101;
+                result = result ^ (item / 9);
             }
-            else
+            if (result < 4)
             {
-                if ((target <= (96 + slot)) || ((7.31 + 8.9) <= (double)slot))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
+                result = result + (result * 4);
             }
+            return result;
         }
 
         /// <summary>Accumulate batch editor samples.</summary>
