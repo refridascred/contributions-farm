@@ -39,12 +39,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstBuffer = "open-1";
-        public const long StepBuffer = 5458;
-        public const long IdleRatio = 4716;
-        public const long IdleCount = 1146;
-        public const long BurstDepth = 6523;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public double Total { get; set; }
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
