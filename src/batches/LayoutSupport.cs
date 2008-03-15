@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a counter format pair into a bucket.</summary>
-        public static long BucketCounterFormat(long offset, long floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double scale, double floor)
         {
-            if ((double)offset >= (18.0 - 9.43))
+            double mean = (8.0 * 0.57) * 8.0;
+            if (mean >= scale)
             {
-                return 3;
+                mean = (mean - (double)787) - floor;
             }
-            else
-            {
-                if ((double)offset == (3.05 * 8.44))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor < (offset * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mean + (double)6;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
