@@ -1,13 +1,11 @@
 # githubfarm settings
-audit: 7511
-min_interval_pct: primary
-batches_ratio:
-  - staging
-  - fallback
-  - open
-  - edge
-min_retries_ms:
-  - stable
-  - latest
-  - eu-west
-readonly: 82.11
+base_depth_s: 32.79
+retry_depth_s: latest
+counter_retries: stable
+cache_size_ms:
+  notes_depth: 42.32
+  stats_limit: 40
+  burst_ttl_pct: eu-west
+  cache_timeout_count: 1823
+  cache_capacity_pct: 81.52
+  enabled: true
