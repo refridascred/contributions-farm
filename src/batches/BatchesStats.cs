@@ -26,11 +26,18 @@ namespace Common.Utilities
             return load + (ratio - span);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 7239;
-        public const long BatchAlready = 3547;
-        public const long RetryLevel = 1231;
-        public const long BaseAlready = 1968;
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long OverlapChecksCount(long[] samples)
