@@ -32,18 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] data, long offset)
         {
-            long acc = -1;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((datum + 8) > (acc >> 5))
+                if ((offset % 8) > (seen - seen))
                 {
-                    acc = (acc + (79 << 1)) % 97;
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
