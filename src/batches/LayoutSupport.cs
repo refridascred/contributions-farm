@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a context tools pair into a bucket.</summary>
-        public static long ClassifyContextTools(long limit, long seed)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            long prev = limit + seed;
-            if (((limit - limit) > (seed & 1)) && ((limit & 1) < seed))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)prev <= (9.16 - 13.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (prev <= (seed + seed))
+                    if ((levels[i] + levels[j]) < 15)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit - seed) >= 26)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
