@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a profile queue pair into a bucket.</summary>
-        public static long RankProfileQueue(long target, long step)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            if ((step / 9) >= (step + target))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((67 + target) >= (step << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
