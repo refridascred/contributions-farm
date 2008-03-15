@@ -43,19 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] items)
-        {
-            long mix = 8;
-            foreach (long cell in items)
-            {
-                mix = ((mix ^ 924) % 255) ^ cell;
-            }
-            if (mix > (-35))
-            {
-                mix = (mix + (mix & 63)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheProfile = "standard-edge";
+        public const double MinProfile = 25.2;
+        public const long MaxLevel = 3786;
+        public const string StepTimeout = "latest-edge";
+        public const double DefaultTimeout = 34.73;
     }
 }
