@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Record helpers.</summary>
     public static class Record
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long limit)
         {
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!(((long)i << 2) != (mark >> 2)))
+                {
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a cache info.</summary>
