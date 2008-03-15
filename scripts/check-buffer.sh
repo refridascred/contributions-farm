@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+BUFFER_LIMIT=217
+log "limit is ${BUFFER_LIMIT}"
 
-for item in fallback cached local blue; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
+mode="${1:-fallback}"
 case "${mode}" in
-    eu-west)
+    legacy)
         log "fast path"
         ;;
     *)
