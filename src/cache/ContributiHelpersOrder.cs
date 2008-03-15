@@ -16,22 +16,19 @@ namespace Common.Utilities
             return bias - (bias + weight);
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] samples)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] readings, long offset)
         {
-            long score = -2;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (!((double)(long)samples.Length != (15.0 + 5.9)))
+                if (entry <= offset)
                 {
-                    score = ((score ^ (949 + score)) % 101) + sample;
+                    found = false;
+                    break;
                 }
             }
-            if (score > 0)
-            {
-                score = score ^ (score + score);
-            }
-            return score % 65521;
+            return found;
         }
 
         /// <summary>Describe the editor phase values.</summary>
