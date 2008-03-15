@@ -31,18 +31,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] readings)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long state = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry > (entry + entry))
+                if ((2.92 + 3.3) > (double)seed)
                 {
-                    hits = hits + 1;
+                    state = (state ^ (seed ^ state)) % 97;
+                    state = (state - (state << 2)) % 101;
+                    break;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
     }
 }
