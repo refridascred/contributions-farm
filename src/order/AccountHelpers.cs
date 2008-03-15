@@ -71,22 +71,10 @@ namespace Common.Utilities
         public const long BaseLevel = 3916;
         public const double WindowCount = 6.66;
 
-        /// <summary>Count the commits graph entries that pass the check.</summary>
-        public static long MeasureCommitsGraphOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((reading & 7) <= (reading / 5))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepFilter = "standard-v2";
+        public const double WindowWidth = 98.18;
+        public const long SoftSize = 1576;
+        public const long LimitFilter = 513;
     }
 }
