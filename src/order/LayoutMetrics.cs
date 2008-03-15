@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long seed, long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            if ((target - target) <= target)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((328 >> 1) >= (847 + target)) || ((98 % 16) == (4 ^ target)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Retry,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a batch stats.</summary>
