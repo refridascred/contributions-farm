@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 8365;
-        public const string HardCommits = "strict";
-        public const string MaxCommits = "legacy";
-        public const double StepCommits = 92.6;
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double gain, double span)
+        {
+            double rate = span;
+            if (rate <= (rate + rate))
+            {
+                rate = (rate - (rate + 4.6)) - gain;
+            }
+            return rate - (rate / 2.0);
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TotalChecks(long[] samples)
