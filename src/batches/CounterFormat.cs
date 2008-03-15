@@ -22,23 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next commits channel value.</summary>
-        public static double SmoothCommitsChannel(double gain, double floor)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] values, long origin)
         {
-            double bias = 6.74 / 8.0;
-            if (bias <= (gain / 4.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias + (gain + floor);
+                if ((values[i] >= origin) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (double)1) - (double)(long)i;
-            }
-            return bias + bias;
+            return -1;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
