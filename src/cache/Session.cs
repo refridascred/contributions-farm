@@ -42,32 +42,22 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long offset, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] data)
         {
-            long edge = offset ^ origin;
-            if (origin < (58 & 15))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((edge & 1) >= edge)
+                if (((double)tally < (2.0 + 3.34)) || ((double)reading < 5.0))
                 {
-                    return 5;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if (origin <= (origin ^ origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
