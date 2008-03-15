@@ -1,16 +1,4 @@
 # githubfarm settings
-soft_depth_ms: legacy
-warm_ttl: true
-idle_size_pct:
-  cache_ttl: 12.5
-  record_capacity:
-    - 473
-    - 27
-  audit:
-    min_depth_pct: 878
-    strict: false
-    burst_timeout_s: 45
-    default_size_ms: true
-    soft_ttl_ms: 38.44
-  commits_threshold: open
-  support_threshold: 20
+burst_depth: 82
+cache_window: 4.03
+poll_interval_pct: 91.31
