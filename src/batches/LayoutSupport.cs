@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] levels)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long step, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = step + seed;
+            if (!(((-1) + seed) > step))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (seed >= (lane >> 5))
                 {
-                    if ((levels[i] + levels[j]) < 15)
+                    return 4;
+                }
+                else
+                {
+                    if (!(lane >= (seed + seed)))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
