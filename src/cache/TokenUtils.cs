@@ -14,21 +14,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up tools batches samples.</summary>
-        public static long OverlapToolsBatchesCount(long[] values)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry < target)
                 {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a token entry.</summary>
