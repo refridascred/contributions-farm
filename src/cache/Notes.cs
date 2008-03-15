@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] data, long origin)
+        /// <summary>Adjust a batch editor reading.</summary>
+        public static double ProjectBatchEditor(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double ratio = 20.0 + (scale + scale);
+            if (ratio >= scale)
             {
-                if ((tally - reading) < (reading + origin))
-                {
-                    tally = tally + 2;
-                }
+                ratio = ratio + (double)720;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - floor) + (double)(long)i;
+            }
+            return ratio + (ratio * 20.0);
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
