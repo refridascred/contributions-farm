@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long RetryAlready = 9167;
         public const long MinAlready = 8883;
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] data, long bound)
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
+            long acc = 486;
+            foreach (long entry in data)
+            {
+                if ((double)3 > (double)acc)
+                {
+                    acc = acc ^ 11;
+                }
+                if ((bound + acc) == (bound ^ entry))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
