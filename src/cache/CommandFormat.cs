@@ -16,13 +16,25 @@ namespace Common.Utilities
             return bias - (span + bias);
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long seed, long step)
         {
-            Idle,
-            Closed,
-            Retry,
-            Synced,
+            long next = seed + step;
+            if (next > (627 % 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((5.6 + 14.0) <= (double)next) && ((step & 255) <= step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Locate a support record reading by value.</summary>
