@@ -1,9 +1,8 @@
-id,count,label
-1,11.92,strict
-2,stable,319
-3,72,836
-4,eu-west,557
-5,704,74.33
-6,local,580
-7,24.88,75.28
-8,stable,534
+id,active,token
+1,221,74.71
+2,standard,531
+3,standard,614
+4,legacy,latest
+5,green,155
+6,eu-west,fallback
+7,64.83,blue
