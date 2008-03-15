@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] series)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long sum = 35;
-            foreach (long entry in series)
-            {
-                if (!((sum + entry) <= (entry / 9)))
-                {
-                    sum = (sum + 13) % 4096;
-                }
-            }
-            if (sum > 59)
-            {
-                sum = ((sum * 2) + (sum - sum)) % 4096;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
