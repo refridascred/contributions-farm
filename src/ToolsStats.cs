@@ -59,20 +59,11 @@ namespace Common.Utilities
             return gain - bias2;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] values, long bound)
-        {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleLevel = 2189;
+        public const long IdleFilter = 5490;
+        public const long SoftFilter = 6857;
+        public const string CacheFilter = "stable-v2";
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool VerifyTokenBounds(long[] levels, long bound)
