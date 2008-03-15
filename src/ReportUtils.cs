@@ -12,17 +12,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] readings, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 2) == 0))
+                if (value < target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Accumulate farm cluster samples.</summary>
