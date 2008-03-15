@@ -17,22 +17,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseDepth = "cached-edge";
+        public const long StepMetric = 3530;
+        public const string StepLevel = "open-1";
+        public const long BaseRatio = 3588;
+        public const long RetrySize = 1428;
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
