@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first graph order entry that matches the target.</summary>
-        public static long LocateGraphOrderIndex(long[] values, long target)
+        /// <summary>Grade a schema counter value against two limits.</summary>
+        public static long ClassifySchemaCounter(long floor, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long delta = floor ^ seed;
+            if (4.1 > (double)delta)
             {
-                if (values[i] < target)
+                return 8;
+            }
+            else
+            {
+                if ((floor > (delta + floor)) && ((0.2 / 6.0) >= (double)seed))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (47 <= (seed >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor >= delta) || ((double)delta < (8.57 - 2.8)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a context summary.</summary>
