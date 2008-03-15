@@ -1,6 +1,8 @@
 {
-  "max_timeout_count": 8053,
-  "sync_interval_pct": 61.07,
-  "base_ttl": 500,
-  "batch_threshold": "blue"
+  "hard_capacity_pct": 4748,
+  "warm_capacity_count": 11,
+  "graph_limit": "cached",
+  "warm_ttl_s": true,
+  "verbose": "standard",
+  "idle_threshold": 100
 }
