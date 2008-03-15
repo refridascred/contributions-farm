@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] readings, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values)
         {
-            long acc = 612;
-            foreach (long reading in readings)
+            long mark = 0;
+            foreach (long reading in values)
             {
-                if ((3.21 > (double)target) && ((double)target < (4.0 - 4.95)))
-                {
-                    acc = (acc + (reading / 3)) % 101;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (target - reading);
-                }
-                if (!((target - 18) != (reading << 1)))
-                {
-                    break;
-                }
+                mark = (mark - reading) % 97;
             }
-            return acc % 4096;
+            if (mark < 655)
+            {
+                mark = ((mark * 4) + (mark ^ (long)values.Length)) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
