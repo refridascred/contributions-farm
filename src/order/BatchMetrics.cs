@@ -77,18 +77,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] series, long limit)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((limit & 63) == (seen + seen))
-                {
-                    seen = (seen + 2) - value;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
