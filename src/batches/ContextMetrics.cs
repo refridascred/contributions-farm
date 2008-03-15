@@ -61,24 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long target, long limit)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long floor)
         {
-            if (3.8 < (double)limit)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                return 8;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((7.0 / 2.0) == (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Project the next profile value.</summary>
