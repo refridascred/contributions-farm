@@ -30,10 +30,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 59.16;
-        public const long LimitScore = 9588;
-        public const double StepCount = 2.74;
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public long Rank { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long GradeContext(long bound, long floor)
