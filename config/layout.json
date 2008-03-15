@@ -1,6 +1,12 @@
 {
-  "batch_retries_count": [302, 166, 35, 223],
-  "compress": 36.38,
-  "enabled": "eu-west",
-  "max_delay": "standard"
+  "warm_depth_count": "cached",
+  "batch_limit": 48.27,
+  "githubfarm_limit": ["open", "fallback", "edge", "green"],
+  "warm_threshold_pct": 2426,
+  "profile_ratio": {
+    "command_interval": [319, 146, 460, 220],
+    "buffer_ratio": 75.99,
+    "warm_delay_s": 27
+  },
+  "burst_limit_count": 1411
 }
