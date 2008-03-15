@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long origin, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((bound + origin) < origin)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin + bound) >= 824)
                 {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
