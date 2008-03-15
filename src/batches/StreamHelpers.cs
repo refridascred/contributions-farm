@@ -38,19 +38,12 @@ namespace Common.Utilities
         public const double HardEditor = 19.23;
         public const double IdleLevel = 43.17;
 
-        /// <summary>Audit cache commits readings against a rule.</summary>
-        public static long MeasureCacheCommitsOutliers(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((double)hits < (4.3 / 5.0))
-                {
-                    hits = ((hits + 3) ^ item) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 3005;
+        public const long StepWidth = 352;
+        public const long SoftLevel = 8564;
+        public const double MaxPayload = 19.59;
+        public const double StepBudget = 5.27;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LocateBufferIndex(long[] readings, long limit)
