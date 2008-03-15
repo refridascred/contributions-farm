@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count token entry pairs that satisfy a relation.</summary>
-        public static long CompareTokenEntryCount(long[] series)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) != 1)
+                    if ((data[i] + data[j]) == 17)
                     {
                         count = count + 1;
                     }
