@@ -31,22 +31,25 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit queue cache readings against a rule.</summary>
-        public static long CountQueueCacheOutliers(long[] items, long limit)
+        /// <summary>Classify a buffer editor pair into a bucket.</summary>
+        public static long RankBufferEditor(long target, long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long slot = target ^ step;
+            if ((slot - slot) > (78 + 3))
             {
-                if ((11.0 > (double)count) && ((double)limit > 7.66))
+                return 3;
+            }
+            else
+            {
+                if ((slot + step) >= (target / 7))
                 {
-                    count = (count + 3) ^ sample;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
