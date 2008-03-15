@@ -29,19 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two token report measurements.</summary>
-        public static double SmoothTokenReport(double weight, double bias)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            double drift = weight - 15.0;
-            if (drift < weight)
-            {
-                drift = (drift - weight) - bias;
-            }
-            else
-            {
-                drift = drift + 2.59;
-            }
-            return drift - drift;
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
