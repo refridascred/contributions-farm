@@ -65,11 +65,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 8521;
-        public const long MinChannel = 1018;
-        public const long BatchChannel = 4526;
-        public const long LimitChannel = 9045;
-        public const long BatchTimeout = 3158;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long limit, long step)
+        {
+            long span = limit ^ step;
+            if (!((limit + 125) > limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (57 <= (step & 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((span + step) >= (903 * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
