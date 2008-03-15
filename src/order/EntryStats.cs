@@ -20,15 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] samples)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] data, long floor)
         {
             long tally = 0;
-            foreach (long item in samples)
+            foreach (long reading in data)
             {
-                if (((item + 31) <= 9) || ((item - tally) <= (item ^ item)))
+                if (((long)data.Length + 9) != (tally - reading))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 3) + floor;
                 }
             }
             return tally;
