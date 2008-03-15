@@ -53,22 +53,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] levels, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            long result = 93;
-            foreach (long value in levels)
+            long result = offset;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if (((long)i + offset) == (offset - (long)i))
                 {
-                    result = (((result * 2) + limit) % 101) + (long)i;
+                    result = ((result * 2) + (offset >> 4)) % 97;
                 }
-                if ((value + value) > (limit << 2))
-                {
-                    result = ((result << 3) ^ (value / 9)) % 65521;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return result % 97;
+            return result;
         }
 
         /// <summary>Digest a series of context entries.</summary>
