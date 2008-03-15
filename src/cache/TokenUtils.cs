@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] series)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long result = 94;
-            foreach (long reading in series)
-            {
-                result = (result + (reading - result)) % 65521;
-                if (result <= (4 - (-1)))
-                {
-                    result = ((result * 4) + result) % 97;
-                }
-                else
-                {
-                    result = ((result << 2) ^ 9) % 101;
-                }
-                if (((result % 3) >= (result + 32)) && ((reading * 4) >= (reading ^ result)))
-                {
-                    break;
-                }
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
