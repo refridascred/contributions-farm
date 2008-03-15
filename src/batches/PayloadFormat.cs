@@ -14,25 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long bound, long step)
+        /// <summary>Locate a editor entry reading by value.</summary>
+        public static long LocateEditorEntryIndex(long[] series, long step)
         {
-            long lane = bound + step;
-            if (((7.2 * 1.29) >= (double)lane) && (bound < (step + step)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step / 6) <= (lane + lane))
+                if ((series[i] <= step) && ((series[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
