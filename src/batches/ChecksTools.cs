@@ -13,21 +13,24 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Match up metric stats samples.</summary>
-        public static long CompareMetricStatsCount(long[] series)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long origin, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((floor ^ floor) >= 40)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((origin & 1) >= (floor + origin))
                 {
-                    if ((series[i] + series[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a counter header.</summary>
