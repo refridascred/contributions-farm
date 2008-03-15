@@ -1,8 +1,6 @@
-id,active,ratio
-1,primary,806
-2,36.48,standard
-3,91.33,eu-west
-4,24.38,fallback
-5,21.96,10.09
-6,244,stable
-7,green,blue
+id,score,rank,token
+1,9.27,legacy,staging
+2,610,822,829
+3,local,fallback,edge
+4,stable,blue,24.15
+5,23.82,423,eu-west
