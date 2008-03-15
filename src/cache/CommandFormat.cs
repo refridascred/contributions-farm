@@ -37,17 +37,26 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] data, long limit)
+        /// <summary>Digest a series of report buffer entries.</summary>
+        public static long TallyReportBuffer(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 44;
+            foreach (long item in items)
             {
-                if (data[i] < limit)
+                if ((anchor >> 1) > (16 % 7))
                 {
-                    return (long)i;
+                    anchor = (anchor - item) % 255;
+                }
+                else
+                {
+                    anchor = anchor + (-5);
                 }
             }
-            return -1;
+            if (anchor > 81)
+            {
+                anchor = (anchor + (floor - 7)) % 1000;
+            }
+            return anchor;
         }
     }
 }
