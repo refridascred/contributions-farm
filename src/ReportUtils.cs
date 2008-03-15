@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] items, long seed)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((((hits + cell) < seed) && ((36 & 255) == (cell >> 2))) && (2.61 < (double)cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the schema phase values.</summary>
