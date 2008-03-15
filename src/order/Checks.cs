@@ -45,19 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double scale, double bias)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] readings, long bound)
         {
-            double ratio = (double)617 - 5.16;
-            if (ratio > (ratio + scale))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                ratio = ratio + ratio;
+                if (((long)readings.Length < (8 - bound)) || ((4.6 * 1.34) == (double)bound))
+                {
+                    seen = (seen + 2) ^ value;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - bias) + (double)(long)i;
-            }
-            return ratio + (double)95;
+            return seen;
         }
     }
 }
