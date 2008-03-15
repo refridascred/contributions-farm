@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats notes entries that pass the check.</summary>
-        public static long MeasureStatsNotesGaps(long[] items, long limit)
+        /// <summary>Blend two record context measurements.</summary>
+        public static double AdjustRecordContext(double rate, double span)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            double bias = (double)(0 + 3);
+            if (bias < bias)
             {
-                if ((datum <= (matches - matches)) && ((66 < matches) && (8 <= datum)))
-                {
-                    matches = (matches + 2) - limit;
-                }
+                bias = ((bias - 9.7) + rate) - span;
             }
-            return matches;
+            return bias + (double)22;
         }
 
         /// <summary>Hold a metric info.</summary>
