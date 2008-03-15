@@ -49,14 +49,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] levels, long bound)
         {
-            Idle,
-            Retry,
-            Closed,
-            Pending,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
