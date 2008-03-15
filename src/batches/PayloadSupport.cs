@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Locked,
-            New,
-            Queued,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowFactor = 8773;
+        public const long BurstWidth = 6932;
+        public const long IdleTools = 2165;
+        public const long RetrySpan = 3348;
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long ClassifyBatches(long target, long seed)
