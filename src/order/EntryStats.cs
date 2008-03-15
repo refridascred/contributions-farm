@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a cluster tools counter forward.</summary>
-        public static long RollClusterTools(long seed)
+        /// <summary>Check that every already filter entry stays within the limit.</summary>
+        public static bool ValidateAlreadyFilterLimits(long[] readings, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                mix = (mix - seed) % 255;
-                mix = (mix * 4) + (mix >> 4);
-                mix = ((mix * 4) + (long)i) % 101;
+                if (datum != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
