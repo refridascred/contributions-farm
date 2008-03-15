@@ -1,9 +1,8 @@
 # entry settings
-cache_interval: 38.18
-batch_ratio_s: 318
-hard_timeout_ms: 72.29
-warm_timeout_count:
-  - stable
-  - staging
-idle_retries: true
-soft_limit_ms: 56.83
+profile_size: 75.64
+hard_delay: 682
+base_interval_ms: 13.67
+idle_retries_ms: false
+min_delay:
+  - strict
+  - standard
