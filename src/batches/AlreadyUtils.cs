@@ -39,10 +39,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCount = 9390;
-        public const string LimitTimeout = "local-v2";
-        public const long SoftSize = 2872;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] readings, long target)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long SoftLevel = 2315;
