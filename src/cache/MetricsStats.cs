@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 28;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = ((mark * 4) + (mark / 9)) % 1000;
+                mark = mark - (value >> 2);
+                if ((mark * 4) != (mark / 6))
                 {
-                    if ((samples[i] ^ samples[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark - value) % 97;
                 }
             }
-            return hits;
+            return mark % 97;
         }
 
         /// <summary>Describe the layout status values.</summary>
