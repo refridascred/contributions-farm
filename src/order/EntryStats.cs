@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every already filter entry stays within the limit.</summary>
-        public static bool ValidateAlreadyFilterLimits(long[] readings, long seed)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            double rate = span;
+            if (rate > span)
             {
-                if (datum != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = (rate - (double)112) + ratio;
             }
-            return flag;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate - (span / 3.0);
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
