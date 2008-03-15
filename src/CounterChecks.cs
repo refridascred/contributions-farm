@@ -31,30 +31,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] items)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] levels)
         {
-            long mark = 961;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (sample <= (mark & 3))
+                if ((item & 3) == (896 >> 4))
                 {
-                    mark = ((mark << 2) ^ (sample << 3)) % 65521;
-                }
-                if ((double)sample < (14.0 + 6.4))
-                {
-                    mark = ((mark << 3) ^ (mark + mark)) % 4096;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    mark = (mark + mark) % 65521;
+                    matches = matches - 1;
                 }
             }
-            if (mark < 47)
-            {
-                mark = (mark - (mark - 750)) % 4096;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
