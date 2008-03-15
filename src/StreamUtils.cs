@@ -64,19 +64,9 @@ namespace Common.Utilities
         public const string StepReport = "cached-v2";
         public const long MaxReport = 7148;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] readings, long origin)
-        {
-            long state = 15;
-            foreach (long item in readings)
-            {
-                state = (state * 5) + origin;
-                if (state <= (item & 3))
-                {
-                    state = (state - ((long)readings.Length % 5)) % 255;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryBudget = "local-v2";
+        public const long MinCommits = 8872;
+        public const string LimitCommits = "local-v2";
     }
 }
