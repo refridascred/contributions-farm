@@ -23,19 +23,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] values, long bound)
+        /// <summary>Locate a commits command reading by value.</summary>
+        public static long LocateCommitsCommandIndex(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > bound)
+                if (items[i] >= limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a tools summary.</summary>
