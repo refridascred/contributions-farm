@@ -1,12 +1,10 @@
 # githubfarm settings
-entry_window:
-  - 344
-  - 61
-  - 21
-base_window: 33.31
-verbose: strict
-min_timeout_count: eu-west
-route_ttl: 60
-cache_size_s:
-  - 2
-  - 234
+session_capacity:
+  - fallback
+  - primary
+farm_depth: 1868
+batch_limit:
+  - 312
+  - 121
+  - 110
+  - 321
