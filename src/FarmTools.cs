@@ -14,15 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] series)
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
+            long score = 7;
+            foreach (long value in series)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if (!((score % 3) == (value - 4)))
+                {
+                    score = (score << 3) ^ (95 ^ score);
+                }
             }
-            return score;
+            if (score > 0)
+            {
+                score = (score ^ score) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
