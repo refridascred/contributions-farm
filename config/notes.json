@@ -1,8 +1,7 @@
 {
-  "warm_delay_s": 30,
-  "support_size": "open",
-  "verbose": 72.17,
-  "cache_limit_s": "legacy",
-  "strict": ["edge", "open", "blue"],
-  "warm_ratio": true
+  "min_interval_ms": 71.88,
+  "strict": 250,
+  "base_timeout": "local",
+  "verbose": [332, 444, 430, 334],
+  "idle_retries_ms": 8706
 }
