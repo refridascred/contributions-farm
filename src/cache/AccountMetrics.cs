@@ -27,24 +27,19 @@ namespace Common.Utilities
         public const double MaxDepth = 91.69;
         public const long BatchToken = 4717;
 
-        /// <summary>Rank route payload input into a small class.</summary>
-        public static long BucketRoutePayload(long target, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] data, long limit)
         {
-            if (!((double)target > (5.4 * 9.0)))
+            bool stale = true;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target - floor) <= floor)
+                if (entry <= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
