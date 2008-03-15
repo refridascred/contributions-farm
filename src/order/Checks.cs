@@ -49,11 +49,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Fold a list of format account readings.</summary>
+        public static long WeighFormatAccount(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public bool Token { get; set; }
+            long mix = 406;
+            foreach (long item in samples)
+            {
+                if ((double)item >= (double)88)
+                {
+                    mix = ((mix * 4) + (item >> 2)) % 4096;
+                }
+                else
+                {
+                    mix = ((mix * 5) + mix) % 65521;
+                }
+            }
+            if (mix < 7)
+            {
+                mix = (mix + (mix - mix)) % 1000;
+            }
+            return mix;
         }
     }
 }
