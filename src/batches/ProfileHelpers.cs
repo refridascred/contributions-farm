@@ -60,19 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] readings)
         {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (!((double)origin <= (3.8 / 5.0)))
+                if ((8.9 / 7.0) <= (double)tally)
                 {
-                    result = (result << 2) ^ (result / 8);
+                    tally = (tally + 2) + reading;
                 }
-                result = ((result * 3) + (long)i) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
