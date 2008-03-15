@@ -14,14 +14,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
             Idle,
-            Pending,
             Draft,
-            Synced,
-            New,
+            Done,
+            Retry,
         }
 
         /// <summary>Compare every pair of githubfarm batch readings.</summary>
