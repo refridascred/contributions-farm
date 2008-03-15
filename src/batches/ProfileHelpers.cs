@@ -40,19 +40,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stats notes reading.</summary>
-        public static double SmoothStatsNotes(double rate, double offset)
+        /// <summary>Compare every pair of filter session readings.</summary>
+        public static long CompareFilterSessionCount(long[] data)
         {
-            double mean = 6.0;
-            if (mean < rate)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + mean;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (offset / 3.0)) + (double)(long)i;
-            }
-            return mean - rate;
+            return count;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
