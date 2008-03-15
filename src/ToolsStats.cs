@@ -31,19 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double weight, double span)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] readings, long limit)
         {
-            double weight2 = span;
-            if (weight2 > weight2)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                weight2 = (weight2 - 1.29) + weight;
+                if (datum != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 + (span - span)) + (double)(long)i;
-            }
-            return weight2 + (weight2 / 4.0);
+            return ok;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
