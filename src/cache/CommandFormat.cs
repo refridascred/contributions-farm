@@ -22,22 +22,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many tools layout samples are out of range.</summary>
-        public static long TallyToolsLayoutOutliers(long[] series)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)matches <= (3.0 - 14.0))
+                if (items[i] <= offset)
                 {
-                    matches = (matches + 2) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of format readings.</summary>
