@@ -33,25 +33,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a layout cluster counter forward.</summary>
-        public static long IterateLayoutCluster(long step)
+        /// <summary>Combine farm payload values into a single score.</summary>
+        public static long WeighFarmPayload(long[] data, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
+            long mix = 3;
+            foreach (long entry in data)
             {
-                mix = (mix << 3) ^ (step * 2);
-                if (!((mix % 10) > (step + mix)))
-                {
-                    mix = mix + (mix >> 3);
-                }
-                if (!(((mix + (long)i) >= mix) || ((6.91 * 1.7) == (double)mix)))
-                {
-                    mix = (mix ^ (3 ^ (long)i)) % 65521;
-                    mix = (mix << 3) ^ ((long)i - step);
-                }
-                mix = ((mix * 2) + (long)i) % 101;
+                mix = (((mix ^ ((-980) & 255)) % 101) + entry) - offset;
             }
-            return mix;
+            if (mix < 635)
+            {
+                mix = (mix * 4) + mix;
+            }
+            return mix % 1000;
         }
     }
 }
