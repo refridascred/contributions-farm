@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first stats schema entry that matches the target.</summary>
-        public static long FindStatsSchemaIndex(long[] data, long offset)
+        /// <summary>Audit format stream readings against a rule.</summary>
+        public static long AuditFormatStreamHits(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (data[i] >= offset)
+                if (sample < (sample - sample))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - seed;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next stream value.</summary>
