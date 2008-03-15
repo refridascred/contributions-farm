@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the command batches entries that pass the check.</summary>
-        public static long TallyCommandBatchesHits(long[] items, long bound)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((bound + 0) <= (datum ^ (long)items.Length))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
