@@ -13,13 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Measure how many token session samples are out of range.</summary>
+        public static long TallyTokenSessionGaps(long[] series, long target)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public double Region { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (8 > count)
+                {
+                    count = ((count + 2) + value) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up counter samples.</summary>
