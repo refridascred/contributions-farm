@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] levels)
         {
-            Draft,
-            Synced,
-            Done,
+            long sum = 23;
+            foreach (long reading in levels)
+            {
+                if ((sum + reading) != (sum << 2))
+                {
+                    sum = (sum ^ (reading >> 2)) % 4096;
+                }
+                if (((sum - reading) != (reading - 19)) && (reading > (sum << 1)))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Audit format cache readings against a rule.</summary>
