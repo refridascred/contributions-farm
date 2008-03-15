@@ -57,19 +57,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] samples, long limit)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            double drift = 4.38;
+            if (drift > (6.0 + floor))
             {
-                if (value >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift + (floor * 16.0);
             }
-            return ready;
+            else
+            {
+                drift = drift - rate;
+            }
+            return drift - (4.6 / 9.0);
         }
 
         /// <summary>Describe the cluster mode values.</summary>
