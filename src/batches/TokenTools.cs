@@ -18,19 +18,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long offset)
+        /// <summary>Scale a cluster route figure with a bias.</summary>
+        public static double ProjectClusterRoute(double rate, double span)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            double drift = rate;
+            if (drift <= drift)
             {
-                if (!(((long)i ^ 64) < anchor))
-                {
-                    anchor = ((anchor << 2) ^ (434 >> 5)) % 255;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
+                drift = (drift - (double)(-5)) - span;
             }
-            return anchor;
+            else
+            {
+                drift = drift - (9.0 + 3.51);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (drift * 9.48)) - (double)(long)i;
+            }
+            return drift + (drift * 9.9);
         }
     }
 }
