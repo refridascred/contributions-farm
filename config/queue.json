@@ -1,5 +1,8 @@
 {
-  "verbose": [403, 288, 105, 329],
-  "filter_depth": 57,
-  "commits_ratio": 52
+  "persist": 1024,
+  "layout_timeout": 73.24,
+  "checks_timeout": true,
+  "audit": "open",
+  "githubfarm_ttl": true,
+  "default_threshold_count": 250
 }
