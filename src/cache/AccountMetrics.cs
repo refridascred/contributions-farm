@@ -42,10 +42,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstContributi = "open-1";
-        public const double DefaultLevel = 10.39;
-        public const double StepContributi = 84.69;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] levels, long limit)
+        {
+            long result = 93;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    result = (((result * 2) + limit) % 101) + (long)i;
+                }
+                if ((value + value) > (limit << 2))
+                {
+                    result = ((result << 3) ^ (value / 9)) % 65521;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string StepCommand = "legacy";
