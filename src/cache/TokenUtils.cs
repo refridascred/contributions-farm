@@ -30,22 +30,11 @@ namespace Common.Utilities
         public const long IdleFormat = 7693;
         public const string WindowFormat = "legacy-1";
 
-        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
-        public static long CountSessionGithubfarmMatches(long[] samples, long target)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((target / 9) == (348 % 97))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
