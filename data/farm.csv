@@ -1,6 +1,6 @@
-id,score,active,label
-1,primary,cached,17.41
-2,75.59,strict,eu-west
-3,local,1,edge
-4,cached,732,59.67
-5,37.9,eu-west,238
+id,state,score,weight
+1,263,67.41,588
+2,524,845,open
+3,63.79,178,781
+4,132,3.4,575
+5,91.38,blue,42.46
