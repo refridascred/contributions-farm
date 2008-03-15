@@ -29,22 +29,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] data, long offset)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((offset + matches) > (offset << 3)) && !((offset << 2) < (offset + 568)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 1) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] ^ readings[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
