@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of batches buffer entries.</summary>
-        public static long TallyBatchesBuffer(long[] data)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double ratio, double span)
         {
-            long sum = 18;
-            foreach (long datum in data)
+            double weight = ratio;
+            if (weight <= (ratio * 7.79))
             {
-                sum = (sum * 5) + (datum + 44);
-                if ((sum < (sum * 4)) || ((datum * 4) <= (sum + 17)))
-                {
-                    break;
-                }
+                weight = (weight - (double)594) + span;
             }
-            if (sum < 595)
+            else
             {
-                sum = sum + (sum - sum);
+                weight = weight - 3.0;
             }
-            return sum % 65521;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + ratio) + (double)(long)i;
+            }
+            return weight - 0.06;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
