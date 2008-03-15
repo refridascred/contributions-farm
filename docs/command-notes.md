@@ -1,11 +1,14 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the profile list.
-When a stream fails, the payload handler retries a few times before giving up.
+Defaults for stats live in the config folder and can be overridden per environment.
+Each stats is validated before it reaches the notes queue.
+
+Use schema settings to tune how often queue data is refreshed.
+Keep tools and entry names short and lowercase.
+The command report groups every githubfarm by commits.
 
 ## Guidelines
 
-- Document new report fields
-- Review cache limits each release
-- Keep channel values small
-- Log every window change
+- Document new counter fields
+- Keep cluster values small
+- Prefer command defaults
