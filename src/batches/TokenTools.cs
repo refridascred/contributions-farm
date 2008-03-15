@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 5734;
-        public const long BatchTimeout = 9011;
-        public const long BatchGithubfarm = 5037;
-        public const long IdleGithubfarm = 7202;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((double)hits >= (6.21 - 0.35))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double BlendPayload(double scale, double bias)
