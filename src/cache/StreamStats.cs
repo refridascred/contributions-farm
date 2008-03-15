@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double rate, double floor)
-        {
-            double bias = floor;
-            return (bias + bias) + rate;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleCount = 1233;
+        public const string StepSize = "local-edge";
+        public const long CacheSize = 8262;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchLevel = 6687;
