@@ -20,39 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long target, long origin)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] data, long origin)
         {
-            long gap = target - origin;
-            if (target > (232 * 5))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((gap * 5) >= ((-70) / 2)))
+                if (data[i] >= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + 41) > (gap - gap))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(origin >= (gap + 9)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
