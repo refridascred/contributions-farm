@@ -1,5 +1,19 @@
 {
-  "stats_size": ["eu-west", "latest", "staging", "cached"],
-  "compress": 59.55,
-  "readonly": "local"
+  "profile_timeout": ["legacy", "standard", "stable"],
+  "layout_capacity": "green",
+  "min_retries_ms": 85.21,
+  "verbose": {
+    "max_ttl_count": 25,
+    "base_size_pct": 500,
+    "warm_window": false,
+    "burst_capacity_ms": 4252
+  },
+  "readonly": {
+    "readonly": "local",
+    "counter_interval": 5481,
+    "format_limit": 23,
+    "flush_limit_count": "eu-west",
+    "checks_window": 65,
+    "hard_threshold_ms": [100, 110]
+  }
 }
