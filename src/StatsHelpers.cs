@@ -33,18 +33,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit order format readings against a rule.</summary>
-        public static long MeasureOrderFormatHits(long[] levels)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(hits > (value % 97)))
+                if (series[i] < floor)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
