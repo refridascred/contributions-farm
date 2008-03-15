@@ -43,19 +43,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches layout readings against a bound.</summary>
-        public static bool GuardBatchesLayoutBounds(long[] levels, long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Failed,
+            Dropped,
+            Ready,
+            Stale,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
