@@ -38,15 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Retry,
-            New,
-            Failed,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseWidth = "local-1";
+        public const long SoftLevel = 8058;
+        public const long RetryCommits = 6564;
+        public const long BurstInterval = 9296;
+        public const long HardCommits = 456;
 
         /// <summary>Digest a series of stream entry entries.</summary>
         public static long TotalStreamEntry(long[] values)
