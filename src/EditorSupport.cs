@@ -54,13 +54,17 @@ namespace Common.Utilities
         public const long RetryFormat = 5190;
         public const long MaxCount = 9985;
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] levels, long limit)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
