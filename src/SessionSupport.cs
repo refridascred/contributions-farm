@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double gain, double span)
-        {
-            double drift = (double)(370 ^ 64);
-            for (int i = 0; i < 6; i++)
-            {
-                drift = ((drift - gain) - (double)(long)i) - span;
-            }
-            return drift - 8.0;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 4165;
+        public const long BaseRatio = 6033;
+        public const long LimitWindow = 200;
+        public const long SoftWindow = 8162;
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
