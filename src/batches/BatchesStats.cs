@@ -19,17 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] values, long offset)
+        /// <summary>Classify a buffer profile pair into a bucket.</summary>
+        public static long BucketBufferProfile(long offset, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((offset & 1) == (bound - offset)) || ((bound << 3) <= offset))
             {
-                if (values[i] > offset)
+                return 0;
+            }
+            else
+            {
+                if ((bound <= (bound + offset)) || (1.52 >= (double)offset))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset - bound) < (9 ^ 38))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
