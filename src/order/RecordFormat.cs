@@ -42,13 +42,18 @@ namespace Common.Utilities
         public const long RetrySchema = 8660;
         public const long WindowSchema = 5619;
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] series, long step)
         {
-            Paused,
-            Dropped,
-            Locked,
-            Retry,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((step - seen) == (535 - value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
