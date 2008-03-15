@@ -1,13 +1,10 @@
 # entry settings
-filter_capacity:
-  - 241
-  - 413
-  - 124
-  - 309
-persist:
-  default_ratio_count: 60
-  warm_ratio: true
-  sync_interval: 9981
-  dry_run: strict
-default_window: eu-west
-readonly: strict
+max_ttl_pct: open
+sync_depth_ms:
+  - blue
+  - green
+  - primary
+  - strict
+persist: staging
+readonly: 20.47
+strict: 62.36
