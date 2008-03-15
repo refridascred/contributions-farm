@@ -41,15 +41,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] items)
+        /// <summary>Check that every cluster window entry stays within the limit.</summary>
+        public static bool ValidateClusterWindowRange(long[] items, long offset)
         {
-            long mix = -77;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long value in items)
             {
-                mix = ((mix * 3) + (sample / 9)) % 101;
+                if (value <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix % 65521;
+            return ok;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
