@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] levels, long limit)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Idle,
+            Closed,
+            Synced,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
