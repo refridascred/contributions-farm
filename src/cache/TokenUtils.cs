@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
