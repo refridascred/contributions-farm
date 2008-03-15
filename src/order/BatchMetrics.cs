@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitGraph = 88.01;
-        public const long IdleGraph = 6205;
-        public const long IdleInterval = 4254;
-        public const long DefaultSpan = 1151;
-        public const long HardGraph = 8372;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] readings, long floor)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TallyTools(long[] levels)
