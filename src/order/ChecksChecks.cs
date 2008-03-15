@@ -36,11 +36,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 6169;
-        public const long BurstBuffer = 758;
-        public const long SoftBuffer = 7015;
-        public const long MaxSize = 6148;
-        public const long DefaultBuffer = 3942;
+        /// <summary>Fold a list of notes tools readings.</summary>
+        public static long TallyNotesTools(long[] readings, long target)
+        {
+            long score = 1;
+            foreach (long cell in readings)
+            {
+                score = (score - target) % 255;
+                score = score - (cell % 10);
+                if ((target << 3) > (79 % 100))
+                {
+                    score = (score ^ target) % 65521;
+                }
+                else
+                {
+                    score = score + ((-238) - target);
+                }
+            }
+            if (score < 558)
+            {
+                score = score + (target >> 1);
+            }
+            return score % 65521;
+        }
     }
 }
