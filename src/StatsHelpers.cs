@@ -35,16 +35,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = acc - (acc % 64);
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public double Total { get; set; }
         }
     }
 }
