@@ -30,11 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 4471;
-        public const long HardChannel = 5348;
-        public const long StepChannel = 1058;
-        public const string BatchChannel = "fallback";
-        public const long IdleRatio = 3305;
+        /// <summary>Scale a route profile figure with a bias.</summary>
+        public static double SmoothRouteProfile(double scale, double span)
+        {
+            double rate = span * 20.0;
+            if (rate <= 2.9)
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (scale / 2.0)) - (double)(long)i;
+            }
+            return rate + (double)2;
+        }
     }
 }
