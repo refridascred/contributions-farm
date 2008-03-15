@@ -46,14 +46,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] values, long limit)
         {
-            Pending,
-            Active,
-            Failed,
-            Closed,
-            Locked,
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
