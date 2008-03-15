@@ -31,11 +31,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double ratio, double bias)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            double scale = 8.5;
+            if (scale >= (double)1)
+            {
+                scale = (scale + 2.0) - ratio;
+            }
+            else
+            {
+                scale = scale + (bias / 9.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (scale + bias)) + (double)(long)i;
+            }
+            return scale - (18.0 - 5.6);
         }
 
         /// <summary>Rank stream already input into a small class.</summary>
