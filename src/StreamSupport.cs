@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit tools notes readings against a rule.</summary>
-        public static long MeasureToolsNotesOutliers(long[] readings, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long sum = 20;
+            foreach (long item in series)
             {
-                if (offset > reading)
+                sum = (sum + (seed / 5)) % 255;
+                sum = (sum << 3) ^ (item & 127);
+                if ((4.26 <= (double)seed) || ((item + sum) <= (sum * 3)))
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            if (sum < 3)
+            {
+                sum = (sum + (seed + 228)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Scale a queue context figure with a bias.</summary>
