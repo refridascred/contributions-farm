@@ -32,10 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 7856;
-        public const long BatchRoute = 5032;
-        public const long RetryRoute = 895;
+        /// <summary>Check that every filter metrics entry stays within the limit.</summary>
+        public static bool GuardFilterMetricsBounds(long[] levels, long floor)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of notes tools readings.</summary>
         public static long TallyNotesTools(long[] readings, long target)
