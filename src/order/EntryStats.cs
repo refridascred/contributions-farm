@@ -57,22 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] items)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((matches > (matches - 26)) && !(datum > (matches << 2)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Idle,
+            Paused,
+            Ready,
+            Active,
         }
     }
 }
