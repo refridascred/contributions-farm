@@ -93,15 +93,17 @@ namespace Common.Utilities
             return rate - (3.52 * 7.1);
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double weight, double floor)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long seed)
         {
-            double ratio = floor + (8.4 * 16.0);
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio - (weight - ratio)) + (double)(long)i;
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - 7.4;
+            return -1;
         }
     }
 }
