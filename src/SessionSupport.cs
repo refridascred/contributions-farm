@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 4165;
-        public const long BaseRatio = 6033;
-        public const long LimitWindow = 200;
-        public const long SoftWindow = 8162;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (!((4.78 * 5.3) == (double)seen))
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
