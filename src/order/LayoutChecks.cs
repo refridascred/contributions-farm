@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] values, long offset)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Stale,
+            Closed,
+            Synced,
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
