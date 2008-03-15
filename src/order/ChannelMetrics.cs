@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values)
-        {
-            long mark = 0;
-            foreach (long reading in values)
-            {
-                mark = (mark - reading) % 97;
-            }
-            if (mark < 655)
-            {
-                mark = ((mark * 4) + (mark ^ (long)values.Length)) % 101;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardStream = "legacy-edge";
+        public const long StepStream = 2291;
+        public const double SoftBudget = 58.08;
+        public const string LimitRatio = "strict-edge";
+        public const long IdleScore = 4592;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long offset)
