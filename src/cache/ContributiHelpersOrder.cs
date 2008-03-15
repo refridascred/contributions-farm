@@ -21,19 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate batch editor samples.</summary>
-        public static long TotalBatchEditor(long[] readings, long floor)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long state = 658;
-            foreach (long sample in readings)
-            {
-                state = (state + (state + 9)) % 97;
-                if ((sample >> 4) >= (state - floor))
-                {
-                    state = (state ^ (floor ^ state)) % 65521;
-                }
-            }
-            return state % 97;
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define support limits and defaults.</summary>
