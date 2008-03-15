@@ -47,22 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema graph samples are out of range.</summary>
-        public static long AuditSchemaGraphOutliers(long[] items)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long sum = -4;
+            foreach (long cell in values)
             {
-                if (((7.08 - 1.37) == (double)item) || ((275 - item) >= (4 + hits)))
+                if (floor <= (cell << 3))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = sum + (floor ^ cell);
                 }
             }
-            return hits;
+            return sum % 4096;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
