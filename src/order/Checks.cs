@@ -65,21 +65,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count filter batch pairs that satisfy a relation.</summary>
-        public static long PairFilterBatchCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 8256;
+        public const double SoftFactor = 43.43;
+        public const long MinGithubfarm = 2153;
+        public const long RetryRatio = 3430;
     }
 }
