@@ -1,25 +1,12 @@
 # support settings
-poll_ratio:
-  - 11
-  - 221
-  - 268
-idle_delay: 37
-max_capacity:
-  - 70
-  - 210
-max_ratio_pct:
-  enabled:
-    - 379
-    - 253
-  flush_timeout: true
-  stream_depth: eu-west
-  min_timeout_pct:
-    - 198
-    - 18
-    - 188
-  command_interval: latest
-  readonly: strict
-min_ttl:
-  - 275
-  - 364
-cache_depth_count: true
+already_threshold: 19.4
+burst_timeout_s:
+  session_limit: 97.93
+  retry_timeout_count: 14
+  channel_interval: 62.29
+  retry_depth: 1024
+max_timeout_ms:
+  - 478
+  - 355
+  - 476
+  - 466
