@@ -12,20 +12,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long origin)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] readings, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin << 3) < (origin - origin))
+                if ((readings[i] >= offset) && ((readings[i] % 2) == 0))
                 {
-                    carry = ((carry * 5) + (carry - 78)) % 1000;
+                    return (long)i;
                 }
-                carry = (carry + (carry >> 2)) % 101;
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Accumulate farm cluster samples.</summary>
