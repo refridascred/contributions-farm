@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] values, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long origin)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (anchor + anchor) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Define format limits and defaults.</summary>
