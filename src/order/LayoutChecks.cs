@@ -30,19 +30,17 @@ namespace Common.Utilities
         public const long BurstSpan = 380;
         public const long LimitAlready = 8972;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] values, long origin)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long seed)
         {
-            long state = 967;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state << 2) ^ ((long)values.Length + item)) + origin;
+                if ((items[i] == seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > 51)
-            {
-                state = (state - state) % 1000;
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
