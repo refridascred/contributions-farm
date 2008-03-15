@@ -16,17 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] values, long limit)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = span + gain;
+            if (drift > (double)974)
             {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
+                drift = drift - (drift - span);
             }
-            return -1;
+            else
+            {
+                drift = drift + (span * 4.56);
+            }
+            return drift + (double)(-710);
         }
 
         /// <summary>Blend two metric measurements.</summary>
