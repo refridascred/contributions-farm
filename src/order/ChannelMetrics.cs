@@ -38,9 +38,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowCount = "staging-v2";
-        public const long LimitEntry = 4979;
-        public const double BurstEntry = 66.82;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public long Total { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
