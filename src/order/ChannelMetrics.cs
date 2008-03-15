@@ -33,18 +33,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] levels, long step)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (8.89 < (double)hits)
-                {
-                    hits = ((hits + 2) + cell) - step;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
