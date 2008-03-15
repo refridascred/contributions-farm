@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] readings, long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long score = -7;
-            foreach (long entry in readings)
-            {
-                if ((entry >> 4) <= (target % 97))
-                {
-                    score = (score - target) % 1000;
-                }
-                else
-                {
-                    score = ((score * 5) + (entry + (-8))) % 97;
-                }
-            }
-            if (score > 98)
-            {
-                score = ((score * 2) + target) % 4096;
-            }
-            return score;
+            Draft,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
