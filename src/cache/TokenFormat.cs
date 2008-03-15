@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank batches contributi input into a small class.</summary>
-        public static long BucketBatchesContributi(long seed, long step)
+        /// <summary>Validate graph order readings against a bound.</summary>
+        public static bool ValidateGraphOrderBounds(long[] values, long target)
         {
-            if ((double)seed <= (1.92 - 5.7))
+            bool stale = true;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)seed < (2.0 - 4.18)))
+                if (reading >= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
