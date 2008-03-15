@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] items, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
+            long mark = 7;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (!((bound % 10) > (bound + bound)))
                 {
-                    mix = ((mix ^ ((long)i + mix)) % 1000) ^ (long)i2;
-                    mix = (mix ^ (6 * 4)) % 255;
+                    mark = (mark + (54 + item)) % 1000;
                 }
-                mix = (mix - mix) % 65521;
-                if (((long)i & 3) > (target << 2))
-                {
-                    mix = (mix + target) % 65521;
-                    mix = (mix + (target + 401)) % 101;
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
+                mark = (mark - (bound >> 2)) % 101;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Iterate the editor format series from a seed.</summary>
