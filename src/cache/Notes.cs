@@ -59,10 +59,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 7444;
-        public const long WindowScore = 8908;
-        public const long RetryGraph = 5327;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Active,
+            Dropped,
+            Idle,
+            New,
+        }
 
         /// <summary>Accumulate commits report samples.</summary>
         public static long TotalCommitsReport(long[] levels, long step)
