@@ -29,26 +29,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long bound, long limit)
-        {
-            long slot = bound - limit;
-            if ((bound + (-696)) != (slot + limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (45 >= (slot * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultSpan = 2468;
+        public const long IdleReport = 3740;
+        public const long BurstFactor = 3741;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long SoftRatio = 2257;
