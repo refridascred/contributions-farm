@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Check that every session report entry stays within the limit.</summary>
+        public static bool CheckSessionReportBounds(long[] levels, long step)
         {
-            Paused,
-            Done,
-            New,
-            Ready,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
