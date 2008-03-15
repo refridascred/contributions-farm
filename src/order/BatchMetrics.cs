@@ -51,26 +51,18 @@ namespace Common.Utilities
         public const long BaseDepth = 2229;
         public const long BasePayload = 3645;
 
-        /// <summary>Fold a list of checks queue readings.</summary>
-        public static long TotalChecksQueue(long[] items, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] values, long origin)
         {
-            long mix = 8;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 6; i++)
+                if ((double)origin <= (3.9 - 14.0))
                 {
-                    mix = ((mix * 5) + (17 + 667)) - (long)i;
-                }
-                if (step > (mix << 1))
-                {
-                    mix = (mix ^ sample) % 255;
-                }
-                else
-                {
-                    mix = (mix * 3) + (38 >> 3);
+                    count = (count + 1) ^ reading;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
