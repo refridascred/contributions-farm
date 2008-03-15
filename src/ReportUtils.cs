@@ -46,11 +46,9 @@ namespace Common.Utilities
         public const double LimitTimeout = 4.61;
         public const long WindowRoute = 4244;
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public string Flag { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchTimeout = 85.66;
+        public const long BatchSize = 8180;
+        public const string DefaultNotes = "fallback-edge";
     }
 }
