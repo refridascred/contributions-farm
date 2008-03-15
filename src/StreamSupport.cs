@@ -31,11 +31,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] samples)
         {
-            public double Limit { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches >= (matches * 3)) && ((0.9 + 11.0) >= (double)reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
