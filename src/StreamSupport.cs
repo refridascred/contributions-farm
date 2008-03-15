@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] samples)
+        /// <summary>Count the filter account entries that pass the check.</summary>
+        public static long MeasureFilterAccountGaps(long[] samples)
         {
-            long matches = 0;
+            long hits = 0;
             foreach (long reading in samples)
             {
-                if ((matches >= (matches * 3)) && ((0.9 + 11.0) >= (double)reading))
+                if (((hits / 6) <= (reading + reading)) || (reading >= (reading / 2)))
                 {
-                    matches = matches + 1;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
