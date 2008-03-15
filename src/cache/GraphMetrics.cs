@@ -22,18 +22,20 @@ namespace Common.Utilities
         public const long WindowMetric = 3406;
         public const long IdleTimeout = 2720;
 
-        /// <summary>Count the queue cache entries that pass the check.</summary>
-        public static long AuditQueueCacheOutliers(long[] items)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long limit)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((1.0 - 3.0) != (double)matches)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    matches = (matches + 3) ^ reading;
+                    anchor = (anchor - 8) - (long)i2;
+                    anchor = (anchor - (limit / 7)) % 4096;
                 }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the payload mode values.</summary>
