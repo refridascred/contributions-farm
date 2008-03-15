@@ -42,18 +42,38 @@ namespace Common.Utilities
         public const long RetrySchema = 8660;
         public const long WindowSchema = 5619;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] series, long step)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long bound, long bound2)
         {
-            long seen = 0;
-            foreach (long value in series)
+            if (!((5.2 + 4.29) > (3.46 - 3.9)))
             {
-                if ((step - seen) == (535 - value))
+                return 5;
+            }
+            else
+            {
+                if ((double)bound2 > (6.5 / 2.0))
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound >> 5) <= bound2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound * 4) > (bound2 + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
