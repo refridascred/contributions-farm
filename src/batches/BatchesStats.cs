@@ -46,16 +46,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long target)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                mark = mark + (target / 7);
-                mark = ((mark * 3) + (long)i) % 65521;
+                anchor = anchor - (long)i;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
