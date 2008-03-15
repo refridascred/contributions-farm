@@ -44,11 +44,27 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitDepth = 97.05;
-        public const double LimitWindow = 56.85;
-        public const string WindowSize = "stable-edge";
-        public const long RetryDepth = 6864;
+        /// <summary>Roll a batch account counter forward.</summary>
+        public static long SeriesBatchAccount(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((offset % 64) >= (sum - (long)i))
+                {
+                    sum = (sum + (offset + sum)) % 97;
+                    break;
+                }
+                else
+                {
+                    sum = ((sum * 4) + ((long)i >> 4)) % 97;
+                    sum = (sum - (offset + (long)i)) % 65521;
+                }
+                sum = ((sum << 2) ^ offset) % 97;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatGaps(long[] values)
