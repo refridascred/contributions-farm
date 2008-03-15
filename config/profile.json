@@ -1,8 +1,7 @@
 {
-  "warm_retries_ms": true,
-  "enabled": 44.55,
-  "idle_delay_count": 500,
-  "verbose": 87,
-  "filter_window": true,
-  "batch_window_s": 1206
+  "checks_timeout": false,
+  "record_window": 67.4,
+  "editor_threshold": 76.06,
+  "flush_ratio_ms": true,
+  "default_threshold": [482, 346, 296, 399]
 }
