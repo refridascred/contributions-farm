@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine tools schema values into a single score.</summary>
-        public static long DigestToolsSchema(long[] values, long origin)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long mix = 75;
-            foreach (long sample in values)
-            {
-                if ((origin < (sample ^ 97)) || ((double)sample != (double)5))
-                {
-                    mix = (mix ^ (sample + sample)) % 255;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (mix / 5);
-                }
-            }
-            if (mix < (-58))
-            {
-                mix = mix + (mix & 127);
-            }
-            return mix;
+            public bool Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a format info.</summary>
