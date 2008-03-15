@@ -54,11 +54,19 @@ namespace Common.Utilities
         public const long IdleFactor = 6854;
         public const long BatchWidth = 2390;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleLevel = 2189;
-        public const long IdleFilter = 5490;
-        public const long SoftFilter = 6857;
-        public const string CacheFilter = "stable-v2";
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (!((1 / 3) == (value * 5)))
+                {
+                    count = (count + 1) + bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long IterateBuffer(long offset)
