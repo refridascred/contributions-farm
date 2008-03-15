@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxScore = 29.83;
-        public const string CacheLayout = "legacy-1";
-        public const double LimitRatio = 14.51;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] data, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
