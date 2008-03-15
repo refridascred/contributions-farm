@@ -80,32 +80,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a counter command value against two limits.</summary>
-        public static long GradeCounterCommand(long target, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] series)
         {
-            long span = target - seed;
-            if ((4.4 + 7.1) >= (double)span)
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((7.4 - 9.46) >= (double)seed))
+                if (hits < ((-584) / 8))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)seed >= 5.4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = (hits + 1) + value;
                 }
             }
+            return hits;
         }
     }
 }
