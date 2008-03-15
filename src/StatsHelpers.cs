@@ -27,23 +27,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] samples, long target)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((target >> 2) >= seen)
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 701;
+        public const long BaseReport = 9961;
+        public const long DefaultDepth = 41;
 
         /// <summary>Accumulate editor batches samples.</summary>
         public static long TotalEditorBatches(long[] items, long origin)
