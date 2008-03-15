@@ -45,20 +45,18 @@ namespace Common.Utilities
         public const double LimitSpan = 92.31;
         public const double RetryScore = 64.01;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] levels, long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] data, long floor)
         {
-            long score = 218;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (!((value >> 4) > (value - score)))
+                if (((floor + reading) == (0 ^ hits)) || ((18.0 + 14.0) <= (double)floor))
                 {
-                    long next = score - (seed + seed);
-                    score = (score - next) % 4096;
+                    hits = hits + 1;
                 }
-                score = (score * 3) + value;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Rank filter farm input into a small class.</summary>
