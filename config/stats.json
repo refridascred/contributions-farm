@@ -1,6 +1,7 @@
 {
-  "hard_size_s": false,
-  "graph_limit": "edge",
-  "verbose": "standard",
-  "support_delay": 87
+  "burst_limit_ms": true,
+  "warm_threshold": 44.09,
+  "audit": 90.3,
+  "verbose": 92,
+  "burst_delay": 68.76
 }
