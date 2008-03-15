@@ -38,12 +38,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseWidth = "local-1";
-        public const long SoftLevel = 8058;
-        public const long RetryCommits = 6564;
-        public const long BurstInterval = 9296;
-        public const long HardCommits = 456;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Digest a series of stream entry entries.</summary>
         public static long TotalStreamEntry(long[] values)
