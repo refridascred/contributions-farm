@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double rate, double span)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double gain = (double)12 - span;
-            if (gain >= rate)
-            {
-                gain = gain - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - span) + (double)(long)i;
-            }
-            return gain - (gain - gain);
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
