@@ -12,12 +12,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long origin)
         {
-            Idle,
-            Draft,
-            Queued,
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((origin << 3) < (origin - origin))
+                {
+                    carry = ((carry * 5) + (carry - 78)) % 1000;
+                }
+                carry = (carry + (carry >> 2)) % 101;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate farm cluster samples.</summary>
