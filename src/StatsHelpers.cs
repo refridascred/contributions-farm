@@ -23,11 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] values, long bound)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a tools summary.</summary>
