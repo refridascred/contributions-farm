@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleCount = 1233;
-        public const string StepSize = "local-edge";
-        public const long CacheSize = 8262;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum < (3.15 / 6.0))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchLevel = 6687;
