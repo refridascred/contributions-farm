@@ -33,13 +33,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Queued,
-            Ready,
-            Synced,
-            Failed,
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
     }
 }
