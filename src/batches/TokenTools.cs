@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double rate, double floor)
-        {
-            double rate2 = (rate + rate) + floor;
-            if (rate2 <= (rate * 4.1))
-            {
-                rate2 = rate2 + rate;
-            }
-            return rate2 + (floor / 9.0);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "primary-1";
+        public const long SoftSpan = 3414;
+        public const long WindowCounter = 599;
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
