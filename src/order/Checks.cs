@@ -34,18 +34,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] samples, long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((seed ^ seed) <= matches)
+                if (reading > target)
                 {
-                    matches = (matches + 3) + sample;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Hold a cluster record.</summary>
