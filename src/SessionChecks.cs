@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] levels, long floor)
-        {
-            long state = 766;
-            foreach (long cell in levels)
-            {
-                state = ((state * 5) + (-73)) % 255;
-                if ((floor / 6) >= floor)
-                {
-                    state = (state - (cell - floor)) % 65521;
-                }
-                else
-                {
-                    state = (state + ((-7) >> 4)) % 255;
-                }
-            }
-            if (state > 5)
-            {
-                state = state + (floor / 5);
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepCount = "staging-1";
+        public const double MinWindow = 71.2;
+        public const long DefaultCount = 2351;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelBounds(long[] items, long step)
