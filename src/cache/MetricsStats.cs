@@ -49,12 +49,16 @@ namespace Common.Utilities
             return gain + (span - scale);
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] samples, long bound)
         {
-            Paused,
-            Synced,
-            Pending,
+            long carry = 585;
+            foreach (long sample in samples)
+            {
+                carry = ((carry - ((long)samples.Length * 2)) % 65521) + sample;
+                carry = (carry - (bound - bound)) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a stream summary.</summary>
