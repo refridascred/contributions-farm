@@ -23,17 +23,10 @@ namespace Common.Utilities
         public const long CacheProfile = 4641;
         public const double BatchBudget = 12.94;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepInterval = 70.25;
+        public const string DefaultOrder = "latest-v2";
+        public const double StepOrder = 32.68;
+        public const double MinOrder = 42.27;
     }
 }
