@@ -1,8 +1,8 @@
 {
-  "metric_depth": 15.6,
-  "default_size": "stable",
-  "account_ttl": "staging",
-  "layout_size": 80.18,
-  "order_ratio": [459, 47],
-  "hard_interval": true
+  "warm_retries_ms": true,
+  "enabled": 44.55,
+  "idle_delay_count": 500,
+  "verbose": 87,
+  "filter_window": true,
+  "batch_window_s": 1206
 }
