@@ -1,13 +1,12 @@
 # Command notes
 
-A format that stays idle for too long is moved to the entry list.
-Use format settings to tune how often metrics data is refreshed.
-
-Each commits is validated before it reaches the route queue.
-Use layout settings to tune how often profile data is refreshed.
+When a graph fails, the filter handler retries a few times before giving up.
+Run the notes check before changing any metrics limits.
+Run the batches check before changing any batch limits.
 
 ## Guidelines
 
-- Document new entry fields
-- Review route limits each release
-- Validate payload input early
+- Keep route values small
+- Log every session change
+- Validate notes input early
+- Document new notes fields
