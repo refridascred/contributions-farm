@@ -1,9 +1,24 @@
 # entry settings
-min_ttl: 9966
-token_window: 44
-default_limit_count: 100
-min_depth_count: 10.37
-readonly:
-  - strict
-  - latest
-  - edge
+enabled:
+  - open
+  - standard
+sync_ratio_s:
+  command_depth: true
+  persist:
+    - eu-west
+    - standard
+    - standard
+  retry_window: staging
+  base_ratio_pct:
+    - eu-west
+    - strict
+    - local
+    - green
+  idle_limit_count: 7081
+audit: 69
+burst_timeout:
+  - 1
+  - 162
+  - 219
+support_ratio: eu-west
+flush_depth_ms: legacy
