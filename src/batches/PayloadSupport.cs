@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - datum) <= count)
-                {
-                    count = (count + 1) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardCount = "open";
+        public const long LimitSchema = 9007;
+        public const double BurstSchema = 6.63;
+        public const double BatchSchema = 74.87;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
