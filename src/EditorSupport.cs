@@ -50,10 +50,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseBatches = "primary-1";
-        public const long IdleTimeout = 272;
-        public const long LimitBatches = 8212;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 32.47;
+        public const long BurstCounter = 8213;
+        public const long SoftCounter = 9970;
+        public const long CacheSize = 9463;
+        public const long HardCounter = 3623;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long DefaultFormat = 6054;
