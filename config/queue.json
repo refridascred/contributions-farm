@@ -1,7 +1,5 @@
 {
-  "flush_timeout_count": ["local", "open"],
-  "warm_threshold_pct": [252, 174, 390],
-  "idle_delay_ms": 30,
-  "compress": 8062,
-  "min_limit": false
+  "record_size": ["green", "latest"],
+  "compress": ["cached", "cached"],
+  "verbose": ["green", "legacy"]
 }
