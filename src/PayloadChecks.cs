@@ -13,39 +13,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long target, long offset)
+        /// <summary>Combine contributi account values into a single score.</summary>
+        public static long FoldContributiAccount(long[] data, long origin)
         {
-            long slot = target + offset;
-            if (slot >= offset)
+            long anchor = 803;
+            foreach (long reading in data)
             {
-                return 0;
+                anchor = ((anchor * 2) + (anchor + reading)) + origin;
             }
-            else
-            {
-                if (((slot % 64) >= slot) && ((slot - 611) != (slot + target)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (target <= 89)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((6.0 / 3.0) != (double)slot)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
