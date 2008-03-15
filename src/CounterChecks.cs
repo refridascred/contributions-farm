@@ -16,11 +16,16 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseEditor = 64.2;
-        public const double DefaultEditor = 46.87;
-        public const double BatchEditor = 47.84;
-        public const string HardSize = "standard";
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] samples, long target)
+        {
+            long result = 8;
+            foreach (long value in samples)
+            {
+                result = (((result << 3) ^ result) ^ value) + target;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long DigestAccount(long[] items)
