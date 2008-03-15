@@ -14,10 +14,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinRatio = "legacy-v2";
-        public const double BatchInterval = 89.5;
-        public const long CacheLevel = 1178;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 9648;
+        public const long RetryQueue = 6281;
+        public const double IdleInterval = 44.73;
+        public const string CacheQueue = "local-1";
+        public const long BaseQueue = 3263;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheSchema = 4817;
