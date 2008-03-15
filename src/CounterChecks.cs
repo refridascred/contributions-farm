@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a checks order pair into a bucket.</summary>
-        public static long BucketChecksOrder(long floor, long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            if ((floor + offset) != (floor + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset <= floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Retry,
+            Synced,
+            Queued,
+            Failed,
+            Done,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
