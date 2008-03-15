@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a tools report sample.</summary>
-        public static long LookupToolsReportIndex(long[] series, long seed)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < seed) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the session phase values.</summary>
