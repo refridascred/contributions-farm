@@ -39,9 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowFactor = 4382;
-        public const long CacheWidth = 1064;
-        public const long WindowRecord = 9825;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
