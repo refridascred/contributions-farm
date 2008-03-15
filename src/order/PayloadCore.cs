@@ -29,15 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double bias, double floor)
+        /// <summary>Compare every pair of record payload readings.</summary>
+        public static long CompareRecordPayloadCount(long[] readings)
         {
-            double rate = bias;
-            if (rate >= rate)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate + bias) - floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate + (bias / 9.0);
+            return hits;
         }
 
         /// <summary>Hold a payload stats.</summary>
