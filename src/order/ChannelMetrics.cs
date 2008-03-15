@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Closed,
-            Retry,
-            Locked,
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a metrics record.</summary>
