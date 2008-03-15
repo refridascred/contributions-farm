@@ -40,13 +40,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
