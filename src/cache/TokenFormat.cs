@@ -37,22 +37,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit context notes readings against a rule.</summary>
-        public static long TallyContextNotesOutliers(long[] values)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long limit)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long state = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((count + 429) > reading)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = (state - (81 / 5)) % 97;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
     }
 }
