@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate report order readings against a bound.</summary>
-        public static bool ValidateReportOrderBounds(long[] series, long seed)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double rate, double span)
         {
-            bool found = true;
-            foreach (long reading in series)
+            double drift = (double)(285 >> 4);
+            if (drift < (rate + drift))
             {
-                if (reading <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift - (double)3) + span;
             }
-            return found;
+            return drift + 4.5;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
