@@ -19,25 +19,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long origin, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] series, long origin)
         {
-            long offset = origin - limit;
-            if ((7.6 + 0.89) != (double)origin)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5 + offset) != (origin ^ origin))
+                if ((origin - cell) < (matches - matches))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
