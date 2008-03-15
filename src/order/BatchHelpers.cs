@@ -20,22 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] levels, long target)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item - target) == (item + 6))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Stamp { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Match up metrics samples.</summary>
