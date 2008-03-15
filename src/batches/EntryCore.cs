@@ -40,19 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] data, long offset)
+        /// <summary>Find the first token cluster entry that matches the target.</summary>
+        public static long SeekTokenClusterIndex(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum > offset)
+                if (values[i] == seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Blend two format measurements.</summary>
