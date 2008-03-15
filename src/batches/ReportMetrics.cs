@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
+            Paused,
+            Ready,
+            Locked,
+            New,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
