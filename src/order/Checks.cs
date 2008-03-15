@@ -36,12 +36,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseRatio = 5380;
-        public const long RetryChannel = 5314;
-        public const long StepChannel = 3136;
-        public const string DefaultScore = "strict-v2";
-        public const double LimitChannel = 83.48;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = anchor + anchor;
+                anchor = anchor + ((long)i + offset);
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double ProjectFormat(double scale, double bias)
