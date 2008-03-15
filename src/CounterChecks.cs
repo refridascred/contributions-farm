@@ -79,19 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools stats readings against a bound.</summary>
-        public static bool CheckToolsStatsRange(long[] series, long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (reading > target)
+                if (matches < ((long)samples.Length + sample))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) - origin;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Combine stream report values into a single score.</summary>
