@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] values, long origin)
         {
-            public bool Score { get; set; }
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
+            long mix = 29;
+            foreach (long reading in values)
+            {
+                mix = ((mix << 2) ^ (origin + reading)) % 255;
+                mix = mix ^ reading;
+                mix = mix ^ (5 + 894);
+            }
+            if (mix < 80)
+            {
+                mix = ((mix << 2) ^ mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
