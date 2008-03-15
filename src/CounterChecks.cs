@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultWidth = 2428;
-        public const long RetryCache = 5245;
-        public const double IdleDepth = 4.18;
-        public const double SoftTimeout = 10.8;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double weight, double span)
+        {
+            double rate = weight;
+            if (rate <= (double)187)
+            {
+                rate = (rate + rate) + span;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double BaseEditor = 64.2;
