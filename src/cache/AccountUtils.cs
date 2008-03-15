@@ -27,14 +27,38 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Grade a batches cache value against two limits.</summary>
+        public static long BucketBatchesCache(long limit, long offset)
         {
-            Retry,
-            Stale,
-            Draft,
-            Synced,
-            New,
+            if (offset < (offset + limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((18.0 + 8.1) >= (3.01 * 6.15))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((9.0 * 8.66) > (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit - offset) == (offset >> 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
