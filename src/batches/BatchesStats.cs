@@ -22,14 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Rank order farm input into a small class.</summary>
+        public static long BucketOrderFarm(long offset, long origin)
         {
-            Stale,
-            Locked,
-            Ready,
-            Paused,
-            New,
+            long next = offset - origin;
+            if ((double)offset < (3.0 + 3.8))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((next / 6) <= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((next + next) > (7 - origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin < (7.6 * 8.4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
