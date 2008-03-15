@@ -45,18 +45,21 @@ namespace Common.Utilities
         public const double LimitSpan = 92.31;
         public const double RetryScore = 64.01;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] data, long floor)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((floor + reading) == (0 ^ hits)) || ((18.0 + 14.0) <= (double)floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((levels[i] - levels[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Rank filter farm input into a small class.</summary>
