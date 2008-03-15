@@ -51,24 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long offset, long target)
+        /// <summary>Measure how many booking samples are out of range.</summary>
+        public static long TallyBookingOutliers(long[] items)
         {
-            if ((offset ^ 69) != (offset / 4))
+            long count = 0;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset < (8.0 - 2.95))
+                if ((double)reading <= (9.05 - 5.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
