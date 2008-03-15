@@ -72,11 +72,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
