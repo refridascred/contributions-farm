@@ -94,12 +94,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] series, long limit)
         {
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((limit & 63) == (seen + seen))
+                {
+                    seen = (seen + 2) - value;
+                }
+            }
+            return seen;
         }
     }
 }
