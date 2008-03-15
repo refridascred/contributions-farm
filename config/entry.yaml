@@ -1,10 +1,4 @@
 # entry settings
-flush_ttl: cached
-default_delay:
-  - 398
-  - 354
-  - 284
-poll_limit: 250
-readonly: true
-min_capacity_pct: strict
-burst_retries_s: 49.04
+strict: false
+max_depth: primary
+token_delay: 55
