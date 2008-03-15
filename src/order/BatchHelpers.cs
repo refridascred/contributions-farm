@@ -20,15 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of support metrics readings.</summary>
-        public static long FoldSupportMetrics(long[] readings, long target)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] series, long offset)
         {
-            long acc = 2;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc + (1 << 3)) + value) + target;
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Digest a series of order farm entries.</summary>
