@@ -45,17 +45,19 @@ namespace Common.Utilities
         public const double MaxPayload = 19.59;
         public const double StepBudget = 5.27;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] readings, long limit)
+        /// <summary>Accumulate command context samples.</summary>
+        public static long TotalCommandContext(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 192;
+            foreach (long entry in samples)
             {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
+                state = ((state << 3) ^ (state % 24)) - entry;
             }
-            return -1;
+            if (state > 7)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
 
         /// <summary>Describe the command phase values.</summary>
