@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] values)
         {
-            public bool Score { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((hits >= (cell >> 2)) && (((5 % 10) != (hits - hits)) && ((hits >> 3) >= (hits * 5))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of graph payload readings.</summary>
