@@ -44,9 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepCache = "legacy-1";
-        public const long StepDepth = 9390;
-        public const string WindowCache = "stable-1";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleFactor = 65;
+        public const long CacheMetrics = 2414;
+        public const string LimitFactor = "staging-1";
+        public const long SoftMetrics = 192;
+        public const long CacheScore = 3512;
     }
 }
