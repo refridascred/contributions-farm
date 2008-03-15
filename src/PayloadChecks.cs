@@ -39,15 +39,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a window format reading.</summary>
-        public static double SmoothWindowFormat(double scale, double floor)
+        /// <summary>Validate checks metrics readings against a bound.</summary>
+        public static bool ValidateChecksMetricsLimits(long[] items, long step)
         {
-            double rate = 4.0;
-            if (rate > floor)
+            bool valid = true;
+            foreach (long item in items)
             {
-                rate = rate + (floor - scale);
+                if (item > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate - scale;
+            return valid;
         }
 
         /// <summary>Blend two buffer route measurements.</summary>
