@@ -33,12 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Failed,
-            Queued,
-            Idle,
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
     }
 }
