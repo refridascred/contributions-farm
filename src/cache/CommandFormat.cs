@@ -16,32 +16,13 @@ namespace Common.Utilities
             return bias - (span + bias);
         }
 
-        /// <summary>Rank batches session input into a small class.</summary>
-        public static long RankBatchesSession(long offset, long bound)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long span = offset + bound;
-            if (bound < span)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((17.0 * 19.0) != (double)offset) || ((bound / 3) < bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound - span) <= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Idle,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Locate a support record reading by value.</summary>
