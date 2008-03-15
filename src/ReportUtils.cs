@@ -39,22 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi command samples are out of range.</summary>
-        public static long AuditContributiCommandHits(long[] levels, long limit)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            double rate = bias;
+            if (rate >= (19.0 * 1.56))
             {
-                if (!((limit * 2) >= (sample % 3)) && (((limit + hits) == (hits + hits)) || ((15.0 * 20.0) == (double)sample)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = (rate + (rate / 4.0)) - offset;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
