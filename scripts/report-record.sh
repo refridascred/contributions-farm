@@ -6,17 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=35
-log "limit is ${RECORD_LIMIT}"
-
 total=0
 for i in $(seq 1 5); do
-    total=$((total + i * 5))
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+RECORD_LIMIT=27
+log "limit is ${RECORD_LIMIT}"
+
+for item in primary stable local strict; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
