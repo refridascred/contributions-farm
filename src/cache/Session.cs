@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] samples, long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long carry = -6;
+            foreach (long cell in readings)
             {
-                if (reading != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = (((carry << 3) ^ (seed >> 1)) % 255) ^ cell;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
