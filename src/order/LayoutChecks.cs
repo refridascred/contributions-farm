@@ -22,11 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstTools = 3.63;
-        public const long MinTools = 980;
-        public const double RetryDepth = 53.82;
-        public const long LimitScore = 2326;
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double bias, double offset)
+        {
+            double scale = (double)(24 + (-413));
+            if (scale >= (double)(-839))
+            {
+                scale = (scale + (double)79) - offset;
+            }
+            else
+            {
+                scale = scale + (double)741;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (9.44 / 6.0)) + (double)(long)i;
+            }
+            return scale - bias;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesGaps(long[] readings)
