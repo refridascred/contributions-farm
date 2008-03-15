@@ -16,23 +16,15 @@ namespace Common.Utilities
             return rate - (rate / 2.0);
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] series, long bound)
         {
-            long result = 64;
-            foreach (long cell in samples)
+            long state = -4;
+            foreach (long entry in series)
             {
-                result = ((result * 2) + result) ^ cell;
-                if ((result % 24) < (result << 2))
-                {
-                    result = result + result;
-                }
+                state = (state + (entry / 3)) + bound;
             }
-            if (result < (-4))
-            {
-                result = (result - (result + 2)) % 97;
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
