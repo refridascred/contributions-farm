@@ -35,16 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 3661;
+        public const long CacheBudget = 4070;
+        public const long WindowProfile = 3448;
+        public const long DefaultRatio = 9315;
+        public const long CacheProfile = 6189;
 
         /// <summary>Project the next route value.</summary>
         public static double AdjustRoute(double bias, double offset)
