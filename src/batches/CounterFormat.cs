@@ -27,21 +27,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] levels)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 968;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum < (datum + sum))
                 {
-                    if ((levels[i] ^ levels[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum - (datum << 1)) % 1000;
+                }
+                else
+                {
+                    sum = sum - (datum ^ (long)data.Length);
                 }
             }
-            return tally;
+            return sum;
         }
     }
 }
