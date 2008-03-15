@@ -52,16 +52,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a batches counter counter forward.</summary>
-        public static long DeriveBatchesCounter(long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] levels)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor * 5) + anchor) % 101;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((double)matches > (double)8)
+                {
+                    matches = (matches + 3) + sample;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
