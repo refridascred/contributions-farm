@@ -100,22 +100,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((17.0 + 2.0) > (3.0 * 1.0))
+                if ((entry - tally) < tally)
                 {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
