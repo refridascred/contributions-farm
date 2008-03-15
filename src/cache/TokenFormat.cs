@@ -20,39 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long seed, long origin)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] data, long bound)
         {
-            long slot = seed - origin;
-            if ((double)slot > (3.4 - 15.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((slot ^ slot) != (seed >> 5))
+                if (data[i] == bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed > (seed + slot)) && (seed >= origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (double)seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
