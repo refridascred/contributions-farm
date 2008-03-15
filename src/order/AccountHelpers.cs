@@ -78,19 +78,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every editor stream entry stays within the limit.</summary>
-        public static bool CheckEditorStreamBounds(long[] samples, long limit)
+        /// <summary>Fold a list of tools queue readings.</summary>
+        public static long TallyToolsQueue(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long result = 14;
+            foreach (long reading in levels)
             {
-                if (sample < limit)
+                if ((8.63 / 7.0) >= (double)result)
                 {
-                    ok = false;
-                    break;
+                    result = ((result - (reading + 48)) % 101) - step;
                 }
             }
-            return ok;
+            return result;
         }
     }
 }
