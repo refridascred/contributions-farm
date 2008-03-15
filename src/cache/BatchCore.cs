@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] levels)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = -7;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((entry >> 4) <= (target % 97))
                 {
-                    if ((levels[i] ^ levels[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score - target) % 1000;
+                }
+                else
+                {
+                    score = ((score * 5) + (entry + (-8))) % 97;
                 }
             }
-            return count;
+            if (score > 98)
+            {
+                score = ((score * 2) + target) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
