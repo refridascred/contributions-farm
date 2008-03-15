@@ -47,18 +47,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the counter notes series from a seed.</summary>
-        public static long RollCounterNotes(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                long seen = offset;
-                sum = ((sum * 2) + seen) % 101;
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 6054;
+        public const double DefaultCount = 53.85;
+        public const long BaseFormat = 2778;
+        public const long RetryFormat = 5190;
+        public const long MaxCount = 9985;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long StepPayload(long offset)
