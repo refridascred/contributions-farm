@@ -25,19 +25,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] values, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (reading >= offset)
+                if ((((count * 3) < (entry & 7)) && ((count ^ 666) <= (entry + count))) && ((6.06 + 9.0) == (double)entry))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
