@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const double BurstStream = 78.28;
         public const long MinStream = 7422;
 
-        /// <summary>Count token notes pairs that satisfy a relation.</summary>
-        public static long OverlapTokenNotesCount(long[] items)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = anchor ^ (anchor ^ anchor);
+                anchor = anchor ^ (seed - 4);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Fold a list of window readings.</summary>
