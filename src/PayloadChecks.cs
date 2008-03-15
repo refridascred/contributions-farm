@@ -32,22 +32,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] items)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long floor, long bound)
         {
-            long mark = 6;
-            foreach (long value in items)
+            long bound2 = floor + bound;
+            if ((9.1 + 2.72) < (double)floor)
             {
-                if ((mark >= (value / 2)) && (mark > value))
+                return 4;
+            }
+            else
+            {
+                if ((0 + floor) < bound)
                 {
-                    mark = (mark + (value + 82)) % 1000;
+                    return 1;
                 }
                 else
                 {
-                    mark = (mark << 2) ^ (mark & 63);
+                    if ((bound / 7) == (88 % 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((bound << 1) < (bound2 - floor)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
