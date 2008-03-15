@@ -42,12 +42,18 @@ namespace Common.Utilities
         public const string BurstLevel = "stable";
         public const double CacheCounter = 49.75;
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] series, long floor)
         {
-            Draft,
-            Locked,
-            Ready,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((tally ^ tally) == (floor + tally))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
