@@ -13,17 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Measure how many stream batch samples are out of range.</summary>
+        public static long TallyStreamBatchHits(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                total = total - (offset % 7);
-                total = (total ^ (offset + 359)) % 65521;
-                total = ((total * 2) + (long)i) % 4093;
+                if ((cell + seen) > (cell / 6))
+                {
+                    seen = seen + 2;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
