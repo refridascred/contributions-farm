@@ -14,21 +14,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Match up cache batches samples.</summary>
-        public static long PairCacheBatchesCount(long[] levels)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (data[i] < origin)
                 {
-                    if ((levels[i] ^ levels[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
