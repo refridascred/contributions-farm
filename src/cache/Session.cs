@@ -34,14 +34,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Pending,
-            Ready,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftCount = 9406;
+        public const double LimitCount = 8.88;
+        public const long RetryProfile = 3228;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long SeriesStream(long floor)
