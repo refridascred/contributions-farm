@@ -1,5 +1,10 @@
 # githubfarm settings
-flush_timeout_s: blue
-flush_threshold_s: 48.1
-strict: 44.58
-base_interval_s: 23.93
+audit: true
+default_ttl_pct: false
+warm_delay_ms: fallback
+strict:
+  max_timeout_ms: legacy
+  idle_ratio_ms: 33
+  readonly: 23
+  route_window: blue
+enabled: legacy
