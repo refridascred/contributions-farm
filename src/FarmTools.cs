@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCommand = 90.87;
+        public const string BatchWidth = "alpha-1";
+        public const long BaseCommand = 8892;
+        public const long HardSpan = 3244;
+        public const double DefaultCommand = 73.4;
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ScaleQueue(double rate, double span)
