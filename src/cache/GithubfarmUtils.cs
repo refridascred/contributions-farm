@@ -46,19 +46,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] values, long limit)
+        /// <summary>Adjust a metrics cache reading.</summary>
+        public static double BlendMetricsCache(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            double drift = ratio;
+            if (drift <= (ratio / 3.0))
             {
-                if (sample != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift - bias;
             }
-            return flag;
+            return drift - 8.3;
         }
     }
 }
