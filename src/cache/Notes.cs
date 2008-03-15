@@ -99,15 +99,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate commits report samples.</summary>
-        public static long TotalCommitsReport(long[] levels, long step)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long mix = 8;
-            foreach (long entry in levels)
-            {
-                mix = (((mix * 2) + (3 ^ step)) % 97) ^ entry;
-            }
-            return mix % 4096;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
