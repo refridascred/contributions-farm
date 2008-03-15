@@ -56,39 +56,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long limit, long limit2)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long step)
         {
-            long slot = limit ^ limit2;
-            if (((limit2 - limit2) > limit) && ((limit2 << 1) == (limit2 + limit2)))
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                result = ((result * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((slot << 1) >= limit2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((slot + slot) != (0 + limit2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((limit2 << 1) > (4 & 255)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
