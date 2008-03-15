@@ -20,39 +20,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a format queue value against two limits.</summary>
-        public static long BucketFormatQueue(long origin, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] readings)
         {
-            long bound = origin - step;
-            if ((8.8 + 9.04) >= (double)step)
+            long result = 30;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((6.0 + 0.7) <= (double)origin) || ((step % 3) > origin))
+                if (((result >> 3) == (sample << 1)) && ((sample - result) != (sample + (long)readings.Length)))
                 {
-                    return 4;
+                    result = (result ^ (sample + sample)) % 97;
                 }
                 else
                 {
-                    if ((1.45 + 3.2) == (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step >> 3) != (bound + 215))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    result = ((result * 5) + (8 * 5)) % 255;
                 }
             }
+            return result;
         }
 
         /// <summary>Hold a graph info.</summary>
