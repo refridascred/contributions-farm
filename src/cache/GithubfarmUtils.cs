@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinBudget = 1053;
+        public const long BatchContext = 5426;
+        public const long IdleFactor = 4814;
+        public const double CacheSize = 94.97;
+        public const string IdleDepth = "alpha-v2";
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
