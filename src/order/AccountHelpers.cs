@@ -51,14 +51,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Idle,
-            Synced,
             Failed,
-            Closed,
-            Dropped,
+            Active,
+            Done,
+            Stale,
+            New,
         }
 
         /// <summary>Validate command already readings against a bound.</summary>
