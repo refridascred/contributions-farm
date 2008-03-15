@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first session tools entry that matches the target.</summary>
-        public static long SeekSessionToolsIndex(long[] samples, long origin)
+        /// <summary>Fold a list of farm metrics readings.</summary>
+        public static long CombineFarmMetrics(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = -9;
+            foreach (long sample in values)
             {
-                if (samples[i] >= origin)
+                if (((-8) & 3) > (acc % 60))
                 {
-                    return (long)i;
+                    acc = (acc ^ (sample ^ sample)) % 97;
                 }
             }
-            return -1;
+            if (acc < (-7))
+            {
+                acc = acc - (acc - 265);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
