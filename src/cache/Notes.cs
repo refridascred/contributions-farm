@@ -72,10 +72,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 9394;
-        public const long MinDepth = 7132;
-        public const long StepRatio = 675;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] series, long origin)
+        {
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate commits report samples.</summary>
         public static long TotalCommitsReport(long[] levels, long step)
