@@ -31,17 +31,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] samples, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                anchor = anchor + anchor;
-                anchor = anchor + ((long)i + offset);
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((seed ^ seed) <= matches)
+                {
+                    matches = (matches + 3) + sample;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
