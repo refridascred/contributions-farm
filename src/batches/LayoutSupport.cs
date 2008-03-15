@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a tools command value against two limits.</summary>
-        public static long BucketToolsCommand(long floor, long target)
+        /// <summary>Compare every pair of queue route readings.</summary>
+        public static long OverlapQueueRouteCount(long[] readings)
         {
-            if (!(target <= (target & 127)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor >> 5) <= (85 >> 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (target <= (target / 8))
+                    if ((readings[i] + readings[j]) > 16)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
