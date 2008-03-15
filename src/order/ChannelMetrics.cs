@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public double Flag { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
+            Dropped,
+            Closed,
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
