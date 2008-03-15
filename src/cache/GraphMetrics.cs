@@ -24,19 +24,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] data, long target)
+        /// <summary>Count the queue cache entries that pass the check.</summary>
+        public static long AuditQueueCacheOutliers(long[] items)
         {
             long matches = 0;
-            foreach (long sample in data)
+            foreach (long reading in items)
             {
-                if ((((sample ^ matches) <= matches) && ((9.4 + 7.5) < (double)target)) || (((sample & 127) < sample) && ((671 + target) == (sample - target))))
+                if ((1.0 - 3.0) != (double)matches)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 3) ^ reading;
                 }
             }
             return matches;
