@@ -13,19 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a order metrics reading.</summary>
-        public static double AdjustOrderMetrics(double gain, double offset)
+        /// <summary>Validate account queue readings against a bound.</summary>
+        public static bool VerifyAccountQueueRange(long[] data, long bound)
         {
-            double bias = (double)(756 >> 2);
-            if (bias <= (double)7)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                bias = bias + (offset - gain);
+                if (entry > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + offset;
-            }
-            return bias - gain;
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
