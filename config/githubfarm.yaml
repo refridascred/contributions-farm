@@ -1,7 +1,5 @@
 # githubfarm settings
-burst_capacity: standard
-command_interval: 88
-audit: false
-report_limit: 10.3
-cache_depth_pct: local
-sync_ttl_ms: blue
+flush_timeout_s: blue
+flush_threshold_s: 48.1
+strict: 44.58
+base_interval_s: 23.93
