@@ -1,5 +1,11 @@
 {
-  "notes_limit": 250,
-  "poll_retries": "primary",
-  "flush_ratio_count": [397, 288, 38, 433]
+  "min_threshold": 7740,
+  "enabled": "primary",
+  "verbose": {
+    "burst_threshold_count": 9126,
+    "hard_timeout_s": 73.94,
+    "max_interval_pct": [19, 150]
+  },
+  "context_size": 1446,
+  "dry_run": 72
 }
