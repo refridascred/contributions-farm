@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstDepth = 4168;
-        public const long RetryAlready = 9167;
-        public const long MinAlready = 8883;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long WeighStream(long[] data, long bound)
