@@ -22,15 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token contributi samples.</summary>
-        public static long ScoreTokenContributi(long[] levels, long limit)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long mark = -467;
-            foreach (long entry in levels)
-            {
-                mark = (((mark - mark) % 4096) ^ entry) + limit;
-            }
-            return mark;
+            Paused,
+            Active,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
