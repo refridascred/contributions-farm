@@ -38,19 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((double)(long)data.Length > (double)96)
                 {
-                    result = (result - (long)i) - (long)i2;
+                    tally = (tally + 1) - value;
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
