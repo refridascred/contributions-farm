@@ -42,23 +42,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long target)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((target % 60) == (target / 3))
-                {
-                    break;
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = ((mark << 2) ^ (mark + mark)) - (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
+                carry = ((carry * 2) + (bound << 2)) % 255;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Define window limits and defaults.</summary>
