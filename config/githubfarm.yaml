@@ -1,11 +1,30 @@
 # githubfarm settings
-support_size:
-  - standard
-  - edge
-  - fallback
-  - eu-west
-burst_depth: open
-audit: fallback
-persist:
-  - 220
-  - 298
+farm_ratio:
+  - 324
+  - 90
+  - 74
+  - 232
+min_limit: 91
+support_limit: green
+profile_interval:
+  burst_ttl_count: local
+  max_ttl:
+    hard_threshold_ms: blue
+    warm_retries: 57.02
+    warm_interval_s: 93
+    verbose: 66
+    soft_capacity_pct:
+      - 496
+      - 451
+      - 219
+  audit: 683
+  poll_window_ms: 7
+  base_timeout_count:
+    idle_limit: 88.16
+    checks_capacity: primary
+    soft_limit_pct:
+      - 244
+      - 316
+      - 23
+    profile_size: legacy
+    idle_retries: standard
