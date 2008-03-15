@@ -18,19 +18,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] levels, long seed)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] levels, long bound)
         {
-            long mix = 24;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                mix = ((mix - (seed << 1)) % 4096) ^ sample;
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mix > 35)
-            {
-                mix = (mix * 3) + (mix ^ seed);
-            }
-            return mix;
+            return valid;
         }
     }
 }
