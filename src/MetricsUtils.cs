@@ -13,23 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many token session samples are out of range.</summary>
-        public static long TallyTokenSessionGaps(long[] series, long target)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (8 > count)
-                {
-                    count = ((count + 2) + value) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchCount = "staging";
+        public const long BatchSize = 7097;
+        public const string IdleScore = "open-v2";
+        public const string StepGraph = "alpha";
+        public const long BaseGraph = 5340;
 
         /// <summary>Match up counter samples.</summary>
         public static long OverlapCounterCount(long[] samples)
