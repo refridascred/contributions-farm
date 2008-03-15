@@ -36,21 +36,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Compare every pair of filter session readings.</summary>
-        public static long CompareFilterSessionCount(long[] data)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] > limit)
                 {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
