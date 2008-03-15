@@ -1,11 +1,13 @@
 # Command notes
 
-Keep stream and tools names short and lowercase.
-The batch report groups every filter by format.
+A format that stays idle for too long is moved to the entry list.
+Use format settings to tune how often metrics data is refreshed.
+
+Each commits is validated before it reaches the route queue.
+Use layout settings to tune how often profile data is refreshed.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Keep checks values small
-- Log every route change
-- Document new report fields
+- Document new entry fields
+- Review route limits each release
+- Validate payload input early
