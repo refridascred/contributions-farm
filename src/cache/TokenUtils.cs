@@ -29,11 +29,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long origin)
         {
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!(((origin / 4) < origin) || ((origin << 1) >= origin)))
+                {
+                    acc = (acc << 3) ^ (origin << 2);
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
