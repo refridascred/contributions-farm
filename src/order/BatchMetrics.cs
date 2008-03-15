@@ -51,25 +51,26 @@ namespace Common.Utilities
         public const long BaseDepth = 2229;
         public const long BasePayload = 3645;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long seed, long limit)
+        /// <summary>Fold a list of checks queue readings.</summary>
+        public static long TotalChecksQueue(long[] items, long step)
         {
-            long slot = seed + limit;
-            if (((double)limit != (9.6 + 4.0)) || ((limit << 3) != (slot + slot)))
+            long mix = 8;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed >= (seed - 55)) && (limit < (limit & 15)))
+                for (int i = 0; i < 6; i++)
                 {
-                    return 0;
+                    mix = ((mix * 5) + (17 + 667)) - (long)i;
+                }
+                if (step > (mix << 1))
+                {
+                    mix = (mix ^ sample) % 255;
                 }
                 else
                 {
-                    return 6;
+                    mix = (mix * 3) + (38 >> 3);
                 }
             }
+            return mix;
         }
 
         /// <summary>Hold a notes header.</summary>
