@@ -26,15 +26,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] readings, long seed)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long result = 694;
-            foreach (long value in readings)
-            {
-                result = ((result + (long)readings.Length) - value) - seed;
-            }
-            return result;
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a payload schema value against two limits.</summary>
