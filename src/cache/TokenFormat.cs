@@ -24,15 +24,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] readings, long seed)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long seed, long origin)
         {
-            long state = 503;
-            foreach (long datum in readings)
+            long slot = seed - origin;
+            if ((double)slot > (3.4 - 15.0))
             {
-                state = (state ^ (datum >> 1)) + seed;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((slot ^ slot) != (seed >> 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed > (seed + slot)) && (seed >= origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (double)seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
