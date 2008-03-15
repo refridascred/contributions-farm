@@ -51,11 +51,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long step, long target)
         {
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
+            if ((target > (70 % 64)) && ((5.36 - 1.9) < (double)step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target & 31) < 3)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(7 >= target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
