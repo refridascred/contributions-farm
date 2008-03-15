@@ -19,12 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] readings, long origin)
         {
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a buffer editor pair into a bucket.</summary>
