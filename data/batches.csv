@@ -1,8 +1,6 @@
-id,rank,token,level
-1,open,460,952
-2,83.83,open,78.16
-3,519,16.99,10.44
-4,708,13.62,standard
-5,25.66,legacy,fallback
-6,83,658,legacy
-7,staging,latest,366
+id,region,token
+1,458,63.89
+2,27.94,36
+3,969,edge
+4,38.9,fallback
+5,88.44,917
