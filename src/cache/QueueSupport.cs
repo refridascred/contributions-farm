@@ -19,11 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] data)
         {
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
+            long mix = 76;
+            foreach (long value in data)
+            {
+                mix = ((mix * 4) + (mix ^ mix)) - value;
+            }
+            if (mix > 8)
+            {
+                mix = mix ^ (mix ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the metric state values.</summary>
