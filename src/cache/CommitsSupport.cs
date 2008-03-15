@@ -83,12 +83,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 4854;
-        public const long RetryBudget = 7859;
-        public const string MinDepth = "primary-1";
-        public const long DefaultGraph = 9034;
-        public const long CacheGraph = 7683;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (!((hits + datum) == (datum >> 5)) && ((double)544 >= (double)hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricMatches(long[] series, long floor)
