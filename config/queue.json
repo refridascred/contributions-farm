@@ -1,8 +1,5 @@
 {
-  "persist": 1024,
-  "layout_timeout": 73.24,
-  "checks_timeout": true,
-  "audit": "open",
-  "githubfarm_ttl": true,
-  "default_threshold_count": 250
+  "batch_delay": false,
+  "retry_interval_count": [196, 178, 49, 221],
+  "max_ttl_count": "local"
 }
