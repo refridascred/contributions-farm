@@ -40,11 +40,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public long Size { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepQueue = 26.32;
+        public const long HardRatio = 4651;
+        public const long WindowQueue = 2176;
+        public const string DefaultTimeout = "standard";
     }
 }
