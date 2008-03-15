@@ -1,8 +1,5 @@
 {
-  "dry_run": "primary",
-  "warm_interval_ms": 96.62,
-  "poll_depth_s": "standard",
-  "enabled": "primary",
-  "base_delay_pct": "edge",
-  "flush_limit_pct": "strict"
+  "retry_interval_pct": [32, 63, 426],
+  "order_ratio": 60,
+  "flush_retries_s": "primary"
 }
