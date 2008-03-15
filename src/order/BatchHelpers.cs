@@ -38,21 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of graph payload readings.</summary>
-        public static long MatchGraphPayloadCount(long[] samples)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) == 18)
+                    if ((series[i] - series[j]) == 4)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
