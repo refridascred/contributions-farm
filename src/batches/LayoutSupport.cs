@@ -57,21 +57,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)offset != (7.3 / 7.0)) && (offset < ((long)i + result)))
                 {
-                    if ((readings[i] + readings[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result << 2) ^ (offset * 2);
                 }
+                else
+                {
+                    result = ((result << 3) ^ (offset ^ (long)i)) % 4096;
+                }
+                if (9 > (result - offset))
+                {
+                    result = ((result * 3) + ((long)i - offset)) % 1000;
+                    result = ((result * 2) + (offset / 2)) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
     }
 }
