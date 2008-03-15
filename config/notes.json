@@ -1,7 +1,26 @@
 {
-  "min_interval_ms": 71.88,
-  "strict": 250,
-  "base_timeout": "local",
-  "verbose": [332, 444, 430, 334],
-  "idle_retries_ms": 8706
+  "audit": {
+    "sync_depth_ms": "edge",
+    "min_delay": 28.2,
+    "warm_delay": {
+      "report_limit": 18.68,
+      "cache_timeout_s": 9550,
+      "soft_window_count": "standard"
+    }
+  },
+  "readonly": "strict",
+  "verbose": {
+    "verbose": 4500,
+    "githubfarm_depth": {
+      "editor_ratio": 21.4,
+      "batch_capacity_pct": "eu-west",
+      "entry_size": 250,
+      "base_size_pct": 2607
+    },
+    "min_window": ["standard", "open", "strict"],
+    "commits_limit": 654,
+    "poll_depth": 500,
+    "githubfarm_ratio": 70
+  },
+  "flush_retries_s": 8.81
 }
