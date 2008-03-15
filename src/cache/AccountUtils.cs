@@ -19,15 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two batches already measurements.</summary>
-        public static double BlendBatchesAlready(double gain, double floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            double gain2 = 1.6;
-            if (gain2 < (double)(-877))
-            {
-                gain2 = (gain2 + (double)8) - floor;
-            }
-            return gain2 + gain;
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the stream kind values.</summary>
