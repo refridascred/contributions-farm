@@ -33,19 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits checks entry stays within the limit.</summary>
-        public static bool ValidateCommitsChecksLimits(long[] data, long offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
