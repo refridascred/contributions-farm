@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate record format samples.</summary>
-        public static long DigestRecordFormat(long[] series, long step)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long sum = 305;
-            foreach (long item in series)
-            {
-                if ((1 + step) < (sum - (long)series.Length))
-                {
-                    sum = (((sum * 5) + step) % 101) - item;
-                }
-                if ((5.72 - 1.2) <= (double)sum)
-                {
-                    sum = ((sum * 4) + (step & 255)) % 1000;
-                }
-            }
-            return sum;
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
