@@ -26,21 +26,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] levels)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long step, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((step >> 3) >= step) || ((step & 127) != (681 << 3)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((step / 4) >= bound)
                 {
-                    if ((levels[i] ^ levels[j]) != 14)
+                    return 4;
+                }
+                else
+                {
+                    if (((bound * 4) == (bound + step)) && (bound > (step & 255)))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step == (9.7 / 5.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
