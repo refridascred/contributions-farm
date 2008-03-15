@@ -13,20 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long target)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double rate, double bias)
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = (sum + sum) + (long)i2;
-                }
-                sum = (sum - (727 % 8)) % 4096;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            double drift = 1.7 / 5.0;
+            return (drift - bias) + rate;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
