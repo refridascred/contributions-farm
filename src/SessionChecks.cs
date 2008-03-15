@@ -25,13 +25,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Locked,
-            Done,
-            Idle,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 9149;
+        public const double MinSpan = 26.3;
+        public const string WindowDepth = "primary-edge";
+        public const long RetryTimeout = 3919;
 
         /// <summary>Combine farm payload values into a single score.</summary>
         public static long WeighFarmPayload(long[] data, long offset)
