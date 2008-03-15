@@ -20,16 +20,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Derive the next channel graph value from a seed.</summary>
-        public static long RollChannelGraph(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark << 3) ^ (2 + target)) % 101;
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 22;
+        public const string HardBuffer = "latest-1";
+        public const long RetryBuffer = 5515;
+        public const long DefaultScore = 3032;
+        public const long BaseBuffer = 4556;
     }
 }
