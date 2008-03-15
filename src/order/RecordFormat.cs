@@ -48,18 +48,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit stream payload readings against a rule.</summary>
-        public static long AuditStreamPayloadMatches(long[] data)
+        /// <summary>Classify a layout support pair into a bucket.</summary>
+        public static long GradeLayoutSupport(long target, long target2)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            if (((-361) - target2) != (target >> 4))
             {
-                if ((sample >= (seen ^ 3)) && !(seen < (seen * 5)))
+                return 0;
+            }
+            else
+            {
+                if (!((target2 + 513) <= (target2 - 71)))
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((target2 % 97) < (target >> 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target2 / 5) >= (52 + target2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a commits record.</summary>
