@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double rate, double span)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] items)
         {
-            double drift = (double)(285 >> 4);
-            if (drift < (rate + drift))
+            long carry = 37;
+            foreach (long item in items)
             {
-                drift = (drift - (double)3) + span;
+                for (int i = 0; i < 2; i++)
+                {
+                    carry = ((carry << 3) ^ ((long)i & 15)) + item;
+                }
+                carry = (carry * 5) + carry;
             }
-            return drift + 4.5;
+            return carry % 65521;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
