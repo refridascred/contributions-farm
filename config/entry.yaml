@@ -1,10 +1,8 @@
 # entry settings
-max_ttl_pct: open
-sync_depth_ms:
-  - blue
-  - green
-  - primary
-  - strict
-persist: staging
-readonly: 20.47
-strict: 62.36
+burst_window: 28.22
+retry_window_pct: true
+burst_retries_pct: false
+retry_ttl_ms:
+  cache_threshold: 15
+  sync_depth_pct: local
+  verbose: local
