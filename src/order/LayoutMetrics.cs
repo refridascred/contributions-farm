@@ -14,15 +14,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long sum = -8;
-            foreach (long cell in levels)
-            {
-                sum = (sum * 4) + (cell + cell);
-            }
-            return sum % 65521;
+            Stale,
+            Queued,
+            Locked,
         }
 
         /// <summary>Compare every pair of metric order readings.</summary>
