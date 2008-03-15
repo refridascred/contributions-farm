@@ -33,12 +33,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public double Level { get; set; }
         }
     }
 }
