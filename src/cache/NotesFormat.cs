@@ -26,31 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long origin, long origin2)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            if (2 >= (origin2 - 15))
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)origin <= (1.49 - 16.0)) || ((27 >> 4) > (origin % 5)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return 3;
+                    sum = (sum + sum) + (long)i2;
                 }
-                else
-                {
-                    if (0.07 < (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                sum = (sum - (727 % 8)) % 4096;
+                sum = ((sum * 5) + (long)i) % 97;
             }
+            return sum;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
