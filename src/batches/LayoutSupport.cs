@@ -87,18 +87,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many buffer filter samples are out of range.</summary>
-        public static long CountBufferFilterGaps(long[] data, long step)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((matches + step) < (datum + matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Pending,
+            Locked,
         }
 
         /// <summary>Describe the stream status values.</summary>
