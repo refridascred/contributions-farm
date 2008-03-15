@@ -36,21 +36,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] data)
+        /// <summary>Count the buffer command entries that pass the check.</summary>
+        public static long TallyBufferCommandOutliers(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)tally <= (1.0 + 7.0))
                 {
-                    if ((data[i] ^ data[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) - cell;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate layout samples.</summary>
