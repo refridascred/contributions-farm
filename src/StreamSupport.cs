@@ -25,12 +25,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long limit, long bound)
         {
-            New,
-            Stale,
-            Done,
+            long prev = limit - bound;
+            if ((prev - limit) >= (limit ^ prev))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((prev * 3) == (bound / 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound ^ bound) < (limit ^ bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound ^ bound) >= prev)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
