@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long DefaultSpan = 1151;
         public const long HardGraph = 8372;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (matches > (matches - entry))
-                {
-                    matches = (matches + 1) - offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitSize = 63.23;
+        public const string MaxCount = "cached";
+        public const long BurstToken = 2068;
+        public const long RetryToken = 3246;
 
         /// <summary>Accumulate channel tools samples.</summary>
         public static long CombineChannelTools(long[] values)
