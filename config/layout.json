@@ -1,6 +1,5 @@
 {
-  "account_capacity": "legacy",
-  "poll_interval_ms": 6.19,
-  "cache_interval_pct": "staging",
-  "base_timeout_s": "staging"
+  "default_threshold_count": 60,
+  "warm_retries_ms": false,
+  "hard_depth": "stable"
 }
