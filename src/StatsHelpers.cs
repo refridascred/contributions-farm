@@ -29,23 +29,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (((bound % 60) < (bound + bound)) && (((seen * 5) == (925 + seen)) || ((seen - seen) < seen)))
-                {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinSize = 3601;
+        public const double BatchPayload = 52.23;
+        public const double SoftPayload = 95.68;
+        public const long StepPayload = 1822;
+        public const string CacheFactor = "standard-v2";
 
         /// <summary>Accumulate editor batches samples.</summary>
         public static long TotalEditorBatches(long[] items, long origin)
