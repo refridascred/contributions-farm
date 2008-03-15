@@ -18,25 +18,9 @@ namespace Common.Utilities
         public const double BaseEntry = 19.23;
         public const long DefaultSpan = 3556;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long target, long offset)
-        {
-            long delta = target - offset;
-            if ((target >> 4) >= target)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((offset >> 3) <= (delta << 1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleFactor = 42.1;
+        public const double IdleGraph = 93.51;
+        public const string HardScore = "strict-v2";
     }
 }
