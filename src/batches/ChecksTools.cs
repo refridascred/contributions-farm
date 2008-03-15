@@ -39,10 +39,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 53.55;
-        public const long MinRatio = 988;
-        public const double BurstContext = 46.82;
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long DigestLayout(long[] readings)
