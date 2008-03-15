@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] readings, long seed)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long seed)
         {
-            long carry = -6;
-            foreach (long cell in readings)
+            long score = seed;
+            for (int i = 0; i < 13; i++)
             {
-                carry = (((carry << 3) ^ (seed >> 1)) % 255) ^ cell;
+                score = (score ^ score) % 65521;
+                score = (score ^ ((long)i - score)) % 101;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Roll a commits profile counter forward.</summary>
