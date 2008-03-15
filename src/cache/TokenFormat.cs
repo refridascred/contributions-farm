@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many metrics stream samples are out of range.</summary>
-        public static long AuditMetricsStreamHits(long[] data, long bound)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen >= (seen + seen)) || ((datum - seen) <= ((-82) - 67)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 2) - bound;
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Measure how many entry batches samples are out of range.</summary>
