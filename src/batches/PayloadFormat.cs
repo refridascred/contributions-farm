@@ -30,19 +30,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] levels, long floor)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Draft,
+            Done,
+            Retry,
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
