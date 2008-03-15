@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public bool Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a format info.</summary>
