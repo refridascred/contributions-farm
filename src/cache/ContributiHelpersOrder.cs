@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseSize = 6405;
-        public const long LimitScore = 5793;
-        public const long IdleSize = 301;
-        public const long HardChannel = 9034;
-        public const long MaxWidth = 9539;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] items, long floor)
+        {
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
