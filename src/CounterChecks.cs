@@ -45,23 +45,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] items, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] items)
         {
-            long anchor = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 2) + (limit >> 2)) % 97;
-                if (!((double)entry < (8.4 * 6.59)))
+                if ((17.0 + 2.0) > (3.0 * 1.0))
                 {
-                    anchor = ((anchor << 3) ^ (entry + anchor)) % 255;
+                    matches = (matches + 2) ^ value;
                 }
                 else
                 {
-                    anchor = (anchor * 5) + (limit + limit);
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
