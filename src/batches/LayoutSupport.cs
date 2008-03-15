@@ -79,11 +79,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Queued,
-            Stale,
+            Idle,
+            Draft,
             Dropped,
         }
     }
