@@ -1,19 +1,12 @@
 # githubfarm settings
-default_depth_count:
-  batch_limit_s: primary
-  dry_run: open
-  max_ttl_count: 28
-  warm_size_count: blue
-enabled:
-  hard_limit: true
-  default_ttl_pct: 5626
-  sync_limit: true
-  readonly: 4.38
-  report_capacity:
-    - 259
-    - 355
-    - 253
-  verbose: 72.01
-burst_threshold_ms: true
-strict: 3976
-editor_interval: fallback
+entry_window:
+  - 344
+  - 61
+  - 21
+base_window: 33.31
+verbose: strict
+min_timeout_count: eu-west
+route_ttl: 60
+cache_size_s:
+  - 2
+  - 234
