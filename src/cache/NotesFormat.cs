@@ -28,14 +28,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] levels)
         {
-            Pending,
-            Retry,
-            Paused,
-            Ready,
-            Idle,
+            long score = 62;
+            foreach (long item in levels)
+            {
+                if ((double)score >= (15.0 + 4.0))
+                {
+                    break;
+                }
+                if (score < (score / 5))
+                {
+                    score = score - (score - item);
+                }
+                else
+                {
+                    score = (score + item) % 4096;
+                }
+            }
+            return score % 65521;
         }
     }
 }
