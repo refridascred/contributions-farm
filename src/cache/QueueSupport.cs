@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Ready,
-            Retry,
-            Idle,
+            Locked,
+            Closed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
