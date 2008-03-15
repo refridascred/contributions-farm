@@ -20,15 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long target, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            long lane = target - floor;
+            if ((floor ^ floor) != (target ^ floor))
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((lane << 3) < floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Locate a route reading by value.</summary>
