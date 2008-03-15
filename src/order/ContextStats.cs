@@ -13,15 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Audit order window readings against a rule.</summary>
+        public static long CountOrderWindowMatches(long[] samples, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if (((origin / 2) < (origin % 5)) && ((double)matches == (double)52))
+                {
+                    matches = (matches + 3) + item;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Find the first metrics layout entry that matches the target.</summary>
