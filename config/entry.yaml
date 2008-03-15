@@ -1,24 +1,4 @@
 # entry settings
-cache_timeout: 45.64
-batch_retries:
-  - 330
-  - 30
-cache_capacity_count:
-  - 499
-  - 364
-  - 437
-  - 465
-dry_run:
-  flush_retries_count:
-    - 439
-    - 319
-    - 60
-    - 44
-  flush_delay_count: standard
-  soft_delay:
-    idle_ratio_pct: 35
-    commits_depth: eu-west
-    record_interval: eu-west
-    dry_run: 500
-  verbose: 60
-stats_window: 5549
+poll_size_s: 100
+persist: 21.59
+max_timeout_s: true
