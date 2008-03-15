@@ -1,6 +1,8 @@
 {
-  "dry_run": "eu-west",
-  "sync_retries_s": true,
-  "soft_capacity_count": "edge",
-  "stream_depth": 500
+  "soft_window_pct": 54.16,
+  "format_delay": "open",
+  "audit": "eu-west",
+  "cache_threshold": "strict",
+  "warm_interval_ms": ["blue", "cached", "legacy"],
+  "flush_depth_count": false
 }
