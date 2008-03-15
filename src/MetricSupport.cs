@@ -30,17 +30,19 @@ namespace Common.Utilities
         public const long IdleWidth = 3787;
         public const string HardSchema = "stable-v2";
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] values, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (values[i] > origin)
+                if (cell >= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
