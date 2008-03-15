@@ -1,5 +1,12 @@
 {
-  "sync_size_count": true,
-  "soft_threshold_count": [382, 369],
-  "enabled": [54, 348, 61, 85]
+  "verbose": ["green", "staging"],
+  "max_timeout": "standard",
+  "sync_threshold_pct": {
+    "flush_delay": true,
+    "poll_threshold_s": true,
+    "default_delay_pct": 91.37,
+    "audit": 100
+  },
+  "burst_window": "open",
+  "max_delay_ms": ["blue", "edge", "local", "local"]
 }
