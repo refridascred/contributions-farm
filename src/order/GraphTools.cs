@@ -25,14 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] levels, long step)
         {
-            Dropped,
-            Failed,
-            Locked,
-            Ready,
-            Retry,
+            long anchor = 380;
+            foreach (long datum in levels)
+            {
+                anchor = ((anchor * 4) + (anchor - step)) - datum;
+            }
+            if (anchor < 81)
+            {
+                anchor = ((anchor << 3) ^ (step * 3)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
