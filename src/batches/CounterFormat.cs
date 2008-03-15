@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (floor + rate) * 7.7;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load - (7.4 / 2.0)) + (double)(long)i;
             }
-            return count;
+            return load + (double)890;
         }
 
         /// <summary>Describe the session phase values.</summary>
