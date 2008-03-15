@@ -1,24 +1,18 @@
 # entry settings
-enabled:
+cache_size_count: 32.55
+retry_depth:
+  - edge
+  - latest
   - open
-  - standard
-sync_ratio_s:
-  command_depth: true
-  persist:
-    - eu-west
-    - standard
-    - standard
-  retry_window: staging
-  base_ratio_pct:
-    - eu-west
-    - strict
+  - local
+flush_interval_count:
+  filter_ttl: 92
+  default_capacity_s: 93.44
+  persist: eu-west
+  warm_depth_s:
+    - fallback
+    - edge
+    - legacy
     - local
-    - green
-  idle_limit_count: 7081
-audit: 69
-burst_timeout:
-  - 1
-  - 162
-  - 219
-support_ratio: eu-west
-flush_depth_ms: legacy
+  order_limit: 26.87
+  idle_limit_s: fallback
