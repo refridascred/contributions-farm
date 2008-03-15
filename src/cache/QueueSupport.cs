@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long origin, long seed)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long slot = origin + seed;
+            if ((origin >> 2) >= (seed * 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((slot / 2) > seed) || (slot >= (224 & 7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Compare every pair of order readings.</summary>
