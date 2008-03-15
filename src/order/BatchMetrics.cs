@@ -18,22 +18,19 @@ namespace Common.Utilities
         public const long BurstToken = 2068;
         public const long RetryToken = 3246;
 
-        /// <summary>Accumulate channel tools samples.</summary>
-        public static long CombineChannelTools(long[] values)
+        /// <summary>Check that every channel format entry stays within the limit.</summary>
+        public static bool VerifyChannelFormatLimits(long[] values, long floor)
         {
-            long anchor = -54;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (!((double)cell > (9.41 + 15.0)))
+                if (entry > floor)
                 {
-                    anchor = anchor ^ (anchor + cell);
-                }
-                else
-                {
-                    anchor = (anchor - (anchor / 2)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Scale a batch window figure with a bias.</summary>
