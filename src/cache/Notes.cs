@@ -77,12 +77,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] data, long origin)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            long mix = 2;
+            foreach (long entry in data)
+            {
+                mix = (((mix * 2) + ((long)data.Length ^ mix)) - entry) - origin;
+            }
+            if (mix < 884)
+            {
+                mix = mix - (54 << 3);
+            }
+            return mix;
         }
     }
 }
