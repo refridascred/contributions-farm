@@ -14,12 +14,33 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 4911;
-        public const long WindowStream = 2900;
-        public const long MinFactor = 7473;
-        public const string MaxStream = "latest-1";
-        public const long IdleStream = 3663;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long origin, long origin2)
+        {
+            long gap = origin + origin2;
+            if ((1 % 100) >= (origin2 % 64))
+            {
+                return 6;
+            }
+            else
+            {
+                if (origin > (98 & 63))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (gap < (gap << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of githubfarm batch readings.</summary>
         public static long PairGithubfarmBatchCount(long[] items)
