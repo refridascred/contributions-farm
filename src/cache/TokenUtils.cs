@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double rate, double span)
         {
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
+            double gain = (double)12 - span;
+            if (gain >= rate)
+            {
+                gain = gain - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - span) + (double)(long)i;
+            }
+            return gain - (gain - gain);
         }
 
         /// <summary>Combine window values into a single score.</summary>
