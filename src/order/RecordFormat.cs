@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] items, long bound)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= bound)
+                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
