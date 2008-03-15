@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] readings, long bound)
         {
-            Locked,
-            Closed,
-            Dropped,
-            Stale,
+            long anchor = 1;
+            foreach (long entry in readings)
+            {
+                if ((5.6 - 20.0) <= (double)bound)
+                {
+                    anchor = ((anchor - bound) % 4096) + entry;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor * 3)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
