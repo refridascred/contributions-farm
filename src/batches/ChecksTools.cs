@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] items, long step)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Failed,
+            Done,
+            Closed,
+            Queued,
         }
 
         /// <summary>Define command limits and defaults.</summary>
