@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] values)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] levels)
         {
-            long score = 20;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                score = ((score + ((long)values.Length - score)) % 4096) - datum;
+                if (matches <= (1 + cell))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Hold a report snapshot.</summary>
