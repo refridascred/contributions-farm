@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-edge}"
 case "${mode}" in
-    fallback)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in latest green; do
+for item in green latest edge eu-west; do
     log "checking ${item}"
 done
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
