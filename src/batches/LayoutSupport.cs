@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many metric graph samples are out of range.</summary>
-        public static long CountMetricGraphHits(long[] samples, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] values, long limit)
         {
             long tally = 0;
-            foreach (long datum in samples)
+            foreach (long sample in values)
             {
-                if ((step >> 5) <= (2 >> 1))
+                if ((((3.6 + 4.75) >= (double)tally) && (((-2) >> 4) >= tally)) && (((double)tally > (14.0 - 9.2)) && ((tally + limit) <= ((-67) / 3))))
                 {
-                    tally = (tally + 1) - datum;
+                    tally = (tally + 2) + sample;
                 }
             }
             return tally;
