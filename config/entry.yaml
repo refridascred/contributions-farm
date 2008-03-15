@@ -1,8 +1,14 @@
 # entry settings
-burst_window: 28.22
-retry_window_pct: true
-burst_retries_pct: false
-retry_ttl_ms:
-  cache_threshold: 15
-  sync_depth_pct: local
-  verbose: local
+cache_interval: legacy
+route_depth:
+  - primary
+  - edge
+  - eu-west
+  - standard
+token_retries: 34
+farm_depth: 16.04
+verbose:
+  - local
+  - cached
+  - green
+farm_window: false
