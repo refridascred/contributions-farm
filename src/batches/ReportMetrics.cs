@@ -14,18 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long acc = 67;
-            foreach (long entry in values)
-            {
-                if ((8.7 + 2.0) > 8.3)
-                {
-                    acc = (((acc << 3) ^ (2 + (long)values.Length)) % 97) + entry;
-                }
-            }
-            return acc;
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
