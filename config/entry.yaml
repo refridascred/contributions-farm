@@ -1,39 +1,47 @@
 # entry settings
-editor_delay:
-  contributi_ttl: 6439
-  enabled: green
-  metric_delay: green
-  burst_retries:
-    cache_timeout_count:
-      - edge
+default_retries:
+  - 324
+  - 390
+  - 307
+  - 389
+command_threshold:
+  max_timeout: 9743
+  max_window_count:
+    - 64
+    - 26
+    - 331
+    - 447
+  cache_interval:
+    min_depth_ms: strict
+    cache_size_ms: true
+    retry_limit_s: fallback
+    stream_delay: 50
+    command_ratio: 6919
+    default_limit: standard
+  strict: 500
+readonly: 69.57
+poll_capacity: 64
+warm_retries_count:
+  strict:
+    - 254
+    - 159
+    - 154
+    - 304
+  batch_size_count: false
+  default_retries_s:
+    - stable
+    - green
+    - eu-west
+    - local
+  burst_delay_ms: 30
+  graph_window:
+    checks_window: 44.22
+    idle_timeout: latest
+    poll_window_ms: 84
+    sync_interval_ms:
       - fallback
-      - primary
-    warm_ttl_count: 20.31
-    poll_retries_ms: standard
-  cache_depth_count: 65.48
-  route_capacity:
-    - staging
-    - strict
-    - open
-soft_window: 8367
-metric_size:
-  burst_limit_count: open
-  min_delay_ms:
-    farm_capacity: 4
-    notes_delay: latest
-    retry_interval_s: staging
-    burst_delay_ms: 8519
-  sync_depth:
-    farm_ttl: legacy
-    idle_ratio_s:
-      - 379
-      - 359
-      - 411
-    hard_size: eu-west
-    sync_size_count:
-      - 311
-      - 206
-  persist: cached
-  queue_threshold: legacy
-cache_ttl_count: strict
-cache_capacity: 26.22
+      - legacy
+      - strict
+    default_ratio: 2521
+  flush_limit: 7446
+poll_capacity_s: standard
