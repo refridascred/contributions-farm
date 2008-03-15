@@ -30,10 +30,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitSize = 8649;
-        public const double SoftMetrics = 58.36;
-        public const long StepMetrics = 4287;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
