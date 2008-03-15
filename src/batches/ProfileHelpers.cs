@@ -39,25 +39,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank support format input into a small class.</summary>
-        public static long ClassifySupportFormat(long limit, long step)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long seed)
         {
-            long prev = limit + step;
-            if ((prev << 1) < (limit << 2))
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                return 6;
+                acc = ((acc * 2) + (seed - acc)) % 255;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (((limit + limit) > (step - step)) || ((double)prev < 5.5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
