@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 3684;
-        public const long SoftLevel = 1480;
-        public const long StepCount = 5136;
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long BucketLayout(long offset, long floor)
