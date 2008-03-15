@@ -13,18 +13,10 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepCounter = "fallback";
+        public const double WindowCounter = 87.3;
+        public const long StepSize = 1032;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long StepTimeout = 8655;
