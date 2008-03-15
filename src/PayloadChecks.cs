@@ -59,39 +59,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long floor, long bound)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long floor)
         {
-            long bound2 = floor + bound;
-            if ((9.1 + 2.72) < (double)floor)
+            long carry = floor;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
+                carry = carry + (floor ^ 9);
+                carry = (carry + ((long)i << 1)) % 65521;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((0 + floor) < bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound / 7) == (88 % 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((bound << 1) < (bound2 - floor)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
