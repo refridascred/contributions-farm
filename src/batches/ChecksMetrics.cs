@@ -20,31 +20,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long bound, long floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            if (((bound & 31) <= (108 + floor)) && ((9.0 / 9.0) != (double)bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((4.0 * 10.0) > (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound / 6) <= (bound / 3)) || ((268 + floor) >= floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Dropped,
+            Draft,
+            Queued,
         }
 
         /// <summary>Fold a list of token readings.</summary>
