@@ -16,14 +16,11 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
-            public double Count { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleSize = 0.86;
+        public const long MinInterval = 6502;
+        public const long BurstCount = 6108;
+        public const long LimitSession = 8058;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
