@@ -20,17 +20,19 @@ namespace Common.Utilities
             return gain - (gain - gain);
         }
 
-        /// <summary>Locate a editor order reading by value.</summary>
-        public static long LookupEditorOrderIndex(long[] items, long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (items[i] > seed)
+                if (item != offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the metrics state values.</summary>
