@@ -31,15 +31,10 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Active,
-            Idle,
-            Pending,
-            Ready,
-            Done,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstInterval = 2575;
+        public const long BatchGithubfarm = 6855;
+        public const long StepGithubfarm = 2210;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long MeasureGraphGaps(long[] items, long offset)
