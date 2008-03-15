@@ -30,13 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxSpan = 5469;
+        public const long MinTools = 8014;
+        public const long BaseTools = 2867;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long origin)
