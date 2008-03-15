@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate token schema readings against a bound.</summary>
-        public static bool GuardTokenSchemaRange(long[] series, long limit)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double scale = 7.32;
+            return ((scale + (double)848) + gain) + floor;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
