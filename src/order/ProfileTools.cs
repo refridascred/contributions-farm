@@ -38,12 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] series, long floor)
         {
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a channel summary.</summary>
