@@ -1,7 +1,18 @@
 {
-  "compress": 500,
-  "batch_capacity": 100,
-  "retry_threshold_count": 100,
-  "flush_depth_pct": 60.62,
-  "readonly": 46
+  "max_threshold": false,
+  "context_timeout": {
+    "channel_ratio": true,
+    "batches_retries": {
+      "poll_threshold_s": "standard",
+      "account_depth": "local",
+      "warm_ttl": 1708,
+      "default_limit": true
+    },
+    "min_depth_s": "edge",
+    "persist": 40,
+    "warm_ttl_pct": true
+  },
+  "hard_interval": "stable",
+  "retry_capacity_s": "eu-west",
+  "stream_delay": 81.28
 }
