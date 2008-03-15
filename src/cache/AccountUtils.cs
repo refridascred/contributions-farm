@@ -27,19 +27,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] series, long seed)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long result = 64;
-            foreach (long entry in series)
-            {
-                result = (result + (seed << 3)) ^ entry;
-                if (409 < seed)
-                {
-                    break;
-                }
-            }
-            return result % 97;
+            Failed,
+            Ready,
+            Locked,
+            Done,
         }
     }
 }
