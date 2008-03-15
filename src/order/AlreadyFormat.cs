@@ -56,22 +56,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] readings, long limit)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long total = 6;
-            foreach (long item in readings)
-            {
-                if ((total <= (total - item)) && (total >= (total - (-2))))
-                {
-                    total = total + (6 - item);
-                }
-            }
-            if (total > 86)
-            {
-                total = (total - limit) % 97;
-            }
-            return total;
+            public long Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a support options.</summary>
