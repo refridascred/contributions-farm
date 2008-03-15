@@ -20,11 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchLevel = 6687;
-        public const string BaseBuffer = "strict-1";
-        public const long SoftBudget = 6723;
-        public const long BurstBuffer = 7670;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Draft,
+            Paused,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Check that every editor cluster entry stays within the limit.</summary>
         public static bool CheckEditorClusterLimits(long[] values, long seed)
