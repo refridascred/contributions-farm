@@ -14,11 +14,20 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheAlready = "local";
-        public const long MinRatio = 543;
-        public const long BurstSpan = 380;
-        public const long LimitAlready = 8972;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] levels, long step)
+        {
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool GuardOrderRange(long[] samples, long seed)
