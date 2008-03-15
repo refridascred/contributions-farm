@@ -77,22 +77,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long floor)
         {
-            long carry = 64;
-            foreach (long entry in items)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (((entry & 1) < (carry + carry)) && ((206 - carry) >= (entry & 7)))
+                if (((long)i - floor) >= (mark / 8))
                 {
-                    carry = carry - carry;
+                    mark = (mark - floor) % 255;
                 }
+                else
+                {
+                    mark = (mark + (floor + (long)i)) % 65521;
+                }
+                mark = (mark - (mark % 100)) % 65521;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            if (carry > 0)
-            {
-                carry = ((carry << 3) ^ carry) % 4096;
-            }
-            return carry;
+            return mark;
         }
     }
 }
