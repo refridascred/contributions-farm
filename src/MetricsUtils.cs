@@ -23,20 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] samples, long limit)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] series)
         {
-            long mark = 45;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark ^ entry) - limit;
-                mark = mark - (entry ^ 51);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mark > (-4))
-            {
-                mark = mark - mark;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
