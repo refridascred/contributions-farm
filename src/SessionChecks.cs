@@ -18,26 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format route values into a single score.</summary>
-        public static long FoldFormatRoute(long[] series)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] data)
         {
-            long total = 9;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((value ^ value) < (64 + total))
+                if ((39 > (count - datum)) && (count >= (count % 16)))
                 {
-                    total = (total + ((long)series.Length << 3)) % 65521;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total % 10)) % 97;
-                }
-                if ((total >> 2) == (total & 63))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the stats kind values.</summary>
