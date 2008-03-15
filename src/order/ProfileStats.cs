@@ -19,20 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] levels, long bound)
-        {
-            long anchor = 29;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 101;
-                if (((anchor & 15) != (anchor + anchor)) && ((value + anchor) >= (anchor << 3)))
-                {
-                    anchor = (anchor << 2) ^ ((-4) - bound);
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryBudget = 7787;
+        public const string BaseContributi = "latest-1";
+        public const string IdleLevel = "alpha-1";
+        public const long DefaultBudget = 3902;
+        public const long SoftSize = 570;
 
         /// <summary>Accumulate command samples.</summary>
         public static long FoldCommand(long[] values, long bound)
