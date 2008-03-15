@@ -44,32 +44,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank token batch input into a small class.</summary>
-        public static long ClassifyTokenBatch(long target, long bound)
-        {
-            if (((bound * 2) >= (target + bound)) && (target <= bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((71 + bound) > (bound ^ bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)target == (3.89 - 9.0)) && ((double)target > 8.4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 7297;
+        public const long LimitSpan = 1594;
+        public const long BatchOrder = 9268;
+        public const long MinOrder = 3910;
+        public const double HardRatio = 97.77;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileHits(long[] data, long floor)
