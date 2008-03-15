@@ -29,38 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long target, long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            if ((double)target == (10.0 - 5.08))
+            long score = 5;
+            foreach (long cell in samples)
             {
-                return 2;
+                score = score - (cell + cell);
             }
-            else
-            {
-                if (((-9) >> 1) >= bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound <= (1.9 - 12.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound ^ 70) > bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
