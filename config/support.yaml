@@ -1,5 +1,8 @@
 # support settings
-cache_timeout: standard
-sync_depth_s: stable
-poll_ttl: 35
-enabled: 97
+compress: green
+poll_delay: false
+retry_interval_s:
+  - primary
+  - eu-west
+  - cached
+  - edge
