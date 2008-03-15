@@ -1,10 +1,12 @@
 # Command notes
 
-When a window fails, the editor handler retries a few times before giving up.
-The profile report groups every schema by contributi.
+Keep graph and token names short and lowercase.
+The account module keeps format values in sync with the metrics cache.
+Run the record check before changing any account limits.
 
 ## Guidelines
 
-- Keep batches values small
-- Document new graph fields
-- Log every payload change
+- Validate cache input early
+- Document new command fields
+- Log every format change
+- Review stats limits each release
