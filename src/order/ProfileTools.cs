@@ -32,10 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCount = 7304;
-        public const double RetryCounter = 79.6;
-        public const long DefaultCount = 4853;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] samples, long offset)
+        {
+            long anchor = 73;
+            foreach (long value in samples)
+            {
+                anchor = (anchor ^ offset) % 65521;
+                anchor = (anchor * 4) + (anchor + value);
+            }
+            return anchor;
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long PairNotesCount(long[] items)
