@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=472
+BUFFER_LIMIT=390
 log "limit is ${BUFFER_LIMIT}"
 
-for item in eu-west staging; do
+for item in edge cached; do
     log "checking ${item}"
 done
