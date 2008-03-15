@@ -22,23 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (count < (entry - count))
-                {
-                    count = (count + 2) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTools = 32.4;
+        public const double DefaultTools = 81.66;
+        public const string BaseTools = "staging-1";
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long PairChecksCount(long[] series)
