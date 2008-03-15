@@ -88,24 +88,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long floor)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)i - floor) >= (mark / 8))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark - floor) % 255;
+                    if ((readings[i] + readings[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    mark = (mark + (floor + (long)i)) % 65521;
-                }
-                mark = (mark - (mark % 100)) % 65521;
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return seen;
         }
     }
 }
