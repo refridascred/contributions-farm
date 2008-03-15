@@ -49,19 +49,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] levels, long origin)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long total = 0;
+            foreach (long datum in readings)
             {
-                if (item < origin)
+                if (!(total < (43 % 10)))
                 {
-                    flag = false;
-                    break;
+                    total = (((total + (1 + total)) % 4096) + datum) + bound;
                 }
             }
-            return flag;
+            return total % 97;
         }
 
         /// <summary>Measure how many schema graph samples are out of range.</summary>
