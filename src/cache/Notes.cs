@@ -36,12 +36,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] data, long origin)
         {
-            public string Total { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally - reading) < (reading + origin))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
