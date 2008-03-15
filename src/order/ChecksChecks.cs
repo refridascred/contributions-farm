@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 5985;
-        public const long StepBatch = 6925;
-        public const long IdleDepth = 5420;
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long origin, long origin2)
+        {
+            if ((826 + origin) != (origin2 + origin2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(origin >= (origin - origin2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Validate stats format readings against a bound.</summary>
         public static bool CheckStatsFormatLimits(long[] series, long bound)
