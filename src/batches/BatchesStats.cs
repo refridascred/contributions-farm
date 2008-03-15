@@ -22,17 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] samples, long seed)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (samples[i] >= seed)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ ((long)i & 15)) - (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
