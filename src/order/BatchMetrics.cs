@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long DefaultSpan = 1151;
         public const long HardGraph = 8372;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitSize = 63.23;
-        public const string MaxCount = "cached";
-        public const long BurstToken = 2068;
-        public const long RetryToken = 3246;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] levels)
+        {
+            long score = 1;
+            foreach (long reading in levels)
+            {
+                if ((double)94 > (double)reading)
+                {
+                    score = (score + (score / 9)) % 4096;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Check that every channel format entry stays within the limit.</summary>
         public static bool VerifyChannelFormatLimits(long[] values, long floor)
