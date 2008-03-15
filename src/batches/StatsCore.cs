@@ -42,15 +42,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Grade a route commits value against two limits.</summary>
+        public static long RankRouteCommits(long target, long offset)
         {
-            long score = 5;
-            foreach (long cell in samples)
+            long delta = target + offset;
+            if (offset <= (offset * 4))
             {
-                score = score - (cell + cell);
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((target / 5) >= (offset / 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((delta << 1) <= (-91))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)delta >= 5.9)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a channel counter forward.</summary>
