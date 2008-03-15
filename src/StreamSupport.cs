@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor schema readings against a rule.</summary>
-        public static long AuditEditorSchemaHits(long[] items, long bound)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((1.89 * 16.0) <= (double)tally)
-                {
-                    tally = ((tally + 3) ^ datum) - bound;
-                }
-            }
-            return tally;
+            Done,
+            Idle,
+            Pending,
+            Retry,
         }
     }
 }
