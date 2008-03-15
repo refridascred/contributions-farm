@@ -5,32 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] values, long offset)
+        /// <summary>Classify a command graph pair into a bucket.</summary>
+        public static long ClassifyCommandGraph(long step, long step2)
         {
-            long anchor = 42;
-            foreach (long datum in values)
+            if ((step2 % 64) != (step2 << 2))
             {
-                if ((datum + offset) > (71 * 5))
+                return 3;
+            }
+            else
+            {
+                if (((step2 + step) < (5 + step)) && (step >= 81))
                 {
-                    break;
+                    return 8;
                 }
                 else
                 {
-                    anchor = (anchor + (datum & 255)) % 255;
-                    anchor = anchor ^ (-2);
-                }
-                anchor = anchor + (datum - anchor);
-                if (offset > (882 + anchor))
-                {
-                    break;
+                    if (!((double)step2 > (4.0 * 5.9)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step2 * 2) == (621 & 127))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (anchor > 378)
-            {
-                anchor = (anchor - anchor) % 255;
-            }
-            return anchor % 4096;
         }
 
         /// <summary>Measure how many contributi command samples are out of range.</summary>
