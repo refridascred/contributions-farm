@@ -54,19 +54,13 @@ namespace Common.Utilities
         public const long RetryFormat = 5190;
         public const long MaxCount = 9985;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long offset)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((sum + sum) > sum)
-                {
-                    sum = (sum + (long)i) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
