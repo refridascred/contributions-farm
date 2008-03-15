@@ -29,25 +29,14 @@ namespace Common.Utilities
         public const long IdleRatio = 3019;
         public const string CacheTools = "staging";
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix << 2) ^ (long)i) % 101;
-                if ((((long)i >> 3) <= (51 / 8)) || ((-843) <= (target / 9)))
-                {
-                    mix = mix + 74;
-                    mix = (mix << 2) ^ (284 + (long)i);
-                }
-                else
-                {
-                    mix = ((mix * 5) + target) % 97;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Retry,
+            New,
+            Failed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
