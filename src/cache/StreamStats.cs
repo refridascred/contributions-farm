@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 2474;
-        public const double StepBatches = 50.5;
-        public const long WindowFactor = 3602;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((target >= cell) && ((cell + target) >= seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
