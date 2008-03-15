@@ -28,15 +28,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next profile notes value.</summary>
-        public static double AdjustProfileNotes(double rate, double bias)
+        /// <summary>Measure how many tools layout samples are out of range.</summary>
+        public static long TallyToolsLayoutOutliers(long[] series)
         {
-            double bias2 = 9.18 - rate;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                bias2 = ((bias2 + (rate * 3.1)) - (double)(long)i) - bias;
+                if ((double)matches <= (3.0 - 14.0))
+                {
+                    matches = (matches + 2) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return bias2 - (double)51;
+            return matches;
         }
 
         /// <summary>Fold a list of format readings.</summary>
