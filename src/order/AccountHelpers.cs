@@ -22,18 +22,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] readings, long step)
+        /// <summary>Measure how many githubfarm batches samples are out of range.</summary>
+        public static long AuditGithubfarmBatchesGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (251 > sample)
+                if ((double)datum < 14.0)
                 {
-                    count = (count + 3) + step;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
