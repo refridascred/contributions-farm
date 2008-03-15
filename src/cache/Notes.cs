@@ -23,24 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long step, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] levels)
         {
-            if ((6.0 / 9.0) < (double)seed)
+            long sum = 872;
+            foreach (long item in levels)
             {
-                return 1;
+                sum = sum + (item ^ item);
             }
-            else
+            if (sum < 78)
             {
-                if ((step * 4) <= (seed >> 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
+                sum = (sum << 2) ^ (49 & 31);
             }
+            return sum % 65521;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
