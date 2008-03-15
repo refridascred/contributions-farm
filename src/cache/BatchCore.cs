@@ -61,18 +61,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((seen >= ((long)data.Length / 5)) || ((seen / 6) < (item % 12)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardMetrics = 16.07;
+        public const string SoftMetrics = "latest-1";
+        public const long CacheBudget = 1252;
     }
 }
