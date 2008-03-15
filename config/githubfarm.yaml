@@ -1,28 +1,7 @@
 # githubfarm settings
-channel_timeout:
-  session_ttl: 2725
-  warm_interval: 20
-  retry_threshold_ms:
-    - 324
-    - 494
-    - 2
-    - 298
-  burst_size: green
-  flush_depth:
-    burst_window: 250
-    session_retries: eu-west
-    default_depth_pct: legacy
-    warm_capacity: edge
-    min_interval_ms:
-      - 496
-      - 184
-      - 303
-      - 167
-  counter_limit: stable
-default_ratio:
-  - 270
-  - 230
-  - 210
-cache_retries_count: legacy
-persist: 68
-sync_ttl: local
+max_size:
+  - 403
+  - 19
+cache_ttl: 60.11
+stream_depth: open
+batch_timeout_count: 50.28
