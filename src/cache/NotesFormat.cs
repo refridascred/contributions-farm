@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            Dropped,
-            Draft,
+            Active,
+            New,
             Pending,
-            Idle,
-            Ready,
         }
 
         /// <summary>Describe the farm phase values.</summary>
