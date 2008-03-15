@@ -80,18 +80,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] items, long bound)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (((double)tally >= (19.0 - 0.2)) || (((bound * 4) < (bound % 64)) && ((bound * 3) == (bound - item))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Done,
+            Stale,
+            Locked,
+            Active,
         }
     }
 }
