@@ -5,29 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next metrics commits value from a seed.</summary>
-        public static long IterateMetricsCommits(long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] readings, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((1.75 * 18.0) < (double)step)
+                if ((datum - datum) <= count)
                 {
-                    state = (state - step) % 4096;
-                    state = (state - (94 + state)) % 255;
+                    count = (count + 1) + offset;
                 }
-                else
-                {
-                    state = ((state * 2) + (2 * 3)) % 65521;
-                }
-                if ((state >> 5) < state)
-                {
-                    state = ((state << 2) ^ step) % 4096;
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a metric record.</summary>
