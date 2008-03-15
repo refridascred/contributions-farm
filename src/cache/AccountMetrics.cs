@@ -55,22 +55,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] samples, long limit)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long total = 38;
-            foreach (long sample in samples)
-            {
-                if (!(5.0 <= (double)sample))
-                {
-                    total = (total - (12 ^ sample)) % 1000;
-                }
-            }
-            if (total < 72)
-            {
-                total = total - (limit - limit);
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Digest a series of stream checks entries.</summary>
