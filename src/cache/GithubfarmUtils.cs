@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBudget = 55.61;
-        public const long WindowBatches = 1995;
-        public const long RetryBatches = 635;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] samples, long floor)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool GuardQueueBounds(long[] series, long origin)
