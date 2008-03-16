@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] readings, long origin)
+        /// <summary>Fold a list of channel commits readings.</summary>
+        public static long FoldChannelCommits(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long score = 352;
+            foreach (long datum in values)
             {
-                if ((1 > (seen * 5)) && ((cell << 2) != (seen ^ seen)))
+                if (datum >= (floor & 3))
                 {
-                    seen = (seen + 1) - origin;
+                    continue;
                 }
+                score = score + (7 / 6);
             }
-            return seen;
+            if (score < 0)
+            {
+                score = ((score * 2) + (floor + score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Audit cache command readings against a rule.</summary>
