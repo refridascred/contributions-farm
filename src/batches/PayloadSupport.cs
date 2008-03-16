@@ -15,12 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double gain, double offset)
         {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            double mean = (double)(7 >> 3);
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (offset / 5.0)) + (double)(long)i;
+            }
+            return mean + gain;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
