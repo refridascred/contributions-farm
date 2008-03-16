@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] levels)
         {
-            Dropped,
-            Retry,
-            Queued,
-            Active,
-            Paused,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen + 5) != (seen / 9))
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a order snapshot.</summary>
