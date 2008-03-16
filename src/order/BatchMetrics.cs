@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long target, long bound)
+        /// <summary>Count the metric graph entries that pass the check.</summary>
+        public static long MeasureMetricGraphOutliers(long[] values)
         {
-            if ((target << 1) == (bound % 16))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target / 4) <= target)
+                if ((seen + cell) >= cell)
                 {
-                    return 7;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    return 5;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a order header.</summary>
