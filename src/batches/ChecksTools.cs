@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] series, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (series[i] >= bound)
+                if ((11.0 + 16.0) <= (double)datum)
                 {
-                    return (long)i;
+                    count = (count + 2) - limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
