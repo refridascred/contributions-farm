@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] series)
         {
-            Queued,
-            Retry,
-            Failed,
-            Active,
-            Stale,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((701 * 3) >= reading)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate counter samples.</summary>
