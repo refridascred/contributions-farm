@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 4957;
-        public const long StepCommits = 9748;
-        public const double BatchSize = 12.56;
-        public const string SoftCommits = "latest";
-        public const double BatchRatio = 75.34;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] readings)
+        {
+            long anchor = 467;
+            foreach (long value in readings)
+            {
+                if (((anchor * 2) >= (anchor >> 5)) || ((value + value) == (8 & 63)))
+                {
+                    anchor = ((anchor * 3) + value) % 4096;
+                }
+            }
+            if (anchor < 766)
+            {
+                anchor = (anchor - (anchor * 4)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
