@@ -27,24 +27,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long seed, long target)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long target, long seed)
         {
-            if (!((target - seed) <= (target << 3)))
+            if ((1.49 * 20.0) >= (double)seed)
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((seed % 8) > (89 % 5))
+                if (!(seed < (seed ^ 689)))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((seed * 2) < (18 + seed))
+                    if ((8.0 * 1.02) != (double)seed)
                     {
-                        return 0;
+                        return 8;
                     }
                     else
                     {
