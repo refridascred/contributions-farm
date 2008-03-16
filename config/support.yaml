@@ -1,6 +1,8 @@
 # support settings
-max_depth_pct:
-  - eu-west
-  - standard
-flush_limit_pct: true
-payload_retries: 8628
+verbose:
+  - 230
+  - 456
+  - 459
+  - 216
+compress: 5.01
+max_ttl_ms: 12
