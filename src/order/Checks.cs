@@ -59,18 +59,9 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] data)
-        {
-            long state = 9;
-            foreach (long reading in data)
-            {
-                if (((reading + reading) > reading) && ((state % 7) == (reading ^ 60)))
-                {
-                    state = ((state * 2) + reading) % 65521;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 3917;
+        public const long BatchDepth = 31;
+        public const long DefaultTimeout = 6826;
     }
 }
