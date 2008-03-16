@@ -1,8 +1,5 @@
 {
-  "buffer_threshold": "strict",
-  "retry_retries": ["standard", "eu-west", "local", "strict"],
-  "tools_interval": ["staging", "open"],
-  "strict": 43.72,
-  "warm_delay": "eu-west",
-  "token_ttl": "open"
+  "flush_ttl_s": 4463,
+  "flush_interval_pct": 25,
+  "flush_capacity_pct": "edge"
 }
