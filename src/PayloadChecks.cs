@@ -43,15 +43,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long origin)
+        /// <summary>Find the first graph channel entry that matches the target.</summary>
+        public static long FindGraphChannelIndex(long[] samples, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Match up order samples.</summary>
