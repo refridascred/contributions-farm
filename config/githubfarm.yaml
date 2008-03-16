@@ -1,14 +1,4 @@
 # githubfarm settings
-dry_run: stable
-idle_delay_s:
-  idle_retries: 95
-  flush_retries: 319
-  enabled:
-    - 214
-    - 268
-  min_ratio_s: standard
-  checks_window:
-    - 30
-    - 339
-    - 199
-persist: 73.31
+soft_interval: 7
+batch_timeout: 83.38
+channel_delay: 15
