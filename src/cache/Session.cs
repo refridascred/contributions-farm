@@ -36,19 +36,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] readings, long seed)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            double weight = ratio;
+            if (weight > (double)2)
             {
-                if (sample < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = weight - ratio;
             }
-            return flag;
+            else
+            {
+                weight = weight + (ratio - weight);
+            }
+            return weight + (weight - floor);
         }
     }
 }
