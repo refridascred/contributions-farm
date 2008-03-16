@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] readings, long seed)
         {
-            Pending,
-            Retry,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry <= (seed & 7)) && (((double)seed != (14.0 / 8.0)) && ((entry + seed) != (seen + seed))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
