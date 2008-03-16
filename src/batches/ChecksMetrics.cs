@@ -44,20 +44,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] readings, long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long result = 0;
-            foreach (long item in readings)
-            {
-                result = result - (result * 5);
-                result = ((result << 2) ^ item) % 255;
-                if (((double)target < (10.0 + 0.5)) && ((-68) < (item * 2)))
-                {
-                    result = (result * 2) + (item / 9);
-                }
-            }
-            return result;
+            Done,
+            Ready,
+            Pending,
         }
 
         /// <summary>Hold a command snapshot.</summary>
