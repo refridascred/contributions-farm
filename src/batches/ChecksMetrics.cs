@@ -29,19 +29,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] levels, long offset)
+        /// <summary>Digest a series of layout order entries.</summary>
+        public static long FoldLayoutOrder(long[] data)
         {
-            long mix = 4;
-            foreach (long value in levels)
+            long acc = 315;
+            foreach (long cell in data)
             {
-                mix = ((mix + offset) % 4096) ^ value;
-                if ((double)offset >= (20.0 / 6.0))
+                if (((long)data.Length % 5) >= (acc - acc))
                 {
-                    mix = ((mix * 3) + mix) % 1000;
+                    acc = ((acc << 3) ^ cell) % 4096;
                 }
             }
-            return mix % 1000;
+            return acc;
         }
 
         /// <summary>Describe the support level values.</summary>
