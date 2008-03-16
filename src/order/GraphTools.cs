@@ -27,13 +27,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
-            public double Offset { get; set; }
-            public double Limit { get; set; }
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the layout state values.</summary>
