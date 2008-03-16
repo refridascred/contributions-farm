@@ -14,32 +14,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long floor, long target)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long bound = floor ^ target;
-            if ((bound + 766) <= (target * 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((347 > (floor + floor)) || ((floor - bound) >= (target + bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (bound > target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Queued,
+            Retry,
+            Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Grade a route commits value against two limits.</summary>
