@@ -13,24 +13,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long target, long step)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            if ((step % 16) < (step ^ target))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)step > (0.16 / 4.0)) && ((double)target <= 20.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Paused,
+            Failed,
+            Ready,
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
