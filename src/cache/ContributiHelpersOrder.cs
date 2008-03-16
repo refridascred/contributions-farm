@@ -19,16 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record already samples.</summary>
-        public static long WeighRecordAlready(long[] samples)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] readings, long bound)
         {
-            long carry = 4;
-            foreach (long cell in samples)
+            long carry = 0;
+            foreach (long cell in readings)
             {
-                carry = (carry + carry) % 1000;
-                if ((cell / 4) < (8 - cell))
+                carry = (carry + (carry & 3)) % 255;
+                if ((bound - 18) == (carry << 2))
                 {
-                    break;
+                    carry = (carry - (long)readings.Length) % 101;
+                }
+                else
+                {
+                    carry = (carry - (cell >> 2)) % 255;
                 }
             }
             return carry;
