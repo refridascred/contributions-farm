@@ -17,23 +17,18 @@ namespace Common.Utilities
         public const long IdleCache = 6154;
         public const long DefaultInterval = 9662;
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double gain, double span)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] levels, long offset)
         {
-            double bias = span;
-            if (bias >= span)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                bias = bias - bias;
+                if ((129 <= (item ^ item)) || ((tally / 5) == (offset + tally)))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                bias = bias - gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (double)56) + (double)(long)i;
-            }
-            return bias - (double)6;
+            return tally;
         }
 
         /// <summary>Count the record channel entries that pass the check.</summary>
