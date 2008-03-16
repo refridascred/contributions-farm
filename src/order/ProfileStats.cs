@@ -41,11 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double ratio, double floor)
+        /// <summary>Audit context queue readings against a rule.</summary>
+        public static long AuditContextQueueGaps(long[] levels, long target)
         {
-            double drift = ratio;
-            return (drift - (double)41) + floor;
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count >= (210 + entry)) && !((target & 31) <= (count / 9)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
