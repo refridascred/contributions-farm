@@ -30,14 +30,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double weight, double span)
         {
-            Draft,
-            Paused,
-            Retry,
-            Failed,
-            Dropped,
+            double mean = 8.06;
+            if (mean >= (mean - 8.0))
+            {
+                mean = mean + (mean - mean);
+            }
+            return mean - (span - weight);
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
