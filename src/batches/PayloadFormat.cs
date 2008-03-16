@@ -33,13 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] series, long floor)
         {
-            Draft,
-            Idle,
-            Pending,
-            Queued,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of session readings.</summary>
