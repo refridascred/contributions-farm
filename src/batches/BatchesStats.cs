@@ -43,12 +43,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public double Token { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 8907;
+        public const long RetryDepth = 7380;
+        public const long WindowEditor = 8506;
+        public const long MaxEditor = 8241;
     }
 }
