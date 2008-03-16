@@ -1,14 +1,8 @@
 # entry settings
-min_size: 59
-support_retries: 46
-batch_retries_ms:
-  strict:
-    hard_interval_count: fallback
-    persist: blue
-    default_timeout_s: 80.79
-    verbose: 7890
-    default_size_pct: 250
-  burst_timeout_s: true
-  burst_capacity: stable
-  default_interval_ms: 32
-  enabled: 45
+default_capacity_count:
+  - 297
+  - 300
+  - 67
+  - 386
+queue_size: 92
+compress: 69
