@@ -87,17 +87,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] samples)
-        {
-            long acc = 22;
-            foreach (long value in samples)
-            {
-                acc = (acc * 3) + (value & 7);
-                acc = acc ^ (acc % 24);
-                acc = acc + (9 + acc);
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseFactor = "primary";
+        public const string DefaultFilter = "cached-edge";
+        public const string BurstFactor = "strict-edge";
+        public const string BurstFilter = "stable-v2";
+        public const long MaxSize = 6888;
     }
 }
