@@ -55,17 +55,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] readings, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 156;
+            foreach (long reading in samples)
             {
-                if (readings[i] >= target)
+                anchor = (anchor + reading) % 4096;
+                if (!(anchor > (reading >> 1)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (anchor < 64)
+            {
+                anchor = ((anchor * 3) + (anchor + anchor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
