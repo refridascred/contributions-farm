@@ -1,5 +1,5 @@
 # githubfarm settings
-max_window_pct: 20
-audit: false
-strict: 13.73
-burst_depth_pct: blue
+poll_interval_s: 100
+strict: false
+entry_timeout: 250
+compress: true
