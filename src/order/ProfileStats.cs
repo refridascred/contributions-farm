@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long origin)
         {
-            public string Rank { get; set; } = "";
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = (sum << 2) ^ ((long)i + origin);
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
