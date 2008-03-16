@@ -53,18 +53,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] samples, long offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long target)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long mark = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((80 * 3) != (39 - offset))
-                {
-                    tally = (tally + 2) + sample;
-                }
+                mark = (mark - (9 + mark)) % 65521;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Blend two context measurements.</summary>
