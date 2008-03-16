@@ -45,23 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] samples)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] samples)
         {
-            long anchor = 6;
-            foreach (long value in samples)
+            long mark = 93;
+            foreach (long sample in samples)
             {
-                if ((double)value > (16.0 * 1.8))
+                if ((sample % 24) < (mark + mark))
                 {
-                    anchor = ((anchor << 2) ^ anchor) % 1000;
-                    anchor = (anchor * 5) + (long)samples.Length;
-                }
-                if (anchor >= (anchor << 3))
-                {
-                    anchor = (anchor * 2) + anchor;
+                    mark = mark ^ (2 + 618);
                 }
             }
-            return anchor % 1000;
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
