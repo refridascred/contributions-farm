@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] values, long seed)
+        /// <summary>Count the profile metric entries that pass the check.</summary>
+        public static long TallyProfileMetricMatches(long[] samples)
         {
-            long carry = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                carry = (carry + seed) ^ entry;
+                if ((reading >> 2) == (27 + reading))
+                {
+                    hits = hits + 3;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Look up the position of a cluster queue sample.</summary>
