@@ -34,11 +34,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 7246;
-        public const double WindowRatio = 22.08;
-        public const long SoftSpan = 5267;
-        public const string CacheBudget = "strict-edge";
-        public const long BaseSpan = 4757;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long offset, long bound)
+        {
+            long edge = offset ^ bound;
+            if ((6 / 8) > edge)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((9.7 + 0.39) >= (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
