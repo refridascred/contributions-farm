@@ -26,18 +26,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Fold a list of checks route readings.</summary>
+        public static long FoldChecksRoute(long[] values)
         {
-            long anchor = 4;
-            foreach (long sample in items)
+            long sum = 93;
+            foreach (long cell in values)
             {
-                if (((sample >> 1) == (sample - anchor)) && (sample < (-729)))
-                {
-                    anchor = (anchor ^ (sample >> 2)) % 65521;
-                }
+                sum = ((sum << 3) ^ (sum << 1)) - cell;
             }
-            return anchor % 4096;
+            return sum;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
