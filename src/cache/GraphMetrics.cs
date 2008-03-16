@@ -60,22 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] values, long origin)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if ((double)count >= (2.09 * 11.0))
+                if (sample != origin)
                 {
-                    count = ((count + 2) + reading) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
