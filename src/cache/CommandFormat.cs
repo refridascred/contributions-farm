@@ -34,20 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] data, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (((sample + hits) <= hits) && (offset < (5 + hits)))
                 {
-                    carry = ((carry + (limit + carry)) % 97) ^ (long)i2;
-                    carry = carry + (carry - limit);
+                    hits = hits + 2;
                 }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
