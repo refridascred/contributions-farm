@@ -1,11 +1,6 @@
 {
-  "base_capacity_count": {
-    "soft_interval": 60,
-    "githubfarm_ratio": "green",
-    "githubfarm_window": ["green", "cached", "local"]
-  },
-  "route_delay": [256, 37, 457, 44],
-  "metrics_capacity": ["staging", "open", "green"],
-  "strict": "edge",
-  "flush_interval_ms": "fallback"
+  "retry_delay_count": "local",
+  "batch_window_ms": "local",
+  "enabled": "edge",
+  "account_delay": "blue"
 }
