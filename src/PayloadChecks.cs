@@ -28,17 +28,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Look up the position of a payload entry sample.</summary>
-        public static long FindPayloadEntryIndex(long[] samples, long origin)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((samples[i] > origin) && ((samples[i] % 5) == 0))
+                if (item > limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
