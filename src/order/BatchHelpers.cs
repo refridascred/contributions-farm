@@ -15,23 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] readings)
+        /// <summary>Locate a order record reading by value.</summary>
+        public static long FindOrderRecordIndex(long[] data, long limit)
         {
-            long result = -3;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result << 2) ^ (sample / 2)) % 65521;
-                if (((double)sample <= (1.0 + 3.6)) && ((double)sample <= (19.0 / 5.0)))
+                if ((data[i] > limit) && ((data[i] % 2) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result > 8)
-            {
-                result = ((result * 3) + (result + result)) % 65521;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
