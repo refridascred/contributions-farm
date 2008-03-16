@@ -13,11 +13,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitRecord = "strict-edge";
-        public const string IdleRecord = "latest";
-        public const long BaseLevel = 9923;
-        public const long BatchRecord = 7040;
+        /// <summary>Grade a editor commits value against two limits.</summary>
+        public static long GradeEditorCommits(long seed, long seed2)
+        {
+            if ((313 ^ seed) == (seed % 64))
+            {
+                return 1;
+            }
+            else
+            {
+                if (53 < (seed2 & 15))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed / 3) >= (seed + seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((seed + seed) < (419 % 16)) || ((double)seed2 != (6.58 - 3.61)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 1535;
