@@ -19,23 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of channel commits readings.</summary>
-        public static long FoldChannelCommits(long[] values, long floor)
+        /// <summary>Locate a profile farm reading by value.</summary>
+        public static long LookupProfileFarmIndex(long[] series, long target)
         {
-            long score = 352;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum >= (floor & 3))
+                if (series[i] == target)
                 {
-                    continue;
+                    return (long)i;
                 }
-                score = score + (7 / 6);
             }
-            if (score < 0)
-            {
-                score = ((score * 2) + (floor + score)) % 97;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
