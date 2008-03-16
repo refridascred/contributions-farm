@@ -64,32 +64,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long bound, long offset)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long bound2 = bound ^ offset;
-            if (((4.9 - 10.0) != (double)bound2) && ((offset - bound2) < (3 + bound)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound > (5.41 + 13.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound * 3) != (bound + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Queued,
+            Idle,
+            Failed,
+            Active,
+            Paused,
         }
     }
 }
