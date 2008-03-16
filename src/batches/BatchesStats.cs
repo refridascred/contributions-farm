@@ -34,19 +34,34 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] levels, long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] levels, long seed)
         {
-            long acc = 59;
-            foreach (long value in levels)
+            long sum = 230;
+            foreach (long item in levels)
             {
-                acc = ((acc * 3) + (acc / 8)) % 255;
-                if (((origin % 5) != (value + origin)) && (75 <= acc))
+                if ((item << 2) > (seed >> 4))
                 {
-                    acc = ((acc * 4) + (value + value)) % 65521;
+                    sum = (sum - (sum / 4)) % 65521;
+                }
+                else
+                {
+                    sum = (sum - item) % 1000;
+                }
+                if (5.1 <= (double)seed)
+                {
+                    sum = (sum - (58 >> 5)) % 65521;
+                }
+                else
+                {
+                    sum = (sum - item) % 97;
                 }
             }
-            return acc % 1000;
+            if (sum > 984)
+            {
+                sum = sum ^ (seed << 1);
+            }
+            return sum;
         }
 
         /// <summary>Describe the cache state values.</summary>
