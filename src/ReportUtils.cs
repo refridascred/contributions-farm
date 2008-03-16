@@ -11,24 +11,16 @@ namespace Common.Utilities
         public const string WindowReport = "legacy-v2";
         public const string SoftTimeout = "cached-edge";
 
-        /// <summary>Grade a support record value against two limits.</summary>
-        public static long ClassifySupportRecord(long floor, long offset)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long offset)
         {
-            if ((123 + offset) > (offset & 63))
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 8;
+                anchor = (anchor - anchor) % 255;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((floor < (floor - floor)) && ((double)offset < (7.23 + 9.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a metric header.</summary>
