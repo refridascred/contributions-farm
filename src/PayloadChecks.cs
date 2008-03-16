@@ -72,31 +72,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long seed, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] readings, long floor)
         {
-            if (((limit - seed) > (seed + seed)) || ((double)limit > 1.38))
+            bool found = true;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((18.0 * 16.0) != (double)limit)
+                if (entry < floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit << 2) >= (seed + limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
