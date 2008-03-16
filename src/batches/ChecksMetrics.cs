@@ -71,15 +71,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] series)
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
