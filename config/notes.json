@@ -1,6 +1,8 @@
 {
-  "compress": 64.03,
-  "order_depth": 2557,
-  "context_retries": 3234,
-  "retry_timeout": ["fallback", "stable", "fallback"]
+  "default_retries": 47.43,
+  "cache_size_count": "primary",
+  "warm_timeout_ms": 262,
+  "batches_size": 69,
+  "profile_limit": 24.36,
+  "max_size_ms": 1024
 }
