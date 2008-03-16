@@ -40,28 +40,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long floor)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long offset, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
+            if ((offset + 176) == (offset & 15))
             {
-                if (611 > (sum ^ sum))
+                return 1;
+            }
+            else
+            {
+                if (20.0 > (15.0 / 3.0))
                 {
-                    continue;
+                    return 3;
                 }
                 else
                 {
-                    sum = (sum - floor) % 4096;
+                    return 4;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = ((sum ^ ((long)i * 5)) % 255) - (long)i2;
-                    sum = sum + (313 * 5);
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
