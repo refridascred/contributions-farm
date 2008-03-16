@@ -54,12 +54,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleCommits = 10.71;
-        public const long BatchRatio = 3965;
-        public const double MinCommits = 4.33;
-        public const double CacheCommits = 80.62;
-        public const string BaseCommits = "open-1";
+        /// <summary>Combine cluster route values into a single score.</summary>
+        public static long DigestClusterRoute(long[] series)
+        {
+            long mark = 3;
+            foreach (long entry in series)
+            {
+                mark = ((mark << 2) ^ (entry << 1)) % 97;
+            }
+            if (mark < 7)
+            {
+                mark = (mark + 324) % 101;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Measure how many token route samples are out of range.</summary>
         public static long AuditTokenRouteHits(long[] data)
