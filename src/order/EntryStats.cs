@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] readings, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (((4.4 + 2.3) > (double)sum) && (step <= 5))
+                if ((double)reading < (4.0 / 2.0))
                 {
-                    continue;
+                    tally = (tally + 1) + target;
                 }
-                if (!((23 + step) > ((long)i + (long)i)))
-                {
-                    sum = (sum + (sum + sum)) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Accumulate entry samples.</summary>
