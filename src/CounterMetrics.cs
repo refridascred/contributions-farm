@@ -47,22 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi context entries.</summary>
-        public static long FoldContributiContext(long[] levels)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long acc = 14;
-            foreach (long sample in levels)
-            {
-                if ((14 >> 3) > (sample * 3))
-                {
-                    acc = (acc + (-15)) % 101;
-                }
-            }
-            if (acc < 26)
-            {
-                acc = (acc - acc) % 255;
-            }
-            return acc;
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
