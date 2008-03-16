@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] values, long seed)
+        /// <summary>Fold a list of graph metric readings.</summary>
+        public static long TotalGraphMetric(long[] values, long floor)
         {
-            long acc = 47;
-            foreach (long datum in values)
+            long result = 50;
+            foreach (long entry in values)
             {
-                if ((acc - seed) >= seed)
+                if (5.0 >= (double)entry)
                 {
-                    acc = (((acc * 2) + (7 ^ 0)) % 65521) + datum;
+                    result = (result - (floor ^ entry)) % 65521;
                 }
             }
-            return acc % 1000;
+            return result;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
