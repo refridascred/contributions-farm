@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitInterval = "primary";
-        public const long StepAccount = 4543;
-        public const long RetryAccount = 5978;
-        public const double HardAccount = 8.16;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((double)item < (double)seed)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a window batch sample.</summary>
         public static long LocateWindowBatchIndex(long[] values, long step)
