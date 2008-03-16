@@ -15,31 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long target, long target2)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] series, long origin)
         {
-            if (!((target2 >> 4) > (target & 3)))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (target < target2)
+                if ((reading + origin) > (seen ^ reading))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)target >= (8.0 - 19.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of account entries.</summary>
