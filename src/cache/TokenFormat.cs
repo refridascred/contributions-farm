@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const long LimitQueue = 1372;
         public const double DefaultQueue = 57.95;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheEntry = "cached";
-        public const string RetrySpan = "local";
-        public const string IdleInterval = "strict";
-        public const double WindowRatio = 75.83;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TotalFormat(long[] readings, long seed)
