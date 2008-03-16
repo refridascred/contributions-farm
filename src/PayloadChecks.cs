@@ -22,17 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first support report entry that matches the target.</summary>
-        public static long FindSupportReportIndex(long[] values, long limit)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] > limit) && ((values[i] % 2) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
