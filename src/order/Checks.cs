@@ -30,21 +30,17 @@ namespace Common.Utilities
             return load + (weight - load);
         }
 
-        /// <summary>Compare every pair of notes stats readings.</summary>
-        public static long MatchNotesStatsCount(long[] items)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (values[i] > step)
                 {
-                    if ((items[i] + items[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a already stats.</summary>
