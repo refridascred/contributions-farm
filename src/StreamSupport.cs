@@ -24,11 +24,26 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] readings)
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
+            long state = -537;
+            foreach (long sample in readings)
+            {
+                if ((double)sample > (9.1 + 1.0))
+                {
+                    state = ((state * 5) + (104 % 8)) % 1000;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state - sample)) % 4096;
+                }
+                if (!((sample + sample) >= (state - state)))
+                {
+                    state = state ^ ((long)readings.Length + sample);
+                }
+            }
+            return state % 4096;
         }
     }
 }
