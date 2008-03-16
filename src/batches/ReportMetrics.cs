@@ -14,18 +14,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] samples, long seed)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)datum < (double)seed) && !((double)605 > (2.9 + 1.82)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] + values[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
