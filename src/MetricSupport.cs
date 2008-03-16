@@ -19,34 +19,34 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long limit, long step)
+        /// <summary>Rank command editor input into a small class.</summary>
+        public static long ClassifyCommandEditor(long origin, long step)
         {
-            if (((double)limit != (double)1) || ((limit + step) <= (step << 3)))
+            if ((155 - 96) > (step + step))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((limit >> 2) != (step << 1))
+                if ((double)step <= (18.0 - 11.0))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)limit >= (3.3 * 18.0))
+                    if ((origin & 3) < (57 - step))
                     {
-                        return 2;
+                        return 7;
                     }
                     else
                     {
-                        if (!((step % 16) <= limit))
+                        if ((step - step) == (step + origin))
                         {
-                            return 1;
+                            return 4;
                         }
                         else
                         {
-                            return 3;
+                            return 1;
                         }
                     }
                 }
