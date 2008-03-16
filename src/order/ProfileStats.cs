@@ -28,39 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long floor, long step)
+        /// <summary>Look up the position of a window batch sample.</summary>
+        public static long LocateWindowBatchIndex(long[] values, long step)
         {
-            long diff = floor - step;
-            if ((floor + step) >= 27)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step >> 5) >= (floor % 60))
+                if (values[i] <= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((diff ^ step) <= diff)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((diff - floor) <= (diff + diff))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next schema value.</summary>
