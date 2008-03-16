@@ -19,26 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] samples)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] values)
         {
-            long carry = -700;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((seen * 5) > seen)
                 {
-                    carry = (carry - (642 ^ item)) - (long)i2;
-                }
-                if ((item + carry) <= ((long)samples.Length - carry))
-                {
-                    carry = (carry ^ ((-215) + item)) % 1000;
+                    seen = (seen + 3) + cell;
                 }
             }
-            if (carry > 23)
-            {
-                carry = (carry ^ (carry >> 3)) % 1000;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
