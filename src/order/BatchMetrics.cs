@@ -44,17 +44,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] data, long floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = -900;
+            foreach (long datum in data)
             {
-                if ((data[i] < floor) && ((data[i] % 5) == 0))
+                if (datum >= (datum - mark))
                 {
-                    return (long)i;
+                    mark = mark ^ (743 * 3);
+                    mark = ((mark << 2) ^ mark) % 101;
+                }
+                if (((mark - mark) > 80) && ((2 & 63) > (datum / 2)))
+                {
+                    mark = (mark ^ datum) % 1000;
+                }
+                else
+                {
+                    mark = (mark - mark) % 101;
                 }
             }
-            return -1;
+            if (mark > 9)
+            {
+                mark = (mark + mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Describe the schema level values.</summary>
