@@ -23,11 +23,9 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double ratio, double floor)
-        {
-            double scale = (double)(4 - 5);
-            return (scale + (floor * 9.1)) + ratio;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 1547;
+        public const string BaseContributi = "open-edge";
+        public const double MinSize = 6.88;
     }
 }
