@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up buffer format samples.</summary>
-        public static long OverlapBufferFormatCount(long[] data)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 586;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((526 / 8) >= acc)
                 {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc + (step - acc)) - reading;
                 }
             }
-            return matches;
+            if (acc > 5)
+            {
+                acc = ((acc << 3) ^ acc) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the entry phase values.</summary>
