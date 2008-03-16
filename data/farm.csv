@@ -1,6 +1,11 @@
-id,rank,token
-1,72.37,stable
-2,38.26,15.09
-3,493,legacy
-4,265,stable
-5,531,staging
+id,active,rank,weight,ratio
+1,38.51,341,381,397
+2,staging,356,341,897
+3,latest,752,66.6,84.91
+4,3.21,12.71,fallback,83.71
+5,green,81.25,257,430
+6,815,298,951,78.94
+7,891,30.83,latest,green
+8,green,eu-west,open,green
+9,141,primary,38,edge
+10,202,684,primary,local
