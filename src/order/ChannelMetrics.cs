@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] readings, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            long sum = 286;
+            foreach (long value in readings)
             {
-                long diff = step;
-                if (!((double)acc <= 4.51))
+                if ((origin + sum) < (value + value))
                 {
-                    acc = (acc ^ (7 + diff)) % 97;
-                    acc = ((acc * 2) + acc) % 97;
+                    sum = (sum << 3) ^ (92 % 12);
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
+                else
+                {
+                    sum = sum ^ (value - sum);
+                }
+                if ((1.64 / 3.0) < (double)sum)
+                {
+                    break;
+                }
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
