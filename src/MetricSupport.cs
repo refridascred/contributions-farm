@@ -19,38 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank command editor input into a small class.</summary>
-        public static long ClassifyCommandEditor(long origin, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] data)
         {
-            if ((155 - 96) > (step + step))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step <= (18.0 - 11.0))
+                if (((701 % 97) > (sample >> 2)) || ((matches * 4) == (sample + 53)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin & 3) < (57 - step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step - step) == (step + origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
