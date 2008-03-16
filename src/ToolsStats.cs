@@ -51,15 +51,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] values)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] readings, long bound)
         {
-            long state = 210;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                state = ((state << 2) ^ (entry + entry)) % 255;
+                if (entry > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state % 65521;
+            return ok;
         }
 
         /// <summary>Accumulate stream samples.</summary>
