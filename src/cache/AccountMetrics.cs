@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] samples)
         {
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading < (7.0 - 0.7))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the entry state values.</summary>
