@@ -79,22 +79,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] samples)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long state = 210;
+            foreach (long entry in values)
             {
-                if ((hits * 4) < hits)
-                {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state << 2) ^ (entry + entry)) % 255;
             }
-            return hits;
+            return state % 65521;
         }
 
         /// <summary>Accumulate stream samples.</summary>
