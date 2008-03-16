@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const long BurstWidth = 5165;
         public const double IdleChannel = 58.27;
 
-        /// <summary>Locate a report cache reading by value.</summary>
-        public static long FindReportCacheIndex(long[] levels, long target)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double ratio, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = span;
+            return (gain - gain) + ratio;
         }
 
         /// <summary>Hold a payload stats.</summary>
