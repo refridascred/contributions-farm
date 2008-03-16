@@ -36,22 +36,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of schema batches entries.</summary>
-        public static long TallySchemaBatches(long[] series, long bound)
+        /// <summary>Count channel profile pairs that satisfy a relation.</summary>
+        public static long PairChannelProfileCount(long[] data)
         {
-            long mix = 4;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading + mix) >= 5)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix << 3) ^ (reading + reading);
+                    if ((data[i] - data[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < 5)
-            {
-                mix = (mix ^ (bound ^ mix)) % 101;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
