@@ -17,23 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] series, long limit)
-        {
-            long anchor = 53;
-            foreach (long item in series)
-            {
-                if (!(((anchor ^ item) >= (limit + item)) || (759 < item)))
-                {
-                    anchor = (anchor ^ (item + limit)) % 255;
-                }
-                if ((item >> 3) != (anchor * 2))
-                {
-                    anchor = (anchor << 2) ^ anchor;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftLevel = 8344;
+        public const string RetryRatio = "legacy-1";
+        public const string BaseTools = "standard-1";
+        public const double DefaultTimeout = 2.32;
+        public const double MaxTools = 63.52;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 3539;
