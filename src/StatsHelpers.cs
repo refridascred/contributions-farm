@@ -44,16 +44,11 @@ namespace Common.Utilities
             return gain + (gain * 0.04);
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] data, long offset)
-        {
-            long result = 50;
-            foreach (long reading in data)
-            {
-                result = ((((result << 2) ^ result) % 255) + reading) + offset;
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinBudget = 7113;
+        public const double HardFactor = 73.63;
+        public const long LimitBudget = 6562;
+        public const string MinCount = "cached-v2";
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
