@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!((hits % 3) <= item))
-                {
-                    hits = (hits + 3) - origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheDepth = 9524;
+        public const long WindowProfile = 5439;
+        public const long LimitProfile = 576;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double MinMetric = 35.17;
