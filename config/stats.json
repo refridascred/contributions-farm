@@ -1,7 +1,6 @@
 {
-  "min_timeout_s": 60,
-  "flush_ratio_s": 58,
-  "audit": 1131,
-  "default_window_count": "primary",
-  "base_ratio_pct": false
+  "record_depth": 500,
+  "window_capacity": "strict",
+  "max_window_count": 7005,
+  "payload_delay": 100
 }
