@@ -60,14 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] items, long offset)
         {
-            New,
-            Done,
-            Pending,
-            Draft,
-            Active,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
