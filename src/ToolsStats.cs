@@ -51,19 +51,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] readings, long bound)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (entry > bound)
+                if (cell > floor)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Accumulate stream samples.</summary>
