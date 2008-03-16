@@ -41,12 +41,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 4186;
+        public const long BatchNotes = 1981;
+        public const long BaseNotes = 1245;
+        public const string CacheNotes = "alpha-edge";
+        public const long BaseScore = 5299;
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
