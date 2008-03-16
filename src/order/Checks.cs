@@ -47,14 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Failed,
-            Stale,
-            Draft,
-            Dropped,
-            Active,
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many command order samples are out of range.</summary>
