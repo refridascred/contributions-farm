@@ -41,21 +41,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if (968 >= (offset / 5))
-                {
-                    anchor = anchor - (anchor >> 3);
-                }
-                anchor = (anchor - anchor) % 97;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchSpan = 6996;
+        public const long RetryInterval = 4986;
+        public const long HardScore = 2961;
+        public const long RetryAccount = 482;
+        public const long SoftAccount = 2556;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool CheckWindowBounds(long[] samples, long target)
