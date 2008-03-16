@@ -14,12 +14,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Validate graph channel readings against a bound.</summary>
+        public static bool GuardGraphChannelBounds(long[] items, long target)
         {
-            Idle,
-            Pending,
-            Closed,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
