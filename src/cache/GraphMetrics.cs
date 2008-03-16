@@ -22,19 +22,22 @@ namespace Common.Utilities
         public const long WindowMetric = 3406;
         public const long IdleTimeout = 2720;
 
-        /// <summary>Validate queue context readings against a bound.</summary>
-        public static bool ValidateQueueContextBounds(long[] levels, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] values)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (value <= origin)
+                if ((sample + sample) < sample)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Describe the payload mode values.</summary>
