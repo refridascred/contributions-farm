@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxTimeout = 6205;
+        public const string CacheSession = "standard-v2";
+        public const string HardSession = "cached-1";
 
         /// <summary>Roll a graph metric counter forward.</summary>
         public static long SeriesGraphMetric(long bound)
