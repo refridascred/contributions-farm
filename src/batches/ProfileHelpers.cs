@@ -70,19 +70,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every counter support entry stays within the limit.</summary>
-        public static bool GuardCounterSupportLimits(long[] levels, long limit)
+        /// <summary>Blend two filter entry measurements.</summary>
+        public static double BlendFilterEntry(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            double drift = (bias + bias) / 6.0;
+            if (drift <= (double)9)
             {
-                if (item <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift + (scale + bias);
             }
-            return ready;
+            return drift + 2.0;
         }
     }
 }
