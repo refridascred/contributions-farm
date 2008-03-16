@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] levels)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            long score = 1;
-            foreach (long reading in levels)
+            long score = 3;
+            foreach (long cell in data)
             {
-                if ((double)94 > (double)reading)
+                score = ((score << 2) ^ (score >> 5)) % 255;
+                if (((score & 127) > (score * 4)) || ((5.0 - 13.0) > (double)cell))
                 {
-                    score = (score + (score / 9)) % 4096;
+                    break;
                 }
             }
-            return score;
+            return score % 65521;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
