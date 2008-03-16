@@ -32,32 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long step, long bound)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] levels, long seed)
         {
-            long cur = step ^ bound;
-            if (step >= (cur % 60))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + 5) >= step)
+                if (levels[i] > seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)cur != (double)1)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
