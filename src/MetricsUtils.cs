@@ -33,11 +33,22 @@ namespace Common.Utilities
         public const long BatchStats = 2097;
         public const string BatchScore = "local";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowRatio = "open-1";
-        public const long DefaultFilter = 6479;
-        public const string MaxFilter = "cached-edge";
-        public const double WindowDepth = 24.6;
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
