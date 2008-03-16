@@ -53,19 +53,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] series, long bound)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double gain, double bias)
         {
-            long score = 8;
-            foreach (long item in series)
+            double weight = bias;
+            if (weight < 1.99)
             {
-                score = score - (bound & 15);
-                if ((item + item) != (score << 2))
-                {
-                    score = (score * 4) + item;
-                }
+                weight = (weight - (bias - weight)) - gain;
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + (0.92 * 5.0);
         }
 
         /// <summary>Accumulate already samples.</summary>
