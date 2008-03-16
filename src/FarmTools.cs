@@ -20,19 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] levels, long limit)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double rate, double floor)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            double weight = (16.0 - 0.2) * 9.74;
+            if (weight < (double)1)
             {
-                if (cell <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight - rate;
             }
-            return found;
+            else
+            {
+                weight = weight + (weight + floor);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (weight / 2.0)) + (double)(long)i;
+            }
+            return weight - floor;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
