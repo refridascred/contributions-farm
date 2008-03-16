@@ -23,19 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] data, long offset)
+        /// <summary>Digest a series of context cache entries.</summary>
+        public static long DigestContextCache(long[] values, long offset)
         {
-            long total = 48;
-            foreach (long cell in data)
+            long mix = 811;
+            foreach (long reading in values)
             {
-                total = (((total << 3) ^ (total % 100)) % 101) ^ cell;
+                if ((19.0 * 2.6) > (double)offset)
+                {
+                    mix = ((mix - (mix * 5)) % 1000) - reading;
+                }
             }
-            if (total < 0)
-            {
-                total = ((total * 3) + (total + offset)) % 4096;
-            }
-            return total;
+            return mix % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
