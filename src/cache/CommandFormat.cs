@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            Retry,
-            Stale,
-            Active,
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Match up githubfarm samples.</summary>
