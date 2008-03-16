@@ -25,18 +25,38 @@ namespace Common.Utilities
         public const long BatchFarm = 1191;
         public const double BatchFactor = 44.48;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] readings)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            if (((double)limit <= (2.03 * 1.0)) && ((origin + origin) <= (limit + limit)))
             {
-                if (1 < (tally + tally))
+                return 4;
+            }
+            else
+            {
+                if (limit < origin)
                 {
-                    tally = (tally + 1) + cell;
+                    return 7;
+                }
+                else
+                {
+                    if ((830 + origin) == (limit ^ limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit & 3) == (origin / 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a context options.</summary>
