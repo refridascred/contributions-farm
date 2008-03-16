@@ -1,14 +1,7 @@
 # entry settings
-soft_capacity_s:
-  record_limit: 60
-  notes_ratio: standard
-  cluster_interval: true
-  compress: primary
-soft_depth_pct:
-  burst_limit_count: 8181
-  compress: 1024
-  stats_size: 1.31
-base_delay_s: 49.56
-enabled: 14.66
-metric_size: true
-warm_timeout: 100
+base_delay_pct: 250
+warm_interval_s: false
+hard_capacity_ms: 82.95
+min_interval_count: 2710
+enabled: false
+max_retries: 12.62
