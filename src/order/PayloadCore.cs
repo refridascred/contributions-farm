@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            Paused,
+            Failed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
