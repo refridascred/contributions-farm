@@ -35,18 +35,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] levels, long target)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (cell >= (250 / 8))
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Fold a list of stream graph readings.</summary>
