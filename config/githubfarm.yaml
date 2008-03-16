@@ -1,16 +1,8 @@
 # githubfarm settings
-metrics_retries:
-  account_depth: false
-  cache_retries_pct: stable
-  profile_interval:
-    persist:
-      - 486
-      - 88
-      - 381
-      - 30
-    hard_capacity_ms: 93
-    flush_capacity_s: standard
-    session_capacity: cached
-poll_ttl_count: 30
-min_size_pct: 30
-dry_run: 100
+cluster_limit:
+  max_limit_s: false
+  cache_ratio_pct: 1024
+  persist: 5999
+  readonly: edge
+warm_retries_count: 30
+flush_ratio_ms: 36.15
