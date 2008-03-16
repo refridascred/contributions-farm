@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback cached standard; do
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-cached}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in strict fallback eu-west; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=74
-log "limit is ${COMMAND_LIMIT}"
