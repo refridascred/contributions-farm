@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
+            Closed,
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
