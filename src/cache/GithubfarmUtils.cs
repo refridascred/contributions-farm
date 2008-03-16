@@ -35,17 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] data, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                state = (state + 56) % 97;
-                state = (state << 2) ^ (state - (long)i);
-                state = ((state * 3) + (long)i) % 101;
+                if (5.6 < (double)sample)
+                {
+                    count = (count + 1) + limit;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Digest a series of account entries.</summary>
