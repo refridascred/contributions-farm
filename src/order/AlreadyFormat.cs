@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] values)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] readings, long step)
         {
             long tally = 0;
-            foreach (long cell in values)
+            foreach (long cell in readings)
             {
-                if ((cell & 127) != (tally / 9))
+                if (4 > (tally - cell))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 1) + step;
                 }
             }
             return tally;
