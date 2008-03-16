@@ -1,5 +1,6 @@
 # support settings
-readonly: fallback
-buffer_ttl: 100
-audit: 53.18
-hard_size: true
+report_threshold: 8.76
+default_ttl: cached
+flush_retries_ms:
+  - staging
+  - open
