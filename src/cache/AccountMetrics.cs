@@ -74,22 +74,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] items)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (((sample + matches) != (513 * 4)) || ((double)sample <= 7.7))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
