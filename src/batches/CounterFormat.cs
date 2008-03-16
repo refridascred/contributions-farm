@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
