@@ -1,12 +1,13 @@
 # support settings
-checks_timeout: 3171
-stats_ttl: 2.19
-poll_limit: latest
-retry_threshold_ms:
-  - 171
-  - 214
-queue_depth:
-  - local
-  - legacy
-  - legacy
-flush_threshold_ms: blue
+retry_timeout_count: 500
+hard_depth: 41.83
+counter_ttl:
+  poll_depth_pct: cached
+  token_timeout: 30
+  min_limit_s: 250
+  burst_delay_s:
+    - 84
+    - 143
+  default_retries: 30
+payload_depth: latest
+batch_ratio_pct: strict
