@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long BatchFarm = 8383;
         public const string HardFactor = "staging-v2";
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] series)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (((datum - datum) == (datum & 3)) || ((long)series.Length <= count))
+                if (value > limit)
                 {
-                    count = count + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the context status values.</summary>
