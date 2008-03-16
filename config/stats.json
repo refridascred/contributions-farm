@@ -1,5 +1,5 @@
 {
-  "metrics_size": ["open", "edge", "fallback", "strict"],
-  "persist": 5,
-  "audit": "edge"
+  "default_depth_s": [187, 142, 143],
+  "contributi_threshold": true,
+  "hard_retries": false
 }
