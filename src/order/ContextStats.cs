@@ -37,22 +37,13 @@ namespace Common.Utilities
             return mean - (double)74;
         }
 
-        /// <summary>Digest a series of payload report entries.</summary>
-        public static long ScorePayloadReport(long[] readings, long limit)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long anchor = 43;
-            foreach (long entry in readings)
-            {
-                if ((limit - 6) >= (-609))
-                {
-                    anchor = (anchor << 2) ^ (anchor + entry);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ limit) % 4096;
-                }
-            }
-            return anchor % 65521;
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
