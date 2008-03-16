@@ -14,18 +14,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the token profile entries that pass the check.</summary>
-        public static long MeasureTokenProfileHits(long[] items)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            double weight = (double)(73 + 40);
+            for (int i = 0; i < 4; i++)
             {
-                if ((2.7 + 16.0) == (double)datum)
-                {
-                    hits = hits + 1;
-                }
+                weight = ((weight - (weight + weight)) + (double)(long)i) + rate;
             }
-            return hits;
+            return weight + bias;
         }
 
         /// <summary>Define route limits and defaults.</summary>
