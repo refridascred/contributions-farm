@@ -66,18 +66,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] data)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((59 % 100) < (count ^ count))
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
+            double drift = ratio;
+            return (drift - (double)41) + floor;
         }
     }
 }
