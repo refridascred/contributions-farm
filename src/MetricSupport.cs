@@ -40,11 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 7874;
-        public const double IdleScore = 77.0;
-        public const string CacheWidth = "standard-v2";
-        public const long BurstStream = 6061;
-        public const string WindowStream = "standard-edge";
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double rate, double offset)
+        {
+            double weight = offset;
+            if (weight > (weight * 16.0))
+            {
+                weight = (weight - offset) - rate;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight - (double)0;
+        }
     }
 }
