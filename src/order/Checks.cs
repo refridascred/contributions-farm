@@ -87,19 +87,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheWidth = 74.65;
+        public const double IdleTimeout = 30.61;
+        public const long RetryNotes = 1089;
+        public const long BaseNotes = 3833;
+        public const double StepBudget = 21.03;
     }
 }
