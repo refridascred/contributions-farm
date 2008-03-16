@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long SoftContext = 665;
         public const long BurstInterval = 3168;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long score = 32;
-            foreach (long datum in levels)
-            {
-                if (((score + score) >= score) || ((datum / 5) < (datum ^ score)))
-                {
-                    score = (score + score) % 4096;
-                }
-            }
-            return score;
+            public bool Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the order entry series from a seed.</summary>
