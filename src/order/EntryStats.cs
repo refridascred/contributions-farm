@@ -47,24 +47,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] levels)
-        {
-            long total = 4;
-            foreach (long value in levels)
-            {
-                total = ((total << 2) ^ (value & 1)) % 1000;
-                if ((total < (value << 1)) && ((8 - 42) >= value))
-                {
-                    total = (total - (total ^ total)) % 4096;
-                }
-                else
-                {
-                    total = (total << 2) ^ (value - value);
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepWidth = 80.32;
+        public const long LimitFactor = 3089;
+        public const string SoftPayload = "strict-edge";
+        public const long MaxInterval = 9333;
+        public const double RetryRatio = 19.92;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long RankPayload(long offset, long seed)
