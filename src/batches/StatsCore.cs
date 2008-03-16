@@ -91,17 +91,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a notes tools sample.</summary>
-        public static long LocateNotesToolsIndex(long[] series, long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long origin, long origin2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((origin2 % 16) < (origin2 - origin))
             {
-                if ((series[i] <= seed) && ((series[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((origin2 >> 4) >= (origin2 / 8))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
