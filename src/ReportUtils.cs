@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!((count ^ (-450)) >= limit))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 177;
+        public const long BatchRatio = 8550;
+        public const string DefaultFactor = "staging";
+        public const long MinToken = 3370;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
