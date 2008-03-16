@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftLevel = 6012;
-        public const string BurstWidth = "staging-edge";
-        public const double BaseSchema = 16.57;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchSpan = "fallback-v2";
+        public const double RetrySize = 86.7;
+        public const double MaxFarm = 59.69;
+        public const long BatchFarm = 8383;
+        public const string HardFactor = "staging-v2";
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LookupContextIndex(long[] series, long offset)
