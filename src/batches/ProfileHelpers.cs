@@ -59,10 +59,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinAlready = "stable-edge";
-        public const double HardAlready = 89.89;
-        public const long BurstAlready = 4997;
+        /// <summary>Match up metrics entry samples.</summary>
+        public static long OverlapMetricsEntryCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two checks measurements.</summary>
         public static double SmoothChecks(double bias, double floor)
