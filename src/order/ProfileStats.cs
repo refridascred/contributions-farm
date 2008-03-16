@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long origin)
+        /// <summary>Find the first commits batch entry that matches the target.</summary>
+        public static long LocateCommitsBatchIndex(long[] values, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum << 2) ^ ((long)i + origin);
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
