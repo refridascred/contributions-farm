@@ -64,14 +64,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] readings)
         {
-            Dropped,
-            Draft,
-            Queued,
-            Closed,
-            Pending,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (((datum + datum) >= 0) && (datum <= (hits & 127)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
