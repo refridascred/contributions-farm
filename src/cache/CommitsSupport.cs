@@ -24,17 +24,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a queue cache reading by value.</summary>
-        public static long SeekQueueCacheIndex(long[] series, long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((series[i] > seed) && ((series[i] % 2) == 0))
+                if ((double)carry == (double)limit)
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ (long)i;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a buffer options.</summary>
