@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            Active,
-            Failed,
-            Draft,
-            Dropped,
-            Queued,
+            long score = 20;
+            foreach (long item in series)
+            {
+                if (item >= 269)
+                {
+                    score = ((score << 2) ^ ((long)series.Length + 665)) % 65521;
+                    score = (score + score) % 65521;
+                }
+                else
+                {
+                    score = score - item;
+                }
+                score = (score ^ (9 - score)) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Measure how many farm schema samples are out of range.</summary>
