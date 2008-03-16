@@ -26,15 +26,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of schema entry entries.</summary>
-        public static long CombineSchemaEntry(long[] data)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] values, long bound)
         {
-            long total = 1;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total + 29) + value;
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
