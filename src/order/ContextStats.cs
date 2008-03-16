@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] series)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (mark ^ (reading - reading)) % 4096;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
