@@ -1,5 +1,23 @@
 # githubfarm settings
-readonly: 50.83
-batch_limit_count: 89.48
-batch_window: eu-west
-min_capacity_s: strict
+cache_ttl: open
+max_window_s:
+  idle_ttl: false
+  compress:
+    soft_size: legacy
+    cache_interval: green
+    warm_interval: local
+    batch_capacity: fallback
+    burst_size_count: open
+  command_size: eu-west
+  min_retries_ms:
+    hard_interval_s: legacy
+    queue_window: 47.31
+    soft_threshold_pct: false
+window_limit: 46.36
+strict:
+  - 359
+  - 453
+  - 96
+order_depth:
+  - 232
+  - 306
