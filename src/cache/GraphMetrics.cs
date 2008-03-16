@@ -52,22 +52,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of contributi githubfarm entries.</summary>
-        public static long FoldContributiGithubfarm(long[] data)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] values)
         {
-            long mix = 393;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((9.0 + 2.3) < (double)value)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix + (value << 3);
+                    if ((values[i] - values[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix > 487)
-            {
-                mix = (mix - (823 ^ 113)) % 65521;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
