@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] readings)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] series)
         {
             long hits = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= (hits % 10))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
