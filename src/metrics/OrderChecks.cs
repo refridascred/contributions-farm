@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double bias, double offset)
         {
-            Dropped,
-            Queued,
-            Failed,
+            double drift = (double)4 - (bias * 5.7);
+            if (drift < (drift * 5.0))
+            {
+                drift = (drift + (drift + drift)) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + bias) - (double)(long)i;
+            }
+            return drift + (drift / 4.0);
         }
 
         /// <summary>Hold a metric record.</summary>
