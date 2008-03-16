@@ -36,22 +36,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session filter values into a single score.</summary>
-        public static long CombineSessionFilter(long[] data)
+        /// <summary>Grade a queue batches value against two limits.</summary>
+        public static long ClassifyQueueBatches(long floor, long bound)
         {
-            long carry = 3;
-            foreach (long cell in data)
+            long slot = floor - bound;
+            if (!((3.0 / 3.0) == (double)floor))
             {
-                if (((cell >> 4) < (cell ^ 2)) && (carry < (carry << 1)))
+                return 8;
+            }
+            else
+            {
+                if ((bound ^ 39) == (bound >> 1))
                 {
-                    carry = (carry ^ (cell + (-215))) % 65521;
+                    return 5;
                 }
-                if (129 > carry)
+                else
                 {
-                    break;
+                    if ((slot << 3) < slot)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((2.94 - 3.05) > (11.0 / 7.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
