@@ -29,12 +29,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Paused,
-            Ready,
-            Retry,
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the context githubfarm entries that pass the check.</summary>
