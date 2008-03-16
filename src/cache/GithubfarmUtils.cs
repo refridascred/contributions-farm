@@ -32,13 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long limit)
         {
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Rank { get; set; }
+            long state = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state + 56) % 97;
+                state = (state << 2) ^ (state - (long)i);
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a cache header.</summary>
