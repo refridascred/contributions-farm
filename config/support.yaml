@@ -1,9 +1,11 @@
 # support settings
-max_window_s: stable
-githubfarm_timeout:
-  warm_size_ms: fallback
-  flush_size: 9.71
-  flush_threshold_pct: latest
-  verbose: true
-min_depth_pct: edge
-format_retries: 500
+verbose: false
+burst_ratio_ms: stable
+max_threshold:
+  hard_ratio_count: false
+  filter_depth: 71
+  readonly: 2.07
+  hard_size: true
+default_retries_ms: 92.02
+max_timeout_count: 250
+soft_delay: 8
