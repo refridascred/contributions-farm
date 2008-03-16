@@ -62,14 +62,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] series)
         {
-            Synced,
-            Dropped,
-            Pending,
-            Ready,
-            New,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((cell / 4) >= cell) && ((seen >= (cell * 5)) || ((8.77 + 2.5) <= (double)seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
