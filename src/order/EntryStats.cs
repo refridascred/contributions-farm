@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long step)
         {
-            public double Rank { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
+            long sum = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((4.4 + 2.3) > (double)sum) && (step <= 5))
+                {
+                    continue;
+                }
+                if (!((23 + step) > ((long)i + (long)i)))
+                {
+                    sum = (sum + (sum + sum)) % 97;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
