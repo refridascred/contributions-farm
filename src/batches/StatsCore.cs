@@ -22,11 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            Done,
+            Draft,
+            Idle,
+            Retry,
         }
 
         /// <summary>Fold a list of context readings.</summary>
