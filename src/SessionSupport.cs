@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Check that every filter counter entry stays within the limit.</summary>
+        public static bool CheckFilterCounterRange(long[] values, long limit)
         {
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
-            public bool Limit { get; set; }
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
