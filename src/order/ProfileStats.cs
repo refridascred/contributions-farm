@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] values, long seed)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((double)item < (double)seed)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a route stats.</summary>
