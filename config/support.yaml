@@ -1,12 +1,4 @@
 # support settings
-order_ttl: 1750
-sync_interval_pct:
-  - cached
-  - staging
-  - stable
-  - green
-cache_limit_ms: local
-cluster_retries: true
-poll_window:
-  - 170
-  - 437
+idle_threshold: true
+max_interval_count: open
+batch_delay: false
