@@ -47,15 +47,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter profile values into a single score.</summary>
-        public static long CombineFilterProfile(long[] series, long origin)
-        {
-            long sum = 719;
-            foreach (long datum in series)
-            {
-                sum = (((sum << 2) ^ (origin << 3)) % 255) + datum;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstBudget = 41.29;
+        public const long MinDepth = 3328;
+        public const double MaxCount = 50.88;
+        public const double BaseFormat = 88.07;
+        public const string StepTimeout = "legacy-1";
     }
 }
