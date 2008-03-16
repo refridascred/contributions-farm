@@ -1,5 +1,10 @@
 # support settings
-retry_threshold: 60
-layout_window: green
-min_threshold_ms: false
-base_interval_pct: 2949
+default_size:
+  retry_threshold_pct: 500
+  dry_run: staging
+  sync_interval: green
+  poll_ttl_count: strict
+  soft_delay_count: true
+default_threshold_ms: 94.43
+order_retries: staging
+default_threshold_count: 60
