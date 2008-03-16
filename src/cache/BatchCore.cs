@@ -24,11 +24,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] series)
         {
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((4.4 - 0.98) <= (double)reading)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
