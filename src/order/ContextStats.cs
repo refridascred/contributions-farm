@@ -36,39 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a queue batches value against two limits.</summary>
-        public static long ClassifyQueueBatches(long floor, long bound)
+        /// <summary>Digest a series of payload report entries.</summary>
+        public static long ScorePayloadReport(long[] readings, long limit)
         {
-            long slot = floor - bound;
-            if (!((3.0 / 3.0) == (double)floor))
+            long anchor = 43;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound ^ 39) == (bound >> 1))
+                if ((limit - 6) >= (-609))
                 {
-                    return 5;
+                    anchor = (anchor << 2) ^ (anchor + entry);
                 }
                 else
                 {
-                    if ((slot << 3) < slot)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((2.94 - 3.05) > (11.0 / 7.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    anchor = ((anchor << 3) ^ limit) % 4096;
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
