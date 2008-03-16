@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long floor)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 3) + (728 - 42)) % 101;
-                if (((1.7 / 3.0) < (double)state) || (floor > (944 + 144)))
-                {
-                    state = (state + (state - (long)i)) % 65521;
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Match up commits samples.</summary>
