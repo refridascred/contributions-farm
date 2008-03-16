@@ -1,8 +1,18 @@
 {
-  "min_size": 60,
-  "warm_size_ms": 5276,
-  "stats_depth": 77.34,
-  "idle_size_pct": "open",
-  "verbose": ["staging", "strict", "stable", "latest"],
-  "dry_run": 28
+  "max_timeout_ms": 4404,
+  "readonly": 30,
+  "enabled": ["eu-west", "green"],
+  "cluster_ttl": "eu-west",
+  "dry_run": {
+    "warm_interval": true,
+    "batches_retries": {
+      "cache_retries": "primary",
+      "format_limit": "strict",
+      "burst_timeout": [212, 129, 421]
+    },
+    "channel_ttl": true,
+    "schema_threshold": [296, 89, 313, 459],
+    "report_timeout": "green",
+    "max_interval": [472, 243]
+  }
 }
