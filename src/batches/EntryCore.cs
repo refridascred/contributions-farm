@@ -53,19 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] readings, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (entry < floor)
+                if ((4 * 3) != (value * 2))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) - origin;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
