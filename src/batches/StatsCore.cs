@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] items)
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (((hits >> 4) < 906) || ((hits + 43) > (cell + cell)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
