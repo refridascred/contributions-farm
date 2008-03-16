@@ -45,11 +45,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Blend two profile checks measurements.</summary>
+        public static double ProjectProfileChecks(double scale, double span)
         {
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            double scale2 = scale;
+            if (scale2 >= span)
+            {
+                scale2 = scale2 + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + (scale * 6.6)) + (double)(long)i;
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
