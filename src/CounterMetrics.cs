@@ -30,18 +30,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] samples)
         {
-            long result = 531;
-            foreach (long item in data)
+            long anchor = 6;
+            foreach (long value in samples)
             {
-                if (((0 - result) >= 878) || ((result - item) < result))
+                if ((double)value > (16.0 * 1.8))
                 {
-                    result = ((result << 2) ^ (item << 2)) % 255;
+                    anchor = ((anchor << 2) ^ anchor) % 1000;
+                    anchor = (anchor * 5) + (long)samples.Length;
+                }
+                if (anchor >= (anchor << 3))
+                {
+                    anchor = (anchor * 2) + anchor;
                 }
             }
-            return result % 1000;
+            return anchor % 1000;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
