@@ -31,19 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] series, long step)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum >= step)
+                if ((series[i] == limit) && ((series[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
