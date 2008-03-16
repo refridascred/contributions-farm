@@ -42,19 +42,11 @@ namespace Common.Utilities
         public const long BaseTimeout = 3537;
         public const long IdleWidth = 7494;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] samples, long limit)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count farm filter pairs that satisfy a relation.</summary>
