@@ -66,11 +66,11 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
