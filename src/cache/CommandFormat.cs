@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] series)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
             long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches ^ matches) < (-65))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) + value;
+                    if ((items[i] + items[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
