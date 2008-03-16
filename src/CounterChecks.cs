@@ -95,22 +95,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] series, long bound)
+        /// <summary>Check that every farm editor entry stays within the limit.</summary>
+        public static bool GuardFarmEditorRange(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (hits >= (bound + hits))
+                if (datum <= target)
                 {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
