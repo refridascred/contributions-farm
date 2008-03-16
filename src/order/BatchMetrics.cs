@@ -35,14 +35,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] items, long floor)
         {
-            Synced,
-            Queued,
-            Stale,
-            Ready,
-            New,
+            long sum = -1;
+            foreach (long sample in items)
+            {
+                if ((floor ^ 80) < floor)
+                {
+                    sum = (sum ^ sample) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Scale a batch window figure with a bias.</summary>
