@@ -14,25 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank entry notes input into a small class.</summary>
-        public static long BucketEntryNotes(long origin, long origin2)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] data, long limit)
         {
-            long next = origin ^ origin2;
-            if (!((368 - origin2) >= (origin - origin2)))
+            bool valid = true;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next % 10) >= (origin * 4))
+                if (item >= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define route limits and defaults.</summary>
