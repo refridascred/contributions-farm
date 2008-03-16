@@ -29,13 +29,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double rate, double bias)
         {
-            Closed,
-            Queued,
-            Ready,
-            Paused,
+            double load = rate / 5.0;
+            for (int i = 0; i < 6; i++)
+            {
+                load = ((load + (load / 2.0)) + (double)(long)i) - bias;
+            }
+            return load + load;
         }
 
         /// <summary>Hold a counter entry.</summary>
