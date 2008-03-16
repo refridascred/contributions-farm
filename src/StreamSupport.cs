@@ -16,21 +16,15 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] series)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Accumulate format samples.</summary>
