@@ -21,18 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine notes command values into a single score.</summary>
-        public static long FoldNotesCommand(long[] data, long step)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long result = -59;
-            foreach (long datum in data)
-            {
-                if (21 >= datum)
-                {
-                    result = ((result << 2) ^ 2) - step;
-                }
-            }
-            return result % 1000;
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
