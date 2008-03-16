@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a record metric counter forward.</summary>
-        public static long SeriesRecordMetric(long origin)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((origin & 127) > ((long)i % 60))
-                {
-                    mix = mix + origin;
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
