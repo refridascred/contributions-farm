@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a cache account reading by value.</summary>
-        public static long LookupCacheAccountIndex(long[] values, long seed)
+        /// <summary>Iterate the checks channel series from a seed.</summary>
+        public static long IterateChecksChannel(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
+                result = (result << 2) ^ (43 + result);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
