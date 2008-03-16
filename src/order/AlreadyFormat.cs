@@ -55,25 +55,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stats stream input into a small class.</summary>
-        public static long RankStatsStream(long seed, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] readings)
         {
-            long offset = seed + floor;
-            if (floor >= (offset >> 1))
+            long anchor = 71;
+            foreach (long value in readings)
             {
-                return 5;
+                anchor = ((anchor << 3) ^ ((long)readings.Length + 22)) + value;
             }
-            else
-            {
-                if ((83 + 65) != (offset + (-59)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return anchor % 65521;
         }
     }
 }
