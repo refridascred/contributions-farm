@@ -50,14 +50,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long offset, long seed)
         {
-            Done,
-            Idle,
-            Paused,
-            Ready,
-            Active,
+            long bound = offset ^ seed;
+            if (seed < (748 % 97))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((seed / 5) <= (offset << 3)) || ((3.8 / 3.0) < (double)offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((9.4 + 0.3) >= (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset >= (954 - bound)) && (seed >= (offset >> 5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
