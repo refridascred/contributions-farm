@@ -55,17 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long bound)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= bound) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Active,
+            Queued,
         }
     }
 }
