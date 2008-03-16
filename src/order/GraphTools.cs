@@ -26,22 +26,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] values)
+        /// <summary>Adjust a editor contributi reading.</summary>
+        public static double ProjectEditorContributi(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double ratio = (double)((-6) >> 5);
+            for (int i = 0; i < 6; i++)
             {
-                if ((sample ^ matches) >= sample)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = ((ratio + gain) - (double)(long)i) - floor;
             }
-            return matches;
+            return ratio - (gain + ratio);
         }
 
         /// <summary>Hold a session entry.</summary>
