@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] levels)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long anchor = 30;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor + anchor) % 1000) - value;
-            }
-            if (anchor > 79)
-            {
-                anchor = anchor + (anchor / 5);
-            }
-            return anchor;
+            public double Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
