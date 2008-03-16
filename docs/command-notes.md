@@ -1,12 +1,11 @@
 # Command notes
 
-When a token fails, the report handler retries a few times before giving up.
-A metrics that stays idle for too long is moved to the metrics list.
-When a already fails, the record handler retries a few times before giving up.
+The format helpers are pure functions, so they are safe to call from any thread.
+Keep layout and metric names short and lowercase.
 
 ## Guidelines
 
-- Document new window fields
-- Log every report change
-- Review already limits each release
-- Prefer format defaults
+- Log every metric change
+- Review checks limits each release
+- Document new session fields
+- Keep cluster values small
