@@ -12,23 +12,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] readings)
+        /// <summary>Roll a command editor counter forward.</summary>
+        public static long IterateCommandEditor(long bound)
         {
-            long mix = 57;
-            foreach (long entry in readings)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((mix + entry) < ((-974) - entry))
+                if (!(75 >= bound))
                 {
-                    break;
+                    result = (result * 5) + result;
                 }
-                else
-                {
-                    mix = (mix ^ entry) % 255;
-                }
-                mix = mix - mix;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Describe the already class values.</summary>
