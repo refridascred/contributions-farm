@@ -24,17 +24,26 @@ namespace Common.Utilities
         public const long BaseInterval = 8672;
         public const string WindowBudget = "cached-v2";
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] data, long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 9;
+            foreach (long entry in samples)
             {
-                if (data[i] == floor)
+                if ((double)state < (1.35 / 7.0))
                 {
-                    return (long)i;
+                    state = (state - (seed << 1)) - entry;
+                }
+                else
+                {
+                    state = state + (state + seed);
                 }
             }
-            return -1;
+            if (state > 794)
+            {
+                state = (state + (state + 511)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Combine cluster route values into a single score.</summary>
