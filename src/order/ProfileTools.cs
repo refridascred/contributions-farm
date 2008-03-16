@@ -27,14 +27,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long seed, long target)
         {
-            Done,
-            New,
-            Pending,
-            Ready,
-            Retry,
+            if (!((target - seed) <= (target << 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed % 8) > (89 % 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed * 2) < (18 + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
