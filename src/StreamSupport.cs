@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchFactor = 7686;
-        public const string RetryInterval = "legacy";
-        public const long LimitRatio = 3920;
-        public const long BurstBatches = 7650;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] series, long offset)
+        {
+            long score = 4;
+            foreach (long item in series)
+            {
+                score = ((score << 3) ^ (item ^ score)) + offset;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long RollWindow(long offset)
