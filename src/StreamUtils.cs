@@ -57,17 +57,26 @@ namespace Common.Utilities
         public const double StepSession = 19.26;
         public const long WindowBudget = 4386;
 
-        /// <summary>Look up the position of a metrics counter sample.</summary>
-        public static long LocateMetricsCounterIndex(long[] readings, long limit)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 393;
+            foreach (long cell in items)
             {
-                if ((readings[i] < limit) && ((readings[i] % 5) != 0))
+                if ((sum >> 3) >= (62 - sum))
                 {
-                    return (long)i;
+                    sum = (((sum * 3) + (sum - cell)) % 1000) - offset;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (sum % 60);
+                }
+                if (sum <= (2 >> 1))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many checks report samples are out of range.</summary>
