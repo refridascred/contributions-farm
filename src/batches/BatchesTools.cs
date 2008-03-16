@@ -19,15 +19,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the channel farm series from a seed.</summary>
-        public static long DeriveChannelFarm(long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] data, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (value <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Match up format samples.</summary>
