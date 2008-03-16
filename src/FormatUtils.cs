@@ -53,11 +53,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 5130;
-        public const double WindowEditor = 36.26;
-        public const string LimitInterval = "primary";
-        public const long BatchEditor = 916;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelHits(long[] levels)
