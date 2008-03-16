@@ -59,17 +59,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] readings, long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (readings[i] == floor)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    acc = (acc * 3) + (long)i;
+                    acc = (acc + ((long)i2 >> 3)) % 255;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
