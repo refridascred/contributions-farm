@@ -67,9 +67,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 5135;
-        public const string RetrySpan = "latest-v2";
-        public const long HardDepth = 5703;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 3413;
+        public const long BaseNotes = 9070;
+        public const string MaxNotes = "fallback-v2";
+        public const long RetryNotes = 8940;
+        public const long CacheSize = 6876;
     }
 }
