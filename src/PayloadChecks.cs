@@ -37,22 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] values)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches < (cell + cell))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] - samples[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
