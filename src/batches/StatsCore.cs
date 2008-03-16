@@ -22,17 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a session batches reading by value.</summary>
-        public static long LookupSessionBatchesIndex(long[] data, long limit)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < limit) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
