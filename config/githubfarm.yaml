@@ -1,5 +1,4 @@
 # githubfarm settings
-poll_interval_s: 100
-strict: false
-entry_timeout: 250
-compress: true
+cache_delay_ms: open
+audit: 18
+batch_interval_s: open
