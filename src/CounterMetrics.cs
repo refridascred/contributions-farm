@@ -47,12 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public double Size { get; set; }
+            Locked,
+            Active,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
