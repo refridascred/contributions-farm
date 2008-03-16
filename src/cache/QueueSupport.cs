@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstTimeout = 67.23;
-        public const string MaxCount = "staging-v2";
-        public const long RetryAccount = 2611;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheLevel = 804;
+        public const double MinRecord = 48.96;
+        public const long HardSize = 6343;
+        public const long MaxRecord = 3640;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BurstCount = 6962;
