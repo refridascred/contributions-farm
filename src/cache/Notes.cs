@@ -89,12 +89,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first filter farm entry that matches the target.</summary>
-        public static long FindFilterFarmIndex(long[] values, long seed)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] > seed)
+                if ((series[i] >= bound) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
