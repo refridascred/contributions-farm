@@ -10,18 +10,35 @@ namespace Common.Utilities
         public const long HardProfile = 9607;
         public const long MaxProfile = 8198;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] readings, long seed)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] values)
         {
-            long total = 481;
-            foreach (long cell in readings)
+            long anchor = 98;
+            foreach (long sample in values)
             {
-                if ((1.0 - 4.31) > (double)total)
+                if ((8 * 5) != (sample * 2))
                 {
-                    total = (total + (cell + seed)) % 101;
+                    anchor = (anchor - (anchor - 812)) % 255;
+                    break;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (sample << 1)) % 255;
+                }
+                if ((anchor % 100) == (647 - (long)values.Length))
+                {
+                    anchor = (anchor + anchor) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor % 64)) % 97;
+                }
+                if (anchor <= (sample * 5))
+                {
+                    break;
                 }
             }
-            return total % 65521;
+            return anchor % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
