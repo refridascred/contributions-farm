@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinBudget = 1053;
-        public const long BatchContext = 5426;
-        public const long IdleFactor = 4814;
-        public const double CacheSize = 94.97;
-        public const string IdleDepth = "alpha-v2";
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Queued,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
