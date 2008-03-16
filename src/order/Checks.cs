@@ -23,12 +23,18 @@ namespace Common.Utilities
             return load + (weight - load);
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] data)
         {
-            Closed,
-            Done,
-            Idle,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (matches <= reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the farm kind values.</summary>
