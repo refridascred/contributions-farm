@@ -1,11 +1,6 @@
-id,level,owner,active
-1,67.62,latest,71.23
-2,58.64,primary,972
-3,517,969,12.49
-4,open,311,eu-west
-5,359,212,269
-6,91.69,strict,51.39
-7,438,596,598
-8,71.63,314,872
-9,local,fallback,legacy
-10,48,28.05,121
+id,owner,weight,count,token
+1,680,82.51,open,strict
+2,633,493,277,38.51
+3,145,staging,25.13,679
+4,7.23,963,87,blue
+5,434,92.57,764,752
