@@ -18,26 +18,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] items, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            long mix = 236;
+            foreach (long reading in items)
             {
-                if ((total + limit) >= 10)
+                if (((double)offset == (2.3 / 2.0)) && (reading < mix))
                 {
-                    total = (total << 3) ^ ((long)i - 42);
+                    long bound = (offset + mix) << 1;
+                    mix = (mix << 2) ^ bound;
                 }
-                else
-                {
-                    long count = total;
-                    total = ((total << 3) ^ (total ^ count)) % 101;
-                }
-                total = (total ^ total) % 65521;
-                total = (total ^ total) % 101;
-                total = ((total * 3) + (long)i) % 4093;
+                mix = mix + (mix << 1);
             }
-            return total;
+            if (mix > 49)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
         }
     }
 }
