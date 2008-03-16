@@ -51,17 +51,15 @@ namespace Common.Utilities
         public const double StepSession = 19.26;
         public const long WindowBudget = 4386;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] series, long offset)
+        /// <summary>Fold a list of tools stats readings.</summary>
+        public static long ScoreToolsStats(long[] series, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 87;
+            foreach (long sample in series)
             {
-                if ((series[i] == offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 3) ^ (525 + 8)) ^ sample) + bound;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
