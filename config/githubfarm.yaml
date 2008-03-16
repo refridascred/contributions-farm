@@ -1,16 +1,4 @@
 # githubfarm settings
-cache_threshold: legacy
-verbose: strict
-readonly:
-  min_ratio: 60
-  base_capacity_pct:
-    compress: eu-west
-    audit: legacy
-    cache_interval_count: 39.78
-  route_limit: 45.97
-  githubfarm_size: fallback
-persist: strict
-default_window_count: edge
-queue_capacity:
-  - 172
-  - 56
+account_retries: true
+audit: fallback
+batch_ttl: legacy
