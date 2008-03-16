@@ -23,17 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] data, long origin)
+        /// <summary>Match up route order samples.</summary>
+        public static long CompareRouteOrderCount(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] == origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
