@@ -1,7 +1,5 @@
 {
-  "warm_retries": "standard",
-  "record_retries": 82,
-  "default_ttl_s": [197, 198, 274, 183],
-  "compress": false,
-  "persist": 7257
+  "support_threshold": 15,
+  "hard_ratio_s": 96,
+  "default_window": "strict"
 }
