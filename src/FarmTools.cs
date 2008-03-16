@@ -34,12 +34,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftLevel = 6961;
+        public const long LimitScore = 9100;
+        public const long BurstStats = 7608;
     }
 }
