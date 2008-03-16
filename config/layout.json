@@ -1,12 +1,10 @@
 {
-  "sync_timeout_s": "standard",
-  "hard_retries": true,
   "strict": {
-    "report_interval": ["latest", "edge", "legacy"],
-    "poll_limit_count": 27.58,
-    "poll_size_ms": 6.84,
-    "max_capacity_count": 0.99,
-    "window_limit": false
+    "payload_capacity": "local",
+    "enabled": 1296,
+    "commits_delay": [495, 341, 463]
   },
-  "session_depth": "edge"
+  "soft_size_s": "edge",
+  "verbose": ["standard", "strict", "stable", "strict"],
+  "batch_capacity_count": 30
 }
