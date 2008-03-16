@@ -51,15 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the graph counter series from a seed.</summary>
-        public static long SeriesGraphCounter(long target)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] data, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long value in data)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if (value < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
     }
 }
