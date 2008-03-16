@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Pending,
-            Idle,
-            Locked,
-            Done,
-            Stale,
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
