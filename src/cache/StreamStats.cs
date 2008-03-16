@@ -31,12 +31,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftTimeout = "primary-v2";
-        public const long CacheQueue = 6133;
-        public const long SoftQueue = 5271;
-        public const long LimitQueue = 6570;
-        public const string BatchQueue = "fallback-v2";
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] samples, long target)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!((5.25 * 20.0) != (double)target))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every record report entry stays within the limit.</summary>
         public static bool GuardRecordReportRange(long[] items, long origin)
