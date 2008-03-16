@@ -60,14 +60,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Closed,
-            New,
-            Draft,
-            Locked,
-            Failed,
+            Stale,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
