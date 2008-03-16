@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of batch cluster readings.</summary>
-        public static long FoldBatchCluster(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] samples)
         {
-            long carry = 3;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((double)carry != (double)(-75))
+                if (item >= (336 % 10))
                 {
-                    carry = (((carry * 5) + carry) % 101) + sample;
+                    seen = seen + 3;
                 }
             }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
