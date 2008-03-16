@@ -52,18 +52,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] data, long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (((double)origin != (double)58) && ((sample > (sample + count)) && ((origin / 9) != (count << 1))))
+                if (datum > floor)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Compare every pair of batch context readings.</summary>
