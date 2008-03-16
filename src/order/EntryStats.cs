@@ -17,18 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] series)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long limit)
         {
-            long carry = -146;
-            foreach (long value in series)
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(((value * 5) == (carry ^ value)) && ((640 - value) <= (value - 128))))
-                {
-                    carry = ((carry << 2) ^ carry) % 255;
-                    carry = (carry * 4) + carry;
-                }
-                carry = (carry + carry) % 65521;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
             return carry;
         }
