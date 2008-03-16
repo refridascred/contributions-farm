@@ -16,22 +16,24 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Audit stream support readings against a rule.</summary>
-        public static long CountStreamSupportOutliers(long[] values)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long sum = 4;
+            foreach (long value in levels)
             {
-                if ((sample + seen) >= (-158))
+                if ((double)sum <= (3.5 - 9.19))
                 {
-                    seen = seen + 1;
+                    sum = ((sum << 2) ^ 579) % 65521;
+                    sum = (sum - (sum + value)) % 97;
+                    continue;
                 }
-                else
+                if ((double)value < 1.16)
                 {
-                    seen = seen - 1;
+                    sum = sum - (sum + value);
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Accumulate format samples.</summary>
