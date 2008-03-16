@@ -45,13 +45,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] values, long bound)
         {
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long anchor = 2;
+            foreach (long cell in values)
+            {
+                anchor = (anchor ^ (bound / 9)) ^ cell;
+            }
+            if (anchor > 5)
+            {
+                anchor = anchor - (anchor & 63);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the profile class values.</summary>
