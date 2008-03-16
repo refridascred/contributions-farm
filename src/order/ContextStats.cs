@@ -37,25 +37,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long offset, long step)
-        {
-            if ((offset + 176) == (offset & 15))
-            {
-                return 1;
-            }
-            else
-            {
-                if (20.0 > (15.0 / 3.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleScore = 6047;
+        public const long MinBuffer = 7265;
+        public const long BatchDepth = 9802;
+        public const long MaxInterval = 7168;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferHits(long[] items, long seed)
