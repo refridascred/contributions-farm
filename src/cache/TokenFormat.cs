@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every githubfarm batches entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBatchesRange(long[] series, long floor)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Failed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
