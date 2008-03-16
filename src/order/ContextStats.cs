@@ -48,15 +48,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] items, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] values, long floor)
         {
             long tally = 0;
-            foreach (long value in items)
+            foreach (long item in values)
             {
-                if ((2 * 3) <= tally)
+                if ((((floor + item) == (item - 861)) || (item < (tally >> 2))) || ((item < tally) && (3.12 > (double)floor)))
                 {
-                    tally = ((tally + 2) ^ value) + seed;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
