@@ -1,14 +1,5 @@
 {
-  "cache_window_s": ["legacy", "legacy", "latest", "primary"],
-  "batch_retries": {
-    "sync_interval_ms": 4660,
-    "idle_capacity": "standard",
-    "warm_size_pct": 42,
-    "schema_limit": 83,
-    "persist": 250
-  },
-  "cache_delay_ms": 4189,
-  "hard_depth": 78.46,
-  "audit": 621,
-  "soft_timeout": true
+  "channel_ttl": 16.71,
+  "idle_size": "stable",
+  "poll_interval": 80.81
 }
