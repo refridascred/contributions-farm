@@ -17,24 +17,18 @@ namespace Common.Utilities
         public const long IdleCache = 6154;
         public const long DefaultInterval = 9662;
 
-        /// <summary>Rank counter order input into a small class.</summary>
-        public static long RankCounterOrder(long floor, long floor2)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] samples)
         {
-            if ((6.22 / 8.0) >= (2.0 * 11.0))
+            long count = 0;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((960 ^ floor2) < (3 << 3))
+                if ((item << 3) > item)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the record channel entries that pass the check.</summary>
