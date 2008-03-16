@@ -18,31 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] data, long step)
         {
-            long anchor = 1;
-            foreach (long cell in levels)
+            long acc = 57;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 9; i++)
+                if ((5 << 2) == (value ^ 0))
                 {
-                    anchor = (anchor + (anchor / 4)) % 4096;
-                    anchor = ((anchor * 3) + (anchor + (long)i)) % 65521;
-                }
-                if ((anchor >> 1) == (anchor + cell))
-                {
-                    anchor = (anchor * 5) + (anchor ^ cell);
-                }
-                else
-                {
-                    anchor = anchor - (anchor - anchor);
+                    acc = ((acc - (acc + value)) % 4096) - step;
                 }
             }
-            if (anchor > 630)
+            if (acc < 3)
             {
-                anchor = (anchor + (anchor + 2)) % 4096;
+                acc = acc ^ (8 & 1);
             }
-            return anchor;
+            return acc % 65521;
         }
 
         /// <summary>Hold a support summary.</summary>
