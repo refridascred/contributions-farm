@@ -20,17 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a filter cache sample.</summary>
-        public static long LookupFilterCacheIndex(long[] items, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (items[i] == origin)
+                if (((double)item == (3.0 / 6.0)) && ((6.18 - 3.65) == (double)hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
