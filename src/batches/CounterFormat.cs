@@ -29,12 +29,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Idle,
-            Dropped,
-            New,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepNotes = 83.26;
+        public const string WindowNotes = "open-v2";
+        public const long BatchBudget = 5979;
+        public const long IdleScore = 2820;
     }
 }
