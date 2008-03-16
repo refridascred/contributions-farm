@@ -35,18 +35,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] data)
+        /// <summary>Iterate the checks githubfarm series from a seed.</summary>
+        public static long RollChecksGithubfarm(long floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((hits ^ 40) < (hits ^ sample))
-                {
-                    hits = hits + 3;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the account kind values.</summary>
