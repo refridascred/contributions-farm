@@ -34,15 +34,23 @@ namespace Common.Utilities
             return load + (gain - load);
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double scale, double floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] values, long seed)
         {
-            double mean = floor;
-            if (mean <= mean)
+            long mix = 13;
+            foreach (long reading in values)
             {
-                mean = mean + mean;
+                mix = (mix * 5) + 402;
+                if ((seed > (reading + 633)) || ((65 >> 5) >= seed))
+                {
+                    mix = mix - (reading >> 2);
+                }
             }
-            return mean - scale;
+            if (mix > (-507))
+            {
+                mix = (mix * 2) + (mix / 4);
+            }
+            return mix;
         }
 
         /// <summary>Hold a batch record.</summary>
