@@ -35,15 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double gain, double offset)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double load = (1.96 / 7.0) - 7.0;
-            if (load >= (load * 2.0))
-            {
-                load = load - (gain + offset);
-            }
-            return load - (offset / 7.0);
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
