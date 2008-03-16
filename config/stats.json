@@ -1,14 +1,8 @@
 {
-  "soft_limit": 250,
-  "enabled": 500,
-  "sync_ttl": 100,
-  "sync_size_pct": false,
-  "strict": {
-    "sync_ttl_pct": "latest",
-    "batch_depth_count": 2928,
-    "context_ttl": 88.22,
-    "metrics_ratio": "open",
-    "enabled": "fallback",
-    "cache_ratio": "latest"
-  }
+  "retry_size_count": "edge",
+  "burst_ttl_ms": 88.7,
+  "base_interval_count": 52.28,
+  "warm_ratio_count": true,
+  "poll_depth_ms": 9062,
+  "batch_depth_ms": "blue"
 }
