@@ -16,18 +16,26 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] samples, long seed)
+        /// <summary>Fold a list of batch graph readings.</summary>
+        public static long ScoreBatchGraph(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long mix = 0;
+            foreach (long entry in levels)
             {
-                if ((((9 - item) == (tally + seed)) || (tally < 761)) && !((18.0 * 3.9) > (double)seed))
+                if (floor > (4 * 5))
                 {
-                    tally = tally + 3;
+                    mix = (mix - (floor - entry)) % 1000;
+                }
+                else
+                {
+                    mix = (mix ^ entry) % 255;
                 }
             }
-            return tally;
+            if (mix > 1)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Rank support input into a small class.</summary>
