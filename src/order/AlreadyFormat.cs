@@ -24,19 +24,17 @@ namespace Common.Utilities
         public const string BasePayload = "latest-1";
         public const double DefaultCount = 62.59;
 
-        /// <summary>Check that every tools report entry stays within the limit.</summary>
-        public static bool CheckToolsReportLimits(long[] values, long floor)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != floor)
+                if (levels[i] < offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Adjust a cache reading.</summary>
