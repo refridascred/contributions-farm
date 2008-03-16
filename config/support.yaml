@@ -1,5 +1,12 @@
 # support settings
-sync_timeout_pct: 7625
-record_delay: true
-readonly: 8486
-burst_interval_pct: 74.6
+checks_timeout: 3171
+stats_ttl: 2.19
+poll_limit: latest
+retry_threshold_ms:
+  - 171
+  - 214
+queue_depth:
+  - local
+  - legacy
+  - legacy
+flush_threshold_ms: blue
