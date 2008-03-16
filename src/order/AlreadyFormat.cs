@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 7746;
+        public const long RetrySession = 8345;
+        public const string WindowSession = "fallback";
+        public const double BatchRatio = 6.92;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryGaps(long[] values, long floor)
