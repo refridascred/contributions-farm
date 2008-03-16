@@ -19,15 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two record context measurements.</summary>
-        public static double AdjustRecordContext(double rate, double span)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] readings, long floor)
         {
-            double bias = (double)(0 + 3);
-            if (bias < bias)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = ((bias - 9.7) + rate) - span;
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (double)22;
+            return -1;
         }
 
         /// <summary>Hold a metric info.</summary>
