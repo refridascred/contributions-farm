@@ -59,19 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] values, long target)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!(((double)hits < (double)99) && ((hits + hits) <= target)))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstSpan = 6603;
+        public const long IdleWidth = 6055;
+        public const long MaxCommand = 6019;
+        public const string RetryWidth = "strict-edge";
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double ScaleBuffer(double rate, double span)
