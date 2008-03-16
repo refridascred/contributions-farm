@@ -38,26 +38,18 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] levels, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            long result = 386;
+            foreach (long sample in levels)
             {
-                if (((double)acc < (double)floor) && ((floor - (long)i) >= 4))
+                if (result < sample)
                 {
-                    acc = ((acc * 5) + acc) % 255;
-                    acc = (acc ^ (86 + 17)) % 4096;
+                    result = (result ^ floor) % 65521;
                 }
-                acc = ((acc * 5) + ((long)i ^ (long)i)) % 101;
-                if (floor < (6 % 3))
-                {
-                    acc = (acc ^ (acc >> 5)) % 1000;
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Blend two checks measurements.</summary>
