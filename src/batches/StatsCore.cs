@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long limit, long target)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            if (!((limit + target) < target))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit > (884 + limit)) && ((target * 3) == (961 + target)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((limit % 16) >= (632 & 31)))
+                    if ((levels[i] - levels[j]) == 12)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)target > (19.0 - 2.9)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Locate a session batches reading by value.</summary>
