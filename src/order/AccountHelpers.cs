@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double scale, double offset)
+        /// <summary>Check that every stream batches entry stays within the limit.</summary>
+        public static bool GuardStreamBatchesRange(long[] samples, long offset)
         {
-            double bias = (double)(9 % 8);
-            return ((bias - bias) + scale) + offset;
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
