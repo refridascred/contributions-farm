@@ -29,14 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] data, long origin)
         {
-            Closed,
-            Ready,
-            Failed,
-            Dropped,
-            Stale,
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a token header.</summary>
