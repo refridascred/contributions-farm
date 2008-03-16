@@ -20,18 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] series, long floor)
+        /// <summary>Look up the position of a filter cache sample.</summary>
+        public static long LookupFilterCacheIndex(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (hits < (27 + hits))
+                if (items[i] == origin)
                 {
-                    hits = ((hits + 2) + value) + floor;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
