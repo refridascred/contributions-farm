@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheDepth = 9524;
-        public const long WindowProfile = 5439;
-        public const long LimitProfile = 576;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public double Total { get; set; }
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double MinMetric = 35.17;
