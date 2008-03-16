@@ -54,22 +54,22 @@ namespace Common.Utilities
             return weight - (weight * 8.3);
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long step, long floor)
+        /// <summary>Grade a record context value against two limits.</summary>
+        public static long RankRecordContext(long offset, long offset2)
         {
-            if (floor < 4)
+            if ((offset2 << 3) > offset2)
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((step / 2) <= (floor << 1))
+                if (!((offset2 & 31) <= (offset + 43)))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    return 7;
+                    return 6;
                 }
             }
         }
