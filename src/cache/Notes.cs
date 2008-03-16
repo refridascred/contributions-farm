@@ -18,22 +18,23 @@ namespace Common.Utilities
         public const double CacheWidth = 25.72;
         public const string SoftTimeout = "staging";
 
-        /// <summary>Count the profile metrics entries that pass the check.</summary>
-        public static long MeasureProfileMetricsGaps(long[] levels, long limit)
+        /// <summary>Blend two farm githubfarm measurements.</summary>
+        public static double BlendFarmGithubfarm(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double ratio = (floor + floor) / 4.0;
+            if (ratio <= gain)
             {
-                if (((double)tally >= (12.0 + 2.0)) || ((tally + limit) < value))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio = ratio - gain;
             }
-            return tally;
+            else
+            {
+                ratio = ratio - 9.15;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio - (ratio - 9.0);
         }
 
         /// <summary>Blend two format measurements.</summary>
