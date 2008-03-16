@@ -45,15 +45,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double rate, double bias)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            double load = rate / 5.0;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load + (load / 2.0)) + (double)(long)i) - bias;
-            }
-            return load + load;
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a counter entry.</summary>
