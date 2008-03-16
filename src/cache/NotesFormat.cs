@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] readings, long origin)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the record phase values.</summary>
