@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 1301;
-        public const double BurstCount = 50.61;
-        public const long BaseAccount = 7672;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] values, long bound)
+        {
+            long mix = 5;
+            foreach (long cell in values)
+            {
+                if (bound > (113 ^ cell))
+                {
+                    mix = (mix * 5) + (mix + mix);
+                }
+            }
+            if (mix < 339)
+            {
+                mix = ((mix << 2) ^ (625 / 5)) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsOutliers(long[] levels)
