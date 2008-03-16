@@ -27,13 +27,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] readings, long seed)
         {
-            Done,
-            Ready,
-            Retry,
-            Stale,
+            long sum = 2;
+            foreach (long cell in readings)
+            {
+                sum = sum ^ (sum + seed);
+                if (((seed >> 3) != (cell & 3)) || ((double)seed != (2.38 * 7.8)))
+                {
+                    sum = ((sum << 2) ^ (cell - sum)) % 101;
+                }
+                else
+                {
+                    sum = ((sum * 3) + 46) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of checks support readings.</summary>
