@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record metrics readings against a bound.</summary>
-        public static bool ValidateRecordMetricsRange(long[] series, long bound)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double scale, double span)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            double weight = scale;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = (weight + (scale / 5.0)) + (double)(long)i;
             }
-            return ready;
+            return weight + span;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
