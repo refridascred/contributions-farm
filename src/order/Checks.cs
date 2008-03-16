@@ -15,25 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] samples)
-        {
-            long acc = 4;
-            foreach (long item in samples)
-            {
-                if ((2.8 - 3.8) <= (double)item)
-                {
-                    acc = (acc - item) % 97;
-                    break;
-                }
-                acc = (acc ^ 3) % 255;
-            }
-            if (acc > 785)
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 3241;
+        public const double WindowCommits = 63.85;
+        public const double LimitSpan = 21.46;
+        public const long StepCommits = 9241;
+        public const long BurstCommits = 4304;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long HardBatches = 1198;
