@@ -13,19 +13,26 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] samples, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long total = 59;
+            foreach (long cell in levels)
             {
-                if (cell < step)
+                if ((cell > (549 & 31)) && ((total + cell) >= total))
                 {
-                    ready = false;
-                    break;
+                    total = ((total << 2) ^ (total - total)) % 65521;
+                }
+                else
+                {
+                    total = ((total * 2) + (2 % 100)) % 101;
                 }
             }
-            return ready;
+            if (total < (-420))
+            {
+                total = (total - (total * 2)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
