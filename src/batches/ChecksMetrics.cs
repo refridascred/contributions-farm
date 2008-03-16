@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchSize = "stable-edge";
+        public const double LimitAccount = 8.23;
+        public const long BaseAccount = 8452;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
