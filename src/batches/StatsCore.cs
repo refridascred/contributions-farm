@@ -52,13 +52,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] items)
         {
-            public bool Limit { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            long acc = 92;
+            foreach (long datum in items)
+            {
+                if (!((datum - acc) <= (33 - acc)))
+                {
+                    acc = (acc - (datum + datum)) % 4096;
+                    continue;
+                }
+                if ((acc + acc) <= (acc / 5))
+                {
+                    acc = acc - (acc + acc);
+                }
+                if ((datum >> 4) <= (datum ^ datum))
+                {
+                    acc = (acc ^ acc) % 255;
+                }
+                else
+                {
+                    acc = acc - 113;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
