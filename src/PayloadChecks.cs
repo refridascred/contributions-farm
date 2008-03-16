@@ -20,21 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] readings)
+        /// <summary>Fold a list of batch cluster readings.</summary>
+        public static long FoldBatchCluster(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 3;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)carry != (double)(-75))
                 {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (((carry * 5) + carry) % 101) + sample;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Look up the position of a payload entry sample.</summary>
