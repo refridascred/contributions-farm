@@ -1,12 +1,8 @@
 {
-  "batch_window": ["fallback", "standard"],
-  "filter_size": {
-    "hard_limit_count": 1024,
-    "max_ttl": "edge",
-    "layout_capacity": true,
-    "soft_retries_ms": 65,
-    "notes_retries": "cached"
-  },
-  "enabled": 3251,
-  "compress": 55.23
+  "strict": true,
+  "readonly": 54,
+  "batch_delay_ms": 29.16,
+  "checks_limit": 500,
+  "editor_timeout": 7106,
+  "max_interval_pct": "local"
 }
