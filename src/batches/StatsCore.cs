@@ -52,17 +52,19 @@ namespace Common.Utilities
         public const double WindowCounter = 66.2;
         public const long HardWidth = 1620;
 
-        /// <summary>Locate a record metric reading by value.</summary>
-        public static long LookupRecordMetricIndex(long[] data, long offset)
+        /// <summary>Validate notes session readings against a bound.</summary>
+        public static bool VerifyNotesSessionLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((data[i] == offset) && ((data[i] % 2) != 0))
+                if (item > limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
