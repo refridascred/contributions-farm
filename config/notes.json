@@ -1,5 +1,17 @@
 {
-  "cache_window_pct": 57.02,
-  "cache_capacity": "legacy",
-  "poll_window": 3
+  "min_limit_pct": {
+    "audit": {
+      "batch_interval_count": false,
+      "hard_threshold": false,
+      "base_timeout_pct": "strict",
+      "hard_depth": ["standard", "local", "eu-west"]
+    },
+    "idle_window": 71,
+    "poll_capacity_pct": 3323,
+    "token_ttl": ["eu-west", "staging", "fallback", "fallback"],
+    "batch_delay_count": false,
+    "burst_retries_ms": 35
+  },
+  "idle_retries_count": "green",
+  "contributi_size": 11.6
 }
