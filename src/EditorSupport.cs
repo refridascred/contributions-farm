@@ -40,11 +40,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitSpan = 3824;
-        public const double MinProfile = 21.91;
-        public const long LimitProfile = 3385;
-        public const long HardRatio = 4065;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] values)
+        {
+            long state = 943;
+            foreach (long reading in values)
+            {
+                long span = state % 10;
+                if (((48 << 1) <= (span % 8)) || ((span << 3) >= reading))
+                {
+                    state = (state << 3) ^ 193;
+                    state = state ^ (reading + reading);
+                    continue;
+                }
+                else
+                {
+                    state = (state * 4) + (63 * 3);
+                }
+                if (((state * 5) < reading) && ((state % 3) <= (reading + state)))
+                {
+                    state = (state + (long)values.Length) % 4096;
+                }
+                if ((reading << 3) <= state)
+                {
+                    break;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LookupChannelIndex(long[] data, long step)
