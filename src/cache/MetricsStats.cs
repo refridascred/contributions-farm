@@ -41,19 +41,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] levels, long step)
         {
-            long mix = 25;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in levels)
             {
-                mix = (mix ^ (sample - mix)) % 255;
+                if (51 > step)
+                {
+                    count = (count + 2) + value;
+                }
             }
-            if (mix > 35)
-            {
-                mix = ((mix << 3) ^ (mix * 4)) % 4096;
-            }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
