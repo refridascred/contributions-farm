@@ -54,38 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long limit, long origin)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            if (((double)limit <= (2.03 * 1.0)) && ((origin + origin) <= (limit + limit)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit < origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((830 + origin) == (limit ^ limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit & 3) == (origin / 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the layout command entries that pass the check.</summary>
