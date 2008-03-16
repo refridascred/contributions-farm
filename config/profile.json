@@ -1,13 +1,15 @@
 {
-  "flush_timeout_s": true,
-  "batch_depth": {
-    "dry_run": false,
-    "payload_ttl": "staging",
-    "strict": 16.72,
-    "hard_timeout_pct": [173, 196]
+  "max_delay": "edge",
+  "soft_retries_count": {
+    "burst_retries_count": [20, 291, 73],
+    "session_retries": 6796,
+    "idle_retries_count": 4350,
+    "audit": [123, 320, 31, 177],
+    "queue_size": 250,
+    "persist": [125, 89, 420]
   },
-  "poll_window": false,
-  "burst_limit_ms": "blue",
-  "burst_delay_ms": "fallback",
-  "soft_ratio_s": "stable"
+  "token_interval": true,
+  "readonly": 500,
+  "burst_size": 500,
+  "support_threshold": 8614
 }
