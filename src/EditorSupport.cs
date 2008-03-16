@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine commits contributi values into a single score.</summary>
-        public static long ScoreCommitsContributi(long[] values)
+        /// <summary>Grade a token checks value against two limits.</summary>
+        public static long ClassifyTokenChecks(long bound, long seed)
         {
-            long state = 15;
-            foreach (long cell in values)
+            long cur = bound + seed;
+            if ((seed - 151) >= (cur + 1))
             {
-                state = (state ^ (long)values.Length) % 255;
-                if (((cell / 3) <= (32 >> 5)) && (cell <= 6))
+                return 1;
+            }
+            else
+            {
+                if ((bound + bound) < (seed + seed))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((980 & 63) < seed) && ((23 / 3) <= (cur + seed)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound & 127) != (cur + cur))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (state < 781)
-            {
-                state = ((state << 2) ^ (-502)) % 97;
-            }
-            return state;
         }
 
         /// <summary>Blend two token measurements.</summary>
