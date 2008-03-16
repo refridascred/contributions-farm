@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] series, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] levels, long seed)
         {
-            long state = 7;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                state = (state * 2) + (36 - 83);
-                if ((state & 255) < (state + datum))
+                if ((reading >> 5) < reading)
                 {
-                    state = (state * 3) + offset;
+                    tally = (tally + 2) + seed;
                 }
             }
-            if (state < 9)
-            {
-                state = ((state << 3) ^ state) % 255;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
