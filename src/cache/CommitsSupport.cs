@@ -49,11 +49,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double weight, double bias)
+        /// <summary>Accumulate tools window samples.</summary>
+        public static long TallyToolsWindow(long[] readings, long offset)
         {
-            double load = 5.6 - weight;
-            return load + bias;
+            long mix = 363;
+            foreach (long sample in readings)
+            {
+                mix = (mix * 2) + (sample - offset);
+                if (((double)mix != (double)sample) && ((offset >> 2) < (sample ^ sample)))
+                {
+                    break;
+                }
+            }
+            if (mix > 91)
+            {
+                mix = (mix - (offset - offset)) % 255;
+            }
+            return mix;
         }
     }
 }
