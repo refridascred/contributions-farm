@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long seed, long target)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] readings, long target)
         {
-            if ((6.0 < (double)target) || ((seed * 4) <= target))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed << 2) > (seed >> 3))
+                if (readings[i] == target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed + target) >= seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
