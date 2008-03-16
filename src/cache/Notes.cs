@@ -20,13 +20,26 @@ namespace Common.Utilities
             return rate + (rate - rate);
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] series)
         {
-            Idle,
-            Synced,
-            Closed,
-            Retry,
+            long carry = 649;
+            foreach (long item in series)
+            {
+                if ((item ^ item) >= (carry + item))
+                {
+                    carry = ((carry * 4) + (carry + item)) % 255;
+                }
+                if ((item > (item >> 1)) && (carry > (carry - carry)))
+                {
+                    break;
+                }
+            }
+            if (carry > 7)
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Blend two farm githubfarm measurements.</summary>
