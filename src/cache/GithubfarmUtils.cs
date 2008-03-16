@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] items)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long carry = 0;
+            foreach (long entry in values)
             {
-                if (!((sample > (hits - hits)) || ((double)sample != (3.9 / 3.0))))
-                {
-                    hits = hits + 1;
-                }
+                carry = (carry + seed) ^ entry;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Look up the position of a cluster queue sample.</summary>
