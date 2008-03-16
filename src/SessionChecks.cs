@@ -13,26 +13,26 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] series)
         {
-            long anchor = 87;
-            foreach (long cell in samples)
+            long sum = -992;
+            foreach (long datum in series)
             {
-                if ((4.6 / 9.0) <= (double)cell)
+                if (((817 + datum) > (datum * 2)) || (sum >= (sum & 15)))
                 {
-                    anchor = ((anchor * 5) + ((long)samples.Length - (long)samples.Length)) % 4096;
+                    sum = (sum + (datum << 1)) % 101;
                 }
-                else
+                if ((datum <= (sum + sum)) && ((80 * 2) > sum))
                 {
-                    anchor = (anchor << 3) ^ (cell << 1);
+                    break;
                 }
             }
-            if (anchor > (-6))
+            if (sum < 9)
             {
-                anchor = (anchor + (anchor + anchor)) % 65521;
+                sum = sum - (sum / 8);
             }
-            return anchor;
+            return sum % 97;
         }
 
         /// <summary>Describe the tools level values.</summary>
