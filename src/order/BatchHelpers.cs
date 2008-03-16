@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] items, long floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= floor)
+                if (levels[i] == step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
