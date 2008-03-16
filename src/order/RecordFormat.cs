@@ -78,10 +78,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 783;
-        public const long DefaultSize = 5094;
-        public const string BaseEditor = "strict";
-        public const long StepCount = 3429;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (!((floor << 2) < (floor << 3)))
+                {
+                    count = (count + 1) - value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
