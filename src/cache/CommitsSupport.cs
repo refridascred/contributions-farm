@@ -16,10 +16,13 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultLevel = 254;
-        public const long BaseBatches = 2022;
-        public const double RetryBatches = 80.65;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Retry,
+            Locked,
+            Active,
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
