@@ -1,12 +1,15 @@
 # Command notes
 
-Each cache is validated before it reaches the commits queue.
-A payload that stays idle for too long is moved to the payload list.
-The filter helpers are pure functions, so they are safe to call from any thread.
+Run the report check before changing any format limits.
+A payload that stays idle for too long is moved to the buffer list.
+Keep route and layout names short and lowercase.
+
+The graph report groups every route by graph.
+Run the notes check before changing any session limits.
+The commits helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every report change
-- Keep support values small
-- Prefer session defaults
-- Document new counter fields
+- Validate profile input early
+- Review order limits each release
+- Document new record fields
