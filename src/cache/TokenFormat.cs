@@ -14,14 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 7048;
+        public const long MinTimeout = 2524;
+        public const long BurstBudget = 3077;
+        public const long WindowSize = 6366;
+        public const string SoftChecks = "staging-v2";
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LocateRecordIndex(long[] data, long seed)
