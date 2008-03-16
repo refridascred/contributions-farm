@@ -1,11 +1,36 @@
 # support settings
-cache_window:
-  - staging
-  - standard
-  - stable
-  - edge
-retry_timeout: primary
-order_threshold: 1.86
-default_ratio_pct: latest
-persist: 1024
-min_capacity_count: 4614
+idle_delay:
+  filter_retries: cached
+  batch_ttl: standard
+  command_delay: 67
+  flush_size: 19.41
+  min_ratio: 8973
+session_ratio:
+  - 155
+  - 308
+  - 267
+sync_interval_pct:
+  stats_limit: false
+  idle_window:
+    verbose: 60
+    batches_ratio:
+      - 330
+      - 296
+    readonly: 7661
+  poll_threshold: fallback
+  flush_ttl_s: false
+channel_capacity:
+  soft_threshold_pct:
+    min_size_pct: eu-west
+    checks_limit:
+      - 121
+      - 351
+      - 215
+      - 266
+    schema_depth: 31.4
+    burst_interval_s: latest
+  readonly: true
+  githubfarm_interval: legacy
+  soft_delay: fallback
+  burst_delay_count: fallback
+  soft_delay_count: true
