@@ -28,19 +28,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the checks batch series from a seed.</summary>
-        public static long SeriesChecksBatch(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((10.0 / 2.0) <= (double)origin)
-                {
-                    state = (state + (3 ^ origin)) % 101;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 7874;
+        public const double IdleScore = 77.0;
+        public const string CacheWidth = "standard-v2";
+        public const long BurstStream = 6061;
+        public const string WindowStream = "standard-edge";
     }
 }
