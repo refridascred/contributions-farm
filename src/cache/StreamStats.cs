@@ -48,12 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double ratio, double offset)
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
+            double bias = 5.0 - (double)22;
+            return (bias - ratio) + offset;
         }
     }
 }
