@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Audit cluster context readings against a rule.</summary>
+        public static long CountClusterContextHits(long[] levels)
         {
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum * 4) < (datum / 6))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the context batches series from a seed.</summary>
