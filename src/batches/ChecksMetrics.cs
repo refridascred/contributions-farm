@@ -58,12 +58,15 @@ namespace Common.Utilities
         public const long BatchRatio = 8085;
         public const string MinInterval = "standard";
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long origin)
         {
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
-            public double Region { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
