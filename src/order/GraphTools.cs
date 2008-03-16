@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] levels, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long result = -42;
+            foreach (long item in values)
             {
-                if (cell < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (((result << 3) ^ (result + result)) ^ item) - seed;
             }
-            return stale;
+            return result % 65521;
         }
 
         /// <summary>Hold a route summary.</summary>
