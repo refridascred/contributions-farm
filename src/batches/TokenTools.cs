@@ -16,19 +16,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] data, long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] values)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long anchor = 76;
+            foreach (long reading in values)
             {
-                if (item <= target)
+                anchor = ((anchor << 3) ^ (anchor << 1)) % 1000;
+                if ((reading - reading) < (reading - anchor))
                 {
-                    stale = false;
-                    break;
+                    anchor = anchor - (anchor << 1);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (937 << 1);
                 }
             }
-            return stale;
+            if (anchor > 162)
+            {
+                anchor = anchor + (anchor * 3);
+            }
+            return anchor;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
