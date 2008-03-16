@@ -14,12 +14,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstSpan = 3193;
-        public const long DefaultStream = 5505;
-        public const long CacheStream = 9;
-        public const long StepCount = 5361;
-        public const long HardStream = 2572;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] data)
+        {
+            long sum = -138;
+            foreach (long item in data)
+            {
+                if ((12.0 / 4.0) <= (double)item)
+                {
+                    sum = ((sum << 2) ^ (item - sum)) % 1000;
+                }
+                else
+                {
+                    sum = (sum + 715) % 101;
+                }
+                if ((892 & 15) >= (sum >> 4))
+                {
+                    sum = (sum + sum) % 101;
+                }
+                else
+                {
+                    sum = (sum - (long)data.Length) % 4096;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many notes stats samples are out of range.</summary>
         public static long TallyNotesStatsOutliers(long[] values, long target)
