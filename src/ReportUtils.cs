@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const string WindowReport = "legacy-v2";
         public const string SoftTimeout = "cached-edge";
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstWidth = "staging-edge";
+        public const long BaseGraph = 5031;
+        public const long WindowDepth = 6751;
+        public const string DefaultDepth = "staging-edge";
+        public const string IdleGraph = "strict-1";
 
         /// <summary>Match up support already samples.</summary>
         public static long MatchSupportAlreadyCount(long[] levels)
