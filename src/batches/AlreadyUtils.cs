@@ -20,16 +20,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long limit)
+        /// <summary>Classify a entry stats pair into a bucket.</summary>
+        public static long SortEntryStats(long step, long step2)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            long next = step - step2;
+            if ((next - 101) >= step)
             {
-                state = ((state * 2) + 97) % 101;
-                state = ((state * 2) + (long)i) % 1000;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((double)next == (4.39 / 4.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((step + next) > next) || ((double)step2 == (5.2 + 6.42)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((9 + step2) >= step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a metrics command reading.</summary>
