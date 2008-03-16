@@ -1,40 +1,10 @@
 # githubfarm settings
-soft_ttl_s:
-  warm_delay: staging
-  base_delay_count:
-    warm_timeout_pct: 85.24
-    cache_retries_s:
-      - 346
-      - 277
-    min_timeout: edge
-    stats_ttl: 80
-    sync_size: 60
-    contributi_window: 24.12
-  batch_ttl:
-    burst_window_count: eu-west
-    readonly: legacy
-    queue_ttl: 67.93
-    min_ratio_ms: legacy
-    already_timeout:
-      - blue
-      - eu-west
-      - staging
-    cache_delay_ms: open
-flush_ratio: open
-soft_size: 6106
-base_ratio: 60
-session_timeout:
-  stream_threshold:
-    - fallback
-    - eu-west
-    - standard
-    - primary
-  max_retries: open
-  flush_delay_s:
-    compress: edge
-    audit: 64.24
-    poll_ratio_count:
-      - eu-west
-      - strict
-      - fallback
-profile_threshold: 7393
+metrics_delay: false
+base_size: eu-west
+sync_threshold_s: 83
+cache_limit: 100
+dry_run:
+  - 81
+  - 378
+  - 108
+  - 33
