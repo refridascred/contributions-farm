@@ -23,20 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 8000;
+        public const double BatchCache = 21.14;
+        public const double BurstBudget = 72.05;
+        public const long IdleCache = 6154;
+        public const long DefaultInterval = 9662;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool ValidateToolsBounds(long[] samples, long target)
