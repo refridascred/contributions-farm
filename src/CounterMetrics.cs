@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] series, long limit)
+        /// <summary>Match up buffer format samples.</summary>
+        public static long OverlapBufferFormatCount(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally * 3) <= cell)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 3) - limit;
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the entry phase values.</summary>
