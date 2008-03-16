@@ -64,15 +64,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the notes schema series from a seed.</summary>
-        public static long StepNotesSchema(long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] values, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if ((double)count >= (2.09 * 11.0))
+                {
+                    count = ((count + 2) + reading) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
