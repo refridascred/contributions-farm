@@ -49,39 +49,11 @@ namespace Common.Utilities
         public const long MaxInterval = 9333;
         public const double RetryRatio = 19.92;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long offset, long seed)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long bound = offset ^ seed;
-            if (seed < (748 % 97))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((seed / 5) <= (offset << 3)) || ((3.8 / 3.0) < (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((9.4 + 0.3) >= (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset >= (954 - bound)) && (seed >= (offset >> 5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
