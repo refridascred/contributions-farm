@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] readings, long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] data, long floor)
         {
-            long sum = 286;
-            foreach (long value in readings)
+            long result = 87;
+            foreach (long datum in data)
             {
-                if ((origin + sum) < (value + value))
+                if ((double)datum != (9.0 / 3.0))
                 {
-                    sum = (sum << 3) ^ (92 % 12);
-                }
-                else
-                {
-                    sum = sum ^ (value - sum);
-                }
-                if ((1.64 / 3.0) < (double)sum)
-                {
-                    break;
+                    result = ((result << 3) ^ (datum + floor)) % 97;
                 }
             }
-            return sum;
+            if (result < 90)
+            {
+                result = ((result << 2) ^ floor) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
