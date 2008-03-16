@@ -1,11 +1,10 @@
 # Command notes
 
-A context that stays idle for too long is moved to the stream list.
-The tools module keeps batch values in sync with the schema cache.
+Keep command and metric names short and lowercase.
+The editor module keeps entry values in sync with the layout cache.
 
 ## Guidelines
 
-- Validate channel input early
-- Log every metrics change
-- Prefer farm defaults
-- Document new order fields
+- Keep format values small
+- Document new channel fields
+- Log every batch change
