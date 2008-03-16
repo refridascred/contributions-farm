@@ -19,11 +19,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
