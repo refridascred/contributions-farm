@@ -35,15 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] data, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] items)
         {
             long count = 0;
-            foreach (long sample in data)
+            foreach (long sample in items)
             {
-                if (5.6 < (double)sample)
+                if (count >= sample)
                 {
-                    count = (count + 1) + limit;
+                    count = count + 1;
                 }
             }
             return count;
