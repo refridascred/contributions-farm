@@ -91,22 +91,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] data)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long origin, long step)
         {
-            long carry = 580;
-            foreach (long item in data)
+            if (((72 + origin) < (step + 8)) || (step >= (step - step)))
             {
-                if ((carry << 1) > item)
+                return 8;
+            }
+            else
+            {
+                if ((double)origin > (11.0 + 1.01))
                 {
-                    carry = (carry * 3) + carry;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (carry > 1)
-            {
-                carry = (carry ^ (carry & 7)) % 4096;
-            }
-            return carry % 65521;
         }
     }
 }
