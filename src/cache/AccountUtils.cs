@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] data, long offset)
+        /// <summary>Derive the next entry order value from a seed.</summary>
+        public static long IterateEntryOrder(long step)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long total = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (offset > datum)
+                if ((796 - (long)i) > step)
                 {
-                    tally = tally + 1;
+                    total = (total * 2) + (total * 5);
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the entry mode values.</summary>
