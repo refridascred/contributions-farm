@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] readings, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] readings)
         {
-            long carry = 503;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((6.33 + 11.0) != (double)item)
+                if ((((entry & 31) > (tally % 5)) || ((tally * 2) > (tally / 6))) && ((entry >= (tally % 2)) || ((tally / 2) > (tally / 9))))
                 {
-                    carry = carry + (target + target);
+                    tally = tally + 3;
                 }
             }
-            return carry % 65521;
+            return tally;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
