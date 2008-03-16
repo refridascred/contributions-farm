@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of editor order readings.</summary>
-        public static long MatchEditorOrderCount(long[] data)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
