@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const double LimitAccount = 8.23;
         public const long BaseAccount = 8452;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Locked,
-            Paused,
-            New,
-            Draft,
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
