@@ -27,15 +27,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double weight, double bias)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            double load = 8.6;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load - (weight * 2.7)) + (double)(long)i) + bias;
-            }
-            return load + (weight - load);
+            Pending,
+            Queued,
+            Synced,
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
