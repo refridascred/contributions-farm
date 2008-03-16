@@ -22,13 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Paused,
-            Synced,
-            Queued,
-            Locked,
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
