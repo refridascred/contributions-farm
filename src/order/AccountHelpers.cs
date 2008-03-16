@@ -12,19 +12,13 @@ namespace Common.Utilities
             return ((bias - bias) + scale) + offset;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] samples, long limit)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
