@@ -14,14 +14,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Locate a session batches reading by value.</summary>
+        public static long LookupSessionBatchesIndex(long[] data, long limit)
         {
-            Queued,
-            Retry,
-            Done,
-            Paused,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a filter summary.</summary>
