@@ -49,21 +49,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] levels)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 1;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item ^ state) != (state * 4))
                 {
-                    if ((levels[i] + levels[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state << 2) ^ (7 % 3)) % 101;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Look up the position of a notes tools sample.</summary>
