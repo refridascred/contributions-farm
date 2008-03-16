@@ -1,8 +1,6 @@
 {
-  "batch_capacity": "green",
-  "stats_limit": false,
-  "strict": 38,
-  "warm_ttl": true,
-  "sync_size_s": "legacy",
-  "farm_window": "open"
+  "hard_limit_count": "edge",
+  "cache_capacity_count": "cached",
+  "burst_capacity": 500,
+  "editor_delay": 45
 }
