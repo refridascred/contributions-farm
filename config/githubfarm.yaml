@@ -1,6 +1,5 @@
 # githubfarm settings
-min_limit: true
-enabled:
-  - staging
-  - latest
-base_ttl_s: 1867
+max_window_pct: 20
+audit: false
+strict: 13.73
+burst_depth_pct: blue
