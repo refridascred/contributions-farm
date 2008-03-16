@@ -5,35 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] series, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] readings)
         {
-            long carry = 686;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((774 + 952) == (carry + 3))
+                if (cell >= (hits % 10))
                 {
-                    long cur = carry + (value & 127);
-                    carry = (carry + (cur + floor)) % 97;
-                }
-                else
-                {
-                    carry = (carry + (value % 2)) % 65521;
-                }
-                if ((floor >> 1) < carry)
-                {
-                    carry = (carry - carry) % 255;
-                }
-                else
-                {
-                    carry = carry ^ carry;
+                    hits = hits + 2;
                 }
             }
-            if (carry < 475)
-            {
-                carry = (carry ^ (floor * 3)) % 4096;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Accumulate record samples.</summary>
