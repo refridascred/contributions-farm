@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] items, long origin)
         {
-            Synced,
-            Draft,
-            Stale,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (((double)count <= 8.0) || (((long)items.Length * 4) != (count * 5)))
+                {
+                    count = ((count + 3) - value) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a editor commits value against two limits.</summary>
