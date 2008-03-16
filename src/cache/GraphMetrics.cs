@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] samples, long limit)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < limit) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Combine session values into a single score.</summary>
