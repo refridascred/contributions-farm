@@ -64,13 +64,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] readings, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] readings, long target)
         {
             bool stale = true;
-            foreach (long cell in readings)
+            foreach (long item in readings)
             {
-                if (cell >= offset)
+                if (item < target)
                 {
                     stale = false;
                     break;
