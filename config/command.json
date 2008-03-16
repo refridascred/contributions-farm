@@ -1,7 +1,5 @@
 {
-  "flush_ratio": 33,
-  "poll_size": 93,
-  "flush_ratio_pct": true,
-  "burst_retries": 39.5,
-  "audit": 49.73
+  "max_capacity": "staging",
+  "max_limit_pct": "staging",
+  "burst_size_ms": 2405
 }
