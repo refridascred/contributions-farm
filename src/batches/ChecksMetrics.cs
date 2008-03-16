@@ -47,18 +47,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] series)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] items, long step)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((count >= (count % 97)) || (count >= (count + 216))) || ((double)67 == (double)entry))
                 {
-                    if ((series[i] ^ series[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) - step;
                 }
             }
             return count;
