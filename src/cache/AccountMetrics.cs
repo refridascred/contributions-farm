@@ -19,18 +19,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] samples, long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (hits < (origin & 31))
-                {
-                    hits = (hits + 1) ^ reading;
-                }
-            }
-            return hits;
+            Idle,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a metric info.</summary>
