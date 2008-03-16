@@ -53,39 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long seed, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] data, long origin)
         {
-            long bound = seed - origin;
-            if (((double)origin <= (9.27 - 1.0)) && ((10.0 - 7.53) != (double)bound))
+            bool ready = true;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1.55 + 6.0) <= (double)seed)
+                if (value <= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((899 >> 5) == (origin + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (bound >= (origin ^ bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
