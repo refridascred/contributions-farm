@@ -35,15 +35,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the tools session series from a seed.</summary>
-        public static long IterateToolsSession(long bound)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long bound, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
+            long span = bound - limit;
+            if (!((span * 5) >= limit))
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (0 < limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((9.6 + 5.0) == (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(limit < bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two order window measurements.</summary>
