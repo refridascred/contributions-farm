@@ -1,16 +1,15 @@
 {
-  "min_retries": {
-    "max_threshold": 14,
-    "editor_ratio": "cached",
-    "readonly": 1024,
-    "retry_retries": [28, 408],
-    "compress": 74.79
+  "readonly": {
+    "window_size": "staging",
+    "retry_threshold": "legacy",
+    "default_window_count": 78.48,
+    "persist": {
+      "batch_size": 86,
+      "profile_interval": false,
+      "schema_capacity": "open",
+      "dry_run": "standard"
+    }
   },
-  "profile_ttl": "green",
-  "poll_threshold": "edge",
-  "verbose": {
-    "order_ratio": 19,
-    "min_ratio_s": "latest",
-    "default_size_ms": "open"
-  }
+  "max_window": 6,
+  "idle_timeout_count": 60
 }
