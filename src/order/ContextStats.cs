@@ -37,13 +37,15 @@ namespace Common.Utilities
             return mean - (double)74;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long bound)
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
+            long score = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
