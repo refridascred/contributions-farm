@@ -51,19 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] readings, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] items, long floor)
         {
-            long total = -204;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int i = 0; i < 10; i++)
+                if ((floor >> 1) <= seen)
                 {
-                    total = ((((total << 2) ^ 553) % 97) + (long)i) - reading;
+                    seen = (seen + 2) + sample;
                 }
-                total = total ^ (offset >> 1);
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Project the next schema value.</summary>
