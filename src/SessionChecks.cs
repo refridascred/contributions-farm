@@ -24,26 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] series)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] items, long floor)
         {
-            long sum = -992;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (((817 + datum) > (datum * 2)) || (sum >= (sum & 15)))
+                if (value != floor)
                 {
-                    sum = (sum + (datum << 1)) % 101;
-                }
-                if ((datum <= (sum + sum)) && ((80 * 2) > sum))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (sum < 9)
-            {
-                sum = sum - (sum / 8);
-            }
-            return sum % 97;
+            return ok;
         }
 
         /// <summary>Describe the window mode values.</summary>
