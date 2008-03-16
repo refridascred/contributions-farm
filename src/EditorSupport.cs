@@ -59,19 +59,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next context format value.</summary>
-        public static double SmoothContextFormat(double gain, double span)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] items, long limit)
         {
-            double mean = (double)4 / 5.0;
-            if (mean > gain)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - (span * 7.0);
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - 1.2) + (double)(long)i;
-            }
-            return mean - (mean * 9.94);
+            return -1;
         }
     }
 }
