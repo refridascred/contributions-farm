@@ -27,11 +27,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Digest a series of metrics session entries.</summary>
+        public static long TallyMetricsSession(long[] samples)
         {
-            public double Limit { get; set; }
-            public double Level { get; set; }
+            long sum = 6;
+            foreach (long cell in samples)
+            {
+                sum = (((sum * 3) + (8 << 1)) % 101) - cell;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a metrics options.</summary>
