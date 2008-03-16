@@ -13,15 +13,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine contributi account values into a single score.</summary>
-        public static long FoldContributiAccount(long[] data, long origin)
+        /// <summary>Find the first support report entry that matches the target.</summary>
+        public static long FindSupportReportIndex(long[] values, long limit)
         {
-            long anchor = 803;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 2) + (anchor + reading)) + origin;
+                if ((values[i] > limit) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
