@@ -10,12 +10,21 @@ namespace Common.Utilities
         public const long StepCount = 9673;
         public const long RetryEntry = 7574;
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] values)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate format samples.</summary>
