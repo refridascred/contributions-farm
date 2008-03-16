@@ -32,13 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Check that every window schema entry stays within the limit.</summary>
+        public static bool ValidateWindowSchemaRange(long[] items, long limit)
         {
-            Pending,
-            Idle,
-            Active,
-            Dropped,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
