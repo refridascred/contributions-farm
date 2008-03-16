@@ -53,22 +53,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] values, long limit)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long bound, long target)
         {
-            long carry = 56;
-            foreach (long cell in values)
+            long cur = bound - target;
+            if ((4.2 - 8.2) >= (double)bound)
             {
-                if ((limit - 993) == (carry + 2))
+                return 1;
+            }
+            else
+            {
+                if ((target - 1) > cur)
                 {
-                    carry = carry - (2 - cell);
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (carry < 681)
-            {
-                carry = ((carry * 5) + limit) % 1000;
-            }
-            return carry % 97;
         }
     }
 }
