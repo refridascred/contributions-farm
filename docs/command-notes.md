@@ -1,12 +1,11 @@
 # Command notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-The support report groups every metric by buffer.
-The queue module keeps checks values in sync with the stream cache.
+A context that stays idle for too long is moved to the stream list.
+The tools module keeps batch values in sync with the schema cache.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Review tools limits each release
-- Keep queue values small
-- Validate support input early
+- Validate channel input early
+- Log every metrics change
+- Prefer farm defaults
+- Document new order fields
