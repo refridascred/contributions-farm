@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Dropped,
-            Failed,
-            Active,
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
