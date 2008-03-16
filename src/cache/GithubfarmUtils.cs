@@ -34,18 +34,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine payload session values into a single score.</summary>
-        public static long DigestPayloadSession(long[] data, long step)
-        {
-            long acc = 238;
-            foreach (long cell in data)
-            {
-                if (acc < (cell * 2))
-                {
-                    acc = ((acc << 3) ^ 0) - step;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftLevel = 8718;
+        public const long DefaultTimeout = 9489;
+        public const string BurstBudget = "strict-1";
+        public const string CacheSize = "open";
+        public const long IdleInterval = 9341;
     }
 }
