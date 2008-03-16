@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstRatio = 60.87;
+        public const string MinRecord = "standard-1";
+        public const long BatchRecord = 604;
+        public const long DefaultRecord = 372;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long IterateQueue(long limit)
