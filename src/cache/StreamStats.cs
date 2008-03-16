@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 1241;
-        public const double StepProfile = 97.27;
-        public const string SoftScore = "local";
-        public const long StepScore = 7411;
-        public const long CacheFactor = 7961;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Done,
+            Dropped,
+            Stale,
+            Active,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double CacheProfile = 96.2;
