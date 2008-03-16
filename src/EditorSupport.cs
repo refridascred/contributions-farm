@@ -55,11 +55,13 @@ namespace Common.Utilities
             return ratio + 20.0;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSpan = 221;
-        public const double BaseFactor = 27.45;
-        public const string BatchSession = "primary-1";
-        public const long RetryRatio = 4353;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Dropped,
+            New,
+            Locked,
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long FindCommandIndex(long[] readings, long floor)
