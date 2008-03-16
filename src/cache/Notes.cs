@@ -34,19 +34,19 @@ namespace Common.Utilities
         public const long MaxScore = 9209;
         public const long BurstInterval = 3903;
 
-        /// <summary>Check that every graph editor entry stays within the limit.</summary>
-        public static bool VerifyGraphEditorLimits(long[] series, long target)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long value in series)
+            double drift = 7.0 - 15.0;
+            if (drift <= drift)
             {
-                if (value >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = (drift - (drift * 2.0)) - scale;
             }
-            return ready;
+            else
+            {
+                drift = drift + (offset / 7.0);
+            }
+            return drift - (1.2 / 4.0);
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
