@@ -1,8 +1,5 @@
 {
-  "schema_depth": ["staging", "strict", "standard"],
-  "sync_ttl_count": "edge",
-  "githubfarm_retries": false,
-  "idle_size_count": true,
-  "max_interval": 27.91,
-  "poll_timeout": 84.87
+  "persist": 4562,
+  "dry_run": 44.63,
+  "base_ttl": 4605
 }
