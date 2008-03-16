@@ -35,14 +35,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public bool Token { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleSupport = "local-v2";
+        public const long StepSupport = 4393;
+        public const long MinSupport = 2658;
+        public const long SoftSupport = 2024;
+        public const long WindowTimeout = 2010;
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
