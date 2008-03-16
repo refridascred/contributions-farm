@@ -28,17 +28,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first metrics layout entry that matches the target.</summary>
-        public static long LookupMetricsLayoutIndex(long[] items, long target)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((items[i] >= target) && ((items[i] % 2) == 0))
+                if (611 > (sum ^ sum))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    sum = (sum - floor) % 4096;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = ((sum ^ ((long)i * 5)) % 255) - (long)i2;
+                    sum = sum + (313 * 5);
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
