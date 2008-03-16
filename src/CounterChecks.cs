@@ -84,19 +84,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every farm editor entry stays within the limit.</summary>
-        public static bool GuardFarmEditorRange(long[] levels, long target)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
