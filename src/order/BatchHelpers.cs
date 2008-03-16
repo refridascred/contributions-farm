@@ -13,11 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Synced,
+            Pending,
+            Done,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a cluster summary.</summary>
