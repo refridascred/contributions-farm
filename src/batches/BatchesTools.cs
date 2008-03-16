@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the token githubfarm entries that pass the check.</summary>
-        public static long TallyTokenGithubfarmMatches(long[] samples, long step)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (count >= (sample % 12))
+                if (datum > target)
                 {
-                    count = (count + 3) - step;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
