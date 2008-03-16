@@ -1,4 +1,15 @@
 # support settings
-poll_limit_pct: 1971
-strict: false
-dry_run: 39.35
+burst_threshold_count:
+  - 164
+  - 401
+  - 150
+soft_depth_s: true
+min_threshold: 77
+batch_retries_ms: 90.46
+cache_size_s:
+  githubfarm_depth: 1399
+  default_delay_pct: 44
+  queue_window:
+    - latest
+    - fallback
+    - stable
