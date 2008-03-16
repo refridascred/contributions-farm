@@ -31,24 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long step, long target)
+        /// <summary>Project the next queue metric value.</summary>
+        public static double ScaleQueueMetric(double gain, double span)
         {
-            if ((265 + target) != (step + target))
+            double weight = (double)1 * 7.86;
+            if (weight > (gain + span))
             {
-                return 3;
+                weight = weight - (weight / 7.0);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)target >= (13.0 / 8.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
+                weight = (weight + (weight + 7.58)) + (double)(long)i;
             }
+            return weight - gain;
         }
 
         /// <summary>Hold a tools options.</summary>
