@@ -30,11 +30,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Scale a cache batches figure with a bias.</summary>
-        public static double ScaleCacheBatches(double rate, double span)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double rate2 = (double)(713 ^ 6);
-            return ((rate2 + (3.0 * 6.0)) + rate) + span;
+            Stale,
+            Idle,
+            Retry,
+            Failed,
         }
     }
 }
