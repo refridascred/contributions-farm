@@ -1,6 +1,11 @@
 # support settings
-base_window_s:
-  - 8
-  - 148
-poll_interval: fallback
-poll_ttl: false
+cache_window:
+  - staging
+  - standard
+  - stable
+  - edge
+retry_timeout: primary
+order_threshold: 1.86
+default_ratio_pct: latest
+persist: 1024
+min_capacity_count: 4614
