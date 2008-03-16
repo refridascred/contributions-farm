@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardLevel = 9785;
-        public const long IdleBudget = 4184;
-        public const long HardCount = 8098;
-        public const double RetryBatches = 75.65;
+        /// <summary>Audit batch profile readings against a rule.</summary>
+        public static long AuditBatchProfileOutliers(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((step - sample) > step) || (step < (step << 3)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long HardSize = 8726;
