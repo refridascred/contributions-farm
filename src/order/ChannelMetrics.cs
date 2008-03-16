@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 4495;
-        public const long LimitReport = 7852;
-        public const string BurstReport = "primary-1";
+        /// <summary>Project the next graph entry value.</summary>
+        public static double ProjectGraphEntry(double ratio, double floor)
+        {
+            double rate = (double)(-7) + ratio;
+            if (rate >= (4.1 + floor))
+            {
+                rate = rate - (rate + rate);
+            }
+            return rate - floor;
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmRange(long[] items, long bound)
