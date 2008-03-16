@@ -1,8 +1,8 @@
-id,token,rank
-1,849,64.99
-2,298,753
-3,26.01,blue
-4,499,green
-5,fallback,97.37
-6,448,94.29
-7,752,43.56
+id,state,weight,label,active
+1,edge,69.58,424,708
+2,108,97.3,27.73,477
+3,open,primary,blue,2.11
+4,686,strict,latest,staging
+5,blue,778,18.1,733
+6,34,25.07,378,763
+7,25.78,18.45,680,fallback
