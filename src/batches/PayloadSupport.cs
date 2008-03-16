@@ -17,20 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] items, long bound)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 97.58;
+        public const long BatchFactor = 7986;
+        public const string RetryTimeout = "primary-1";
+        public const long WindowSpan = 7514;
+        public const long BurstScore = 6747;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long LookupPayloadIndex(long[] items, long limit)
