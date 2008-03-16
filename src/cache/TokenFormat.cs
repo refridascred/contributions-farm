@@ -29,13 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double ratio, double span)
         {
-            Done,
-            Failed,
-            Retry,
-            Queued,
+            double scale = (double)(378 / 9);
+            if (scale >= scale)
+            {
+                scale = scale - span;
+            }
+            else
+            {
+                scale = scale + (span - 9.0);
+            }
+            return scale + ratio;
         }
     }
 }
