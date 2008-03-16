@@ -35,13 +35,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] values)
         {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (matches < (cell + cell))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
