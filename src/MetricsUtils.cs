@@ -27,11 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Check that every batch account entry stays within the limit.</summary>
+        public static bool VerifyBatchAccountLimits(long[] data, long floor)
         {
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a cluster info.</summary>
