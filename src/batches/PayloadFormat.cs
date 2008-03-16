@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] readings, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] readings)
         {
-            long score = 875;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((score * 3) == (cell % 7))
+                if ((double)seen <= (double)item)
                 {
-                    score = score + (cell / 2);
+                    seen = seen + 2;
                 }
             }
-            if (score < 6)
-            {
-                score = ((score << 3) ^ (seed << 3)) % 255;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Count the metric entry entries that pass the check.</summary>
