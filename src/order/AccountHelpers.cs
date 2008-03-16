@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every stream batches entry stays within the limit.</summary>
-        public static bool GuardStreamBatchesRange(long[] samples, long offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long limit)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long state = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state << 2) ^ (state - limit)) % 4096;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
