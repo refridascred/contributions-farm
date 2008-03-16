@@ -36,12 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Combine session filter values into a single score.</summary>
+        public static long CombineSessionFilter(long[] data)
         {
-            Draft,
-            Synced,
-            Queued,
+            long carry = 3;
+            foreach (long cell in data)
+            {
+                if (((cell >> 4) < (cell ^ 2)) && (carry < (carry << 1)))
+                {
+                    carry = (carry ^ (cell + (-215))) % 65521;
+                }
+                if (129 > carry)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
