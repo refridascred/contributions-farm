@@ -1,6 +1,17 @@
 # support settings
-report_threshold: 8.76
-default_ttl: cached
-flush_retries_ms:
-  - staging
-  - open
+command_ratio: false
+strict: 2870
+min_ratio: 55
+sync_limit_s: cached
+readonly:
+  compress:
+    payload_size: staging
+    format_ttl: staging
+    notes_ttl: 4457
+    idle_interval_count: 24
+    cache_timeout: legacy
+  hard_depth_pct: open
+  batch_limit:
+    - 376
+    - 34
+    - 61
