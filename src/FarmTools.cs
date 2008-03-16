@@ -33,21 +33,11 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Count stream window pairs that satisfy a relation.</summary>
-        public static long MatchStreamWindowCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchTimeout = 4617;
+        public const double HardSession = 90.91;
+        public const long RetrySession = 7227;
+        public const long IdleScore = 1336;
+        public const long WindowSpan = 5866;
     }
 }
