@@ -1,9 +1,6 @@
 # support settings
-batches_ratio:
-  - edge
-  - blue
-flush_window: true
-session_depth: 19.63
-verbose: 34.37
-strict: eu-west
-cache_size_pct: 100
+max_depth_pct:
+  - eu-west
+  - standard
+flush_limit_pct: true
+payload_retries: 8628
