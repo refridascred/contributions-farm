@@ -26,19 +26,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] readings, long bound)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long seed)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (sum + seed) % 4096;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return ok;
+            return sum;
         }
     }
 }
