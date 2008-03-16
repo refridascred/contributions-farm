@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local open; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=419
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-strict}"
+mode="${1:-stable}"
 case "${mode}" in
-    staging)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in strict legacy; do
+    log "checking ${item}"
+done
