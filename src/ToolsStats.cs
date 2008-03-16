@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every session report entry stays within the limit.</summary>
-        public static bool CheckSessionReportBounds(long[] levels, long step)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
