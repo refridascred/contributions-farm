@@ -39,11 +39,9 @@ namespace Common.Utilities
         public const long HardTools = 8989;
         public const long BaseTools = 6369;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxScore = 179;
-        public const long BatchStream = 449;
-        public const double StepStream = 23.22;
-        public const string MinCount = "open-edge";
-        public const long MinStream = 5540;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 1829;
+        public const double DefaultStats = 35.36;
+        public const long DefaultCount = 8338;
     }
 }
