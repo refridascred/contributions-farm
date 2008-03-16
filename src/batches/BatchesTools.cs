@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long DefaultBatch = 4382;
         public const long LimitRatio = 594;
 
-        /// <summary>Fold a list of schema support readings.</summary>
-        public static long CombineSchemaSupport(long[] levels)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] values, long floor)
         {
-            long acc = -35;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = acc - cell;
+                if ((values[i] >= floor) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
