@@ -16,15 +16,19 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] readings, long limit)
+        /// <summary>Audit stream support readings against a rule.</summary>
+        public static long CountStreamSupportOutliers(long[] values)
         {
             long seen = 0;
-            foreach (long cell in readings)
+            foreach (long sample in values)
             {
-                if (0.83 < (double)seen)
+                if ((sample + seen) >= (-158))
                 {
-                    seen = ((seen + 1) ^ cell) + limit;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
