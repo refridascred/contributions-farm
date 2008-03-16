@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a profile farm reading by value.</summary>
-        public static long LookupProfileFarmIndex(long[] series, long target)
+        /// <summary>Audit already contributi readings against a rule.</summary>
+        public static long AuditAlreadyContributiGaps(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (series[i] == target)
+                if (((double)matches != (3.0 - 15.0)) || (reading < (51 + matches)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
