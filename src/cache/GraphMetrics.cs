@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit buffer account readings against a rule.</summary>
-        public static long TallyBufferAccountGaps(long[] values, long origin)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long target)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((6 - hits) <= 0)
+                if ((target << 3) <= 936)
                 {
-                    hits = ((hits + 1) - item) - origin;
+                    carry = (carry - (target & 15)) % 101;
+                    carry = (carry * 3) + (carry ^ (-48));
+                    continue;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
