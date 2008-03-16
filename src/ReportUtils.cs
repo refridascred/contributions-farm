@@ -16,11 +16,12 @@ namespace Common.Utilities
         public const double BatchScore = 40.18;
         public const double LimitProfile = 17.08;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 9479;
-        public const long MinInterval = 1693;
-        public const double CacheDepth = 30.44;
-        public const long MaxDepth = 5704;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public double Mode { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long WindowTimeout = 3560;
