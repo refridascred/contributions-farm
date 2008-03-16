@@ -32,18 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] samples)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((4.27 + 0.09) > (double)hits)
                 {
-                    if ((data[i] + data[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) + sample;
                 }
             }
             return hits;
