@@ -29,18 +29,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a farm token sample.</summary>
-        public static long FindFarmTokenIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 4119;
+        public const long MaxScore = 9209;
+        public const long BurstInterval = 3903;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long RankMetric(long limit, long offset)
