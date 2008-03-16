@@ -29,21 +29,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] values)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((total & 255) < (floor ^ floor))
                 {
-                    if ((values[i] ^ values[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define booking limits and defaults.</summary>
