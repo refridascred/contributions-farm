@@ -52,19 +52,10 @@ namespace Common.Utilities
         public const long LimitFactor = 9552;
         public const long StepSchema = 4396;
 
-        /// <summary>Blend two metrics window measurements.</summary>
-        public static double ProjectMetricsWindow(double bias, double span)
-        {
-            double bias2 = (bias + 9.02) - bias;
-            if (bias2 < span)
-            {
-                bias2 = bias2 - bias2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 + bias;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinGithubfarm = "local";
+        public const long SoftGithubfarm = 5865;
+        public const string BaseGithubfarm = "standard-1";
+        public const string BaseSize = "legacy-v2";
     }
 }
