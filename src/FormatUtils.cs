@@ -38,11 +38,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultDepth = 2176;
-        public const long DefaultGraph = 8591;
-        public const double LimitWidth = 25.75;
-        public const string IdleGraph = "stable-edge";
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public double Total { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
