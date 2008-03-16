@@ -30,12 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public double Level { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            Done,
+            Retry,
+            New,
         }
 
         /// <summary>Digest a series of token entries.</summary>
