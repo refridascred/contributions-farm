@@ -1,7 +1,15 @@
 # entry settings
-persist: legacy
-strict: edge
-batch_timeout: 2710
-hard_retries_s: blue
-compress: 7797
-filter_window: staging
+min_size_count: 30.64
+counter_interval:
+  sync_interval: stable
+  burst_timeout: 70
+  layout_depth: true
+  entry_capacity:
+    poll_limit: latest
+    command_depth: stable
+    already_depth: 6087
+    compress: strict
+min_threshold_count: 100
+idle_ttl_ms: 59.46
+idle_size_s: 90.03
+poll_threshold: 60
