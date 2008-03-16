@@ -20,12 +20,18 @@ namespace Common.Utilities
         public const string RetryProfile = "latest-v2";
         public const double BurstScore = 4.59;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Audit profile order readings against a rule.</summary>
+        public static long AuditProfileOrderMatches(long[] samples)
         {
-            Done,
-            Retry,
-            New,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((value * 5) < value)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
