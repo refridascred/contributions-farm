@@ -1,20 +1,15 @@
 # githubfarm settings
-min_delay_ms:
-  persist: 100
-  base_window_count: latest
-  base_capacity_s:
-    - stable
-    - primary
-    - cached
-    - primary
-  max_window_s: false
-flush_size_s: 2571
-burst_limit_count: 88.01
-readonly:
-  - local
-  - green
-hard_retries:
-  - latest
-  - open
-  - standard
-  - eu-west
+poll_delay_pct: staging
+flush_limit:
+  cache_window_count: strict
+  poll_depth: latest
+  min_depth_s: stable
+  sync_size_ms:
+    - 181
+    - 183
+    - 100
+    - 225
+  sync_ttl: legacy
+  flush_ttl: true
+commits_depth: 71
+flush_window: fallback
