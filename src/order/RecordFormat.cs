@@ -48,15 +48,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of contributi githubfarm entries.</summary>
-        public static long TallyContributiGithubfarm(long[] data)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long mark = 78;
-            foreach (long sample in data)
-            {
-                mark = (mark * 2) + sample;
-            }
-            return mark % 97;
+            Retry,
+            Active,
+            Pending,
+            Failed,
+            Queued,
         }
 
         /// <summary>Grade a record context value against two limits.</summary>
