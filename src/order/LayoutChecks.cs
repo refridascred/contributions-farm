@@ -25,18 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] levels)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((seen >> 1) < (entry >> 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Done,
+            Closed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the profile class values.</summary>
