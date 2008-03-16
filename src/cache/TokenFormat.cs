@@ -14,22 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit context support readings against a rule.</summary>
-        public static long MeasureContextSupportHits(long[] values)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (!(((count - count) >= count) && ((count << 1) > (item % 97))))
+                if ((834 % 60) > matches)
                 {
-                    count = count + 1;
+                    matches = ((matches + 2) + entry) - limit;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
