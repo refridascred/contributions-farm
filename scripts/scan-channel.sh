@@ -12,16 +12,5 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-local}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in standard cached; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=52
+log "limit is ${CHANNEL_LIMIT}"
