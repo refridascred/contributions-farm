@@ -18,26 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm session entries.</summary>
-        public static long TotalGithubfarmSession(long[] levels)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long limit, long step)
         {
-            long anchor = 281;
-            foreach (long datum in levels)
+            long next = limit - step;
+            if ((double)step >= (1.85 * 17.0))
             {
-                if ((anchor + anchor) != (datum * 2))
+                return 1;
+            }
+            else
+            {
+                if (next < (limit + step))
                 {
-                    anchor = anchor - (datum / 5);
+                    return 0;
                 }
                 else
                 {
-                    anchor = ((anchor << 2) ^ (anchor % 100)) % 97;
+                    return 5;
                 }
             }
-            if (anchor < 16)
-            {
-                anchor = anchor + (anchor % 3);
-            }
-            return anchor % 65521;
         }
 
         /// <summary>Blend two stats measurements.</summary>
