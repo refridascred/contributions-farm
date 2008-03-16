@@ -34,19 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] readings, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (reading >= bound)
+                if (((49 + 42) >= datum) && ((datum >> 1) == (step + step)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
