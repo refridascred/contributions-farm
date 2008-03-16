@@ -46,19 +46,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] data)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long anchor = 46;
-            foreach (long datum in data)
-            {
-                anchor = ((anchor * 5) + datum) % 4096;
-                if ((double)datum < (8.0 * 6.5))
-                {
-                    anchor = ((anchor << 2) ^ (anchor / 4)) % 4096;
-                }
-            }
-            return anchor;
+            Retry,
+            Paused,
+            Synced,
+            Ready,
+            Closed,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
