@@ -26,19 +26,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double ratio, double span)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] data, long seed)
         {
-            double scale = (double)(378 / 9);
-            if (scale >= scale)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - span;
+                if ((data[i] < seed) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (span - 9.0);
-            }
-            return scale + ratio;
+            return -1;
         }
     }
 }
