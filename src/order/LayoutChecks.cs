@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftLevel = 6012;
+        public const string BurstWidth = "staging-edge";
+        public const double BaseSchema = 16.57;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LookupContextIndex(long[] series, long offset)
