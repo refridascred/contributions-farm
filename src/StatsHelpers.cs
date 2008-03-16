@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] levels)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (bias / 8.0) - span;
+            if (mean <= (double)78)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean - (mean / 4.0);
             }
-            return seen;
+            else
+            {
+                mean = mean + (10.0 - bias);
+            }
+            return mean + span;
         }
 
         /// <summary>Compare every pair of support editor readings.</summary>
