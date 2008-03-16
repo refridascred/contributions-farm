@@ -20,18 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] items, long target)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((value >> 1) <= (98 - value))
-                {
-                    count = (count + 2) - target;
-                }
-            }
-            return count;
+            Done,
+            New,
+            Queued,
+            Locked,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
