@@ -45,11 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] data, long floor)
         {
-            public string Label { get; set; } = "";
-            public bool Token { get; set; }
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
