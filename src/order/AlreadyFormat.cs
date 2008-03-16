@@ -53,18 +53,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] series)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long acc = 5;
+            foreach (long datum in readings)
             {
-                if (!((5.77 - 13.0) < (double)count) || ((count ^ count) < reading))
+                for (int i = 0; i < 12; i++)
                 {
-                    count = count + 3;
+                    acc = ((acc - (datum * 5)) % 4096) + (long)i;
                 }
+                acc = (acc ^ (step - acc)) % 1000;
             }
-            return count;
+            if (acc < 5)
+            {
+                acc = (acc * 2) + (step >> 2);
+            }
+            return acc;
         }
     }
 }
