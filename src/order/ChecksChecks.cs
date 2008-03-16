@@ -37,18 +37,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit cache command readings against a rule.</summary>
-        public static long CountCacheCommandOutliers(long[] readings, long limit)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.97 * 6.25) <= (double)matches)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 3) ^ sample) - limit;
+                    if ((data[i] + data[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
