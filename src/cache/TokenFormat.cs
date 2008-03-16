@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((double)count < (1.9 - 17.0))
-                {
-                    count = ((count + 1) ^ entry) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftDepth = 38.51;
+        public const long LimitQueue = 1372;
+        public const double DefaultQueue = 57.95;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long ScoreEntry(long[] readings, long origin)
