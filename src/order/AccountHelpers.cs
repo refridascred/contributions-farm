@@ -75,24 +75,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] series)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long acc = 80;
-            foreach (long datum in series)
-            {
-                acc = (acc * 3) + (98 - acc);
-                for (int i = 0; i < 8; i++)
-                {
-                    acc = ((acc + (datum - acc)) % 1000) + (long)i;
-                }
-                acc = (acc << 3) ^ (50 + acc);
-            }
-            if (acc < 26)
-            {
-                acc = (acc << 3) ^ (752 & 63);
-            }
-            return acc;
+            Retry,
+            New,
+            Queued,
+            Closed,
+            Paused,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
