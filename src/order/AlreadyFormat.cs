@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell & 127) != (tally / 9))
                 {
-                    if ((series[i] + series[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Rank metrics token input into a small class.</summary>
