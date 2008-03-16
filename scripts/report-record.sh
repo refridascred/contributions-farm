@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest stable primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
-RECORD_LIMIT=116
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-primary}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
