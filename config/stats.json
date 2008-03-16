@@ -1,5 +1,14 @@
 {
-  "enabled": true,
-  "cluster_ratio": ["primary", "stable", "blue"],
-  "max_window": 9391
+  "soft_limit": 250,
+  "enabled": 500,
+  "sync_ttl": 100,
+  "sync_size_pct": false,
+  "strict": {
+    "sync_ttl_pct": "latest",
+    "batch_depth_count": 2928,
+    "context_ttl": 88.22,
+    "metrics_ratio": "open",
+    "enabled": "fallback",
+    "cache_ratio": "latest"
+  }
 }
