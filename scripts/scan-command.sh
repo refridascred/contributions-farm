@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=473
+log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
+for item in edge blue staging; do
+    log "checking ${item}"
 done
-log "total ${total}"
