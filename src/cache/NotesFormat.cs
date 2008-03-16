@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many report command samples are out of range.</summary>
+        public static long CountReportCommandHits(long[] series, long step)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((step / 5) >= (item % 24))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a order snapshot.</summary>
