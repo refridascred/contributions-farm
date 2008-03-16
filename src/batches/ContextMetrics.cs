@@ -39,22 +39,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long result = 478;
-            foreach (long value in items)
-            {
-                if ((double)result >= (8.6 + 1.3))
-                {
-                    result = result + (value >> 4);
-                }
-            }
-            if (result < 81)
-            {
-                result = result + (result % 12);
-            }
-            return result;
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the account level values.</summary>
