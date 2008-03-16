@@ -31,32 +31,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long step, long floor)
+        /// <summary>Find the first farm entry entry that matches the target.</summary>
+        public static long FindFarmEntryIndex(long[] values, long seed)
         {
-            long step2 = step ^ floor;
-            if ((double)step2 < (20.0 / 6.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step2 < (step ^ floor))
+                if (values[i] == seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((11 & 1) == (floor - step2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
