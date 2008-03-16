@@ -13,12 +13,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleSpan = 5506;
-        public const string BaseFormat = "open";
-        public const long MaxSize = 9946;
-        public const long BatchFormat = 5904;
-        public const string LimitFormat = "strict-1";
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double gain, double bias)
+        {
+            double bias2 = (double)(50 >> 5);
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = ((bias2 + gain) + (double)(long)i) - bias;
+            }
+            return bias2 - (gain / 4.0);
+        }
 
         /// <summary>Project the next checks value.</summary>
         public static double BlendChecks(double rate, double bias)
