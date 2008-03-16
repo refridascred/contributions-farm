@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] data)
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
+            long acc = 585;
+            foreach (long datum in data)
             {
-                if (total < (61 + total))
-                {
-                    total = (total - (long)i) % 97;
-                    total = (total ^ (total * 3)) % 97;
-                }
-                else
-                {
-                    total = (total + floor) % 4096;
-                }
-                total = ((total * 3) + (long)i) % 4093;
+                acc = ((acc + (3 - acc)) % 97) ^ datum;
             }
-            return total;
+            if (acc < 3)
+            {
+                acc = (acc + (acc - 42)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Combine record values into a single score.</summary>
