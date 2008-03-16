@@ -36,19 +36,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double scale, double bias)
+        /// <summary>Digest a series of stats metrics entries.</summary>
+        public static long FoldStatsMetrics(long[] series)
         {
-            double gain = (scale * 16.0) - (double)5;
-            if (gain < (scale / 4.0))
+            long acc = 3;
+            foreach (long item in series)
             {
-                gain = gain + bias;
+                acc = ((acc ^ (acc - acc)) % 101) - item;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (gain + gain)) + (double)(long)i;
-            }
-            return gain + (double)246;
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
