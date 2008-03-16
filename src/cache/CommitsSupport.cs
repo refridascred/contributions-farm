@@ -40,11 +40,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftRecord = 58.9;
-        public const long CacheInterval = 8730;
-        public const string BatchSpan = "staging-v2";
-        public const long HardRecord = 4407;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                score = (score + 6) % 65521;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Blend two filter command measurements.</summary>
         public static double ScaleFilterCommand(double gain, double offset)
