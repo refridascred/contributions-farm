@@ -14,12 +14,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Rank entry notes input into a small class.</summary>
+        public static long BucketEntryNotes(long origin, long origin2)
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            long next = origin ^ origin2;
+            if (!((368 - origin2) >= (origin - origin2)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((next % 10) >= (origin * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
