@@ -1,18 +1,8 @@
 {
-  "soft_limit": {
-    "poll_ratio": [54, 269],
-    "compress": 6973,
-    "soft_ttl_s": ["edge", "fallback"],
-    "default_limit_count": "legacy"
-  },
-  "warm_retries": "staging",
-  "cache_ratio_count": false,
-  "warm_size_pct": {
-    "sync_ratio_count": [37, 73],
-    "cache_window_ms": true,
-    "entry_ratio": true,
-    "dry_run": 90,
-    "strict": 83.84,
-    "editor_ratio": 3964
-  }
+  "persist": "fallback",
+  "audit": 89,
+  "base_delay": ["fallback", "stable", "open"],
+  "poll_threshold_pct": "green",
+  "min_ttl_pct": 92.28,
+  "editor_depth": ["primary", "green", "latest"]
 }
