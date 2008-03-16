@@ -24,21 +24,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = -700;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((values[i] ^ values[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - (642 ^ item)) - (long)i2;
+                }
+                if ((item + carry) <= ((long)samples.Length - carry))
+                {
+                    carry = (carry ^ ((-215) + item)) % 1000;
                 }
             }
-            return count;
+            if (carry > 23)
+            {
+                carry = (carry ^ (carry >> 3)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Count the checks githubfarm entries that pass the check.</summary>
