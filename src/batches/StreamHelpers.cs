@@ -20,21 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] readings)
+        /// <summary>Count commits tools pairs that satisfy a relation.</summary>
+        public static long MatchCommitsToolsCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) > 10)
+                    if ((samples[i] + samples[j]) < 6)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
