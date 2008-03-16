@@ -27,11 +27,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Audit cache order readings against a rule.</summary>
+        public static long CountCacheOrderHits(long[] samples, long floor)
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (floor > (hits - (long)samples.Length))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
         }
     }
 }
