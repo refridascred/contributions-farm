@@ -1,6 +1,8 @@
 {
-  "verbose": "edge",
-  "readonly": 6.16,
-  "queue_depth": 2678,
-  "min_depth": false
+  "command_ttl": "strict",
+  "route_ttl": true,
+  "hard_ttl_pct": "staging",
+  "githubfarm_timeout": "green",
+  "route_window": 35.83,
+  "soft_ratio_ms": ["open", "edge", "staging", "cached"]
 }
