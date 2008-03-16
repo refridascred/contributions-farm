@@ -60,19 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] levels, long step)
+        /// <summary>Validate entry account readings against a bound.</summary>
+        public static bool VerifyEntryAccountBounds(long[] values, long limit)
         {
-            long carry = 128;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                carry = (carry ^ (reading % 7)) + step;
+                if (datum != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (carry < 763)
-            {
-                carry = ((carry * 5) + (carry << 2)) % 255;
-            }
-            return carry;
+            return ready;
         }
     }
 }
