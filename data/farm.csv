@@ -1,7 +1,10 @@
-id,label,rank,count
-1,38.13,stable,cached
-2,663,70.48,83.08
-3,532,green,445
-4,62.61,primary,edge
-5,82.55,staging,cached
-6,88.52,60.67,cached
+id,region,token
+1,24.24,849
+2,cached,69.03
+3,905,35.24
+4,818,49.65
+5,55.19,primary
+6,stable,fallback
+7,712,59.07
+8,267,21.41
+9,431,63.31
