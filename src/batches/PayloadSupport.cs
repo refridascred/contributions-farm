@@ -21,15 +21,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the order entry series from a seed.</summary>
-        public static long SeriesOrderEntry(long step)
+        /// <summary>Combine counter metric values into a single score.</summary>
+        public static long TallyCounterMetric(long[] levels, long target)
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
+            long acc = 835;
+            foreach (long item in levels)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                acc = (((acc ^ (3 % 3)) % 1000) + item) + target;
             }
-            return total;
+            return acc % 97;
         }
     }
 }
