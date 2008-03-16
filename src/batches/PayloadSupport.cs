@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardContext = "cached";
-        public const long HardSize = 7398;
-        public const long CacheContext = 8295;
-        public const long SoftContext = 665;
-        public const long BurstInterval = 3168;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] items)
+        {
+            long sum = 25;
+            foreach (long entry in items)
+            {
+                sum = ((sum ^ 9) % 101) + entry;
+                sum = (sum + (sum + sum)) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
