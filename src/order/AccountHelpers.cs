@@ -44,14 +44,24 @@ namespace Common.Utilities
         public const long BaseTimeout = 3537;
         public const long IdleWidth = 7494;
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] series)
         {
-            Pending,
-            Paused,
-            Done,
-            Closed,
-            Dropped,
+            long acc = 80;
+            foreach (long datum in series)
+            {
+                acc = (acc * 3) + (98 - acc);
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = ((acc + (datum - acc)) % 1000) + (long)i;
+                }
+                acc = (acc << 3) ^ (50 + acc);
+            }
+            if (acc < 26)
+            {
+                acc = (acc << 3) ^ (752 & 63);
+            }
+            return acc;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
