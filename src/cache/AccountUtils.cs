@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a metrics batches pair into a bucket.</summary>
-        public static long SortMetricsBatches(long offset, long bound)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double rate, double span)
         {
-            long gap = offset ^ bound;
-            if ((gap + 2) > (gap + (-8)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (offset <= (offset & 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)175 >= (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (5 < offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            double drift = span / 6.0;
+            return (drift + (span - 1.2)) + rate;
         }
 
         /// <summary>Describe the commits state values.</summary>
