@@ -23,12 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Locate a queue counter reading by value.</summary>
+        public static long FindQueueCounterIndex(long[] values, long step)
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
