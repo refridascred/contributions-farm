@@ -91,12 +91,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] data)
         {
-            Locked,
-            Queued,
-            Synced,
+            long carry = 580;
+            foreach (long item in data)
+            {
+                if ((carry << 1) > item)
+                {
+                    carry = (carry * 3) + carry;
+                }
+            }
+            if (carry > 1)
+            {
+                carry = (carry ^ (carry & 7)) % 4096;
+            }
+            return carry % 65521;
         }
     }
 }
