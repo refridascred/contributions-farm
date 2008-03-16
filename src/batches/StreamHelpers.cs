@@ -60,10 +60,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftSize = "cached-1";
-        public const long MaxDepth = 3028;
-        public const long CacheFarm = 6377;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Locked,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Compare every pair of batch context readings.</summary>
         public static long OverlapBatchContextCount(long[] readings)
