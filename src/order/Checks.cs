@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two account farm measurements.</summary>
-        public static double ProjectAccountFarm(double weight, double span)
-        {
-            double bias = span;
-            if (bias <= (double)58)
-            {
-                bias = (bias + 7.0) - weight;
-            }
-            else
-            {
-                bias = bias - span;
-            }
-            return bias + span;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 5903;
+        public const double MinLevel = 10.3;
+        public const double LimitScore = 67.47;
+        public const string RetrySize = "standard";
+        public const long RetryChecks = 3215;
 
         /// <summary>Blend two notes measurements.</summary>
         public static double AdjustNotes(double weight, double bias)
