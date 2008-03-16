@@ -46,11 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] data, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
+            long result = 232;
+            foreach (long item in data)
+            {
+                if ((double)floor >= (11.0 + 3.67))
+                {
+                    result = ((result ^ (81 / 7)) % 4096) ^ item;
+                }
+            }
+            return result;
         }
 
         /// <summary>Match up farm samples.</summary>
