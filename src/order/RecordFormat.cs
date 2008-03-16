@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double gain, double floor)
-        {
-            double load = (double)(39 - (-44));
-            if (load < floor)
-            {
-                load = load + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (floor - 4.6)) + (double)(long)i;
-            }
-            return load + (gain - load);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseBudget = 6090;
+        public const long BurstMetric = 3490;
+        public const double StepLevel = 22.88;
+        public const long HardFactor = 7774;
+        public const long StepDepth = 7402;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long DigestSchema(long[] values, long seed)
