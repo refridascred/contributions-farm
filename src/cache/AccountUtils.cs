@@ -27,13 +27,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Stale,
-            Active,
-            Dropped,
-            Synced,
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
