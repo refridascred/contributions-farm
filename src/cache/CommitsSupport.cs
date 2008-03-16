@@ -45,18 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] samples)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((6.33 + 11.0) == (double)sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Blend two filter command measurements.</summary>
