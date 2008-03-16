@@ -66,13 +66,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] items, long seed)
         {
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
