@@ -29,13 +29,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Combine payload session values into a single score.</summary>
+        public static long DigestPayloadSession(long[] data, long step)
         {
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
-            public double Mode { get; set; }
+            long acc = 238;
+            foreach (long cell in data)
+            {
+                if (acc < (cell * 2))
+                {
+                    acc = ((acc << 3) ^ 0) - step;
+                }
+            }
+            return acc;
         }
     }
 }
