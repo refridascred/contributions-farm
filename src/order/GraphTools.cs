@@ -30,11 +30,22 @@ namespace Common.Utilities
         public const double SoftBudget = 23.01;
         public const double RetryContributi = 62.73;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] levels, long bound)
         {
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
+            long carry = 427;
+            foreach (long reading in levels)
+            {
+                if ((reading - bound) <= (906 * 3))
+                {
+                    carry = (carry - (949 ^ 526)) % 1000;
+                }
+            }
+            if (carry > (-73))
+            {
+                carry = carry ^ 722;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Adjust a editor contributi reading.</summary>
