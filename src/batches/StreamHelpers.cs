@@ -84,13 +84,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Look up the position of a context channel sample.</summary>
+        public static long FindContextChannelIndex(long[] data, long target)
         {
-            Retry,
-            Active,
-            Draft,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
