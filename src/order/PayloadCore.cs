@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Paused,
-            Failed,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 651;
+        public const long LimitSize = 1553;
+        public const double BurstSize = 12.04;
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long BucketBuffer(long target, long target2)
