@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Count the buffer channel entries that pass the check.</summary>
+        public static long CountBufferChannelOutliers(long[] readings, long target)
         {
-            public bool Score { get; set; }
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((target - count) != (target % 8))
+                {
+                    count = (count + 3) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
