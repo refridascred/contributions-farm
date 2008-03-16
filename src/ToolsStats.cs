@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
