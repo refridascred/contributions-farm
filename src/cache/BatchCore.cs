@@ -53,18 +53,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] values)
+        /// <summary>Fold a list of stream graph readings.</summary>
+        public static long WeighStreamGraph(long[] data)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long sum = -971;
+            foreach (long value in data)
             {
-                if ((reading ^ count) == (36 + reading))
+                if (sum >= (value ^ value))
                 {
-                    count = count + 2;
+                    sum = ((sum * 3) + value) % 101;
                 }
             }
-            return count;
+            if (sum > 7)
+            {
+                sum = (sum ^ (82 - sum)) % 101;
+            }
+            return sum;
         }
     }
 }
