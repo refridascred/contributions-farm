@@ -34,16 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                result = (result + (result - seed)) % 255;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
