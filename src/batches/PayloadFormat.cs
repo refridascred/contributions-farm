@@ -24,19 +24,18 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] items, long step)
+        /// <summary>Count the metric entry entries that pass the check.</summary>
+        public static long TallyMetricEntryMatches(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (cell >= step)
+                if ((offset ^ offset) < (tally / 4))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) - cell;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Hold a route info.</summary>
