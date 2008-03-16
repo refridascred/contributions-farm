@@ -20,12 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultEditor = 53.13;
-        public const double IdleEditor = 0.47;
-        public const long BatchEditor = 5124;
-        public const long BurstEditor = 1472;
-        public const double CacheScore = 37.07;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] samples)
+        {
+            long anchor = 379;
+            foreach (long datum in samples)
+            {
+                if ((datum >> 2) == (datum << 2))
+                {
+                    anchor = (anchor - ((long)samples.Length + anchor)) % 1000;
+                }
+            }
+            if (anchor < 914)
+            {
+                anchor = ((anchor * 2) + anchor) % 101;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long RankContext(long floor, long seed)
