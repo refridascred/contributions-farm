@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] readings)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] items)
         {
-            long mix = 11;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                mix = (mix + (140 ^ 34)) - value;
-                if (!(mix < (mix >> 2)))
+                if ((matches ^ matches) == (entry % 60))
                 {
-                    mix = (mix ^ (4 + (long)readings.Length)) % 65521;
+                    matches = matches + 2;
                 }
             }
-            if (mix > 6)
-            {
-                mix = mix - (1 & 127);
-            }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Digest a series of context entries.</summary>
