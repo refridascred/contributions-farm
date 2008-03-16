@@ -14,19 +14,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] data, long limit)
+        /// <summary>Fold a list of githubfarm entry readings.</summary>
+        public static long DigestGithubfarmEntry(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long score = -4;
+            foreach (long sample in samples)
             {
-                if (item >= limit)
+                score = ((score << 2) ^ (offset + 16)) % 65521;
+                if ((offset + offset) == (offset / 3))
                 {
-                    valid = false;
-                    break;
+                    score = score + sample;
+                }
+                else
+                {
+                    score = score - score;
                 }
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
