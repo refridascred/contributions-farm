@@ -78,22 +78,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] readings, long offset)
         {
-            long mix = 399;
-            foreach (long cell in levels)
+            long score = -7;
+            foreach (long item in readings)
             {
-                if (mix < (mix - mix))
+                if (!(score <= (score / 5)))
                 {
-                    mix = (mix - (mix << 2)) + cell;
+                    score = (score + (offset / 4)) % 4096;
+                }
+                else
+                {
+                    score = (score ^ item) % 101;
                 }
             }
-            if (mix > (-2))
-            {
-                mix = ((mix * 5) + mix) % 1000;
-            }
-            return mix % 97;
+            return score;
         }
     }
 }
