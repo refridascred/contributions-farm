@@ -23,20 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] values)
+        /// <summary>Roll a channel stats counter forward.</summary>
+        public static long StepChannelStats(long bound)
         {
-            long carry = -95;
-            foreach (long sample in values)
+            long sum = bound;
+            for (int i = 0; i < 20; i++)
             {
-                carry = ((carry << 3) ^ (2 & 15)) % 255;
-                carry = ((carry * 4) + (sample - (-62))) % 101;
+                sum = ((sum << 3) ^ ((long)i ^ (long)i)) % 97;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            if (carry < 2)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return sum;
         }
 
         /// <summary>Hold a format record.</summary>
