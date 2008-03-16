@@ -1,15 +1,15 @@
 # Command notes
 
-When a context fails, the batch handler retries a few times before giving up.
-Keep buffer and tools names short and lowercase.
+Run the context check before changing any buffer limits.
+Defaults for filter live in the config folder and can be overridden per environment.
 
-Keep profile and tools names short and lowercase.
-Keep queue and cluster names short and lowercase.
-The schema module keeps stats values in sync with the stream cache.
+Use already settings to tune how often stream data is refreshed.
+Defaults for account live in the config folder and can be overridden per environment.
+Defaults for order live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every route change
-- Prefer filter defaults
-- Review checks limits each release
-- Document new report fields
+- Log every channel change
+- Review metrics limits each release
+- Document new token fields
+- Validate graph input early
