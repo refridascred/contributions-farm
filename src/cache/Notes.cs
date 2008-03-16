@@ -20,12 +20,21 @@ namespace Common.Utilities
             return rate + (rate - rate);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleWidth = 9157;
-        public const long LimitFarm = 285;
-        public const string IdleFarm = "stable-edge";
-        public const double CacheWidth = 25.72;
-        public const string SoftTimeout = "staging";
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] data)
+        {
+            long state = 0;
+            foreach (long datum in data)
+            {
+                state = (state - (state - state)) % 97;
+                state = ((state * 3) + (datum ^ datum)) % 97;
+            }
+            if (state > 4)
+            {
+                state = ((state << 2) ^ state) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Blend two farm githubfarm measurements.</summary>
         public static double BlendFarmGithubfarm(double gain, double floor)
