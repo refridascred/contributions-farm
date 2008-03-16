@@ -19,19 +19,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] series, long target)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (datum <= 70)
-                {
-                    count = (count + 1) - target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchDepth = "strict-v2";
+        public const long BurstEditor = 1180;
+        public const long HardInterval = 4364;
+        public const long CacheLevel = 1498;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long LocateSchemaIndex(long[] levels, long offset)
