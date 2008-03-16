@@ -39,18 +39,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] items, long floor)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double gain, double offset)
         {
-            long sum = -1;
-            foreach (long sample in items)
+            double load = offset;
+            if (load <= (load + 7.0))
             {
-                if ((floor ^ 80) < floor)
-                {
-                    sum = (sum ^ sample) % 4096;
-                }
+                load = (load - (load / 8.0)) - gain;
             }
-            return sum;
+            else
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (double)(-505)) - (double)(long)i;
+            }
+            return load - (10.0 / 7.0);
         }
 
         /// <summary>Project the next account value.</summary>
