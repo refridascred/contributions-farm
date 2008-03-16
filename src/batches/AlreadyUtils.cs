@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double weight, double floor)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            double gain = weight / 5.0;
-            if (gain >= weight)
-            {
-                gain = gain - (floor + gain);
-            }
-            return gain + (double)965;
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Compare every pair of counter support readings.</summary>
