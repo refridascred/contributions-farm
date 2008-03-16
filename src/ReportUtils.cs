@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const string WindowReport = "legacy-v2";
         public const string SoftTimeout = "cached-edge";
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public long Count { get; set; }
+            Active,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a metric header.</summary>
