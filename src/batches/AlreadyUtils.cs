@@ -12,21 +12,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Compare every pair of counter support readings.</summary>
-        public static long PairCounterSupportCount(long[] series)
+        /// <summary>Roll a graph metric counter forward.</summary>
+        public static long SeriesGraphMetric(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((bound + mix) <= mix)
                 {
-                    if ((series[i] + series[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    mix = mix ^ ((long)i - (long)i);
                 }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
