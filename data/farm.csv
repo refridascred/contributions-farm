@@ -1,7 +1,8 @@
-id,region,state
-1,89.93,local
-2,877,511
-3,78.45,45.32
-4,79.43,33.07
-5,273,latest
-6,57.36,485
+id,count,region,ratio,state
+1,edge,edge,legacy,stable
+2,322,62.29,staging,legacy
+3,cached,92.32,36.9,460
+4,staging,standard,69.56,stable
+5,98.78,staging,850,open
+6,9.05,51.24,582,996
+7,53.21,992,546,745
