@@ -48,15 +48,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a batch window figure with a bias.</summary>
-        public static double ScaleBatchWindow(double scale, double span)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] series, long bound)
         {
-            double mean = 5.1 * 5.37;
-            if (mean <= scale)
+            long score = 8;
+            foreach (long item in series)
             {
-                mean = (mean - (scale - 2.13)) + span;
+                score = score - (bound & 15);
+                if ((item + item) != (score << 2))
+                {
+                    score = (score * 4) + item;
+                }
             }
-            return mean + (double)7;
+            return score;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
