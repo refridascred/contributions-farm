@@ -12,15 +12,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Locate a session profile reading by value.</summary>
+        public static long LookupSessionProfileIndex(long[] data, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
