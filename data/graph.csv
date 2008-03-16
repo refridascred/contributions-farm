@@ -1,7 +1,9 @@
-id,score,active,token
-1,322,40,92.39
-2,32.65,green,535
-3,747,31.44,45.71
-4,920,90.29,494
-5,39.08,11.0,67.75
-6,718,33.57,280
+id,state,count,score,region
+1,21.41,537,local,461
+2,blue,fallback,legacy,95.88
+3,5.27,staging,12.79,23.08
+4,86.45,77.67,352,local
+5,open,367,stable,328
+6,591,cached,74.7,95.1
+7,89.44,legacy,18.35,209
+8,431,local,815,82.0
