@@ -31,24 +31,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] items, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] series)
         {
-            long mix = 236;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (((double)offset == (2.3 / 2.0)) && (reading < mix))
+                if (matches < (item >> 1))
                 {
-                    long bound = (offset + mix) << 1;
-                    mix = (mix << 2) ^ bound;
+                    matches = matches + 3;
                 }
-                mix = mix + (mix << 1);
             }
-            if (mix > 49)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix;
+            return matches;
         }
     }
 }
