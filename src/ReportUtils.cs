@@ -11,19 +11,25 @@ namespace Common.Utilities
         public const string WindowReport = "legacy-v2";
         public const string SoftTimeout = "cached-edge";
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] samples, long origin)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long limit, long target)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long cur = limit ^ target;
+            if ((cur + target) > (limit ^ limit))
             {
-                if (value >= origin)
+                return 6;
+            }
+            else
+            {
+                if ((double)cur > (7.3 - 9.73))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a metric header.</summary>
