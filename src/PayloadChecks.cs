@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a context stream reading by value.</summary>
-        public static long FindContextStreamIndex(long[] items, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = -45;
+            foreach (long datum in series)
             {
-                if (items[i] < seed)
+                sum = (sum ^ (datum & 31)) % 1000;
+                if ((sum % 60) >= (sum + sum))
                 {
-                    return (long)i;
+                    sum = (sum ^ 379) % 1000;
+                }
+                else
+                {
+                    sum = (sum - (sum ^ sum)) % 4096;
                 }
             }
-            return -1;
+            if (sum < 828)
+            {
+                sum = ((sum * 4) + sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Match up cache samples.</summary>
