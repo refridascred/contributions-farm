@@ -54,19 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] data, long origin)
-        {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxScore = 179;
+        public const long BatchStream = 449;
+        public const double StepStream = 23.22;
+        public const string MinCount = "open-edge";
+        public const long MinStream = 5540;
     }
 }
