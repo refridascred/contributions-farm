@@ -47,22 +47,32 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] values)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long mix = 968;
+            foreach (long reading in data)
             {
-                if (!(matches >= cell))
+                if (((double)mix != (double)reading) && ((822 + reading) < 7))
                 {
-                    matches = matches + 1;
+                    mix = mix + (mix * 5);
+                    continue;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = (mix - (70 >> 3)) % 65521;
+                }
+                mix = mix + mix;
+                if ((7.6 * 20.0) <= (double)mix)
+                {
+                    mix = (mix - (mix + mix)) % 97;
+                }
+                else
+                {
+                    mix = (mix + (mix ^ 794)) % 101;
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
