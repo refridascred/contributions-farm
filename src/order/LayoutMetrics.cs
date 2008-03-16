@@ -20,23 +20,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of githubfarm entry readings.</summary>
-        public static long DigestGithubfarmEntry(long[] samples, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] items)
         {
-            long score = -4;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in items)
             {
-                score = ((score << 2) ^ (offset + 16)) % 65521;
-                if ((offset + offset) == (offset / 3))
+                if (((double)item != (double)matches) || !((193 << 3) != (item + 42)))
                 {
-                    score = score + sample;
-                }
-                else
-                {
-                    score = score - score;
+                    matches = matches + 2;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Fold a list of report readings.</summary>
