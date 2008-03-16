@@ -28,14 +28,11 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 1535;
+        public const double WindowProfile = 3.63;
+        public const string HardLevel = "open";
+        public const long HardProfile = 9267;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BatchSpan = 6996;
