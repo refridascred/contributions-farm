@@ -19,16 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] levels, long step)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long anchor = -452;
-            foreach (long datum in levels)
-            {
-                anchor = ((anchor * 4) + anchor) - step;
-                anchor = (anchor - (anchor + datum)) % 1000;
-            }
-            return anchor;
+            Retry,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a stats stats.</summary>
