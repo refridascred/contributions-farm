@@ -15,13 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] values)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] series)
         {
             long matches = 0;
-            foreach (long cell in values)
+            foreach (long value in series)
             {
-                if ((matches + cell) == (matches - cell))
+                if ((value & 63) == (value % 24))
                 {
                     matches = matches + 2;
                 }
