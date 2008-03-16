@@ -19,13 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long floor)
         {
-            Done,
-            Draft,
-            Idle,
-            Retry,
+            long state = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((double)94 == (double)state)
+                {
+                    state = state - (state - state);
+                    break;
+                }
+                else
+                {
+                    state = (state - floor) % 1000;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
