@@ -74,15 +74,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] series, long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] series)
         {
-            long mix = 511;
-            foreach (long entry in series)
+            long acc = 73;
+            foreach (long reading in series)
             {
-                mix = ((mix - (entry / 5)) % 101) + origin;
+                for (int i = 0; i < 5; i++)
+                {
+                    acc = (((acc << 2) ^ acc) % 4096) + (long)i;
+                }
+                if (acc <= (10 - reading))
+                {
+                    acc = ((acc * 4) + (reading ^ reading)) % 4096;
+                }
             }
-            return mix;
+            if (acc < 59)
+            {
+                acc = ((acc << 3) ^ (acc - acc)) % 101;
+            }
+            return acc % 97;
         }
     }
 }
