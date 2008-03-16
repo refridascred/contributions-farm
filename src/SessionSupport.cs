@@ -34,11 +34,18 @@ namespace Common.Utilities
             return ratio2 + (15.0 - ratio2);
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Measure how many metric channel samples are out of range.</summary>
+        public static long AuditMetricChannelMatches(long[] data, long origin)
         {
-            public bool Offset { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((origin ^ origin) == (item - item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
