@@ -72,31 +72,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cache batch pair into a bucket.</summary>
-        public static long RankCacheBatch(long step, long target)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double scale, double floor)
         {
-            if ((14.0 - 9.39) == (double)target)
+            double bias = scale;
+            if (bias >= bias)
             {
-                return 2;
+                bias = bias - floor;
             }
-            else
-            {
-                if ((target + (-89)) != (111 ^ 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((16.0 + 5.84) > (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return bias - scale;
         }
     }
 }
