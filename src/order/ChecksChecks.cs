@@ -32,12 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] data, long bound)
         {
-            public double Region { get; set; }
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((bound - bound) > bound)
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
     }
 }
