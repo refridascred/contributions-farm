@@ -40,24 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] levels)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long limit, long seed)
         {
-            long sum = 4;
-            foreach (long value in levels)
+            if ((seed << 2) > (limit + seed))
             {
-                if ((double)sum <= (3.5 - 9.19))
+                return 5;
+            }
+            else
+            {
+                if (13.0 < (double)limit)
                 {
-                    sum = ((sum << 2) ^ 579) % 65521;
-                    sum = (sum - (sum + value)) % 97;
-                    continue;
+                    return 4;
                 }
-                if ((double)value < 1.16)
+                else
                 {
-                    sum = sum - (sum + value);
+                    if ((limit >> 5) != (limit + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Accumulate format samples.</summary>
