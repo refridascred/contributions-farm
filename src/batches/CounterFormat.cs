@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long MinLevel = 4133;
         public const long SoftWidth = 7114;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepWidth = "legacy-edge";
-        public const long RetryBudget = 6970;
-        public const long BatchFormat = 505;
-        public const double SoftFormat = 5.28;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string HardDepth = "local-1";
