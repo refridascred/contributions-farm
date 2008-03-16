@@ -19,12 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 8000;
-        public const double BatchCache = 21.14;
-        public const double BurstBudget = 72.05;
-        public const long IdleCache = 6154;
-        public const long DefaultInterval = 9662;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long target, long limit)
+        {
+            if ((target * 5) >= target)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit + target) > target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit > (2.94 * 5.6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (12.0 >= (double)target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long MeasureSchemaGaps(long[] levels, long offset)
