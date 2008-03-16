@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a report layout value against two limits.</summary>
-        public static long RankReportLayout(long target, long limit)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            if (limit <= target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target << 1) < target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (9 <= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((limit + limit) >= limit) || ((target * 3) == (target * 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Ready,
+            Queued,
+            New,
         }
 
         /// <summary>Locate a queue counter reading by value.</summary>
