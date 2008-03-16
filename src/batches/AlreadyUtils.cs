@@ -57,19 +57,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] items, long bound)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long limit, long origin)
         {
-            bool found = true;
-            foreach (long value in items)
+            long gap = limit ^ origin;
+            if ((5.07 - 8.0) > (double)limit)
             {
-                if (value < bound)
+                return 3;
+            }
+            else
+            {
+                if (((8.78 / 9.0) != (double)origin) && ((double)gap != (1.52 / 2.0)))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return found;
         }
     }
 }
