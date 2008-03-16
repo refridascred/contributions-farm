@@ -19,15 +19,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine counter metric values into a single score.</summary>
-        public static long TallyCounterMetric(long[] levels, long target)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] items, long limit)
         {
-            long acc = 835;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (((acc ^ (3 % 3)) % 1000) + item) + target;
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 97;
+            return -1;
         }
     }
 }
