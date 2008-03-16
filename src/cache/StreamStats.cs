@@ -16,18 +16,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] series, long offset)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!((seen ^ 887) >= (seen + 518)))
-                {
-                    seen = ((seen + 3) ^ value) + offset;
-                }
-            }
-            return seen;
+            Paused,
+            Synced,
+            Queued,
+            Locked,
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
