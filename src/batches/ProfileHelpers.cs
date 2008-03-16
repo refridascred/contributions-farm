@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] samples, long bound)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long result = -95;
-            foreach (long datum in samples)
-            {
-                result = ((result + datum) % 1000) - bound;
-            }
-            if (result > 1)
-            {
-                result = result ^ 957;
-            }
-            return result % 1000;
+            Closed,
+            Locked,
+            New,
+            Stale,
+            Draft,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
