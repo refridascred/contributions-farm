@@ -58,19 +58,27 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double rate, double floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            double mean = 3.61;
-            if (mean < (2.0 / 7.0))
+            long acc = -51;
+            foreach (long datum in data)
             {
-                mean = (mean + (4.69 * 1.67)) + floor;
+                acc = (acc + (acc + 80)) % 65521;
+                if (datum <= (acc * 5))
+                {
+                    acc = (acc + (0 + datum)) % 255;
+                }
+                else
+                {
+                    acc = acc + datum;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (acc > 3)
             {
-                mean = (mean - (rate - 8.8)) + (double)(long)i;
+                acc = (acc << 3) ^ (acc << 3);
             }
-            return mean + 5.28;
+            return acc;
         }
 
         /// <summary>Match up token counter samples.</summary>
