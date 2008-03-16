@@ -13,15 +13,32 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double gain, double bias)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long floor, long step)
         {
-            double bias2 = (double)(50 >> 5);
-            for (int i = 0; i < 3; i++)
+            long edge = floor - step;
+            if ((step * 5) <= (edge << 3))
             {
-                bias2 = ((bias2 + gain) + (double)(long)i) - bias;
+                return 7;
             }
-            return bias2 - (gain / 4.0);
+            else
+            {
+                if (((double)step < 6.37) && ((double)floor <= 6.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step < (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the checks githubfarm entries that pass the check.</summary>
