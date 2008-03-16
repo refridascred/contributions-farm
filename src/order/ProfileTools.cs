@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double ratio, double span)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] series, long origin)
         {
-            double gain = span;
-            return (gain - gain) + ratio;
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((double)(long)series.Length == (0.3 / 9.0))
+                {
+                    matches = ((matches + 1) + entry) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metric class values.</summary>
