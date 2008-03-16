@@ -1,17 +1,33 @@
 # support settings
-command_ratio: false
-strict: 2870
-min_ratio: 55
-sync_limit_s: cached
-readonly:
-  compress:
-    payload_size: staging
-    format_ttl: staging
-    notes_ttl: 4457
-    idle_interval_count: 24
-    cache_timeout: legacy
-  hard_depth_pct: open
-  batch_limit:
-    - 376
-    - 34
-    - 61
+warm_window_ms:
+  filter_interval: 1024
+  retry_delay_s:
+    - legacy
+    - standard
+  window_size: 60
+  entry_depth: 63.76
+  idle_limit_pct:
+    payload_ratio: true
+    poll_limit:
+      - green
+      - blue
+    batch_retries: 26.13
+    format_retries: primary
+    profile_capacity: 5877
+    editor_ttl: latest
+  idle_threshold: 42.69
+profile_interval: 59
+base_window_ms:
+  flush_capacity_s: open
+  burst_threshold_count: true
+  hard_retries:
+    cache_window_ms: 29.65
+    poll_capacity: 47.24
+    retry_window_s: primary
+  batch_delay:
+    cache_window: 32.41
+    dry_run: false
+    metric_delay: strict
+    compress: false
+    window_capacity: 45
+    max_capacity: 4785
