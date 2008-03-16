@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] data)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (!((double)datum < (1.77 - 1.75)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
