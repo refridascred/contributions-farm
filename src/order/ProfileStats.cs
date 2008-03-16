@@ -16,18 +16,18 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] samples, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (reading <= (hits << 3))
+                if ((((9 - item) == (tally + seed)) || (tally < 761)) && !((18.0 * 3.9) > (double)seed))
                 {
-                    hits = (hits + 3) + step;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Rank support input into a small class.</summary>
