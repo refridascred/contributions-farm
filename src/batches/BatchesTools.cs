@@ -19,17 +19,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] items, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (items[i] > bound)
+                if ((matches * 5) <= (626 >> 2))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + reading;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
