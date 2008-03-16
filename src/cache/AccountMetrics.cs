@@ -57,11 +57,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] levels, long target)
         {
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
+            long anchor = 3;
+            foreach (long entry in levels)
+            {
+                anchor = (anchor - target) - entry;
+                if ((8.0 / 9.0) >= (double)target)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
