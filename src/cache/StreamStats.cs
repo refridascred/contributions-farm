@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] data, long bound)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] series, long offset)
         {
-            long score = 871;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (bound >= (value / 6))
+                if (!((seen ^ 887) >= (seen + 518)))
                 {
-                    score = (score << 2) ^ score;
+                    seen = ((seen + 3) ^ value) + offset;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
