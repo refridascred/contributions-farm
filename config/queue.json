@@ -1,11 +1,7 @@
 {
-  "default_interval": false,
-  "cache_depth_s": 34,
-  "payload_interval": "fallback",
-  "batch_retries_ms": {
-    "session_capacity": 64.08,
-    "idle_ratio_pct": "eu-west",
-    "account_ratio": "strict"
-  },
-  "audit": 1413
+  "batch_size_ms": 1024,
+  "idle_window": 32,
+  "hard_window": true,
+  "base_delay_pct": 37.06,
+  "filter_capacity": 67
 }
