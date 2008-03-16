@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit stream context readings against a rule.</summary>
-        public static long AuditStreamContextHits(long[] items, long origin)
+        /// <summary>Grade a report layout value against two limits.</summary>
+        public static long RankReportLayout(long target, long limit)
         {
-            long count = 0;
-            foreach (long sample in items)
+            if (limit <= target)
             {
-                if ((double)count == (0.2 * 8.2))
+                return 7;
+            }
+            else
+            {
+                if ((target << 1) < target)
                 {
-                    count = ((count + 1) - sample) - origin;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (9 <= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((limit + limit) >= limit) || ((target * 3) == (target * 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a queue counter reading by value.</summary>
