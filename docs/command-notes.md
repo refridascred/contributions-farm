@@ -1,15 +1,12 @@
 # Command notes
 
-Run the batches check before changing any report limits.
-Keep route and queue names short and lowercase.
-Keep githubfarm and stream names short and lowercase.
-
-The account module keeps schema values in sync with the stats cache.
-Run the token check before changing any order limits.
+Each account is validated before it reaches the schema queue.
+Use report settings to tune how often schema data is refreshed.
+Keep editor and token names short and lowercase.
 
 ## Guidelines
 
-- Review already limits each release
-- Document new stats fields
-- Log every stats change
-- Validate record input early
+- Keep stats values small
+- Review stream limits each release
+- Validate commits input early
+- Prefer cluster defaults
