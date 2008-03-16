@@ -13,16 +13,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Iterate the checks githubfarm series from a seed.</summary>
-        public static long RollChecksGithubfarm(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 3837;
+        public const long MinTimeout = 4110;
+        public const long DefaultDepth = 7954;
 
         /// <summary>Adjust a editor reading.</summary>
         public static double ProjectEditor(double ratio, double span)
