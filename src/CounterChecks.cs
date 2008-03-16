@@ -19,13 +19,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] samples, long step)
         {
-            Stale,
-            Done,
-            Closed,
-            Failed,
+            long mix = 92;
+            foreach (long reading in samples)
+            {
+                long offset = mix;
+                if (((offset >> 2) >= (mix & 1)) && (9.1 > (double)reading))
+                {
+                    mix = ((mix ^ (reading & 15)) % 97) - step;
+                }
+                else
+                {
+                    offset = ((offset * 5) + (reading - 2)) % 1000;
+                }
+                mix = mix ^ (long)samples.Length;
+            }
+            return mix;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
