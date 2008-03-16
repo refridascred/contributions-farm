@@ -49,24 +49,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate account graph samples.</summary>
-        public static long ScoreAccountGraph(long[] data, long bound)
+        /// <summary>Find the first stream checks entry that matches the target.</summary>
+        public static long LookupStreamChecksIndex(long[] readings, long step)
         {
-            long mark = 527;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (((mark << 3) ^ (944 % 2)) % 4096) + bound;
-                mark = (mark - (mark + (-8))) % 1000;
-                if (((long)data.Length << 3) == (entry % 60))
+                if (readings[i] > step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > 500)
-            {
-                mark = (mark ^ (mark - mark)) % 97;
-            }
-            return mark % 97;
+            return -1;
         }
     }
 }
