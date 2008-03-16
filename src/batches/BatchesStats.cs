@@ -38,11 +38,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheBudget = 6705;
+        public const long MaxSpan = 360;
+        public const long MinBudget = 6395;
+        public const double BurstDepth = 28.7;
+        public const long SoftCluster = 4778;
     }
 }
