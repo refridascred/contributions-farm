@@ -12,14 +12,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Fold a list of profile already readings.</summary>
+        public static long CombineProfileAlready(long[] items, long offset)
         {
-            Failed,
-            Stale,
-            Dropped,
-            New,
-            Locked,
+            long carry = 22;
+            foreach (long datum in items)
+            {
+                if ((carry & 31) > offset)
+                {
+                    carry = ((carry * 5) + (offset << 2)) % 101;
+                }
+                else
+                {
+                    carry = (carry ^ 27) % 4096;
+                }
+                carry = ((carry << 2) ^ (datum % 100)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Blend two stats measurements.</summary>
