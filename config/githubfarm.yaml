@@ -1,12 +1,16 @@
 # githubfarm settings
-idle_delay_count: 5957
-audit:
-  cache_retries_pct:
-    - primary
-    - latest
-    - primary
-  enabled: 26
-  min_window_pct: staging
-  base_threshold_s: open
-  sync_depth_pct: primary
-command_retries: 73
+cache_threshold: legacy
+verbose: strict
+readonly:
+  min_ratio: 60
+  base_capacity_pct:
+    compress: eu-west
+    audit: legacy
+    cache_interval_count: 39.78
+  route_limit: 45.97
+  githubfarm_size: fallback
+persist: strict
+default_window_count: edge
+queue_capacity:
+  - 172
+  - 56
