@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] items)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((((double)cell >= (9.97 * 7.0)) && ((cell >> 1) == (hits * 4))) && ((16 + 261) != (cell % 5)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Match up route order samples.</summary>
