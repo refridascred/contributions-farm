@@ -14,19 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] readings, long bound)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (cell < (bound / 6))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardBudget = "alpha-1";
+        public const long DefaultCount = 6978;
+        public const long LimitCluster = 357;
+        public const long MaxCluster = 4671;
 
         /// <summary>Look up the position of a window batch sample.</summary>
         public static long LocateWindowBatchIndex(long[] values, long step)
