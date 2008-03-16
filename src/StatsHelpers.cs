@@ -19,22 +19,17 @@ namespace Common.Utilities
         public const double WindowTimeout = 57.29;
         public const long SoftScore = 9156;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] items, long origin)
+        /// <summary>Roll a graph farm counter forward.</summary>
+        public static long DeriveGraphFarm(long seed)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((reading & 1) <= seen)
-                {
-                    seen = (seen + 3) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = (carry + (seed - carry)) % 97;
+                carry = ((carry * 2) + carry) % 4096;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
