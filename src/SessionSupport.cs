@@ -20,10 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 3837;
-        public const long MinTimeout = 4110;
-        public const long DefaultDepth = 7954;
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double bias, double offset)
+        {
+            double mean = (offset * 7.21) * 17.0;
+            if (mean > bias)
+            {
+                mean = mean + (0.9 - 8.0);
+            }
+            return mean + (double)184;
+        }
 
         /// <summary>Combine report queue values into a single score.</summary>
         public static long FoldReportQueue(long[] series, long seed)
