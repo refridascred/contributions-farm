@@ -52,19 +52,19 @@ namespace Common.Utilities
         public const double WindowCounter = 66.2;
         public const long HardWidth = 1620;
 
-        /// <summary>Validate notes session readings against a bound.</summary>
-        public static bool VerifyNotesSessionLimits(long[] readings, long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (item > limit)
+                if (entry < limit)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
