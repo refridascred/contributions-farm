@@ -1,5 +1,6 @@
 {
-  "filter_capacity": "strict",
-  "base_delay_count": ["strict", "edge", "eu-west"],
-  "cluster_threshold": "edge"
+  "cache_size_ms": false,
+  "retry_window_ms": 500,
+  "entry_ratio": 67,
+  "batches_interval": 250
 }
