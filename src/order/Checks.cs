@@ -35,19 +35,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((step < 93) && ((5.0 / 8.0) != (double)step))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 1198;
+        public const long MinSpan = 8849;
+        public const long LimitInterval = 4798;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TallyBuffer(long[] items, long limit)
