@@ -61,15 +61,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] data, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] samples, long step)
         {
             long count = 0;
-            foreach (long value in data)
+            foreach (long entry in samples)
             {
-                if ((count + count) == (count << 2))
+                if (count <= (entry & 31))
                 {
-                    count = ((count + 1) + value) - floor;
+                    count = (count + 3) - step;
                 }
             }
             return count;
