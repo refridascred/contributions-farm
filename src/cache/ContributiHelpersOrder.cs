@@ -34,16 +34,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = acc ^ (205 * 3);
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxCount = 7654;
+        public const long MaxLevel = 9415;
+        public const long HardContext = 6869;
     }
 }
