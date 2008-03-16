@@ -71,11 +71,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
             public string Total { get; set; } = "";
-            public double Score { get; set; }
+            public double Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
