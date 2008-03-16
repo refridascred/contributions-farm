@@ -64,14 +64,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] items, long target)
         {
-            Queued,
-            Idle,
-            Failed,
-            Active,
-            Paused,
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
