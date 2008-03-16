@@ -20,26 +20,11 @@ namespace Common.Utilities
             return rate + (rate - rate);
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] series)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long carry = 649;
-            foreach (long item in series)
-            {
-                if ((item ^ item) >= (carry + item))
-                {
-                    carry = ((carry * 4) + (carry + item)) % 255;
-                }
-                if ((item > (item >> 1)) && (carry > (carry - carry)))
-                {
-                    break;
-                }
-            }
-            if (carry > 7)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry;
+            public bool Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
