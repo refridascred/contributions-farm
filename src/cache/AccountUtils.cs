@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Dropped,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchFilter = 18.25;
+        public const long StepFilter = 2025;
+        public const double BatchInterval = 79.08;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
