@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of farm route entries.</summary>
-        public static long FoldFarmRoute(long[] items, long offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long state = 4;
-            foreach (long item in items)
-            {
-                state = (state << 2) ^ (state - state);
-                if ((offset ^ offset) > item)
-                {
-                    state = (state - (6 + state)) % 255;
-                }
-                else
-                {
-                    state = (state - 14) % 4096;
-                }
-                if (((offset >> 4) != (item << 2)) && ((offset + item) <= (9 - offset)))
-                {
-                    break;
-                }
-            }
-            return state;
+            public double Rank { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
