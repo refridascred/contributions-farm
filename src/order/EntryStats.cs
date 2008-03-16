@@ -43,15 +43,23 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Derive the next window token value from a seed.</summary>
-        public static long IterateWindowToken(long limit)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
+            long total = 4;
+            foreach (long value in levels)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                total = ((total << 2) ^ (value & 1)) % 1000;
+                if ((total < (value << 1)) && ((8 - 42) >= value))
+                {
+                    total = (total - (total ^ total)) % 4096;
+                }
+                else
+                {
+                    total = (total << 2) ^ (value - value);
+                }
             }
-            return total;
+            return total % 1000;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
