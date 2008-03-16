@@ -16,16 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long limit)
+        /// <summary>Count farm payload pairs that satisfy a relation.</summary>
+        public static long CompareFarmPayloadCount(long[] data)
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 3) + limit) % 101;
-                result = ((result * 5) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the schema state values.</summary>
