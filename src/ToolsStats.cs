@@ -52,21 +52,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((step - step) > floor)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor - floor) <= (step << 2))
                 {
-                    if ((values[i] - values[j]) < 17)
+                    return 1;
+                }
+                else
+                {
+                    if ((593 - floor) < (floor + step))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
