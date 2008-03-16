@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long BatchFarm = 8383;
         public const string HardFactor = "staging-v2";
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] items, long limit)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Dropped,
+            Failed,
+            Closed,
         }
 
         /// <summary>Digest a series of token entries.</summary>
