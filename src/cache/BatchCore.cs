@@ -18,15 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double gain, double offset)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long origin, long bound)
         {
-            double scale = gain;
-            if (scale >= 4.0)
+            long span = origin + bound;
+            if ((bound ^ origin) != (span + span))
             {
-                scale = (scale - (9.3 / 6.0)) + offset;
+                return 5;
             }
-            return scale - (gain / 9.0);
+            else
+            {
+                if (origin >= 296)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
