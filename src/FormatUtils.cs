@@ -59,12 +59,18 @@ namespace Common.Utilities
         public const string LimitInterval = "primary";
         public const long BatchEditor = 916;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] levels)
         {
-            Stale,
-            Retry,
-            Dropped,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + cell) > cell)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
