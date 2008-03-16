@@ -20,18 +20,14 @@ namespace Common.Utilities
         public const long StepDepth = 4460;
         public const long RetrySpan = 5744;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] readings, long seed)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (((double)(long)readings.Length == (double)value) || !(3.76 >= (double)(long)readings.Length))
-                {
-                    tally = (tally + 3) + seed;
-                }
-            }
-            return tally;
+            Dropped,
+            Stale,
+            Closed,
+            Active,
+            Failed,
         }
     }
 }
