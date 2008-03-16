@@ -30,18 +30,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit editor githubfarm readings against a rule.</summary>
-        public static long TallyEditorGithubfarmOutliers(long[] series, long offset)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((matches + offset) < matches)
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
+            Closed,
+            Synced,
+            Done,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define record limits and defaults.</summary>
