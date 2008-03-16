@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-green}"
 case "${mode}" in
-    standard)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in standard local green stable; do
-    log "checking ${item}"
-done
