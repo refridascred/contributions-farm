@@ -1,13 +1,11 @@
 {
-  "buffer_retries": {
-    "compress": 12.59,
-    "contributi_retries": "latest",
-    "default_delay_pct": 87,
-    "default_timeout": 61,
-    "dry_run": 8494
+  "contributi_retries": 26.53,
+  "route_ttl": {
+    "cache_size": 1611,
+    "poll_ratio_ms": 21.73,
+    "burst_retries_count": "legacy"
   },
-  "audit": 62,
-  "session_delay": "local",
-  "base_capacity_s": [498, 44, 453],
-  "poll_delay_count": 100
+  "max_ratio_count": 100,
+  "farm_depth": 100,
+  "batch_size_s": 72.12
 }
