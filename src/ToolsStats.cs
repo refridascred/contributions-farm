@@ -38,18 +38,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] levels)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally >> 5) <= (tally ^ 89))
+                if ((samples[i] >= offset) && ((samples[i] % 5) == 0))
                 {
-                    tally = (tally + 2) ^ item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
