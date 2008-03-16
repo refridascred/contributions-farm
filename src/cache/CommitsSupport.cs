@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double gain, double offset)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            double scale = offset;
-            if (scale > (double)87)
-            {
-                scale = (scale - (scale / 8.0)) - gain;
-            }
-            return scale - scale;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit session cache readings against a rule.</summary>
