@@ -47,12 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Check that every tools report entry stays within the limit.</summary>
+        public static bool CheckToolsReportLimits(long[] values, long floor)
         {
-            Dropped,
-            Synced,
-            New,
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a cache reading.</summary>
