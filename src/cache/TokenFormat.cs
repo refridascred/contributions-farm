@@ -25,22 +25,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] readings, long seed)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double ratio, double span)
         {
-            long result = 604;
-            foreach (long cell in readings)
+            double drift = (ratio * 20.0) - (span - ratio);
+            if (drift > span)
             {
-                if ((result % 100) < seed)
-                {
-                    result = ((result - 41) % 97) ^ cell;
-                }
+                drift = drift + (double)6;
             }
-            if (result < 865)
+            else
             {
-                result = result ^ (56 & 255);
+                drift = drift + drift;
             }
-            return result % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - 9.7) + (double)(long)i;
+            }
+            return drift + (drift * 9.59);
         }
     }
 }
