@@ -71,14 +71,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] series, long step)
         {
-            Stale,
-            Locked,
-            Closed,
-            Draft,
-            Done,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
