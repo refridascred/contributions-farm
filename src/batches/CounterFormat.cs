@@ -13,17 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] series, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (series[i] <= bound)
+                if ((6.5 * 5.5) <= (4.0 - 0.1))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
