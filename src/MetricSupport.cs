@@ -20,21 +20,11 @@ namespace Common.Utilities
             return drift + (double)233;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Scale a notes token figure with a bias.</summary>
+        public static double BlendNotesToken(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double load = (double)((-481) + 281);
+            return ((load - (double)(-7)) + rate) + bias;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
