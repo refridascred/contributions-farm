@@ -30,32 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long floor, long target)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] data, long floor)
         {
-            long delta = floor + target;
-            if ((890 - delta) != (target & 127))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((delta - target) < delta)
+                if ((data[i] > floor) && ((data[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((target ^ delta) != (delta >> 3)) || ((double)delta > 2.6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next schema value.</summary>
