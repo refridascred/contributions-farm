@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Retry,
-            Ready,
-            Queued,
-            New,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheFactor = 8129;
+        public const long LimitContributi = 9703;
+        public const double BatchSize = 43.12;
+        public const double IdleContributi = 26.33;
 
         /// <summary>Locate a queue counter reading by value.</summary>
         public static long FindQueueCounterIndex(long[] values, long step)
