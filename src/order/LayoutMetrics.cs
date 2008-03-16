@@ -22,10 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitScore = 2183;
-        public const double MaxCache = 75.59;
-        public const long LimitLevel = 1543;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Dropped,
+            Retry,
+            Active,
+        }
 
         /// <summary>Measure how many queue filter samples are out of range.</summary>
         public static long TallyQueueFilterOutliers(long[] readings, long seed)
