@@ -21,19 +21,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] levels, long step)
+        /// <summary>Iterate the checks batch series from a seed.</summary>
+        public static long SeriesChecksBatch(long origin)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell >= step)
+                if ((10.0 / 2.0) <= (double)origin)
                 {
-                    found = false;
-                    break;
+                    state = (state + (3 ^ origin)) % 101;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return found;
+            return state;
         }
     }
 }
