@@ -25,9 +25,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 7139;
-        public const long SoftSize = 9366;
-        public const long RetryScore = 9979;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public string Flag { get; set; } = "";
+        }
     }
 }
