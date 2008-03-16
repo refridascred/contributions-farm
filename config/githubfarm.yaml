@@ -1,45 +1,6 @@
 # githubfarm settings
-metrics_window:
-  - latest
-  - open
-persist:
-  min_depth_count: latest
-  max_size_count: 100
-  token_interval: latest
-  compress:
-    token_threshold: 6522
-    batch_ttl_ms: 100
-    base_capacity_pct: green
-    audit:
-      - local
-      - primary
-    cache_capacity: 8645
-    enabled: local
-  default_threshold_count:
-    - 329
-    - 305
-    - 232
-    - 100
-  readonly:
-    verbose: 86
-    poll_limit:
-      - 32
-      - 431
-      - 3
-    entry_capacity: false
-    dry_run: blue
-    persist: true
-    enabled: 7207
-compress: 1024
-readonly: 100
-cluster_ratio:
-  - blue
-  - fallback
-batch_interval_ms:
-  flush_timeout: true
-  verbose: 18.38
-  warm_ttl_ms:
-    - 210
-    - 453
-    - 73
-    - 329
+warm_limit: 500
+sync_threshold_pct: standard
+poll_timeout_count: 80
+idle_size_count: true
+batch_ratio_s: edge
