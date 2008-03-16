@@ -57,13 +57,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
+            Failed,
+            Stale,
+            Closed,
+            Synced,
+            Active,
         }
     }
 }
