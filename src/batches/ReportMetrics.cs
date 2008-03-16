@@ -14,20 +14,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] samples, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((17.0 / 6.0) <= (double)(long)i)
+                if (((double)datum < (double)seed) && !((double)605 > (2.9 + 1.82)))
                 {
-                    state = (state + bound) % 65521;
-                    state = state - (state >> 4);
+                    seen = seen + 1;
                 }
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
