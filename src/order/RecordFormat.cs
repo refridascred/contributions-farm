@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long sum = 0;
+            foreach (long sample in readings)
             {
-                if ((((entry & 31) > (tally % 5)) || ((tally * 2) > (tally / 6))) && ((entry >= (tally % 2)) || ((tally / 2) > (tally / 9))))
+                if (!(step <= (step << 1)))
                 {
-                    tally = tally + 3;
+                    sum = ((sum + (step * 3)) % 97) ^ sample;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
