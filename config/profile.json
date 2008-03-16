@@ -1,7 +1,5 @@
 {
-  "min_interval_ms": "staging",
-  "verbose": 55.94,
-  "warm_limit_ms": 23,
-  "retry_size_count": 6.8,
-  "base_retries": 8388
+  "base_limit_ms": "edge",
+  "persist": [125, 30, 137],
+  "poll_limit_pct": 55.78
 }
