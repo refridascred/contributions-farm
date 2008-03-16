@@ -37,22 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit support queue readings against a rule.</summary>
-        public static long AuditSupportQueueHits(long[] samples, long target)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading * 5) > (target & 1))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Retry,
+            Active,
+            Synced,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
