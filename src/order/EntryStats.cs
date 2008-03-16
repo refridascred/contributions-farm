@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] levels, long bound)
         {
-            Done,
-            Paused,
-            Failed,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= bound) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
