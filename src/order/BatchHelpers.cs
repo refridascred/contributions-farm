@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate cache metrics readings against a bound.</summary>
-        public static bool VerifyCacheMetricsBounds(long[] series, long bound)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
