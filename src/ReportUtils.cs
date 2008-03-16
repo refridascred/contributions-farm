@@ -28,21 +28,31 @@ namespace Common.Utilities
         public const long RetryRatio = 8608;
         public const long LimitRatio = 5000;
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long seed, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((target + target) <= (target ^ 1))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((14.0 / 2.0) > (double)seed)
                 {
-                    if ((samples[i] ^ samples[j]) == 6)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed < (0.34 - 12.0))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
     }
 }
