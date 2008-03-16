@@ -65,18 +65,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] values)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (((datum << 1) == (datum - datum)) && (((long)values.Length - datum) != (tally + datum)))
+                if ((seed - hits) != (hits * 4))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
