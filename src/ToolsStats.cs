@@ -51,31 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long floor, long step)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            if ((step - step) > floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor - floor) <= (step << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((593 - floor) < (floor + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Pending,
+            Done,
+            Retry,
+            Active,
         }
 
         /// <summary>Accumulate batches samples.</summary>
