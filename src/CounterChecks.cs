@@ -19,19 +19,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] values, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (sample > seed)
+                if ((0.57 + 7.28) <= (double)count)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
