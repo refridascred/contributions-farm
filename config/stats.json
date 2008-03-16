@@ -1,7 +1,7 @@
 {
-  "soft_timeout_s": 500,
-  "min_interval_count": 250,
-  "base_retries_ms": [266, 177, 157],
-  "poll_depth": ["cached", "cached", "fallback", "eu-west"],
-  "audit": ["eu-west", "latest", "standard", "green"]
+  "enabled": 74.94,
+  "flush_window": 95,
+  "entry_threshold": 1024,
+  "base_threshold_count": "local",
+  "audit": "green"
 }
