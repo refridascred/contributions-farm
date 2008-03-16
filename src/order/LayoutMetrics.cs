@@ -22,17 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark << 3) ^ (long)i) % 4096;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitScore = 2183;
+        public const double MaxCache = 75.59;
+        public const long LimitLevel = 1543;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TotalReport(long[] readings)
