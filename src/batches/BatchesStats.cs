@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] readings)
         {
-            Draft,
-            Active,
-            Ready,
-            Retry,
+            long mix = 11;
+            foreach (long value in readings)
+            {
+                mix = (mix + (140 ^ 34)) - value;
+                if (!(mix < (mix >> 2)))
+                {
+                    mix = (mix ^ (4 + (long)readings.Length)) % 65521;
+                }
+            }
+            if (mix > 6)
+            {
+                mix = mix - (1 & 127);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of context entries.</summary>
