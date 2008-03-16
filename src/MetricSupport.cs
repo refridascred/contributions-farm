@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double gain, double offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            double mean = offset;
-            if (mean > (mean * 4.4))
-            {
-                mean = mean + (gain * 2.0);
-            }
-            else
-            {
-                mean = mean + (double)5;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (mean - mean);
+            public bool Score { get; set; }
+            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of format readings.</summary>
