@@ -5,21 +5,35 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 686;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((774 + 952) == (carry + 3))
                 {
-                    if ((readings[i] + readings[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    long cur = carry + (value & 127);
+                    carry = (carry + (cur + floor)) % 97;
+                }
+                else
+                {
+                    carry = (carry + (value % 2)) % 65521;
+                }
+                if ((floor >> 1) < carry)
+                {
+                    carry = (carry - carry) % 255;
+                }
+                else
+                {
+                    carry = carry ^ carry;
                 }
             }
-            return tally;
+            if (carry < 475)
+            {
+                carry = (carry ^ (floor * 3)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate record samples.</summary>
