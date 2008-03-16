@@ -28,9 +28,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstInterval = 200;
-        public const long RetrySize = 8131;
-        public const double BatchDepth = 10.62;
+        /// <summary>Validate editor profile readings against a bound.</summary>
+        public static bool GuardEditorProfileRange(long[] values, long limit)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
