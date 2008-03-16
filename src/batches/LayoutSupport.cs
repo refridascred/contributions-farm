@@ -29,18 +29,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] readings)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long state = -6;
-            foreach (long item in readings)
-            {
-                if ((double)item < (double)8)
-                {
-                    state = ((state * 3) + 630) % 97;
-                }
-            }
-            return state;
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a stream summary.</summary>
