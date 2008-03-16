@@ -29,21 +29,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((2.0 / 4.0) < 6.3)
                 {
-                    if ((samples[i] - samples[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 3) + cell) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of window readings.</summary>
