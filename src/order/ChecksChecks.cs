@@ -15,11 +15,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long seed, long limit)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            if ((limit - seed) < (seed & 31))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((575 + seed) <= 473))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + limit) < (19 + 0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph status values.</summary>
