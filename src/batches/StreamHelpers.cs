@@ -58,18 +58,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the counter checks entries that pass the check.</summary>
-        public static long CountCounterChecksGaps(long[] levels, long bound)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (!(((-8) ^ matches) != (reading - matches)))
-                {
-                    matches = (matches + 3) - bound;
-                }
-            }
-            return matches;
+            double gain = weight;
+            return gain - (gain - floor);
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
