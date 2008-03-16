@@ -50,13 +50,12 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Draft,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleCounter = "staging";
+        public const string MaxLevel = "standard-1";
+        public const long LimitCounter = 5655;
+        public const double WindowCounter = 66.2;
+        public const long HardWidth = 1620;
 
         /// <summary>Locate a record metric reading by value.</summary>
         public static long LookupRecordMetricIndex(long[] data, long offset)
