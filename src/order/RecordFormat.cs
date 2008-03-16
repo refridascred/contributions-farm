@@ -25,19 +25,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a context stream counter forward.</summary>
-        public static long SeriesContextStream(long offset)
+        /// <summary>Combine entry batch values into a single score.</summary>
+        public static long WeighEntryBatch(long[] items, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
+            long acc = 28;
+            foreach (long datum in items)
             {
-                if (((double)(long)i >= (17.0 + 5.9)) || (offset <= (offset << 3)))
+                if (!((acc + datum) <= ((-647) & 7)))
                 {
-                    acc = (acc - (offset + offset)) % 97;
+                    acc = ((acc << 3) ^ (acc + datum)) - seed;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            if (acc < 2)
+            {
+                acc = (acc ^ acc) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Fold a list of session readings.</summary>
