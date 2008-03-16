@@ -24,13 +24,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Locate a queue cache reading by value.</summary>
+        public static long SeekQueueCacheIndex(long[] series, long seed)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > seed) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a buffer options.</summary>
