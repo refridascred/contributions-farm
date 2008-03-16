@@ -43,19 +43,11 @@ namespace Common.Utilities
             return weight + 8.0;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] series, long bound)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
