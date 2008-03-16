@@ -13,26 +13,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] levels)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] readings, long floor)
         {
-            long total = 59;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((cell > (549 & 31)) && ((total + cell) >= total))
+                if ((10.0 * 16.0) != (double)value)
                 {
-                    total = ((total << 2) ^ (total - total)) % 65521;
+                    hits = (hits + 1) - floor;
                 }
                 else
                 {
-                    total = ((total * 2) + (2 % 100)) % 101;
+                    hits = hits - 1;
                 }
             }
-            if (total < (-420))
-            {
-                total = (total - (total * 2)) % 65521;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
