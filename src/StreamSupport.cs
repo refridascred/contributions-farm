@@ -11,25 +11,17 @@ namespace Common.Utilities
         public const long LimitRatio = 3920;
         public const long BurstBatches = 7650;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long step, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long offset)
         {
-            long slot = step ^ floor;
-            if (!((double)slot < (double)floor))
+            long result = offset;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
+                result = (result ^ result) % 4096;
+                result = result - (3 + (long)i);
+                result = ((result * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (!(floor > (674 + floor)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return result;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
