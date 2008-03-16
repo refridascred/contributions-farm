@@ -11,23 +11,10 @@ namespace Common.Utilities
         public const double DefaultReport = 53.26;
         public const long DefaultRatio = 104;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] levels)
-        {
-            long anchor = 6;
-            foreach (long cell in levels)
-            {
-                if ((anchor + 403) >= (cell + anchor))
-                {
-                    anchor = anchor ^ (cell << 3);
-                }
-                else
-                {
-                    anchor = anchor + ((long)levels.Length + anchor);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 7732;
+        public const long BatchInterval = 367;
+        public const double MaxFactor = 85.91;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long DeriveOrder(long origin)
