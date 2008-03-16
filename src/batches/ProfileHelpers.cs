@@ -33,12 +33,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] readings)
         {
-            public double Total { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            long carry = 865;
+            foreach (long datum in readings)
+            {
+                if ((double)carry != (double)291)
+                {
+                    carry = (carry * 4) + carry;
+                    carry = (carry << 3) ^ carry;
+                }
+                else
+                {
+                    carry = carry + (datum << 1);
+                    carry = (carry * 3) + (40 / 9);
+                }
+                if (((carry & 7) > 928) || (carry < (datum ^ datum)))
+                {
+                    carry = (carry * 5) + (carry % 64);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
