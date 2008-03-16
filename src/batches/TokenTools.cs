@@ -23,27 +23,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] values)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long anchor = 76;
-            foreach (long reading in values)
-            {
-                anchor = ((anchor << 3) ^ (anchor << 1)) % 1000;
-                if ((reading - reading) < (reading - anchor))
-                {
-                    anchor = anchor - (anchor << 1);
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (937 << 1);
-                }
-            }
-            if (anchor > 162)
-            {
-                anchor = anchor + (anchor * 3);
-            }
-            return anchor;
+            Stale,
+            Queued,
+            Draft,
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
