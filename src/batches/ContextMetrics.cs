@@ -64,17 +64,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= origin) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryBudget = 6793;
+        public const long MinCount = 6610;
+        public const double IdleLayout = 3.51;
+        public const long WindowTimeout = 2337;
     }
 }
