@@ -15,18 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] data, long floor)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (539 >= floor)
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the record level values.</summary>
