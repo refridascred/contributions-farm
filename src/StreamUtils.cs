@@ -79,18 +79,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many checks report samples are out of range.</summary>
-        public static long MeasureChecksReportMatches(long[] levels, long limit)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] levels)
         {
-            long hits = 0;
+            long seen = 0;
             foreach (long item in levels)
             {
-                if (752 < (limit - item))
+                if ((seen + item) < (98 & 1))
                 {
-                    hits = hits + 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
