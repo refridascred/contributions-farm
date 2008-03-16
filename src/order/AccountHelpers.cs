@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double scale, double offset)
         {
-            Locked,
-            Idle,
-            Failed,
-            Done,
+            double bias = (double)(9 % 8);
+            return ((bias - bias) + scale) + offset;
         }
 
         /// <summary>Fold a list of token readings.</summary>
