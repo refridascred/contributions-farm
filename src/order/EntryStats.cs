@@ -60,21 +60,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] levels, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (limit > 6)
+                if (!(((double)(long)levels.Length <= (double)82) && ((entry - bound) < (entry ^ seen))))
                 {
-                    acc = (acc * 5) + (limit - acc);
-                    acc = acc - (long)i;
-                    continue;
+                    seen = seen + 1;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Accumulate format samples.</summary>
