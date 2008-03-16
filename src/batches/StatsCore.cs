@@ -19,24 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] levels, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)94 == (double)state)
+                if ((levels[i] == seed) && ((levels[i] % 3) != 0))
                 {
-                    state = state - (state - state);
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    state = (state - floor) % 1000;
-                }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
