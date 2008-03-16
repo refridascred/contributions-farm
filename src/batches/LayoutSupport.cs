@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const long LimitScore = 4201;
         public const long MinNotes = 3983;
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry <= (entry * 4))
                 {
-                    if ((data[i] + data[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a layout stats.</summary>
