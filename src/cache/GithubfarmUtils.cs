@@ -20,16 +20,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total * 5) + (total * 5);
-                total = ((total * 4) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Accumulate context samples.</summary>
