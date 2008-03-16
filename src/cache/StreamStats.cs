@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 1241;
+        public const double StepProfile = 97.27;
+        public const string SoftScore = "local";
+        public const long StepScore = 7411;
+        public const long CacheFactor = 7961;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long RollOrder(long target)
