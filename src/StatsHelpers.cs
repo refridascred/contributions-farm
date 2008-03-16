@@ -36,19 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double bias, double span)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] items, long origin)
         {
-            double scale = 4.0;
-            if (scale > (bias + span))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                scale = scale + (5.85 * 7.37);
+                if ((reading & 1) <= seen)
+                {
+                    seen = (seen + 3) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                scale = scale + (double)33;
-            }
-            return scale + (bias + bias);
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
