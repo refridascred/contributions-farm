@@ -28,18 +28,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] items)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (!!((15.0 + 8.66) < (double)item))
+                if (sample != bound)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
