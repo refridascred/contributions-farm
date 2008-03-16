@@ -15,15 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] readings, long bound)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                total = ((total * 2) + (long)i) % 101;
+                if (!!((seen & 31) != (497 >> 2)))
+                {
+                    seen = ((seen + 3) + sample) + bound;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
