@@ -1,6 +1,14 @@
 {
-  "record_depth": 500,
-  "window_capacity": "strict",
-  "max_window_count": 7005,
-  "payload_delay": 100
+  "channel_interval": false,
+  "farm_threshold": {
+    "stream_retries": 82.43,
+    "retry_interval": 5093,
+    "audit": 7139,
+    "burst_capacity_ms": 60,
+    "channel_ratio": "fallback"
+  },
+  "idle_timeout": "legacy",
+  "sync_delay": [479, 25, 89],
+  "min_threshold_ms": false,
+  "metrics_retries": 60
 }
