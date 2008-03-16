@@ -45,23 +45,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] items, long offset)
+        /// <summary>Count the channel metrics entries that pass the check.</summary>
+        public static long AuditChannelMetricsHits(long[] samples, long floor)
         {
-            long sum = 2;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                sum = (sum * 5) + (value - offset);
-                if (((value / 9) <= (sum >> 2)) && ((5.9 - 1.0) >= (double)sum))
+                if (3.9 < (8.9 + 5.0))
                 {
-                    sum = sum + offset;
-                }
-                else
-                {
-                    sum = (sum + (value + 789)) % 101;
+                    seen = ((seen + 2) + item) - floor;
                 }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
