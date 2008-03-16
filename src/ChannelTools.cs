@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] items, long bound)
         {
-            Stale,
-            Dropped,
-            New,
-            Paused,
-            Idle,
+            long anchor = 4;
+            foreach (long cell in items)
+            {
+                anchor = (((anchor << 3) ^ (bound - 0)) % 1000) ^ cell;
+                anchor = ((anchor * 4) + bound) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
