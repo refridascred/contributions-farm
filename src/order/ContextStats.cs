@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] levels, long target)
+        /// <summary>Locate a notes cache reading by value.</summary>
+        public static long SeekNotesCacheIndex(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > target)
+                if ((series[i] >= floor) && ((series[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Match up commits samples.</summary>
