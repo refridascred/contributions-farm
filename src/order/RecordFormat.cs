@@ -34,12 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] values, long limit)
         {
-            public long Level { get; set; }
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((18.0 - 9.4) <= (double)cell)
+                {
+                    tally = (tally + 3) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the format mode values.</summary>
