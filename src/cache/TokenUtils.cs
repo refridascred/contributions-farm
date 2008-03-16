@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] items, long seed)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((double)seed == (7.0 / 5.0))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
