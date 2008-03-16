@@ -33,13 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Stale,
-            Retry,
-            Idle,
-            Done,
+            Paused,
+            Synced,
+            Failed,
+            Locked,
         }
     }
 }
