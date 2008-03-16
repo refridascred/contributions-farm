@@ -1,5 +1,10 @@
 # support settings
-flush_depth: false
-audit: false
-burst_window_s: 96
-dry_run: 58
+verbose: false
+batch_size: stable
+max_depth_count: 35.52
+persist:
+  - 218
+  - 467
+  - 99
+  - 96
+poll_timeout: eu-west
