@@ -33,18 +33,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (datum <= (datum + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "strict";
+        public const string LimitAlready = "stable";
+        public const long MinAlready = 2723;
     }
 }
