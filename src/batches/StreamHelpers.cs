@@ -38,19 +38,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] values, long seed)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long floor)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (value > seed)
+                if (((double)acc < (double)floor) && ((floor - (long)i) >= 4))
                 {
-                    stale = false;
+                    acc = ((acc * 5) + acc) % 255;
+                    acc = (acc ^ (86 + 17)) % 4096;
+                }
+                acc = ((acc * 5) + ((long)i ^ (long)i)) % 101;
+                if (floor < (6 % 3))
+                {
+                    acc = (acc ^ (acc >> 5)) % 1000;
                     break;
                 }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Describe the order level values.</summary>
