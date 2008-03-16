@@ -90,13 +90,13 @@ namespace Common.Utilities
             return load + (rate * 1.7);
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Stale,
-            Active,
+            Closed,
+            Done,
             Pending,
-            Idle,
+            Dropped,
         }
     }
 }
