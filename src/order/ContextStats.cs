@@ -64,16 +64,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] series, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            long mark = 9;
+            foreach (long datum in series)
             {
-                sum = (sum ^ (target % 64)) % 101;
-                sum = ((sum * 2) + (long)i) % 1000;
+                if ((floor * 2) > datum)
+                {
+                    mark = ((mark * 3) + mark) % 255;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (mark / 5);
+                }
             }
-            return sum;
+            return mark;
         }
     }
 }
