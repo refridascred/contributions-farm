@@ -16,23 +16,18 @@ namespace Common.Utilities
             return load + (double)24;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double weight, double bias)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] samples, long limit)
         {
-            double bias2 = weight * 9.3;
-            if (bias2 >= (5.3 * 4.6))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                bias2 = bias2 - bias2;
+                if ((double)hits == (20.0 + 0.88))
+                {
+                    hits = ((hits + 1) + item) - limit;
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + weight) + (double)(long)i;
-            }
-            return bias2 + weight;
+            return hits;
         }
 
         /// <summary>Hold a contributi options.</summary>
