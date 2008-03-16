@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] items, long step)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((2.98 * 5.0) == (double)tally)
-                {
-                    tally = ((tally + 2) ^ datum) + step;
-                }
-            }
-            return tally;
+            Failed,
+            Dropped,
+            Pending,
+            Retry,
+            Ready,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
