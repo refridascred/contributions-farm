@@ -14,15 +14,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Done,
-            Synced,
-            Ready,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepContributi = "latest-1";
+        public const string IdleContributi = "open";
+        public const long MinContributi = 4838;
+        public const long BaseTimeout = 5912;
+        public const long IdleInterval = 9449;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long TallyContributiMatches(long[] series)
