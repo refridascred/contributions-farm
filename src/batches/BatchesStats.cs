@@ -37,13 +37,12 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
             public double Token { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
