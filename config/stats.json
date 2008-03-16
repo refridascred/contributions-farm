@@ -1,12 +1,15 @@
 {
-  "batch_depth": 30,
-  "idle_capacity": "strict",
-  "sync_threshold_s": "green",
-  "max_ratio_s": 21,
-  "hard_limit": 16.22,
-  "dry_run": {
-    "batch_ttl": "open",
-    "stream_capacity": 97,
-    "soft_window_ms": false
-  }
+  "default_depth": 26,
+  "profile_ttl": 2.17,
+  "warm_ttl": "cached",
+  "audit": 89.25,
+  "githubfarm_threshold": {
+    "sync_ttl": 76.17,
+    "persist": 100,
+    "dry_run": ["latest", "fallback"],
+    "soft_threshold": 94.19,
+    "context_threshold": "latest",
+    "min_delay": false
+  },
+  "format_limit": 84
 }
