@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double scale, double span)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double bias = scale;
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (scale - bias)) + (double)(long)i;
-            }
-            return bias - (span + bias);
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
