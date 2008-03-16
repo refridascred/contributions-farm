@@ -12,6 +12,5 @@ while [ "${count}" -lt 7 ]; do
 done
 log "ran ${count} rounds"
 
-for item in primary green open; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=84
+log "limit is ${COMMAND_LIMIT}"
