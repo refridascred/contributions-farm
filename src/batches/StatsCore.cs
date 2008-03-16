@@ -19,17 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] levels, long seed)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == seed) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
