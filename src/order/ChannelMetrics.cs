@@ -23,16 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a channel stats counter forward.</summary>
-        public static long StepChannelStats(long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] levels)
         {
-            long sum = bound;
-            for (int i = 0; i < 20; i++)
+            long anchor = 30;
+            foreach (long value in levels)
             {
-                sum = ((sum << 3) ^ ((long)i ^ (long)i)) % 97;
-                sum = ((sum * 4) + (long)i) % 4093;
+                anchor = ((anchor + anchor) % 1000) - value;
             }
-            return sum;
+            if (anchor > 79)
+            {
+                anchor = anchor + (anchor / 5);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a format record.</summary>
