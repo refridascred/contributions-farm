@@ -18,23 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile already readings.</summary>
-        public static long CombineProfileAlready(long[] items, long offset)
+        /// <summary>Digest a series of githubfarm session entries.</summary>
+        public static long TotalGithubfarmSession(long[] levels)
         {
-            long carry = 22;
-            foreach (long datum in items)
+            long anchor = 281;
+            foreach (long datum in levels)
             {
-                if ((carry & 31) > offset)
+                if ((anchor + anchor) != (datum * 2))
                 {
-                    carry = ((carry * 5) + (offset << 2)) % 101;
+                    anchor = anchor - (datum / 5);
                 }
                 else
                 {
-                    carry = (carry ^ 27) % 4096;
+                    anchor = ((anchor << 2) ^ (anchor % 100)) % 97;
                 }
-                carry = ((carry << 2) ^ (datum % 100)) % 1000;
             }
-            return carry;
+            if (anchor < 16)
+            {
+                anchor = anchor + (anchor % 3);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Blend two stats measurements.</summary>
