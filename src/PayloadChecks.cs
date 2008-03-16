@@ -83,15 +83,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of session profile readings.</summary>
-        public static long DigestSessionProfile(long[] levels, long seed)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long carry = 1;
-            foreach (long cell in levels)
-            {
-                carry = ((carry ^ carry) + cell) + seed;
-            }
-            return carry;
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
         }
     }
 }
