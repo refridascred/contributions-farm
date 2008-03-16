@@ -51,21 +51,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count farm filter pairs that satisfy a relation.</summary>
-        public static long MatchFarmFilterCount(long[] values)
+        /// <summary>Accumulate payload route samples.</summary>
+        public static long TotalPayloadRoute(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 594;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading < (10 % 97)) || ((double)score >= (7.26 + 0.27)))
                 {
-                    if ((values[i] + values[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    score = score + (score / 3);
                 }
             }
-            return count;
+            return score % 97;
         }
     }
 }
