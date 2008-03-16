@@ -57,19 +57,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] levels, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] samples, long target)
         {
-            long anchor = 3;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                anchor = (anchor - target) - entry;
-                if ((8.0 / 9.0) >= (double)target)
+                if (value >= target)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
