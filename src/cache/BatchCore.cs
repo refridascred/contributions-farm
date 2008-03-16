@@ -31,12 +31,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public double Total { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 5527;
+        public const long MaxEditor = 7486;
+        public const long MaxLevel = 8336;
+        public const double HardEditor = 77.79;
     }
 }
