@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double rate, double span)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double drift = span / 6.0;
-            return (drift + (span - 1.2)) + rate;
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the commits state values.</summary>
