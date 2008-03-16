@@ -30,12 +30,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long limit)
         {
-            Done,
-            Retry,
-            New,
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    carry = ((carry + (limit + carry)) % 97) ^ (long)i2;
+                    carry = carry + (carry - limit);
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the record kind values.</summary>
