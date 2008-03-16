@@ -23,17 +23,25 @@ namespace Common.Utilities
         public const long WindowSize = 6366;
         public const string SoftChecks = "staging-v2";
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] data, long seed)
+        /// <summary>Iterate the filter editor series from a seed.</summary>
+        public static long SeriesFilterEditor(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((data[i] < seed) && ((data[i] % 2) == 0))
+                result = ((result * 4) + (121 << 3)) % 65521;
+                if (0 <= ((long)i << 2))
                 {
-                    return (long)i;
+                    result = result + result;
+                    result = result ^ (long)i;
                 }
+                else
+                {
+                    result = (result ^ ((long)i + (long)i)) % 101;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
     }
 }
