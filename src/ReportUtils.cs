@@ -33,15 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Idle,
-            Failed,
-            Done,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTimeout = 3560;
+        public const long RetryRatio = 8608;
+        public const long LimitRatio = 5000;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterOutliers(long[] samples)
