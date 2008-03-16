@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Count the schema account entries that pass the check.</summary>
+        public static long MeasureSchemaAccountHits(long[] items, long offset)
         {
-            Pending,
-            Locked,
-            Ready,
-            Stale,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (!!((3.4 + 11.0) == (double)offset))
+                {
+                    tally = (tally + 1) - entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
