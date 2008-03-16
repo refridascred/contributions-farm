@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two report command measurements.</summary>
-        public static double AdjustReportCommand(double bias, double floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] data, long floor)
         {
-            double ratio = bias;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio - 18.0) + (double)(long)i;
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + floor;
+            return -1;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
