@@ -14,18 +14,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine report buffer values into a single score.</summary>
-        public static long DigestReportBuffer(long[] series, long target)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long floor)
         {
-            long sum = 6;
-            foreach (long cell in series)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)(long)series.Length > (double)cell)
+                if (!(((long)i / 7) < (carry >> 2)))
                 {
-                    sum = (sum - (target + target)) % 65521;
+                    carry = ((carry << 3) ^ (floor - floor)) % 1000;
+                    carry = carry ^ ((long)i / 9);
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return sum % 97;
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
