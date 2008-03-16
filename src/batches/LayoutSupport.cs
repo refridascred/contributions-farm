@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const long LimitScore = 4201;
         public const long MinNotes = 3983;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] items, long target)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (entry <= (entry * 4))
-                {
-                    hits = (hits + 3) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a layout stats.</summary>
