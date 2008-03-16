@@ -34,12 +34,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long origin)
         {
-            Pending,
-            Ready,
-            Done,
+            long total = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                total = (total - (origin ^ total)) % 97;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the context mode values.</summary>
