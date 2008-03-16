@@ -65,12 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 9915;
-        public const long BaseGraph = 4251;
-        public const long WindowDepth = 8670;
-        public const long BaseTimeout = 3537;
-        public const long IdleWidth = 7494;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Failed,
+            Queued,
+            Closed,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long TotalProfile(long[] series)
