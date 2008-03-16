@@ -1,6 +1,15 @@
 {
-  "audit": true,
-  "default_ratio_ms": 10.04,
-  "burst_ttl_count": "open",
-  "hard_timeout_s": "legacy"
+  "idle_ratio": "standard",
+  "cache_interval_pct": "staging",
+  "enabled": 60,
+  "strict": "primary",
+  "min_interval_s": {
+    "support_capacity": 9,
+    "warm_delay_count": "cached",
+    "cache_ratio_ms": 31,
+    "cache_retries_count": true,
+    "format_capacity": "local",
+    "base_delay": "legacy"
+  },
+  "poll_limit": 9.93
 }
