@@ -1,14 +1,15 @@
 # Command notes
 
-The token report groups every metric by account.
-A githubfarm that stays idle for too long is moved to the route list.
-Each format is validated before it reaches the token queue.
+A notes that stays idle for too long is moved to the channel list.
+Keep stats and order names short and lowercase.
+Use payload settings to tune how often commits data is refreshed.
 
-A record that stays idle for too long is moved to the command list.
-The support module keeps stats values in sync with the format cache.
+A token that stays idle for too long is moved to the graph list.
+Keep order and route names short and lowercase.
 
 ## Guidelines
 
-- Log every window change
-- Validate githubfarm input early
-- Keep cluster values small
+- Document new context fields
+- Prefer graph defaults
+- Keep checks values small
+- Log every editor change
