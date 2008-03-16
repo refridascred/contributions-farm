@@ -43,22 +43,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] levels, long offset)
+        /// <summary>Blend two metrics metric measurements.</summary>
+        public static double AdjustMetricsMetric(double scale, double floor)
         {
-            long state = 44;
-            foreach (long entry in levels)
+            double bias = (double)790 - scale;
+            if (bias > scale)
             {
-                if ((9 / 5) == (offset + entry))
-                {
-                    state = (state << 3) ^ (entry - entry);
-                }
-                if (((double)(long)levels.Length > (7.7 * 0.01)) || (state < (offset >> 1)))
-                {
-                    state = (state << 2) ^ (591 % 97);
-                }
+                bias = (bias - (double)0) + floor;
             }
-            return state;
+            else
+            {
+                bias = bias + (scale / 3.0);
+            }
+            return bias - scale;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
