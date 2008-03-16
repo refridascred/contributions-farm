@@ -73,19 +73,20 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] series, long bound)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long target)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (item != bound)
+                if (!((long)i < ((long)i ^ target)))
                 {
-                    ok = false;
-                    break;
+                    score = score ^ 802;
                 }
+                score = (score + ((long)i % 16)) % 4096;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Check that every counter support entry stays within the limit.</summary>
