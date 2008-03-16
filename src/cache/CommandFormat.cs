@@ -27,21 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up route layout samples.</summary>
-        public static long OverlapRouteLayoutCount(long[] levels)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((seen <= (seen % 5)) || ((reading % 60) == (reading + reading))) || ((27 - reading) >= (seen / 9)))
                 {
-                    if ((levels[i] ^ levels[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
