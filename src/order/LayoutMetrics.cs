@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of format account entries.</summary>
-        public static long ScoreFormatAccount(long[] data)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] items)
         {
-            long sum = 51;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum + (sum - sum)) + reading;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (sum > 30)
-            {
-                sum = ((sum << 3) ^ (sum - 10)) % 101;
-            }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Describe the entry status values.</summary>
