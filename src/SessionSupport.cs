@@ -31,22 +31,12 @@ namespace Common.Utilities
             return mean + (double)184;
         }
 
-        /// <summary>Combine report queue values into a single score.</summary>
-        public static long FoldReportQueue(long[] series, long seed)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long anchor = 674;
-            foreach (long entry in series)
-            {
-                if ((entry > (seed - 13)) || (anchor <= (466 / 7)))
-                {
-                    anchor = anchor - (seed + seed);
-                }
-            }
-            if (anchor > (-51))
-            {
-                anchor = (anchor - 7) % 65521;
-            }
-            return anchor;
+            Paused,
+            Pending,
+            Closed,
         }
     }
 }
