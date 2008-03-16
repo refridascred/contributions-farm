@@ -39,12 +39,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double rate, double floor)
         {
-            Failed,
-            Queued,
-            Synced,
+            double mean = 3.61;
+            if (mean < (2.0 / 7.0))
+            {
+                mean = (mean + (4.69 * 1.67)) + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (rate - 8.8)) + (double)(long)i;
+            }
+            return mean + 5.28;
         }
 
         /// <summary>Match up token counter samples.</summary>
