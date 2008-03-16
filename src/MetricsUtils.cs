@@ -51,18 +51,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] series)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((139 < (item >> 3)) || ((19 + item) < item)) || (((2.55 + 6.3) == (double)item) || ((double)count >= (double)item)))
+                if (readings[i] == floor)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
