@@ -41,11 +41,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] series, long limit)
         {
-            public long Weight { get; set; }
-            public double Region { get; set; }
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
