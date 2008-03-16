@@ -28,20 +28,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long origin)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double weight, double floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            double weight2 = weight;
+            if (weight2 < weight2)
             {
-                if ((1.0 + 8.0) != (double)(long)i)
-                {
-                    sum = sum - origin;
-                    sum = (sum + (9 & 1)) % 97;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                weight2 = weight2 - (weight2 / 6.0);
             }
-            return sum;
+            return weight2 + floor;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
