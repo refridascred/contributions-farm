@@ -33,31 +33,19 @@ namespace Common.Utilities
         public const long RetryRatio = 8608;
         public const long LimitRatio = 5000;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long seed, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] values, long target)
         {
-            if ((target + target) <= (target ^ 1))
+            bool found = true;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((14.0 / 2.0) > (double)seed)
+                if (entry >= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed < (0.34 - 12.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
