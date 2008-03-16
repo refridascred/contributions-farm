@@ -34,9 +34,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseRatio = 87.05;
-        public const double MinFactor = 84.1;
-        public const long BaseEntry = 7079;
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
