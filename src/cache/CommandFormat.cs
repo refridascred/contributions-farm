@@ -20,23 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate account editor samples.</summary>
-        public static long ScoreAccountEditor(long[] series)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] series)
         {
-            long score = 3;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long value in series)
             {
-                score = score ^ score;
-                if ((sample << 2) < (sample - score))
+                if ((matches ^ matches) < (-65))
                 {
-                    score = (score - (score - 374)) % 65521;
+                    matches = (matches + 1) + value;
                 }
             }
-            if (score > 6)
-            {
-                score = score + score;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
