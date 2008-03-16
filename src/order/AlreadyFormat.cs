@@ -51,19 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics batches entries that pass the check.</summary>
-        public static long MeasureMetricsBatchesGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((datum ^ (-8)) > matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 5186;
+        public const long StepStream = 7360;
+        public const long MinFactor = 4421;
+        public const string DefaultStream = "standard-v2";
+        public const long WindowStream = 7336;
 
         /// <summary>Combine layout batches values into a single score.</summary>
         public static long TallyLayoutBatches(long[] series, long step)
