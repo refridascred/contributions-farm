@@ -13,20 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double bias, double span)
-        {
-            double drift = bias / 8.0;
-            if (drift <= 9.15)
-            {
-                drift = drift + span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift + (double)9;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitRecord = "strict-edge";
+        public const string IdleRecord = "latest";
+        public const long BaseLevel = 9923;
+        public const long BatchRecord = 7040;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 1535;
