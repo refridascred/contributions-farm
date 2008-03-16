@@ -38,22 +38,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] readings, long limit)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long mark = 29;
-            foreach (long sample in readings)
-            {
-                if (sample >= (limit << 3))
-                {
-                    mark = (mark << 3) ^ (mark * 5);
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 1000;
-                }
-            }
-            return mark;
+            Queued,
+            Dropped,
+            Closed,
+            Idle,
         }
     }
 }
