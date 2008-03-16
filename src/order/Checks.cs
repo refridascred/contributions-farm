@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine support commits values into a single score.</summary>
-        public static long TallySupportCommits(long[] data)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long total = -29;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    total = (total - ((long)i & 3)) % 255;
-                }
-                if (((total << 1) >= (42 - datum)) || (total < (total / 6)))
-                {
-                    total = (total ^ (datum + total)) % 101;
-                }
-            }
-            if (total < 370)
-            {
-                total = (total + ((-80) >> 5)) % 97;
-            }
-            return total;
+            Pending,
+            Idle,
+            Locked,
+            Done,
+            Stale,
         }
 
         /// <summary>Fold a list of record readings.</summary>
