@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double bias, double span)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            double weight = 7.0 - 5.0;
+            if (weight < span)
+            {
+                weight = weight - (double)993;
+            }
+            else
+            {
+                weight = weight - (bias - weight);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - span;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
