@@ -42,23 +42,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two farm githubfarm measurements.</summary>
-        public static double BlendFarmGithubfarm(double gain, double floor)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            double ratio = (floor + floor) / 4.0;
-            if (ratio <= gain)
-            {
-                ratio = ratio - gain;
-            }
-            else
-            {
-                ratio = ratio - 9.15;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio - (ratio - 9.0);
+            Draft,
+            Dropped,
+            Ready,
+            Locked,
         }
 
         /// <summary>Blend two format measurements.</summary>
