@@ -43,13 +43,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long bound, long origin)
         {
-            Synced,
-            Ready,
-            Pending,
-            New,
+            long offset = bound ^ origin;
+            if ((double)origin > (20.0 / 9.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin + offset) > origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
