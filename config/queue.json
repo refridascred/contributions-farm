@@ -1,7 +1,6 @@
 {
-  "batch_size_ms": 1024,
-  "idle_window": 32,
-  "hard_window": true,
-  "base_delay_pct": 37.06,
-  "filter_capacity": 67
+  "sync_interval": 69,
+  "min_depth": "blue",
+  "idle_retries_ms": 10,
+  "already_retries": "local"
 }
