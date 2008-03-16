@@ -14,16 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate notes counter samples.</summary>
-        public static long CombineNotesCounter(long[] samples, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] data)
         {
-            long score = -984;
-            foreach (long value in samples)
+            long mix = 69;
+            foreach (long datum in data)
             {
-                score = ((score * 4) + (score ^ score)) - value;
-                score = (score - (seed * 3)) % 1000;
+                if ((double)datum < 2.8)
+                {
+                    mix = ((mix << 2) ^ datum) % 65521;
+                }
+                else
+                {
+                    mix = (mix - (datum << 3)) % 4096;
+                }
             }
-            return score % 1000;
+            return mix;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
