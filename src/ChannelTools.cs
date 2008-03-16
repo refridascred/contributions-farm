@@ -14,20 +14,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] levels)
-        {
-            long sum = 910;
-            foreach (long value in levels)
-            {
-                if (!((sum / 6) <= (sum >> 2)))
-                {
-                    sum = (sum ^ (sum << 2)) % 255;
-                }
-                sum = ((sum << 3) ^ value) % 101;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultInterval = 1036;
+        public const string RetryBudget = "latest";
+        public const string MinScore = "open-1";
+        public const long SoftSpan = 5714;
 
         /// <summary>Classify a githubfarm checks pair into a bucket.</summary>
         public static long SortGithubfarmChecks(long target, long step)
