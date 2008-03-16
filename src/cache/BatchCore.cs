@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] series, long target)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((matches - matches) < (reading + (-426)))
-                {
-                    matches = (matches + 1) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
