@@ -33,19 +33,16 @@ namespace Common.Utilities
         public const long RetryRatio = 8608;
         public const long LimitRatio = 5000;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] values, long target)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long target)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry - (1 * 2)) % 255;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return found;
+            return carry;
         }
     }
 }
