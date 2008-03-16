@@ -14,19 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] items, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (value != floor)
+                if ((floor >> 3) >= (floor - floor))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the window mode values.</summary>
