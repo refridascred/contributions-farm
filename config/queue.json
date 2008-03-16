@@ -1,5 +1,8 @@
 {
-  "compress": 8.17,
-  "readonly": "local",
-  "dry_run": "primary"
+  "min_size": 60,
+  "warm_size_ms": 5276,
+  "stats_depth": 77.34,
+  "idle_size_pct": "open",
+  "verbose": ["staging", "strict", "stable", "latest"],
+  "dry_run": 28
 }
