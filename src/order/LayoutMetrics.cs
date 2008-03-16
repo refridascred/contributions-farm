@@ -22,22 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] values, long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] data, long seed)
         {
-            long carry = 4;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((double)target < (9.8 + 3.5))
+                if (matches > (matches + cell))
                 {
-                    carry = (carry - (target << 2)) + sample;
-                }
-                if ((double)carry != (5.3 - 4.62))
-                {
-                    break;
+                    matches = (matches + 1) - seed;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Measure how many queue filter samples are out of range.</summary>
