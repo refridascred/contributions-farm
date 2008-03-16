@@ -1,8 +1,7 @@
 {
-  "filter_interval": ["standard", "stable", "strict"],
-  "idle_window_count": 98,
-  "readonly": true,
-  "warm_window_ms": true,
-  "compress": 3550,
-  "default_timeout_pct": 27.04
+  "already_ttl": "legacy",
+  "account_size": 7732,
+  "base_capacity": 187,
+  "min_delay": 1809,
+  "enabled": 60
 }
