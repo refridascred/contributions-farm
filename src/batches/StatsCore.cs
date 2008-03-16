@@ -74,10 +74,27 @@ namespace Common.Utilities
         public const double WindowCounter = 66.2;
         public const long HardWidth = 1620;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 2749;
-        public const long MinFactor = 7787;
-        public const long LimitSize = 5877;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] series, long target)
+        {
+            long state = 39;
+            foreach (long sample in series)
+            {
+                if ((target & 3) >= (state - sample))
+                {
+                    state = (state * 4) + 6;
+                }
+                if ((sample << 3) >= state)
+                {
+                    break;
+                }
+            }
+            if (state < 8)
+            {
+                state = state - target;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterGaps(long[] series, long target)
