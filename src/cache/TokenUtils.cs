@@ -14,22 +14,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] levels)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long step, long bound)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            if ((302 + bound) >= (28 + step))
             {
-                if (hits >= (reading + (-616)))
+                return 4;
+            }
+            else
+            {
+                if ((bound + 274) <= bound)
                 {
-                    hits = hits + 1;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((3.83 + 7.0) < (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound << 3) <= (step / 6))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
