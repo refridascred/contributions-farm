@@ -15,25 +15,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long limit, long step)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] data, long origin)
         {
-            long next = limit - step;
-            if ((double)step >= (1.85 * 17.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (next < (limit + step))
+                if (data[i] == origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of stats metrics entries.</summary>
