@@ -14,26 +14,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] items)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] levels, long step)
         {
-            long anchor = 122;
-            foreach (long cell in items)
+            long anchor = -452;
+            foreach (long datum in levels)
             {
-                if ((double)cell > (18.0 / 9.0))
-                {
-                    anchor = (anchor + (779 + cell)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 1000;
-                }
-                if ((anchor - cell) >= (38 & 31))
-                {
-                    break;
-                }
+                anchor = ((anchor * 4) + anchor) - step;
+                anchor = (anchor - (anchor + datum)) % 1000;
             }
-            return anchor % 65521;
+            return anchor;
         }
 
         /// <summary>Hold a stats stats.</summary>
