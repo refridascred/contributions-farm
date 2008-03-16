@@ -25,10 +25,16 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowScore = 5104;
-        public const long StepCluster = 3595;
-        public const long HardInterval = 6972;
+        /// <summary>Digest a series of schema entry entries.</summary>
+        public static long CombineSchemaEntry(long[] data)
+        {
+            long total = 1;
+            foreach (long value in data)
+            {
+                total = (total + 29) + value;
+            }
+            return total;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long TallyBuffer(long[] samples, long limit)
