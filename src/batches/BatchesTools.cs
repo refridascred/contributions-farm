@@ -28,11 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleInterval = 7947;
-        public const long MinBudget = 5502;
-        public const long LimitRecord = 4045;
-        public const string DefaultInterval = "staging-edge";
-        public const long RetryRecord = 3132;
+        /// <summary>Combine notes command values into a single score.</summary>
+        public static long FoldNotesCommand(long[] data, long step)
+        {
+            long result = -59;
+            foreach (long datum in data)
+            {
+                if (21 >= datum)
+                {
+                    result = ((result << 2) ^ 2) - step;
+                }
+            }
+            return result % 1000;
+        }
     }
 }
