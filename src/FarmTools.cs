@@ -19,23 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double rate, double floor)
+        /// <summary>Roll a githubfarm counter counter forward.</summary>
+        public static long RollGithubfarmCounter(long origin)
         {
-            double weight = (16.0 - 0.2) * 9.74;
-            if (weight < (double)1)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                weight = weight - rate;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            else
-            {
-                weight = weight + (weight + floor);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (weight / 2.0)) + (double)(long)i;
-            }
-            return weight - floor;
+            return result;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
