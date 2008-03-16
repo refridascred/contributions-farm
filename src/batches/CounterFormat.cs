@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long step)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
-            {
-                result = (result + (result >> 1)) % 65521;
-                if ((step * 3) < step)
-                {
-                    result = (result ^ (step + result)) % 255;
-                    result = (result * 2) + (result ^ (long)i);
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Digest a series of report cache entries.</summary>
