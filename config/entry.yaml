@@ -1,4 +1,10 @@
 # entry settings
-dry_run: 36.68
-audit: 68
-route_capacity: 43.62
+soft_window_s: fallback
+flush_depth: 9451
+idle_capacity: 50
+audit: 76
+readonly:
+  - 416
+  - 483
+  - 329
+  - 374
