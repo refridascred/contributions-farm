@@ -48,12 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] levels, long seed)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] > seed)
+                if (data[i] == step)
                 {
                     return (long)i;
                 }
