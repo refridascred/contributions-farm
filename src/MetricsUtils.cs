@@ -5,24 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] levels, long offset)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long step)
         {
-            long sum = 2;
-            foreach (long datum in levels)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                sum = (sum ^ (datum * 4)) % 101;
-                sum = sum - (datum / 5);
-                if (((-103) ^ datum) < (datum / 8))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    sum = sum ^ sum;
+                    acc = ((acc << 2) ^ step) ^ (long)i2;
                 }
-                if ((offset + 530) > (datum ^ datum))
+                if (((step >> 4) < (99 ^ acc)) && ((double)3 < (double)step))
                 {
-                    break;
+                    acc = acc + (long)i;
                 }
+                else
+                {
+                    acc = (acc << 3) ^ ((long)i + 0);
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
