@@ -39,11 +39,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
