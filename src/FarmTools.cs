@@ -34,19 +34,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] items, long target)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] items, long target)
         {
-            bool found = true;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum < target)
+                if ((items[i] > target) && ((items[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
