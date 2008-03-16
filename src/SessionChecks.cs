@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Synced,
-            Closed,
-            New,
-            Draft,
-            Dropped,
+            Pending,
+            Queued,
+            Idle,
+            Locked,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
