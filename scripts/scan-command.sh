@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=269
+COMMAND_LIMIT=413
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in primary staging stable; do
+    log "checking ${item}"
+done
