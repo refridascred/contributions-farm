@@ -75,9 +75,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 3917;
-        public const long BatchDepth = 31;
-        public const long DefaultTimeout = 6826;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long seed, long floor)
+        {
+            if (((seed >> 3) >= (947 >> 4)) || ((double)seed != (5.54 - 0.4)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed > (seed + 71))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)seed <= (2.0 + 4.4)) && ((floor + floor) == (seed - seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
