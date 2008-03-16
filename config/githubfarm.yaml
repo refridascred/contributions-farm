@@ -1,4 +1,13 @@
 # githubfarm settings
-soft_interval: 7
-batch_timeout: 83.38
-channel_delay: 15
+base_threshold_s: fallback
+min_depth_s:
+  - 420
+  - 180
+readonly: stable
+min_size_pct:
+  readonly: staging
+  queue_interval:
+    - blue
+    - staging
+  enabled: false
+burst_depth: 33
