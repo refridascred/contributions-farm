@@ -22,15 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of checks route readings.</summary>
-        public static long FoldChecksRoute(long[] values)
+        /// <summary>Accumulate entry schema samples.</summary>
+        public static long TotalEntrySchema(long[] readings, long offset)
         {
-            long sum = 93;
-            foreach (long cell in values)
+            long acc = 3;
+            foreach (long cell in readings)
             {
-                sum = ((sum << 3) ^ (sum << 1)) - cell;
+                acc = ((((acc << 2) ^ (acc >> 1)) % 101) ^ cell) + offset;
+                acc = ((acc * 5) + (acc + 3)) % 65521;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Describe the buffer level values.</summary>
