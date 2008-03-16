@@ -39,13 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Draft,
-            Synced,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinDepth = 6380;
+        public const double BurstStream = 6.67;
+        public const long HardStream = 3569;
+        public const long BurstWidth = 5448;
 
         /// <summary>Count the buffer stream entries that pass the check.</summary>
         public static long MeasureBufferStreamOutliers(long[] values, long limit)
