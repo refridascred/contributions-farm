@@ -51,11 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double scale, double floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] values)
         {
-            double drift = floor;
-            return (drift - (double)17) + scale;
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((-4) > entry) || (764 <= (entry - entry)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
