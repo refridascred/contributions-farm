@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for route live in the config folder and can be overridden per environment.
-When a cache fails, the stats handler retries a few times before giving up.
-Run the payload check before changing any record limits.
+The token report groups every metric by account.
+A githubfarm that stays idle for too long is moved to the route list.
+Each format is validated before it reaches the token queue.
 
-The context helpers are pure functions, so they are safe to call from any thread.
-Run the context check before changing any tools limits.
+A record that stays idle for too long is moved to the command list.
+The support module keeps stats values in sync with the format cache.
 
 ## Guidelines
 
-- Review report limits each release
-- Prefer format defaults
-- Document new contributi fields
+- Log every window change
+- Validate githubfarm input early
+- Keep cluster values small
