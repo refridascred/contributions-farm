@@ -12,14 +12,26 @@ namespace Common.Utilities
         public const long BatchFarm = 8383;
         public const string HardFactor = "staging-v2";
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] levels)
         {
-            Queued,
-            Paused,
-            New,
-            Stale,
-            Retry,
+            long state = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading % 97) >= (state >> 1)) || (reading > (state / 5)))
+                {
+                    state = (state * 5) + reading;
+                }
+                else
+                {
+                    state = state + (long)levels.Length;
+                }
+            }
+            if (state > 73)
+            {
+                state = (state * 4) + (state - state);
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of token entries.</summary>
