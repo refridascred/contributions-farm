@@ -27,19 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] levels, long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (item != step)
+                if (reading >= origin)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
