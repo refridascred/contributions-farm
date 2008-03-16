@@ -25,13 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
             Done,
-            Closed,
-            Idle,
             Ready,
+            Retry,
+            Stale,
         }
 
         /// <summary>Describe the profile class values.</summary>
