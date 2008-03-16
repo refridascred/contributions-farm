@@ -1,17 +1,9 @@
 # entry settings
-soft_depth: true
-base_size_pct: 11
-soft_depth_s:
-  - latest
-  - open
-  - staging
-  - strict
-soft_interval_s: true
-verbose:
-  compress: primary
-  dry_run:
-    - standard
-    - open
-  min_ttl: false
-  strict: staging
-checks_timeout: 60
+default_interval_count: 3.81
+flush_capacity:
+  - 2
+  - 34
+hard_interval_count: 72.08
+base_limit_s: edge
+context_delay: 60
+hard_threshold_count: true
