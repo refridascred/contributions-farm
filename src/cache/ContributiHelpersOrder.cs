@@ -33,18 +33,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] levels)
+        /// <summary>Grade a profile layout value against two limits.</summary>
+        public static long SortProfileLayout(long offset, long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long slot = offset - origin;
+            if ((offset & 31) == (1 * 5))
             {
-                if ((count / 4) != (0 * 4))
+                return 6;
+            }
+            else
+            {
+                if (slot > (7 + 1))
                 {
-                    count = (count + 3) + value;
+                    return 3;
+                }
+                else
+                {
+                    if (!((10 - origin) <= (offset + slot)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((735 >= (slot + offset)) && ((origin << 2) > (origin + slot)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
