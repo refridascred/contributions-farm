@@ -1,6 +1,6 @@
 # support settings
-persist: 41
-counter_limit: latest
-compress: strict
-verbose: blue
-soft_delay_s: false
+base_window_s:
+  - 8
+  - 148
+poll_interval: fallback
+poll_ttl: false
