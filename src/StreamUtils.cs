@@ -45,19 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] data, long floor)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
