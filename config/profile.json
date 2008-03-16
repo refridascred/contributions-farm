@@ -1,10 +1,13 @@
 {
-  "warm_ratio": false,
-  "min_delay_count": {
-    "compress": 10.64,
-    "batch_ttl_count": 27.91,
-    "dry_run": 19
+  "hard_interval_ms": 1024,
+  "verbose": {
+    "poll_interval_count": 68,
+    "burst_threshold": "eu-west",
+    "max_delay_ms": true,
+    "verbose": 30,
+    "batch_threshold": 97
   },
-  "idle_limit_count": 9.23,
-  "flush_ttl": "stable"
+  "retry_ratio_pct": "edge",
+  "order_timeout": true,
+  "enabled": 250
 }
