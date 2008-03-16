@@ -1,10 +1,10 @@
 # Command notes
 
-Keep command and metric names short and lowercase.
-The editor module keeps entry values in sync with the layout cache.
+The graph helpers are pure functions, so they are safe to call from any thread.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep format values small
-- Document new channel fields
-- Log every batch change
+- Validate window input early
+- Keep tools values small
+- Log every contributi change
