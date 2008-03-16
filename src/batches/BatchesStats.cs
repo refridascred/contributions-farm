@@ -13,11 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseBudget = "stable-1";
-        public const long LimitSpan = 9585;
-        public const long HardSpan = 1025;
-        public const double SoftWidth = 60.45;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!((sample + sample) >= tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next queue metric value.</summary>
         public static double ScaleQueueMetric(double gain, double span)
