@@ -62,19 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] items, long limit)
-        {
-            long total = 633;
-            foreach (long cell in items)
-            {
-                total = total + (cell & 63);
-                if ((double)limit < 0.99)
-                {
-                    total = (total << 2) ^ cell;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinCounter = 11.72;
+        public const long MaxWidth = 7621;
+        public const string DefaultInterval = "stable-edge";
+        public const string MaxScore = "open-edge";
     }
 }
