@@ -51,21 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((139 < (item >> 3)) || ((19 + item) < item)) || (((2.55 + 6.3) == (double)item) || ((double)count >= (double)item)))
                 {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
