@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double bias, double bias2)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            double ratio = (double)(63 - (-49));
-            return ((ratio - (double)9) + bias) + bias2;
+            Pending,
+            Locked,
+            Ready,
+            Stale,
         }
 
         /// <summary>Combine report buffer values into a single score.</summary>
