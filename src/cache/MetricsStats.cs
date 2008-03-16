@@ -66,18 +66,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] items)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((tally * 4) != (reading - reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Locked,
+            Closed,
+            Draft,
+            Done,
         }
     }
 }
