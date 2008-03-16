@@ -1,16 +1,12 @@
 # Command notes
 
-Defaults for graph live in the config folder and can be overridden per environment.
-The stats report groups every tools by checks.
-Each token is validated before it reaches the metrics queue.
-
-Keep window and filter names short and lowercase.
-A format that stays idle for too long is moved to the queue list.
-Run the context check before changing any metric limits.
+Each profile is validated before it reaches the notes queue.
+The batch report groups every entry by command.
+The command report groups every record by queue.
 
 ## Guidelines
 
-- Log every schema change
-- Validate farm input early
-- Review editor limits each release
-- Keep editor values small
+- Keep commits values small
+- Prefer filter defaults
+- Review queue limits each release
+- Log every metric change
