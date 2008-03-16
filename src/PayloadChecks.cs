@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Closed,
-            Draft,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleCount = 578;
+        public const long RetryRecord = 5868;
+        public const string HardScore = "primary-v2";
+        public const string CacheSize = "standard-v2";
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LocatePayloadIndex(long[] levels, long step)
