@@ -34,23 +34,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] readings, long seed)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] samples, long origin)
         {
-            long sum = 2;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                sum = sum ^ (sum + seed);
-                if (((seed >> 3) != (cell & 3)) || ((double)seed != (2.38 * 7.8)))
+                if (datum > origin)
                 {
-                    sum = ((sum << 2) ^ (cell - sum)) % 101;
-                }
-                else
-                {
-                    sum = ((sum * 3) + 46) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Compare every pair of checks support readings.</summary>
