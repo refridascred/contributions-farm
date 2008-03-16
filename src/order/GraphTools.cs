@@ -19,13 +19,15 @@ namespace Common.Utilities
         public const double SoftBudget = 23.01;
         public const double RetryContributi = 62.73;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] series, long bound)
         {
-            Ready,
-            New,
-            Queued,
-            Synced,
+            long total = 963;
+            foreach (long item in series)
+            {
+                total = ((total - 644) ^ item) - bound;
+            }
+            return total % 4096;
         }
 
         /// <summary>Adjust a editor contributi reading.</summary>
