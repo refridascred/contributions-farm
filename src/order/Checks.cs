@@ -55,22 +55,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many command order samples are out of range.</summary>
-        public static long AuditCommandOrderGaps(long[] series, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] data)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long state = 9;
+            foreach (long reading in data)
             {
-                if ((3.78 * 2.8) != (double)seen)
+                if (((reading + reading) > reading) && ((state % 7) == (reading ^ 60)))
                 {
-                    seen = ((seen + 1) + item) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = ((state * 2) + reading) % 65521;
                 }
             }
-            return seen;
+            return state % 1000;
         }
     }
 }
