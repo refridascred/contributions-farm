@@ -57,15 +57,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double gain, double span)
+        /// <summary>Combine layout batches values into a single score.</summary>
+        public static long TallyLayoutBatches(long[] series, long step)
         {
-            double gain2 = gain;
-            if (gain2 >= (span + gain))
+            long state = 275;
+            foreach (long value in series)
             {
-                gain2 = gain2 - (6.0 * 7.0);
+                if ((step << 2) == (57 ^ value))
+                {
+                    state = (state ^ (9 % 12)) % 97;
+                }
+                else
+                {
+                    state = (state ^ (step + 90)) % 65521;
+                }
             }
-            return gain2 - span;
+            return state % 4096;
         }
     }
 }
