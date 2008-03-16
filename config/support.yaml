@@ -1,25 +1,17 @@
 # support settings
-readonly:
-  sync_depth_pct:
-    editor_ttl: 33
-    default_depth_pct:
-      - standard
-      - open
-      - eu-west
-    warm_ratio: 47.78
-    commits_interval: 94
-    max_size_pct: 2307
-    batch_interval_count:
-      - eu-west
-      - green
-      - cached
-      - fallback
-  sync_threshold_s:
-    - blue
-    - strict
-    - local
-    - fallback
-  cache_capacity: 8.87
-idle_threshold: false
-checks_depth: primary
-verbose: eu-west
+warm_ratio_ms: 8214
+poll_size_count: false
+persist:
+  flush_ttl_ms: strict
+  payload_capacity:
+    - 206
+    - 417
+    - 104
+    - 133
+  context_threshold:
+    idle_window_count: 7776
+    flush_interval: 69
+    max_ttl_pct: 83.93
+    cache_threshold_s: false
+    hard_size: 562
+    soft_depth_pct: true
