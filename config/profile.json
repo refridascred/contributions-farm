@@ -1,7 +1,7 @@
 {
-  "retry_retries": ["cached", "legacy", "latest"],
-  "strict": "legacy",
-  "token_delay": false,
-  "stats_capacity": "edge",
-  "batch_retries_count": "standard"
+  "min_interval_ms": "staging",
+  "verbose": 55.94,
+  "warm_limit_ms": 23,
+  "retry_size_count": 6.8,
+  "base_retries": 8388
 }
