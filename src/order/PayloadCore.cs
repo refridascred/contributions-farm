@@ -39,22 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] values, long origin)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((origin + 98) > (origin - seen))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
