@@ -31,19 +31,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] readings, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (entry >= seed)
+                if (((-250) < (step - hits)) || ((863 > hits) || ((double)hits < (4.04 / 6.0))))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
