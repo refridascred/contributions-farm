@@ -1,8 +1,5 @@
 {
-  "persist": "fallback",
-  "audit": 89,
-  "base_delay": ["fallback", "stable", "open"],
-  "poll_threshold_pct": "green",
-  "min_ttl_pct": 92.28,
-  "editor_depth": ["primary", "green", "latest"]
+  "sync_retries_s": "cached",
+  "audit": 1,
+  "soft_size_ms": 47.1
 }
