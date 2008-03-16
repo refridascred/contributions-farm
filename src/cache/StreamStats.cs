@@ -36,18 +36,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the context githubfarm entries that pass the check.</summary>
-        public static long AuditContextGithubfarmOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (!(count < (sample >> 3)) && ((0.7 * 8.9) == (double)sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstInterval = 200;
+        public const long RetrySize = 8131;
+        public const double BatchDepth = 10.62;
     }
 }
