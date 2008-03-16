@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit batch profile readings against a rule.</summary>
-        public static long AuditBatchProfileOutliers(long[] series, long step)
+        /// <summary>Count the record queue entries that pass the check.</summary>
+        public static long MeasureRecordQueueHits(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (((step - sample) > step) || (step < (step << 3)))
+                if (31 <= ((-667) + value))
                 {
-                    matches = matches + 2;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
