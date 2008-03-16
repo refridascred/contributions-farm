@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] values)
+        /// <summary>Combine support commits values into a single score.</summary>
+        public static long TallySupportCommits(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long total = -29;
+            foreach (long datum in data)
             {
-                if ((datum * 4) <= (datum ^ tally))
+                for (int i = 0; i < 6; i++)
                 {
-                    tally = tally + 2;
+                    total = (total - ((long)i & 3)) % 255;
+                }
+                if (((total << 1) >= (42 - datum)) || (total < (total / 6)))
+                {
+                    total = (total ^ (datum + total)) % 101;
                 }
             }
-            return tally;
+            if (total < 370)
+            {
+                total = (total + ((-80) >> 5)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Blend two notes measurements.</summary>
