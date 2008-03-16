@@ -17,13 +17,24 @@ namespace Common.Utilities
         public const long IdleCache = 6154;
         public const long DefaultInterval = 9662;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Rank counter order input into a small class.</summary>
+        public static long RankCounterOrder(long floor, long floor2)
         {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
-            public double Label { get; set; }
+            if ((6.22 / 8.0) >= (2.0 * 11.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((960 ^ floor2) < (3 << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
