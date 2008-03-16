@@ -16,15 +16,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the context batches series from a seed.</summary>
-        public static long IterateContextBatches(long seed)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long origin, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            long delta = origin + bound;
+            if ((double)delta != (double)origin)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                return 6;
             }
-            return total;
+            else
+            {
+                if ((double)delta < (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound >= (double)1)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes summary.</summary>
