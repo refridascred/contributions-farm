@@ -16,15 +16,18 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] readings, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if (0.83 < (double)seen)
+                {
+                    seen = ((seen + 1) ^ cell) + limit;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Accumulate format samples.</summary>
