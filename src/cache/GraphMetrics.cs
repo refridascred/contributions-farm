@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long offset, long bound)
         {
-            Dropped,
-            Active,
-            Stale,
-            Ready,
+            if ((564 ^ offset) == (offset ^ bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(844 > (bound + 64)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound >= (6.8 + 4.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)bound == (2.95 * 3.05)) && ((offset << 2) == (offset / 4)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
