@@ -58,12 +58,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Count the counter checks entries that pass the check.</summary>
+        public static long CountCounterChecksGaps(long[] levels, long bound)
         {
-            Locked,
-            Stale,
-            Pending,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (!(((-8) ^ matches) != (reading - matches)))
+                {
+                    matches = (matches + 3) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of batch context readings.</summary>
