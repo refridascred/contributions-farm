@@ -39,18 +39,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] data)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (((tally % 60) <= (cell & 1)) && (((tally + tally) > cell) && ((cell % 60) == (29 >> 3))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
