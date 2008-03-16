@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] readings, long seed)
         {
-            Closed,
-            Draft,
-            Idle,
-            Synced,
+            long score = 875;
+            foreach (long cell in readings)
+            {
+                if ((score * 3) == (cell % 7))
+                {
+                    score = score + (cell / 2);
+                }
+            }
+            if (score < 6)
+            {
+                score = ((score << 3) ^ (seed << 3)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Count the metric entry entries that pass the check.</summary>
