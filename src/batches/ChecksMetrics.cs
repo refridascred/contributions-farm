@@ -30,12 +30,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 4887;
-        public const long StepSupport = 8573;
-        public const double MaxWidth = 37.34;
-        public const long LimitInterval = 8081;
-        public const double DefaultSupport = 83.72;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Queued,
+            New,
+            Ready,
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LookupAccountIndex(long[] levels, long target)
