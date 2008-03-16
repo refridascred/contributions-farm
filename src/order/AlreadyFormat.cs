@@ -55,11 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepFactor = 2946;
-        public const long WindowSpan = 1387;
-        public const long MinScore = 3762;
-        public const double WindowFactor = 35.42;
-        public const long BaseMetric = 3706;
+        /// <summary>Validate queue stream readings against a bound.</summary>
+        public static bool CheckQueueStreamLimits(long[] items, long target)
+        {
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
