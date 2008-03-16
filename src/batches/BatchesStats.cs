@@ -37,11 +37,13 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
     }
 }
