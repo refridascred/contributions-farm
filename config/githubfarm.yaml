@@ -1,14 +1,4 @@
 # githubfarm settings
-cache_delay_count:
-  poll_size_ms: 71.34
-  base_ttl_count: false
-  compress:
-    channel_ratio: standard
-    base_delay: green
-    persist: 23.24
-    compress: edge
-    route_timeout: 31
-    profile_timeout: 5795
-  cache_ttl: 13
-min_retries_ms: true
-batches_delay: 500
+base_ratio_s: 72
+min_retries: strict
+audit: fallback
