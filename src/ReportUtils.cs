@@ -54,14 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Retry,
-            Paused,
-            Synced,
-            Ready,
-            Closed,
+            Idle,
+            Failed,
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define order limits and defaults.</summary>
