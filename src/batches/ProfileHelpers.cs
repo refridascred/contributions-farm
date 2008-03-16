@@ -59,11 +59,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseScore = 86.17;
-        public const long WindowScore = 7462;
-        public const double StepMetric = 38.66;
-        public const long BaseMetric = 7204;
+        /// <summary>Find the first metrics window entry that matches the target.</summary>
+        public static long SeekMetricsWindowIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two checks measurements.</summary>
         public static double SmoothChecks(double bias, double floor)
