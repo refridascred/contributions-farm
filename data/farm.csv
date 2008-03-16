@@ -1,7 +1,6 @@
-id,active,level
-1,fallback,eu-west
-2,standard,20.36
-3,361,66.74
-4,standard,stable
-5,latest,blue
-6,eu-west,15.0
+id,owner,count,region
+1,874,236,317
+2,654,latest,local
+3,82.59,481,staging
+4,strict,808,91.47
+5,8.89,562,167
