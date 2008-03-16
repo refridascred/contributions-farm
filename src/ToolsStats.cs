@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] readings, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Idle,
+            Synced,
+            Closed,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
