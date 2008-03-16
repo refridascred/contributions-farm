@@ -35,19 +35,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] series, long limit)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public bool Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
