@@ -1,10 +1,5 @@
 {
-  "batch_depth_count": {
-    "session_retries": 250,
-    "default_depth_pct": 250,
-    "sync_limit": [391, 52, 33]
-  },
-  "buffer_retries": 91,
-  "readonly": 47.51,
-  "min_timeout_ms": "blue"
+  "flush_depth_ms": "green",
+  "report_depth": true,
+  "base_limit": 4368
 }
