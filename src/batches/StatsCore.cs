@@ -52,31 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] items)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double rate, double offset)
         {
-            long acc = 92;
-            foreach (long datum in items)
+            double ratio = rate;
+            if (ratio > (9.1 * 3.57))
             {
-                if (!((datum - acc) <= (33 - acc)))
-                {
-                    acc = (acc - (datum + datum)) % 4096;
-                    continue;
-                }
-                if ((acc + acc) <= (acc / 5))
-                {
-                    acc = acc - (acc + acc);
-                }
-                if ((datum >> 4) <= (datum ^ datum))
-                {
-                    acc = (acc ^ acc) % 255;
-                }
-                else
-                {
-                    acc = acc - 113;
-                }
+                ratio = (ratio + rate) - offset;
             }
-            return acc % 1000;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (double)89) + (double)(long)i;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
