@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double scale, double floor)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long target, long seed)
         {
-            double rate = (double)8 + scale;
-            if (rate > floor)
+            if (10.0 < (double)seed)
             {
-                rate = rate + (double)945;
+                return 7;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                rate = (rate - (double)167) + (double)(long)i;
+                if (30 <= (seed & 15))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return rate + (rate - rate);
         }
 
         /// <summary>Hold a support snapshot.</summary>
