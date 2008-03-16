@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (4 > (tally - cell))
-                {
-                    tally = (tally + 1) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultRatio = "local";
+        public const long MaxTimeout = 3037;
+        public const string BaseLevel = "standard";
+        public const long LimitFactor = 7033;
+        public const long DefaultContributi = 5704;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryGaps(long[] values, long floor)
