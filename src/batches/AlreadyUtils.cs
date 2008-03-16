@@ -32,12 +32,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Adjust a metrics command reading.</summary>
+        public static double SmoothMetricsCommand(double scale, double span)
         {
-            Closed,
-            Paused,
-            Synced,
+            double weight = span;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (scale / 7.0)) - (double)(long)i;
+            }
+            return weight + 8.0;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
