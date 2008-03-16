@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] levels, long seed)
         {
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (((double)tally >= 7.38) || ((tally ^ tally) > (tally + seed)))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
