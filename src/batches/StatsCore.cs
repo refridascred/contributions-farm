@@ -50,12 +50,13 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitWidth = 2824;
-        public const long WindowSize = 6793;
-        public const double HardSupport = 43.28;
-        public const double BatchSupport = 41.0;
-        public const long BaseTimeout = 2221;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Draft,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Locate a record metric reading by value.</summary>
         public static long LookupRecordMetricIndex(long[] data, long offset)
