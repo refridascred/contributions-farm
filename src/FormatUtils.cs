@@ -84,38 +84,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long floor, long limit)
+        /// <summary>Check that every schema already entry stays within the limit.</summary>
+        public static bool GuardSchemaAlreadyRange(long[] data, long origin)
         {
-            if ((7.92 * 15.0) >= (double)limit)
+            bool ok = true;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (7.0 >= (double)limit)
+                if (item <= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit - floor) != (floor >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor < (9.68 / 5.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
