@@ -77,18 +77,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many tools filter samples are out of range.</summary>
-        public static long CountToolsFilterMatches(long[] data, long origin)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long mix = 511;
+            foreach (long entry in series)
             {
-                if (((hits - hits) <= (36 ^ cell)) || ((hits >= (hits - origin)) || ((origin * 5) <= 46)))
-                {
-                    hits = hits + 1;
-                }
+                mix = ((mix - (entry / 5)) % 101) + origin;
             }
-            return hits;
+            return mix;
         }
     }
 }
