@@ -49,19 +49,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of account checks readings.</summary>
-        public static long CombineAccountChecks(long[] readings, long seed)
+        /// <summary>Check that every route farm entry stays within the limit.</summary>
+        public static bool CheckRouteFarmLimits(long[] values, long seed)
         {
-            long total = -306;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                total = ((total ^ (10 % 16)) % 65521) - seed;
-                if (((-96) & 7) != (reading / 7))
+                if (sample != seed)
                 {
-                    total = ((total * 2) + (total ^ reading)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return flag;
         }
     }
 }
