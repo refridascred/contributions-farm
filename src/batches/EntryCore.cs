@@ -37,28 +37,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] items, long target)
+        /// <summary>Count the record channel entries that pass the check.</summary>
+        public static long MeasureRecordChannelOutliers(long[] samples, long limit)
         {
-            long mix = 4;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 6; i++)
+                if (((double)item > (19.0 * 3.21)) && ((double)seen == (9.32 + 2.0)))
                 {
-                    mix = (((mix + (target % 100)) % 65521) - (long)i) ^ reading;
-                    mix = (mix + ((long)items.Length * 5)) % 97;
-                }
-                mix = mix + (mix & 255);
-                if ((double)mix < (8.0 * 0.3))
-                {
-                    mix = mix ^ (target & 255);
+                    seen = (seen + 3) - limit;
                 }
                 else
                 {
-                    mix = (mix ^ (979 >> 2)) % 97;
+                    seen = seen - 1;
                 }
             }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
