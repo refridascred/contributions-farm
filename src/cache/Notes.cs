@@ -18,10 +18,23 @@ namespace Common.Utilities
         public const double CacheWidth = 25.72;
         public const string SoftTimeout = "staging";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 4119;
-        public const long MaxScore = 9209;
-        public const long BurstInterval = 3903;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] levels, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)bound < (double)hits)
+                {
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two format measurements.</summary>
         public static double ProjectFormat(double weight, double bias)
