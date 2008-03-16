@@ -1,14 +1,8 @@
 {
-  "channel_interval": false,
-  "farm_threshold": {
-    "stream_retries": 82.43,
-    "retry_interval": 5093,
-    "audit": 7139,
-    "burst_capacity_ms": 60,
-    "channel_ratio": "fallback"
-  },
-  "idle_timeout": "legacy",
-  "sync_delay": [479, 25, 89],
-  "min_threshold_ms": false,
-  "metrics_retries": 60
+  "profile_ttl": 500,
+  "metric_threshold": 9514,
+  "graph_ratio": 500,
+  "readonly": [432, 139, 144],
+  "batch_timeout_pct": 11.35,
+  "tools_depth": 100
 }
