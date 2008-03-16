@@ -29,22 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] readings)
         {
-            long carry = 3;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((2.63 * 2.33) <= (double)entry)
+                if (1 < (tally + tally))
                 {
-                    carry = carry + (entry & 255);
-                }
-                else
-                {
-                    carry = ((carry * 4) + (carry & 1)) % 1000;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
