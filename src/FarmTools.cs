@@ -33,32 +33,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a account payload counter forward.</summary>
-        public static long SeriesAccountPayload(long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] data, long step)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((score * 5) > score)
+                if ((seen % 24) == (5 ^ 844))
                 {
-                    score = ((score << 3) ^ (target + target)) % 4096;
-                    continue;
+                    seen = ((seen + 2) + reading) + step;
                 }
                 else
                 {
-                    score = ((score << 2) ^ (target ^ target)) % 101;
+                    seen = seen - 1;
                 }
-                if (((6.36 / 9.0) != (double)(long)i) || ((score ^ score) > target))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = (score << 2) ^ (score >> 5);
-                }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return seen;
         }
     }
 }
