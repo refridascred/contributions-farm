@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] levels)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double weight, double floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double bias = 7.4 * 17.0;
+            if (bias > (bias / 6.0))
             {
-                if ((double)count >= (double)value)
-                {
-                    count = count + 2;
-                }
+                bias = (bias + 10.0) - weight;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - 3.0) + (double)(long)i;
+            }
+            return bias - (floor + bias);
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
