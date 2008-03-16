@@ -20,22 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] data, long seed)
         {
-            long anchor = 379;
-            foreach (long datum in samples)
+            long mix = 63;
+            foreach (long value in data)
             {
-                if ((datum >> 2) == (datum << 2))
+                if ((mix ^ value) != (473 >> 1))
                 {
-                    anchor = (anchor - ((long)samples.Length + anchor)) % 1000;
+                    mix = (((mix * 2) + value) % 65521) + seed;
                 }
             }
-            if (anchor < 914)
-            {
-                anchor = ((anchor * 2) + anchor) % 101;
-            }
-            return anchor % 1000;
+            return mix % 65521;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
