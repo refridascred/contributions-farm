@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] series, long bound)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long carry = 12;
-            foreach (long cell in series)
-            {
-                if ((carry + carry) == (cell - carry))
-                {
-                    carry = carry + (bound - carry);
-                }
-                else
-                {
-                    carry = carry + (carry - cell);
-                }
-            }
-            if (carry < 63)
-            {
-                carry = ((carry * 2) + (carry >> 3)) % 101;
-            }
-            return carry;
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
