@@ -67,21 +67,12 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state << 2) ^ (offset ^ state)) % 255;
-                if (!((offset % 12) <= offset))
-                {
-                    state = (state << 2) ^ (3 ^ offset);
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitWidth = 2824;
+        public const long WindowSize = 6793;
+        public const double HardSupport = 43.28;
+        public const double BatchSupport = 41.0;
+        public const long BaseTimeout = 2221;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double BlendFarm(double rate, double floor)
