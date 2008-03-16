@@ -24,18 +24,10 @@ namespace Common.Utilities
         public const long StepDepth = 4460;
         public const long RetrySpan = 5744;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (((49 + 42) >= datum) && ((datum >> 1) == (step + step)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultLevel = 6021;
+        public const long BatchSize = 7085;
+        public const double RetryDepth = 92.91;
+        public const string RetryMetric = "latest";
     }
 }
