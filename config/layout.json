@@ -1,8 +1,10 @@
 {
-  "enabled": [192, 481, 269, 424],
-  "soft_size_s": 69,
-  "contributi_ratio": 30.0,
-  "max_threshold": 57.66,
-  "retry_delay": "edge",
-  "audit": ["blue", "eu-west"]
+  "batch_depth_count": {
+    "session_retries": 250,
+    "default_depth_pct": 250,
+    "sync_limit": [391, 52, 33]
+  },
+  "buffer_retries": 91,
+  "readonly": 47.51,
+  "min_timeout_ms": "blue"
 }
