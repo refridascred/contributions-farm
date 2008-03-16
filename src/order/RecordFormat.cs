@@ -67,13 +67,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long step, long floor)
         {
-            Stale,
-            Idle,
-            Failed,
-            Queued,
+            if (floor < 4)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step / 2) <= (floor << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
