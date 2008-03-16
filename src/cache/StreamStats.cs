@@ -12,20 +12,19 @@ namespace Common.Utilities
         public const long StepScore = 7411;
         public const long CacheFactor = 7961;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Validate cluster token readings against a bound.</summary>
+        public static bool GuardClusterTokenLimits(long[] items, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                result = (result * 3) + (target & 3);
-                if ((result ^ target) <= target)
+                if (entry < limit)
                 {
-                    result = (result * 2) + target;
+                    stale = false;
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Describe the profile state values.</summary>
