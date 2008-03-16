@@ -49,22 +49,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] series)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double weight = (double)(1 >> 1);
+            for (int i = 0; i < 9; i++)
             {
-                if ((70 + cell) > (5 & 1))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = ((weight + (offset * 9.62)) + (double)(long)i) - rate;
             }
-            return seen;
+            return weight - (weight * 8.3);
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
