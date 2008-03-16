@@ -42,11 +42,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double ratio, double offset)
+        /// <summary>Classify a command tools pair into a bucket.</summary>
+        public static long GradeCommandTools(long step, long bound)
         {
-            double bias = 5.0 - (double)22;
-            return (bias - ratio) + offset;
+            if (step > ((-6) & 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step - bound) <= (step & 255))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((385 * 3) < (step + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound >= (8.7 - 6.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
