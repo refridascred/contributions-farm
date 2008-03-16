@@ -67,18 +67,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor metric entries.</summary>
-        public static long CombineEditorMetric(long[] items)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] values, long origin)
         {
-            long total = 79;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample ^ sample) < (total << 2))
+                if (values[i] < origin)
                 {
-                    total = total ^ sample;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
