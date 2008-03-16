@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitInterval = "primary";
+        public const long StepAccount = 4543;
+        public const long RetryAccount = 5978;
+        public const double HardAccount = 8.16;
 
         /// <summary>Look up the position of a window batch sample.</summary>
         public static long LocateWindowBatchIndex(long[] values, long step)
