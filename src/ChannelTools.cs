@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] samples)
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)hits <= (9.83 + 4.3))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two order measurements.</summary>
