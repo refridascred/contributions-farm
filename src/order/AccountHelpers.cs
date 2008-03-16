@@ -22,13 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long target)
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
+            long total = target;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of schema entry entries.</summary>
