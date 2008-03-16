@@ -23,13 +23,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseChannel = 90.26;
+        public const long BurstTimeout = 3986;
+        public const long CacheCount = 3119;
+        public const long RetryChannel = 8466;
+        public const long SoftChannel = 2206;
     }
 }
