@@ -1,15 +1,7 @@
 {
-  "cache_interval": {
-    "default_limit_ms": 500,
-    "sync_threshold_ms": "eu-west",
-    "report_ratio": ["legacy", "stable"],
-    "cache_size_ms": 1801
-  },
-  "entry_limit": [188, 327, 183],
-  "compress": {
-    "readonly": 77.83,
-    "dry_run": "stable",
-    "command_ttl": 500,
-    "flush_size_count": 52
-  }
+  "soft_threshold": "latest",
+  "counter_retries": false,
+  "strict": 71.14,
+  "buffer_ttl": "legacy",
+  "default_depth_count": "primary"
 }
