@@ -46,11 +46,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] series, long floor)
         {
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
