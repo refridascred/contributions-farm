@@ -23,12 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
+            Pending,
+            Retry,
+            Ready,
+            Locked,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
