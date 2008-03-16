@@ -34,11 +34,19 @@ namespace Common.Utilities
             return mean + (double)184;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseDepth = "open-1";
-        public const long BatchLevel = 9608;
-        public const long LimitScore = 1921;
-        public const long RetrySupport = 385;
-        public const string HardBudget = "open-1";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] series, long target)
+        {
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
