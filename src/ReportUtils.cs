@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 177;
-        public const long BatchRatio = 8550;
-        public const string DefaultFactor = "staging";
-        public const long MinToken = 3370;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftReport = "standard";
+        public const long HardFactor = 2530;
+        public const string WindowReport = "legacy-v2";
+        public const string SoftTimeout = "cached-edge";
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
