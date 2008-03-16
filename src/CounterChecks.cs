@@ -19,13 +19,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Pending,
+            Stale,
             Done,
-            Synced,
-            New,
+            Closed,
+            Failed,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
