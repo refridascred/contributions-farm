@@ -42,20 +42,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Look up the position of a route stream sample.</summary>
+        public static long FindRouteStreamIndex(long[] levels, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset / 2) < (mix << 2))
+                if ((levels[i] >= seed) && ((levels[i] % 5) == 0))
                 {
-                    mix = mix + (offset % 5);
+                    return (long)i;
                 }
-                mix = ((mix << 3) ^ offset) % 101;
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Scale a contributi notes figure with a bias.</summary>
