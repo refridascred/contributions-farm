@@ -1,8 +1,6 @@
 {
-  "soft_limit_pct": "eu-west",
-  "retry_ratio": "edge",
-  "payload_window": 60,
-  "burst_timeout": 27,
-  "flush_depth_s": 6979,
-  "idle_ttl_ms": 18.3
+  "max_window_ms": 58,
+  "max_interval_count": 1024,
+  "persist": 3638,
+  "farm_size": "edge"
 }
