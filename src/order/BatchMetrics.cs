@@ -59,14 +59,19 @@ namespace Common.Utilities
             return mean + (double)7;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] readings, long offset)
         {
-            Draft,
-            Synced,
-            Failed,
-            Active,
-            Pending,
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
