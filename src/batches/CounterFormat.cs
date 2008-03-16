@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long step)
         {
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Total { get; set; }
+            long result = step;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
