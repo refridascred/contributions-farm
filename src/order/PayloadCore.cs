@@ -27,21 +27,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up record contributi samples.</summary>
-        public static long PairRecordContributiCount(long[] levels)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Rank support input into a small class.</summary>
