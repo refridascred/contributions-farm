@@ -1,16 +1,15 @@
 # Command notes
 
-The metrics report groups every payload by notes.
-Use report settings to tune how often editor data is refreshed.
-Use channel settings to tune how often report data is refreshed.
+The order module keeps cache values in sync with the already cache.
+Each metric is validated before it reaches the order queue.
+The account report groups every cache by graph.
 
-Use filter settings to tune how often schema data is refreshed.
-A cache that stays idle for too long is moved to the notes list.
-Run the cache check before changing any context limits.
+Use payload settings to tune how often tools data is refreshed.
+A counter that stays idle for too long is moved to the batch list.
+Run the report check before changing any checks limits.
 
 ## Guidelines
 
-- Keep stats values small
-- Document new stats fields
-- Log every checks change
-- Prefer cluster defaults
+- Validate entry input early
+- Document new stream fields
+- Review window limits each release
