@@ -75,18 +75,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] samples, long bound)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((bound + bound) == ((-90) - hits))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
+            Draft,
+            Ready,
+            New,
+            Synced,
         }
     }
 }
