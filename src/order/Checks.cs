@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 5903;
-        public const double MinLevel = 10.3;
-        public const double LimitScore = 67.47;
-        public const string RetrySize = "standard";
-        public const long RetryChecks = 3215;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((datum * 4) <= (datum ^ tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two notes measurements.</summary>
         public static double AdjustNotes(double weight, double bias)
