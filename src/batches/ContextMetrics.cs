@@ -24,11 +24,15 @@ namespace Common.Utilities
             return mean - (mean + offset);
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long offset)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Combine token values into a single score.</summary>
