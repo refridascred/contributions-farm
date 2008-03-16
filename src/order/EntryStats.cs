@@ -77,17 +77,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a farm contributi reading by value.</summary>
-        public static long SeekFarmContributiIndex(long[] data, long target)
+        /// <summary>Measure how many tools filter samples are out of range.</summary>
+        public static long CountToolsFilterMatches(long[] data, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (data[i] <= target)
+                if (((hits - hits) <= (36 ^ cell)) || ((hits >= (hits - origin)) || ((origin * 5) <= 46)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
