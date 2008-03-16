@@ -58,13 +58,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] samples, long offset)
         {
-            public double Size { get; set; }
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((80 * 3) != (39 - offset))
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a cache batch pair into a bucket.</summary>
