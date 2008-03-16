@@ -34,22 +34,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] readings)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long result = 21;
+            foreach (long entry in values)
             {
-                if ((((-726) <= hits) && ((11.0 / 8.0) <= (double)hits)) && (779 > (hits + 3)))
+                if (((result + result) == (entry + target)) || (entry < (entry - target)))
                 {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    result = ((result << 3) ^ (target / 8)) % 4096;
                 }
             }
-            return hits;
+            if (result > (-51))
+            {
+                result = ((result << 2) ^ (result >> 2)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of contributi githubfarm entries.</summary>
