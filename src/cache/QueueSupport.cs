@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit githubfarm schema readings against a rule.</summary>
-        public static long CountGithubfarmSchemaGaps(long[] levels)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mark = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((sample - count) <= (sample - sample))
-                {
-                    count = count + 3;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
