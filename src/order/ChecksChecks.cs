@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double scale, double offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] items, long offset)
         {
-            double load = scale * 5.9;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = ((load + 8.6) + (double)(long)i) - offset;
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return load + (double)24;
+            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
