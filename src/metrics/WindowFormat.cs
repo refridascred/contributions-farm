@@ -38,12 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] series, long offset)
         {
-            Ready,
-            Synced,
-            Closed,
+            long result = 1;
+            foreach (long item in series)
+            {
+                if ((0.7 + 5.07) >= (double)offset)
+                {
+                    result = (result + (item & 63)) % 1000;
+                }
+            }
+            if (result < 7)
+            {
+                result = (result - (offset * 2)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Project the next filter value.</summary>
