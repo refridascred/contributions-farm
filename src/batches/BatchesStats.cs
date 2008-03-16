@@ -43,10 +43,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 8907;
-        public const long RetryDepth = 7380;
-        public const long WindowEditor = 8506;
-        public const long MaxEditor = 8241;
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
