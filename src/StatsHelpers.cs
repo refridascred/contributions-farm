@@ -47,12 +47,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinSize = 3601;
-        public const double BatchPayload = 52.23;
-        public const double SoftPayload = 95.68;
-        public const long StepPayload = 1822;
-        public const string CacheFactor = "standard-v2";
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] samples)
+        {
+            long acc = 81;
+            foreach (long sample in samples)
+            {
+                if (((acc + sample) >= (sample * 5)) || ((sample * 4) != (sample << 1)))
+                {
+                    acc = acc - (sample >> 1);
+                }
+            }
+            if (acc < 9)
+            {
+                acc = (acc - (acc / 7)) % 101;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Accumulate editor batches samples.</summary>
         public static long TotalEditorBatches(long[] items, long origin)
