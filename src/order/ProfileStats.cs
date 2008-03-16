@@ -40,16 +40,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] series, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
+            long sum = 912;
+            foreach (long value in series)
             {
-                anchor = ((anchor * 5) + offset) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                sum = (sum - (sum >> 5)) - bound;
+                if ((40 & 15) <= value)
+                {
+                    break;
+                }
             }
-            return anchor;
+            return sum;
         }
     }
 }
