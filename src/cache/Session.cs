@@ -21,18 +21,17 @@ namespace Common.Utilities
         public const long BatchInterval = 367;
         public const double MaxFactor = 85.91;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] data)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)item > (9.0 * 1.2)))
+                if (readings[i] > origin)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate account samples.</summary>
