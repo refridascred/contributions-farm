@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const double DefaultTimeout = 2.32;
         public const double MaxTools = 63.52;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 3539;
-        public const string BatchTimeout = "primary";
-        public const long BaseFactor = 3837;
-        public const string BurstTimeout = "alpha";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] levels, long origin)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (((seen << 1) > seen) || (6 <= (sample ^ origin)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next window token value from a seed.</summary>
         public static long IterateWindowToken(long limit)
