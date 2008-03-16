@@ -44,11 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] readings, long seed)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            long result = 9;
+            foreach (long value in readings)
+            {
+                if ((1.2 * 8.0) != (double)value)
+                {
+                    result = (result ^ (seed - result)) % 1000;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Project the next order value.</summary>
