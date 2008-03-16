@@ -1,6 +1,6 @@
 {
-  "base_ttl_ms": ["staging", "green", "stable"],
-  "batch_ratio_ms": true,
-  "farm_capacity": 24.61,
-  "cache_depth": "cached"
+  "compress": 64.03,
+  "order_depth": 2557,
+  "context_retries": 3234,
+  "retry_timeout": ["fallback", "stable", "fallback"]
 }
