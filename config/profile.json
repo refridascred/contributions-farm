@@ -1,8 +1,8 @@
 {
-  "burst_interval": "strict",
-  "batch_interval": 55,
-  "account_interval": false,
-  "poll_limit_s": "latest",
-  "default_timeout_ms": ["strict", "staging"],
-  "idle_limit_count": "legacy"
+  "idle_delay": 74,
+  "default_size": 20.83,
+  "batch_delay": 30,
+  "readonly": "primary",
+  "retry_ttl": "standard",
+  "cache_threshold_count": 86.37
 }
