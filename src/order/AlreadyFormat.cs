@@ -19,33 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metrics token input into a small class.</summary>
-        public static long SortMetricsToken(long offset, long target)
-        {
-            long cur = offset ^ target;
-            if ((7 % 64) > (target ^ offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)target > (6.52 / 3.0)) && ((double)target < (7.37 / 9.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((cur - cur) >= cur)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CacheFactor = 51.25;
+        public const string BasePayload = "latest-1";
+        public const double DefaultCount = 62.59;
 
         /// <summary>Check that every tools report entry stays within the limit.</summary>
         public static bool CheckToolsReportLimits(long[] values, long floor)
