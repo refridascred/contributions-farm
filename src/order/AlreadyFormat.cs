@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultRatio = "local";
-        public const long MaxTimeout = 3037;
-        public const string BaseLevel = "standard";
-        public const long LimitFactor = 7033;
-        public const long DefaultContributi = 5704;
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryGaps(long[] values, long floor)
