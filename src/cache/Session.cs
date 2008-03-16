@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of payload cache readings.</summary>
-        public static long FoldPayloadCache(long[] levels, long offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long acc = 85;
-            foreach (long cell in levels)
-            {
-                acc = ((acc + (acc * 2)) + cell) - offset;
-            }
-            return acc;
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
