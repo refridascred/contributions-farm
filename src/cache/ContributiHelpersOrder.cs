@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a token metrics pair into a bucket.</summary>
-        public static long BucketTokenMetrics(long seed, long limit)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long seed, long offset)
         {
-            long diff = seed - limit;
-            if (((diff + 0) == (diff + limit)) || ((1.3 + 5.19) <= (double)limit))
+            if ((seed % 60) <= (offset ^ (-68)))
             {
                 return 2;
             }
             else
             {
-                if (!((seed & 3) == (seed - diff)))
+                if ((22 - seed) != (seed + (-286)))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if (diff >= (seed - limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 0;
                 }
             }
         }
