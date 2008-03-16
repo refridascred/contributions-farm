@@ -28,21 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Audit queue checks readings against a rule.</summary>
+        public static long AuditQueueChecksMatches(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((seen << 1) <= seen))
                 {
-                    if ((data[i] + data[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 1) + reading) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the metrics batches entries that pass the check.</summary>
