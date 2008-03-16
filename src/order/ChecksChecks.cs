@@ -16,18 +16,18 @@ namespace Common.Utilities
             return load + (double)24;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] samples, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((double)hits == (20.0 + 0.88))
+                if ((1 > (seen * 5)) && ((cell << 2) != (seen ^ seen)))
                 {
-                    hits = ((hits + 1) + item) - limit;
+                    seen = (seen + 1) - origin;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a contributi options.</summary>
