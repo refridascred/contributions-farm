@@ -1,5 +1,6 @@
 {
-  "readonly": 61,
-  "compress": 89.0,
-  "verbose": "fallback"
+  "burst_retries_s": ["eu-west", "local"],
+  "base_threshold_s": 46.27,
+  "sync_window_ms": "green",
+  "poll_interval_count": 58.43
 }
