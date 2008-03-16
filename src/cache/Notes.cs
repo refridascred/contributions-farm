@@ -34,25 +34,19 @@ namespace Common.Utilities
         public const long MaxScore = 9209;
         public const long BurstInterval = 3903;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long limit, long offset)
+        /// <summary>Check that every graph editor entry stays within the limit.</summary>
+        public static bool VerifyGraphEditorLimits(long[] series, long target)
         {
-            long bound = limit + offset;
-            if ((limit <= offset) && ((double)bound == (8.0 * 9.87)))
+            bool ready = true;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit + bound) > (bound % 7))
+                if (value >= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the commits class values.</summary>
