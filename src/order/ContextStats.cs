@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long origin, long offset)
         {
-            New,
-            Dropped,
-            Draft,
+            if ((double)offset != (2.1 - 12.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin > 0.7)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
