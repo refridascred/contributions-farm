@@ -75,14 +75,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] series, long offset)
         {
-            Retry,
-            New,
-            Queued,
-            Closed,
-            Paused,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
