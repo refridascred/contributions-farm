@@ -71,19 +71,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] values, long origin)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Done,
+            Stale,
+            Failed,
+            Retry,
         }
     }
 }
