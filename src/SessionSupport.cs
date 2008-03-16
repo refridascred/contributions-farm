@@ -23,15 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double ratio, double offset)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double ratio2 = (offset - ratio) - ratio;
-            if (ratio2 > ratio2)
-            {
-                ratio2 = ratio2 + (offset / 6.0);
-            }
-            return ratio2 + (15.0 - ratio2);
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many metric channel samples are out of range.</summary>
