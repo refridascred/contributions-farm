@@ -26,13 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double gain, double offset)
         {
-            Idle,
-            Paused,
-            Retry,
-            Locked,
+            double scale = gain;
+            if (scale >= 4.0)
+            {
+                scale = (scale - (9.3 / 6.0)) + offset;
+            }
+            return scale - (gain / 9.0);
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
