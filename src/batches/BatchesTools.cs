@@ -19,19 +19,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] data, long step)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
