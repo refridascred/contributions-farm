@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] readings, long step)
+        /// <summary>Roll a context stream counter forward.</summary>
+        public static long SeriesContextStream(long offset)
         {
-            long sum = 0;
-            foreach (long sample in readings)
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (!(step <= (step << 1)))
+                if (((double)(long)i >= (17.0 + 5.9)) || (offset <= (offset << 3)))
                 {
-                    sum = ((sum + (step * 3)) % 97) ^ sample;
+                    acc = (acc - (offset + offset)) % 97;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
