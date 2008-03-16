@@ -16,12 +16,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Audit session cache readings against a rule.</summary>
+        public static long MeasureSessionCacheGaps(long[] items, long seed)
         {
-            Retry,
-            Locked,
-            Active,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((long)items.Length > (seed & 1))
+                {
+                    count = (count + 1) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
