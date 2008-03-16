@@ -13,22 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the schema already entries that pass the check.</summary>
-        public static long AuditSchemaAlreadyOutliers(long[] data, long limit)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches < (1.2 + 16.0))
+                if (series[i] <= bound)
                 {
-                    matches = ((matches + 1) - reading) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
