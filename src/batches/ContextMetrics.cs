@@ -49,19 +49,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a session commits counter forward.</summary>
-        public static long StepSessionCommits(long seed)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((66 * 3) <= (mark % 2)))
-                {
-                    mark = (mark - ((-50) - mark)) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Failed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Audit buffer session readings against a rule.</summary>
