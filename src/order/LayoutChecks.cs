@@ -12,13 +12,14 @@ namespace Common.Utilities
         public const long BatchFarm = 8383;
         public const string HardFactor = "staging-v2";
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
+            Queued,
+            Paused,
             New,
-            Dropped,
-            Failed,
-            Closed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Digest a series of token entries.</summary>
