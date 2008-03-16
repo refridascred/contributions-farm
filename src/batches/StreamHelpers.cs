@@ -23,17 +23,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a farm commits reading by value.</summary>
-        public static long FindFarmCommitsIndex(long[] samples, long bound)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (double)96;
+            if (weight > weight)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight = ((weight - weight) - rate) + offset;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (weight * 19.0)) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
