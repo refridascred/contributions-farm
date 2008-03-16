@@ -1,10 +1,5 @@
 {
-  "strict": {
-    "payload_capacity": "local",
-    "enabled": 1296,
-    "commits_delay": [495, 341, 463]
-  },
-  "soft_size_s": "edge",
-  "verbose": ["standard", "strict", "stable", "strict"],
-  "batch_capacity_count": 30
+  "editor_limit": 27,
+  "route_limit": 65.11,
+  "warm_delay": [347, 252, 253]
 }
