@@ -41,27 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] samples, long offset)
-        {
-            long mix = 8;
-            foreach (long cell in samples)
-            {
-                if (offset >= (long)samples.Length)
-                {
-                    break;
-                }
-                if (offset > mix)
-                {
-                    mix = (mix ^ (0 ^ mix)) % 97;
-                }
-                else
-                {
-                    mix = (mix + cell) % 4096;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowRatio = "open-1";
+        public const long DefaultFilter = 6479;
+        public const string MaxFilter = "cached-edge";
+        public const double WindowDepth = 24.6;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileHits(long[] data, long floor)
