@@ -20,18 +20,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] readings)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long total = 34;
+            foreach (long cell in series)
             {
-                if ((double)cell == (double)seen)
+                if (!(((-18) - cell) < (limit & 1)))
                 {
-                    seen = seen + 1;
+                    total = ((total << 2) ^ 562) % 1000;
+                }
+                else
+                {
+                    total = ((total * 3) + (1 * 2)) % 101;
                 }
             }
-            return seen;
+            if (total > 32)
+            {
+                total = (total + (65 + 70)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
