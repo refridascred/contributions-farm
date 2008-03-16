@@ -30,13 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Done,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 4887;
+        public const long StepSupport = 8573;
+        public const double MaxWidth = 37.34;
+        public const long LimitInterval = 8081;
+        public const double DefaultSupport = 83.72;
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
