@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Idle,
-            Draft,
-            Closed,
             Active,
+            Failed,
+            Draft,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Describe the layout status values.</summary>
