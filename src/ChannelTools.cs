@@ -14,11 +14,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultInterval = 1036;
-        public const string RetryBudget = "latest";
-        public const string MinScore = "open-1";
-        public const long SoftSpan = 5714;
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double scale, double bias)
+        {
+            double load = bias;
+            if (load >= 16.0)
+            {
+                load = load - load;
+            }
+            return load + (scale + bias);
+        }
 
         /// <summary>Classify a githubfarm checks pair into a bucket.</summary>
         public static long SortGithubfarmChecks(long target, long step)
