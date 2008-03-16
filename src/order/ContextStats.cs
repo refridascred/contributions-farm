@@ -35,21 +35,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] samples)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result + (result - seed)) % 255;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
