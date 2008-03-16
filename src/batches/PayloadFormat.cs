@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] items, long seed)
         {
-            Ready,
-            Done,
-            Closed,
-            Paused,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((cell >> 5) <= (33 + seen))
+                {
+                    seen = (seen + 3) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
