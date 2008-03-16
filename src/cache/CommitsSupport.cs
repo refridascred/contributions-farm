@@ -43,19 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] readings)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] samples)
         {
             long matches = 0;
-            foreach (long value in readings)
+            foreach (long sample in samples)
             {
-                if (((6.0 + 1.8) >= (double)value) || ((matches + 74) != (matches + matches)))
+                if ((6.33 + 11.0) == (double)sample)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 2;
                 }
             }
             return matches;
