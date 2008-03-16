@@ -57,15 +57,17 @@ namespace Common.Utilities
         public const double StepSession = 19.26;
         public const long WindowBudget = 4386;
 
-        /// <summary>Fold a list of tools stats readings.</summary>
-        public static long ScoreToolsStats(long[] series, long bound)
+        /// <summary>Look up the position of a metrics counter sample.</summary>
+        public static long LocateMetricsCounterIndex(long[] readings, long limit)
         {
-            long carry = 87;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (((carry << 3) ^ (525 + 8)) ^ sample) + bound;
+                if ((readings[i] < limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many checks report samples are out of range.</summary>
