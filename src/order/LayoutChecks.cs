@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchFactor = 5.61;
+        public const string BaseSize = "latest-edge";
+        public const long DefaultSize = 1244;
+        public const string BatchInterval = "stable-v2";
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool CheckPayloadRange(long[] levels, long step)
