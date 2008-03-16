@@ -12,16 +12,22 @@ namespace Common.Utilities
         public const long CacheQueue = 3877;
         public const long BurstQueue = 9929;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] series, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            long state = 13;
+            foreach (long datum in series)
             {
-                sum = sum + (origin * 3);
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (((datum ^ limit) <= (limit + datum)) || (((long)series.Length & 3) >= (datum / 6)))
+                {
+                    break;
+                }
+                if ((9.47 / 3.0) == (double)state)
+                {
+                    state = ((state * 5) + (34 - datum)) % 4096;
+                }
             }
-            return sum;
+            return state % 97;
         }
 
         /// <summary>Describe the stats mode values.</summary>
