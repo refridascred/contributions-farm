@@ -42,11 +42,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
+            Ready,
+            Queued,
+            New,
         }
 
         /// <summary>Describe the profile class values.</summary>
