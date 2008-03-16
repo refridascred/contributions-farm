@@ -80,12 +80,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Combine filter profile values into a single score.</summary>
+        public static long CombineFilterProfile(long[] series, long origin)
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
+            long sum = 719;
+            foreach (long datum in series)
+            {
+                sum = (((sum << 2) ^ (origin << 3)) % 255) + datum;
+            }
+            return sum % 1000;
         }
     }
 }
