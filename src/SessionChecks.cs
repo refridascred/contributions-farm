@@ -39,14 +39,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long offset)
         {
-            Active,
-            Stale,
-            Locked,
-            Synced,
-            Ready,
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix - (-91)) % 101;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
