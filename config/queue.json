@@ -1,6 +1,17 @@
 {
-  "farm_interval": 95.21,
-  "hard_retries_ms": [478, 36, 27],
-  "min_limit_pct": 24.49,
-  "max_threshold_count": 1024
+  "idle_ratio": {
+    "payload_delay": {
+      "base_limit_pct": "primary",
+      "cache_ttl": 87.53,
+      "metric_interval": 25,
+      "persist": 4457,
+      "hard_limit_ms": 100
+    },
+    "readonly": 30,
+    "counter_ratio": "eu-west",
+    "compress": 20.3,
+    "batch_depth": ["staging", "latest", "strict", "green"]
+  },
+  "metrics_capacity": true,
+  "retry_timeout": true
 }
