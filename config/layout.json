@@ -1,5 +1,16 @@
 {
-  "max_size_ms": 2,
-  "batch_timeout_pct": 67.77,
-  "max_limit_pct": 93
+  "min_retries": {
+    "max_threshold": 14,
+    "editor_ratio": "cached",
+    "readonly": 1024,
+    "retry_retries": [28, 408],
+    "compress": 74.79
+  },
+  "profile_ttl": "green",
+  "poll_threshold": "edge",
+  "verbose": {
+    "order_ratio": 19,
+    "min_ratio_s": "latest",
+    "default_size_ms": "open"
+  }
 }
