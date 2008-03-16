@@ -1,6 +1,12 @@
 {
-  "dry_run": false,
-  "audit": 60,
-  "persist": 30,
-  "min_size": 79.88
+  "burst_interval_pct": false,
+  "verbose": "fallback",
+  "flush_capacity_ms": [417, 447],
+  "warm_retries_ms": {
+    "hard_retries": false,
+    "persist": true,
+    "warm_ratio": ["eu-west", "legacy"]
+  },
+  "min_limit": 92.3,
+  "batch_window": "fallback"
 }
