@@ -1,15 +1,14 @@
 # Command notes
 
-Use stream settings to tune how often window data is refreshed.
-A tools that stays idle for too long is moved to the account list.
+Defaults for route live in the config folder and can be overridden per environment.
+When a cache fails, the stats handler retries a few times before giving up.
+Run the payload check before changing any record limits.
 
-The metrics module keeps record values in sync with the report cache.
-When a notes fails, the token handler retries a few times before giving up.
-A support that stays idle for too long is moved to the session list.
+The context helpers are pure functions, so they are safe to call from any thread.
+Run the context check before changing any tools limits.
 
 ## Guidelines
 
-- Log every editor change
+- Review report limits each release
 - Prefer format defaults
-- Review order limits each release
-- Validate support input early
+- Document new contributi fields
