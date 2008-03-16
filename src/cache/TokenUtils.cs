@@ -25,12 +25,9 @@ namespace Common.Utilities
             return drift + (double)535;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 7139;
+        public const long SoftSize = 9366;
+        public const long RetryScore = 9979;
     }
 }
