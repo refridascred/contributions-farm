@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a stats stream sample.</summary>
-        public static long SeekStatsStreamIndex(long[] samples, long bound)
+        /// <summary>Locate a tools record reading by value.</summary>
+        public static long FindToolsRecordIndex(long[] samples, long step)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
+                if (samples[i] >= step)
                 {
                     return (long)i;
                 }
