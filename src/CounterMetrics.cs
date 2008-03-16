@@ -50,21 +50,9 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 4.25;
+        public const long IdleInterval = 3267;
+        public const long LimitProfile = 7947;
     }
 }
