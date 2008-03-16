@@ -12,10 +12,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 4375;
-        public const long HardSize = 945;
-        public const long BatchBudget = 3221;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Failed,
+            Stale,
+            Dropped,
+            New,
+            Locked,
+        }
 
         /// <summary>Blend two stats measurements.</summary>
         public static double ProjectStats(double scale, double bias)
