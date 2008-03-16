@@ -28,11 +28,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
+            Failed,
+            Ready,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count the context githubfarm entries that pass the check.</summary>
