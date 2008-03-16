@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Failed,
-            New,
-            Closed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 8164;
+        public const long SoftRatio = 7506;
+        public const long BaseInterval = 8672;
+        public const string WindowBudget = "cached-v2";
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long SeekPayloadIndex(long[] data, long floor)
