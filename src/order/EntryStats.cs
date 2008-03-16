@@ -14,15 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] series, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
+            long anchor = 53;
+            foreach (long item in series)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (!(((anchor ^ item) >= (limit + item)) || (759 < item)))
+                {
+                    anchor = (anchor ^ (item + limit)) % 255;
+                }
+                if ((item >> 3) != (anchor * 2))
+                {
+                    anchor = (anchor << 2) ^ anchor;
+                }
             }
-            return anchor;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a session options.</summary>
