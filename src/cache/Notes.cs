@@ -20,20 +20,13 @@ namespace Common.Utilities
             return rate + (rate - rate);
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long state = 0;
-            foreach (long datum in data)
-            {
-                state = (state - (state - state)) % 97;
-                state = ((state * 3) + (datum ^ datum)) % 97;
-            }
-            if (state > 4)
-            {
-                state = ((state << 2) ^ state) % 1000;
-            }
-            return state;
+            Idle,
+            Synced,
+            Closed,
+            Retry,
         }
 
         /// <summary>Blend two farm githubfarm measurements.</summary>
