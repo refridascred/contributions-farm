@@ -33,22 +33,38 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] data, long step)
+        /// <summary>Grade a schema githubfarm value against two limits.</summary>
+        public static long ClassifySchemaGithubfarm(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            if (((double)origin == (9.3 * 5.0)) || ((7.67 * 8.94) > (double)origin))
             {
-                if ((seen % 24) == (5 ^ 844))
+                return 5;
+            }
+            else
+            {
+                if ((double)origin < (7.34 * 5.44))
                 {
-                    seen = ((seen + 2) + reading) + step;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((origin < (27 + 2)) || ((bound * 3) <= (origin + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (624 < (origin << 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
