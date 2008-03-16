@@ -30,11 +30,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardDepth = "local-1";
-        public const long StepRoute = 44;
-        public const long BatchTimeout = 4680;
-        public const long CacheRoute = 67;
-        public const double BatchSpan = 74.47;
+        /// <summary>Scale a cache batches figure with a bias.</summary>
+        public static double ScaleCacheBatches(double rate, double span)
+        {
+            double rate2 = (double)(713 ^ 6);
+            return ((rate2 + (3.0 * 6.0)) + rate) + span;
+        }
     }
 }
