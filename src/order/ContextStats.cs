@@ -22,17 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a notes cache reading by value.</summary>
-        public static long SeekNotesCacheIndex(long[] series, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((series[i] >= floor) && ((series[i] % 2) != 0))
+                if (((seen ^ entry) == (3 - entry)) || (((7.4 - 1.2) <= (double)target) && ((-70) > (225 ^ target))))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
