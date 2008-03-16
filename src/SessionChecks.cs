@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] series, long floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long total = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum > floor)
+                if ((((long)i + (long)i) > (total + (-37))) || ((double)total != (double)limit))
                 {
-                    found = false;
-                    break;
+                    total = (total + (total + (long)i)) % 255;
                 }
+                if ((total - (-5)) >= total)
+                {
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
