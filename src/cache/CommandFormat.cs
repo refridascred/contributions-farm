@@ -12,22 +12,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] readings)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (count <= (count + count))
+                if ((6.03 * 4.76) <= (double)entry)
                 {
-                    count = (count + 1) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
