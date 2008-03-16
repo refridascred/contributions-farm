@@ -48,23 +48,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double weight, double span)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] samples, long target)
         {
-            double rate = span;
-            if (rate <= rate)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                rate = rate + (weight * 1.0);
+                if ((matches - matches) > (sample << 3))
+                {
+                    matches = (matches + 1) - target;
+                }
             }
-            else
-            {
-                rate = rate - (span + weight);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + rate;
+            return matches;
         }
     }
 }
