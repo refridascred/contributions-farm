@@ -47,13 +47,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] readings, long bound)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public bool Region { get; set; }
+            long carry = 99;
+            foreach (long value in readings)
+            {
+                if ((carry / 5) >= (1 % 12))
+                {
+                    carry = ((carry ^ (31 & 127)) ^ value) - bound;
+                }
+            }
+            if (carry < 62)
+            {
+                carry = (carry - ((-832) << 1)) % 1000;
+            }
+            return carry;
         }
     }
 }
