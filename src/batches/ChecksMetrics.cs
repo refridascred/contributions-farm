@@ -38,17 +38,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] levels, long target)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Locked,
+            Stale,
+            Synced,
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
