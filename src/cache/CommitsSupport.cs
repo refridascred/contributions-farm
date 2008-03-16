@@ -21,14 +21,10 @@ namespace Common.Utilities
         public const long BaseBatches = 2022;
         public const double RetryBatches = 80.65;
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxCommits = 23.13;
+        public const long BaseCommits = 9999;
+        public const long DefaultCommits = 7984;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
