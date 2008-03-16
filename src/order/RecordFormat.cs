@@ -53,14 +53,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Retry,
-            Active,
-            Pending,
-            Failed,
-            Queued,
+            public long Size { get; set; }
+            public bool Level { get; set; }
+            public double Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Grade a record context value against two limits.</summary>
