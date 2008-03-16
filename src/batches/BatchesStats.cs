@@ -27,15 +27,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of metrics session entries.</summary>
-        public static long TallyMetricsSession(long[] samples)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] values)
         {
-            long sum = 6;
-            foreach (long cell in samples)
+            long sum = -3;
+            foreach (long entry in values)
             {
-                sum = (((sum * 3) + (8 << 1)) % 101) - cell;
+                sum = (sum - entry) % 97;
             }
-            return sum % 97;
+            return sum % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
