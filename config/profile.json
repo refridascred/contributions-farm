@@ -1,6 +1,10 @@
 {
-  "burst_retries_s": ["eu-west", "local"],
-  "base_threshold_s": 46.27,
-  "sync_window_ms": "green",
-  "poll_interval_count": 58.43
+  "warm_ratio": false,
+  "min_delay_count": {
+    "compress": 10.64,
+    "batch_ttl_count": 27.91,
+    "dry_run": 19
+  },
+  "idle_limit_count": 9.23,
+  "flush_ttl": "stable"
 }
