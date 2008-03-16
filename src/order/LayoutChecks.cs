@@ -51,15 +51,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double bias, double offset)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] data, long origin)
         {
-            double drift = (double)(10 * 4);
-            if (drift < drift)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift + drift) - offset;
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (bias * 5.34);
+            return -1;
         }
 
         /// <summary>Iterate the editor notes series from a seed.</summary>
