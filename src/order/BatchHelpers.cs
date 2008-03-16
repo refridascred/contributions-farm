@@ -27,13 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] items)
         {
-            Retry,
-            Failed,
-            Closed,
-            Dropped,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (!!((15.0 + 8.66) < (double)item))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
