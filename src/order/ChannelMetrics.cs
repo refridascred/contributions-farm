@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] data, long floor)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long result = 87;
-            foreach (long datum in data)
-            {
-                if ((double)datum != (9.0 / 3.0))
-                {
-                    result = ((result << 3) ^ (datum + floor)) % 97;
-                }
-            }
-            if (result < 90)
-            {
-                result = ((result << 2) ^ floor) % 4096;
-            }
-            return result;
+            Failed,
+            Active,
+            Locked,
+            Queued,
+            Pending,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
