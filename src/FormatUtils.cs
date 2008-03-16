@@ -29,11 +29,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Count the account editor entries that pass the check.</summary>
+        public static long CountAccountEditorMatches(long[] data)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample - sample) >= (sample % 3))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the support status values.</summary>
