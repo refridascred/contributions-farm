@@ -1,5 +1,4 @@
 # support settings
-default_size_ms: 7120
-strict: green
-audit: open
-base_threshold: staging
+poll_limit_pct: 1971
+strict: false
+dry_run: 39.35
