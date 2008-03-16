@@ -31,9 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "strict";
-        public const string LimitAlready = "stable";
-        public const long MinAlready = 2723;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            New,
+            Retry,
+            Closed,
+        }
     }
 }
