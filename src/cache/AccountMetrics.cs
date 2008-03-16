@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] samples)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long mix = 67;
-            foreach (long item in samples)
-            {
-                if ((double)item <= (1.3 * 0.7))
-                {
-                    mix = (mix ^ (444 + 672)) % 101;
-                }
-            }
-            return mix % 4096;
+            public bool Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the entry state values.</summary>
