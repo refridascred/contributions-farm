@@ -20,19 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] series, long origin)
+        /// <summary>Locate a support schema reading by value.</summary>
+        public static long FindSupportSchemaIndex(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < origin)
+                if (data[i] >= origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
