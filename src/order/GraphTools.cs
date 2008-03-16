@@ -27,13 +27,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long step)
         {
-            Locked,
-            Pending,
-            Paused,
-            New,
+            long result = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((step / 2) != (step - 935))
+                {
+                    result = ((result * 3) + (step + step)) % 1000;
+                    result = (result * 5) + 660;
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Roll a batch account counter forward.</summary>
