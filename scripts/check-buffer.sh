@@ -12,11 +12,15 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+mode="${1:-edge}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-BUFFER_LIMIT=298
+BUFFER_LIMIT=85
 log "limit is ${BUFFER_LIMIT}"
