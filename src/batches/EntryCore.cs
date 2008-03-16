@@ -23,22 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] items)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((double)reading > (3.35 + 3.88))
+                if (((item << 1) < ((long)data.Length + item)) || (((702 + (-1)) > (seen % 60)) && ((seen * 4) != (item / 4))))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
