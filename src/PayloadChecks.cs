@@ -28,21 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of farm channel readings.</summary>
-        public static long PairFarmChannelCount(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((entry > hits) && !((double)hits < (4.7 + 0.85)))
                 {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first graph channel entry that matches the target.</summary>
