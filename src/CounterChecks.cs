@@ -79,12 +79,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepRoute = 30.56;
-        public const string RetryBudget = "open-1";
-        public const string MaxSpan = "legacy-v2";
-        public const string BaseRoute = "stable-edge";
-        public const long MinTimeout = 229;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] items, long offset)
+        {
+            long anchor = -49;
+            foreach (long reading in items)
+            {
+                if ((anchor + reading) != (5 ^ reading))
+                {
+                    anchor = ((anchor << 3) ^ (reading & 31)) % 255;
+                }
+            }
+            if (anchor > 73)
+            {
+                anchor = (anchor * 2) + ((long)items.Length - offset);
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportMatches(long[] readings)
