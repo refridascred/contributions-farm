@@ -59,20 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] values, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (!(((double)hits < (double)99) && ((hits + hits) <= target)))
                 {
-                    acc = (acc * 3) + (long)i;
-                    acc = (acc + ((long)i2 >> 3)) % 255;
+                    hits = (hits + 1) + entry;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
