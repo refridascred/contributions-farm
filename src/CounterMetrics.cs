@@ -19,10 +19,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 2499;
-        public const string DefaultFactor = "latest-1";
-        public const double SoftWidth = 3.82;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long limit, long origin)
+        {
+            long gap = limit ^ origin;
+            if (((double)961 <= (double)gap) || ((limit / 2) >= (origin / 7)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((gap - gap) <= (gap * 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit * 4) == (origin + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of contributi context entries.</summary>
         public static long FoldContributiContext(long[] levels)
