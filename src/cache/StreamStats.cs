@@ -28,19 +28,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate editor profile readings against a bound.</summary>
-        public static bool GuardEditorProfileRange(long[] values, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (item < limit)
+                if ((count - seed) >= (seed / 9))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) ^ item;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
