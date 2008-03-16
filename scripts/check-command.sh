@@ -7,14 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-fallback}"
+mode="${1:-latest}"
 case "${mode}" in
-    blue)
+    primary)
         log "fast path"
         ;;
     *)
@@ -22,5 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=351
-log "limit is ${COMMAND_LIMIT}"
+for item in green local latest; do
+    log "checking ${item}"
+done
