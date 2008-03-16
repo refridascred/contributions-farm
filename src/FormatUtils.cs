@@ -66,18 +66,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] levels)
+        /// <summary>Measure how many token route samples are out of range.</summary>
+        public static long AuditTokenRouteHits(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((cell + cell) > cell)
+                if ((double)(long)data.Length >= (17.0 / 8.0))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 2) + item;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
