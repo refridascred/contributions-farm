@@ -67,13 +67,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long seed, long limit)
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
+            if (((limit - seed) > (seed + seed)) || ((double)limit > 1.38))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((18.0 * 16.0) != (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit << 2) >= (seed + limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
