@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long step)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    sum = ((sum + (26 - step)) % 4096) - (long)i3;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Ready,
+            Active,
+            Pending,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
