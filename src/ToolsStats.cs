@@ -76,11 +76,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 7730;
-        public const string RetryCluster = "latest-1";
-        public const long MaxCluster = 6888;
-        public const long IdleTimeout = 1687;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] samples, long step)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (datum > (step + datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double ScaleContext(double scale, double floor)
