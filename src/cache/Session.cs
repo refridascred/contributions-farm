@@ -16,21 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count farm payload pairs that satisfy a relation.</summary>
-        public static long CompareFarmPayloadCount(long[] data)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 6;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((anchor + 403) >= (cell + anchor))
                 {
-                    if ((data[i] - data[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor ^ (cell << 3);
+                }
+                else
+                {
+                    anchor = anchor + ((long)levels.Length + anchor);
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the schema state values.</summary>
