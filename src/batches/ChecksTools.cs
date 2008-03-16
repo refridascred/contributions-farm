@@ -32,12 +32,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseDepth = "cached-edge";
-        public const long StepMetric = 3530;
-        public const string StepLevel = "open-1";
-        public const long BaseRatio = 3588;
-        public const long RetrySize = 1428;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] series, long step)
+        {
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Derive the next window githubfarm value from a seed.</summary>
         public static long DeriveWindowGithubfarm(long origin)
