@@ -35,18 +35,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] data, long limit)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (matches <= (limit % 12))
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two order window measurements.</summary>
