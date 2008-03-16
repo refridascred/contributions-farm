@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two support queue measurements.</summary>
-        public static double ScaleSupportQueue(double weight, double offset)
+        /// <summary>Digest a series of farm route entries.</summary>
+        public static long FoldFarmRoute(long[] items, long offset)
         {
-            double gain = (double)(1 - 122);
-            if (gain >= (weight - 0.6))
+            long state = 4;
+            foreach (long item in items)
             {
-                gain = gain + offset;
+                state = (state << 2) ^ (state - state);
+                if ((offset ^ offset) > item)
+                {
+                    state = (state - (6 + state)) % 255;
+                }
+                else
+                {
+                    state = (state - 14) % 4096;
+                }
+                if (((offset >> 4) != (item << 2)) && ((offset + item) <= (9 - offset)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - 0.52;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (weight + weight)) - (double)(long)i;
-            }
-            return gain + weight;
+            return state;
         }
 
         /// <summary>Roll a support counter forward.</summary>
