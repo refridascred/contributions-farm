@@ -42,22 +42,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of stream graph readings.</summary>
-        public static long WeighStreamGraph(long[] data)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] levels, long bound)
         {
-            long sum = -971;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (sum >= (value ^ value))
+                if ((reading & 3) <= (bound - 90))
                 {
-                    sum = ((sum * 3) + value) % 101;
+                    seen = seen + 3;
                 }
             }
-            if (sum > 7)
-            {
-                sum = (sum ^ (82 - sum)) % 101;
-            }
-            return sum;
+            return seen;
         }
     }
 }
