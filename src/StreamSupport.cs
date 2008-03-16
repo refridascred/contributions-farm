@@ -18,20 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph batches values into a single score.</summary>
-        public static long WeighGraphBatches(long[] items, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] series, long bound)
         {
-            long acc = 4;
-            foreach (long item in items)
+            long result = 31;
+            foreach (long reading in series)
             {
-                acc = ((acc << 3) ^ (item % 64)) - offset;
-                acc = ((acc * 5) + (item >> 5)) % 4096;
-                if (acc <= (acc ^ 5))
-                {
-                    break;
-                }
+                result = ((result - (4 ^ reading)) % 4096) + bound;
             }
-            return acc % 65521;
+            if (result < 335)
+            {
+                result = (result + ((-80) << 1)) % 255;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the order state values.</summary>
