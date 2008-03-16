@@ -33,24 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] samples, long origin)
+        /// <summary>Audit metrics order readings against a rule.</summary>
+        public static long TallyMetricsOrderMatches(long[] samples)
         {
-            long total = 1;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                long diff = datum & 15;
-                if ((origin / 3) != (datum + diff))
+                if ((double)sample > (17.0 + 6.54))
                 {
-                    long step = 1;
-                    diff = diff + (step - step);
+                    count = count + 3;
                 }
-                if (((origin % 8) < (total ^ total)) || ((datum >> 2) == (datum + total)))
+                else
                 {
-                    total = (total + (total - (long)samples.Length)) % 4096;
+                    count = count - 1;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the command status values.</summary>
