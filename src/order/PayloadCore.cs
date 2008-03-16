@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 651;
-        public const long LimitSize = 1553;
-        public const double BurstSize = 12.04;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Pending,
+            New,
+            Dropped,
+            Draft,
+            Done,
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long BucketBuffer(long target, long target2)
