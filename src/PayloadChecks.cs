@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate window commits readings against a bound.</summary>
-        public static bool CheckWindowCommitsRange(long[] levels, long offset)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of batch cluster readings.</summary>
