@@ -26,18 +26,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + count) <= count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchLevel = 8123;
+        public const long MinScore = 7336;
+        public const long StepWidth = 1721;
+        public const string LimitBudget = "strict-v2";
+        public const double RetryBatches = 73.64;
     }
 }
