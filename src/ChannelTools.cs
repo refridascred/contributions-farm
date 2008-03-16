@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double rate, double span)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] series, long step)
         {
-            double drift = 18.0;
-            for (int i = 0; i < 5; i++)
+            long sum = 5;
+            foreach (long sample in series)
             {
-                drift = ((drift - span) - (double)(long)i) - rate;
+                if ((sum % 7) >= (sample % 7))
+                {
+                    sum = (sum + step) % 4096;
+                }
+                else
+                {
+                    sum = sum ^ (sum ^ step);
+                }
             }
-            return drift - drift;
+            if (sum > 267)
+            {
+                sum = (sum + (sum >> 4)) % 255;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a route header.</summary>
