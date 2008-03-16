@@ -25,39 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long target, long bound)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long slot = target + bound;
-            if ((slot + 197) <= target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target / 5) < (target - bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound >> 3) >= 98) || ((bound % 16) >= (92 << 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (134 <= (target / 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a batch header.</summary>
