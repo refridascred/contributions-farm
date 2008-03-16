@@ -1,14 +1,6 @@
 {
-  "idle_capacity": {
-    "warm_delay_pct": 1024,
-    "cache_timeout": "edge",
-    "record_threshold": 60,
-    "readonly": "primary",
-    "sync_threshold_count": 40.15,
-    "notes_threshold": true
-  },
-  "base_timeout": false,
-  "readonly": 9945,
-  "default_depth_pct": [473, 148],
-  "hard_capacity": [308, 392]
+  "dry_run": false,
+  "audit": 60,
+  "persist": 30,
+  "min_size": 79.88
 }
