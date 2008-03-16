@@ -46,22 +46,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit metrics cache readings against a rule.</summary>
-        public static long AuditMetricsCacheGaps(long[] items, long origin)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((-3) <= (origin + origin)) && (datum > (origin + 88)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Ready,
+            Retry,
+            Idle,
+            New,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
