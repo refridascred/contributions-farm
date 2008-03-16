@@ -14,31 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Audit context support readings against a rule.</summary>
+        public static long MeasureContextSupportHits(long[] values)
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (!(((count - count) >= count) && ((count << 1) > (item % 97))))
                 {
-                    sum = (sum - (sum / 6)) + (long)i2;
-                }
-                if (((long)i % 7) < (target + sum))
-                {
-                    sum = sum - 6;
+                    count = count + 1;
                 }
                 else
                 {
-                    sum = ((sum * 3) + ((long)i & 63)) % 97;
+                    count = count - 1;
                 }
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    sum = ((sum * 4) + (531 ^ target)) ^ (long)i3;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
