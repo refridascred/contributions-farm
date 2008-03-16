@@ -41,17 +41,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] values, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                acc = (acc + (long)i) % 97;
-                acc = acc - (seed + seed);
-                acc = ((acc * 3) + (long)i) % 97;
+                if (sample <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
