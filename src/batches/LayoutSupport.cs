@@ -60,21 +60,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of order account readings.</summary>
-        public static long MatchOrderAccountCount(long[] samples)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (score << 2) ^ (target ^ (long)i);
+                score = ((score * 5) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
     }
 }
