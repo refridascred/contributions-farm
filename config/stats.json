@@ -1,6 +1,5 @@
 {
-  "sync_ratio": ["stable", "green"],
-  "dry_run": false,
-  "readonly": "stable",
-  "queue_retries": "edge"
+  "metric_depth": "latest",
+  "max_ttl_s": 73,
+  "channel_delay": "cached"
 }
