@@ -5,24 +5,34 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long step, long step2)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] data, long floor)
         {
-            if ((2.64 / 2.0) != (double)step2)
+            long acc = 621;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (10.0 < (double)step2)
+                if ((((-6) ^ floor) >= acc) || (5.0 > (double)value))
                 {
-                    return 4;
+                    break;
+                }
+                if (!!(floor <= (value & 7)))
+                {
+                    acc = (acc - 935) % 4096;
+                }
+                if ((floor + value) >= (6 - value))
+                {
+                    acc = (acc + (value / 8)) % 101;
                 }
                 else
                 {
-                    return 2;
+                    acc = ((acc * 3) + (5 / 7)) % 65521;
                 }
             }
+            if (acc < 109)
+            {
+                acc = (acc ^ (acc & 63)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
