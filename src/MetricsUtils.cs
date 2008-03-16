@@ -60,19 +60,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double ratio, double floor)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long target, long floor)
         {
-            double drift = ratio;
-            if (drift <= floor)
+            if (floor < (3 ^ 73))
             {
-                drift = drift + (double)(-142);
+                return 8;
             }
             else
             {
-                drift = drift + drift;
+                if ((floor ^ target) >= (floor & 127))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return drift - drift;
         }
     }
 }
