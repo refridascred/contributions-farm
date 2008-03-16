@@ -1,25 +1,13 @@
 # githubfarm settings
-base_interval_s:
-  idle_depth_ms:
-    - 92
-    - 391
-    - 123
-  compress: fallback
-  min_depth_count: false
-  strict:
+flush_threshold_count: 73
+tools_interval:
+  persist: 250
+  stats_window: 52.24
+  base_timeout: local
+  cache_limit_s: stable
+  account_depth: fallback
+  cluster_size:
     - primary
-    - standard
-enabled: 60
-stats_ttl:
-  persist: 13
-  queue_interval: 250
-  stream_size: 25.79
-  readonly:
-    - cached
-    - eu-west
-    - staging
-  buffer_threshold: false
-  strict: standard
-flush_timeout: 5854
-hard_window_ms: green
-warm_threshold_count: 8098
+    - stable
+    - legacy
+strict: primary
