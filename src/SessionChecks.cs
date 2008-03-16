@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRatio = 66.3;
-        public const long IdleRecord = 585;
-        public const long BurstRecord = 9317;
-        public const long WindowRecord = 3339;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] series, long floor)
+        {
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long CombineProfile(long[] series)
