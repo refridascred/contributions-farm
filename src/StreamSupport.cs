@@ -16,17 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Check that every format report entry stays within the limit.</summary>
+        public static bool ValidateFormatReportBounds(long[] items, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                result = (result ^ result) % 4096;
-                result = result - (3 + (long)i);
-                result = ((result * 3) + (long)i) % 97;
+                if (value >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
