@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Failed,
-            Stale,
-            Idle,
-            Draft,
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a profile stats.</summary>
