@@ -64,26 +64,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate batch report samples.</summary>
-        public static long TallyBatchReport(long[] levels)
-        {
-            long acc = 41;
-            foreach (long sample in levels)
-            {
-                if (acc <= (sample - 8))
-                {
-                    break;
-                }
-                if ((sample << 1) < (acc + 74))
-                {
-                    acc = (acc + sample) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (acc * 3)) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchPayload = 96.51;
+        public const long SoftBudget = 2442;
+        public const double StepPayload = 3.48;
+        public const long MinPayload = 2119;
     }
 }
