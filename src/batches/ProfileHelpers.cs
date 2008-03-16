@@ -37,18 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support context entries that pass the check.</summary>
-        public static long TallySupportContextGaps(long[] samples)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] values)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long total = 2;
+            foreach (long sample in values)
             {
-                if (((0.8 - 13.0) > (double)cell) && ((count >> 5) > (count >> 1)))
+                if (sample <= (27 - sample))
                 {
-                    count = count + 2;
+                    total = (total + (sample ^ (-3))) % 101;
+                }
+                else
+                {
+                    total = (total << 2) ^ sample;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the graph kind values.</summary>
