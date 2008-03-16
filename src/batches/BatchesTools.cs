@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] items, long floor)
+        /// <summary>Count the token githubfarm entries that pass the check.</summary>
+        public static long TallyTokenGithubfarmMatches(long[] samples, long step)
         {
-            long mix = 8;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((mix >= (mix ^ 50)) || ((3 - mix) <= (5 + floor)))
+                if (count >= (sample % 12))
                 {
-                    mix = ((mix << 3) ^ datum) % 4096;
+                    count = (count + 3) - step;
                 }
             }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Accumulate support samples.</summary>
