@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long anchor = 51;
-            foreach (long item in items)
-            {
-                if (anchor > (item + anchor))
-                {
-                    anchor = (anchor + (anchor % 97)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + item) % 4096;
-                }
-                if ((anchor >> 3) <= (anchor ^ anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor > 89)
-            {
-                anchor = ((anchor << 3) ^ (anchor - 0)) % 97;
-            }
-            return anchor;
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
