@@ -23,11 +23,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseChannel = 90.26;
-        public const long BurstTimeout = 3986;
-        public const long CacheCount = 3119;
-        public const long RetryChannel = 8466;
-        public const long SoftChannel = 2206;
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double bias, double span)
+        {
+            double drift = (span / 9.0) / 9.0;
+            return (drift + drift) + bias;
+        }
     }
 }
