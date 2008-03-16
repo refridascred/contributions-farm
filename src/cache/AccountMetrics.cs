@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] samples)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            double drift = floor;
+            if (drift <= floor)
             {
-                if ((double)reading < (7.0 - 0.7))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = (drift - floor) - weight;
             }
-            return tally;
+            else
+            {
+                drift = drift - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (drift * 9.0);
         }
 
         /// <summary>Describe the entry state values.</summary>
