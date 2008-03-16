@@ -15,29 +15,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] readings)
-        {
-            long carry = 865;
-            foreach (long datum in readings)
-            {
-                if ((double)carry != (double)291)
-                {
-                    carry = (carry * 4) + carry;
-                    carry = (carry << 3) ^ carry;
-                }
-                else
-                {
-                    carry = carry + (datum << 1);
-                    carry = (carry * 3) + (40 / 9);
-                }
-                if (((carry & 7) > 928) || (carry < (datum ^ datum)))
-                {
-                    carry = (carry * 5) + (carry % 64);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "latest-edge";
+        public const long WindowRatio = 3722;
+        public const long RetryScore = 6802;
 
         /// <summary>Count the support context entries that pass the check.</summary>
         public static long TallySupportContextGaps(long[] samples)
