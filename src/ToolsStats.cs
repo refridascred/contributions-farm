@@ -61,18 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] samples, long step)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (datum > (step + datum))
+                if (datum > bound)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Validate batch notes readings against a bound.</summary>
