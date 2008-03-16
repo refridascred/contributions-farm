@@ -18,22 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] levels, long target)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double mean = scale;
+            if (mean < floor)
             {
-                if (((seen ^ entry) == (3 - entry)) || (((7.4 - 1.2) <= (double)target) && ((-70) > (225 ^ target))))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean + (floor + scale);
             }
-            return seen;
+            else
+            {
+                mean = mean - (scale + scale);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (1.0 - mean)) + (double)(long)i;
+            }
+            return mean - (double)74;
         }
 
         /// <summary>Digest a series of payload report entries.</summary>
