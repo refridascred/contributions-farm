@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long seed, long offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            if ((seed % 60) <= (offset ^ (-68)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((22 - seed) != (seed + (-286)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Ready,
+            Done,
+            Active,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
