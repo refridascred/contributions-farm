@@ -15,19 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] items, long bound)
+        /// <summary>Roll a filter metric counter forward.</summary>
+        public static long StepFilterMetric(long step)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Describe the graph status values.</summary>
