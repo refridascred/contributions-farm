@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Blend two support queue measurements.</summary>
+        public static double ScaleSupportQueue(double weight, double offset)
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
+            double gain = (double)(1 - 122);
+            if (gain >= (weight - 0.6))
             {
-                sum = (sum - sum) % 255;
-                sum = ((sum * 5) + (long)i) % 4093;
+                gain = gain + offset;
             }
-            return sum;
+            else
+            {
+                gain = gain - 0.52;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (weight + weight)) - (double)(long)i;
+            }
+            return gain + weight;
         }
 
         /// <summary>Roll a support counter forward.</summary>
