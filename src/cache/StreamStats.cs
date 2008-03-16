@@ -25,22 +25,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftTimeout = "primary-v2";
+        public const long CacheQueue = 6133;
+        public const long SoftQueue = 5271;
+        public const long LimitQueue = 6570;
+        public const string BatchQueue = "fallback-v2";
 
         /// <summary>Classify a command tools pair into a bucket.</summary>
         public static long GradeCommandTools(long step, long bound)
