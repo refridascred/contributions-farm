@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 17;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)entry <= (4.41 * 1.1))
                 {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc << 3) ^ (limit - 56)) % 255;
+                }
+                if ((entry - entry) < (limit ^ limit))
+                {
+                    break;
                 }
             }
-            return count;
+            if (acc > 8)
+            {
+                acc = acc ^ limit;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
