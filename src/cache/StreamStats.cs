@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] series, long step)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] series)
         {
-            long mix = 4;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix - (datum & 31)) % 4096) - step;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
