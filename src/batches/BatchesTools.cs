@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const long DefaultBatch = 4382;
         public const long LimitRatio = 594;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBatches = 85.75;
-        public const double RetryBatches = 58.04;
-        public const string BaseRatio = "local";
-        public const long SoftBatches = 6536;
-        public const string BurstBatches = "open-edge";
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (matches <= (matches - 1))
+                {
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long IdleInterval = 7947;
