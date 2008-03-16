@@ -15,12 +15,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 3241;
-        public const double WindowCommits = 63.85;
-        public const double LimitSpan = 21.46;
-        public const long StepCommits = 9241;
-        public const long BurstCommits = 4304;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long SeriesFarm(long seed)
