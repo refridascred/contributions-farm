@@ -24,39 +24,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a route commits value against two limits.</summary>
-        public static long RankRouteCommits(long target, long offset)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long delta = target + offset;
-            if (offset <= (offset * 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target / 5) >= (offset / 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((delta << 1) <= (-91))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)delta >= 5.9)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public bool Token { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Roll a channel counter forward.</summary>
