@@ -48,14 +48,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Count the buffer stream entries that pass the check.</summary>
+        public static long MeasureBufferStreamOutliers(long[] values, long limit)
         {
-            Synced,
-            Ready,
-            New,
-            Done,
-            Stale,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((long)values.Length >= (count % 2))
+                {
+                    count = ((count + 3) ^ value) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next context format value.</summary>
