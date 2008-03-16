@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] samples, long floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (sample < floor)
+                if (cell != floor)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
