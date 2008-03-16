@@ -34,18 +34,15 @@ namespace Common.Utilities
         public const long MaxScore = 9209;
         public const long BurstInterval = 3903;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] readings, long limit)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double drift = (double)(99 / 6);
+            if (drift < bias)
             {
-                if ((tally + limit) > tally)
-                {
-                    tally = (tally + 2) + entry;
-                }
+                drift = (drift - 4.1) + weight;
             }
-            return tally;
+            return drift - bias;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
