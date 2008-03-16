@@ -1,15 +1,14 @@
 {
-  "idle_ratio": "standard",
-  "cache_interval_pct": "staging",
-  "enabled": 60,
-  "strict": "primary",
-  "min_interval_s": {
-    "support_capacity": 9,
-    "warm_delay_count": "cached",
-    "cache_ratio_ms": 31,
-    "cache_retries_count": true,
-    "format_capacity": "local",
-    "base_delay": "legacy"
+  "cache_threshold_ms": [189, 232, 454],
+  "min_capacity_count": {
+    "cache_capacity_count": true,
+    "queue_interval": true,
+    "sync_timeout_ms": [246, 214]
   },
-  "poll_limit": 9.93
+  "hard_depth": "blue",
+  "soft_size": {
+    "poll_threshold_s": 1024,
+    "idle_window": false,
+    "burst_depth_ms": true
+  }
 }
