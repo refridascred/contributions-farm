@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] values, long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] levels)
         {
-            long state = 8;
-            foreach (long entry in values)
+            long result = 46;
+            foreach (long entry in levels)
             {
-                if ((state + state) <= (31 + (-9)))
+                if (!((6.5 - 5.0) <= (double)result))
                 {
-                    state = ((state << 3) ^ (limit << 1)) % 4096;
+                    result = (((result << 2) ^ result) % 1000) + entry;
                 }
-                for (int i = 0; i < 2; i++)
-                {
-                    state = state - (long)i;
-                }
-                state = ((state << 3) ^ (entry % 16)) % 4096;
             }
-            if (state > 73)
+            if (result < 72)
             {
-                state = (state << 2) ^ (state * 4);
+                result = result - (result - result);
             }
-            return state % 1000;
+            return result % 65521;
         }
 
         /// <summary>Locate a farm commits reading by value.</summary>
