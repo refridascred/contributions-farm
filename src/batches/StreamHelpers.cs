@@ -28,21 +28,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count commits tools pairs that satisfy a relation.</summary>
-        public static long MatchCommitsToolsCount(long[] samples)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Ready,
+            Closed,
+            Queued,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
