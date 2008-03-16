@@ -30,11 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] readings, long bound)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
