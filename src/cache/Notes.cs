@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const long BatchRecord = 604;
         public const long DefaultRecord = 372;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((4.6 / 2.0) == (double)entry)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleWidth = 9157;
+        public const long LimitFarm = 285;
+        public const string IdleFarm = "stable-edge";
+        public const double CacheWidth = 25.72;
+        public const string SoftTimeout = "staging";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long RetryNotes = 4119;
