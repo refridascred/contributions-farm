@@ -53,11 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            Locked,
+            Closed,
+            Idle,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
