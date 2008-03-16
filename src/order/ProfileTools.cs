@@ -32,13 +32,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] series, long seed)
         {
-            Locked,
-            Active,
-            Ready,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
