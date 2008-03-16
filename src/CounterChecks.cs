@@ -42,32 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long origin, long offset)
+        /// <summary>Scale a contributi notes figure with a bias.</summary>
+        public static double AdjustContributiNotes(double rate, double bias)
         {
-            long span = origin + offset;
-            if ((origin - span) != (offset << 3))
+            double weight = (double)(87 >> 5);
+            if (weight >= (rate + bias))
             {
-                return 3;
+                weight = weight - (9.4 * 17.0);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)offset != (double)279) && ((double)origin <= (20.0 * 0.28)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((0.83 - 6.5) <= (double)span)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                weight = (weight + (double)(-71)) + (double)(long)i;
             }
+            return weight - (1.76 * 4.0);
         }
 
         /// <summary>Fold a list of batch readings.</summary>
