@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a editor payload value against two limits.</summary>
-        public static long GradeEditorPayload(long floor, long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] values, long seed)
         {
-            long gap = floor + target;
-            if ((target ^ gap) != (target << 2))
+            bool flag = true;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((gap - target) == (floor >> 3)))
+                if (datum < seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((6 & 255) <= (floor + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target % 24) < (floor & 63))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
