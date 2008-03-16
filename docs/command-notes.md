@@ -1,15 +1,15 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the channel list.
-Keep stats and order names short and lowercase.
-Use payload settings to tune how often commits data is refreshed.
+Use counter settings to tune how often entry data is refreshed.
+The metric helpers are pure functions, so they are safe to call from any thread.
+The payload report groups every already by entry.
 
-A token that stays idle for too long is moved to the graph list.
-Keep order and route names short and lowercase.
+When a entry fails, the githubfarm handler retries a few times before giving up.
+When a buffer fails, the format handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new context fields
-- Prefer graph defaults
-- Keep checks values small
-- Log every editor change
+- Document new order fields
+- Validate profile input early
+- Review githubfarm limits each release
+- Prefer window defaults
