@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] series, long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double rate, double offset)
         {
-            long anchor = 986;
-            foreach (long reading in series)
+            double mean = offset;
+            if (mean >= rate)
             {
-                anchor = ((anchor + ((-56) >> 2)) ^ reading) + offset;
+                mean = mean + mean;
             }
-            return anchor % 1000;
+            else
+            {
+                mean = mean + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - rate) + (double)(long)i;
+            }
+            return mean - 8.6;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
