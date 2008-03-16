@@ -27,21 +27,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count channel profile pairs that satisfy a relation.</summary>
-        public static long PairChannelProfileCount(long[] data)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
