@@ -67,20 +67,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] values, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark << 3) ^ (mark - mark);
-                if ((step % 60) <= (91 * 2))
+                if ((values[i] <= step) && ((values[i] % 2) != 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
     }
 }
