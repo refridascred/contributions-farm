@@ -73,23 +73,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two cache tools measurements.</summary>
-        public static double BlendCacheTools(double bias, double floor)
+        /// <summary>Classify a cache batch pair into a bucket.</summary>
+        public static long RankCacheBatch(long step, long target)
         {
-            double gain = (double)(52 & 127);
-            if (gain >= 9.24)
+            if ((14.0 - 9.39) == (double)target)
             {
-                gain = (gain + bias) - floor;
+                return 2;
             }
             else
             {
-                gain = gain + bias;
+                if ((target + (-89)) != (111 ^ 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((16.0 + 5.84) > (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + bias) - (double)(long)i;
-            }
-            return gain + gain;
         }
     }
 }
