@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)(long)i == (double)offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = ((total << 3) ^ (total << 1)) % 65521;
-                    total = (total * 5) + total;
+                    if ((series[i] + series[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    total = (total + ((long)i / 3)) % 101;
-                    total = (total - ((long)i + 75)) % 255;
-                }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Fold a list of checks route readings.</summary>
