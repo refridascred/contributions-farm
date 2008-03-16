@@ -22,11 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] readings, long offset)
         {
-            public double Ratio { get; set; }
-            public double Count { get; set; }
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every window schema entry stays within the limit.</summary>
