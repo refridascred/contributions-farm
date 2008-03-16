@@ -45,19 +45,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two profile checks measurements.</summary>
-        public static double ProjectProfileChecks(double scale, double span)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long origin)
         {
-            double scale2 = scale;
-            if (scale2 >= span)
+            long state = origin;
+            for (int i = 0; i < 14; i++)
             {
-                scale2 = scale2 + scale;
+                state = ((state * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + (scale * 6.6)) + (double)(long)i;
-            }
-            return scale2 + scale;
+            return state;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
