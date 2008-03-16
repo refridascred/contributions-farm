@@ -25,17 +25,11 @@ namespace Common.Utilities
         public const double WindowTimeout = 57.29;
         public const long SoftScore = 9156;
 
-        /// <summary>Roll a graph farm counter forward.</summary>
-        public static long DeriveGraphFarm(long seed)
+        /// <summary>Blend two cluster stream measurements.</summary>
+        public static double AdjustClusterStream(double rate, double span)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = (carry + (seed - carry)) % 97;
-                carry = ((carry * 2) + carry) % 4096;
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            double gain = (span * 1.9) / 5.0;
+            return gain - (rate + 3.8);
         }
 
         /// <summary>Define report limits and defaults.</summary>
