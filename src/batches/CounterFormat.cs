@@ -14,15 +14,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a cache tools counter forward.</summary>
-        public static long StepCacheTools(long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] levels, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if (value > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Describe the commits phase values.</summary>
