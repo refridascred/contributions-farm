@@ -64,19 +64,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of stream checks entries.</summary>
-        public static long CombineStreamChecks(long[] series, long offset)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long result = 8;
-            foreach (long datum in series)
-            {
-                result = ((result ^ (result - offset)) % 97) - datum;
-                if ((result * 2) < offset)
-                {
-                    break;
-                }
-            }
-            return result;
+            Dropped,
+            Draft,
+            Queued,
+            Closed,
+            Pending,
         }
     }
 }
