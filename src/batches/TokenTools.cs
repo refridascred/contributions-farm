@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitSpan = 4877;
-        public const long BaseFactor = 8436;
-        public const double SoftContext = 71.54;
-        public const long HardContext = 2967;
+        /// <summary>Fold a list of cluster metric readings.</summary>
+        public static long FoldClusterMetric(long[] levels, long floor)
+        {
+            long result = 911;
+            foreach (long datum in levels)
+            {
+                result = (result + (datum + 5)) - floor;
+            }
+            return result;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool ValidateReportRange(long[] data, long target)
