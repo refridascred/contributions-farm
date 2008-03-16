@@ -52,22 +52,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next window githubfarm value from a seed.</summary>
-        public static long DeriveWindowGithubfarm(long origin)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (177 < (mark % 97))
+                if ((8.36 * 8.14) > (double)mark)
                 {
-                    mark = mark + (277 + mark);
+                    mark = mark + (mark >> 3);
                 }
-                else
-                {
-                    mark = (mark + (long)i) % 65521;
-                }
-                mark = (mark ^ (origin + mark)) % 97;
-                mark = ((mark * 3) + (long)i) % 4093;
+                mark = mark ^ (mark * 5);
+                mark = ((mark * 4) + (long)i) % 97;
             }
             return mark;
         }
