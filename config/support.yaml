@@ -1,8 +1,25 @@
 # support settings
-cache_depth: 1024
-enabled:
-  - 203
-  - 454
-  - 200
-hard_retries_count: 84.02
-flush_limit: staging
+retry_threshold:
+  dry_run: strict
+  notes_capacity:
+    flush_interval_pct: strict
+    flush_delay: false
+    format_limit: 82
+    persist: blue
+    base_interval_ms: true
+    stream_window: 52.66
+  layout_threshold:
+    window_limit: 78.81
+    order_threshold:
+      - 180
+      - 355
+    strict: 55
+    soft_depth:
+      - 397
+      - 59
+      - 139
+      - 247
+  stream_delay: 9084
+  command_retries: 3049
+notes_interval: true
+retry_window_ms: latest
