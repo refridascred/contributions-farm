@@ -43,11 +43,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long step, long origin)
         {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
+            long gap = step - origin;
+            if (!(step >= (gap << 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin > (3 / 5)) && (origin > (gap / 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
