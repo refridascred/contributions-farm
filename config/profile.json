@@ -1,7 +1,5 @@
 {
-  "base_delay_count": 2178,
-  "sync_capacity": 73.42,
-  "max_retries_pct": 86,
-  "route_limit": 6196,
-  "soft_delay_count": 94.27
+  "idle_timeout": 9724,
+  "compress": true,
+  "warm_timeout_pct": 60
 }
