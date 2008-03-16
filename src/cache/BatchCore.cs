@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] series, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((series[i] < origin) && ((series[i] % 5) != 0))
+                if ((matches - matches) < (reading + (-426)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
