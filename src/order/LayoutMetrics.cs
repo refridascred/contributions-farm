@@ -22,13 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long bound)
         {
-            Idle,
-            Retry,
-            Stale,
-            Synced,
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark << 3) ^ (long)i) % 4096;
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of report readings.</summary>
