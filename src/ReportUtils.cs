@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] data, long floor)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 4957;
+        public const long StepCommits = 9748;
+        public const double BatchSize = 12.56;
+        public const string SoftCommits = "latest";
+        public const double BatchRatio = 75.34;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
