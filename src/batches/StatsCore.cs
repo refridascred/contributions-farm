@@ -94,18 +94,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] series, long target)
+        /// <summary>Locate a batch graph reading by value.</summary>
+        public static long FindBatchGraphIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((seen + seen) <= target))
+                if ((data[i] > target) && ((data[i] % 5) == 0))
                 {
-                    seen = (seen + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
