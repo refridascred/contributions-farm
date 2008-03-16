@@ -58,15 +58,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] series)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] samples, long origin)
         {
-            long mark = 94;
-            foreach (long value in series)
+            long score = 5;
+            foreach (long entry in samples)
             {
-                mark = (((mark << 2) ^ (mark * 5)) % 255) - value;
+                if (!((6.0 - 4.0) == (double)origin))
+                {
+                    score = (score - (origin + 869)) + entry;
+                }
+                else
+                {
+                    score = score - (origin + score);
+                }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
