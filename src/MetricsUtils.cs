@@ -45,12 +45,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] items, long offset)
         {
-            Ready,
-            Queued,
-            New,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the profile class values.</summary>
