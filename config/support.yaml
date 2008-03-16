@@ -1,10 +1,31 @@
 # support settings
-default_size:
-  retry_threshold_pct: 500
-  dry_run: staging
-  sync_interval: green
-  poll_ttl_count: strict
-  soft_delay_count: true
-default_threshold_ms: 94.43
-order_retries: staging
-default_threshold_count: 60
+audit:
+  - 463
+  - 229
+soft_delay_ms:
+  schema_timeout: 8651
+  warm_retries_s:
+    idle_depth_count: 8612
+    max_interval_s: 250
+    idle_size_count:
+      - blue
+      - local
+      - stable
+    warm_threshold_ms: 51
+    warm_threshold_count: false
+    cache_interval_s:
+      - edge
+      - blue
+      - staging
+  context_timeout: staging
+  verbose: 439
+  record_interval:
+    session_delay: false
+    base_capacity_ms: 6573
+    base_timeout_count: legacy
+    readonly:
+      - 111
+      - 269
+      - 383
+  cache_depth: 100
+min_capacity_s: true
