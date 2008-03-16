@@ -33,11 +33,19 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchTimeout = 4617;
-        public const double HardSession = 90.91;
-        public const long RetrySession = 7227;
-        public const long IdleScore = 1336;
-        public const long WindowSpan = 5866;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] values, long origin)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
