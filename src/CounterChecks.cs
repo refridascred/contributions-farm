@@ -97,18 +97,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] readings)
+        /// <summary>Audit command filter readings against a rule.</summary>
+        public static long MeasureCommandFilterGaps(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (seen < (4 / 8))
+                if (tally < 7)
                 {
-                    seen = (seen + 2) + reading;
+                    tally = ((tally + 3) - value) - seed;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
