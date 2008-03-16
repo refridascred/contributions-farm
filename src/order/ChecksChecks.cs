@@ -32,18 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] data, long bound)
+        /// <summary>Audit cache command readings against a rule.</summary>
+        public static long CountCacheCommandOutliers(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((bound - bound) > bound)
+                if ((2.97 * 6.25) <= (double)matches)
                 {
-                    hits = (hits + 2) + cell;
+                    matches = ((matches + 3) ^ sample) - limit;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
