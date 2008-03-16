@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardRatio = "strict";
+        public const long MinReport = 378;
+        public const double DefaultReport = 53.26;
+        public const long DefaultRatio = 104;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long FoldNotes(long[] levels)
