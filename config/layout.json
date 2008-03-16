@@ -1,14 +1,19 @@
 {
-  "readonly": {
-    "enabled": "latest",
-    "warm_depth_s": ["open", "fallback", "primary", "latest"],
-    "retry_delay_s": "fallback",
-    "stream_size": "staging",
-    "soft_window_s": "legacy",
-    "cache_window_pct": 45.24
-  },
-  "default_interval": 24,
-  "base_limit_s": 31.78,
-  "entry_limit": "stable",
-  "batch_window_count": "green"
+  "farm_window": 11.56,
+  "soft_ttl_pct": false,
+  "account_limit": "eu-west",
+  "compress": "cached",
+  "cache_limit": "primary",
+  "min_interval": {
+    "route_capacity": 5,
+    "window_size": 100,
+    "counter_ratio": {
+      "stats_depth": false,
+      "queue_ttl": "latest",
+      "sync_depth_ms": false,
+      "session_capacity": true,
+      "compress": "blue"
+    },
+    "max_depth": 74.29
+  }
 }
