@@ -1,19 +1,13 @@
 {
-  "cache_timeout_pct": 60,
-  "flush_depth_ms": "local",
-  "verbose": true,
-  "graph_capacity": {
-    "audit": 25.93,
-    "soft_size_s": 1024,
-    "dry_run": {
-      "profile_depth": "local",
-      "base_timeout": "legacy",
-      "sync_timeout_pct": 8.64,
-      "flush_ttl_ms": true
-    },
-    "base_retries": 5945,
-    "enabled": 89
+  "persist": false,
+  "compress": {
+    "session_timeout": false,
+    "format_delay": 70.41,
+    "idle_limit": true,
+    "base_ratio": 1
   },
-  "cache_size_s": 64,
-  "hard_limit": 4357
+  "cache_timeout_pct": [407, 128, 358],
+  "retry_depth": "fallback",
+  "max_interval_ms": true,
+  "hard_threshold_ms": ["blue", "blue", "standard", "eu-west"]
 }
