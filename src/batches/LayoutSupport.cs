@@ -29,11 +29,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] readings)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            long state = -6;
+            foreach (long item in readings)
+            {
+                if ((double)item < (double)8)
+                {
+                    state = ((state * 3) + 630) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a stream summary.</summary>
