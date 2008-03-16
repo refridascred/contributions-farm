@@ -13,10 +13,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinMetric = 35.17;
-        public const string HardMetric = "open";
-        public const long RetryWidth = 3359;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Queued,
+            Done,
+            Ready,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
