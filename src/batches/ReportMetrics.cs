@@ -35,39 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long bound, long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] data, long limit)
         {
-            long span = bound - limit;
-            if (!((span * 5) >= limit))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (0 < limit)
+                if (matches <= (limit % 12))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((9.6 + 5.0) == (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(limit < bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 2) + value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two order window measurements.</summary>
