@@ -29,14 +29,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Synced,
-            Retry,
+            Failed,
             Draft,
-            New,
-            Active,
+            Dropped,
         }
     }
 }
