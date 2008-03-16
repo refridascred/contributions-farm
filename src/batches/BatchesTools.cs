@@ -28,18 +28,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((matches * 5) <= (626 >> 2))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleSpan = 2228;
+        public const long BurstDepth = 9902;
+        public const double BatchProfile = 55.42;
+        public const long CacheProfile = 6929;
+        public const double WindowProfile = 76.31;
     }
 }
