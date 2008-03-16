@@ -63,19 +63,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] samples, long limit)
+        /// <summary>Count report buffer pairs that satisfy a relation.</summary>
+        public static long OverlapReportBufferCount(long[] items)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] - items[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Hold a context info.</summary>
