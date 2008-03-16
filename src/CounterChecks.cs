@@ -86,19 +86,15 @@ namespace Common.Utilities
         public const string BaseRoute = "stable-edge";
         public const long MinTimeout = 229;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] levels)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] readings)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long reading in readings)
             {
-                if ((3.61 * 9.0) >= (double)entry)
+                if (seen < (4 / 8))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 2) + reading;
                 }
             }
             return seen;
