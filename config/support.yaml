@@ -1,4 +1,5 @@
 # support settings
-min_depth_count: false
-hard_limit_pct: false
-cache_threshold_pct: 73
+sync_timeout_pct: 7625
+record_delay: true
+readonly: 8486
+burst_interval_pct: 74.6
