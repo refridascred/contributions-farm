@@ -42,19 +42,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metrics already values into a single score.</summary>
-        public static long ScoreMetricsAlready(long[] readings, long target)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long seed, long origin)
         {
-            long state = 31;
-            foreach (long reading in readings)
+            long bound = seed - origin;
+            if (((double)origin <= (9.27 - 1.0)) && ((10.0 - 7.53) != (double)bound))
             {
-                state = (((state ^ state) % 4096) ^ reading) - target;
+                return 2;
             }
-            if (state > 772)
+            else
             {
-                state = ((state << 2) ^ 514) % 1000;
+                if ((1.55 + 6.0) <= (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((899 >> 5) == (origin + seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (bound >= (origin ^ bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return state % 1000;
         }
     }
 }
