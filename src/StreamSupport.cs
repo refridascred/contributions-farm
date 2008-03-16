@@ -17,19 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] series, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] series, long target)
         {
-            long result = 31;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in series)
             {
-                result = ((result - (4 ^ reading)) % 4096) + bound;
+                if (datum <= 70)
+                {
+                    count = (count + 1) - target;
+                }
             }
-            if (result < 335)
-            {
-                result = (result + ((-80) << 1)) % 255;
-            }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
