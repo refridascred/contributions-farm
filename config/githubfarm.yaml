@@ -1,7 +1,16 @@
 # githubfarm settings
-persist:
-  burst_size_s: 14.49
-  soft_delay: edge
-  farm_timeout: 30
-session_retries: cached
-base_threshold_pct: 95
+metrics_retries:
+  account_depth: false
+  cache_retries_pct: stable
+  profile_interval:
+    persist:
+      - 486
+      - 88
+      - 381
+      - 30
+    hard_capacity_ms: 93
+    flush_capacity_s: standard
+    session_capacity: cached
+poll_ttl_count: 30
+min_size_pct: 30
+dry_run: 100
