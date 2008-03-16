@@ -16,32 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long origin, long bound)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] readings, long seed)
         {
-            long delta = origin + bound;
-            if ((double)delta != (double)origin)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)delta < (double)bound)
+                if (readings[i] < seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound >= (double)1)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a notes summary.</summary>
