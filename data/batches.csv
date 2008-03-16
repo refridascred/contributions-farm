@@ -1,9 +1,8 @@
-id,active,region
-1,blue,51.27
-2,482,16.43
-3,60.51,12.14
-4,80.42,693
-5,498,staging
-6,56.17,legacy
-7,blue,12.25
-8,46.45,strict
+id,token,count,rank,ratio
+1,eu-west,open,186,856
+2,94.45,47.86,218,91.54
+3,191,51.84,blue,edge
+4,25.13,2.79,blue,12
+5,43.7,fallback,16.28,326
+6,green,legacy,571,864
+7,62,primary,741,cached
