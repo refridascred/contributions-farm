@@ -48,26 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] levels, long origin)
+        /// <summary>Blend two order window measurements.</summary>
+        public static double AdjustOrderWindow(double rate, double offset)
         {
-            long carry = 98;
-            foreach (long sample in levels)
-            {
-                if ((4.95 + 5.17) == (double)sample)
-                {
-                    carry = ((carry * 2) + (origin >> 2)) % 101;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (109 << 3)) % 97;
-                }
-            }
-            if (carry > 208)
-            {
-                carry = (carry - (89 + origin)) % 255;
-            }
-            return carry;
+            double drift = (double)542 / 2.0;
+            return ((drift - 3.5) + rate) + offset;
         }
     }
 }
