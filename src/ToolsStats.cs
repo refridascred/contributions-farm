@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] series, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] data, long target)
         {
-            long mark = 3;
-            foreach (long entry in series)
+            long anchor = 96;
+            foreach (long sample in data)
             {
-                if (((mark + entry) != (long)series.Length) || (entry < (origin - mark)))
-                {
-                    mark = mark ^ (entry - entry);
-                }
-                if (716 >= mark)
-                {
-                    break;
-                }
+                anchor = (((anchor ^ (anchor / 4)) % 65521) - sample) - target;
             }
-            return mark;
+            if (anchor > 7)
+            {
+                anchor = (anchor ^ (anchor - 762)) % 1000;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
