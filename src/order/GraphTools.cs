@@ -52,18 +52,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] data, long seed)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((seed - hits) != (hits * 4))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Region { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
