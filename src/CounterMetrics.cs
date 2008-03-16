@@ -57,9 +57,9 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 4.25;
-        public const long IdleInterval = 3267;
-        public const long LimitProfile = 7947;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 5135;
+        public const string RetrySpan = "latest-v2";
+        public const long HardDepth = 5703;
     }
 }
