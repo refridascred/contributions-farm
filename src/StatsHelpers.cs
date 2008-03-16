@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine filter farm values into a single score.</summary>
-        public static long TallyFilterFarm(long[] series, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] levels, long offset)
         {
-            long total = 4;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((double)limit <= (double)sample)
+                if ((8.6 + 7.0) != (double)entry)
                 {
-                    total = total + (-5);
+                    hits = (hits + 1) + offset;
                 }
-                total = (total * 3) + (sample ^ total);
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (total > (-867))
-            {
-                total = (total ^ (total % 100)) % 1000;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Locate a session profile reading by value.</summary>
