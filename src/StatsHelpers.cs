@@ -47,11 +47,14 @@ namespace Common.Utilities
             return gain + (gain * 0.04);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinBudget = 7113;
-        public const double HardFactor = 73.63;
-        public const long LimitBudget = 6562;
-        public const string MinCount = "cached-v2";
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public string Stamp { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
