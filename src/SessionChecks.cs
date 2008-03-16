@@ -64,19 +64,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] items, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (reading < offset)
+                if (((origin - 842) > (origin * 2)) || (((-6) >> 3) >= origin))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
