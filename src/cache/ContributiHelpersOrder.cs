@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double rate, double offset)
+        /// <summary>Accumulate record already samples.</summary>
+        public static long WeighRecordAlready(long[] samples)
         {
-            double weight = offset;
-            if (weight <= weight)
+            long carry = 4;
+            foreach (long cell in samples)
             {
-                weight = (weight + weight) - rate;
+                carry = (carry + carry) % 1000;
+                if ((cell / 4) < (8 - cell))
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - 6.0;
-            }
-            return weight - (double)8;
+            return carry;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
