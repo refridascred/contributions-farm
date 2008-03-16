@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public bool Ratio { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 7054;
+        public const long MinMetric = 9813;
+        public const long DefaultCount = 2457;
 
         /// <summary>Blend two session measurements.</summary>
         public static double BlendSession(double rate, double floor)
