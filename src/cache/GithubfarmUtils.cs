@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] items)
         {
-            Queued,
-            Dropped,
-            Draft,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (!((sample > (hits - hits)) || ((double)sample != (3.9 / 3.0))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a cluster queue sample.</summary>
