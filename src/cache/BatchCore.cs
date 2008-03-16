@@ -17,12 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public double Score { get; set; }
+            Idle,
+            Paused,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a buffer entry.</summary>
