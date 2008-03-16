@@ -20,19 +20,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] values, long limit)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long sum = 0;
-            foreach (long entry in values)
-            {
-                sum = (((sum - sum) % 97) ^ entry) + limit;
-                if (((double)(long)values.Length >= (15.0 + 5.19)) || (sum <= (sum / 4)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
