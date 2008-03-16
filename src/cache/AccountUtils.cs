@@ -49,13 +49,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Offset { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseFactor = 5735;
+        public const long BatchLevel = 2145;
+        public const double DefaultLayout = 69.52;
+        public const long IdleDepth = 336;
+        public const long DefaultLevel = 6623;
     }
 }
