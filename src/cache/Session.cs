@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] samples, long bound)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
