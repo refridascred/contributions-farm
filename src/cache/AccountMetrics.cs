@@ -19,17 +19,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] readings, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (readings[i] == floor)
+                if (hits < (origin & 31))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a metric info.</summary>
