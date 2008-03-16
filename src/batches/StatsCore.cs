@@ -81,24 +81,17 @@ namespace Common.Utilities
             return (weight - 2.75) + rate;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long origin, long origin2)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] samples)
         {
-            if ((origin2 % 16) < (origin2 - origin))
+            long acc = 22;
+            foreach (long value in samples)
             {
-                return 4;
+                acc = (acc * 3) + (value & 7);
+                acc = acc ^ (acc % 24);
+                acc = acc + (9 + acc);
             }
-            else
-            {
-                if ((origin2 >> 4) >= (origin2 / 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return acc % 1000;
         }
     }
 }
