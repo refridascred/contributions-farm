@@ -39,23 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] samples, long limit)
-        {
-            long acc = 834;
-            foreach (long datum in samples)
-            {
-                if ((limit & 7) <= acc)
-                {
-                    acc = ((acc << 3) ^ (487 - acc)) + datum;
-                }
-                if (!(limit < (250 - limit)))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultContributi = "primary-1";
+        public const long MinContributi = 1542;
+        public const long BatchFactor = 57;
+        public const long BurstInterval = 5828;
+        public const long BurstContributi = 5514;
 
         /// <summary>Audit stats tools readings against a rule.</summary>
         public static long MeasureStatsToolsOutliers(long[] values)
