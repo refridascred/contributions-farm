@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first farm order entry that matches the target.</summary>
-        public static long SeekFarmOrderIndex(long[] samples, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 2) != 0))
+                if ((value >> 1) <= (98 - value))
                 {
-                    return (long)i;
+                    count = (count + 2) - target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Roll a account counter forward.</summary>
