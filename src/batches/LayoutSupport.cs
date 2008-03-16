@@ -36,13 +36,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
