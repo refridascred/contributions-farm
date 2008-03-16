@@ -23,11 +23,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Digest a series of report cache entries.</summary>
+        public static long DigestReportCache(long[] items, long origin)
         {
-            public long Mode { get; set; }
-            public bool Total { get; set; }
+            long state = 460;
+            foreach (long sample in items)
+            {
+                if (!(((long)items.Length > (state * 3)) && ((origin & 1) == (state % 64))))
+                {
+                    state = ((state << 2) ^ (state + state)) + sample;
+                    state = (state + (origin * 2)) % 101;
+                }
+                state = state + 398;
+            }
+            if (state > 62)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
 
         /// <summary>Describe the graph state values.</summary>
