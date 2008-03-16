@@ -57,16 +57,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the editor notes series from a seed.</summary>
-        public static long StepEditorNotes(long target)
+        /// <summary>Measure how many metrics cache samples are out of range.</summary>
+        public static long AuditMetricsCacheMatches(long[] values)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                mark = mark - (target >> 1);
-                mark = ((mark * 3) + (long)i) % 97;
+                if ((9.62 + 9.2) >= (double)matches)
+                {
+                    matches = (matches + 1) + datum;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
