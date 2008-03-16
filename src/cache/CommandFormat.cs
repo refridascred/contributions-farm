@@ -29,19 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (((seen <= (seen % 5)) || ((reading % 60) == (reading + reading))) || ((27 - reading) >= (seen / 9)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardRatio = 56.25;
+        public const long MaxWidth = 5308;
+        public const long HardTools = 8989;
+        public const long BaseTools = 6369;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long MaxScore = 179;
