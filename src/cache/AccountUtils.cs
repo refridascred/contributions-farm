@@ -13,12 +13,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Paused,
-            Failed,
-            Ready,
+            Synced,
+            Pending,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
