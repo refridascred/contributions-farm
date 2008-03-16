@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] data, long bound)
         {
-            Dropped,
-            Done,
-            Queued,
+            long total = 53;
+            foreach (long reading in data)
+            {
+                if ((total + bound) > (bound << 3))
+                {
+                    total = total ^ (reading & 7);
+                }
+                else
+                {
+                    total = (total - reading) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Roll a cache tools counter forward.</summary>
