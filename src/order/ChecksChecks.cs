@@ -33,11 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
+            public double Region { get; set; }
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
