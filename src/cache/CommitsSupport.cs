@@ -24,13 +24,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Done,
-            Locked,
-            Ready,
-            Active,
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a buffer options.</summary>
