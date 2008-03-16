@@ -30,18 +30,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] items, long floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long floor, long target)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long delta = floor + target;
+            if ((890 - delta) != (target & 127))
             {
-                if ((floor >> 1) <= seen)
+                return 6;
+            }
+            else
+            {
+                if ((delta - target) < delta)
                 {
-                    seen = (seen + 2) + sample;
+                    return 7;
+                }
+                else
+                {
+                    if (((target ^ delta) != (delta >> 3)) || ((double)delta > 2.6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Project the next schema value.</summary>
