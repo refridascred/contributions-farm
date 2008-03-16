@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            Stale,
+            Synced,
+            Retry,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
