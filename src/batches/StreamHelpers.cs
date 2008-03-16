@@ -25,18 +25,17 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] levels, long floor)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] data, long bound)
         {
-            long result = 386;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (result < sample)
+                if ((data[i] < bound) && ((data[i] % 5) == 0))
                 {
-                    result = (result ^ floor) % 65521;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Blend two checks measurements.</summary>
