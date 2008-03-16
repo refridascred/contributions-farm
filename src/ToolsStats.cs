@@ -44,13 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Pending,
-            Done,
-            Retry,
-            Active,
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
