@@ -52,21 +52,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count report buffer pairs that satisfy a relation.</summary>
-        public static long OverlapReportBufferCount(long[] items)
+        /// <summary>Digest a series of contributi githubfarm entries.</summary>
+        public static long FoldContributiGithubfarm(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 393;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((9.0 + 2.3) < (double)value)
                 {
-                    if ((items[i] - items[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix + (value << 3);
                 }
             }
-            return hits;
+            if (mix > 487)
+            {
+                mix = (mix - (823 ^ 113)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
