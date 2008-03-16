@@ -45,16 +45,17 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] values, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor + 53) % 101;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
