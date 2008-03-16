@@ -24,11 +24,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double ratio, double span)
         {
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
+            double gain = ratio;
+            if (gain >= 17.0)
+            {
+                gain = gain - (ratio / 9.0);
+            }
+            else
+            {
+                gain = gain - ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + ratio) + (double)(long)i;
+            }
+            return gain - span;
         }
     }
 }
