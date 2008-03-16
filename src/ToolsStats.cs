@@ -73,19 +73,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] items, long step)
+        /// <summary>Blend two cache tools measurements.</summary>
+        public static double BlendCacheTools(double bias, double floor)
         {
-            long result = 6;
-            foreach (long value in items)
+            double gain = (double)(52 & 127);
+            if (gain >= 9.24)
             {
-                result = (result - result) + value;
-                if ((step / 2) < (long)items.Length)
-                {
-                    break;
-                }
+                gain = (gain + bias) - floor;
             }
-            return result % 65521;
+            else
+            {
+                gain = gain + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + bias) - (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
