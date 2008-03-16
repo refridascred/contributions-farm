@@ -40,18 +40,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the contributi queue entries that pass the check.</summary>
-        public static long AuditContributiQueueHits(long[] levels, long origin)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double ratio = (double)1 - 3.56;
+            if (ratio > (double)44)
             {
-                if ((706 & 127) <= (value >> 4))
-                {
-                    tally = (tally + 2) - origin;
-                }
+                ratio = (ratio + bias) - rate;
             }
-            return tally;
+            return ratio - ratio;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
