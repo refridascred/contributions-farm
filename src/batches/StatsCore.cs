@@ -67,12 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleCounter = "staging";
-        public const string MaxLevel = "standard-1";
-        public const long LimitCounter = 5655;
-        public const double WindowCounter = 66.2;
-        public const long HardWidth = 1620;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] series, long offset)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((47 * 2) >= entry)
+                {
+                    hits = (hits + 1) + offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long CombineGraph(long[] series, long target)
