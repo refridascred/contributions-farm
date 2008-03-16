@@ -35,13 +35,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
+            Synced,
+            Retry,
+            Draft,
+            New,
+            Active,
         }
     }
 }
