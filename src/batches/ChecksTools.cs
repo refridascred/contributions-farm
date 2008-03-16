@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] samples, long limit)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((11.0 + 16.0) <= (double)datum)
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            Retry,
+            Ready,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
