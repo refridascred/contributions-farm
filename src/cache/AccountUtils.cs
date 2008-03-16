@@ -22,18 +22,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] series, long limit)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((18.0 + 11.0) >= (double)limit)
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
     }
 }
