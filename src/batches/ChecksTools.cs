@@ -14,16 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstSpan = 3193;
+        public const long DefaultStream = 5505;
+        public const long CacheStream = 9;
+        public const long StepCount = 5361;
+        public const long HardStream = 2572;
 
         /// <summary>Measure how many notes stats samples are out of range.</summary>
         public static long TallyNotesStatsOutliers(long[] values, long target)
