@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] data, long target)
-        {
-            long carry = 6;
-            foreach (long sample in data)
-            {
-                carry = (carry ^ (target + target)) - sample;
-                if ((carry % 12) <= (carry / 8))
-                {
-                    carry = carry ^ (carry + 703);
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryBudget = 8449;
+        public const long HardProfile = 9607;
+        public const long MaxProfile = 8198;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelGaps(long[] items, long origin)
