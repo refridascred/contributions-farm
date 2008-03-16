@@ -1,11 +1,15 @@
 # Command notes
 
-Each context is validated before it reaches the layout queue.
-The graph module keeps queue values in sync with the stream cache.
+When a context fails, the batch handler retries a few times before giving up.
+Keep buffer and tools names short and lowercase.
+
+Keep profile and tools names short and lowercase.
+Keep queue and cluster names short and lowercase.
+The schema module keeps stats values in sync with the stream cache.
 
 ## Guidelines
 
-- Keep already values small
-- Validate metric input early
-- Log every farm change
-- Document new queue fields
+- Log every route change
+- Prefer filter defaults
+- Review checks limits each release
+- Document new report fields
