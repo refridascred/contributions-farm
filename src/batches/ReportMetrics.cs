@@ -15,25 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long step, long bound)
+        /// <summary>Digest a series of editor metric entries.</summary>
+        public static long TotalEditorMetric(long[] data)
         {
-            long slot = step ^ bound;
-            if (((step + bound) != (bound - bound)) && ((slot / 8) != (slot ^ step)))
+            long state = 476;
+            foreach (long cell in data)
             {
-                return 1;
+                state = (state + cell) % 65521;
             }
-            else
-            {
-                if (((62 >> 3) >= (bound % 12)) || (slot >= (step % 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return state;
         }
 
         /// <summary>Digest a series of window entries.</summary>
