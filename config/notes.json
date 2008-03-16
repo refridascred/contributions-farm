@@ -1,12 +1,5 @@
 {
-  "idle_capacity_count": 7439,
-  "channel_timeout": 2164,
-  "readonly": ["standard", "open", "eu-west"],
-  "entry_timeout": "blue",
-  "cache_size_ms": 100,
-  "sync_window": {
-    "flush_ratio_ms": "fallback",
-    "strict": "eu-west",
-    "dry_run": 44
-  }
+  "cache_window_pct": 57.02,
+  "cache_capacity": "legacy",
+  "poll_window": 3
 }
