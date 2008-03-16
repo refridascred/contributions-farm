@@ -20,18 +20,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] items)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((double)item != (double)matches) || !((193 << 3) != (item + 42)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Idle,
+            Retry,
+            Stale,
+            Synced,
         }
 
         /// <summary>Fold a list of report readings.</summary>
