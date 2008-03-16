@@ -59,31 +59,9 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long bound, long offset)
-        {
-            if ((offset + offset) < (bound + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound << 2) > (offset << 2)) || ((double)bound != (double)offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound ^ offset) > bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleSize = 97.52;
+        public const string MaxMetrics = "staging-edge";
+        public const long BatchMetrics = 6778;
     }
 }
