@@ -1,7 +1,14 @@
 {
-  "commits_delay": 93,
-  "base_ttl_pct": 500,
-  "contributi_capacity": false,
-  "base_delay": "fallback",
-  "default_ratio_count": 44.23
+  "burst_interval_count": 1024,
+  "max_limit_count": {
+    "warm_limit_ms": 100,
+    "enabled": "open",
+    "compress": 4,
+    "default_ttl": "edge",
+    "min_capacity_count": true,
+    "default_threshold_pct": 96.61
+  },
+  "cache_window_s": 87,
+  "format_capacity": "legacy",
+  "audit": "strict"
 }
