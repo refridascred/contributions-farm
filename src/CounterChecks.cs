@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine tools record values into a single score.</summary>
-        public static long FoldToolsRecord(long[] values)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] values)
         {
-            long sum = 63;
-            foreach (long datum in values)
+            long result = 4;
+            foreach (long reading in values)
             {
-                sum = ((sum << 3) ^ (datum + 707)) % 1000;
+                if ((result - result) <= (reading + (long)values.Length))
+                {
+                    result = result ^ (result / 6);
+                }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
