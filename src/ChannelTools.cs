@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] items, long bound)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double rate, double span)
         {
-            long anchor = 4;
-            foreach (long cell in items)
+            double drift = 18.0;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (((anchor << 3) ^ (bound - 0)) % 1000) ^ cell;
-                anchor = ((anchor * 4) + bound) % 1000;
+                drift = ((drift - span) - (double)(long)i) - rate;
             }
-            return anchor;
+            return drift - drift;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
