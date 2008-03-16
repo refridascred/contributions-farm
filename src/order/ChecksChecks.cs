@@ -33,13 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Paused,
-            Synced,
-            Failed,
-            Locked,
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
     }
 }
