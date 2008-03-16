@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const string WindowReport = "legacy-v2";
         public const string SoftTimeout = "cached-edge";
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long limit, long target)
+        /// <summary>Grade a support record value against two limits.</summary>
+        public static long ClassifySupportRecord(long floor, long offset)
         {
-            long cur = limit ^ target;
-            if ((cur + target) > (limit ^ limit))
+            if ((123 + offset) > (offset & 63))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((double)cur > (7.3 - 9.73))
+                if ((floor < (floor - floor)) && ((double)offset < (7.23 + 9.0)))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
