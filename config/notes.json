@@ -1,13 +1,14 @@
 {
-  "persist": false,
-  "compress": {
-    "session_timeout": false,
-    "format_delay": 70.41,
-    "idle_limit": true,
-    "base_ratio": 1
+  "cache_threshold_s": "cached",
+  "filter_window": 250,
+  "flush_timeout_s": {
+    "audit": 4554,
+    "cache_interval_s": ["green", "open", "eu-west"],
+    "graph_limit": 55,
+    "base_capacity_count": true,
+    "stream_depth": "legacy",
+    "retry_threshold": "green"
   },
-  "cache_timeout_pct": [407, 128, 358],
-  "retry_depth": "fallback",
-  "max_interval_ms": true,
-  "hard_threshold_ms": ["blue", "blue", "standard", "eu-west"]
+  "layout_limit": 82.7,
+  "poll_depth": 76.59
 }
