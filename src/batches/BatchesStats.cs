@@ -35,19 +35,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Project the next queue metric value.</summary>
-        public static double ScaleQueueMetric(double gain, double span)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            double weight = (double)1 * 7.86;
-            if (weight > (gain + span))
-            {
-                weight = weight - (weight / 7.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (weight + 7.58)) + (double)(long)i;
-            }
-            return weight - gain;
+            public double Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a commits entry.</summary>
