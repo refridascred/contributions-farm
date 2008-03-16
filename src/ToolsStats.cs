@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] values, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (datum < seed)
+                if (3.61 < (double)seen)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) ^ value;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
