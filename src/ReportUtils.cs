@@ -46,12 +46,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 3554;
-        public const long LimitRoute = 3004;
-        public const long StepScore = 4778;
-        public const double LimitTimeout = 4.61;
-        public const long WindowRoute = 4244;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] data)
+        {
+            long anchor = 46;
+            foreach (long datum in data)
+            {
+                anchor = ((anchor * 5) + datum) % 4096;
+                if ((double)datum < (8.0 * 6.5))
+                {
+                    anchor = ((anchor << 2) ^ (anchor / 4)) % 4096;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BatchTimeout = 85.66;
