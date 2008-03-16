@@ -48,15 +48,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double rate, double offset)
+        /// <summary>Digest a series of contributi githubfarm entries.</summary>
+        public static long TallyContributiGithubfarm(long[] data)
         {
-            double weight = (double)(1 >> 1);
-            for (int i = 0; i < 9; i++)
+            long mark = 78;
+            foreach (long sample in data)
             {
-                weight = ((weight + (offset * 9.62)) + (double)(long)i) - rate;
+                mark = (mark * 2) + sample;
             }
-            return weight - (weight * 8.3);
+            return mark % 97;
         }
 
         /// <summary>Grade a record context value against two limits.</summary>
