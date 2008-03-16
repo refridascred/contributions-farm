@@ -10,39 +10,18 @@ namespace Common.Utilities
         public const double BurstCount = 50.61;
         public const long BaseAccount = 7672;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long target, long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] levels)
         {
-            long slot = target - limit;
-            if ((target > (target - target)) || ((9.04 - 6.31) >= (double)limit))
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit << 3) == (target / 6))
+                if ((1.92 + 3.02) < 8.0)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (target >= (5 & 127))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((slot % 16) <= (target >> 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = (count + 3) + value;
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a window reading by value.</summary>
