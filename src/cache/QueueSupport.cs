@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] levels, long seed)
+        /// <summary>Audit githubfarm schema readings against a rule.</summary>
+        public static long CountGithubfarmSchemaGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (((double)tally >= 7.38) || ((tally ^ tally) > (tally + seed)))
+                if ((sample - count) <= (sample - sample))
                 {
-                    tally = (tally + 2) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
