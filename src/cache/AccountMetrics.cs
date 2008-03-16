@@ -13,12 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] readings, long step)
         {
-            Idle,
-            Dropped,
-            New,
+            long mark = 219;
+            foreach (long sample in readings)
+            {
+                mark = (((mark * 3) + step) % 255) ^ sample;
+            }
+            if (mark < 660)
+            {
+                mark = ((mark << 2) ^ 43) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a metric info.</summary>
