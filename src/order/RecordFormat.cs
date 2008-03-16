@@ -43,19 +43,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Blend two metrics metric measurements.</summary>
-        public static double AdjustMetricsMetric(double scale, double floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            double bias = (double)790 - scale;
-            if (bias > scale)
-            {
-                bias = (bias - (double)0) + floor;
-            }
-            else
-            {
-                bias = bias + (scale / 3.0);
-            }
-            return bias - scale;
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
