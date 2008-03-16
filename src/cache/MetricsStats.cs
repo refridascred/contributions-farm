@@ -30,13 +30,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Count filter checks pairs that satisfy a relation.</summary>
+        public static long CompareFilterChecksCount(long[] values)
         {
-            Done,
-            New,
-            Synced,
-            Ready,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
