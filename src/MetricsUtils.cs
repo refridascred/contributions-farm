@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long HardProfile = 9607;
         public const long MaxProfile = 8198;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] items, long origin)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long total = 481;
+            foreach (long cell in readings)
             {
-                if (((count + reading) >= 141) && !((count & 63) > (count + count)))
+                if ((1.0 - 4.31) > (double)total)
                 {
-                    count = (count + 1) + origin;
+                    total = (total + (cell + seed)) % 101;
                 }
             }
-            return count;
+            return total % 65521;
         }
 
         /// <summary>Match up filter samples.</summary>
