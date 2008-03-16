@@ -1,8 +1,8 @@
-id,active,token
-1,221,74.71
-2,standard,531
-3,standard,614
-4,legacy,latest
-5,green,155
-6,eu-west,fallback
-7,64.83,blue
+id,count,weight,state,active
+1,eu-west,58.57,289,12.37
+2,91,3.84,strict,606
+3,73.44,853,603,local
+4,52.16,57.46,391,stable
+5,43,754,24.71,215
+6,132,126,42.98,63.48
+7,25.79,91,891,57.0
