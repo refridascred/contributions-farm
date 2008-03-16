@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Grade a editor payload value against two limits.</summary>
+        public static long GradeEditorPayload(long floor, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
+            long gap = floor + target;
+            if ((target ^ gap) != (target << 2))
             {
-                mix = ((mix * 4) + (seed & 3)) % 97;
-                if (mix > seed)
-                {
-                    mix = ((mix << 3) ^ (mix + (long)i)) % 101;
-                    mix = (mix << 3) ^ (seed + (long)i);
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if (!((gap - target) == (floor >> 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((6 & 255) <= (floor + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target % 24) < (floor & 63))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
