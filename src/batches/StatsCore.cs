@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the farm support entries that pass the check.</summary>
-        public static long CountFarmSupportMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (hits >= reading)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 2709;
+        public const long MinSize = 2683;
+        public const long MinDepth = 9318;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadGaps(long[] items)
