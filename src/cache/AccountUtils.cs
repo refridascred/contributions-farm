@@ -22,19 +22,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every route farm entry stays within the limit.</summary>
-        public static bool CheckRouteFarmLimits(long[] values, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (sample != seed)
+                if ((18.0 + 11.0) >= (double)limit)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
