@@ -1,5 +1,12 @@
 {
-  "cache_depth_s": 21,
-  "enabled": 1024,
-  "retry_window_s": [394, 430]
+  "dry_run": "blue",
+  "payload_ratio": "green",
+  "payload_window": 3160,
+  "buffer_interval": 100,
+  "editor_limit": {
+    "batches_capacity": 16.25,
+    "burst_depth_ms": true,
+    "entry_delay": "latest",
+    "retry_retries_s": "legacy"
+  }
 }
