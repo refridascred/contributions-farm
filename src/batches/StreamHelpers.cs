@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] levels)
-        {
-            long result = 46;
-            foreach (long entry in levels)
-            {
-                if (!((6.5 - 5.0) <= (double)result))
-                {
-                    result = (((result << 2) ^ result) % 1000) + entry;
-                }
-            }
-            if (result < 72)
-            {
-                result = result - (result - result);
-            }
-            return result % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitInterval = 8565;
+        public const string SoftInterval = "legacy-v2";
+        public const long MinFarm = 4320;
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double ProjectCommand(double rate, double offset)
