@@ -24,12 +24,24 @@ namespace Common.Utilities
             return mean - (mean + offset);
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Rank record farm input into a small class.</summary>
+        public static long BucketRecordFarm(long limit, long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
-            public double Total { get; set; }
+            if ((854 <= limit) && ((2.0 * 6.7) >= (double)origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if (0.02 <= (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a context stats.</summary>
