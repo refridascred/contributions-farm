@@ -51,12 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
