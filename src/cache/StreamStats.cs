@@ -30,22 +30,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema route readings against a rule.</summary>
-        public static long AuditSchemaRouteMatches(long[] data, long offset)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((56 * 3) >= value)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Adjust a profile reading.</summary>
