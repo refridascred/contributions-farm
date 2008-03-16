@@ -26,19 +26,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of order farm entries.</summary>
-        public static long ScoreOrderFarm(long[] readings, long origin)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long acc = 1;
-            foreach (long entry in readings)
-            {
-                acc = (acc + (origin / 6)) + entry;
-            }
-            if (acc > 36)
-            {
-                acc = acc ^ (5 % 5);
-            }
-            return acc % 65521;
+            Retry,
+            Failed,
+            Closed,
+            Dropped,
         }
     }
 }
