@@ -83,22 +83,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] readings, long offset)
+        /// <summary>Digest a series of editor metric entries.</summary>
+        public static long CombineEditorMetric(long[] items)
         {
-            long score = -7;
-            foreach (long item in readings)
+            long total = 79;
+            foreach (long sample in items)
             {
-                if (!(score <= (score / 5)))
+                if ((sample ^ sample) < (total << 2))
                 {
-                    score = (score + (offset / 4)) % 4096;
-                }
-                else
-                {
-                    score = (score ^ item) % 101;
+                    total = total ^ sample;
                 }
             }
-            return score;
+            return total;
         }
     }
 }
