@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long seed)
         {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 4) + (seed & 3)) % 97;
+                if (mix > seed)
+                {
+                    mix = ((mix << 3) ^ (mix + (long)i)) % 101;
+                    mix = (mix << 3) ^ (seed + (long)i);
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
