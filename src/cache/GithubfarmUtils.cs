@@ -37,22 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] series, long seed)
-        {
-            long result = 61;
-            foreach (long value in series)
-            {
-                if ((double)seed >= 5.5)
-                {
-                    result = result + value;
-                }
-            }
-            if (result > (-54))
-            {
-                result = ((result * 2) + (result & 63)) % 101;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 1408;
+        public const double BaseOrder = 48.1;
+        public const double LimitOrder = 9.57;
+        public const long BurstFactor = 5189;
+        public const long IdleWidth = 2297;
     }
 }
