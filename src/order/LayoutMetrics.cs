@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] data, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] readings)
         {
-            long acc = 17;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((double)entry <= (4.41 * 1.1))
+                if ((matches & 7) > (matches % 7))
                 {
-                    acc = ((acc << 3) ^ (limit - 56)) % 255;
-                }
-                if ((entry - entry) < (limit ^ limit))
-                {
-                    break;
+                    matches = (matches + 3) + cell;
                 }
             }
-            if (acc > 8)
-            {
-                acc = acc ^ limit;
-            }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
