@@ -1,11 +1,10 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-Keep layout and metric names short and lowercase.
+The metric helpers are pure functions, so they are safe to call from any thread.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every metric change
-- Review checks limits each release
-- Document new session fields
-- Keep cluster values small
+- Document new profile fields
+- Review entry limits each release
+- Validate route input early
