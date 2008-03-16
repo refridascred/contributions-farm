@@ -36,22 +36,12 @@ namespace Common.Utilities
         public const string MaxFilter = "cached-edge";
         public const double WindowDepth = 24.6;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] data, long floor)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((seen & 31) < floor)
-                {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Draft,
+            Paused,
         }
     }
 }
