@@ -14,21 +14,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = -1;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((datum + 999) < (result % 100)))
                 {
-                    if ((values[i] + values[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result + datum) % 65521;
                 }
             }
-            return tally;
+            if (result < 68)
+            {
+                result = (result << 3) ^ (result / 5);
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
