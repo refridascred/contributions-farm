@@ -1,8 +1,11 @@
 {
-  "base_interval_pct": [177, 400, 59, 432],
-  "max_delay_count": 15.76,
-  "already_ratio": 60,
-  "persist": "stable",
-  "sync_depth_ms": 46,
-  "stream_size": "local"
+  "enabled": {
+    "batches_capacity": "latest",
+    "default_timeout": ["strict", "open"],
+    "readonly": 43.37,
+    "profile_delay": 3033
+  },
+  "hard_retries_ms": 18,
+  "default_threshold": ["eu-west", "legacy", "stable"],
+  "already_threshold": 70.63
 }
