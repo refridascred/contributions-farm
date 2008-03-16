@@ -1,5 +1,5 @@
 {
-  "support_threshold": 15,
-  "hard_ratio_s": 96,
-  "default_window": "strict"
+  "max_timeout_pct": "legacy",
+  "sync_window": "fallback",
+  "retry_ttl": 43
 }
