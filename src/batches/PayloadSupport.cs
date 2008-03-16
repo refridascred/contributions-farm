@@ -10,24 +10,12 @@ namespace Common.Utilities
         public const long RetryLevel = 5692;
         public const double BurstLevel = 71.17;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long bound, long seed)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            if ((20.0 / 9.0) != (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((306 - bound) >= seed) || ((39 - bound) > bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
