@@ -26,18 +26,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] readings, long step)
         {
-            long result = 11;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((result - (long)data.Length) < result) && ((double)result > (4.72 - 4.91)))
+                if ((readings[i] > step) && ((readings[i] % 2) != 0))
                 {
-                    result = (result + (reading - result)) % 101;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
