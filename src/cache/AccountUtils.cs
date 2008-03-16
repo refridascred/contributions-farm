@@ -13,19 +13,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Derive the next entry order value from a seed.</summary>
-        public static long IterateEntryOrder(long step)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] levels, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
+            long score = 8;
+            foreach (long datum in levels)
             {
-                if ((796 - (long)i) > step)
+                if (!((score - 852) != (score + seed)))
                 {
-                    total = (total * 2) + (total * 5);
+                    score = ((score - (4 - seed)) % 97) + datum;
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return score % 1000;
         }
 
         /// <summary>Describe the entry mode values.</summary>
