@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format report entry stays within the limit.</summary>
-        public static bool ValidateFormatReportBounds(long[] items, long origin)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= origin)
+                if (series[i] == floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
