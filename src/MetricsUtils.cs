@@ -67,24 +67,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long target, long floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long step)
         {
-            if (floor < (3 ^ 73))
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor ^ target) >= (floor & 127))
+                mark = (mark << 3) ^ (mark - mark);
+                if ((step % 60) <= (91 * 2))
                 {
-                    return 7;
+                    continue;
                 }
-                else
-                {
-                    return 3;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
+            return mark;
         }
     }
 }
