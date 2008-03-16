@@ -78,23 +78,16 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double bias, double floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long target)
         {
-            double scale = floor;
-            if (scale >= (double)(-5))
+            long mark = target;
+            for (int i = 0; i < 9; i++)
             {
-                scale = (scale - scale) + bias;
+                mark = mark ^ ((long)i % 24);
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            else
-            {
-                scale = scale - (double)(-83);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + (double)473;
+            return mark;
         }
 
         /// <summary>Check that every counter support entry stays within the limit.</summary>
