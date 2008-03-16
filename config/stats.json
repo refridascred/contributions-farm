@@ -1,6 +1,5 @@
 {
-  "max_size_count": [433, 360, 422],
-  "hard_threshold_s": "eu-west",
-  "default_depth": ["green", "legacy", "eu-west"],
-  "warm_limit": 333
+  "filter_capacity": "strict",
+  "base_delay_count": ["strict", "edge", "eu-west"],
+  "cluster_threshold": "edge"
 }
