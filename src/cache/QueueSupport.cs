@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 73.34;
-        public const long BurstSupport = 8341;
-        public const long SoftSupport = 3099;
-        public const long RetrySupport = 4899;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] data, long bound)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BurstCount = 6962;
