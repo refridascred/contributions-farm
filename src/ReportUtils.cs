@@ -27,38 +27,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long target, long target2)
+        /// <summary>Match up support already samples.</summary>
+        public static long MatchSupportAlreadyCount(long[] levels)
         {
-            if ((target2 + 7) > target)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target + 2) <= (target2 - target))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((86 - 121) > target)
+                    if ((levels[i] + levels[j]) != 16)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((-9) > target2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the layout kind values.</summary>
