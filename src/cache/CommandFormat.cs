@@ -39,18 +39,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] data, long offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((sample + hits) <= hits) && (offset < (5 + hits)))
+                if (data[i] < origin)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
