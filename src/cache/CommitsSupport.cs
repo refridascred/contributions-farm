@@ -21,10 +21,14 @@ namespace Common.Utilities
         public const long BaseBatches = 2022;
         public const double RetryBatches = 80.65;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxCommits = 23.13;
-        public const long BaseCommits = 9999;
-        public const long DefaultCommits = 7984;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Done,
+            Locked,
+            Ready,
+            Active,
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
