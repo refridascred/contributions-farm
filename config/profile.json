@@ -1,10 +1,16 @@
 {
-  "idle_depth": true,
-  "idle_limit": {
-    "audit": 98,
-    "tools_retries": true,
-    "flush_depth_count": 137,
-    "retry_threshold_pct": "local"
+  "burst_threshold": {
+    "poll_delay_count": "latest",
+    "metric_capacity": {
+      "warm_retries_ms": 6425,
+      "cache_limit_count": 59.01,
+      "retry_delay_ms": 28.98,
+      "profile_ttl": "legacy"
+    },
+    "warm_size": "green"
   },
-  "metrics_capacity": false
+  "burst_depth": false,
+  "batch_timeout": ["eu-west", "legacy", "cached"],
+  "burst_interval_pct": "open",
+  "persist": "open"
 }
