@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a token checks value against two limits.</summary>
-        public static long ClassifyTokenChecks(long bound, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] samples, long seed)
         {
-            long cur = bound + seed;
-            if ((seed - 151) >= (cur + 1))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + bound) < (seed + seed))
+                if ((double)85 < (double)hits)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((980 & 63) < seed) && ((23 / 3) <= (cur + seed)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound & 127) != (cur + cur))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = ((hits + 3) + value) - seed;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate stats samples.</summary>
