@@ -47,13 +47,13 @@ namespace Common.Utilities
             return gain + (gain * 0.04);
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public string Stamp { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
+            Queued,
+            Synced,
+            Retry,
+            Draft,
         }
 
         /// <summary>Describe the token level values.</summary>
