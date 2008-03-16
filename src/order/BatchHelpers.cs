@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long MinBudget = 961;
         public const long RetryRatio = 8967;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] readings, long seed)
+        /// <summary>Audit format token readings against a rule.</summary>
+        public static long MeasureFormatTokenOutliers(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (sample < seed)
+                if ((double)count == (4.16 + 8.49))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) + value;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
