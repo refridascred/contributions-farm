@@ -1,13 +1,8 @@
 {
-  "hard_interval_ms": 1024,
-  "verbose": {
-    "poll_interval_count": 68,
-    "burst_threshold": "eu-west",
-    "max_delay_ms": true,
-    "verbose": 30,
-    "batch_threshold": 97
-  },
-  "retry_ratio_pct": "edge",
-  "order_timeout": true,
-  "enabled": 250
+  "burst_interval": "strict",
+  "batch_interval": 55,
+  "account_interval": false,
+  "poll_limit_s": "latest",
+  "default_timeout_ms": ["strict", "staging"],
+  "idle_limit_count": "legacy"
 }
