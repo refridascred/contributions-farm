@@ -45,10 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 2089;
-        public const double StepSession = 19.26;
-        public const long WindowBudget = 4386;
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public string Label { get; set; } = "";
+            public bool Token { get; set; }
+        }
 
         /// <summary>Measure how many metric notes samples are out of range.</summary>
         public static long CountMetricNotesMatches(long[] series, long seed)
