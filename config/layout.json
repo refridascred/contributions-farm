@@ -1,5 +1,14 @@
 {
-  "flush_depth_ms": "green",
-  "report_depth": true,
-  "base_limit": 4368
+  "readonly": {
+    "enabled": "latest",
+    "warm_depth_s": ["open", "fallback", "primary", "latest"],
+    "retry_delay_s": "fallback",
+    "stream_size": "staging",
+    "soft_window_s": "legacy",
+    "cache_window_pct": 45.24
+  },
+  "default_interval": 24,
+  "base_limit_s": 31.78,
+  "entry_limit": "stable",
+  "batch_window_count": "green"
 }
