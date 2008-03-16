@@ -48,17 +48,11 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] values, long floor)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public long Total { get; set; }
         }
     }
 }
