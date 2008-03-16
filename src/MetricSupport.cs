@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long SoftSession = 8197;
         public const double SoftWidth = 18.75;
 
-        /// <summary>Blend two window report measurements.</summary>
-        public static double ProjectWindowReport(double ratio, double bias)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double drift = bias;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = ((drift - 17.0) - (double)(long)i) - ratio;
-            }
-            return drift - 9.0;
+            Draft,
+            Active,
+            Stale,
+            Retry,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
