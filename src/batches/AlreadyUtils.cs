@@ -20,19 +20,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a graph metric counter forward.</summary>
-        public static long SeriesGraphMetric(long bound)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((bound + mix) <= mix)
-                {
-                    mix = mix ^ ((long)i - (long)i);
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
+                state = ((state * 2) + 97) % 101;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Describe the order state values.</summary>
