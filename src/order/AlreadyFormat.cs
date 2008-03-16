@@ -33,11 +33,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxGraph = "alpha-edge";
-        public const long DefaultGraph = 6546;
-        public const long RetrySize = 9781;
-        public const double WindowFactor = 57.07;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Dropped,
+            Synced,
+            New,
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
