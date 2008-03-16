@@ -34,13 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] data)
         {
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen + entry) <= seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
