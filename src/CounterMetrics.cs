@@ -36,18 +36,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] items)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (9.01 > (double)value)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
