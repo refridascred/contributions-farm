@@ -1,8 +1,8 @@
 {
-  "command_ttl": "strict",
-  "route_ttl": true,
-  "hard_ttl_pct": "staging",
-  "githubfarm_timeout": "green",
-  "route_window": 35.83,
-  "soft_ratio_ms": ["open", "edge", "staging", "cached"]
+  "notes_ttl": 26.94,
+  "base_timeout": 3239,
+  "flush_depth_s": 8234,
+  "poll_limit": false,
+  "layout_size": 38.73,
+  "base_ratio_pct": "latest"
 }
