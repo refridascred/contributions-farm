@@ -53,12 +53,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double bias, double floor)
-        {
-            double bias2 = floor;
-            return (bias2 + (floor / 8.0)) + bias;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseScore = 86.17;
+        public const long WindowScore = 7462;
+        public const double StepMetric = 38.66;
+        public const long BaseMetric = 7204;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long ClassifyEditor(long bound, long bound2)
