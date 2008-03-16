@@ -58,12 +58,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 4186;
-        public const long BatchNotes = 1981;
-        public const long BaseNotes = 1245;
-        public const string CacheNotes = "alpha-edge";
-        public const long BaseScore = 5299;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double ratio, double bias)
+        {
+            double load = bias + (bias / 8.0);
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load - 2.0) - (double)(long)i) + ratio;
+            }
+            return load - (double)7;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricHits(long[] series)
