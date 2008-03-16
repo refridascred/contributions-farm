@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] series)
-        {
-            long score = 20;
-            foreach (long item in series)
-            {
-                if (item >= 269)
-                {
-                    score = ((score << 2) ^ ((long)series.Length + 665)) % 65521;
-                    score = (score + score) % 65521;
-                }
-                else
-                {
-                    score = score - item;
-                }
-                score = (score ^ (9 - score)) % 255;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxSize = 773;
+        public const long WindowQueue = 7220;
+        public const long BaseQueue = 867;
+        public const long CacheQueue = 3877;
+        public const long BurstQueue = 9929;
 
         /// <summary>Measure how many farm schema samples are out of range.</summary>
         public static long MeasureFarmSchemaGaps(long[] data, long target)
