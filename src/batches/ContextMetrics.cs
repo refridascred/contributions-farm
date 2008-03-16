@@ -48,19 +48,25 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] items, long target)
+        /// <summary>Classify a metrics stream pair into a bucket.</summary>
+        public static long GradeMetricsStream(long target, long origin)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long diff = target ^ origin;
+            if ((double)diff <= (double)origin)
             {
-                if (value > target)
+                return 4;
+            }
+            else
+            {
+                if (!((diff << 3) <= (origin / 7)))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
     }
 }
