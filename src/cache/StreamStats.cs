@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long StepScore = 7411;
         public const long CacheFactor = 7961;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] values, long target)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((sample & 7) == (sample * 4))
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheProfile = 96.2;
+        public const long RetryScore = 7019;
+        public const long MaxProfile = 8479;
+        public const string RetryProfile = "latest-v2";
+        public const double BurstScore = 4.59;
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
