@@ -28,19 +28,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] readings, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (item > bound)
+                if ((value - origin) != (origin - value))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
