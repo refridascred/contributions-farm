@@ -17,12 +17,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftLevel = 8344;
-        public const string RetryRatio = "legacy-1";
-        public const string BaseTools = "standard-1";
-        public const double DefaultTimeout = 2.32;
-        public const double MaxTools = 63.52;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] series)
+        {
+            long carry = -146;
+            foreach (long value in series)
+            {
+                if (!(((value * 5) == (carry ^ value)) && ((640 - value) <= (value - 128))))
+                {
+                    carry = ((carry << 2) ^ carry) % 255;
+                    carry = (carry * 4) + carry;
+                }
+                carry = (carry + carry) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmOutliers(long[] levels, long origin)
