@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine buffer payload values into a single score.</summary>
-        public static long FoldBufferPayload(long[] samples)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long limit)
         {
-            long acc = 72;
-            foreach (long entry in samples)
+            long result = limit;
+            for (int i = 0; i < 6; i++)
             {
-                acc = (acc ^ entry) % 101;
-                acc = ((acc * 4) + (91 - entry)) % 97;
-                acc = ((acc << 2) ^ (acc ^ 9)) % 4096;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return acc % 4096;
+            return result;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
