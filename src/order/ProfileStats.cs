@@ -40,19 +40,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] series, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] data, long step)
         {
-            long sum = 912;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                sum = (sum - (sum >> 5)) - bound;
-                if ((40 & 15) <= value)
+                if ((0.3 * 6.0) != (double)hits)
                 {
-                    break;
+                    hits = ((hits + 3) - entry) - step;
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
