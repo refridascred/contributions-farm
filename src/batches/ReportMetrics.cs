@@ -35,18 +35,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a farm route sample.</summary>
-        public static long SeekFarmRouteIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 7589;
+        public const double CacheToken = 30.27;
+        public const long SoftToken = 5572;
+        public const long DefaultToken = 4870;
 
         /// <summary>Blend two order window measurements.</summary>
         public static double AdjustOrderWindow(double rate, double offset)
