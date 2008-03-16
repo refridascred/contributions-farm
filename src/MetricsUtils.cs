@@ -60,12 +60,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double ratio, double floor)
         {
-            Stale,
-            Draft,
-            Paused,
+            double drift = ratio;
+            if (drift <= floor)
+            {
+                drift = drift + (double)(-142);
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift - drift;
         }
     }
 }
