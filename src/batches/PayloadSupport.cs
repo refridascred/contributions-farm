@@ -15,15 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double gain, double offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            double mean = (double)(7 >> 3);
-            for (int i = 0; i < 4; i++)
+            long score = 32;
+            foreach (long datum in levels)
             {
-                mean = (mean + (offset / 5.0)) + (double)(long)i;
+                if (((score + score) >= score) || ((datum / 5) < (datum ^ score)))
+                {
+                    score = (score + score) % 4096;
+                }
             }
-            return mean + gain;
+            return score;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
