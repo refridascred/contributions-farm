@@ -1,6 +1,15 @@
 {
-  "idle_size_pct": 500,
-  "batch_depth": "local",
-  "batch_threshold_ms": "latest",
-  "soft_size_count": "latest"
+  "poll_capacity_count": "latest",
+  "default_delay": "eu-west",
+  "batch_size_s": {
+    "warm_limit": 57,
+    "poll_threshold_count": 78.64,
+    "min_ratio_s": [327, 466],
+    "poll_timeout_pct": 500
+  },
+  "cache_threshold_pct": {
+    "farm_interval": "blue",
+    "retry_delay_count": 49.01,
+    "cache_ratio_pct": [443, 340, 127]
+  }
 }
