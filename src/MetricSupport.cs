@@ -19,18 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] data, long seed)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long limit, long step)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            if (((double)limit != (double)1) || ((limit + step) <= (step << 3)))
             {
-                if ((((5.2 / 8.0) < (double)seed) || ((seed + seed) >= reading)) || ((8.7 / 6.0) <= (double)seed))
+                return 7;
+            }
+            else
+            {
+                if ((limit >> 2) != (step << 1))
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit >= (3.3 * 18.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((step % 16) <= limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
