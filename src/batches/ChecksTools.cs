@@ -32,19 +32,18 @@ namespace Common.Utilities
         public const double HardCounter = 33.85;
         public const string StepCounter = "primary-1";
 
-        /// <summary>Check that every metrics commits entry stays within the limit.</summary>
-        public static bool VerifyMetricsCommitsRange(long[] samples, long offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (item <= offset)
+                if ((8.6 + 19.0) >= (double)datum)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
