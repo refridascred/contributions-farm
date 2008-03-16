@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((701 * 3) >= reading)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 8183;
+        public const string LimitScore = "stable-v2";
+        public const long BatchCount = 4852;
+        public const long BaseCommits = 4317;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long DigestCounter(long[] levels)
