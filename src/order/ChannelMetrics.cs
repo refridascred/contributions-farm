@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next graph entry value.</summary>
-        public static double ProjectGraphEntry(double ratio, double floor)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double rate = (double)(-7) + ratio;
-            if (rate >= (4.1 + floor))
-            {
-                rate = rate - (rate + rate);
-            }
-            return rate - floor;
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
