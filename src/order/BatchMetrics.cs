@@ -58,19 +58,12 @@ namespace Common.Utilities
             return load - (10.0 / 7.0);
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double gain, double bias)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double weight = bias;
-            if (weight < 1.99)
-            {
-                weight = (weight - (bias - weight)) - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + (0.92 * 5.0);
+            Idle,
+            Stale,
+            Pending,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
