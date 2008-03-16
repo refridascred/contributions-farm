@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Digest a series of format account entries.</summary>
+        public static long ScoreFormatAccount(long[] data)
         {
-            Retry,
-            Done,
-            Pending,
-            Stale,
+            long sum = 51;
+            foreach (long reading in data)
+            {
+                sum = (sum + (sum - sum)) + reading;
+            }
+            if (sum > 30)
+            {
+                sum = ((sum << 3) ^ (sum - 10)) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Fold a list of githubfarm entry readings.</summary>
