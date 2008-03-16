@@ -62,10 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinCounter = 11.72;
-        public const long MaxWidth = 7621;
-        public const string DefaultInterval = "stable-edge";
-        public const string MaxScore = "open-edge";
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] values, long origin)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((origin + 98) > (origin - seen))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
