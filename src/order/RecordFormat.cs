@@ -34,18 +34,15 @@ namespace Common.Utilities
             return load + (gain - load);
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] samples, long seed)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double scale, double floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            double mean = floor;
+            if (mean <= mean)
             {
-                if ((count + seed) != (70 * 2))
-                {
-                    count = (count + 3) ^ reading;
-                }
+                mean = mean + mean;
             }
-            return count;
+            return mean - scale;
         }
 
         /// <summary>Hold a batch record.</summary>
