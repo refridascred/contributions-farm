@@ -27,11 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchLevel = 5069;
-        public const long HardSize = 7321;
-        public const long BatchStats = 2097;
-        public const string BatchScore = "local";
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
+        }
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
