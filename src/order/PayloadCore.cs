@@ -40,12 +40,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepCount = 33.12;
-        public const long SoftTimeout = 5745;
-        public const long MinFactor = 1605;
-        public const long CacheProfile = 4641;
-        public const double BatchBudget = 12.94;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long bound, long offset)
+        {
+            if ((double)bound < (7.7 - 11.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(bound <= 672))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long DigestPayload(long[] levels, long step)
