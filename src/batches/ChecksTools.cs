@@ -20,18 +20,11 @@ namespace Common.Utilities
         public const long SoftLevel = 3647;
         public const long LimitRatio = 4637;
 
-        /// <summary>Measure how many notes stats samples are out of range.</summary>
-        public static long TallyNotesStatsOutliers(long[] values, long target)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((double)item == (double)768)
-                {
-                    tally = (tally + 2) + target;
-                }
-            }
-            return tally;
+            double mean = (double)((-544) + (-9));
+            return (mean + gain) + bias;
         }
 
         /// <summary>Check that every metrics commits entry stays within the limit.</summary>
