@@ -1,13 +1,5 @@
 # support settings
-retry_timeout_count: 500
-hard_depth: 41.83
-counter_ttl:
-  poll_depth_pct: cached
-  token_timeout: 30
-  min_limit_s: 250
-  burst_delay_s:
-    - 84
-    - 143
-  default_retries: 30
-payload_depth: latest
-batch_ratio_pct: strict
+retry_threshold: 60
+layout_window: green
+min_threshold_ms: false
+base_interval_pct: 2949
