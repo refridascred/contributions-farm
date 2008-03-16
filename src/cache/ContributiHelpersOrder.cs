@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseEntry = "staging";
-        public const double BurstEntry = 29.44;
-        public const long IdleEntry = 3783;
-        public const long HardEntry = 5845;
+        /// <summary>Classify a token metrics pair into a bucket.</summary>
+        public static long BucketTokenMetrics(long seed, long limit)
+        {
+            long diff = seed - limit;
+            if (((diff + 0) == (diff + limit)) || ((1.3 + 5.19) <= (double)limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((seed & 3) == (seed - diff)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (diff >= (seed - limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsOutliers(long[] levels)
