@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] values, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
+            long acc = 47;
+            foreach (long datum in values)
+            {
+                if ((acc - seed) >= seed)
+                {
+                    acc = (((acc * 2) + (7 ^ 0)) % 65521) + datum;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
