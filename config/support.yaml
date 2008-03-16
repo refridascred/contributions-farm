@@ -1,11 +1,39 @@
 # support settings
-verbose: false
-burst_ratio_ms: stable
-max_threshold:
-  hard_ratio_count: false
-  filter_depth: 71
-  readonly: 2.07
-  hard_size: true
-default_retries_ms: 92.02
-max_timeout_count: 250
-soft_delay: 8
+schema_interval: green
+persist:
+  max_interval_count:
+    batch_ttl_pct: 18.63
+    strict: 9511
+    batch_window_s: 80
+    sync_interval_count:
+      - 467
+      - 458
+      - 470
+    hard_retries_pct: 38
+    dry_run: 29.1
+  entry_interval: 98.8
+  notes_ttl:
+    poll_depth_s: 5456
+    cache_size_ms: 1024
+    idle_interval_count: 9650
+    persist: false
+  warm_ttl_count: false
+  warm_ttl:
+    - standard
+    - stable
+  layout_size: 250
+strict:
+  audit: cached
+  burst_delay_count: 6118
+  context_capacity: 32
+  base_ttl_pct: 72.51
+  base_delay_s:
+    - blue
+    - latest
+    - eu-west
+    - local
+dry_run:
+  - stable
+  - primary
+readonly: standard
+token_interval: 60
