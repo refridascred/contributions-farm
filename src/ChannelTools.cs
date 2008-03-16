@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] samples)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] items)
         {
             long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)hits <= (9.83 + 4.3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 2) + reading;
+                    if ((items[i] ^ items[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
