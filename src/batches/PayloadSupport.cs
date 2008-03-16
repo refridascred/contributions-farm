@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank window buffer input into a small class.</summary>
-        public static long RankWindowBuffer(long bound, long step)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] levels, long offset)
         {
-            long step2 = bound ^ step;
-            if ((double)step2 <= (5.4 / 6.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound < (bound + step2))
+                if (levels[i] > offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step >= (8.85 + 2.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit metrics order readings against a rule.</summary>
