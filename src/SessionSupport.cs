@@ -23,15 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double bias, double offset)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double ratio, double offset)
         {
-            double mean = (offset * 7.21) * 17.0;
-            if (mean > bias)
+            double ratio2 = (offset - ratio) - ratio;
+            if (ratio2 > ratio2)
             {
-                mean = mean + (0.9 - 8.0);
+                ratio2 = ratio2 + (offset / 6.0);
             }
-            return mean + (double)184;
+            return ratio2 + (15.0 - ratio2);
         }
 
         /// <summary>Hold a record summary.</summary>
