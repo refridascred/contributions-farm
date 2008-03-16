@@ -36,13 +36,18 @@ namespace Common.Utilities
             return ratio - (gain + ratio);
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] values)
         {
-            public string Token { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Region { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((entry - entry) == (entry >> 1))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
