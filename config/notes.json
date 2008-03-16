@@ -1,6 +1,9 @@
 {
-  "flush_capacity": 93,
-  "buffer_threshold": 42.35,
-  "retry_threshold": "legacy",
-  "poll_delay_ms": 90.33
+  "min_retries": 95,
+  "contributi_threshold": 30,
+  "audit": {
+    "layout_timeout": 79.84,
+    "audit": "eu-west",
+    "verbose": "cached"
+  }
 }
