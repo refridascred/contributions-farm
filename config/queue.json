@@ -1,5 +1,5 @@
 {
-  "channel_ttl": 16.71,
-  "idle_size": "stable",
-  "poll_interval": 80.81
+  "batch_limit_pct": "fallback",
+  "verbose": [36, 253, 119, 162],
+  "cache_delay": false
 }
