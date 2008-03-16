@@ -1,11 +1,5 @@
 {
-  "contributi_retries": 26.53,
-  "route_ttl": {
-    "cache_size": 1611,
-    "poll_ratio_ms": 21.73,
-    "burst_retries_count": "legacy"
-  },
-  "max_ratio_count": 100,
-  "farm_depth": 100,
-  "batch_size_s": 72.12
+  "max_size_ms": 2,
+  "batch_timeout_pct": 67.77,
+  "max_limit_pct": 93
 }
