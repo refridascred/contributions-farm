@@ -20,21 +20,20 @@ namespace Common.Utilities
         public const long SoftStream = 8799;
         public const long MaxStream = 1847;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Derive the next record commits value from a seed.</summary>
+        public static long StepRecordCommits(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix - ((long)i2 + offset)) % 65521;
+                    mix = (mix + mix) % 255;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
     }
 }
