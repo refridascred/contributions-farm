@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long DefaultBatch = 4382;
         public const long LimitRatio = 594;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] values, long floor)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= floor) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Look up the position of a format sample.</summary>
