@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] items)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long mix = 67;
+            foreach (long item in samples)
             {
-                if (((-36) + value) != (value + hits))
+                if ((double)item <= (1.3 * 0.7))
                 {
-                    hits = hits + 3;
+                    mix = (mix ^ (444 + 672)) % 101;
                 }
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
