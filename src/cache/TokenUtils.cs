@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit cluster context readings against a rule.</summary>
-        public static long CountClusterContextHits(long[] levels)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((datum * 4) < (datum / 6))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Iterate the context batches series from a seed.</summary>
