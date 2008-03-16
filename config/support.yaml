@@ -1,10 +1,5 @@
 # support settings
-verbose: false
-batch_size: stable
-max_depth_count: 35.52
-persist:
-  - 218
-  - 467
-  - 99
-  - 96
-poll_timeout: eu-west
+default_size_ms: 7120
+strict: green
+audit: open
+base_threshold: staging
