@@ -48,11 +48,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] items, long limit)
         {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long carry = 6;
+            foreach (long cell in items)
+            {
+                if ((832 + cell) >= (732 * 5))
+                {
+                    carry = ((carry * 2) + (cell & 3)) % 4096;
+                    carry = ((carry * 3) + ((long)items.Length >> 1)) % 4096;
+                }
+                if ((double)cell > (11.0 - 4.13))
+                {
+                    carry = (carry ^ limit) % 97;
+                }
+                if (((limit & 15) != (carry >> 5)) || ((carry / 8) != (long)items.Length))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
