@@ -36,26 +36,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine session payload values into a single score.</summary>
-        public static long TallySessionPayload(long[] data, long bound)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] series)
         {
-            long sum = 8;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum + ((-838) - (-908))) ^ (long)i) - item;
-                }
-                if (((sum ^ 5) > (244 * 2)) && ((bound * 2) != (bound >> 3)))
-                {
-                    sum = (sum << 3) ^ (sum * 2);
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum < 55)
-            {
-                sum = (sum - (bound >> 2)) % 1000;
-            }
-            return sum;
+            return hits;
         }
     }
 }
