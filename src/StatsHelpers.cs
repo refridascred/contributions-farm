@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
