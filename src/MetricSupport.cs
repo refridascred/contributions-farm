@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] data)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (((701 % 97) > (sample >> 2)) || ((matches * 4) == (sample + 53)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Stale,
+            New,
+            Locked,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
