@@ -37,24 +37,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long bound, long offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] items)
         {
-            if ((double)bound < (7.7 - 11.0))
+            long carry = 3;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(bound <= 672))
+                if ((2.63 * 2.33) <= (double)entry)
                 {
-                    return 2;
+                    carry = carry + (entry & 255);
                 }
                 else
                 {
-                    return 4;
+                    carry = ((carry * 4) + (carry & 1)) % 1000;
                 }
             }
+            return carry;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
