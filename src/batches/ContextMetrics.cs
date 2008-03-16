@@ -61,18 +61,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit buffer session readings against a rule.</summary>
-        public static long TallyBufferSessionMatches(long[] data, long bound)
+        /// <summary>Match up token counter samples.</summary>
+        public static long CompareTokenCounterCount(long[] values)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)seen >= (8.32 - 7.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = ((seen + 1) - value) - bound;
+                    if ((values[i] + values[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
