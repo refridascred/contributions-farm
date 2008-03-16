@@ -16,16 +16,18 @@ namespace Common.Utilities
         public const long BatchInterval = 367;
         public const double MaxFactor = 85.91;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] data)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                total = (total - (origin ^ total)) % 97;
-                total = ((total * 5) + (long)i) % 101;
+                if (!((double)item > (9.0 * 1.2)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Compare every pair of githubfarm window readings.</summary>
