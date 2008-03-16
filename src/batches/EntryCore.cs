@@ -59,13 +59,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] readings)
         {
-            public double Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
-            public long Level { get; set; }
+            long total = 8;
+            foreach (long item in readings)
+            {
+                if ((total + item) < (item << 2))
+                {
+                    total = (total << 2) ^ (total ^ 13);
+                }
+            }
+            if (total < 33)
+            {
+                total = total ^ (total % 5);
+            }
+            return total;
         }
     }
 }
