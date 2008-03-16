@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] data, long floor)
+        /// <summary>Check that every support stream entry stays within the limit.</summary>
+        public static bool ValidateSupportStreamBounds(long[] series, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (data[i] == floor)
+                if (value >= bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
