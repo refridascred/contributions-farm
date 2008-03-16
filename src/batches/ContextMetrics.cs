@@ -64,11 +64,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next queue session value.</summary>
-        public static double ScaleQueueSession(double gain, double bias)
-        {
-            double rate = (double)(89 & 255);
-            return (rate - (bias + rate)) + gain;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 8511;
+        public const double LimitSession = 26.42;
+        public const string BatchSession = "cached";
     }
 }
