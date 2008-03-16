@@ -29,17 +29,12 @@ namespace Common.Utilities
             return gain + (1.0 / 6.0);
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] values, long bound)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
