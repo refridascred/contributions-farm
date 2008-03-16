@@ -18,15 +18,22 @@ namespace Common.Utilities
         public const double CacheWidth = 25.72;
         public const string SoftTimeout = "staging";
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Count the profile metrics entries that pass the check.</summary>
+        public static long MeasureProfileMetricsGaps(long[] levels, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                if (((double)tally >= (12.0 + 2.0)) || ((tally + limit) < value))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Blend two format measurements.</summary>
