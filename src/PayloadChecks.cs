@@ -60,18 +60,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((596 - seen) != (reading * 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepBudget = 2976;
+        public const long LimitDepth = 5207;
+        public const long LimitFarm = 582;
+        public const string BatchInterval = "standard-edge";
     }
 }
