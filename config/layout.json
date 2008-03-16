@@ -1,15 +1,17 @@
 {
-  "readonly": {
-    "window_size": "staging",
-    "retry_threshold": "legacy",
-    "default_window_count": 78.48,
-    "persist": {
-      "batch_size": 86,
-      "profile_interval": false,
-      "schema_capacity": "open",
-      "dry_run": "standard"
-    }
+  "format_capacity": "edge",
+  "warm_retries_s": {
+    "batch_window_ms": 6036,
+    "burst_ratio_pct": 74.35,
+    "base_ratio_ms": "cached",
+    "enabled": true
   },
-  "max_window": 6,
-  "idle_timeout_count": 60
+  "dry_run": 8069,
+  "min_retries_s": "strict",
+  "max_timeout_count": {
+    "metric_window": 81,
+    "soft_size_s": "open",
+    "retry_size_pct": "staging"
+  },
+  "max_timeout_pct": "cached"
 }
