@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] data, long bound)
         {
-            Failed,
-            Dropped,
-            Pending,
-            Retry,
-            Ready,
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
