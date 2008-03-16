@@ -36,18 +36,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] series, long seed)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long mix = 31;
-            foreach (long value in series)
-            {
-                if (!((seed + mix) <= (mix - 96)))
-                {
-                    mix = (((mix << 2) ^ (seed - mix)) % 97) + value;
-                }
-            }
-            return mix;
+            public bool Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
