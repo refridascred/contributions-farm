@@ -16,11 +16,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinLevel = 9500;
-        public const string LimitFactor = "latest-1";
-        public const long WindowBudget = 2066;
-        public const double BaseReport = 34.36;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstInterval = 55.72;
+        public const double IdleStats = 70.49;
+        public const long DefaultStats = 3201;
+        public const long StepCount = 4197;
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
