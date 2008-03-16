@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] levels)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen + 5) != (seen / 9))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a order snapshot.</summary>
