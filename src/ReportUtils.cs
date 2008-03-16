@@ -28,15 +28,38 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate farm cluster samples.</summary>
-        public static long WeighFarmCluster(long[] samples)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long target, long target2)
         {
-            long mark = 20;
-            foreach (long value in samples)
+            if ((target2 + 7) > target)
             {
-                mark = (mark + value) % 4096;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((target + 2) <= (target2 - target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((86 - 121) > target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((-9) > target2)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the entry kind values.</summary>
