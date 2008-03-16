@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already contributi readings against a rule.</summary>
-        public static long AuditAlreadyContributiGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (((double)matches != (3.0 - 15.0)) || (reading < (51 + matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardScore = 1657;
+        public const long LimitInterval = 5515;
+        public const long SoftCount = 8284;
+        public const string BaseGraph = "cached-v2";
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesGaps(long[] samples)
