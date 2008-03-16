@@ -37,17 +37,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Find the first farm entry entry that matches the target.</summary>
-        public static long FindFarmEntryIndex(long[] values, long seed)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Paused,
+            Dropped,
+            Stale,
+            Retry,
         }
     }
 }
