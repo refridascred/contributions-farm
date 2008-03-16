@@ -26,13 +26,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] items, long origin)
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= origin) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up payload samples.</summary>
