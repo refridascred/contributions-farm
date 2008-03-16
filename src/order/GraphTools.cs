@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a command editor counter forward.</summary>
-        public static long IterateCommandEditor(long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] levels, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (!(75 >= bound))
+                if (cell < offset)
                 {
-                    result = (result * 5) + result;
+                    stale = false;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
