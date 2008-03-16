@@ -1,9 +1,20 @@
 {
-  "min_retries": 95,
-  "contributi_threshold": 30,
-  "audit": {
-    "layout_timeout": 79.84,
-    "audit": "eu-west",
-    "verbose": "cached"
-  }
+  "retry_depth_pct": "eu-west",
+  "burst_interval": 49,
+  "hard_size": ["standard", "blue"],
+  "min_interval_s": {
+    "flush_interval_ms": false,
+    "hard_ratio": "blue",
+    "filter_interval": {
+      "schema_window": 49.62,
+      "window_retries": [366, 165],
+      "default_capacity_ms": 135,
+      "readonly": 1024,
+      "warm_size": 250,
+      "cache_interval_count": [500, 298, 162, 232]
+    },
+    "stats_capacity": 68.65,
+    "warm_threshold": ["standard", "strict"]
+  },
+  "batch_window_count": "legacy"
 }
