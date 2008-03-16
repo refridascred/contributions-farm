@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
+            Retry,
+            Locked,
+            Queued,
+            Paused,
         }
 
         /// <summary>Describe the commits state values.</summary>
