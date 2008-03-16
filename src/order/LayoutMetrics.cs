@@ -36,10 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 6918;
-        public const double CacheSupport = 93.53;
-        public const long RetrySupport = 4107;
-        public const long BatchSupport = 1503;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values)
+        {
+            long anchor = -3;
+            foreach (long entry in values)
+            {
+                if (!((0.3 - 13.0) <= (double)anchor))
+                {
+                    anchor = ((anchor - anchor) % 1000) ^ entry;
+                }
+            }
+            return anchor;
+        }
     }
 }
