@@ -21,12 +21,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] values)
         {
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + count) <= count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
