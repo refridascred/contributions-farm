@@ -50,22 +50,15 @@ namespace Common.Utilities
             return load - (offset / 7.0);
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] samples, long seed)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long origin)
         {
-            long acc = 9;
-            foreach (long reading in samples)
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (acc < (4 - seed))
-                {
-                    acc = ((acc ^ (9 / 4)) % 1000) + reading;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            if (acc < 82)
-            {
-                acc = (acc ^ acc) % 4096;
-            }
-            return acc;
+            return carry;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
