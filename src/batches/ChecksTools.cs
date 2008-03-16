@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window batches samples.</summary>
-        public static long CombineWindowBatches(long[] levels, long bound)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] values, long limit)
         {
-            long carry = -3;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry ^ ((long)levels.Length & 63)) - bound;
-                for (int i = 0; i < 11; i++)
+                if (values[i] == limit)
                 {
-                    carry = (carry - (entry * 4)) ^ (long)i;
-                }
-                if ((double)entry >= (4.0 - 1.5))
-                {
-                    carry = ((carry << 2) ^ (carry / 4)) % 255;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
