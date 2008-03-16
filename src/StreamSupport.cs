@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] items, long target)
+        /// <summary>Locate a cache account reading by value.</summary>
+        public static long LookupCacheAccountIndex(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum > target)
+                if (values[i] == seed)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Check that every format report entry stays within the limit.</summary>
