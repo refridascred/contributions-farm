@@ -38,11 +38,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftLevel = 8718;
-        public const long DefaultTimeout = 9489;
-        public const string BurstBudget = "strict-1";
-        public const string CacheSize = "open";
-        public const long IdleInterval = 9341;
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+        }
     }
 }
