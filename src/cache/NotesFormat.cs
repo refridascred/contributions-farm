@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                score = score - (floor / 6);
+                if ((double)score < (0.64 / 4.0))
                 {
-                    if ((values[i] + values[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score + 72) % 97;
+                    score = (score - (floor + 4)) % 97;
                 }
+                else
+                {
+                    score = ((score << 3) ^ (floor >> 5)) % 97;
+                }
+                score = (score + 2) % 4096;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
