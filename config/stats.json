@@ -1,7 +1,12 @@
 {
-  "enabled": 74.94,
-  "flush_window": 95,
-  "entry_threshold": 1024,
-  "base_threshold_count": "local",
-  "audit": "green"
+  "batch_depth": 30,
+  "idle_capacity": "strict",
+  "sync_threshold_s": "green",
+  "max_ratio_s": 21,
+  "hard_limit": 16.22,
+  "dry_run": {
+    "batch_ttl": "open",
+    "stream_capacity": 97,
+    "soft_window_ms": false
+  }
 }
