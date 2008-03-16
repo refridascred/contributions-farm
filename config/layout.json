@@ -1,7 +1,6 @@
 {
-  "cache_ttl": "edge",
-  "max_window_count": "local",
-  "hard_ratio_pct": 100,
-  "batch_depth": "standard",
-  "persist": 30
+  "hard_capacity": 88,
+  "window_window": ["eu-west", "stable", "strict", "eu-west"],
+  "batch_threshold": true,
+  "sync_window": "strict"
 }
