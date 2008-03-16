@@ -42,11 +42,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] series, long floor)
         {
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
