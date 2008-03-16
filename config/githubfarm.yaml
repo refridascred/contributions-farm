@@ -1,4 +1,5 @@
 # githubfarm settings
-base_ratio_s: 72
-min_retries: strict
-audit: fallback
+max_ttl: eu-west
+tools_depth: edge
+compress: latest
+enabled: eu-west
