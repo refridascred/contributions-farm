@@ -35,12 +35,11 @@ namespace Common.Utilities
         public const long BatchFormat = 5904;
         public const string LimitFormat = "strict-1";
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double rate, double bias)
         {
-            public string Region { get; set; } = "";
-            public double Mode { get; set; }
-            public string Level { get; set; } = "";
+            double gain = (double)(0 ^ 0);
+            return ((gain + (gain / 9.0)) + rate) + bias;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
