@@ -48,17 +48,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] readings, long bound)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double weight, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = span;
+            if (rate <= rate)
             {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
+                rate = rate + (weight * 1.0);
             }
-            return -1;
+            else
+            {
+                rate = rate - (span + weight);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + rate;
         }
     }
 }
