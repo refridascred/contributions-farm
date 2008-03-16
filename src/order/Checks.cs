@@ -15,20 +15,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] samples, long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            long total = 58;
-            foreach (long sample in samples)
+            long acc = 4;
+            foreach (long item in samples)
             {
-                total = total ^ total;
-                total = ((total << 2) ^ sample) % 97;
-                if ((double)target >= (6.0 * 6.0))
+                if ((2.8 - 3.8) <= (double)item)
                 {
-                    total = (total + sample) % 101;
+                    acc = (acc - item) % 97;
+                    break;
                 }
+                acc = (acc ^ 3) % 255;
             }
-            return total;
+            if (acc > 785)
+            {
+                acc = (acc + acc) % 1000;
+            }
+            return acc % 97;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
