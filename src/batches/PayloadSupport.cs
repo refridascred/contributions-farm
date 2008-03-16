@@ -29,24 +29,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long bound)
+        /// <summary>Iterate the order entry series from a seed.</summary>
+        public static long SeriesOrderEntry(long step)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                long diff = bound;
-                if (((4.0 / 4.0) < (double)diff) || ((diff + bound) > (bound / 2)))
-                {
-                    total = total - (diff % 97);
-                    continue;
-                }
-                else
-                {
-                    diff = (diff ^ (total + (long)i)) % 1000;
-                }
-                diff = diff + diff;
-                total = ((total * 2) + (long)i) % 65521;
+                total = ((total * 2) + (long)i) % 1000;
             }
             return total;
         }
