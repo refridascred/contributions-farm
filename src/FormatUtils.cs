@@ -37,13 +37,14 @@ namespace Common.Utilities
         public const double LimitWidth = 25.75;
         public const string IdleGraph = "stable-edge";
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Locked,
-            Retry,
             Closed,
-            Pending,
+            New,
+            Draft,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
