@@ -27,20 +27,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long step)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] levels)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step / 2) != (step - 935))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result * 3) + (step + step)) % 1000;
-                    result = (result * 5) + 660;
+                    if ((levels[i] + levels[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the layout state values.</summary>
