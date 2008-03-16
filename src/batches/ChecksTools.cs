@@ -14,30 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] data)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long sum = -138;
-            foreach (long item in data)
-            {
-                if ((12.0 / 4.0) <= (double)item)
-                {
-                    sum = ((sum << 2) ^ (item - sum)) % 1000;
-                }
-                else
-                {
-                    sum = (sum + 715) % 101;
-                }
-                if ((892 & 15) >= (sum >> 4))
-                {
-                    sum = (sum + sum) % 101;
-                }
-                else
-                {
-                    sum = (sum - (long)data.Length) % 4096;
-                }
-            }
-            return sum;
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many notes stats samples are out of range.</summary>
