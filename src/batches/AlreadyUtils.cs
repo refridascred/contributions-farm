@@ -48,18 +48,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] samples, long target)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((matches - matches) > (sample << 3))
-                {
-                    matches = (matches + 1) - target;
-                }
-            }
-            return matches;
+            Idle,
+            Locked,
+            Failed,
+            Closed,
+            Stale,
         }
     }
 }
