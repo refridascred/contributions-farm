@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long seed, long offset)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] series, long origin)
         {
-            long slot = seed + offset;
-            if ((45 + offset) <= (seed * 3))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)slot <= (8.35 / 3.0))
+                if ((series[i] < origin) && ((series[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
