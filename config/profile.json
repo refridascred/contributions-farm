@@ -1,8 +1,6 @@
 {
-  "idle_delay": 74,
-  "default_size": 20.83,
-  "batch_delay": 30,
-  "readonly": "primary",
-  "retry_ttl": "standard",
-  "cache_threshold_count": 86.37
+  "schema_retries": "blue",
+  "command_timeout": false,
+  "batch_retries": 58.84,
+  "dry_run": "local"
 }
