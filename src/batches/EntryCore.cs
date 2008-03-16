@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] data, long target)
         {
-            Locked,
-            Queued,
-            Draft,
-            New,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)seen == (5.3 + 5.15))
+                {
+                    seen = ((seen + 3) ^ cell) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
