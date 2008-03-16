@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] data, long origin)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long result = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample - result) < origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result ^ (origin ^ result)) % 101;
+                    if ((series[i] + series[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Combine already values into a single score.</summary>
