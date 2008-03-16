@@ -70,11 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseFactor = "primary";
-        public const string DefaultFilter = "cached-edge";
-        public const string BurstFactor = "strict-edge";
-        public const string BurstFilter = "stable-v2";
-        public const long MaxSize = 6888;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (464 >= (784 + sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
