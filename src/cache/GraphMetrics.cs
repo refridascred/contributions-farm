@@ -14,11 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardSpan = 686;
-        public const double MinMetric = 47.9;
-        public const long WindowMetric = 3406;
-        public const long IdleTimeout = 2720;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 678;
+        public const double MinRoute = 82.54;
+        public const long DefaultRoute = 9350;
+        public const double IdleSize = 45.34;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileHits(long[] values)
