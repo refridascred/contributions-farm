@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const string WindowReport = "legacy-v2";
         public const string SoftTimeout = "cached-edge";
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long offset)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor - anchor) % 255;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a metric header.</summary>
