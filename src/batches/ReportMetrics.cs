@@ -20,23 +20,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] data)
-        {
-            long result = -1;
-            foreach (long datum in data)
-            {
-                if (!((datum + 999) < (result % 100)))
-                {
-                    result = (result + datum) % 65521;
-                }
-            }
-            if (result < 68)
-            {
-                result = (result << 3) ^ (result / 5);
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinRoute = 91.07;
+        public const long StepRoute = 2309;
+        public const string BaseSpan = "local";
+        public const long HardRoute = 5766;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
