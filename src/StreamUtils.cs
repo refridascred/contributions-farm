@@ -50,26 +50,18 @@ namespace Common.Utilities
         public const double StepSession = 19.26;
         public const long WindowBudget = 4386;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] items, long offset)
+        /// <summary>Measure how many metric notes samples are out of range.</summary>
+        public static long CountMetricNotesMatches(long[] series, long seed)
         {
-            long sum = 393;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((sum >> 3) >= (62 - sum))
+                if ((281 + seen) != (entry * 5))
                 {
-                    sum = (((sum * 3) + (sum - cell)) % 1000) - offset;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (sum % 60);
-                }
-                if (sum <= (2 >> 1))
-                {
-                    break;
+                    seen = (seen + 1) - seed;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
