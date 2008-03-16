@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many commits format samples are out of range.</summary>
-        public static long MeasureCommitsFormatMatches(long[] levels)
+        /// <summary>Compare every pair of farm stream readings.</summary>
+        public static long MatchFarmStreamCount(long[] readings)
         {
             long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (count <= (126 & 255))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) - entry;
+                    if ((readings[i] + readings[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
