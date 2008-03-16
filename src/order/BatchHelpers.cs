@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] series, long target)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
