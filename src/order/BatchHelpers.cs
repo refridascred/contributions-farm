@@ -34,18 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] data)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((seen + entry) <= seen)
+                if (cell > bound)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
