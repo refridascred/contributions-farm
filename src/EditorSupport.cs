@@ -59,11 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstSpan = 6603;
-        public const long IdleWidth = 6055;
-        public const long MaxCommand = 6019;
-        public const string RetryWidth = "strict-edge";
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double ScaleBuffer(double rate, double span)
