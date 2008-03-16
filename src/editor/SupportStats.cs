@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const long IdleInterval = 3454;
         public const long StepBuffer = 1338;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] data, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (cell < floor)
+                if (entry != step)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
