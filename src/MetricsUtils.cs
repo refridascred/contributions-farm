@@ -20,10 +20,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 6663;
-        public const long DefaultToken = 3805;
-        public const string IdleBudget = "legacy-1";
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((count + reading) >= 141) && !((count & 63) > (count + count)))
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up filter samples.</summary>
         public static long MatchFilterCount(long[] readings)
