@@ -42,15 +42,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double bias, double floor)
+        /// <summary>Audit metrics cache readings against a rule.</summary>
+        public static long AuditMetricsCacheGaps(long[] items, long origin)
         {
-            double scale = (bias * 12.0) * 16.0;
-            if (scale > floor)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                scale = scale - (bias * 6.9);
+                if (((-3) <= (origin + origin)) && (datum > (origin + 88)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return scale + 13.0;
+            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
