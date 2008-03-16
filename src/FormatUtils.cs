@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] data, long step)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long acc = 57;
-            foreach (long value in data)
-            {
-                if ((5 << 2) == (value ^ 0))
-                {
-                    acc = ((acc - (acc + value)) % 4096) - step;
-                }
-            }
-            if (acc < 3)
-            {
-                acc = acc ^ (8 & 1);
-            }
-            return acc % 65521;
+            Failed,
+            New,
+            Closed,
         }
 
         /// <summary>Hold a support summary.</summary>
