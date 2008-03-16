@@ -24,15 +24,13 @@ namespace Common.Utilities
             return mean - (mean + offset);
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Failed,
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Combine token values into a single score.</summary>
