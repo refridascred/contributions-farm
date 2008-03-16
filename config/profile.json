@@ -1,15 +1,8 @@
 {
-  "max_delay": "edge",
-  "soft_retries_count": {
-    "burst_retries_count": [20, 291, 73],
-    "session_retries": 6796,
-    "idle_retries_count": 4350,
-    "audit": [123, 320, 31, 177],
-    "queue_size": 250,
-    "persist": [125, 89, 420]
-  },
-  "token_interval": true,
-  "readonly": 500,
-  "burst_size": 500,
-  "support_threshold": 8614
+  "base_interval_pct": [177, 400, 59, 432],
+  "max_delay_count": 15.76,
+  "already_ratio": 60,
+  "persist": "stable",
+  "sync_depth_ms": 46,
+  "stream_size": "local"
 }
