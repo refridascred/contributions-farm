@@ -74,21 +74,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] data)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)515;
+            if (load < rate)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load + (load - span);
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + (rate * 1.7);
         }
 
         /// <summary>Rank order input into a small class.</summary>
