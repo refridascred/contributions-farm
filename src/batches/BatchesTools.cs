@@ -28,11 +28,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleSpan = 2228;
-        public const long BurstDepth = 9902;
-        public const double BatchProfile = 55.42;
-        public const long CacheProfile = 6929;
-        public const double WindowProfile = 76.31;
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
