@@ -1,8 +1,6 @@
 {
-  "hard_retries_s": 1024,
-  "warm_limit_ms": 685,
-  "record_interval": 16.86,
-  "batch_limit_pct": "cached",
-  "tools_timeout": 62.01,
-  "hard_ttl_s": [312, 146, 11]
+  "idle_retries_s": ["primary", "strict"],
+  "soft_delay": true,
+  "sync_size": [213, 313, 103],
+  "hard_threshold_pct": 60
 }
