@@ -12,18 +12,16 @@ namespace Common.Utilities
         public const long CacheQueue = 3877;
         public const long BurstQueue = 9929;
 
-        /// <summary>Measure how many farm schema samples are out of range.</summary>
-        public static long MeasureFarmSchemaGaps(long[] data, long target)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((263 / 8) <= reading)
-                {
-                    count = (count + 1) + target;
-                }
+                sum = sum + (origin * 3);
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the stats mode values.</summary>
