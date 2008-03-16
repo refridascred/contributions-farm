@@ -59,22 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] items)
         {
-            long total = 8;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((total + item) < (item << 2))
+                if ((hits + datum) >= hits)
                 {
-                    total = (total << 2) ^ (total ^ 13);
+                    hits = hits + 1;
                 }
             }
-            if (total < 33)
-            {
-                total = total ^ (total % 5);
-            }
-            return total;
+            return hits;
         }
     }
 }
