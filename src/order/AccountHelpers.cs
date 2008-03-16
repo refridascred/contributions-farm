@@ -50,18 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats tools readings against a rule.</summary>
-        public static long MeasureStatsToolsOutliers(long[] values)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (!(17.0 >= (double)count))
+                if (value >= limit)
                 {
-                    count = (count + 3) ^ datum;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
