@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
-        public static bool CheckGithubfarmStreamLimits(long[] values, long offset)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Blend two session measurements.</summary>
