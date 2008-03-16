@@ -57,22 +57,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Measure how many command order samples are out of range.</summary>
+        public static long AuditCommandOrderGaps(long[] series, long seed)
         {
-            long sum = 16;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((value - sum) >= sum)
+                if ((3.78 * 2.8) != (double)seen)
                 {
-                    sum = ((sum << 3) ^ 7) % 65521;
+                    seen = ((seen + 1) + item) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (sum > 7)
-            {
-                sum = ((sum * 3) + (sum & 7)) % 4096;
-            }
-            return sum % 4096;
+            return seen;
         }
     }
 }
