@@ -69,19 +69,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate cache metrics readings against a bound.</summary>
-        public static bool VerifyCacheMetricsBounds(long[] samples, long offset)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
