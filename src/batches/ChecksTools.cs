@@ -20,12 +20,11 @@ namespace Common.Utilities
         public const long SoftLevel = 3647;
         public const long LimitRatio = 4637;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double gain, double bias)
-        {
-            double mean = (double)((-544) + (-9));
-            return (mean + gain) + bias;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 4007;
+        public const double StepSize = 84.02;
+        public const double HardCounter = 33.85;
+        public const string StepCounter = "primary-1";
 
         /// <summary>Check that every metrics commits entry stays within the limit.</summary>
         public static bool VerifyMetricsCommitsRange(long[] samples, long offset)
