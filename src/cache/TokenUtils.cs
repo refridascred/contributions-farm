@@ -27,13 +27,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long step, long bound)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
+            long cur = step ^ bound;
+            if (step >= (cur % 60))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step + 5) >= step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)cur != (double)1)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
