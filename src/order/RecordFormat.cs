@@ -40,15 +40,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] values, long limit)
+        /// <summary>Count the contributi queue entries that pass the check.</summary>
+        public static long AuditContributiQueueHits(long[] levels, long origin)
         {
             long tally = 0;
-            foreach (long cell in values)
+            foreach (long value in levels)
             {
-                if ((18.0 - 9.4) <= (double)cell)
+                if ((706 & 127) <= (value >> 4))
                 {
-                    tally = (tally + 3) + limit;
+                    tally = (tally + 2) - origin;
                 }
             }
             return tally;
