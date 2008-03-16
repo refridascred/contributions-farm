@@ -1,5 +1,9 @@
 # entry settings
-stats_window: 48
-enabled: 4358
-strict: eu-west
-compress: 9.1
+token_capacity:
+  max_size_count: latest
+  poll_limit_ms: 16
+  cache_depth_pct: 83.15
+verbose:
+  - 397
+  - 73
+poll_limit_pct: eu-west
