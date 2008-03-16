@@ -25,23 +25,10 @@ namespace Common.Utilities
         public const long DefaultRoute = 9350;
         public const double IdleSize = 45.34;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((double)cell <= (0.23 - 3.3)) && (cell >= (cell - offset)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleWidth = 6742;
+        public const long DefaultLevel = 5355;
+        public const string BatchLayout = "alpha-v2";
 
         /// <summary>Count report buffer pairs that satisfy a relation.</summary>
         public static long OverlapReportBufferCount(long[] items)
