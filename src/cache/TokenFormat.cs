@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftDepth = 38.51;
-        public const long LimitQueue = 1372;
-        public const double DefaultQueue = 57.95;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Failed,
+            Queued,
+            Locked,
+            Paused,
+            Active,
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool VerifyMetricRange(long[] levels, long seed)
