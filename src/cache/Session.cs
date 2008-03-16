@@ -44,15 +44,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long floor)
+        /// <summary>Compare every pair of githubfarm command readings.</summary>
+        public static long PairGithubfarmCommandCount(long[] samples)
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
