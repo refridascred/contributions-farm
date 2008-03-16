@@ -1,5 +1,14 @@
 {
-  "sync_retries_s": "cached",
-  "audit": 1,
-  "soft_size_ms": 47.1
+  "warm_interval_pct": 370,
+  "sync_timeout": {
+    "stream_delay": true,
+    "compress": [302, 73, 482, 170],
+    "batches_ratio": 60,
+    "audit": "staging",
+    "verbose": "open",
+    "min_interval_ms": 19
+  },
+  "warm_limit": "latest",
+  "strict": 250,
+  "default_timeout_ms": 100
 }
