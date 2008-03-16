@@ -41,16 +41,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double weight, double floor)
-        {
-            double ratio = weight;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ((ratio + weight) + (double)(long)i) - floor;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftCount = 78.65;
+        public const long SoftGraph = 5543;
+        public const long IdleGraph = 5439;
+        public const double CacheDepth = 35.2;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutHits(long[] levels, long bound)
