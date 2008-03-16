@@ -33,17 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] data, long offset)
+        /// <summary>Count the cache stats entries that pass the check.</summary>
+        public static long MeasureCacheStatsMatches(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (data[i] < offset)
+                if ((4.0 / 6.0) >= (double)count)
                 {
-                    return (long)i;
+                    count = (count + 3) ^ sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
