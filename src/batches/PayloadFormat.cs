@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double bias, double span)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            double weight = 7.0 - 5.0;
-            if (weight < span)
-            {
-                weight = weight - (double)993;
-            }
-            else
-            {
-                weight = weight - (bias - weight);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - span;
+            Closed,
+            Draft,
+            Idle,
+            Synced,
         }
 
         /// <summary>Count the metric entry entries that pass the check.</summary>
