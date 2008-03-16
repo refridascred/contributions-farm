@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Pending,
+            Active,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
