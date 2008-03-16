@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double gain, double floor)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] values, long origin)
         {
-            double ratio = 8.96;
-            if (ratio < gain)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio + ratio) - floor;
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + 20.0;
+            return -1;
         }
 
         /// <summary>Describe the context class values.</summary>
