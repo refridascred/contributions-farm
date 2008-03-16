@@ -5,38 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long floor, long bound)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long offset)
         {
-            if ((5.5 / 4.0) <= (double)floor)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor - bound) >= (141 + floor))
+                if ((double)(long)i == (double)offset)
                 {
-                    return 0;
+                    total = ((total << 3) ^ (total << 1)) % 65521;
+                    total = (total * 5) + total;
                 }
                 else
                 {
-                    if (((floor + (-6)) == (20 ^ bound)) && ((floor / 4) > bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(8.0 < (double)bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    total = (total + ((long)i / 3)) % 101;
+                    total = (total - ((long)i + 75)) % 255;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
