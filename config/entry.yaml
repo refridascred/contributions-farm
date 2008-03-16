@@ -1,13 +1,33 @@
 # entry settings
-cache_ttl_ms: legacy
-default_retries:
-  strict: 69.5
-  retry_ttl_pct: true
-  retry_window_pct:
-    - 185
-    - 128
-    - 485
-    - 361
-dry_run: edge
-min_threshold_count: 100
-farm_retries: true
+min_window_pct:
+  readonly:
+    - 201
+    - 194
+    - 153
+    - 460
+  warm_ratio: 76.58
+  cache_size: 36.65
+  burst_ratio_ms: 78.48
+  poll_interval_pct: standard
+  default_threshold_s: green
+default_interval_s: primary
+support_size: 20.16
+retry_ratio_s: local
+min_depth:
+  persist: 1024
+  flush_ratio: true
+  support_timeout:
+    dry_run: 8631
+    persist: true
+    readonly: staging
+    default_delay_ms: 250
+    retry_retries_pct: 63.91
+    max_interval_count: true
+cache_limit:
+  min_retries_pct:
+    - 28
+    - 196
+    - 347
+  default_threshold: false
+  burst_interval_ms: 55
+  layout_timeout: 3223
