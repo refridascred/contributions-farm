@@ -54,18 +54,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleCommits = 10.71;
+        public const long BatchRatio = 3965;
+        public const double MinCommits = 4.33;
+        public const double CacheCommits = 80.62;
+        public const string BaseCommits = "open-1";
 
         /// <summary>Measure how many token route samples are out of range.</summary>
         public static long AuditTokenRouteHits(long[] data)
