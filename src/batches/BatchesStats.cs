@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] items)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((matches ^ matches) == (entry % 60))
+                if (80 >= entry)
                 {
-                    matches = matches + 2;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the session class values.</summary>
