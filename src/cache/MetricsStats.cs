@@ -15,10 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitRatio = 87.7;
-        public const string MaxDepth = "strict";
-        public const long BaseCount = 6114;
+        /// <summary>Measure how many farm schema samples are out of range.</summary>
+        public static long MeasureFarmSchemaGaps(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((263 / 8) <= reading)
+                {
+                    count = (count + 1) + target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
