@@ -1,11 +1,8 @@
 {
-  "route_retries": 86,
-  "session_retries": 2,
-  "sync_depth_s": 83.85,
-  "idle_size": {
-    "poll_limit": "cached",
-    "readonly": 100,
-    "retry_interval_ms": 30
-  },
-  "buffer_ttl": [49, 432, 408]
+  "schema_depth": ["staging", "strict", "standard"],
+  "sync_ttl_count": "edge",
+  "githubfarm_retries": false,
+  "idle_size_count": true,
+  "max_interval": 27.91,
+  "poll_timeout": 84.87
 }
