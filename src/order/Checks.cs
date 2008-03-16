@@ -22,10 +22,17 @@ namespace Common.Utilities
         public const long StepCommits = 9241;
         public const long BurstCommits = 4304;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 1198;
-        public const long MinSpan = 8849;
-        public const long LimitInterval = 4798;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 3) + (acc & 31)) % 65521;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TallyBuffer(long[] items, long limit)
