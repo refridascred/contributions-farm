@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] levels)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (sample >= (sample + sample))
+                long diff = step;
+                if (!((double)acc <= 4.51))
                 {
-                    matches = matches + 1;
+                    acc = (acc ^ (7 + diff)) % 97;
+                    acc = ((acc * 2) + acc) % 97;
                 }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
