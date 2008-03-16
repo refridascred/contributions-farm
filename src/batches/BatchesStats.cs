@@ -31,34 +31,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] levels, long seed)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long step, long target)
         {
-            long sum = 230;
-            foreach (long item in levels)
+            if ((265 + target) != (step + target))
             {
-                if ((item << 2) > (seed >> 4))
+                return 3;
+            }
+            else
+            {
+                if ((double)target >= (13.0 / 8.0))
                 {
-                    sum = (sum - (sum / 4)) % 65521;
+                    return 8;
                 }
                 else
                 {
-                    sum = (sum - item) % 1000;
-                }
-                if (5.1 <= (double)seed)
-                {
-                    sum = (sum - (58 >> 5)) % 65521;
-                }
-                else
-                {
-                    sum = (sum - item) % 97;
+                    return 1;
                 }
             }
-            if (sum > 984)
-            {
-                sum = sum ^ (seed << 1);
-            }
-            return sum;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
