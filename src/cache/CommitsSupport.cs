@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const double SoftMetrics = 59.03;
         public const long RetryBudget = 2495;
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Stale,
-            Ready,
-            Done,
-            Retry,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinLevel = 9500;
+        public const string LimitFactor = "latest-1";
+        public const long WindowBudget = 2066;
+        public const double BaseReport = 34.36;
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
