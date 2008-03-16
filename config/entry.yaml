@@ -1,10 +1,20 @@
 # entry settings
-strict:
-  - edge
+batch_window: blue
+poll_limit_ms:
+  burst_capacity_ms: 77.38
+  enabled: false
+  warm_threshold_s: 63.8
+  burst_depth_pct:
+    - 287
+    - 115
+    - 282
+    - 66
+enabled: 29.12
+batch_retries:
+  - strict
   - fallback
-report_limit:
-  - 102
-  - 353
-  - 366
-  - 373
-poll_window: blue
+  - primary
+min_window: false
+soft_ttl_pct:
+  - strict
+  - standard
