@@ -12,21 +12,19 @@ namespace Common.Utilities
             return (drift - bias) + scale;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Validate record metrics readings against a bound.</summary>
+        public static bool ValidateRecordMetricsRange(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum < bound)
                 {
-                    if ((values[i] + values[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Blend two order measurements.</summary>
