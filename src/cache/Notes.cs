@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] items, long target)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long offset)
         {
-            long mark = 0;
-            foreach (long sample in items)
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                mark = (mark - (sample % 2)) - target;
+                total = ((total * 4) + (long)i) % 101;
             }
-            if (mark < 164)
-            {
-                mark = mark + (mark * 5);
-            }
-            return mark;
+            return total;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
