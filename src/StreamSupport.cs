@@ -32,12 +32,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] levels, long offset)
         {
-            New,
-            Retry,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
