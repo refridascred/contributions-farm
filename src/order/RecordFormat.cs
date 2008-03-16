@@ -34,13 +34,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] levels)
         {
-            Dropped,
-            Pending,
-            Locked,
-            Ready,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!((tally + 674) > (87 / 9)))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next account value.</summary>
