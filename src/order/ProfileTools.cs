@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Draft,
-            Pending,
-            Done,
-            Synced,
-            Paused,
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Project the next metrics value.</summary>
