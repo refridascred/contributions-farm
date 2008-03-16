@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] series, long limit)
         {
-            long anchor = 467;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (((anchor * 2) >= (anchor >> 5)) || ((value + value) == (8 & 63)))
+                if (!((count ^ (-450)) >= limit))
                 {
-                    anchor = ((anchor * 3) + value) % 4096;
+                    count = (count + 1) + value;
                 }
             }
-            if (anchor < 766)
-            {
-                anchor = (anchor - (anchor * 4)) % 1000;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a channel options.</summary>
