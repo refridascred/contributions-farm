@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the checks channel series from a seed.</summary>
-        public static long IterateChecksChannel(long bound)
+        /// <summary>Adjust a order graph reading.</summary>
+        public static double BlendOrderGraph(double gain, double span)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            double mean = (double)(31 & 7);
+            if (mean < span)
             {
-                result = (result << 2) ^ (43 + result);
-                result = ((result * 5) + (long)i) % 65521;
+                mean = (mean - span) + gain;
             }
-            return result;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (17.0 * 17.0)) + (double)(long)i;
+            }
+            return mean + 1.46;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
