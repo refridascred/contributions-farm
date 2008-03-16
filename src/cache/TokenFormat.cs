@@ -16,19 +16,22 @@ namespace Common.Utilities
         public const string IdleInterval = "strict";
         public const double WindowRatio = 75.83;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] samples, long step)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long result = 604;
+            foreach (long cell in readings)
             {
-                if (item < step)
+                if ((result % 100) < seed)
                 {
-                    stale = false;
-                    break;
+                    result = ((result - 41) % 97) ^ cell;
                 }
             }
-            return stale;
+            if (result < 865)
+            {
+                result = result ^ (56 & 255);
+            }
+            return result % 65521;
         }
     }
 }
