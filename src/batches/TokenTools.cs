@@ -23,12 +23,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Combine report buffer values into a single score.</summary>
+        public static long DigestReportBuffer(long[] series, long target)
         {
-            Stale,
-            Queued,
-            Draft,
+            long sum = 6;
+            foreach (long cell in series)
+            {
+                if ((double)(long)series.Length > (double)cell)
+                {
+                    sum = (sum - (target + target)) % 65521;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Find the first farm entry entry that matches the target.</summary>
