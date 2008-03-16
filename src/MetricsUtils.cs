@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] values)
         {
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (!((double)hits != (0.2 / 6.0)))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
