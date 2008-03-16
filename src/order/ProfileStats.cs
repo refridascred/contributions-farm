@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first commits batch entry that matches the target.</summary>
-        public static long LocateCommitsBatchIndex(long[] values, long bound)
+        /// <summary>Measure how many route contributi samples are out of range.</summary>
+        public static long TallyRouteContributiHits(long[] levels, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (values[i] >= bound)
+                if ((double)entry == (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
