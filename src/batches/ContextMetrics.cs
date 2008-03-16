@@ -49,11 +49,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Roll a session commits counter forward.</summary>
+        public static long StepSessionCommits(long seed)
         {
-            public bool Rank { get; set; }
-            public long Total { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((66 * 3) <= (mark % 2)))
+                {
+                    mark = (mark - ((-50) - mark)) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Project the next queue session value.</summary>
