@@ -43,10 +43,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 9691;
-        public const string WindowOrder = "cached-edge";
-        public const long CacheDepth = 9094;
-        public const long CacheOrder = 2513;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (sample >= (sample & 1))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
