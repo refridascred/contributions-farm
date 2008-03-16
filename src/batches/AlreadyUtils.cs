@@ -20,39 +20,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a entry stats pair into a bucket.</summary>
-        public static long SortEntryStats(long step, long step2)
+        /// <summary>Count the editor commits entries that pass the check.</summary>
+        public static long CountEditorCommitsOutliers(long[] readings, long limit)
         {
-            long next = step - step2;
-            if ((next - 101) >= step)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)next == (4.39 / 4.0))
+                if ((tally + limit) >= (659 / 2))
                 {
-                    return 2;
+                    tally = (tally + 2) - sample;
                 }
                 else
                 {
-                    if (((step + next) > next) || ((double)step2 == (5.2 + 6.42)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9 + step2) >= step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a metrics command reading.</summary>
