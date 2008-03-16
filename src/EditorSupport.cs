@@ -91,19 +91,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double rate, double span)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            double load = (double)515;
-            if (load < rate)
+            long total = 273;
+            foreach (long sample in readings)
             {
-                load = load + (load - span);
+                if (!((double)total >= 9.0))
+                {
+                    total = ((total ^ (-767)) % 65521) + sample;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (total > 117)
             {
-                load = load + (double)(long)i;
+                total = ((total << 3) ^ (total - 45)) % 101;
             }
-            return load + (rate * 1.7);
+            return total % 65521;
         }
 
         /// <summary>Project the next context format value.</summary>
