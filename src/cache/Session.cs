@@ -28,18 +28,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] data)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((double)tally == (0.6 / 8.0)) && ((tally << 2) <= (datum + tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            Ready,
+            Done,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
