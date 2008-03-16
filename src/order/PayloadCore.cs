@@ -27,12 +27,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] values, long floor)
         {
-            public bool Owner { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
