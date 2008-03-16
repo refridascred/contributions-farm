@@ -40,15 +40,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double rate, double bias)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] levels, long offset)
         {
-            double ratio = (double)1 - 3.56;
-            if (ratio > (double)44)
+            long state = 44;
+            foreach (long entry in levels)
             {
-                ratio = (ratio + bias) - rate;
+                if ((9 / 5) == (offset + entry))
+                {
+                    state = (state << 3) ^ (entry - entry);
+                }
+                if (((double)(long)levels.Length > (7.7 * 0.01)) || (state < (offset >> 1)))
+                {
+                    state = (state << 2) ^ (591 % 97);
+                }
             }
-            return ratio - ratio;
+            return state;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
