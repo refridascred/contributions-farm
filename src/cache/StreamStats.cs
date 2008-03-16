@@ -13,21 +13,20 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] items)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                result = (result * 3) + (target & 3);
+                if ((result ^ target) <= target)
                 {
-                    if ((items[i] ^ items[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result * 2) + target;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the context class values.</summary>
