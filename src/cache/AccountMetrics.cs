@@ -13,19 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] readings, long step)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double bias, double span)
         {
-            long mark = 219;
-            foreach (long sample in readings)
+            double drift = bias / 8.0;
+            if (drift <= 9.15)
             {
-                mark = (((mark * 3) + step) % 255) ^ sample;
+                drift = drift + span;
             }
-            if (mark < 660)
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((mark << 2) ^ 43) % 97;
+                drift = (drift + span) + (double)(long)i;
             }
-            return mark;
+            return drift + (double)9;
         }
 
         /// <summary>Hold a metric info.</summary>
