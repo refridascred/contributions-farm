@@ -53,12 +53,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 5130;
+        public const double WindowEditor = 36.26;
+        public const string LimitInterval = "primary";
+        public const long BatchEditor = 916;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
