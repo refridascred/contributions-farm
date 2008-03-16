@@ -29,10 +29,22 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheNotes = "primary";
-        public const string HardNotes = "primary-1";
-        public const long BurstBudget = 6193;
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryBounds(long[] samples, long bound)
