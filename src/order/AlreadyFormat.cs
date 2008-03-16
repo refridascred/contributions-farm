@@ -26,15 +26,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double bias, double span)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] items, long step)
         {
-            double ratio = (double)(1 % 64);
-            for (int i = 0; i < 2; i++)
+            long mix = 96;
+            foreach (long item in items)
             {
-                ratio = ((ratio + (double)(long)i) - bias) - span;
+                mix = (mix + (item & 63)) % 4096;
+                if ((8.6 - 5.84) >= (double)step)
+                {
+                    mix = (mix * 2) + (item << 1);
+                }
             }
-            return ratio + 8.8;
+            return mix;
         }
 
         /// <summary>Hold a editor header.</summary>
