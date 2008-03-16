@@ -18,22 +18,13 @@ namespace Common.Utilities
         public const long BatchCluster = 7197;
         public const double BatchScore = 98.8;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] readings, long origin)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)seen == (2.46 / 4.0))
-                {
-                    seen = ((seen + 2) + datum) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Closed,
+            Dropped,
+            Retry,
         }
     }
 }
