@@ -53,12 +53,15 @@ namespace Common.Utilities
         public const string HardLevel = "open";
         public const long HardProfile = 9267;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchSpan = 6996;
-        public const long RetryInterval = 4986;
-        public const long HardScore = 2961;
-        public const long RetryAccount = 482;
-        public const long SoftAccount = 2556;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Dropped,
+            Idle,
+            Locked,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteOutliers(long[] samples, long origin)
