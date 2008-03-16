@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double scale, double offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long seed, long floor)
         {
-            double bias = 14.0 / 3.0;
-            if (bias <= (double)32)
+            long next = seed + floor;
+            if ((seed + floor) < (seed - seed))
             {
-                bias = (bias - offset) - scale;
+                return 3;
             }
-            return bias - offset;
+            else
+            {
+                if ((floor - 2) < seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((3.0 / 5.0) >= (double)next) && ((seed ^ seed) >= (seed / 7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed >= floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine account values into a single score.</summary>
