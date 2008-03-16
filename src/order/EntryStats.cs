@@ -28,16 +28,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleSpan = 5506;
+        public const string BaseFormat = "open";
+        public const long MaxSize = 9946;
+        public const long BatchFormat = 5904;
+        public const string LimitFormat = "strict-1";
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
