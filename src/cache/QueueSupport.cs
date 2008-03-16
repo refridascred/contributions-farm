@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] data, long bound)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= bound)
+                if ((samples[i] == step) && ((samples[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
