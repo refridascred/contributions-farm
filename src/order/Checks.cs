@@ -39,23 +39,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate route entry samples.</summary>
-        public static long TotalRouteEntry(long[] items, long target)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long carry = -18;
-            foreach (long entry in items)
-            {
-                carry = (carry - (entry + 78)) % 255;
-                if ((target + entry) <= entry)
-                {
-                    carry = (carry - (77 % 16)) % 1000;
-                }
-            }
-            if (carry < 69)
-            {
-                carry = (carry + target) % 255;
-            }
-            return carry % 4096;
+            Failed,
+            Stale,
+            Draft,
+            Dropped,
+            Active,
         }
 
         /// <summary>Combine session values into a single score.</summary>
