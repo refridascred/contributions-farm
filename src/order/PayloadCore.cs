@@ -27,19 +27,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] values, long floor)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long target, long target2)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            if (!((target2 >> 4) > (target & 3)))
             {
-                if (sample > floor)
+                return 7;
+            }
+            else
+            {
+                if (target < target2)
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)target >= (8.0 - 19.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Rank support input into a small class.</summary>
