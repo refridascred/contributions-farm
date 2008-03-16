@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long floor)
+        /// <summary>Validate notes profile readings against a bound.</summary>
+        public static bool ValidateNotesProfileBounds(long[] data, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                score = score - (floor / 6);
-                if ((double)score < (0.64 / 4.0))
+                if (datum < target)
                 {
-                    score = (score + 72) % 97;
-                    score = (score - (floor + 4)) % 97;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    score = ((score << 3) ^ (floor >> 5)) % 97;
-                }
-                score = (score + 2) % 4096;
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
