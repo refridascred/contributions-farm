@@ -51,19 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] readings, long floor)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Flag { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
