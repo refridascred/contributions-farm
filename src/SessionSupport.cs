@@ -34,19 +34,11 @@ namespace Common.Utilities
             return mean + (double)184;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] series, long target)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Offset { get; set; }
+            public double Count { get; set; }
         }
     }
 }
