@@ -37,19 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] samples, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (sample < seed)
+                if ((seen >> 1) < (entry >> 3))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Project the next account value.</summary>
