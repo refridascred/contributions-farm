@@ -15,15 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] items, long limit)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long acc = 41;
-            foreach (long value in items)
-            {
-                acc = (((acc + acc) % 4096) + value) + limit;
-            }
-            return acc;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
