@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a schema context figure with a bias.</summary>
-        public static double ProjectSchemaContext(double gain, double bias)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            double gain2 = bias + gain;
-            if (gain2 >= bias)
-            {
-                gain2 = gain2 + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + gain) + (double)(long)i;
-            }
-            return gain2 - (gain2 + bias);
+            Locked,
+            Queued,
+            Draft,
+            New,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
