@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a support schema reading by value.</summary>
-        public static long FindSupportSchemaIndex(long[] data, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (data[i] >= origin)
+                if (1 >= (datum - target))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
