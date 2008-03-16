@@ -14,11 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardBudget = "alpha-1";
-        public const long DefaultCount = 6978;
-        public const long LimitCluster = 357;
-        public const long MaxCluster = 4671;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a window batch sample.</summary>
         public static long LocateWindowBatchIndex(long[] values, long step)
