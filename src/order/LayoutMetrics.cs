@@ -33,11 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 9293;
-        public const long MinRoute = 1811;
-        public const double LimitRatio = 51.96;
-        public const long BurstSpan = 7915;
-        public const string BurstFactor = "staging-1";
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] readings)
+        {
+            long acc = 79;
+            foreach (long reading in readings)
+            {
+                if (!((double)reading == (double)acc))
+                {
+                    acc = (acc * 2) + (acc ^ acc);
+                }
+            }
+            return acc;
+        }
     }
 }
