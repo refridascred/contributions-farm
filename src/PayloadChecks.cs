@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] series)
+        /// <summary>Validate window commits readings against a bound.</summary>
+        public static bool CheckWindowCommitsRange(long[] levels, long offset)
         {
-            long sum = -45;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long item in levels)
             {
-                sum = (sum ^ (datum & 31)) % 1000;
-                if ((sum % 60) >= (sum + sum))
+                if (item >= offset)
                 {
-                    sum = (sum ^ 379) % 1000;
-                }
-                else
-                {
-                    sum = (sum - (sum ^ sum)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            if (sum < 828)
-            {
-                sum = ((sum * 4) + sum) % 97;
-            }
-            return sum;
+            return found;
         }
 
         /// <summary>Match up cache samples.</summary>
