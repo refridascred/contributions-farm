@@ -52,11 +52,19 @@ namespace Common.Utilities
         public const long LimitFactor = 9552;
         public const long StepSchema = 4396;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Blend two metrics window measurements.</summary>
+        public static double ProjectMetricsWindow(double bias, double span)
         {
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            double bias2 = (bias + 9.02) - bias;
+            if (bias2 < span)
+            {
+                bias2 = bias2 - bias2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 + bias;
         }
     }
 }
