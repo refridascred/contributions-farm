@@ -1,10 +1,6 @@
 {
-  "hard_delay_s": [128, 416, 245],
-  "sync_ratio_s": 500,
-  "strict": {
-    "retry_limit_pct": 250,
-    "hard_timeout_count": 94,
-    "retry_ttl_pct": "blue",
-    "persist": [87, 490, 73]
-  }
+  "base_ttl_ms": ["staging", "green", "stable"],
+  "batch_ratio_ms": true,
+  "farm_capacity": 24.61,
+  "cache_depth": "cached"
 }
