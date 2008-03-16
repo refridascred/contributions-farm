@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long RetryLevel = 5692;
         public const double BurstLevel = 71.17;
 
-        /// <summary>Audit metrics order readings against a rule.</summary>
-        public static long TallyMetricsOrderMatches(long[] samples)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double load = ratio - (double)114;
+            if (load >= ratio)
             {
-                if ((double)sample > (17.0 + 6.54))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load - load;
             }
-            return count;
+            return load + offset;
         }
 
         /// <summary>Describe the command status values.</summary>
