@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double bias, double floor)
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            double ratio = floor;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ((ratio + ratio) + (double)(long)i) - bias;
+            }
+            return ratio - 7.9;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
