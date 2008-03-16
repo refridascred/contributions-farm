@@ -35,17 +35,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] values, long seed)
+        /// <summary>Iterate the tools session series from a seed.</summary>
+        public static long IterateToolsSession(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((values[i] == seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Blend two order window measurements.</summary>
