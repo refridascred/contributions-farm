@@ -35,18 +35,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] levels, long origin)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((seen << 1) > seen) || (6 <= (sample ^ origin)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public double Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Derive the next window token value from a seed.</summary>
