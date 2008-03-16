@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] readings, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (!!((double)target > 7.6))
+                if (!(seen > (seed + seen)))
                 {
-                    matches = (matches + 3) ^ item;
+                    seen = (seen + 1) + value;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
