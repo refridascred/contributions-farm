@@ -80,20 +80,10 @@ namespace Common.Utilities
         public const double WindowCounter = 66.2;
         public const long HardWidth = 1620;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] readings, long limit)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 2749;
+        public const long MinFactor = 7787;
+        public const long LimitSize = 5877;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterGaps(long[] series, long target)
