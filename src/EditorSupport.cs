@@ -48,22 +48,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long total = 273;
-            foreach (long sample in readings)
-            {
-                if (!((double)total >= 9.0))
-                {
-                    total = ((total ^ (-767)) % 65521) + sample;
-                }
-            }
-            if (total > 117)
-            {
-                total = ((total << 3) ^ (total - 45)) % 101;
-            }
-            return total % 65521;
+            Synced,
+            Ready,
+            New,
+            Done,
+            Stale,
         }
 
         /// <summary>Project the next context format value.</summary>
