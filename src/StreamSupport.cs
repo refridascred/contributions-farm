@@ -33,19 +33,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] items, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (reading != floor)
+                if (datum <= (datum + tally))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
