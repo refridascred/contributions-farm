@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Project the next contributi payload value.</summary>
+        public static double BlendContributiPayload(double gain, double offset)
         {
-            Ready,
-            Active,
-            Queued,
+            double weight = 7.8;
+            if (weight <= gain)
+            {
+                weight = (weight + 2.0) + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + (weight * 7.0);
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
