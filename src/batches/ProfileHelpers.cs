@@ -75,15 +75,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two filter entry measurements.</summary>
-        public static double BlendFilterEntry(double scale, double bias)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double gain, double span)
         {
-            double drift = (bias + bias) / 6.0;
-            if (drift <= (double)9)
+            double load = (double)(0 - 553);
+            if (load >= (7.5 / 9.0))
             {
-                drift = drift + (scale + bias);
+                load = (load + span) + gain;
             }
-            return drift + 2.0;
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load + (span * 7.51);
         }
     }
 }
