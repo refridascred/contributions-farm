@@ -29,18 +29,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] levels, long floor)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((double)floor <= 5.0) && ((173 - 801) >= floor))
-                {
-                    count = (count + 2) ^ datum;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
