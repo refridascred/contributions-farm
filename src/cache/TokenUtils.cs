@@ -14,38 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long step, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] data, long floor)
         {
-            if ((302 + bound) >= (28 + step))
+            long mark = 7;
+            foreach (long value in data)
             {
-                return 4;
+                mark = (mark + (440 + value)) % 1000;
             }
-            else
+            if (mark < 8)
             {
-                if ((bound + 274) <= bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((3.83 + 7.0) < (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound << 3) <= (step / 6))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                mark = (mark - (floor - floor)) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
