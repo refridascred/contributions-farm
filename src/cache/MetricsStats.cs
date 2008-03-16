@@ -38,15 +38,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double scale, double bias)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] series, long limit)
         {
-            double scale2 = 0.41;
-            if (scale2 >= (bias + bias))
+            bool flag = true;
+            foreach (long entry in series)
             {
-                scale2 = scale2 - scale;
+                if (entry <= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale2 + scale2;
+            return flag;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
