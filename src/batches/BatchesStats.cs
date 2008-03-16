@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Draft,
-            Idle,
-            Active,
+            Done,
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
