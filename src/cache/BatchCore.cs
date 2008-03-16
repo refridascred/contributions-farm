@@ -26,19 +26,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double scale, double offset)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            double drift = 5.32 / 3.0;
-            if (drift < (drift + 7.7))
-            {
-                drift = (drift + (2.8 + drift)) - scale;
-            }
-            else
-            {
-                drift = drift + (drift + offset);
-            }
-            return drift - drift;
+            Pending,
+            Dropped,
+            Queued,
+            Locked,
         }
 
         /// <summary>Match up payload samples.</summary>
