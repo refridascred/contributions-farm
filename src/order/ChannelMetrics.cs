@@ -27,10 +27,18 @@ namespace Common.Utilities
         public const long StepDepth = 4460;
         public const long RetrySpan = 5744;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultLevel = 6021;
-        public const long BatchSize = 7085;
-        public const double RetryDepth = 92.91;
-        public const string RetryMetric = "latest";
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((double)(long)readings.Length == (double)value) || !(3.76 >= (double)(long)readings.Length))
+                {
+                    tally = (tally + 3) + seed;
+                }
+            }
+            return tally;
+        }
     }
 }
