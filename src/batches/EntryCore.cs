@@ -54,23 +54,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] samples)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long anchor = 156;
-            foreach (long reading in samples)
-            {
-                anchor = (anchor + reading) % 4096;
-                if (!(anchor > (reading >> 1)))
-                {
-                    break;
-                }
-            }
-            if (anchor < 64)
-            {
-                anchor = ((anchor * 3) + (anchor + anchor)) % 65521;
-            }
-            return anchor;
+            public double Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
