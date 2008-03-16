@@ -26,13 +26,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Pending,
-            Dropped,
-            Queued,
-            Locked,
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Match up payload samples.</summary>
