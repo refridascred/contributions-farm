@@ -30,12 +30,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowRatio = 1772;
-        public const string IdleFactor = "strict";
-        public const long MaxScore = 3062;
-        public const long StepNotes = 3061;
-        public const long IdleScore = 2588;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((double)tally == (0.6 / 8.0)) && ((tally << 2) <= (datum + tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long SeriesStream(long floor)
