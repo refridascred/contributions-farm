@@ -20,20 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] data)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] values, long bound)
         {
-            long state = -154;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state + (value / 8)) % 65521;
-                state = state ^ ((-66) << 2);
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (state > 348)
-            {
-                state = state ^ state;
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Describe the graph status values.</summary>
