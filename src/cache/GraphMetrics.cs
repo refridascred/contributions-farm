@@ -38,14 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] samples, long limit)
         {
-            Paused,
-            Queued,
-            Pending,
-            Retry,
-            Dropped,
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a context info.</summary>
