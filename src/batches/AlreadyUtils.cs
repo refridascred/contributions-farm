@@ -48,14 +48,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long target)
         {
-            Idle,
-            Locked,
-            Failed,
-            Closed,
-            Stale,
+            long mark = target;
+            for (int i = 0; i < 12; i++)
+            {
+                bool stale = (target * 4) >= mark;
+                if (stale)
+                {
+                    mark = (mark - ((-71) + target)) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
