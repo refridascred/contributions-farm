@@ -28,15 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats metrics entries.</summary>
-        public static long FoldStatsMetrics(long[] series)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long acc = 3;
-            foreach (long item in series)
-            {
-                acc = ((acc ^ (acc - acc)) % 101) - item;
-            }
-            return acc;
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
