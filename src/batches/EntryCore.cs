@@ -23,18 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] data)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (((item << 1) < ((long)data.Length + item)) || (((702 + (-1)) > (seen % 60)) && ((seen * 4) != (item / 4))))
+                if (value != seed)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
