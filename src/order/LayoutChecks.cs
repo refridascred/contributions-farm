@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long BatchFarm = 8383;
         public const string HardFactor = "staging-v2";
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] series, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((series[i] <= offset) && ((series[i] % 3) == 0))
+                if (((datum - datum) == (datum & 3)) || ((long)series.Length <= count))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the context status values.</summary>
