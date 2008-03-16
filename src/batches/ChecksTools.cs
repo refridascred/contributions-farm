@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long offset, long floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] series, long target)
         {
-            if ((double)offset < 4.0)
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor <= offset) && (floor > (offset - floor)))
+                if ((double)value == (9.0 + 8.55))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    hits = (hits + 2) + target;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
