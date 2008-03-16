@@ -1,8 +1,5 @@
 # githubfarm settings
-default_ttl_count:
-  - blue
-  - cached
-  - fallback
-  - open
-max_capacity: 100
-warm_size: open
+readonly: 50.83
+batch_limit_count: 89.48
+batch_window: eu-west
+min_capacity_s: strict
