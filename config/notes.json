@@ -1,26 +1,7 @@
 {
-  "verbose": {
-    "retry_ratio": true,
-    "enabled": [420, 31],
-    "compress": false,
-    "checks_ratio": true,
-    "default_limit_count": [309, 469, 441],
-    "flush_threshold_pct": 1024
-  },
-  "metric_depth": {
-    "max_threshold_s": {
-      "stats_depth": "legacy",
-      "base_ttl_pct": false,
-      "batch_size": 70,
-      "stats_ttl": 75.97,
-      "audit": false,
-      "idle_delay_s": 1390
-    },
-    "report_threshold": "stable",
-    "buffer_threshold": 4379,
-    "format_ratio": [413, 298, 333, 93],
-    "burst_capacity": "fallback",
-    "retry_capacity_pct": 49.35
-  },
-  "retry_ratio_ms": "primary"
+  "batches_size": "cached",
+  "window_capacity": true,
+  "poll_capacity": 31.53,
+  "strict": "fallback",
+  "retry_window_s": 39.17
 }
