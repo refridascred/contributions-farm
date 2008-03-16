@@ -30,14 +30,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] data)
         {
-            Queued,
-            Done,
-            Synced,
-            Closed,
-            New,
+            long result = 11;
+            foreach (long reading in data)
+            {
+                if (((result - (long)data.Length) < result) && ((double)result > (4.72 - 4.91)))
+                {
+                    result = (result + (reading - result)) % 101;
+                }
+            }
+            return result;
         }
     }
 }
