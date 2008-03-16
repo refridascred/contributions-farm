@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
+        public static bool CheckGithubfarmStreamLimits(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell > offset)
                 {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
