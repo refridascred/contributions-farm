@@ -21,32 +21,21 @@ namespace Common.Utilities
             return (bias + (18.0 - span)) + rate;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long limit, long seed)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            long delta = limit - seed;
-            if (!((851 << 3) >= (delta / 4)))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (seed > delta)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)seed <= (5.02 - 6.48)) || ((seed % 24) == (seed / 3)))
+                    if ((samples[i] - samples[j]) > 8)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
