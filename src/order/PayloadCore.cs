@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every tools stats entry stays within the limit.</summary>
-        public static bool VerifyToolsStatsRange(long[] series, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long carry = 12;
+            foreach (long cell in series)
             {
-                if (entry <= origin)
+                if ((carry + carry) == (cell - carry))
                 {
-                    ready = false;
-                    break;
+                    carry = carry + (bound - carry);
+                }
+                else
+                {
+                    carry = carry + (carry - cell);
                 }
             }
-            return ready;
+            if (carry < 63)
+            {
+                carry = ((carry * 2) + (carry >> 3)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a metrics info.</summary>
