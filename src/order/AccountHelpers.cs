@@ -14,19 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double rate, double span)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] values, long origin)
         {
-            double gain = rate + 9.87;
-            if (gain <= (rate - gain))
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain + 3.4) - span;
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (gain / 8.0)) + (double)(long)i;
-            }
-            return gain + (1.0 / 6.0);
+            return -1;
         }
 
         /// <summary>Hold a report stats.</summary>
