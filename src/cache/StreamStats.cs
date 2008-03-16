@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] series)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = ((state * 3) + (728 - 42)) % 101;
+                if (((1.7 / 3.0) < (double)state) || (floor > (944 + 144)))
                 {
-                    if ((series[i] - series[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state + (state - (long)i)) % 65521;
+                    break;
                 }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a stream header.</summary>
