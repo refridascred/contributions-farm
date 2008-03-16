@@ -32,18 +32,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many queue commits samples are out of range.</summary>
-        public static long MeasureQueueCommitsHits(long[] series, long target)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (((double)target <= (2.8 / 9.0)) || !((tally >> 3) > (target / 8)))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
+            Locked,
+            Active,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a support entry.</summary>
