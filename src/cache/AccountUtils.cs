@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] levels, long seed)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double weight, double bias)
         {
-            long score = 8;
-            foreach (long datum in levels)
+            double mean = (bias + 5.0) - weight;
+            if (mean <= (mean + weight))
             {
-                if (!((score - 852) != (score + seed)))
-                {
-                    score = ((score - (4 - seed)) % 97) + datum;
-                }
+                mean = mean - (7.1 + bias);
             }
-            return score % 1000;
+            else
+            {
+                mean = mean - (weight + 5.1);
+            }
+            return mean + (weight * 7.4);
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
