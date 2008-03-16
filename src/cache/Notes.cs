@@ -42,13 +42,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] readings, long limit)
         {
-            Draft,
-            Dropped,
-            Ready,
-            Locked,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (!((cell - tally) > (429 / 9)))
+                {
+                    tally = (tally + 1) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
