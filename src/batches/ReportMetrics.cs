@@ -5,34 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of already entry entries.</summary>
-        public static long DigestAlreadyEntry(long[] data, long target)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long acc = -8;
-            foreach (long entry in data)
-            {
-                if ((double)entry <= (double)acc)
-                {
-                    acc = (acc - ((long)data.Length * 4)) % 255;
-                }
-                else
-                {
-                    acc = (acc * 3) + (acc - entry);
-                }
-                if ((double)acc > (4.63 - 0.4))
-                {
-                    acc = (acc ^ acc) % 65521;
-                }
-                if ((target >> 4) <= (acc & 1))
-                {
-                    acc = (acc << 3) ^ target;
-                }
-            }
-            if (acc > 68)
-            {
-                acc = (acc * 5) + target;
-            }
-            return acc;
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Roll a record counter forward.</summary>
