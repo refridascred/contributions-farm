@@ -66,18 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] series, long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] values, long limit)
         {
-            long carry = 157;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (((2.8 + 2.62) <= (double)carry) || ((double)reading <= (double)origin))
+                if (reading <= limit)
                 {
-                    carry = (carry * 2) + ((-528) << 3);
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
     }
 }
