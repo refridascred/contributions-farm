@@ -25,18 +25,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] samples, long floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long origin)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)item > 9.31)
+                if ((1.0 + 8.0) != (double)(long)i)
                 {
-                    count = (count + 2) - floor;
+                    sum = sum - origin;
+                    sum = (sum + (9 & 1)) % 97;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
