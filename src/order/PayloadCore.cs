@@ -62,19 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry account readings against a bound.</summary>
-        public static bool VerifyEntryAccountBounds(long[] values, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long total = 633;
+            foreach (long cell in items)
             {
-                if (datum != limit)
+                total = total + (cell & 63);
+                if ((double)limit < 0.99)
                 {
-                    ready = false;
-                    break;
+                    total = (total << 2) ^ cell;
                 }
             }
-            return ready;
+            return total % 1000;
         }
     }
 }
