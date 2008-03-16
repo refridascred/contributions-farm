@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseCount = 2376;
-        public const double HardSupport = 75.47;
-        public const double BurstCount = 39.93;
+        /// <summary>Scale a schema context figure with a bias.</summary>
+        public static double ProjectSchemaContext(double gain, double bias)
+        {
+            double gain2 = bias + gain;
+            if (gain2 >= bias)
+            {
+                gain2 = gain2 + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + gain) + (double)(long)i;
+            }
+            return gain2 - (gain2 + bias);
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BaseCache = 8000;
