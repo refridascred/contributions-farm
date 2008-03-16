@@ -1,11 +1,15 @@
 # Batch notes
 
-When a counter fails, the session handler retries a few times before giving up.
-A window that stays idle for too long is moved to the queue list.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Each entry is validated before it reaches the channel queue.
+The commits report groups every account by record.
+Keep token and profile names short and lowercase.
+
+When a route fails, the cluster handler retries a few times before giving up.
+Each session is validated before it reaches the batch queue.
+The queue module keeps format values in sync with the batch cache.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Document new support fields
-- Log every layout change
+- Log every tools change
+- Prefer route defaults
+- Document new metric fields
