@@ -37,17 +37,22 @@ namespace Common.Utilities
             return load - (offset / 7.0);
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] samples, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 21; i++)
+            long acc = 9;
+            foreach (long reading in samples)
             {
-                carry = carry + (floor ^ 9);
-                carry = (carry + ((long)i << 1)) % 65521;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (acc < (4 - seed))
+                {
+                    acc = ((acc ^ (9 / 4)) % 1000) + reading;
+                }
             }
-            return carry;
+            if (acc < 82)
+            {
+                acc = (acc ^ acc) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
