@@ -41,17 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] items, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 139;
+            foreach (long datum in items)
             {
-                if ((items[i] >= floor) && ((items[i] % 2) == 0))
+                if ((datum & 15) > origin)
                 {
-                    return (long)i;
+                    state = ((state * 5) + (49 >> 1)) % 1000;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
