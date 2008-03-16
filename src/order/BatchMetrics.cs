@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the metric graph entries that pass the check.</summary>
-        public static long MeasureMetricGraphOutliers(long[] values)
+        /// <summary>Compare every pair of filter channel readings.</summary>
+        public static long OverlapFilterChannelCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen + cell) >= cell)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] ^ levels[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a order header.</summary>
