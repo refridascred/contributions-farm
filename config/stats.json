@@ -1,5 +1,21 @@
 {
-  "cache_threshold": ["local", "blue"],
-  "cache_threshold_s": "latest",
-  "warm_timeout_ms": "legacy"
+  "persist": {
+    "poll_limit": ["open", "standard", "standard"],
+    "batch_delay_s": 17.72,
+    "flush_ttl_pct": "open",
+    "strict": 4846,
+    "enabled": 6216,
+    "compress": true
+  },
+  "audit": "cached",
+  "report_limit": false,
+  "compress": 30,
+  "min_size_s": 1024,
+  "max_capacity_ms": {
+    "audit": 62,
+    "default_window": 26,
+    "persist": 84.88,
+    "burst_ratio": "local",
+    "cluster_threshold": [465, 491, 208]
+  }
 }
