@@ -11,12 +11,33 @@ namespace Common.Utilities
         public const long HardSize = 6343;
         public const long MaxRecord = 3640;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCount = 6962;
-        public const long DefaultCluster = 5760;
-        public const double CacheBudget = 33.04;
-        public const long BatchCluster = 7197;
-        public const double BatchScore = 98.8;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long seed, long seed2)
+        {
+            long delta = seed + seed2;
+            if ((double)delta < (6.32 + 2.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((seed2 - seed) != (7 - 39)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((17.0 - 1.96) == (double)seed2) || ((seed2 - seed2) != (delta >> 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
