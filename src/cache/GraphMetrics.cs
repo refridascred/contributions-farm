@@ -20,22 +20,19 @@ namespace Common.Utilities
         public const long DefaultRoute = 9350;
         public const double IdleSize = 45.34;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] values)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((sample + sample) < sample)
+                if (datum < bound)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
