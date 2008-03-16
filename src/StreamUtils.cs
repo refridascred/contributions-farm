@@ -60,21 +60,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] data, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 60;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state + (floor + state)) % 1000) + sample;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a record snapshot.</summary>
