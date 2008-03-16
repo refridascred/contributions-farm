@@ -81,21 +81,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up token counter samples.</summary>
-        public static long CompareTokenCounterCount(long[] values)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum % 24) < origin)
                 {
-                    if ((values[i] + values[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
