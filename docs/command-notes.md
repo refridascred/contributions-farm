@@ -1,10 +1,11 @@
 # Command notes
 
-The notes module keeps already values in sync with the token cache.
-The checks report groups every counter by token.
+Each context is validated before it reaches the layout queue.
+The graph module keeps queue values in sync with the stream cache.
 
 ## Guidelines
 
-- Document new channel fields
-- Log every stream change
-- Prefer already defaults
+- Keep already values small
+- Validate metric input early
+- Log every farm change
+- Document new queue fields
