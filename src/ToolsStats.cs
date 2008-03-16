@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] data, long target)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] readings, long seed)
         {
-            long anchor = 96;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                anchor = (((anchor ^ (anchor / 4)) % 65521) - sample) - target;
+                if (entry < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (anchor > 7)
-            {
-                anchor = (anchor ^ (anchor - 762)) % 1000;
-            }
-            return anchor % 65521;
+            return flag;
         }
 
         /// <summary>Describe the graph state values.</summary>
