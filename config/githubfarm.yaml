@@ -1,6 +1,25 @@
 # githubfarm settings
-warm_limit: 500
-sync_threshold_pct: standard
-poll_timeout_count: 80
-idle_size_count: true
-batch_ratio_s: edge
+base_interval_s:
+  idle_depth_ms:
+    - 92
+    - 391
+    - 123
+  compress: fallback
+  min_depth_count: false
+  strict:
+    - primary
+    - standard
+enabled: 60
+stats_ttl:
+  persist: 13
+  queue_interval: 250
+  stream_size: 25.79
+  readonly:
+    - cached
+    - eu-west
+    - staging
+  buffer_threshold: false
+  strict: standard
+flush_timeout: 5854
+hard_window_ms: green
+warm_threshold_count: 8098
