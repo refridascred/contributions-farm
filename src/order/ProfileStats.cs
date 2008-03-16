@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double weight, double bias)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            double load = 16.0;
-            if (load <= weight)
-            {
-                load = load - bias;
-            }
-            return load + bias;
+            public string Rank { get; set; } = "";
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
