@@ -13,22 +13,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] samples)
+        /// <summary>Adjust a metric route reading.</summary>
+        public static double AdjustMetricRoute(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item == (double)matches)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double gain = (double)319;
+            return ((gain + (double)6) + scale) + offset;
         }
 
         /// <summary>Check that every window schema entry stays within the limit.</summary>
