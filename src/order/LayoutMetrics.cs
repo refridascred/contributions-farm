@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many notes graph samples are out of range.</summary>
-        public static long TallyNotesGraphGaps(long[] items)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
             long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)count > (12.0 * 15.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
