@@ -1,14 +1,16 @@
 # Command notes
 
-Defaults for editor live in the config folder and can be overridden per environment.
-The channel report groups every metrics by channel.
+Defaults for graph live in the config folder and can be overridden per environment.
+The stats report groups every tools by checks.
+Each token is validated before it reaches the metrics queue.
 
-Run the tools check before changing any counter limits.
-The payload helpers are pure functions, so they are safe to call from any thread.
-Run the commits check before changing any batch limits.
+Keep window and filter names short and lowercase.
+A format that stays idle for too long is moved to the queue list.
+Run the context check before changing any metric limits.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Review already limits each release
-- Keep stream values small
+- Log every schema change
+- Validate farm input early
+- Review editor limits each release
+- Keep editor values small
