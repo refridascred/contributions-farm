@@ -1,7 +1,7 @@
-id,owner,state,active,count
-1,open,56.55,62.4,58.51
-2,67.93,8.32,edge,13.33
-3,76.82,159,90,477
-4,11.65,blue,645,820
-5,932,eu-west,fallback,683
-6,315,589,241,staging
+id,token,ratio,level
+1,56.41,cached,green
+2,12,318,edge
+3,open,39.9,285
+4,541,971,local
+5,581,998,608
+6,53.85,194,65.62
