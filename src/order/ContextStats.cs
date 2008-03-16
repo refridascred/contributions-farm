@@ -29,15 +29,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double rate, double span)
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
+            double gain = (double)(696 << 3);
+            for (int i = 0; i < 3; i++)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                gain = ((gain - (double)(long)i) + rate) + span;
             }
-            return score;
+            return gain - 8.3;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
