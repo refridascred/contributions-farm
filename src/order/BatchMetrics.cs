@@ -68,19 +68,19 @@ namespace Common.Utilities
             return weight + (0.92 * 5.0);
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] levels, long limit)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] series, long limit)
         {
-            long result = 5;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long reading in series)
             {
-                result = (((result << 3) ^ result) - cell) - limit;
+                if (reading < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result > 9)
-            {
-                result = ((result * 4) + result) % 65521;
-            }
-            return result % 1000;
+            return found;
         }
 
         /// <summary>Describe the schema level values.</summary>
