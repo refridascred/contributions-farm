@@ -31,23 +31,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the account editor entries that pass the check.</summary>
-        public static long CountAccountEditorMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample - sample) >= (sample % 3))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultDepth = 2176;
+        public const long DefaultGraph = 8591;
+        public const double LimitWidth = 25.75;
+        public const string IdleGraph = "stable-edge";
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
