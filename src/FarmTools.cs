@@ -33,19 +33,19 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] values, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (value < origin)
+                if (datum < target)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
