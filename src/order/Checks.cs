@@ -31,25 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long bound, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] readings, long step)
         {
-            long offset = bound ^ origin;
-            if ((double)origin > (20.0 / 9.0))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin + offset) > origin)
+                if ((step < 93) && ((5.0 / 8.0) != (double)step))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 2) ^ cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
