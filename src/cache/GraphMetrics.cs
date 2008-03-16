@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long target)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] samples, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target << 3) <= 936)
+                if ((samples[i] < limit) && ((samples[i] % 3) == 0))
                 {
-                    carry = (carry - (target & 15)) % 101;
-                    carry = (carry * 3) + (carry ^ (-48));
-                    continue;
+                    return (long)i;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
