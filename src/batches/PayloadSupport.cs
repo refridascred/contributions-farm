@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long SoftContext = 665;
         public const long BurstInterval = 3168;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public bool Score { get; set; }
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine counter metric values into a single score.</summary>
