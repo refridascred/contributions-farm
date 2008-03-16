@@ -60,12 +60,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowLevel = 95.43;
-        public const long DefaultSupport = 1790;
-        public const string HardSupport = "staging-edge";
-        public const long WindowBudget = 851;
-        public const long BatchSupport = 2360;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheCount = 3089;
+        public const long CacheStats = 638;
+        public const long HardDepth = 8704;
+        public const long LimitScore = 4612;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long DeriveToken(long offset)
