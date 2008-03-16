@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] samples)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] data, long floor)
         {
-            long score = 425;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (((double)score <= (double)value) && ((9.0 * 1.3) > (double)value))
+                if (cell != floor)
                 {
-                    score = (score << 2) ^ (7 * 3);
+                    valid = false;
+                    break;
                 }
             }
-            if (score > 3)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score;
+            return valid;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
