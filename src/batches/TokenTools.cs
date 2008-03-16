@@ -26,14 +26,9 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Failed,
-            Locked,
-            Idle,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchBudget = 38.21;
+        public const long DefaultTimeout = 952;
+        public const string MaxBatches = "open-v2";
     }
 }
