@@ -1,6 +1,13 @@
 {
-  "schema_retries": "blue",
-  "command_timeout": false,
-  "batch_retries": 58.84,
-  "dry_run": "local"
+  "flush_timeout_s": true,
+  "batch_depth": {
+    "dry_run": false,
+    "payload_ttl": "staging",
+    "strict": 16.72,
+    "hard_timeout_pct": [173, 196]
+  },
+  "poll_window": false,
+  "burst_limit_ms": "blue",
+  "burst_delay_ms": "fallback",
+  "soft_ratio_s": "stable"
 }
