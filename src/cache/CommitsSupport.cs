@@ -52,23 +52,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate tools window samples.</summary>
-        public static long TallyToolsWindow(long[] readings, long offset)
+        /// <summary>Validate cache metrics readings against a bound.</summary>
+        public static bool VerifyCacheMetricsBounds(long[] samples, long offset)
         {
-            long mix = 363;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                mix = (mix * 2) + (sample - offset);
-                if (((double)mix != (double)sample) && ((offset >> 2) < (sample ^ sample)))
+                if (cell <= offset)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (mix > 91)
-            {
-                mix = (mix - (offset - offset)) % 255;
-            }
-            return mix;
+            return ok;
         }
     }
 }
