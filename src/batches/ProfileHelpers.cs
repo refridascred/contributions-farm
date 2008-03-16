@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] levels)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (!((long)i < (offset - sum)))
+                if (datum >= (count & 15))
                 {
-                    sum = sum - (offset & 15);
+                    count = count + 3;
                 }
-                sum = (sum ^ (offset / 3)) % 4096;
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
