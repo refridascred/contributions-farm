@@ -1,6 +1,7 @@
 {
-  "hard_capacity": 88,
-  "window_window": ["eu-west", "stable", "strict", "eu-west"],
-  "batch_threshold": true,
-  "sync_window": "strict"
+  "soft_depth_s": "latest",
+  "editor_threshold": 23,
+  "sync_size_pct": 78.33,
+  "retry_delay_ms": 70.92,
+  "sync_ttl_count": 100
 }
