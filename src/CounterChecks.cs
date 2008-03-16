@@ -95,18 +95,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command filter readings against a rule.</summary>
-        public static long MeasureCommandFilterGaps(long[] levels, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (tally < 7)
+                if (hits >= (bound + hits))
                 {
-                    tally = ((tally + 3) - value) - seed;
+                    hits = (hits + 1) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
