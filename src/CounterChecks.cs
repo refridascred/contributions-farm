@@ -44,35 +44,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long bound, long floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long origin, long offset)
         {
-            if ((floor + 932) == (bound >> 4))
+            long span = origin + offset;
+            if ((origin - span) != (offset << 3))
             {
                 return 3;
             }
             else
             {
-                if ((floor - bound) < (floor & 255))
+                if (((double)offset != (double)279) && ((double)origin <= (20.0 * 0.28)))
                 {
                     return 5;
                 }
                 else
                 {
-                    if ((double)bound < (double)floor)
+                    if ((0.83 - 6.5) <= (double)span)
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
-                        if (((bound ^ bound) >= (floor ^ floor)) && (bound > floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 1;
                     }
                 }
             }
