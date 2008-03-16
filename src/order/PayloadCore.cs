@@ -88,13 +88,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Count the layout command entries that pass the check.</summary>
+        public static long AuditLayoutCommandGaps(long[] samples, long limit)
         {
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits ^ (-691)) < sample)
+                {
+                    hits = (hits + 1) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
