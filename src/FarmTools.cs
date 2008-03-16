@@ -36,12 +36,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Roll a account payload counter forward.</summary>
+        public static long SeriesAccountPayload(long target)
         {
-            Active,
-            Closed,
-            Paused,
+            long score = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((score * 5) > score)
+                {
+                    score = ((score << 3) ^ (target + target)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (target ^ target)) % 101;
+                }
+                if (((6.36 / 9.0) != (double)(long)i) || ((score ^ score) > target))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = (score << 2) ^ (score >> 5);
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
