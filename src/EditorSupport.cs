@@ -80,13 +80,12 @@ namespace Common.Utilities
             return load + (rate * 1.7);
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Closed,
-            Done,
-            Pending,
-            Dropped,
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
         }
     }
 }
