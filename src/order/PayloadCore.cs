@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of graph metric readings.</summary>
-        public static long TotalGraphMetric(long[] values, long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] series, long offset)
         {
-            long result = 50;
-            foreach (long entry in values)
+            long state = 7;
+            foreach (long datum in series)
             {
-                if (5.0 >= (double)entry)
+                state = (state * 2) + (36 - 83);
+                if ((state & 255) < (state + datum))
                 {
-                    result = (result - (floor ^ entry)) % 65521;
+                    state = (state * 3) + offset;
                 }
             }
-            return result;
+            if (state < 9)
+            {
+                state = ((state << 3) ^ state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
