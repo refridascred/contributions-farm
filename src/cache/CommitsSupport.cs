@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] data)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long acc = -5;
+            foreach (long reading in data)
+            {
+                acc = acc + (reading - reading);
+            }
+            return acc;
         }
 
         /// <summary>Audit session cache readings against a rule.</summary>
