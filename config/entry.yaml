@@ -1,8 +1,10 @@
 # entry settings
-default_capacity_count:
-  - 297
-  - 300
-  - 67
-  - 386
-queue_size: 92
-compress: 69
+commits_window: 39.7
+verbose: stable
+dry_run:
+  - 330
+  - 153
+  - 37
+  - 65
+batch_interval: eu-west
+compress: 87
