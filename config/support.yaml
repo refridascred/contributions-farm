@@ -1,17 +1,9 @@
 # support settings
-warm_ratio_ms: 8214
-poll_size_count: false
-persist:
-  flush_ttl_ms: strict
-  payload_capacity:
-    - 206
-    - 417
-    - 104
-    - 133
-  context_threshold:
-    idle_window_count: 7776
-    flush_interval: 69
-    max_ttl_pct: 83.93
-    cache_threshold_s: false
-    hard_size: 562
-    soft_depth_pct: true
+batches_ratio:
+  - edge
+  - blue
+flush_window: true
+session_depth: 19.63
+verbose: 34.37
+strict: eu-west
+cache_size_pct: 100
