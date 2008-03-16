@@ -1,5 +1,6 @@
 # githubfarm settings
-max_ttl: eu-west
-tools_depth: edge
-compress: latest
-enabled: eu-west
+min_limit: true
+enabled:
+  - staging
+  - latest
+base_ttl_s: 1867
