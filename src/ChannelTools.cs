@@ -28,19 +28,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every window schema entry stays within the limit.</summary>
-        public static bool ValidateWindowSchemaRange(long[] items, long limit)
-        {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinInterval = "cached-v2";
+        public const long StepSize = 604;
+        public const long BatchFilter = 1523;
+        public const string MaxLevel = "alpha-1";
     }
 }
