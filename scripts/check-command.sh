@@ -6,8 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=156
+COMMAND_LIMIT=209
 log "limit is ${COMMAND_LIMIT}"
+
+for item in cached standard strict eu-west; do
+    log "checking ${item}"
+done
 
 total=0
 for i in $(seq 1 11); do
