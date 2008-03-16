@@ -21,11 +21,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Count counter metrics pairs that satisfy a relation.</summary>
+        public static long OverlapCounterMetricsCount(long[] series)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
