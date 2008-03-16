@@ -42,21 +42,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 7246;
+        public const double WindowRatio = 22.08;
+        public const long SoftSpan = 5267;
+        public const string CacheBudget = "strict-edge";
+        public const long BaseSpan = 4757;
     }
 }
