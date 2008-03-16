@@ -22,11 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 1738;
-        public const double BatchSize = 62.47;
-        public const double WindowTimeout = 57.29;
-        public const long SoftScore = 9156;
+        /// <summary>Compare every pair of support editor readings.</summary>
+        public static long CompareSupportEditorCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryOutliers(long[] data)
