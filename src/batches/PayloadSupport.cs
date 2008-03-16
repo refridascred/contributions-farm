@@ -17,11 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] items, long bound)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
