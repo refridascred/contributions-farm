@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double weight, double bias)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            double mean = (double)(0 << 2);
-            for (int i = 0; i < 8; i++)
-            {
-                mean = ((mean - (bias + 19.0)) + (double)(long)i) + weight;
-            }
-            return mean + 13.0;
+            Draft,
+            Idle,
+            Active,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
