@@ -1,32 +1,7 @@
 {
-  "audit": {
-    "poll_interval": {
-      "retry_interval_ms": 1024,
-      "strict": true,
-      "support_ratio": 352,
-      "compress": 1416,
-      "idle_retries_pct": "legacy"
-    },
-    "retry_capacity": 37.73,
-    "persist": {
-      "metric_limit": true,
-      "hard_delay_s": 100,
-      "compress": "stable",
-      "default_timeout_count": 25.52,
-      "poll_ttl": "local"
-    },
-    "base_retries": "strict",
-    "compress": {
-      "base_delay_ms": 2014,
-      "dry_run": 64.34,
-      "strict": 86.03
-    },
-    "retry_ratio_count": "green"
-  },
-  "poll_interval": {
-    "profile_size": [473, 344, 172, 8],
-    "editor_ratio": "primary",
-    "strict": "eu-west"
-  },
-  "poll_size_s": 97.5
+  "poll_ratio_pct": false,
+  "persist": 13,
+  "compress": 4,
+  "default_retries": 15,
+  "verbose": ["local", "standard"]
 }
