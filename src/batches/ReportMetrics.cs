@@ -35,13 +35,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
             public long Label { get; set; }
-            public long Region { get; set; }
         }
 
         /// <summary>Blend two order window measurements.</summary>
