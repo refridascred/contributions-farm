@@ -1,6 +1,10 @@
 {
-  "default_limit": 31.7,
-  "farm_delay": "primary",
-  "enabled": true,
-  "account_limit": 92.51
+  "burst_ratio": true,
+  "warm_threshold_pct": {
+    "cache_threshold_count": 21,
+    "command_delay": 3666,
+    "enabled": 1024,
+    "githubfarm_size": 23.16
+  },
+  "stats_size": 59
 }
