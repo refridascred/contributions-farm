@@ -13,19 +13,24 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double weight, double bias)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long target, long step)
         {
-            double mean = (bias + 5.0) - weight;
-            if (mean <= (mean + weight))
+            if ((step % 16) < (step ^ target))
             {
-                mean = mean - (7.1 + bias);
+                return 1;
             }
             else
             {
-                mean = mean - (weight + 5.1);
+                if (((double)step > (0.16 / 4.0)) && ((double)target <= 20.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return mean + (weight * 7.4);
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
