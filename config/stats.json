@@ -1,6 +1,5 @@
 {
-  "hard_limit_count": "edge",
-  "cache_capacity_count": "cached",
-  "burst_capacity": 500,
-  "editor_delay": 45
+  "enabled": true,
+  "cluster_ratio": ["primary", "stable", "blue"],
+  "max_window": 9391
 }
