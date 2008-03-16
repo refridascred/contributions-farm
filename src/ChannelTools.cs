@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] series, long step)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
-            long sum = 5;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sum % 7) >= (sample % 7))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum + step) % 4096;
-                }
-                else
-                {
-                    sum = sum ^ (sum ^ step);
+                    if ((readings[i] + readings[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > 267)
-            {
-                sum = (sum + (sum >> 4)) % 255;
-            }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Hold a route header.</summary>
