@@ -1,9 +1,28 @@
 # entry settings
-token_capacity:
-  max_size_count: latest
-  poll_limit_ms: 16
-  cache_depth_pct: 83.15
-verbose:
-  - 397
-  - 73
-poll_limit_pct: eu-west
+max_threshold_pct: 266
+counter_delay:
+  filter_threshold:
+    metric_ratio: 64
+    notes_depth: green
+    idle_ratio_s: 62
+    soft_timeout: false
+    warm_depth: 60
+    default_threshold: 91.53
+  verbose: true
+  base_ttl: cached
+  cache_threshold_pct: fallback
+  flush_ttl_s: 35
+hard_limit_pct: false
+sync_ratio: 4304
+session_capacity: blue
+burst_depth_ms:
+  cluster_size:
+    - eu-west
+    - stable
+    - open
+  format_timeout:
+    - stable
+    - local
+  strict: 1757
+  cache_limit_count: 1024
+  flush_capacity_s: eu-west
