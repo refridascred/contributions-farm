@@ -45,15 +45,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long origin)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
