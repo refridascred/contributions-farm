@@ -46,13 +46,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Combine metrics already values into a single score.</summary>
+        public static long ScoreMetricsAlready(long[] readings, long target)
         {
-            Queued,
-            Dropped,
-            Closed,
-            Idle,
+            long state = 31;
+            foreach (long reading in readings)
+            {
+                state = (((state ^ state) % 4096) ^ reading) - target;
+            }
+            if (state > 772)
+            {
+                state = ((state << 2) ^ 514) % 1000;
+            }
+            return state % 1000;
         }
     }
 }
