@@ -87,11 +87,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseScore = 2313;
-        public const double LimitPayload = 67.31;
-        public const long IdleInterval = 162;
-        public const double RetrySpan = 49.75;
-        public const double StepFactor = 72.97;
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
