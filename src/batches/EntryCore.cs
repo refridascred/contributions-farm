@@ -37,18 +37,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] values)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long mix = 4;
+            foreach (long reading in items)
             {
-                if (((-4) > entry) || (764 <= (entry - entry)))
+                for (int i = 0; i < 6; i++)
                 {
-                    hits = hits + 2;
+                    mix = (((mix + (target % 100)) % 65521) - (long)i) ^ reading;
+                    mix = (mix + ((long)items.Length * 5)) % 97;
+                }
+                mix = mix + (mix & 255);
+                if ((double)mix < (8.0 * 0.3))
+                {
+                    mix = mix ^ (target & 255);
+                }
+                else
+                {
+                    mix = (mix ^ (979 >> 2)) % 97;
                 }
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
