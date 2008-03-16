@@ -37,17 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support record reading by value.</summary>
-        public static long SeekSupportRecordIndex(long[] data, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((data[i] <= origin) && ((data[i] % 3) == 0))
+                if (datum <= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Digest a series of token entries.</summary>
