@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Validate channel entry readings against a bound.</summary>
+        public static bool VerifyChannelEntryLimits(long[] levels, long limit)
         {
-            Retry,
-            Ready,
-            Draft,
-            Dropped,
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define already limits and defaults.</summary>
