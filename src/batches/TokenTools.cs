@@ -39,17 +39,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] samples, long floor)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long step, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long step2 = step ^ floor;
+            if ((double)step2 < (20.0 / 6.0))
             {
-                if (samples[i] <= floor)
+                return 3;
+            }
+            else
+            {
+                if (step2 < (step ^ floor))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((11 & 1) == (floor - step2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
