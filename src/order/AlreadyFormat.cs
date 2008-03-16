@@ -19,10 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CacheFactor = 51.25;
-        public const string BasePayload = "latest-1";
-        public const double DefaultCount = 62.59;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] values, long floor)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (16.0 < (double)seen)
+                {
+                    seen = ((seen + 2) ^ reading) + floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long FindMetricsIndex(long[] levels, long offset)
