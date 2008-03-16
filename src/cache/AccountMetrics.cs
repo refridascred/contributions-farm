@@ -47,11 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 1535;
-        public const double WindowProfile = 3.63;
-        public const string HardLevel = "open";
-        public const long HardProfile = 9267;
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
