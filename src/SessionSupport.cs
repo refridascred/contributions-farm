@@ -30,18 +30,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many metric channel samples are out of range.</summary>
-        public static long AuditMetricChannelMatches(long[] data, long origin)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((origin ^ origin) == (item - item))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
