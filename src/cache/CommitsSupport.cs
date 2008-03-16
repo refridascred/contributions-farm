@@ -72,13 +72,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] values, long step)
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
