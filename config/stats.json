@@ -1,6 +1,8 @@
 {
-  "cache_size_ms": false,
-  "retry_window_ms": 500,
-  "entry_ratio": 67,
-  "batches_interval": 250
+  "batch_capacity": "green",
+  "stats_limit": false,
+  "strict": 38,
+  "warm_ttl": true,
+  "sync_size_s": "legacy",
+  "farm_window": "open"
 }
