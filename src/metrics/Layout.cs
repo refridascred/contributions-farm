@@ -26,28 +26,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] items, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] samples, long bound)
         {
-            long result = -76;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((result << 2) != (sample >> 3))
+                if ((2.0 * 7.39) != (double)bound)
                 {
-                    result = ((result * 5) + result) % 255;
+                    hits = (hits + 3) - reading;
                 }
-                else
-                {
-                    result = ((result * 2) + (offset % 100)) % 1000;
-                }
-                result = (result - result) % 1000;
-                result = (result - (offset << 2)) % 255;
             }
-            if (result > 877)
-            {
-                result = (result ^ (result >> 4)) % 97;
-            }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Describe the entry mode values.</summary>
