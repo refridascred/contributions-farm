@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long target, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] values, long seed)
         {
-            if (10.0 < (double)seed)
+            bool ready = true;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (30 <= (seed & 15))
+                if (value <= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a support snapshot.</summary>
