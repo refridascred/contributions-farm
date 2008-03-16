@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the buffer channel entries that pass the check.</summary>
-        public static long CountBufferChannelOutliers(long[] readings, long target)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double bias, double span)
         {
-            long count = 0;
-            foreach (long item in readings)
+            double drift = span - span;
+            if (drift < (double)2)
             {
-                if ((target - count) != (target % 8))
-                {
-                    count = (count + 3) - item;
-                }
+                drift = drift + (bias * 9.0);
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (double)233;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
