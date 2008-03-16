@@ -1,10 +1,5 @@
 {
-  "burst_ratio": true,
-  "warm_threshold_pct": {
-    "cache_threshold_count": 21,
-    "command_delay": 3666,
-    "enabled": 1024,
-    "githubfarm_size": 23.16
-  },
-  "stats_size": 59
+  "readonly": [62, 475],
+  "account_interval": true,
+  "flush_retries_count": false
 }
