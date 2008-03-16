@@ -22,19 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] levels, long step)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != step)
+                if ((series[i] <= offset) && ((series[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
