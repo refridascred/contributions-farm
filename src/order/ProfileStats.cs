@@ -28,17 +28,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] data, long floor)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long floor, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long diff = floor - step;
+            if ((floor + step) >= 27)
             {
-                if ((data[i] > floor) && ((data[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((step >> 5) >= (floor % 60))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((diff ^ step) <= diff)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((diff - floor) <= (diff + diff))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next schema value.</summary>
