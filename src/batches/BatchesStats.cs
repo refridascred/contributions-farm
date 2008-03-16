@@ -38,11 +38,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheBudget = 6705;
-        public const long MaxSpan = 360;
-        public const long MinBudget = 6395;
-        public const double BurstDepth = 28.7;
-        public const long SoftCluster = 4778;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] values, long origin)
+        {
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
