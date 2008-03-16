@@ -1,6 +1,7 @@
 # entry settings
-support_timeout: stable
-cache_size: 7523
-stats_threshold: 100
-cache_ttl_count: 4884
-warm_capacity_ms: 24
+persist: legacy
+strict: edge
+batch_timeout: 2710
+hard_retries_s: blue
+compress: 7797
+filter_window: staging
