@@ -61,21 +61,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (readings[i] >= target)
                 {
-                    if ((values[i] - values[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
