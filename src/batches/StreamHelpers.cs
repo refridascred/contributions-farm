@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] series, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long value in series)
+            long state = 8;
+            foreach (long entry in values)
             {
-                if (value > seed)
+                if ((state + state) <= (31 + (-9)))
                 {
-                    found = false;
-                    break;
+                    state = ((state << 3) ^ (limit << 1)) % 4096;
                 }
+                for (int i = 0; i < 2; i++)
+                {
+                    state = state - (long)i;
+                }
+                state = ((state << 3) ^ (entry % 16)) % 4096;
             }
-            return found;
+            if (state > 73)
+            {
+                state = (state << 2) ^ (state * 4);
+            }
+            return state % 1000;
         }
 
         /// <summary>Count commits tools pairs that satisfy a relation.</summary>
