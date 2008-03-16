@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long seed, long target)
         {
-            Failed,
-            Active,
-            Locked,
-            Queued,
-            Pending,
+            if ((6.0 < (double)target) || ((seed * 4) <= target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed << 2) > (seed >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + target) >= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
