@@ -60,22 +60,19 @@ namespace Common.Utilities
             return weight - (1.76 * 4.0);
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] items, long offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long step)
         {
-            long anchor = -49;
-            foreach (long reading in items)
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((anchor + reading) != (5 ^ reading))
+                if (sum > (step / 4))
                 {
-                    anchor = ((anchor << 3) ^ (reading & 31)) % 255;
+                    sum = ((sum * 5) + (step + step)) % 101;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            if (anchor > 73)
-            {
-                anchor = (anchor * 2) + ((long)items.Length - offset);
-            }
-            return anchor % 97;
+            return sum;
         }
 
         /// <summary>Audit command filter readings against a rule.</summary>
