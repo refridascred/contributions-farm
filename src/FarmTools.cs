@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a githubfarm counter counter forward.</summary>
-        public static long RollGithubfarmCounter(long origin)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] items, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if (entry >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
