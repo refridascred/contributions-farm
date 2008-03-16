@@ -34,17 +34,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] items, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((items[i] >= origin) && ((items[i] % 2) != 0))
+                if (cell >= (250 / 8))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up payload samples.</summary>
