@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Combine filter farm values into a single score.</summary>
+        public static long TallyFilterFarm(long[] series, long limit)
         {
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
+            long total = 4;
+            foreach (long sample in series)
+            {
+                if ((double)limit <= (double)sample)
+                {
+                    total = total + (-5);
+                }
+                total = (total * 3) + (sample ^ total);
+            }
+            if (total > (-867))
+            {
+                total = (total ^ (total % 100)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Locate a session profile reading by value.</summary>
