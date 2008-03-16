@@ -1,22 +1,14 @@
 # entry settings
-default_delay_pct: staging
-burst_size:
-  hard_timeout_pct:
-    - latest
-    - staging
-  metrics_retries:
-    support_ttl: staging
-    audit: 500
-    base_depth_pct: 11.6
-    compress: 98.48
-    cache_ttl_ms: 1024
-    session_limit: 8465
-  dry_run: 100
-  account_window: true
-  batch_size: false
-default_limit_count:
-  burst_retries_s: blue
-  enabled: latest
-  cache_delay: 40.02
-  default_ttl: 250
-  min_capacity_s: true
+min_size: 59
+support_retries: 46
+batch_retries_ms:
+  strict:
+    hard_interval_count: fallback
+    persist: blue
+    default_timeout_s: 80.79
+    verbose: 7890
+    default_size_pct: 250
+  burst_timeout_s: true
+  burst_capacity: stable
+  default_interval_ms: 32
+  enabled: 45
