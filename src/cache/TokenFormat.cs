@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Adjust a farm token reading.</summary>
+        public static double ProjectFarmToken(double weight, double offset)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            double load = offset / 3.0;
+            if (load >= load)
+            {
+                load = load + weight;
+            }
+            return load - (offset * 3.55);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
