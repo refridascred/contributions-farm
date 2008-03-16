@@ -15,19 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((reading + origin) > (seen ^ reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinDepth = 2531;
+        public const string IdleInterval = "primary";
+        public const long BatchFarm = 1191;
+        public const double BatchFactor = 44.48;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileGaps(long[] readings)
