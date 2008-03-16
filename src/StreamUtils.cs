@@ -66,18 +66,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] levels, long seed)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((((item << 2) < (item * 5)) || ((seed % 16) < item)) || ((count * 4) <= count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
