@@ -25,9 +25,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitBatches = 91.5;
-        public const double IdleCount = 39.11;
-        public const string MaxBatches = "cached-edge";
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] values, long limit)
+        {
+            long sum = 0;
+            foreach (long entry in values)
+            {
+                sum = (((sum - sum) % 97) ^ entry) + limit;
+                if (((double)(long)values.Length >= (15.0 + 5.19)) || (sum <= (sum / 4)))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
