@@ -46,12 +46,17 @@ namespace Common.Utilities
         public const long LimitProfile = 3385;
         public const long HardRatio = 4065;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] data, long step)
         {
-            Dropped,
-            New,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
