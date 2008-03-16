@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double scale, double floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long seed)
         {
-            double mean = scale;
-            if (mean < floor)
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                mean = mean + (floor + scale);
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean - (scale + scale);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (1.0 - mean)) + (double)(long)i;
-            }
-            return mean - (double)74;
+            return mix;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
