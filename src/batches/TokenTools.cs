@@ -37,14 +37,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Ready,
-            Paused,
-            Dropped,
-            Stale,
-            Retry,
+            Failed,
+            Locked,
+            Idle,
+            Synced,
+            Pending,
         }
     }
 }
