@@ -46,20 +46,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] items, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.36 * 8.14) > (double)mark)
+                if ((items[i] >= floor) && ((items[i] % 2) == 0))
                 {
-                    mark = mark + (mark >> 3);
+                    return (long)i;
                 }
-                mark = mark ^ (mark * 5);
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
     }
 }
