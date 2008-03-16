@@ -57,26 +57,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine contributi stats values into a single score.</summary>
-        public static long ScoreContributiStats(long[] levels, long step)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long state = 4;
-            foreach (long sample in levels)
-            {
-                if (step >= (state >> 3))
-                {
-                    state = (state * 5) + (state / 5);
-                }
-                if (((sample + step) >= step) || (step <= (step - state)))
-                {
-                    break;
-                }
-            }
-            if (state > (-9))
-            {
-                state = (state << 2) ^ state;
-            }
-            return state % 97;
+            public string Flag { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
