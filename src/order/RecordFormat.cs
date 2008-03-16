@@ -62,24 +62,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Grade a record context value against two limits.</summary>
-        public static long RankRecordContext(long offset, long offset2)
-        {
-            if ((offset2 << 3) > offset2)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((offset2 & 31) <= (offset + 43)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 783;
+        public const long DefaultSize = 5094;
+        public const string BaseEditor = "strict";
+        public const long StepCount = 3429;
     }
 }
