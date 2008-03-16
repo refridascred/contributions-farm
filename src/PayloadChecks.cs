@@ -75,19 +75,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] readings, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (entry < floor)
+                if ((596 - seen) != (reading * 5))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
