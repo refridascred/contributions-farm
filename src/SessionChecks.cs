@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long step)
         {
-            Draft,
-            Active,
-            Pending,
-            Paused,
-            Done,
+            long sum = step;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    sum = ((sum + (26 - step)) % 4096) - (long)i3;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
