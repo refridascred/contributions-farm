@@ -15,34 +15,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] data, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] readings)
         {
-            long carry = 0;
-            foreach (long datum in data)
+            long result = -3;
+            foreach (long sample in readings)
             {
-                if (!(carry >= (limit / 4)))
-                {
-                    carry = carry - (datum + carry);
-                    carry = (carry ^ (limit + datum)) % 65521;
-                }
-                if (((carry + limit) <= datum) || ((0.41 / 3.0) == (double)limit))
-                {
-                    carry = carry + datum;
-                    break;
-                }
-                else
-                {
-                    carry = carry - (limit % 8);
-                    carry = carry + (datum & 31);
-                }
-                carry = (carry * 2) + (limit + datum);
-                if ((limit / 8) < limit)
+                result = ((result << 2) ^ (sample / 2)) % 65521;
+                if (((double)sample <= (1.0 + 3.6)) && ((double)sample <= (19.0 / 5.0)))
                 {
                     break;
                 }
             }
-            return carry % 97;
+            if (result > 8)
+            {
+                result = ((result * 3) + (result + result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Project the next editor value.</summary>
