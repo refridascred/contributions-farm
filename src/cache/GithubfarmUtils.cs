@@ -41,11 +41,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
