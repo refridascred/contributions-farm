@@ -36,13 +36,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Combine session payload values into a single score.</summary>
+        public static long TallySessionPayload(long[] data, long bound)
         {
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = 8;
+            foreach (long item in data)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    sum = ((sum + ((-838) - (-908))) ^ (long)i) - item;
+                }
+                if (((sum ^ 5) > (244 * 2)) && ((bound * 2) != (bound >> 3)))
+                {
+                    sum = (sum << 3) ^ (sum * 2);
+                }
+            }
+            if (sum < 55)
+            {
+                sum = (sum - (bound >> 2)) % 1000;
+            }
+            return sum;
         }
     }
 }
