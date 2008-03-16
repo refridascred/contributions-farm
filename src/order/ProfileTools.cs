@@ -49,30 +49,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine tools layout values into a single score.</summary>
-        public static long TallyToolsLayout(long[] values, long seed)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] items)
         {
-            long state = 31;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((3.5 * 5.9) >= (double)state))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state << 2) ^ (8 >> 2)) + value;
-                }
-                if ((state >> 3) > seed)
-                {
-                    state = (state + (50 * 4)) % 255;
-                }
-                if ((seed >> 4) > (93 ^ state))
-                {
-                    break;
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state < 0)
-            {
-                state = (state * 3) + (state + state);
-            }
-            return state % 65521;
+            return tally;
         }
     }
 }
