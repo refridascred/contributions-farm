@@ -1,14 +1,23 @@
 # entry settings
-sync_interval_ms:
-  - 382
-  - 439
-  - 194
-persist: latest
-githubfarm_threshold: 8981
-hard_threshold_s:
-  dry_run: eu-west
-  default_delay: 250
-  idle_depth_ms: 3
-  cache_timeout_s: fallback
-  soft_delay_pct: stable
-hard_depth: true
+idle_depth_count:
+  batches_retries: true
+  max_timeout: true
+  burst_timeout: 7678
+  warm_size_ms: legacy
+  support_delay: strict
+context_retries:
+  graph_retries: 60
+  min_window_s: 12.94
+  soft_depth_ms:
+    persist: true
+    sync_ttl_pct: 40.82
+    strict:
+      - blue
+      - fallback
+    warm_limit_pct: 30
+    max_delay_pct: false
+  min_delay_pct: primary
+  retry_depth: false
+contributi_threshold: open
+persist: local
+idle_threshold_count: fallback
