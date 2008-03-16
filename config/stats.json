@@ -1,5 +1,7 @@
 {
-  "max_timeout_pct": "legacy",
-  "sync_window": "fallback",
-  "retry_ttl": 43
+  "min_timeout_s": 60,
+  "flush_ratio_s": 58,
+  "audit": 1131,
+  "default_window_count": "primary",
+  "base_ratio_pct": false
 }
