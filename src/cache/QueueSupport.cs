@@ -40,19 +40,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] items, long floor)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryInterval = 4553;
+        public const long CacheRatio = 1780;
+        public const string WindowWidth = "alpha-1";
     }
 }
