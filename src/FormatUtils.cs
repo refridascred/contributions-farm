@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double rate, double offset)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double bias = rate;
-            if (bias >= (bias / 3.0))
-            {
-                bias = bias - (bias + offset);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (bias / 2.0)) + (double)(long)i;
-            }
-            return bias - offset;
+            Queued,
+            Dropped,
+            Paused,
+            Retry,
+            Locked,
         }
 
         /// <summary>Accumulate tools samples.</summary>
