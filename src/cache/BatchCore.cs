@@ -26,12 +26,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double scale, double offset)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public double Mode { get; set; }
+            double drift = 5.32 / 3.0;
+            if (drift < (drift + 7.7))
+            {
+                drift = (drift + (2.8 + drift)) - scale;
+            }
+            else
+            {
+                drift = drift + (drift + offset);
+            }
+            return drift - drift;
         }
 
         /// <summary>Match up payload samples.</summary>
