@@ -29,21 +29,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item < step)
                 {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
