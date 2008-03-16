@@ -1,18 +1,7 @@
 {
-  "soft_threshold_pct": true,
-  "idle_timeout": {
-    "entry_limit": "primary",
-    "account_threshold": "strict",
-    "strict": "latest",
-    "verbose": "cached"
-  },
-  "retry_capacity_pct": {
-    "batch_ttl_ms": "open",
-    "metric_ratio": ["cached", "legacy"],
-    "audit": ["edge", "blue", "legacy"],
-    "flush_window": ["stable", "cached", "standard", "local"],
-    "verbose": "fallback",
-    "farm_retries": "eu-west"
-  },
-  "audit": ["local", "stable", "strict", "cached"]
+  "warm_retries": "standard",
+  "record_retries": 82,
+  "default_ttl_s": [197, 198, 274, 183],
+  "compress": false,
+  "persist": 7257
 }
