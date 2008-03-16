@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public bool Owner { get; set; }
-            public double Region { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Count the schema already entries that pass the check.</summary>
