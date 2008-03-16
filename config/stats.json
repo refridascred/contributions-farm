@@ -1,5 +1,5 @@
 {
-  "metric_depth": "latest",
-  "max_ttl_s": 73,
-  "channel_delay": "cached"
+  "cache_threshold": ["local", "blue"],
+  "cache_threshold_s": "latest",
+  "warm_timeout_ms": "legacy"
 }
