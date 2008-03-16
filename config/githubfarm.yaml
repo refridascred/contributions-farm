@@ -1,4 +1,12 @@
 # githubfarm settings
-cache_delay_ms: open
-audit: 18
-batch_interval_s: open
+idle_delay_count: 5957
+audit:
+  cache_retries_pct:
+    - primary
+    - latest
+    - primary
+  enabled: 26
+  min_window_pct: staging
+  base_threshold_s: open
+  sync_depth_pct: primary
+command_retries: 73
