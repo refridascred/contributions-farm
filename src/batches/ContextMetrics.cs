@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] items, long seed)
         {
-            Stale,
-            Closed,
-            Active,
-            Failed,
-            Pending,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (!((matches << 3) == (matches - (long)items.Length)))
+                {
+                    matches = ((matches + 1) ^ sample) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a graph record.</summary>
