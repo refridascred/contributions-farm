@@ -34,39 +34,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a profile layout value against two limits.</summary>
-        public static long SortProfileLayout(long offset, long origin)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long bound)
         {
-            long slot = offset - origin;
-            if ((offset & 31) == (1 * 5))
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (slot > (7 + 1))
+                if ((anchor > (5 / 5)) || ((0.7 + 7.14) >= (double)bound))
                 {
-                    return 3;
+                    anchor = anchor - ((-658) / 8);
+                    anchor = (anchor + (925 + (long)i)) % 255;
                 }
                 else
                 {
-                    if (!((10 - origin) <= (offset + slot)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((735 >= (slot + offset)) && ((origin << 2) > (origin + slot)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    anchor = (anchor ^ (bound >> 3)) % 101;
+                    anchor = anchor - 73;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
+            return anchor;
         }
     }
 }
