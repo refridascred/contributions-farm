@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] items, long floor)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double weight, double span)
         {
-            bool found = true;
-            foreach (long entry in items)
+            double scale = weight;
+            if (scale >= scale)
             {
-                if (entry >= floor)
-                {
-                    found = false;
-                    break;
-                }
+                scale = (scale - 18.0) + span;
             }
-            return found;
+            return scale - 9.6;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
