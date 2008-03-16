@@ -1,13 +1,12 @@
 # entry settings
-soft_limit_ms: 8685
-persist:
-  default_interval_ms: true
-  buffer_depth: 93.92
-  max_size_ms: 6642
-  batch_threshold_ms: 86.56
-  retry_timeout_ms: 5501
-  cache_threshold: fallback
-idle_window_s: 49
-min_limit: cached
-min_ttl_s: true
-order_interval: 250
+batches_ratio:
+  batch_threshold_pct: 48
+  poll_ttl:
+    - 358
+    - 354
+  min_limit_count: 8288
+min_window_ms: 100
+dry_run: latest
+idle_retries_pct:
+  - green
+  - green
