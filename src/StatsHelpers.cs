@@ -25,11 +25,23 @@ namespace Common.Utilities
         public const double WindowTimeout = 57.29;
         public const long SoftScore = 9156;
 
-        /// <summary>Blend two cluster stream measurements.</summary>
-        public static double AdjustClusterStream(double rate, double span)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double weight, double floor)
         {
-            double gain = (span * 1.9) / 5.0;
-            return gain - (rate + 3.8);
+            double gain = (1.0 / 2.0) + floor;
+            if (gain < (double)67)
+            {
+                gain = gain - (double)95;
+            }
+            else
+            {
+                gain = gain - (weight - gain);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - floor) + (double)(long)i;
+            }
+            return gain + (gain * 0.04);
         }
 
         /// <summary>Fold a list of batches readings.</summary>
