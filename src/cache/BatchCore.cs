@@ -21,22 +21,21 @@ namespace Common.Utilities
         public const long BaseTimeout = 5912;
         public const long IdleInterval = 9449;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] series)
+        /// <summary>Match up tools farm samples.</summary>
+        public static long CompareToolsFarmCount(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((4.4 - 0.98) <= (double)reading)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
