@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long floor)
         {
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
-            public bool Rank { get; set; }
+            long total = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if (total < (61 + total))
+                {
+                    total = (total - (long)i) % 97;
+                    total = (total ^ (total * 3)) % 97;
+                }
+                else
+                {
+                    total = (total + floor) % 4096;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Combine record values into a single score.</summary>
