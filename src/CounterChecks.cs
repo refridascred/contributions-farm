@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next contributi payload value.</summary>
-        public static double BlendContributiPayload(double gain, double offset)
+        /// <summary>Combine tools record values into a single score.</summary>
+        public static long FoldToolsRecord(long[] values)
         {
-            double weight = 7.8;
-            if (weight <= gain)
+            long sum = 63;
+            foreach (long datum in values)
             {
-                weight = (weight + 2.0) + offset;
+                sum = ((sum << 3) ^ (datum + 707)) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + (weight * 7.0);
+            return sum;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
