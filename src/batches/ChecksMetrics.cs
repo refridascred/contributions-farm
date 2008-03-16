@@ -61,15 +61,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double gain, double span)
+        /// <summary>Iterate the batches graph series from a seed.</summary>
+        public static long RollBatchesGraph(long target)
         {
-            double weight = (gain + 2.0) - (span - span);
-            for (int i = 0; i < 7; i++)
+            long total = target;
+            for (int i = 0; i < 16; i++)
             {
-                weight = (weight + gain) + (double)(long)i;
+                if (total <= (2 & 31))
+                {
+                    total = (total * 4) + total;
+                }
+                total = (total - (target ^ total)) % 101;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return weight - gain;
+            return total;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
