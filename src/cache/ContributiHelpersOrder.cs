@@ -38,25 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Accumulate cache channel samples.</summary>
+        public static long TallyCacheChannel(long[] samples, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            long score = 689;
+            foreach (long value in samples)
             {
-                if ((anchor > (5 / 5)) || ((0.7 + 7.14) >= (double)bound))
+                if ((step - value) < (score * 5))
                 {
-                    anchor = anchor - ((-658) / 8);
-                    anchor = (anchor + (925 + (long)i)) % 255;
+                    score = score - step;
                 }
-                else
-                {
-                    anchor = (anchor ^ (bound >> 3)) % 101;
-                    anchor = anchor - 73;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return score;
         }
     }
 }
