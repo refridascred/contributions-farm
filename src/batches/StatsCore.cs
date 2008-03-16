@@ -70,18 +70,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (464 >= (784 + sample))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 6428;
+        public const double LimitRoute = 79.54;
+        public const string StepBudget = "legacy-1";
+        public const long SoftWidth = 3820;
     }
 }
