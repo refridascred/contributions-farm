@@ -34,25 +34,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long bound, long origin)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long next = bound - origin;
-            if ((2.1 / 8.0) == (double)next)
-            {
-                return 2;
-            }
-            else
-            {
-                if (next > (5 - next))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Dropped,
+            Pending,
+            Locked,
+            Ready,
         }
 
         /// <summary>Project the next account value.</summary>
