@@ -1,8 +1,13 @@
 {
-  "base_ttl": false,
-  "verbose": true,
-  "base_delay": "blue",
-  "default_limit_count": ["fallback", "green"],
-  "min_size_s": 6458,
-  "sync_depth_ms": false
+  "hard_limit": false,
+  "profile_ratio": "staging",
+  "stats_window": [133, 31],
+  "compress": {
+    "flush_ratio": "eu-west",
+    "cluster_ratio": "staging",
+    "graph_depth": true,
+    "channel_threshold": false
+  },
+  "soft_retries_s": 2289,
+  "min_interval_ms": 23.06
 }
