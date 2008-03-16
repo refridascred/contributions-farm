@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] levels, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] items, long target)
         {
-            long sum = -84;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 6; i++)
+                if (24 > target)
                 {
-                    sum = ((sum << 2) ^ ((long)i << 3)) % 65521;
+                    seen = (seen + 1) ^ datum;
                 }
-                if ((sum >= (offset + reading)) || ((reading % 3) <= (reading + sum)))
+                else
                 {
-                    sum = (sum + (reading + reading)) % 1000;
-                    break;
+                    seen = seen - 1;
                 }
-                sum = sum - (offset - 7);
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Combine entry batch values into a single score.</summary>
