@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double weight, double offset)
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double gain, double floor)
         {
-            double bias = 6.0 * 9.51;
-            if (bias < (double)520)
+            double load = (double)(39 - (-44));
+            if (load < floor)
             {
-                bias = (bias - bias) + weight;
+                load = load + gain;
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
-                bias = (bias + offset) + (double)(long)i;
+                load = (load - (floor - 4.6)) + (double)(long)i;
             }
-            return bias + bias;
+            return load + (gain - load);
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
