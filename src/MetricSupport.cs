@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] levels, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (value >= seed)
+                if ((entry % 60) >= (matches * 3))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) - seed;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the counter phase values.</summary>
