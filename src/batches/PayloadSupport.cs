@@ -21,14 +21,18 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] data, long step)
         {
-            Ready,
-            Locked,
-            Retry,
-            Dropped,
-            Synced,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches >> 2) > (value + matches))
+                {
+                    matches = (matches + 1) - step;
+                }
+            }
+            return matches;
         }
     }
 }
