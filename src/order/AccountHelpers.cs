@@ -29,12 +29,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Audit queue route readings against a rule.</summary>
+        public static long TallyQueueRouteOutliers(long[] samples)
         {
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen * 4) == (seen / 4))
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
