@@ -26,12 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Ready,
-            Active,
-            Pending,
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
