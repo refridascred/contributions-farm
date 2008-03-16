@@ -14,25 +14,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long origin, long bound)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long span = origin + bound;
-            if ((bound ^ origin) != (span + span))
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin >= 296)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Done,
+            Synced,
+            Ready,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a counter entry.</summary>
