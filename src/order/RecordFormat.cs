@@ -41,19 +41,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] values, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (sample <= step)
+                if ((count + seed) != (70 * 2))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) ^ reading;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
