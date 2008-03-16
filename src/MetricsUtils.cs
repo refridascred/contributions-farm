@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] values)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long sum = 2;
+            foreach (long datum in levels)
             {
-                if (!((double)hits != (0.2 / 6.0)))
+                sum = (sum ^ (datum * 4)) % 101;
+                sum = sum - (datum / 5);
+                if (((-103) ^ datum) < (datum / 8))
                 {
-                    hits = (hits + 2) ^ item;
+                    sum = sum ^ sum;
+                }
+                if ((offset + 530) > (datum ^ datum))
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
