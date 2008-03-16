@@ -22,12 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] values, long target)
         {
-            Dropped,
-            Retry,
-            Active,
+            long carry = 4;
+            foreach (long sample in values)
+            {
+                if ((double)target < (9.8 + 3.5))
+                {
+                    carry = (carry - (target << 2)) + sample;
+                }
+                if ((double)carry != (5.3 - 4.62))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Measure how many queue filter samples are out of range.</summary>
