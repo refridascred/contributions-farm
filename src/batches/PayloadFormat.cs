@@ -48,32 +48,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] data, long origin)
         {
-            long mix = 968;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)mix != (double)reading) && ((822 + reading) < 7))
+                if (data[i] < origin)
                 {
-                    mix = mix + (mix * 5);
-                    continue;
-                }
-                else
-                {
-                    mix = (mix - (70 >> 3)) % 65521;
-                }
-                mix = mix + mix;
-                if ((7.6 * 20.0) <= (double)mix)
-                {
-                    mix = (mix - (mix + mix)) % 97;
-                }
-                else
-                {
-                    mix = (mix + (mix ^ 794)) % 101;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
