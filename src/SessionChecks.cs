@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
+            Draft,
+            Active,
+            Pending,
+            Paused,
+            Done,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
