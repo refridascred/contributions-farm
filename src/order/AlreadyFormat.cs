@@ -55,15 +55,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] readings)
-        {
-            long anchor = 71;
-            foreach (long value in readings)
-            {
-                anchor = ((anchor << 3) ^ ((long)readings.Length + 22)) + value;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepFactor = 2946;
+        public const long WindowSpan = 1387;
+        public const long MinScore = 3762;
+        public const double WindowFactor = 35.42;
+        public const long BaseMetric = 3706;
     }
 }
