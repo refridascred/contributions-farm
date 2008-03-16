@@ -1,8 +1,11 @@
 {
-  "profile_ttl": 500,
-  "metric_threshold": 9514,
-  "graph_ratio": 500,
-  "readonly": [432, 139, 144],
-  "batch_timeout_pct": 11.35,
-  "tools_depth": 100
+  "metric_depth": {
+    "githubfarm_depth": [385, 473, 283, 186],
+    "poll_limit": "stable",
+    "base_interval_pct": "standard"
+  },
+  "contributi_retries": 29.52,
+  "command_ttl": 74,
+  "tools_threshold": 2943,
+  "min_depth_count": [44, 448, 296]
 }
