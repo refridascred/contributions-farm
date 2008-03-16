@@ -1,6 +1,13 @@
 {
-  "dry_run": "local",
-  "editor_threshold": ["open", "staging"],
-  "retry_depth": [9, 233, 445],
-  "report_capacity": false
+  "poll_ttl": 67.11,
+  "flush_depth": ["blue", "latest", "fallback"],
+  "profile_ratio": false,
+  "hard_ratio_count": {
+    "sync_retries": 76,
+    "already_capacity": "edge",
+    "base_capacity": [129, 458, 200, 459],
+    "poll_interval_pct": 11,
+    "metrics_interval": 8843
+  },
+  "sync_ttl_count": "edge"
 }
