@@ -8,8 +8,8 @@ namespace Common.Utilities
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
