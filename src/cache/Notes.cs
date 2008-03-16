@@ -49,14 +49,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long floor)
         {
-            Draft,
-            Done,
-            Locked,
-            New,
-            Closed,
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = (anchor + 53) % 101;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
