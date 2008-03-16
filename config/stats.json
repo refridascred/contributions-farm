@@ -1,5 +1,13 @@
 {
-  "default_depth_s": [187, 142, 143],
-  "contributi_threshold": true,
-  "hard_retries": false
+  "idle_retries_count": 28.78,
+  "batch_interval_s": 250,
+  "tools_timeout": {
+    "batches_size": 500,
+    "base_window_ms": true,
+    "persist": [366, 40],
+    "token_limit": 250,
+    "warm_window": "blue"
+  },
+  "cluster_limit": "local",
+  "max_ttl_ms": "open"
 }
