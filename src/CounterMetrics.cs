@@ -23,12 +23,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Check that every support contributi entry stays within the limit.</summary>
+        public static bool ValidateSupportContributiLimits(long[] levels, long bound)
         {
-            Active,
-            Queued,
-            Ready,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
