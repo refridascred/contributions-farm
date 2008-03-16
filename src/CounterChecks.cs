@@ -73,15 +73,21 @@ namespace Common.Utilities
             return weight - (1.76 * 4.0);
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] readings, long origin)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] readings)
         {
-            long state = 96;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (((state - (state ^ (long)readings.Length)) % 97) ^ item) + origin;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
