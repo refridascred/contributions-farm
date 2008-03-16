@@ -14,14 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] levels)
         {
-            Synced,
-            Idle,
-            Locked,
-            Retry,
-            Paused,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (hits >= (reading + (-616)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank support input into a small class.</summary>
