@@ -1,19 +1,19 @@
 # githubfarm settings
-audit:
-  burst_timeout: green
-  default_timeout: false
-  editor_window: cached
-filter_interval:
+strict:
+  - legacy
+  - local
   - strict
-  - staging
+checks_ratio: false
+buffer_size:
   - strict
-  - eu-west
-layout_depth:
-  flush_window:
-    - open
-    - local
-    - staging
-  burst_window_ms: 35
-  base_delay_ms: staging
-  audit: eu-west
-  min_ratio_count: local
+  - fallback
+command_depth: staging
+payload_timeout:
+  cluster_retries: 5850
+  audit: local
+  warm_capacity_ms: 83.45
+tools_ratio:
+  - fallback
+  - latest
+  - latest
+  - blue
