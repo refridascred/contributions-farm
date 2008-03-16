@@ -27,12 +27,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] samples, long target)
         {
-            Pending,
-            Queued,
-            Synced,
+            long total = 58;
+            foreach (long sample in samples)
+            {
+                total = total ^ total;
+                total = ((total << 2) ^ sample) % 97;
+                if ((double)target >= (6.0 * 6.0))
+                {
+                    total = (total + sample) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the already phase values.</summary>
