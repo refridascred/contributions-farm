@@ -35,11 +35,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCount = 3336;
-        public const double DefaultFactor = 16.23;
-        public const long MaxCounter = 267;
-        public const long MinCounter = 9325;
-        public const string BurstScore = "stable-1";
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
