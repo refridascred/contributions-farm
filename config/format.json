@@ -1,8 +1,5 @@
 {
-  "retry_size": 56.64,
-  "strict": [300, 263],
-  "base_threshold_s": ["eu-west", "fallback", "legacy", "open"],
-  "commits_ttl": true,
-  "warm_retries": ["cached", "staging", "fallback", "local"],
-  "window_size": 500
+  "counter_capacity": "eu-west",
+  "retry_limit": "green",
+  "max_threshold_ms": "stable"
 }
