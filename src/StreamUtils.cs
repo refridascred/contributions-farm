@@ -66,17 +66,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] items, long seed)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
     }
 }
