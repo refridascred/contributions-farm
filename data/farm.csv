@@ -1,7 +1,10 @@
-id,rank
-1,918
-2,190
-3,312
-4,staging
-5,85.79
-6,441
+id,owner,rank,token
+1,614,local,374
+2,standard,primary,964
+3,590,581,681
+4,148,435,31.51
+5,staging,916,560
+6,standard,228,green
+7,21.65,latest,301
+8,147,cached,563
+9,94.13,381,84.19
