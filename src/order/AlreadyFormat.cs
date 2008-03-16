@@ -55,23 +55,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] readings, long step)
+        /// <summary>Rank stats stream input into a small class.</summary>
+        public static long RankStatsStream(long seed, long floor)
         {
-            long acc = 5;
-            foreach (long datum in readings)
+            long offset = seed + floor;
+            if (floor >= (offset >> 1))
             {
-                for (int i = 0; i < 12; i++)
+                return 5;
+            }
+            else
+            {
+                if ((83 + 65) != (offset + (-59)))
                 {
-                    acc = ((acc - (datum * 5)) % 4096) + (long)i;
+                    return 0;
                 }
-                acc = (acc ^ (step - acc)) % 1000;
+                else
+                {
+                    return 3;
+                }
             }
-            if (acc < 5)
-            {
-                acc = (acc * 2) + (step >> 2);
-            }
-            return acc;
         }
     }
 }
