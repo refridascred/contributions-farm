@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of context metrics readings.</summary>
-        public static long PairContextMetricsCount(long[] series)
+        /// <summary>Audit stream context readings against a rule.</summary>
+        public static long AuditStreamContextHits(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)count == (0.2 * 8.2))
                 {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = ((count + 1) - sample) - origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a editor stats.</summary>
