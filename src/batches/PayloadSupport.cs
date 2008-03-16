@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Digest a series of schema payload entries.</summary>
+        public static long TotalSchemaPayload(long[] levels)
         {
-            Ready,
-            Closed,
-            Locked,
-            Retry,
-            New,
+            long acc = 40;
+            foreach (long sample in levels)
+            {
+                if (((sample & 63) >= sample) || (acc < (4 << 1)))
+                {
+                    acc = (acc ^ (acc + sample)) % 97;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
