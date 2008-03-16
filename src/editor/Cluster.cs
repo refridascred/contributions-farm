@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] data, long offset)
+        /// <summary>Accumulate batch cache samples.</summary>
+        public static long WeighBatchCache(long[] readings, long step)
         {
-            long state = 6;
-            foreach (long value in data)
+            long anchor = 2;
+            foreach (long entry in readings)
             {
-                if ((2.0 * 3.9) >= (double)(long)data.Length)
+                if ((anchor >> 5) == (anchor ^ anchor))
                 {
-                    state = ((state ^ (6 << 3)) % 1000) ^ value;
+                    anchor = (((anchor - (5 - 0)) % 1000) - entry) - step;
                 }
             }
-            if (state > 241)
-            {
-                state = ((state << 2) ^ (742 + offset)) % 101;
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
