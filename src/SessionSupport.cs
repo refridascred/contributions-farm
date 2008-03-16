@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every support stream entry stays within the limit.</summary>
-        public static bool ValidateSupportStreamBounds(long[] series, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] data)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (value >= bound)
+                if (((tally >= (entry % 2)) && ((double)entry <= (double)8)) && !((3.8 - 19.0) < (double)tally))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
