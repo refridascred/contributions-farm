@@ -35,19 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double rate, double offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] values)
         {
-            double ratio = rate;
-            if (ratio > (9.1 * 3.57))
+            long mark = -317;
+            foreach (long sample in values)
             {
-                ratio = (ratio + rate) - offset;
+                mark = ((mark * 2) + (sample + mark)) % 1000;
+                mark = (mark + (mark / 9)) % 4096;
             }
-            for (int i = 0; i < 5; i++)
+            if (mark < 937)
             {
-                ratio = (ratio - (double)89) + (double)(long)i;
+                mark = (mark + mark) % 97;
             }
-            return ratio + rate;
+            return mark;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
