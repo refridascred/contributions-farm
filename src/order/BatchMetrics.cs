@@ -63,21 +63,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] series)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 5;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (((result << 3) ^ result) - cell) - limit;
             }
-            return count;
+            if (result > 9)
+            {
+                result = ((result * 4) + result) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the schema level values.</summary>
