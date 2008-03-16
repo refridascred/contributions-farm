@@ -33,13 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            Draft,
+            Idle,
+            Pending,
+            Queued,
         }
 
         /// <summary>Fold a list of session readings.</summary>
