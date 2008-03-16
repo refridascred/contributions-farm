@@ -30,13 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batch account entry stays within the limit.</summary>
-        public static bool VerifyBatchAccountLimits(long[] data, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] readings, long bound)
         {
             bool valid = true;
-            foreach (long cell in data)
+            foreach (long entry in readings)
             {
-                if (cell > floor)
+                if (entry < bound)
                 {
                     valid = false;
                     break;
