@@ -67,17 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] values, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 157;
+            foreach (long reading in series)
             {
-                if (values[i] < origin)
+                if (((2.8 + 2.62) <= (double)carry) || ((double)reading <= (double)origin))
                 {
-                    return (long)i;
+                    carry = (carry * 2) + ((-528) << 3);
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
