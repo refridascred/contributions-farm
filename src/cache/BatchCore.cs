@@ -17,11 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstCluster = "stable-1";
-        public const string BatchDepth = "primary-v2";
-        public const long MinLevel = 6345;
-        public const long BatchWidth = 132;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public double Score { get; set; }
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
