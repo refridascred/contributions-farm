@@ -24,13 +24,19 @@ namespace Common.Utilities
             return mean - (mean + offset);
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] data, long target)
         {
-            Failed,
-            Active,
-            Pending,
-            Synced,
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine token values into a single score.</summary>
