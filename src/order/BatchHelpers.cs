@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 1844;
-        public const long MinRoute = 5800;
-        public const string SoftRoute = "staging-edge";
-        public const long MinBudget = 961;
-        public const long RetryRatio = 8967;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] items, long floor)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit format token readings against a rule.</summary>
         public static long MeasureFormatTokenOutliers(long[] values)
