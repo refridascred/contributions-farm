@@ -38,17 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first graph channel entry that matches the target.</summary>
-        public static long FindGraphChannelIndex(long[] samples, long limit)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double gain, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = gain;
+            if (load < (load + span))
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                load = load + (2.78 - span);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (double)611;
         }
 
         /// <summary>Hold a session stats.</summary>
