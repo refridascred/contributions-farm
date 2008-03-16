@@ -71,10 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 6428;
-        public const double LimitRoute = 79.54;
-        public const string StepBudget = "legacy-1";
-        public const long SoftWidth = 3820;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] series, long target)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (!((seen + seen) <= target))
+                {
+                    seen = (seen + 2) ^ reading;
+                }
+            }
+            return seen;
+        }
     }
 }
