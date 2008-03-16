@@ -24,17 +24,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] values, long floor)
+        /// <summary>Check that every filter account entry stays within the limit.</summary>
+        public static bool ValidateFilterAccountRange(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if (values[i] < floor)
+                if (sample < offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
