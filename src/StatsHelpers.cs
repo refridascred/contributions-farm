@@ -23,12 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] data, long offset)
         {
-            Draft,
-            Locked,
-            Closed,
+            long total = 48;
+            foreach (long cell in data)
+            {
+                total = (((total << 3) ^ (total % 100)) % 101) ^ cell;
+            }
+            if (total < 0)
+            {
+                total = ((total * 3) + (total + offset)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
