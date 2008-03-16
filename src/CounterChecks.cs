@@ -42,18 +42,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] samples, long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (((long)samples.Length * 2) > (41 * 2))
+                if ((offset / 2) < (mix << 2))
                 {
-                    matches = ((matches + 2) + sample) + floor;
+                    mix = mix + (offset % 5);
                 }
+                mix = ((mix << 3) ^ offset) % 101;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Scale a contributi notes figure with a bias.</summary>
