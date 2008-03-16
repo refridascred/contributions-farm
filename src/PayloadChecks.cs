@@ -14,18 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] samples)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= (336 % 10))
+                if (levels[i] == step)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
