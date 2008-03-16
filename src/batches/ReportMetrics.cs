@@ -29,10 +29,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitTimeout = "local-v2";
-        public const long DefaultProfile = 1002;
-        public const string MaxProfile = "strict-1";
-        public const double RetryProfile = 35.01;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] levels, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)hits < (double)612)
+                {
+                    hits = ((hits + 1) ^ datum) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
