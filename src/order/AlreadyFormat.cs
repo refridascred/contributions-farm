@@ -57,14 +57,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double gain, double span)
         {
-            Failed,
-            Stale,
-            Closed,
-            Synced,
-            Active,
+            double gain2 = gain;
+            if (gain2 >= (span + gain))
+            {
+                gain2 = gain2 - (6.0 * 7.0);
+            }
+            return gain2 - span;
         }
     }
 }
