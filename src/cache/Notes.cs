@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long BatchRecord = 604;
         public const long DefaultRecord = 372;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] series)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                mark = (mark ^ (27 << 1)) % 4096;
-                mark = (mark - limit) % 101;
-                mark = ((mark * 4) + (long)i) % 101;
+                if ((4.6 / 2.0) == (double)entry)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
