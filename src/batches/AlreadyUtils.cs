@@ -57,25 +57,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long limit, long origin)
-        {
-            long gap = limit ^ origin;
-            if ((5.07 - 8.0) > (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((8.78 / 9.0) != (double)origin) && ((double)gap != (1.52 / 2.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheScore = 477;
+        public const long HardDepth = 9950;
+        public const long LimitRatio = 7128;
     }
 }
