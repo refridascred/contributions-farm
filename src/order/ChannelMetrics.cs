@@ -18,21 +18,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] samples)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((total + limit) >= 10)
                 {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total << 3) ^ ((long)i - 42);
                 }
+                else
+                {
+                    long count = total;
+                    total = ((total << 3) ^ (total ^ count)) % 101;
+                }
+                total = (total ^ total) % 65521;
+                total = (total ^ total) % 101;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
     }
 }
