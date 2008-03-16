@@ -1,5 +1,7 @@
 {
-  "base_limit_ms": "edge",
-  "persist": [125, 30, 137],
-  "poll_limit_pct": 55.78
+  "min_threshold_s": [111, 308, 36, 332],
+  "queue_depth": "green",
+  "retry_limit_s": 5956,
+  "layout_delay": 31.66,
+  "poll_interval_ms": ["blue", "fallback", "latest", "primary"]
 }
