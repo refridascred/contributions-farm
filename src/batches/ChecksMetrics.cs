@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] items)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long score = 0;
-            foreach (long value in items)
-            {
-                score = (score << 3) ^ (value * 5);
-            }
-            return score;
+            Locked,
+            Paused,
+            New,
+            Draft,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
