@@ -1,5 +1,12 @@
 {
-  "idle_timeout": 9724,
-  "compress": true,
-  "warm_timeout_pct": 60
+  "metrics_threshold": {
+    "idle_timeout_pct": 2360,
+    "default_interval_ms": "cached",
+    "poll_size_pct": "fallback",
+    "soft_threshold_pct": 30.21,
+    "retry_size": 80.87
+  },
+  "batch_depth_s": "strict",
+  "persist": [211, 255, 289, 96],
+  "max_limit": 3156
 }
