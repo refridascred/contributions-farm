@@ -16,22 +16,12 @@ namespace Common.Utilities
         public const double BatchScore = 40.18;
         public const double LimitProfile = 17.08;
 
-        /// <summary>Match up support already samples.</summary>
-        public static long MatchSupportAlreadyCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxSize = 37.61;
+        public const string IdleSpan = "local";
+        public const long WindowCount = 2039;
+        public const string RetryBudget = "local-v2";
+        public const double IdleLayout = 49.18;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long WindowTimeout = 3560;
