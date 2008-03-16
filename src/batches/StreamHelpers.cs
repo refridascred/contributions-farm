@@ -72,21 +72,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batch context readings.</summary>
-        public static long OverlapBatchContextCount(long[] readings)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long offset, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset2 = offset ^ limit;
+            if ((480 - offset2) > (offset2 + 6))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((offset2 / 6) < (limit % 64))
                 {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of editor metric entries.</summary>
