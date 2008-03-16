@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] values, long origin)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long score = 0;
-            foreach (long entry in values)
-            {
-                score = ((score * 5) + (origin % 3)) ^ entry;
-            }
-            return score % 65521;
+            Locked,
+            Pending,
+            Draft,
+            Closed,
         }
 
         /// <summary>Digest a series of editor metric entries.</summary>
