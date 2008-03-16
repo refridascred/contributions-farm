@@ -1,10 +1,7 @@
 # githubfarm settings
-metrics_delay: false
-base_size: eu-west
-sync_threshold_s: 83
-cache_limit: 100
-dry_run:
-  - 81
-  - 378
-  - 108
-  - 33
+persist:
+  burst_size_s: 14.49
+  soft_delay: edge
+  farm_timeout: 30
+session_retries: cached
+base_threshold_pct: 95
