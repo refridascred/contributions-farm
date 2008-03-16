@@ -1,26 +1,8 @@
 # support settings
-poll_limit_count:
-  - strict
-  - stable
-  - staging
-  - cached
-cache_retries_s: 78.4
-session_timeout:
-  - open
-  - fallback
-  - staging
-  - local
-retry_capacity_ms:
-  default_limit_s: edge
-  flush_ttl_s:
-    min_retries_pct: 9.62
-    default_ttl_s: 76
-    dry_run: true
-    flush_capacity_ms: primary
-  stats_ratio: 250
-  default_interval_pct: 76.73
-  retry_depth_count:
-    - 78
-    - 343
-    - 462
-    - 145
+metrics_depth:
+  - 451
+  - 173
+verbose: 86.52
+enabled: false
+payload_interval: 49.9
+burst_capacity_s: 53.74
