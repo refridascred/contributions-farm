@@ -66,13 +66,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] data)
         {
-            Stale,
-            Active,
-            Idle,
-            Ready,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((59 % 100) < (count ^ count))
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
         }
     }
 }
