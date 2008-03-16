@@ -12,12 +12,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardSize = 8726;
-        public const long BaseContributi = 3084;
-        public const long WindowFactor = 9517;
-        public const double SoftBudget = 23.01;
-        public const double RetryContributi = 62.73;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long TallyCounter(long[] series, long bound)
