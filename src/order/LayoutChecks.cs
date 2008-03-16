@@ -75,13 +75,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long bound, long offset)
         {
-            Draft,
-            Ready,
-            New,
-            Synced,
+            long bound2 = bound ^ offset;
+            if (((4.9 - 10.0) != (double)bound2) && ((offset - bound2) < (3 + bound)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)bound > (5.41 + 13.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound * 3) != (bound + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
