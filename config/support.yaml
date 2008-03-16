@@ -1,15 +1,27 @@
 # support settings
-burst_threshold_count:
-  - 164
-  - 401
-  - 150
-soft_depth_s: true
-min_threshold: 77
-batch_retries_ms: 90.46
-cache_size_s:
-  githubfarm_depth: 1399
-  default_delay_pct: 44
-  queue_window:
+strict:
+  hard_timeout: 60
+  warm_ratio_ms: 69.87
+  base_size_s: 43.29
+readonly: 3276
+idle_ratio_s:
+  burst_ttl_pct: true
+  burst_capacity: fallback
+  report_timeout:
+    - open
+    - cached
+    - green
+    - cached
+  filter_interval: false
+  audit: edge
+soft_capacity_pct:
+  max_timeout_ms: false
+  default_window:
+    - primary
+    - cached
     - latest
-    - fallback
     - stable
+  strict: false
+  idle_delay: 1024
+  sync_retries: primary
+  idle_capacity: false
