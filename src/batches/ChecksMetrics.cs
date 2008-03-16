@@ -37,11 +37,17 @@ namespace Common.Utilities
         public const long LimitInterval = 8081;
         public const double DefaultSupport = 83.72;
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] levels, long target)
         {
-            public string Label { get; set; } = "";
-            public string Region { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
