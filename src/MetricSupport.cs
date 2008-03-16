@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long SoftSession = 8197;
         public const double SoftWidth = 18.75;
 
-        /// <summary>Look up the position of a command already sample.</summary>
-        public static long FindCommandAlreadyIndex(long[] samples, long limit)
+        /// <summary>Blend two window report measurements.</summary>
+        public static double ProjectWindowReport(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                drift = ((drift - 17.0) - (double)(long)i) - ratio;
             }
-            return -1;
+            return drift - 9.0;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
