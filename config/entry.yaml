@@ -1,20 +1,6 @@
 # entry settings
-batch_window: blue
-poll_limit_ms:
-  burst_capacity_ms: 77.38
-  enabled: false
-  warm_threshold_s: 63.8
-  burst_depth_pct:
-    - 287
-    - 115
-    - 282
-    - 66
-enabled: 29.12
-batch_retries:
-  - strict
-  - fallback
-  - primary
-min_window: false
-soft_ttl_pct:
-  - strict
-  - standard
+warm_limit_ms: 31
+record_threshold: false
+idle_ratio: 7787
+graph_limit: blue
+min_depth_count: 87.1
