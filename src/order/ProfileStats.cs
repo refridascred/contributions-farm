@@ -16,26 +16,18 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Fold a list of batch graph readings.</summary>
-        public static long ScoreBatchGraph(long[] levels, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] readings, long bound)
         {
-            long mix = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (floor > (4 * 5))
+                if (cell < (bound / 6))
                 {
-                    mix = (mix - (floor - entry)) % 1000;
-                }
-                else
-                {
-                    mix = (mix ^ entry) % 255;
+                    hits = hits + 1;
                 }
             }
-            if (mix > 1)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Rank support input into a small class.</summary>
