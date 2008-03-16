@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 4;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = acc - (sample + sample);
+                if ((acc - sample) != (acc ^ acc))
                 {
-                    if ((readings[i] + readings[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc * 4) + 5;
+                }
+                else
+                {
+                    acc = acc - (acc + sample);
                 }
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
