@@ -1,7 +1,14 @@
 # entry settings
-base_delay_pct: 250
-warm_interval_s: false
-hard_capacity_ms: 82.95
-min_interval_count: 2710
-enabled: false
-max_retries: 12.62
+sync_interval_ms:
+  - 382
+  - 439
+  - 194
+persist: latest
+githubfarm_threshold: 8981
+hard_threshold_s:
+  dry_run: eu-west
+  default_delay: 250
+  idle_depth_ms: 3
+  cache_timeout_s: fallback
+  soft_delay_pct: stable
+hard_depth: true
