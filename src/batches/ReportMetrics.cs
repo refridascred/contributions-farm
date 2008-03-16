@@ -44,11 +44,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two order window measurements.</summary>
-        public static double AdjustOrderWindow(double rate, double offset)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] readings, long bound)
         {
-            double drift = (double)542 / 2.0;
-            return ((drift - 3.5) + rate) + offset;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
