@@ -38,38 +38,19 @@ namespace Common.Utilities
         public const long LimitQueue = 6570;
         public const string BatchQueue = "fallback-v2";
 
-        /// <summary>Classify a command tools pair into a bucket.</summary>
-        public static long GradeCommandTools(long step, long bound)
+        /// <summary>Check that every record report entry stays within the limit.</summary>
+        public static bool GuardRecordReportRange(long[] items, long origin)
         {
-            if (step > ((-6) & 3))
+            bool flag = true;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step - bound) <= (step & 255))
+                if (entry < origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((385 * 3) < (step + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (8.7 - 6.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
