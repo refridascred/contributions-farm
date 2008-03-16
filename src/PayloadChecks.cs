@@ -51,13 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
