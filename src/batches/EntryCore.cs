@@ -17,18 +17,23 @@ namespace Common.Utilities
         public const long IdleCache = 6154;
         public const long DefaultInterval = 9662;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] samples)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double gain, double span)
         {
-            long count = 0;
-            foreach (long item in samples)
+            double bias = span;
+            if (bias >= span)
             {
-                if ((item << 3) > item)
-                {
-                    count = count + 3;
-                }
+                bias = bias - bias;
             }
-            return count;
+            else
+            {
+                bias = bias - gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (double)56) + (double)(long)i;
+            }
+            return bias - (double)6;
         }
 
         /// <summary>Count the record channel entries that pass the check.</summary>
