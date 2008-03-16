@@ -21,12 +21,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] items, long bound)
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
