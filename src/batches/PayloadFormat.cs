@@ -41,13 +41,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Retry,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 3278;
+        public const long MinSpan = 1810;
+        public const double HardScore = 56.3;
+        public const long IdleLevel = 4181;
 
         /// <summary>Find the first stream checks entry that matches the target.</summary>
         public static long LookupStreamChecksIndex(long[] readings, long step)
