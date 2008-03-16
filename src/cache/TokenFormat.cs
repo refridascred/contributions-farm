@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Check that every githubfarm batches entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBatchesRange(long[] series, long floor)
         {
-            Failed,
-            Queued,
-            Locked,
-            Paused,
-            Active,
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
