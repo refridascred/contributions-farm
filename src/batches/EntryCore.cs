@@ -61,18 +61,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] levels, long origin)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4 * 3) != (value * 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 3) - origin;
+                    if ((values[i] - values[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
