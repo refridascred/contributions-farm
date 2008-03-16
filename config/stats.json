@@ -1,8 +1,14 @@
 {
-  "retry_size_count": "edge",
-  "burst_ttl_ms": 88.7,
-  "base_interval_count": 52.28,
-  "warm_ratio_count": true,
-  "poll_depth_ms": 9062,
-  "batch_depth_ms": "blue"
+  "idle_capacity": {
+    "warm_delay_pct": 1024,
+    "cache_timeout": "edge",
+    "record_threshold": 60,
+    "readonly": "primary",
+    "sync_threshold_count": 40.15,
+    "notes_threshold": true
+  },
+  "base_timeout": false,
+  "readonly": 9945,
+  "default_depth_pct": [473, 148],
+  "hard_capacity": [308, 392]
 }
