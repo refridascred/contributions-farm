@@ -87,31 +87,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long seed, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] items, long seed)
         {
-            if (((seed >> 3) >= (947 >> 4)) || ((double)seed != (5.54 - 0.4)))
+            bool ok = true;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed > (seed + 71))
+                if (value >= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)seed <= (2.0 + 4.4)) && ((floor + floor) == (seed - seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
