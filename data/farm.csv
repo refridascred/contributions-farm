@@ -1,9 +1,6 @@
-id,region,score,label
-1,957,29.09,green
-2,611,627,999
-3,61.24,46.59,392
-4,86.62,stable,94.44
-5,592,832,staging
-6,710,fallback,108
-7,35.83,6.49,837
-8,620,20.53,19.73
+id,rank,token
+1,72.37,stable
+2,38.26,15.09
+3,493,legacy
+4,265,stable
+5,531,staging
