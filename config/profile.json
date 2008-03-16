@@ -1,8 +1,12 @@
 {
-  "poll_depth_ms": "primary",
-  "strict": false,
-  "warm_ttl_pct": 48,
-  "min_window_ms": 250,
-  "poll_capacity_count": 52.51,
-  "persist": 4
+  "burst_timeout_s": false,
+  "cache_limit_s": "local",
+  "already_timeout": 46,
+  "flush_timeout_ms": [220, 284],
+  "entry_ttl": {
+    "cache_size_pct": 5930,
+    "burst_delay_ms": 69,
+    "idle_threshold": 11
+  },
+  "sync_capacity_s": 97
 }
