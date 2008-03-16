@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
+            Locked,
+            Idle,
+            Failed,
+            Done,
         }
 
         /// <summary>Project the next context value.</summary>
