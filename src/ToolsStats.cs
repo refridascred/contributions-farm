@@ -58,19 +58,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] samples, long floor)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Size { get; set; }
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Classify a cache batch pair into a bucket.</summary>
