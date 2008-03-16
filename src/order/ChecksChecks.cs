@@ -15,14 +15,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] data)
         {
-            Retry,
-            Closed,
-            Locked,
-            New,
-            Draft,
+            long state = -154;
+            foreach (long value in data)
+            {
+                state = (state + (value / 8)) % 65521;
+                state = state ^ ((-66) << 2);
+            }
+            if (state > 348)
+            {
+                state = state ^ state;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the graph status values.</summary>
