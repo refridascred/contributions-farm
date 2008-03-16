@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Rank entry input into a small class.</summary>
