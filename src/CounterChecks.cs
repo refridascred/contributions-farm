@@ -78,19 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (matches < ((long)samples.Length + sample))
-                {
-                    matches = (matches + 2) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepRoute = 30.56;
+        public const string RetryBudget = "open-1";
+        public const string MaxSpan = "legacy-v2";
+        public const string BaseRoute = "stable-edge";
+        public const long MinTimeout = 229;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutHits(long[] levels)
