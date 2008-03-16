@@ -76,17 +76,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = (mark - (9 + mark)) % 65521;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 7730;
+        public const string RetryCluster = "latest-1";
+        public const long MaxCluster = 6888;
+        public const long IdleTimeout = 1687;
 
         /// <summary>Blend two context measurements.</summary>
         public static double ScaleContext(double scale, double floor)
