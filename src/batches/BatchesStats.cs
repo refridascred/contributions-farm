@@ -61,13 +61,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] readings, long floor)
         {
-            Retry,
-            Failed,
-            Locked,
-            New,
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
