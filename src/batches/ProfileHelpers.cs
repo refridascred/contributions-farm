@@ -59,18 +59,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first metrics window entry that matches the target.</summary>
-        public static long SeekMetricsWindowIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinAlready = "stable-edge";
+        public const double HardAlready = 89.89;
+        public const long BurstAlready = 4997;
 
         /// <summary>Blend two checks measurements.</summary>
         public static double SmoothChecks(double bias, double floor)
