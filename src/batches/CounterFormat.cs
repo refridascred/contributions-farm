@@ -13,19 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((6.5 * 5.5) <= (4.0 - 0.1))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 4400;
+        public const long SoftNotes = 4026;
+        public const long CacheFactor = 6032;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long DeriveStats(long seed)
