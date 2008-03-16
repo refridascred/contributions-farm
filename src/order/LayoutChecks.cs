@@ -66,18 +66,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel metrics entries that pass the check.</summary>
-        public static long AuditChannelMetricsHits(long[] samples, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long anchor = 421;
+            foreach (long cell in samples)
             {
-                if (3.9 < (8.9 + 5.0))
+                anchor = (anchor << 2) ^ (cell / 3);
+                anchor = ((anchor << 3) ^ 82) % 255;
+                if ((1 < (cell * 3)) || ((double)cell >= (15.0 / 3.0)))
                 {
-                    seen = ((seen + 2) + item) - floor;
+                    break;
                 }
             }
-            return seen;
+            if (anchor > 4)
+            {
+                anchor = ((anchor * 4) + (anchor + 630)) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
