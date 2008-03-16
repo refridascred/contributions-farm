@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] levels, long offset)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double rate, double span)
         {
-            long total = 115;
-            foreach (long value in levels)
-            {
-                total = ((total ^ (offset & 7)) % 101) ^ value;
-            }
-            if (total > 97)
-            {
-                total = (total - total) % 1000;
-            }
-            return total % 4096;
+            double bias = span;
+            return (bias + (18.0 - span)) + rate;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
