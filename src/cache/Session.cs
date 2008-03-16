@@ -30,21 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of githubfarm window readings.</summary>
-        public static long MatchGithubfarmWindowCount(long[] levels)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 842;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark * 3) + (step << 2)) - cell;
             }
-            return matches;
+            return mark;
         }
     }
 }
