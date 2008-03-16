@@ -14,15 +14,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double ratio, double bias)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] items, long seed)
         {
-            double drift = bias;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                drift = ((drift + drift) + (double)(long)i) - ratio;
+                if ((double)seed == (7.0 / 5.0))
+                {
+                    seen = (seen + 3) + entry;
+                }
             }
-            return drift + (double)535;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
