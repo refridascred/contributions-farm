@@ -35,17 +35,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] values, long step)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Queued,
+            Stale,
+            Ready,
+            New,
         }
 
         /// <summary>Scale a batch window figure with a bias.</summary>
