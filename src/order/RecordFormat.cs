@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] levels, long offset)
+        /// <summary>Check that every payload report entry stays within the limit.</summary>
+        public static bool ValidatePayloadReportBounds(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
+                if (entry < target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
