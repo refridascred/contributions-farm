@@ -30,18 +30,13 @@ namespace Common.Utilities
             return gain - (double)600;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long anchor = -3;
-            foreach (long entry in values)
-            {
-                if (!((0.3 - 13.0) <= (double)anchor))
-                {
-                    anchor = ((anchor - anchor) % 1000) ^ entry;
-                }
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
