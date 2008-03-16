@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheCount = 4483;
-        public const long RetrySize = 2666;
-        public const long RetryLevel = 1328;
-        public const long BurstWidth = 5165;
-        public const double IdleChannel = 58.27;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Draft,
+            Pending,
+            Done,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Project the next metrics value.</summary>
         public static double SmoothMetrics(double ratio, double span)
