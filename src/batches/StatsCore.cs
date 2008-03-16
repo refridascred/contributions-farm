@@ -31,12 +31,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 1421;
-        public const long WindowFilter = 6541;
-        public const long MaxInterval = 8046;
-        public const long HardRatio = 6502;
-        public const string BaseFilter = "stable-1";
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long step, long offset)
+        {
+            if (16 > (step * 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((579 >> 4) > (offset - step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset << 1) >= step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((7.25 / 4.0) >= (double)step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string IdleCounter = "staging";
