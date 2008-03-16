@@ -41,19 +41,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double ratio, double floor)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            double weight = ratio;
-            if (weight > (double)2)
-            {
-                weight = weight - ratio;
-            }
-            else
-            {
-                weight = weight + (ratio - weight);
-            }
-            return weight + (weight - floor);
+            Paused,
+            Stale,
+            Dropped,
+            Draft,
         }
     }
 }
