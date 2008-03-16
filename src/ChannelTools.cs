@@ -16,18 +16,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] series)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((value & 63) == (value % 24))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Check that every window schema entry stays within the limit.</summary>
