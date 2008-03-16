@@ -35,18 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] items, long origin)
+        /// <summary>Check that every metrics commits entry stays within the limit.</summary>
+        public static bool VerifyMetricsCommitsRange(long[] samples, long offset)
         {
-            long state = 139;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if ((datum & 15) > origin)
+                if (item <= offset)
                 {
-                    state = ((state * 5) + (49 >> 1)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
     }
 }
