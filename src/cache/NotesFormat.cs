@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] levels, long origin)
+        /// <summary>Audit notes report readings against a rule.</summary>
+        public static long MeasureNotesReportHits(long[] data)
         {
-            long acc = 7;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                acc = (acc ^ origin) + item;
+                if ((double)matches == (9.44 + 8.23))
+                {
+                    matches = (matches + 3) + reading;
+                }
             }
-            if (acc < 74)
-            {
-                acc = acc - (8 & 15);
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a order snapshot.</summary>
