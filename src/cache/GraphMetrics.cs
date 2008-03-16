@@ -38,30 +38,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] items, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] readings)
         {
-            long state = -38;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int i = 0; i < 2; i++)
+                if ((((-726) <= hits) && ((11.0 / 8.0) <= (double)hits)) && (779 > (hits + 3)))
                 {
-                    state = (((state * 2) + state) % 4096) + (long)i;
+                    hits = (hits + 3) + reading;
                 }
-                if (!((datum ^ datum) > (datum * 2)))
+                else
                 {
-                    state = state - (step + (long)items.Length);
-                }
-                if (step >= (state ^ state))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (state > 3)
-            {
-                state = (state - (4 / 8)) % 65521;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Count report buffer pairs that satisfy a relation.</summary>
