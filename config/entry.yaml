@@ -1,9 +1,16 @@
 # entry settings
-default_interval_count: 3.81
-flush_capacity:
-  - 2
-  - 34
-hard_interval_count: 72.08
-base_limit_s: edge
-context_delay: 60
-hard_threshold_count: true
+burst_size_s:
+  - 183
+  - 264
+  - 327
+retry_timeout_s: stable
+cache_limit_count:
+  already_depth: true
+  warm_threshold_pct: 1478
+  hard_threshold: strict
+  flush_capacity_ms:
+    - open
+    - local
+    - strict
+  sync_delay_pct: true
+compress: 4127
