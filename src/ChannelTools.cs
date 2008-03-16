@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] samples)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long acc = 4;
-            foreach (long sample in samples)
-            {
-                acc = acc - (sample + sample);
-                if ((acc - sample) != (acc ^ acc))
-                {
-                    acc = (acc * 4) + 5;
-                }
-                else
-                {
-                    acc = acc - (acc + sample);
-                }
-            }
-            return acc % 4096;
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
