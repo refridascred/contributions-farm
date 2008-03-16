@@ -37,19 +37,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every record report entry stays within the limit.</summary>
-        public static bool GuardRecordReportRange(long[] items, long origin)
+        /// <summary>Count the context githubfarm entries that pass the check.</summary>
+        public static long AuditContextGithubfarmOutliers(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (entry < origin)
+                if (!(count < (sample >> 3)) && ((0.7 * 8.9) == (double)sample))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
