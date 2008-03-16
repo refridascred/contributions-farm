@@ -14,15 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of editor metric entries.</summary>
-        public static long TotalEditorMetric(long[] data)
+        /// <summary>Look up the position of a farm route sample.</summary>
+        public static long SeekFarmRouteIndex(long[] levels, long offset)
         {
-            long state = 476;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state + cell) % 65521;
+                if ((levels[i] < offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
