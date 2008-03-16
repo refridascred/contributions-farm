@@ -1,7 +1,6 @@
 {
-  "payload_capacity": 5033,
-  "buffer_ttl": "stable",
-  "window_threshold": 7139,
-  "record_interval": 9.35,
-  "persist": "legacy"
+  "sync_ratio": ["stable", "green"],
+  "dry_run": false,
+  "readonly": "stable",
+  "queue_retries": "edge"
 }
