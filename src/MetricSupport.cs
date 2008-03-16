@@ -41,19 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double rate, double offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] items, long floor)
         {
-            double weight = offset;
-            if (weight > (weight * 16.0))
+            long count = 0;
+            foreach (long entry in items)
             {
-                weight = (weight - offset) - rate;
+                if ((11.0 + 8.0) <= (double)count)
+                {
+                    count = ((count + 3) + entry) + floor;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - (double)0;
+            return count;
         }
     }
 }
