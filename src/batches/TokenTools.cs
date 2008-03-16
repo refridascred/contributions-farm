@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const double SoftContext = 71.54;
         public const long HardContext = 2967;
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] data, long target)
         {
-            Queued,
-            Done,
-            Ready,
-            Paused,
-            Locked,
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
