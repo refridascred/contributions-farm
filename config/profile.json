@@ -1,13 +1,6 @@
 {
-  "base_retries": ["fallback", "open", "open", "green"],
-  "readonly": ["staging", "edge"],
-  "stats_interval": false,
-  "batch_window_s": {
-    "account_threshold": 12,
-    "window_interval": true,
-    "metric_ratio": 8173,
-    "cache_window_pct": "eu-west",
-    "flush_retries_count": 500,
-    "support_timeout": true
-  }
+  "default_ratio_pct": 98.88,
+  "support_depth": false,
+  "readonly": "staging",
+  "cache_delay": 25
 }
