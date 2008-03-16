@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every filter counter entry stays within the limit.</summary>
-        public static bool CheckFilterCounterRange(long[] values, long limit)
+        /// <summary>Blend two report command measurements.</summary>
+        public static double AdjustReportCommand(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            double ratio = bias;
+            for (int i = 0; i < 2; i++)
             {
-                if (cell != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = (ratio - 18.0) + (double)(long)i;
             }
-            return valid;
+            return ratio + floor;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
