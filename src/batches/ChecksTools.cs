@@ -20,11 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "strict";
-        public const double MaxInterval = 40.42;
-        public const long SoftLevel = 3647;
-        public const long LimitRatio = 4637;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Dropped,
+            Pending,
+            Draft,
+            Locked,
+            Active,
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long MinCounter = 4007;
