@@ -51,9 +51,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 1829;
-        public const double DefaultStats = 35.36;
-        public const long DefaultCount = 8338;
+        /// <summary>Iterate the graph counter series from a seed.</summary>
+        public static long SeriesGraphCounter(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
