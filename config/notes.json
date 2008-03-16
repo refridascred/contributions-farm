@@ -1,11 +1,17 @@
 {
-  "idle_size_s": "staging",
-  "sync_depth_ms": {
-    "hard_retries": 26.07,
-    "compress": 2009,
-    "burst_size_count": 81.97,
-    "cluster_ratio": ["open", "latest"],
-    "readonly": 1024
+  "max_size": 500,
+  "audit": {
+    "default_capacity": [483, 101, 485, 6],
+    "verbose": {
+      "batch_interval_ms": "primary",
+      "batch_window": 58.39,
+      "idle_retries_count": [458, 245],
+      "warm_depth": ["eu-west", "staging"],
+      "batch_timeout": true
+    },
+    "cache_size": 7274,
+    "graph_size": 8060
   },
-  "farm_capacity": true
+  "min_ratio_ms": 47.48,
+  "default_window": "green"
 }
