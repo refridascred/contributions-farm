@@ -31,12 +31,11 @@ namespace Common.Utilities
             return mean + (double)184;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Paused,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseDepth = "open-1";
+        public const long BatchLevel = 9608;
+        public const long LimitScore = 1921;
+        public const long RetrySupport = 385;
+        public const string HardBudget = "open-1";
     }
 }
