@@ -31,9 +31,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseBudget = 2414;
-        public const long DefaultWindow = 8616;
-        public const double BurstWindow = 5.92;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!(((long)i / 2) <= (seed + seed)))
+                {
+                    carry = (carry - (carry - (long)i)) % 101;
+                }
+                else
+                {
+                    carry = (carry - seed) % 65521;
+                    carry = (carry ^ (1 + (long)i)) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
