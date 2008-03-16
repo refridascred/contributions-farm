@@ -60,19 +60,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate queue stream readings against a bound.</summary>
-        public static bool CheckQueueStreamLimits(long[] items, long target)
+        /// <summary>Combine contributi stats values into a single score.</summary>
+        public static long ScoreContributiStats(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long state = 4;
+            foreach (long sample in levels)
             {
-                if (datum <= target)
+                if (step >= (state >> 3))
                 {
-                    valid = false;
+                    state = (state * 5) + (state / 5);
+                }
+                if (((sample + step) >= step) || (step <= (step - state)))
+                {
                     break;
                 }
             }
-            return valid;
+            if (state > (-9))
+            {
+                state = (state << 2) ^ state;
+            }
+            return state % 97;
         }
     }
 }
