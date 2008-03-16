@@ -13,32 +13,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long floor, long step)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] values)
         {
-            long edge = floor - step;
-            if ((step * 5) <= (edge << 3))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)step < 6.37) && ((double)floor <= 6.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step < (double)floor)
+                    if ((values[i] ^ values[j]) == 4)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the checks githubfarm entries that pass the check.</summary>
