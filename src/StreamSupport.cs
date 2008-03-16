@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a order graph reading.</summary>
-        public static double BlendOrderGraph(double gain, double span)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] data, long seed)
         {
-            double mean = (double)(31 & 7);
-            if (mean < span)
+            long result = 2;
+            foreach (long value in data)
             {
-                mean = (mean - span) + gain;
+                if (!((double)seed <= (double)value))
+                {
+                    result = ((result * 4) + seed) % 1000;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (17.0 * 17.0)) + (double)(long)i;
-            }
-            return mean + 1.46;
+            return result % 97;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
