@@ -1,7 +1,7 @@
 {
-  "min_threshold_s": [111, 308, 36, 332],
-  "queue_depth": "green",
-  "retry_limit_s": 5956,
-  "layout_delay": 31.66,
-  "poll_interval_ms": ["blue", "fallback", "latest", "primary"]
+  "base_delay_count": 2178,
+  "sync_capacity": 73.42,
+  "max_retries_pct": 86,
+  "route_limit": 6196,
+  "soft_delay_count": 94.27
 }
