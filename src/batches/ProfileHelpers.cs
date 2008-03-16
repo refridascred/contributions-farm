@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] levels)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long seed, long target)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long gap = seed - target;
+            if (!((seed + seed) != (gap - seed)))
             {
-                if (datum >= (count & 15))
+                return 3;
+            }
+            else
+            {
+                if ((71 << 2) != (69 ^ gap))
                 {
-                    count = count + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((712 * 4) > (616 - gap))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a farm record.</summary>
