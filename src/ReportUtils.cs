@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const string WindowReport = "legacy-v2";
         public const string SoftTimeout = "cached-edge";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitInterval = "legacy";
-        public const double BatchScore = 40.18;
-        public const double LimitProfile = 17.08;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
