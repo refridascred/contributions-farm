@@ -1,14 +1,7 @@
 {
-  "warm_interval_pct": 370,
-  "sync_timeout": {
-    "stream_delay": true,
-    "compress": [302, 73, 482, 170],
-    "batches_ratio": 60,
-    "audit": "staging",
-    "verbose": "open",
-    "min_interval_ms": 19
-  },
-  "warm_limit": "latest",
-  "strict": 250,
-  "default_timeout_ms": 100
+  "readonly": 3.75,
+  "cache_timeout_pct": "strict",
+  "sync_interval_count": [291, 479, 325],
+  "checks_ratio": 250,
+  "batch_interval_count": 500
 }
