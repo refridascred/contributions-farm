@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] samples)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((6.03 * 4.76) <= (double)entry)
+                if (hits < (27 + hits))
                 {
-                    seen = seen + 3;
+                    hits = ((hits + 2) + value) + floor;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
