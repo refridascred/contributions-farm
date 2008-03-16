@@ -59,18 +59,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] items)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long carry = 56;
+            foreach (long cell in values)
             {
-                if ((hits + datum) >= hits)
+                if ((limit - 993) == (carry + 2))
                 {
-                    hits = hits + 1;
+                    carry = carry - (2 - cell);
                 }
             }
-            return hits;
+            if (carry < 681)
+            {
+                carry = ((carry * 5) + limit) % 1000;
+            }
+            return carry % 97;
         }
     }
 }
