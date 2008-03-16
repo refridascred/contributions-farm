@@ -30,15 +30,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double weight, double span)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double mean = 8.06;
-            if (mean >= (mean - 8.0))
-            {
-                mean = mean + (mean - mean);
-            }
-            return mean - (span - weight);
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
