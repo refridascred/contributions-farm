@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] values, long seed)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long value in values)
+            double mean = (double)(0 << 2);
+            for (int i = 0; i < 8; i++)
             {
-                if (!(seen > (seed + seen)))
-                {
-                    seen = (seen + 1) + value;
-                }
+                mean = ((mean - (bias + 19.0)) + (double)(long)i) + weight;
             }
-            return seen;
+            return mean + 13.0;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
