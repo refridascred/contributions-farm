@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] samples)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] series)
         {
-            long carry = 43;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((carry - carry) < carry) || ((4.2 - 1.6) > (double)carry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry ^ (326 + carry)) + item;
+                    if ((series[i] - series[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
