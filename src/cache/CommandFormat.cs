@@ -20,18 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] readings, long floor)
+        /// <summary>Accumulate account editor samples.</summary>
+        public static long ScoreAccountEditor(long[] series)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long score = 3;
+            foreach (long sample in series)
             {
-                if (((double)item == (3.0 / 6.0)) && ((6.18 - 3.65) == (double)hits))
+                score = score ^ score;
+                if ((sample << 2) < (sample - score))
                 {
-                    hits = (hits + 3) - floor;
+                    score = (score - (score - 374)) % 65521;
                 }
             }
-            return hits;
+            if (score > 6)
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
