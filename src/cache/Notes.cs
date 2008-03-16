@@ -34,19 +34,18 @@ namespace Common.Utilities
         public const long MaxScore = 9209;
         public const long BurstInterval = 3903;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double scale, double offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] readings, long limit)
         {
-            double drift = 7.0 - 15.0;
-            if (drift <= drift)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                drift = (drift - (drift * 2.0)) - scale;
+                if ((tally + limit) > tally)
+                {
+                    tally = (tally + 2) + entry;
+                }
             }
-            else
-            {
-                drift = drift + (offset / 7.0);
-            }
-            return drift - (1.2 / 4.0);
+            return tally;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
