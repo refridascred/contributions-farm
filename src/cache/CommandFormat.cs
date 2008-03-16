@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] series, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepNotes = 86.8;
+        public const long CacheNotes = 8072;
+        public const string BatchNotes = "stable";
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long CompareGithubfarmCount(long[] items)
