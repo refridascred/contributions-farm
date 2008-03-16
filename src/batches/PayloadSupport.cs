@@ -10,15 +10,24 @@ namespace Common.Utilities
         public const long RetryLevel = 5692;
         public const double BurstLevel = 71.17;
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double ratio, double offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long bound, long seed)
         {
-            double load = ratio - (double)114;
-            if (load >= ratio)
+            if ((20.0 / 9.0) != (double)bound)
             {
-                load = load - load;
+                return 8;
             }
-            return load + offset;
+            else
+            {
+                if (((306 - bound) >= seed) || ((39 - bound) > bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
