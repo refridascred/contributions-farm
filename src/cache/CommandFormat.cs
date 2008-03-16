@@ -33,11 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardRatio = 56.25;
-        public const long MaxWidth = 5308;
-        public const long HardTools = 8989;
-        public const long BaseTools = 6369;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (((item >> 5) != (count & 63)) && ((item + 233) >= (item + count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BurstStats = 1829;
