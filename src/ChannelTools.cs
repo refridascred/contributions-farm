@@ -37,10 +37,38 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinInterval = "cached-v2";
-        public const long StepSize = 604;
-        public const long BatchFilter = 1523;
-        public const string MaxLevel = "alpha-1";
+        /// <summary>Classify a githubfarm checks pair into a bucket.</summary>
+        public static long SortGithubfarmChecks(long target, long step)
+        {
+            if (step >= (step - target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((3.11 + 3.32) >= (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((step ^ target) > step) && ((step % 8) > (target + target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step >> 5) != (step & 31))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
