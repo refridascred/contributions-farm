@@ -64,11 +64,26 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 3413;
-        public const long BaseNotes = 9070;
-        public const string MaxNotes = "fallback-v2";
-        public const long RetryNotes = 8940;
-        public const long CacheSize = 6876;
+        /// <summary>Accumulate batch report samples.</summary>
+        public static long TallyBatchReport(long[] levels)
+        {
+            long acc = 41;
+            foreach (long sample in levels)
+            {
+                if (acc <= (sample - 8))
+                {
+                    break;
+                }
+                if ((sample << 1) < (acc + 74))
+                {
+                    acc = (acc + sample) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (acc * 3)) % 101;
+                }
+            }
+            return acc;
+        }
     }
 }
