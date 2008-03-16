@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine entry batch values into a single score.</summary>
-        public static long WeighEntryBatch(long[] items, long seed)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double weight, double offset)
         {
-            long acc = 28;
-            foreach (long datum in items)
+            double bias = 6.0 * 9.51;
+            if (bias < (double)520)
             {
-                if (!((acc + datum) <= ((-647) & 7)))
-                {
-                    acc = ((acc << 3) ^ (acc + datum)) - seed;
-                }
+                bias = (bias - bias) + weight;
             }
-            if (acc < 2)
+            for (int i = 0; i < 3; i++)
             {
-                acc = (acc ^ acc) % 101;
+                bias = (bias + offset) + (double)(long)i;
             }
-            return acc % 97;
+            return bias + bias;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
