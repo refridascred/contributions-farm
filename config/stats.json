@@ -1,19 +1,8 @@
 {
-  "default_timeout_s": false,
-  "warm_depth_pct": "blue",
-  "base_capacity_s": false,
-  "max_timeout": 9680,
-  "audit": {
-    "enabled": {
-      "batches_ratio": 8706,
-      "min_window_ms": 60,
-      "flush_interval_ms": 6,
-      "flush_size": true,
-      "profile_timeout": true
-    },
-    "readonly": 62.45,
-    "layout_depth": [457, 56, 454],
-    "sync_delay": ["latest", "green"]
-  },
-  "route_capacity": "latest"
+  "retry_retries_ms": "edge",
+  "buffer_threshold": 100,
+  "idle_ttl": 21.21,
+  "base_size_ms": true,
+  "persist": "edge",
+  "buffer_interval": [273, 126]
 }
