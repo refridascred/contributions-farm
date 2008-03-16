@@ -1,6 +1,12 @@
 {
-  "retry_delay_count": "local",
-  "batch_window_ms": "local",
-  "enabled": "edge",
-  "account_delay": "blue"
+  "retry_ttl": "fallback",
+  "idle_window_count": 87,
+  "idle_ttl": 912,
+  "checks_size": 1524,
+  "flush_ttl_pct": true,
+  "enabled": {
+    "flush_threshold_count": 30,
+    "audit": 10,
+    "poll_threshold_pct": "stable"
+  }
 }
