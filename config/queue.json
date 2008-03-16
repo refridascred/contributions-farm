@@ -1,6 +1,5 @@
 {
-  "sync_interval": 69,
-  "min_depth": "blue",
-  "idle_retries_ms": 10,
-  "already_retries": "local"
+  "flush_depth": "cached",
+  "idle_depth_count": 73.32,
+  "min_timeout_count": "staging"
 }
