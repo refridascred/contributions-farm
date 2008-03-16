@@ -29,18 +29,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of layout order entries.</summary>
-        public static long FoldLayoutOrder(long[] data)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] values, long offset)
         {
-            long acc = 315;
-            foreach (long cell in data)
+            long mix = 9;
+            foreach (long cell in values)
             {
-                if (((long)data.Length % 5) >= (acc - acc))
-                {
-                    acc = ((acc << 3) ^ cell) % 4096;
-                }
+                mix = (((mix ^ (mix ^ (long)values.Length)) % 4096) ^ cell) - offset;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Describe the support level values.</summary>
