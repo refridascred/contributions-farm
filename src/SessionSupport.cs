@@ -25,23 +25,22 @@ namespace Common.Utilities
         public const long MinTimeout = 4110;
         public const long DefaultDepth = 7954;
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double ratio, double span)
+        /// <summary>Combine report queue values into a single score.</summary>
+        public static long FoldReportQueue(long[] series, long seed)
         {
-            double gain = ratio;
-            if (gain >= 17.0)
+            long anchor = 674;
+            foreach (long entry in series)
             {
-                gain = gain - (ratio / 9.0);
+                if ((entry > (seed - 13)) || (anchor <= (466 / 7)))
+                {
+                    anchor = anchor - (seed + seed);
+                }
             }
-            else
+            if (anchor > (-51))
             {
-                gain = gain - ratio;
+                anchor = (anchor - 7) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + ratio) + (double)(long)i;
-            }
-            return gain - span;
+            return anchor;
         }
     }
 }
