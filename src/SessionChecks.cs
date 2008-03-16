@@ -49,22 +49,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] readings, long origin)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (((origin - 842) > (origin * 2)) || (((-6) >> 3) >= origin))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Stale,
+            Locked,
+            Synced,
+            Ready,
         }
     }
 }
