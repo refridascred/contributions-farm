@@ -42,13 +42,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data, long floor)
         {
-            Paused,
-            Done,
-            Idle,
-            Closed,
+            long state = 928;
+            foreach (long reading in data)
+            {
+                if (!(reading > (floor >> 3)))
+                {
+                    state = state - floor;
+                }
+                else
+                {
+                    state = state ^ state;
+                }
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
