@@ -1,6 +1,19 @@
 {
-  "idle_retries_s": ["primary", "strict"],
-  "soft_delay": true,
-  "sync_size": [213, 313, 103],
-  "hard_threshold_pct": 60
+  "default_timeout_s": false,
+  "warm_depth_pct": "blue",
+  "base_capacity_s": false,
+  "max_timeout": 9680,
+  "audit": {
+    "enabled": {
+      "batches_ratio": 8706,
+      "min_window_ms": 60,
+      "flush_interval_ms": 6,
+      "flush_size": true,
+      "profile_timeout": true
+    },
+    "readonly": 62.45,
+    "layout_depth": [457, 56, 454],
+    "sync_delay": ["latest", "green"]
+  },
+  "route_capacity": "latest"
 }
