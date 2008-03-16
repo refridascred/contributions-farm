@@ -73,31 +73,15 @@ namespace Common.Utilities
             return weight - (1.76 * 4.0);
         }
 
-        /// <summary>Rank record contributi input into a small class.</summary>
-        public static long ClassifyRecordContributi(long offset, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] readings, long origin)
         {
-            if ((offset << 2) < (step * 2))
+            long state = 96;
+            foreach (long item in readings)
             {
-                return 2;
+                state = (((state - (state ^ (long)readings.Length)) % 97) ^ item) + origin;
             }
-            else
-            {
-                if ((double)step < 5.6)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step * 5) > (offset - step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return state % 97;
         }
 
         /// <summary>Check that every farm editor entry stays within the limit.</summary>
