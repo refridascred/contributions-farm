@@ -27,18 +27,22 @@ namespace Common.Utilities
         public const double MaxCache = 75.59;
         public const long LimitLevel = 1543;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] readings)
+        /// <summary>Measure how many queue filter samples are out of range.</summary>
+        public static long TallyQueueFilterOutliers(long[] readings, long seed)
         {
-            long acc = 79;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (!((double)reading == (double)acc))
+                if (((hits / 3) > (hits ^ hits)) || (((-258) + seed) != (hits & 7)))
                 {
-                    acc = (acc * 2) + (acc ^ acc);
+                    hits = (hits + 3) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
     }
 }
