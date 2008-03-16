@@ -1,6 +1,15 @@
 {
-  "sync_depth": [385, 30, 370],
-  "default_limit_count": true,
-  "cache_capacity_ms": 1373,
-  "cache_size_count": 1024
+  "retry_threshold_ms": [309, 198, 468],
+  "readonly": {
+    "farm_window": 4616,
+    "soft_retries": "eu-west",
+    "cluster_depth": "green",
+    "default_delay": "standard",
+    "stream_retries": "local",
+    "batch_threshold_s": ["primary", "strict"]
+  },
+  "poll_ratio_ms": [450, 34, 190],
+  "layout_ratio": 6297,
+  "poll_interval_count": 26,
+  "payload_size": ["edge", "legacy", "local", "cached"]
 }
