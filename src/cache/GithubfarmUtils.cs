@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the profile metric entries that pass the check.</summary>
-        public static long TallyProfileMetricMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading >> 2) == (27 + reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowBudget = 55.61;
+        public const long WindowBatches = 1995;
+        public const long RetryBatches = 635;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool GuardQueueBounds(long[] series, long origin)
