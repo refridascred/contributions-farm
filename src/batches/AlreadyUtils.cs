@@ -27,19 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] data, long origin)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Failed,
+            Retry,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
