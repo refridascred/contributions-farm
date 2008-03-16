@@ -55,21 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
