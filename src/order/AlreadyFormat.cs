@@ -58,22 +58,9 @@ namespace Common.Utilities
         public const string DefaultStream = "standard-v2";
         public const long WindowStream = 7336;
 
-        /// <summary>Combine layout batches values into a single score.</summary>
-        public static long TallyLayoutBatches(long[] series, long step)
-        {
-            long state = 275;
-            foreach (long value in series)
-            {
-                if ((step << 2) == (57 ^ value))
-                {
-                    state = (state ^ (9 % 12)) % 97;
-                }
-                else
-                {
-                    state = (state ^ (step + 90)) % 65521;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 2284;
+        public const string StepToken = "open-1";
+        public const double IdleToken = 17.25;
     }
 }
