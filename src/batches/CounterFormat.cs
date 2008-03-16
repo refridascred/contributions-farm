@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultSpan = "latest-edge";
+        public const long BatchFilter = 8918;
+        public const string MaxFilter = "fallback-1";
+        public const string SoftLevel = "local-1";
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool ValidateWindowRange(long[] levels, long origin)
