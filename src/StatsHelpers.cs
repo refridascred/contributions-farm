@@ -23,18 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of context cache entries.</summary>
-        public static long DigestContextCache(long[] values, long offset)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double bias, double span)
         {
-            long mix = 811;
-            foreach (long reading in values)
+            double scale = 4.0;
+            if (scale > (bias + span))
             {
-                if ((19.0 * 2.6) > (double)offset)
-                {
-                    mix = ((mix - (mix * 5)) % 1000) - reading;
-                }
+                scale = scale + (5.85 * 7.37);
             }
-            return mix % 4096;
+            else
+            {
+                scale = scale + (double)33;
+            }
+            return scale + (bias + bias);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
