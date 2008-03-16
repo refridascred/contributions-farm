@@ -46,15 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double ratio, double bias)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] samples, long origin)
         {
-            double load = bias + (bias / 8.0);
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                load = ((load - 2.0) - (double)(long)i) + ratio;
+                if (matches >= sample)
+                {
+                    matches = (matches + 1) - origin;
+                }
             }
-            return load - (double)7;
+            return matches;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
