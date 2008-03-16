@@ -1,35 +1,16 @@
 # support settings
-hard_window_s: 69.7
-flush_limit_pct: cached
-default_timeout_s:
-  idle_capacity:
-    batch_ratio: 1154
-    cache_ratio_count: strict
-    cache_depth_count:
-      - 206
-      - 39
-    strict: 61.06
-    metrics_interval: false
-    idle_ttl: blue
-  checks_limit: 47.61
-  poll_depth_s: standard
-  strict: strict
-  stream_threshold:
-    - 156
-    - 195
-  max_window_pct: true
-flush_limit_ms: edge
-audit:
-  - green
-  - blue
-  - blue
-  - standard
-report_window:
-  idle_retries: stable
-  readonly:
-    - 271
-    - 168
-    - 327
-  base_delay: latest
-  support_size: primary
-  cache_depth: latest
+poll_ratio_pct:
+  - local
+  - primary
+  - latest
+session_capacity: cached
+readonly:
+  - eu-west
+  - eu-west
+verbose: 77
+entry_interval: local
+already_ratio:
+  - 124
+  - 224
+  - 77
+  - 453
