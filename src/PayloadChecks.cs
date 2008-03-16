@@ -74,19 +74,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] readings, long target)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
