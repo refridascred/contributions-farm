@@ -84,14 +84,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Stale,
-            Done,
-            Paused,
             Retry,
             Active,
+            Draft,
+            Ready,
         }
     }
 }
