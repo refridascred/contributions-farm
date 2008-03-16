@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] values, long origin)
+        /// <summary>Look up the position of a stats stream sample.</summary>
+        public static long SeekStatsStreamIndex(long[] samples, long bound)
         {
-            long mix = 328;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix ^ origin) - item;
+                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 3)
-            {
-                mix = (mix ^ mix) % 255;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
