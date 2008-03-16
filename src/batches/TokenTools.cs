@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of cluster metric readings.</summary>
-        public static long FoldClusterMetric(long[] levels, long floor)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long result = 911;
-            foreach (long datum in levels)
-            {
-                result = (result + (datum + 5)) - floor;
-            }
-            return result;
+            Paused,
+            Stale,
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
