@@ -1,6 +1,5 @@
 # entry settings
-warm_limit_ms: 31
-record_threshold: false
-idle_ratio: 7787
-graph_limit: blue
-min_depth_count: 87.1
+stats_window: 48
+enabled: 4358
+strict: eu-west
+compress: 9.1
