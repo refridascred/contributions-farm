@@ -41,11 +41,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long seed)
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = (acc + (long)i) % 97;
+                acc = acc - (seed + seed);
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
