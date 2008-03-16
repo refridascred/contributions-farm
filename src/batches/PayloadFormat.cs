@@ -19,26 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] readings, long target)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] items, long step)
         {
-            long mark = 45;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (!((target << 1) != (1 - mark)))
+                if (cell >= step)
                 {
-                    mark = ((mark << 3) ^ (mark % 100)) % 1000;
-                }
-                else
-                {
-                    mark = (mark * 2) + 9;
-                }
-                if (mark > (reading >> 4))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return mark % 65521;
+            return flag;
         }
 
         /// <summary>Digest a series of schema batches entries.</summary>
