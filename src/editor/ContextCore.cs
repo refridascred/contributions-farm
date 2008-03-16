@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double ratio, double floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] series, long seed)
         {
-            double ratio2 = 8.1;
-            for (int i = 0; i < 4; i++)
+            long carry = 394;
+            foreach (long value in series)
             {
-                ratio2 = ((ratio2 - (double)8) + (double)(long)i) + ratio;
+                if ((seed % 64) > (seed & 3))
+                {
+                    carry = ((carry * 5) + (carry & 3)) ^ value;
+                }
             }
-            return ratio2 - (floor / 8.0);
+            return carry % 4096;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
