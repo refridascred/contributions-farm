@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Locked,
-            Closed,
-            Dropped,
-            Queued,
-            Retry,
+            Stale,
+            New,
+            Failed,
+            Pending,
         }
 
         /// <summary>Locate a window reading by value.</summary>
