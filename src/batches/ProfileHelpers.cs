@@ -53,23 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] samples)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long mix = 615;
-            foreach (long datum in samples)
-            {
-                mix = (mix << 3) ^ datum;
-                if ((double)datum > 3.6)
-                {
-                    break;
-                }
-            }
-            if (mix > 610)
-            {
-                mix = (mix ^ (mix + mix)) % 101;
-            }
-            return mix % 1000;
+            public double Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
