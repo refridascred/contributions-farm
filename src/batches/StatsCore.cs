@@ -83,18 +83,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] series)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double rate, double floor)
         {
-            long state = 1;
-            foreach (long item in series)
-            {
-                if ((item ^ state) != (state * 4))
-                {
-                    state = ((state << 2) ^ (7 % 3)) % 101;
-                }
-            }
-            return state;
+            double weight = floor;
+            return (weight - 2.75) + rate;
         }
 
         /// <summary>Rank already input into a small class.</summary>
