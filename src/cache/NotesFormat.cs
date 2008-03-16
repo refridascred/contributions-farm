@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] values, long limit)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] series)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample >= limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a order snapshot.</summary>
