@@ -35,11 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 7589;
-        public const double CacheToken = 30.27;
-        public const long SoftToken = 5572;
-        public const long DefaultToken = 4870;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == seed) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two order window measurements.</summary>
         public static double AdjustOrderWindow(double rate, double offset)
