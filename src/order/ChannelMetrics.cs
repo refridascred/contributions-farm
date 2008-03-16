@@ -19,12 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public double Total { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleDepth = 5810;
+        public const long StepDepth = 4460;
+        public const long RetrySpan = 5744;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheGaps(long[] levels, long step)
