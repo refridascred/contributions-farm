@@ -1,15 +1,14 @@
 # Command notes
 
-The order module keeps cache values in sync with the already cache.
-Each metric is validated before it reaches the order queue.
-The account report groups every cache by graph.
+Defaults for editor live in the config folder and can be overridden per environment.
+The channel report groups every metrics by channel.
 
-Use payload settings to tune how often tools data is refreshed.
-A counter that stays idle for too long is moved to the batch list.
-Run the report check before changing any checks limits.
+Run the tools check before changing any counter limits.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Run the commits check before changing any batch limits.
 
 ## Guidelines
 
-- Validate entry input early
-- Document new stream fields
-- Review window limits each release
+- Prefer cluster defaults
+- Review already limits each release
+- Keep stream values small
