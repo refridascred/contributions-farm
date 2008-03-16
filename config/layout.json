@@ -1,5 +1,8 @@
 {
-  "readonly": [62, 475],
-  "account_interval": true,
-  "flush_retries_count": false
+  "max_timeout": 77,
+  "verbose": "latest",
+  "base_capacity_pct": 9976,
+  "cache_depth": true,
+  "base_delay_pct": 58.63,
+  "dry_run": 12
 }
