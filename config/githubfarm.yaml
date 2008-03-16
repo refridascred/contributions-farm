@@ -1,23 +1,19 @@
 # githubfarm settings
-cache_ttl: open
-max_window_s:
-  idle_ttl: false
-  compress:
-    soft_size: legacy
-    cache_interval: green
-    warm_interval: local
-    batch_capacity: fallback
-    burst_size_count: open
-  command_size: eu-west
-  min_retries_ms:
-    hard_interval_s: legacy
-    queue_window: 47.31
-    soft_threshold_pct: false
-window_limit: 46.36
-strict:
-  - 359
-  - 453
-  - 96
-order_depth:
-  - 232
-  - 306
+audit:
+  burst_timeout: green
+  default_timeout: false
+  editor_window: cached
+filter_interval:
+  - strict
+  - staging
+  - strict
+  - eu-west
+layout_depth:
+  flush_window:
+    - open
+    - local
+    - staging
+  burst_window_ms: 35
+  base_delay_ms: staging
+  audit: eu-west
+  min_ratio_count: local
