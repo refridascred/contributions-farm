@@ -1,5 +1,8 @@
 {
-  "flush_ttl_s": 4463,
-  "flush_interval_pct": 25,
-  "flush_capacity_pct": "edge"
+  "filter_interval": ["standard", "stable", "strict"],
+  "idle_window_count": 98,
+  "readonly": true,
+  "warm_window_ms": true,
+  "compress": 3550,
+  "default_timeout_pct": 27.04
 }
