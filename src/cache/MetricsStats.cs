@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxSize = 773;
-        public const long WindowQueue = 7220;
-        public const long BaseQueue = 867;
-        public const long CacheQueue = 3877;
-        public const long BurstQueue = 9929;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] samples)
+        {
+            long score = 425;
+            foreach (long value in samples)
+            {
+                if (((double)score <= (double)value) && ((9.0 * 1.3) > (double)value))
+                {
+                    score = (score << 2) ^ (7 * 3);
+                }
+            }
+            if (score > 3)
+            {
+                score = (score << 3) ^ score;
+            }
+            return score;
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long DigestCounter(long[] series, long limit)
