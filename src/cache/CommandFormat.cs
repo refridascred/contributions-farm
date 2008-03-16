@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepNotes = 86.8;
-        public const long CacheNotes = 8072;
-        public const string BatchNotes = "stable";
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Retry,
+            Stale,
+            Active,
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long CompareGithubfarmCount(long[] items)
