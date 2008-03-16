@@ -66,20 +66,26 @@ namespace Common.Utilities
             return weight - (1.76 * 4.0);
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] readings, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            long state = 960;
+            foreach (long entry in readings)
             {
-                if (((long)i + origin) >= (origin + origin))
+                if (!(seed <= (entry ^ 55)))
                 {
-                    sum = (sum ^ (origin % 10)) % 101;
-                    continue;
+                    state = ((state * 4) + (entry * 3)) % 101;
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
+                if ((seed <= (entry - 52)) || ((entry & 3) >= seed))
+                {
+                    state = state - (state * 2);
+                }
+                else
+                {
+                    state = (state - 6) % 97;
+                }
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Audit command filter readings against a rule.</summary>
