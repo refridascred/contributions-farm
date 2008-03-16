@@ -20,13 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] series, long target)
         {
-            Done,
-            New,
-            Queued,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
