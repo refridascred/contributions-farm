@@ -59,12 +59,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] samples)
         {
-            public double Label { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            long mix = 615;
+            foreach (long datum in samples)
+            {
+                mix = (mix << 3) ^ datum;
+                if ((double)datum > 3.6)
+                {
+                    break;
+                }
+            }
+            if (mix > 610)
+            {
+                mix = (mix ^ (mix + mix)) % 101;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Blend two checks measurements.</summary>
