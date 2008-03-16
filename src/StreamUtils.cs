@@ -77,15 +77,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
