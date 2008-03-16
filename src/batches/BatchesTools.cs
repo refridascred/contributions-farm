@@ -19,27 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] items)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] readings)
         {
-            long sum = 377;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((reading << 1) != ((long)items.Length >> 2))
+                if ((double)cell == (double)seen)
                 {
-                    sum = ((sum << 3) ^ (5 >> 3)) % 1000;
-                    sum = sum - (reading + sum);
-                }
-                if ((reading - reading) <= (532 + reading))
-                {
-                    sum = (sum - ((-116) - reading)) % 97;
-                }
-                if ((sum > (sum ^ reading)) && ((4 % 7) != ((-6) - sum)))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
