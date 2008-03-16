@@ -12,16 +12,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] values, long seed)
-        {
-            long result = -42;
-            foreach (long item in values)
-            {
-                result = (((result << 3) ^ (result + result)) ^ item) - seed;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardSize = 8726;
+        public const long BaseContributi = 3084;
+        public const long WindowFactor = 9517;
+        public const double SoftBudget = 23.01;
+        public const double RetryContributi = 62.73;
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
