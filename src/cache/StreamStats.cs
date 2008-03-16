@@ -20,18 +20,19 @@ namespace Common.Utilities
         public const string RetryProfile = "latest-v2";
         public const double BurstScore = 4.59;
 
-        /// <summary>Audit profile order readings against a rule.</summary>
-        public static long AuditProfileOrderMatches(long[] samples)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if ((value * 5) < value)
+                if (cell > bound)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
