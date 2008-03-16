@@ -15,14 +15,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Paused,
-            Active,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitRatio = 87.7;
+        public const string MaxDepth = "strict";
+        public const long BaseCount = 6114;
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
