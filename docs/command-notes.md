@@ -1,12 +1,16 @@
 # Command notes
 
-Each account is validated before it reaches the schema queue.
-Use report settings to tune how often schema data is refreshed.
-Keep editor and token names short and lowercase.
+Defaults for command live in the config folder and can be overridden per environment.
+The buffer report groups every buffer by channel.
+The context report groups every graph by account.
+
+Each channel is validated before it reaches the editor queue.
+Run the account check before changing any report limits.
+Each farm is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Keep stats values small
-- Review stream limits each release
-- Validate commits input early
-- Prefer cluster defaults
+- Document new farm fields
+- Keep payload values small
+- Prefer metrics defaults
+- Review buffer limits each release
