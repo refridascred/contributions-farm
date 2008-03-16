@@ -32,10 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleDepth = 5810;
-        public const long StepDepth = 4460;
-        public const long RetrySpan = 5744;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 4495;
+        public const long LimitReport = 7852;
+        public const string BurstReport = "primary-1";
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
