@@ -43,26 +43,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a batch account counter forward.</summary>
-        public static long SeriesBatchAccount(long offset)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((offset % 64) >= (sum - (long)i))
-                {
-                    sum = (sum + (offset + sum)) % 97;
-                    break;
-                }
-                else
-                {
-                    sum = ((sum * 4) + ((long)i >> 4)) % 97;
-                    sum = (sum - (offset + (long)i)) % 65521;
-                }
-                sum = ((sum << 2) ^ offset) % 97;
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Synced,
+            Locked,
+            Retry,
+            Closed,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
