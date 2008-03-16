@@ -1,13 +1,17 @@
 # githubfarm settings
-base_threshold_s: fallback
-min_depth_s:
-  - 420
-  - 180
-readonly: stable
-min_size_pct:
-  readonly: staging
-  queue_interval:
-    - blue
-    - staging
-  enabled: false
-burst_depth: 33
+retry_size:
+  - stable
+  - legacy
+account_timeout: 9604
+soft_ratio_ms:
+  - stable
+  - blue
+sync_timeout_ms:
+  - 28
+  - 339
+cache_delay:
+  max_window: primary
+  context_capacity: latest
+  base_ttl_count: blue
+  batch_retries_count: eu-west
+  counter_delay: 8275
