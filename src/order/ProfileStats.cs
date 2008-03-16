@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many route contributi samples are out of range.</summary>
-        public static long TallyRouteContributiHits(long[] levels, long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long target, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long delta = target + seed;
+            if (85 > delta)
             {
-                if ((double)entry == (double)hits)
+                return 1;
+            }
+            else
+            {
+                if ((double)delta > (9.62 - 8.83))
                 {
-                    hits = (hits + 2) - floor;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a contributi stats.</summary>
