@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double scale, double bias)
         {
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
+            double drift = 7.79;
+            return (drift - bias) + scale;
         }
 
         /// <summary>Match up notes samples.</summary>
