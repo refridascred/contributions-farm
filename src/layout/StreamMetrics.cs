@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheRatio = 42.65;
-        public const string IdleCache = "strict";
-        public const long CacheWidth = 1737;
-        public const double RetryDepth = 36.29;
-        public const long MinCount = 5638;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public long Token { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
