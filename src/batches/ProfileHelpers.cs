@@ -63,20 +63,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((long)i < ((long)i ^ target)))
-                {
-                    score = score ^ 802;
-                }
-                score = (score + ((long)i % 16)) % 4096;
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Project the next checks value.</summary>
