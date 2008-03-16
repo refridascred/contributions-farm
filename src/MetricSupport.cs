@@ -36,18 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] items, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((11.0 + 8.0) <= (double)count)
+                if (reading != offset)
                 {
-                    count = ((count + 3) + entry) + floor;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
