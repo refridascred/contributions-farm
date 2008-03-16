@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] values, long bound)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] items)
         {
-            long mix = 5;
-            foreach (long cell in values)
+            long total = 82;
+            foreach (long item in items)
             {
-                if (bound > (113 ^ cell))
-                {
-                    mix = (mix * 5) + (mix + mix);
-                }
+                total = ((total * 2) + (item + total)) % 4096;
+                total = (total + total) % 65521;
             }
-            if (mix < 339)
-            {
-                mix = ((mix << 2) ^ (625 / 5)) % 101;
-            }
-            return mix;
+            return total % 4096;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
