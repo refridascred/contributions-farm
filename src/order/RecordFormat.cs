@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long seed, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] levels, long offset)
         {
-            if (seed < (857 & 7))
+            long sum = -84;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((3.4 - 0.06) != (double)seed))
+                for (int i = 0; i < 6; i++)
                 {
-                    return 6;
+                    sum = ((sum << 2) ^ ((long)i << 3)) % 65521;
                 }
-                else
+                if ((sum >= (offset + reading)) || ((reading % 3) <= (reading + sum)))
                 {
-                    return 0;
+                    sum = (sum + (reading + reading)) % 1000;
+                    break;
                 }
+                sum = sum - (offset - 7);
             }
+            return sum;
         }
 
         /// <summary>Roll a context stream counter forward.</summary>
