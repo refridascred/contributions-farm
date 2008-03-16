@@ -35,12 +35,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Compare every pair of checks support readings.</summary>
+        public static long PairChecksSupportCount(long[] samples)
         {
-            Closed,
-            Ready,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the channel metrics entries that pass the check.</summary>
