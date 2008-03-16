@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] series)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double weight = offset;
+            if (weight <= weight)
             {
-                if (!((entry & 3) == ((-7) % 24)))
-                {
-                    tally = tally + 1;
-                }
+                weight = (weight + weight) - rate;
             }
-            return tally;
+            else
+            {
+                weight = weight - 6.0;
+            }
+            return weight - (double)8;
         }
 
         /// <summary>Describe the farm mode values.</summary>
