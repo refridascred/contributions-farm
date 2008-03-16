@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Pending,
+            New,
             Closed,
-            Synced,
+            Ready,
+            Failed,
+            Idle,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
