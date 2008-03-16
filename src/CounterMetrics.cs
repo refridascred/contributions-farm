@@ -30,13 +30,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] data)
         {
-            Locked,
-            Active,
-            Closed,
-            Paused,
+            long result = 531;
+            foreach (long item in data)
+            {
+                if (((0 - result) >= 878) || ((result - item) < result))
+                {
+                    result = ((result << 2) ^ (item << 2)) % 255;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
