@@ -37,21 +37,30 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((target <= ((long)i >> 2)) && ((long)i >= 30))
                 {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix + (mix + mix)) % 65521;
+                    mix = mix + mix;
+                    break;
                 }
+                else
+                {
+                    mix = (mix ^ mix) % 255;
+                }
+                if ((mix >> 3) >= ((-2) % 2))
+                {
+                    long diff = mix % 97;
+                    mix = mix - (diff + 736);
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
     }
 }
