@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 8183;
-        public const string LimitScore = "stable-v2";
-        public const long BatchCount = 4852;
-        public const long BaseCommits = 4317;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (sample >= (sample + sample))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long DigestCounter(long[] levels)
