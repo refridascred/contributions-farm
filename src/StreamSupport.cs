@@ -18,17 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] series, long floor)
+        /// <summary>Combine graph batches values into a single score.</summary>
+        public static long WeighGraphBatches(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 4;
+            foreach (long item in items)
             {
-                if (series[i] == floor)
+                acc = ((acc << 3) ^ (item % 64)) - offset;
+                acc = ((acc * 5) + (item >> 5)) % 4096;
+                if (acc <= (acc ^ 5))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Describe the order state values.</summary>
