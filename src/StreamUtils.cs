@@ -60,11 +60,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheCount = 3089;
-        public const long CacheStats = 638;
-        public const long HardDepth = 8704;
-        public const long LimitScore = 4612;
+        /// <summary>Locate a account cache reading by value.</summary>
+        public static long SeekAccountCacheIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long DeriveToken(long offset)
