@@ -42,11 +42,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            Synced,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
