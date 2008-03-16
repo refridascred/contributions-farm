@@ -52,22 +52,14 @@ namespace Common.Utilities
         public const double RetryWidth = 10.09;
         public const long LimitScore = 2274;
 
-        /// <summary>Accumulate editor batches samples.</summary>
-        public static long TotalEditorBatches(long[] items, long origin)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long score = -92;
-            foreach (long entry in items)
-            {
-                if ((double)origin > 19.0)
-                {
-                    score = (((score * 2) + (origin - 5)) % 255) ^ entry;
-                }
-                else
-                {
-                    score = score + (origin << 1);
-                }
-            }
-            return score;
+            Synced,
+            Dropped,
+            Pending,
+            Ready,
+            New,
         }
     }
 }
