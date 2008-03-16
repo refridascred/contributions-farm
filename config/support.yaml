@@ -1,31 +1,25 @@
 # support settings
-audit:
-  - 463
-  - 229
-soft_delay_ms:
-  schema_timeout: 8651
-  warm_retries_s:
-    idle_depth_count: 8612
-    max_interval_s: 250
-    idle_size_count:
-      - blue
-      - local
-      - stable
-    warm_threshold_ms: 51
-    warm_threshold_count: false
-    cache_interval_s:
-      - edge
-      - blue
-      - staging
-  context_timeout: staging
-  verbose: 439
-  record_interval:
-    session_delay: false
-    base_capacity_ms: 6573
-    base_timeout_count: legacy
-    readonly:
-      - 111
-      - 269
-      - 383
-  cache_depth: 100
-min_capacity_s: true
+readonly:
+  sync_depth_pct:
+    editor_ttl: 33
+    default_depth_pct:
+      - standard
+      - open
+      - eu-west
+    warm_ratio: 47.78
+    commits_interval: 94
+    max_size_pct: 2307
+    batch_interval_count:
+      - eu-west
+      - green
+      - cached
+      - fallback
+  sync_threshold_s:
+    - blue
+    - strict
+    - local
+    - fallback
+  cache_capacity: 8.87
+idle_threshold: false
+checks_depth: primary
+verbose: eu-west
