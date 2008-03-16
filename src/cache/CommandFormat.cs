@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double bias, double floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] readings, long target)
         {
-            double ratio = floor;
-            for (int i = 0; i < 2; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                ratio = ((ratio + ratio) + (double)(long)i) - bias;
+                if (reading <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return ratio - 7.9;
+            return stale;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
