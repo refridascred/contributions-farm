@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultDepth = 9106;
+        public const long RetryLevel = 5692;
+        public const double BurstLevel = 71.17;
 
         /// <summary>Audit metrics order readings against a rule.</summary>
         public static long TallyMetricsOrderMatches(long[] samples)
