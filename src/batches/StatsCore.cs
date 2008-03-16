@@ -74,11 +74,17 @@ namespace Common.Utilities
         public const double BatchSupport = 41.0;
         public const long BaseTimeout = 2221;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double rate, double floor)
+        /// <summary>Locate a record metric reading by value.</summary>
+        public static long LookupRecordMetricIndex(long[] data, long offset)
         {
-            double weight = floor;
-            return (weight - 2.75) + rate;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of record readings.</summary>
