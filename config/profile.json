@@ -1,11 +1,8 @@
 {
-  "enabled": {
-    "batches_capacity": "latest",
-    "default_timeout": ["strict", "open"],
-    "readonly": 43.37,
-    "profile_delay": 3033
-  },
-  "hard_retries_ms": 18,
-  "default_threshold": ["eu-west", "legacy", "stable"],
-  "already_threshold": 70.63
+  "poll_depth_ms": "primary",
+  "strict": false,
+  "warm_ttl_pct": 48,
+  "min_window_ms": 250,
+  "poll_capacity_count": 52.51,
+  "persist": 4
 }
