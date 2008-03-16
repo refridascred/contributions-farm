@@ -14,22 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] data, long limit)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((834 % 60) > matches)
-                {
-                    matches = ((matches + 2) + entry) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Look up the position of a record sample.</summary>
