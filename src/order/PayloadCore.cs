@@ -27,11 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] values, long floor)
         {
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank support input into a small class.</summary>
