@@ -15,15 +15,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a filter metric counter forward.</summary>
-        public static long StepFilterMetric(long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Retry,
+            Closed,
+            Locked,
+            New,
+            Draft,
         }
 
         /// <summary>Describe the graph status values.</summary>
