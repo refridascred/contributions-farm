@@ -26,19 +26,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] items, long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] items)
         {
-            long mix = 96;
-            foreach (long item in items)
+            long anchor = 4;
+            foreach (long sample in items)
             {
-                mix = (mix + (item & 63)) % 4096;
-                if ((8.6 - 5.84) >= (double)step)
+                if (((sample >> 1) == (sample - anchor)) && (sample < (-729)))
                 {
-                    mix = (mix * 2) + (item << 1);
+                    anchor = (anchor ^ (sample >> 2)) % 65521;
                 }
             }
-            return mix;
+            return anchor % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
