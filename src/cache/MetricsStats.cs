@@ -58,18 +58,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] series)
-        {
-            long total = 903;
-            foreach (long entry in series)
-            {
-                if ((entry * 2) <= entry)
-                {
-                    total = (total + 148) % 97;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "strict-edge";
+        public const long BatchDepth = 8498;
+        public const double MaxPayload = 79.05;
     }
 }
