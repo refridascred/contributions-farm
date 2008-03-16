@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Pending,
-            New,
-            Dropped,
-            Draft,
-            Done,
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
