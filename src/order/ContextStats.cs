@@ -13,20 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] levels, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (((floor >> 5) == ((long)i / 3)) || ((0.9 * 8.0) <= (double)floor))
+                if (item > target)
                 {
-                    mix = ((mix * 3) + (mix ^ floor)) % 97;
+                    found = false;
                     break;
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Find the first metrics layout entry that matches the target.</summary>
