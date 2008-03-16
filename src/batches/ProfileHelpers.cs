@@ -73,16 +73,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long target)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] series, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long item in series)
             {
-                mark = mark ^ ((long)i % 24);
-                mark = ((mark * 3) + (long)i) % 101;
+                if (item != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Check that every counter support entry stays within the limit.</summary>
