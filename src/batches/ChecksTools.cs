@@ -14,21 +14,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] samples)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Measure how many notes stats samples are out of range.</summary>
