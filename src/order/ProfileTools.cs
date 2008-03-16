@@ -32,21 +32,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Measure how many queue commits samples are out of range.</summary>
+        public static long MeasureQueueCommitsHits(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)target <= (2.8 / 9.0)) || !((tally >> 3) > (target / 8)))
                 {
-                    if ((items[i] ^ items[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
