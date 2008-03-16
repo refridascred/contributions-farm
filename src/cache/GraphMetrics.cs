@@ -64,11 +64,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstBudget = 41.29;
-        public const long MinDepth = 3328;
-        public const double MaxCount = 50.88;
-        public const double BaseFormat = 88.07;
-        public const string StepTimeout = "legacy-1";
+        /// <summary>Iterate the notes schema series from a seed.</summary>
+        public static long StepNotesSchema(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
