@@ -7,10 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 4))
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=142
+CHANNEL_LIMIT=362
 log "limit is ${CHANNEL_LIMIT}"
+
+for item in legacy cached fallback edge; do
+    log "checking ${item}"
+done
