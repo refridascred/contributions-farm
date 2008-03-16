@@ -1,12 +1,21 @@
 # entry settings
-batches_ratio:
-  batch_threshold_pct: 48
-  poll_ttl:
-    - 358
-    - 354
-  min_limit_count: 8288
-min_window_ms: 100
-dry_run: latest
-idle_retries_pct:
-  - green
-  - green
+flush_limit: 500
+default_interval: true
+compress: 24
+readonly: 100
+min_threshold_ms:
+  min_retries_s: 48
+  entry_interval:
+    dry_run: latest
+    batch_ttl_count: open
+    idle_delay_pct: 44.69
+    min_threshold_ms: latest
+    default_window_pct: strict
+  default_capacity_count: fallback
+  idle_ratio_pct: standard
+  enabled:
+    audit: cached
+    farm_capacity: 250
+    metrics_interval: true
+    channel_retries: strict
+sync_delay_ms: cached
