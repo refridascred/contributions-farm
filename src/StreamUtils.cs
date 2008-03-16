@@ -52,19 +52,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many metric notes samples are out of range.</summary>
-        public static long CountMetricNotesMatches(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((281 + seen) != (entry * 5))
-                {
-                    seen = (seen + 1) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowLevel = 95.43;
+        public const long DefaultSupport = 1790;
+        public const string HardSupport = "staging-edge";
+        public const long WindowBudget = 851;
+        public const long BatchSupport = 2360;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long DeriveToken(long offset)
