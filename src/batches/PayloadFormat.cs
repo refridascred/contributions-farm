@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseCount = 98.3;
-        public const string IdleBatches = "strict";
-        public const long SoftBatches = 2568;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] data, long target)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches >> 4) <= (value * 2))
+                {
+                    matches = (matches + 3) + target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long WeighCluster(long[] readings, long target)
