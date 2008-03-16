@@ -66,11 +66,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheWidth = 74.65;
-        public const double IdleTimeout = 30.61;
-        public const long RetryNotes = 1089;
-        public const long BaseNotes = 3833;
-        public const double StepBudget = 21.03;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((91 > (hits + hits)) && (((datum + hits) > (datum >> 4)) && (hits <= (hits ^ datum))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
