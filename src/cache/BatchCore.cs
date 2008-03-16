@@ -42,18 +42,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] levels, long bound)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading & 3) <= (bound - 90))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
