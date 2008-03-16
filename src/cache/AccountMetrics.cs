@@ -55,22 +55,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] readings)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (((datum + datum) >= 0) && (datum <= (hits & 127)))
+                if (((sample + matches) != (513 * 4)) || ((double)sample <= 7.7))
                 {
-                    hits = hits + 2;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
