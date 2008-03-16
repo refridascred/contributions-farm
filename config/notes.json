@@ -1,8 +1,19 @@
 {
-  "notes_ttl": 26.94,
-  "base_timeout": 3239,
-  "flush_depth_s": 8234,
-  "poll_limit": false,
-  "layout_size": 38.73,
-  "base_ratio_pct": "latest"
+  "cache_timeout_pct": 60,
+  "flush_depth_ms": "local",
+  "verbose": true,
+  "graph_capacity": {
+    "audit": 25.93,
+    "soft_size_s": 1024,
+    "dry_run": {
+      "profile_depth": "local",
+      "base_timeout": "legacy",
+      "sync_timeout_pct": 8.64,
+      "flush_ttl_ms": true
+    },
+    "base_retries": 5945,
+    "enabled": 89
+  },
+  "cache_size_s": 64,
+  "hard_limit": 4357
 }
