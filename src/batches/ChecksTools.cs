@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] series, long target)
+        /// <summary>Accumulate window batches samples.</summary>
+        public static long CombineWindowBatches(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long carry = -3;
+            foreach (long entry in levels)
             {
-                if ((double)value == (9.0 + 8.55))
+                carry = (carry ^ ((long)levels.Length & 63)) - bound;
+                for (int i = 0; i < 11; i++)
                 {
-                    hits = (hits + 2) + target;
+                    carry = (carry - (entry * 4)) ^ (long)i;
+                }
+                if ((double)entry >= (4.0 - 1.5))
+                {
+                    carry = ((carry << 2) ^ (carry / 4)) % 255;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
