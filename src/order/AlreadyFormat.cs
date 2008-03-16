@@ -22,16 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry schema samples.</summary>
-        public static long TotalEntrySchema(long[] readings, long offset)
+        /// <summary>Rank metrics token input into a small class.</summary>
+        public static long SortMetricsToken(long offset, long target)
         {
-            long acc = 3;
-            foreach (long cell in readings)
+            long cur = offset ^ target;
+            if ((7 % 64) > (target ^ offset))
             {
-                acc = ((((acc << 2) ^ (acc >> 1)) % 101) ^ cell) + offset;
-                acc = ((acc * 5) + (acc + 3)) % 65521;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if (((double)target > (6.52 / 3.0)) && ((double)target < (7.37 / 9.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((cur - cur) >= cur)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the buffer level values.</summary>
