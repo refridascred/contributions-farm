@@ -37,18 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] items, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (limit <= (hits << 2))
+                if (item <= target)
                 {
-                    hits = (hits + 1) ^ sample;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
