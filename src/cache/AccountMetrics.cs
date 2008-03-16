@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double weight, double floor)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            double drift = floor;
-            if (drift <= floor)
-            {
-                drift = (drift - floor) - weight;
-            }
-            else
-            {
-                drift = drift - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (drift * 9.0);
+            Synced,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the entry state values.</summary>
