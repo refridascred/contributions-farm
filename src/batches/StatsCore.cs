@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long limit, long target)
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public double Owner { get; set; }
-            public double Token { get; set; }
+            if (!((limit + target) < target))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit > (884 + limit)) && ((target * 3) == (961 + target)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((limit % 16) >= (632 & 31)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)target > (19.0 - 2.9)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a session batches reading by value.</summary>
