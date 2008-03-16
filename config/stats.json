@@ -1,7 +1,17 @@
 {
-  "batch_interval": 250,
-  "flush_timeout_count": "open",
-  "compress": true,
-  "enabled": false,
-  "order_capacity": "stable"
+  "hard_size_s": 55,
+  "warm_window_count": 36.15,
+  "warm_interval_s": "cached",
+  "readonly": {
+    "burst_limit_count": true,
+    "max_capacity": "primary",
+    "contributi_window": {
+      "soft_delay_pct": false,
+      "soft_limit_ms": 7202,
+      "compress": 82.1
+    },
+    "default_ratio": 6631,
+    "metric_retries": [262, 300, 411, 93],
+    "retry_retries": "primary"
+  }
 }
