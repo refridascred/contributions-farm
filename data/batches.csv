@@ -1,7 +1,8 @@
-id,state,weight
-1,435,920
-2,911,latest
-3,122,413
-4,strict,90.39
-5,primary,43.65
-6,715,380
+id,region,state,owner,active
+1,594,95.59,88.28,green
+2,70.83,945,188,967
+3,695,900,323,18.44
+4,620,strict,465,313
+5,edge,91.49,958,944
+6,open,legacy,26.3,98.52
+7,91.42,887,eu-west,60.81
