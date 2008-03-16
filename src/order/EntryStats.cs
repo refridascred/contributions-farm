@@ -66,26 +66,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] series)
+        /// <summary>Digest a series of order stats entries.</summary>
+        public static long TallyOrderStats(long[] levels, long step)
         {
-            long acc = 73;
-            foreach (long reading in series)
+            long mark = 847;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    acc = (((acc << 2) ^ acc) % 4096) + (long)i;
-                }
-                if (acc <= (10 - reading))
-                {
-                    acc = ((acc * 4) + (reading ^ reading)) % 4096;
-                }
+                mark = ((((mark << 2) ^ (38 >> 1)) % 4096) - reading) + step;
             }
-            if (acc < 59)
+            if (mark < 45)
             {
-                acc = ((acc << 3) ^ (acc - acc)) % 101;
+                mark = (mark - (mark + mark)) % 101;
             }
-            return acc % 97;
+            return mark;
         }
     }
 }
