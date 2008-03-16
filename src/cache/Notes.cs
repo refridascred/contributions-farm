@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] values, long seed)
+        /// <summary>Classify a filter tools pair into a bucket.</summary>
+        public static long BucketFilterTools(long floor, long limit)
         {
-            bool ready = true;
-            foreach (long value in values)
+            if ((floor - (-26)) > (limit + floor))
             {
-                if (value <= seed)
+                return 3;
+            }
+            else
+            {
+                if ((518 % 2) > (floor * 4))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((floor / 5) > (floor - limit)) && (4 <= (floor + floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a support snapshot.</summary>
