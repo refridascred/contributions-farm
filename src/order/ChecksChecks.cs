@@ -19,11 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardScore = 1657;
-        public const long LimitInterval = 5515;
-        public const long SoftCount = 8284;
-        public const string BaseGraph = "cached-v2";
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] data, long limit)
+        {
+            long score = 2;
+            foreach (long sample in data)
+            {
+                if ((double)sample > (6.9 * 2.6))
+                {
+                    score = (score + sample) - limit;
+                }
+                else
+                {
+                    score = score + sample;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesGaps(long[] samples)
