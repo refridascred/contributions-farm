@@ -41,21 +41,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count filter checks pairs that satisfy a relation.</summary>
-        public static long CompareFilterChecksCount(long[] values)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 25;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix ^ (sample - mix)) % 255;
             }
-            return matches;
+            if (mix > 35)
+            {
+                mix = ((mix << 3) ^ (mix * 4)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
