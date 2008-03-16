@@ -29,11 +29,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 1408;
-        public const double BaseOrder = 48.1;
-        public const double LimitOrder = 9.57;
-        public const long BurstFactor = 5189;
-        public const long IdleWidth = 2297;
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+            public double Mode { get; set; }
+        }
     }
 }
