@@ -14,22 +14,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            long mix = 69;
-            foreach (long datum in data)
+            long sum = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)datum < 2.8)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    mix = ((mix << 2) ^ datum) % 65521;
+                    sum = (sum - (sum / 6)) + (long)i2;
+                }
+                if (((long)i % 7) < (target + sum))
+                {
+                    sum = sum - 6;
                 }
                 else
                 {
-                    mix = (mix - (datum << 3)) % 4096;
+                    sum = ((sum * 3) + ((long)i & 63)) % 97;
                 }
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    sum = ((sum * 4) + (531 ^ target)) ^ (long)i3;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
