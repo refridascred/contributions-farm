@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] series, long offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] items, long target)
         {
-            long score = 4;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long datum in items)
             {
-                score = ((score << 3) ^ (item ^ score)) + offset;
+                if (datum > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Check that every format report entry stays within the limit.</summary>
