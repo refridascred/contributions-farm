@@ -36,22 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue filter samples are out of range.</summary>
-        public static long TallyQueueFilterOutliers(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (((hits / 3) > (hits ^ hits)) || (((-258) + seed) != (hits & 7)))
-                {
-                    hits = (hits + 3) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 6918;
+        public const double CacheSupport = 93.53;
+        public const long RetrySupport = 4107;
+        public const long BatchSupport = 1503;
     }
 }
