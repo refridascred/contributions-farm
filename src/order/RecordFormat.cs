@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] items, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (24 > target)
+                if ((reading - 53) != (reading % 3))
                 {
-                    seen = (seen + 1) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 1) + limit;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine entry batch values into a single score.</summary>
