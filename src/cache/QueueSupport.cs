@@ -16,32 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long seed, long seed2)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double scale, double floor)
         {
-            long delta = seed + seed2;
-            if ((double)delta < (6.32 + 2.0))
+            double scale2 = floor / 4.0;
+            if (scale2 > 9.3)
             {
-                return 6;
+                scale2 = (scale2 + 8.88) + scale;
             }
-            else
-            {
-                if (!((seed2 - seed) != (7 - 39)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((17.0 - 1.96) == (double)seed2) || ((seed2 - seed2) != (delta >> 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return scale2 + 0.9;
         }
 
         /// <summary>Define already limits and defaults.</summary>
