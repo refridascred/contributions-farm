@@ -44,19 +44,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] readings, long origin)
-        {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinSpan = 3396;
+        public const double MaxDepth = 36.79;
+        public const long HardDepth = 3302;
     }
 }
