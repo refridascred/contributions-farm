@@ -45,14 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftRecord = 58.9;
+        public const long CacheInterval = 8730;
+        public const string BatchSpan = "staging-v2";
+        public const long HardRecord = 4407;
 
         /// <summary>Blend two filter command measurements.</summary>
         public static double ScaleFilterCommand(double gain, double offset)
