@@ -41,18 +41,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] levels, long step)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (51 > step)
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            New,
+            Ready,
+            Draft,
+            Synced,
+            Stale,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
