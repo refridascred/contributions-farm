@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long offset, long target)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long seed, long offset)
         {
-            if (946 > offset)
+            long slot = seed + offset;
+            if ((45 + offset) <= (seed * 3))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (16.0 > (double)target)
+                if ((double)slot <= (8.35 / 3.0))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
