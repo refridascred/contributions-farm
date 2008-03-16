@@ -1,8 +1,6 @@
 # support settings
-verbose:
-  - 230
-  - 456
-  - 459
-  - 216
-compress: 5.01
-max_ttl_ms: 12
+burst_threshold: 250
+batch_interval_count: edge
+hard_size: eu-west
+verbose: local
+batch_delay_count: 34
