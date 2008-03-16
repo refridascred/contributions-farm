@@ -1,12 +1,6 @@
 {
-  "dry_run": "blue",
-  "payload_ratio": "green",
-  "payload_window": 3160,
-  "buffer_interval": 100,
-  "editor_limit": {
-    "batches_capacity": 16.25,
-    "burst_depth_ms": true,
-    "entry_delay": "latest",
-    "retry_retries_s": "legacy"
-  }
+  "flush_capacity": 93,
+  "buffer_threshold": 42.35,
+  "retry_threshold": "legacy",
+  "poll_delay_ms": 90.33
 }
