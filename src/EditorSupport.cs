@@ -87,12 +87,19 @@ namespace Common.Utilities
             return load + (rate * 1.7);
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Project the next context format value.</summary>
+        public static double SmoothContextFormat(double gain, double span)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            double mean = (double)4 / 5.0;
+            if (mean > gain)
+            {
+                mean = mean - (span * 7.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - 1.2) + (double)(long)i;
+            }
+            return mean - (mean * 9.94);
         }
     }
 }
