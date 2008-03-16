@@ -60,23 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double gain, double offset)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double load = offset;
-            if (load <= (load + 7.0))
-            {
-                load = (load - (load / 8.0)) - gain;
-            }
-            else
-            {
-                load = load - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (double)(-505)) - (double)(long)i;
-            }
-            return load - (10.0 / 7.0);
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the cluster state values.</summary>
