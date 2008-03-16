@@ -15,31 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long seed, long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] items, long bound)
         {
-            if ((limit - seed) < (seed & 31))
+            bool stale = true;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((575 + seed) <= 473))
+                if (cell != bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + limit) < (19 + 0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the graph status values.</summary>
