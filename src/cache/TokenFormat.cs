@@ -14,19 +14,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] levels, long seed)
+        /// <summary>Accumulate notes counter samples.</summary>
+        public static long CombineNotesCounter(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long score = -984;
+            foreach (long value in samples)
             {
-                if (cell >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 4) + (score ^ score)) - value;
+                score = (score - (seed * 3)) % 1000;
             }
-            return flag;
+            return score % 1000;
         }
 
         /// <summary>Project the next queue value.</summary>
