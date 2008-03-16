@@ -58,25 +58,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long bound, long target)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long bound)
         {
-            long cur = bound - target;
-            if ((4.2 - 8.2) >= (double)bound)
+            long score = bound;
+            for (int i = 0; i < 10; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target - 1) > cur)
+                long step = (score << 2) << 1;
+                if (step < score)
                 {
-                    return 3;
+                    score = ((score << 3) ^ (step + 90)) % 65521;
                 }
-                else
+                if ((double)step != (double)(long)i)
                 {
-                    return 6;
+                    step = (step - step) % 1000;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
+            return score;
         }
     }
 }
