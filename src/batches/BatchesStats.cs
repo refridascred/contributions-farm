@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Done,
-            New,
-            Paused,
-            Closed,
+            Draft,
+            Active,
+            Ready,
+            Retry,
         }
 
         /// <summary>Digest a series of context entries.</summary>
