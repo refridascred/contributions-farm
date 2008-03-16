@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheFactor = 8129;
-        public const long LimitContributi = 9703;
-        public const double BatchSize = 43.12;
-        public const double IdleContributi = 26.33;
+        /// <summary>Fold a list of payload cache readings.</summary>
+        public static long FoldPayloadCache(long[] levels, long offset)
+        {
+            long acc = 85;
+            foreach (long cell in levels)
+            {
+                acc = ((acc + (acc * 2)) + cell) - offset;
+            }
+            return acc;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long DeriveContext(long limit)
