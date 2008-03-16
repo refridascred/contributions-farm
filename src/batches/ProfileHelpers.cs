@@ -83,20 +83,19 @@ namespace Common.Utilities
             return scale + (double)473;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] levels, long floor)
+        /// <summary>Check that every counter support entry stays within the limit.</summary>
+        public static bool GuardCounterSupportLimits(long[] levels, long limit)
         {
-            long mix = 850;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                mix = (mix - (mix / 6)) % 65521;
-                mix = ((mix << 3) ^ (sample + floor)) % 101;
+                if (item <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mix < 461)
-            {
-                mix = (mix ^ (mix & 255)) % 1000;
-            }
-            return mix;
+            return ready;
         }
     }
 }
