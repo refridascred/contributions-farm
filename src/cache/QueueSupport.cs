@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long origin, long seed)
-        {
-            long slot = origin + seed;
-            if ((origin >> 2) >= (seed * 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((slot / 2) > seed) || (slot >= (224 & 7)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 73.34;
+        public const long BurstSupport = 8341;
+        public const long SoftSupport = 3099;
+        public const long RetrySupport = 4899;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long RankEditor(long step, long bound)
