@@ -30,23 +30,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double ratio, double span)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double drift = (ratio * 20.0) - (span - ratio);
-            if (drift > span)
-            {
-                drift = drift + (double)6;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - 9.7) + (double)(long)i;
-            }
-            return drift + (drift * 9.59);
+            Done,
+            Failed,
+            Retry,
+            Queued,
         }
     }
 }
