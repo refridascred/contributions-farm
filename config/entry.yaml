@@ -1,16 +1,22 @@
 # entry settings
-burst_size_s:
-  - 183
-  - 264
-  - 327
-retry_timeout_s: stable
-cache_limit_count:
-  already_depth: true
-  warm_threshold_pct: 1478
-  hard_threshold: strict
-  flush_capacity_ms:
-    - open
-    - local
-    - strict
-  sync_delay_pct: true
-compress: 4127
+default_delay_pct: staging
+burst_size:
+  hard_timeout_pct:
+    - latest
+    - staging
+  metrics_retries:
+    support_ttl: staging
+    audit: 500
+    base_depth_pct: 11.6
+    compress: 98.48
+    cache_ttl_ms: 1024
+    session_limit: 8465
+  dry_run: 100
+  account_window: true
+  batch_size: false
+default_limit_count:
+  burst_retries_s: blue
+  enabled: latest
+  cache_delay: 40.02
+  default_ttl: 250
+  min_capacity_s: true
