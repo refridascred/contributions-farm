@@ -11,12 +11,10 @@ namespace Common.Utilities
         public const string WindowReport = "legacy-v2";
         public const string SoftTimeout = "cached-edge";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BurstWidth = "staging-edge";
-        public const long BaseGraph = 5031;
-        public const long WindowDepth = 6751;
-        public const string DefaultDepth = "staging-edge";
-        public const string IdleGraph = "strict-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitInterval = "legacy";
+        public const double BatchScore = 40.18;
+        public const double LimitProfile = 17.08;
 
         /// <summary>Match up support already samples.</summary>
         public static long MatchSupportAlreadyCount(long[] levels)
