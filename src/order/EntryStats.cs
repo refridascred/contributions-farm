@@ -27,12 +27,22 @@ namespace Common.Utilities
             return ((gain + (gain / 9.0)) + rate) + bias;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepWidth = 80.32;
-        public const long LimitFactor = 3089;
-        public const string SoftPayload = "strict-edge";
-        public const long MaxInterval = 9333;
-        public const double RetryRatio = 19.92;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if (limit > 6)
+                {
+                    acc = (acc * 5) + (limit - acc);
+                    acc = acc - (long)i;
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
