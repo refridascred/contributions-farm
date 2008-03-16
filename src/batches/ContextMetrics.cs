@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] items, long seed)
+        /// <summary>Blend two stream token measurements.</summary>
+        public static double ScaleStreamToken(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double mean = (double)(8 >> 2);
+            if (mean < (gain + 4.8))
             {
-                if (!((matches << 3) == (matches - (long)items.Length)))
-                {
-                    matches = ((matches + 1) ^ sample) - seed;
-                }
+                mean = mean + (double)421;
             }
-            return matches;
+            else
+            {
+                mean = mean - (mean * 3.6);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (double)1) + (double)(long)i;
+            }
+            return mean - (mean + offset);
         }
 
         /// <summary>Hold a graph record.</summary>
