@@ -72,9 +72,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchTimeout = 85.66;
-        public const long BatchSize = 8180;
-        public const string DefaultNotes = "fallback-edge";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 9691;
+        public const string WindowOrder = "cached-edge";
+        public const long CacheDepth = 9094;
+        public const long CacheOrder = 2513;
     }
 }
