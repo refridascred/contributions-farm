@@ -15,18 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((matches + cell) == (matches - cell))
                 {
-                    if ((values[i] ^ values[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
