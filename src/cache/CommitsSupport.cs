@@ -30,14 +30,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Closed,
-            Synced,
-            Done,
-            Failed,
-            Paused,
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
