@@ -87,24 +87,13 @@ namespace Common.Utilities
             return load + (rate * 1.7);
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long origin, long step)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            if (((72 + origin) < (step + 8)) || (step >= (step - step)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin > (11.0 + 1.01))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Stale,
+            Active,
+            Pending,
+            Idle,
         }
     }
 }
