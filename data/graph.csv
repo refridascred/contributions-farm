@@ -1,6 +1,10 @@
-id,ratio,active
-1,primary,763
-2,47.03,737
-3,421,307
-4,93.39,green
-5,22.06,blue
+id,label,ratio,count,region
+1,88.38,11,53,75.66
+2,915,latest,949,362
+3,fallback,677,green,273
+4,cached,81.21,25.11,139
+5,785,45,strict,22
+6,992,strict,79.65,26.82
+7,cached,edge,latest,54.09
+8,local,246,57.11,66.22
+9,primary,205,latest,latest
