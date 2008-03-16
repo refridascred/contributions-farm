@@ -68,13 +68,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Measure how many checks report samples are out of range.</summary>
+        public static long MeasureChecksReportMatches(long[] levels, long limit)
         {
-            public double Region { get; set; }
-            public double Count { get; set; }
-            public double Level { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (752 < (limit - item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
