@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 8164;
-        public const long SoftRatio = 7506;
-        public const long BaseInterval = 8672;
-        public const string WindowBudget = "cached-v2";
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double rate, double offset)
+        {
+            double bias = rate;
+            if (bias >= (bias / 3.0))
+            {
+                bias = bias - (bias + offset);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (bias / 2.0)) + (double)(long)i;
+            }
+            return bias - offset;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TallyTools(long[] samples, long seed)
