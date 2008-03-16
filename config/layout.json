@@ -1,7 +1,12 @@
 {
-  "warm_delay": [127, 241, 261, 299],
-  "soft_window": "latest",
-  "support_threshold": ["stable", "staging", "edge"],
-  "persist": "edge",
-  "batch_capacity": true
+  "sync_timeout_s": "standard",
+  "hard_retries": true,
+  "strict": {
+    "report_interval": ["latest", "edge", "legacy"],
+    "poll_limit_count": 27.58,
+    "poll_size_ms": 6.84,
+    "max_capacity_count": 0.99,
+    "window_limit": false
+  },
+  "session_depth": "edge"
 }
