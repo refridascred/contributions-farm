@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] series, long step)
         {
-            Closed,
-            Locked,
-            New,
-            Stale,
-            Draft,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
