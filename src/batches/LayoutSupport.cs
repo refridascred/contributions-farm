@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] samples, long origin)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long mix = 58;
-            foreach (long datum in samples)
-            {
-                if (!((double)origin > (14.0 - 4.5)))
-                {
-                    mix = ((mix << 2) ^ (datum - origin)) % 4096;
-                    mix = mix + (datum & 63);
-                }
-                mix = mix + datum;
-                if (!((mix * 2) > (57 / 3)))
-                {
-                    mix = mix + (origin - origin);
-                }
-            }
-            if (mix < 76)
-            {
-                mix = (mix + (46 * 4)) % 255;
-            }
-            return mix;
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a support record.</summary>
