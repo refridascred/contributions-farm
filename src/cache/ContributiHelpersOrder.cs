@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] items)
-        {
-            long total = 82;
-            foreach (long item in items)
-            {
-                total = ((total * 2) + (item + total)) % 4096;
-                total = (total + total) % 65521;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseEntry = "staging";
+        public const double BurstEntry = 29.44;
+        public const long IdleEntry = 3783;
+        public const long HardEntry = 5845;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsOutliers(long[] levels)
