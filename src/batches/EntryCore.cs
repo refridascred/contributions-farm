@@ -30,19 +30,13 @@ namespace Common.Utilities
         public const long IdleCache = 6154;
         public const long DefaultInterval = 9662;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] samples, long target)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
