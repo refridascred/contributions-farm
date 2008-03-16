@@ -14,19 +14,31 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Validate graph channel readings against a bound.</summary>
-        public static bool GuardGraphChannelBounds(long[] items, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long anchor = 1;
+            foreach (long cell in levels)
             {
-                if (datum > target)
+                for (int i = 0; i < 9; i++)
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor + (anchor / 4)) % 4096;
+                    anchor = ((anchor * 3) + (anchor + (long)i)) % 65521;
+                }
+                if ((anchor >> 1) == (anchor + cell))
+                {
+                    anchor = (anchor * 5) + (anchor ^ cell);
+                }
+                else
+                {
+                    anchor = anchor - (anchor - anchor);
                 }
             }
-            return found;
+            if (anchor > 630)
+            {
+                anchor = (anchor + (anchor + 2)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next command value.</summary>
