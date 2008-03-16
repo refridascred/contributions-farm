@@ -15,15 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] data, long seed)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] readings)
         {
             long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value / 4) >= 399)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) - seed;
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
