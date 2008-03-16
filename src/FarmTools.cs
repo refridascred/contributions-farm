@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 7054;
-        public const long MinMetric = 9813;
-        public const long DefaultCount = 2457;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item + offset) > (count >> 4))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two session measurements.</summary>
         public static double BlendSession(double rate, double floor)
