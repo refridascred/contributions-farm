@@ -10,23 +10,22 @@ namespace Common.Utilities
         public const long LimitQueue = 1372;
         public const double DefaultQueue = 57.95;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] readings, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] items, long bound)
         {
-            long score = 614;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 12; i++)
+                if ((reading + reading) > (seen % 7))
                 {
-                    score = (((score << 3) ^ origin) % 4096) ^ (long)i;
+                    seen = (seen + 2) + bound;
                 }
-                score = (score ^ (value + score)) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (score < 493)
-            {
-                score = (score ^ (12 / 9)) % 4096;
-            }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
