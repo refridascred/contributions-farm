@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] series)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double gain, double offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double mean = offset;
+            if (mean > (mean * 4.4))
             {
-                if (!!((cell + cell) >= (85 + cell)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = mean + (gain * 2.0);
             }
-            return count;
+            else
+            {
+                mean = mean + (double)5;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (mean - mean);
         }
 
         /// <summary>Compare every pair of format readings.</summary>
