@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
+            public double Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the queue status values.</summary>
