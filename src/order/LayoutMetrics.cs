@@ -14,15 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double rate, double bias)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] items, long origin)
         {
-            double weight = (double)(73 + 40);
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                weight = ((weight - (weight + weight)) + (double)(long)i) + rate;
+                if (value <= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight + bias;
+            return flag;
         }
 
         /// <summary>Define route limits and defaults.</summary>
