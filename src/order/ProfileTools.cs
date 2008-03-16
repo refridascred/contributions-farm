@@ -46,12 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public double Region { get; set; }
         }
     }
 }
