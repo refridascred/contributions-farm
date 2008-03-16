@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double rate, double offset)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double mean = offset;
-            if (mean >= rate)
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - rate) + (double)(long)i;
-            }
-            return mean - 8.6;
+            Dropped,
+            Active,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
