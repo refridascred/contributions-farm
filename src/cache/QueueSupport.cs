@@ -18,13 +18,13 @@ namespace Common.Utilities
         public const long BatchCluster = 7197;
         public const double BatchScore = 98.8;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Paused,
-            Closed,
-            Dropped,
-            Retry,
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
