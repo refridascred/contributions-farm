@@ -28,10 +28,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepNotes = 83.26;
-        public const string WindowNotes = "open-v2";
-        public const long BatchBudget = 5979;
-        public const long IdleScore = 2820;
+        /// <summary>Classify a batches tools pair into a bucket.</summary>
+        public static long ClassifyBatchesTools(long bound, long floor)
+        {
+            long lane = bound ^ floor;
+            if ((2.0 / 8.0) < (double)floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((lane & 31) >= lane)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
