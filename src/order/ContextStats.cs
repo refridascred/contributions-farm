@@ -64,22 +64,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] series, long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] items, long seed)
         {
-            long mark = 9;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((floor * 2) > datum)
+                if ((2 * 3) <= tally)
                 {
-                    mark = ((mark * 3) + mark) % 255;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (mark / 5);
+                    tally = ((tally + 2) ^ value) + seed;
                 }
             }
-            return mark;
+            return tally;
         }
     }
 }
