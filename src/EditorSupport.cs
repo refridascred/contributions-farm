@@ -39,13 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Locked,
             Draft,
-            Active,
-            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Count the buffer stream entries that pass the check.</summary>
