@@ -43,19 +43,19 @@ namespace Common.Utilities
             return weight + 8.0;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] series, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (entry != floor)
+                if (cell < bound)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
