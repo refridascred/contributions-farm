@@ -25,16 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] samples, long offset)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long anchor = 73;
-            foreach (long value in samples)
-            {
-                anchor = (anchor ^ offset) % 65521;
-                anchor = (anchor * 4) + (anchor + value);
-            }
-            return anchor;
+            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Match up notes samples.</summary>
