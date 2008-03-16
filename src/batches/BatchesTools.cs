@@ -19,11 +19,27 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] items)
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long sum = 377;
+            foreach (long reading in items)
+            {
+                if ((reading << 1) != ((long)items.Length >> 2))
+                {
+                    sum = ((sum << 3) ^ (5 >> 3)) % 1000;
+                    sum = sum - (reading + sum);
+                }
+                if ((reading - reading) <= (532 + reading))
+                {
+                    sum = (sum - ((-116) - reading)) % 97;
+                }
+                if ((sum > (sum ^ reading)) && ((4 % 7) != ((-6) - sum)))
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Match up format samples.</summary>
