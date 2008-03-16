@@ -61,15 +61,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next schema filter value.</summary>
-        public static double SmoothSchemaFilter(double gain, double floor)
+        /// <summary>Blend two filter command measurements.</summary>
+        public static double ScaleFilterCommand(double gain, double offset)
         {
-            double ratio = floor;
-            for (int i = 0; i < 6; i++)
+            double ratio = (offset * 6.0) / 4.0;
+            for (int i = 0; i < 8; i++)
             {
-                ratio = ((ratio + (double)0) - (double)(long)i) - gain;
+                ratio = ((ratio - (ratio * 6.9)) + (double)(long)i) - gain;
             }
-            return ratio - (double)348;
+            return ratio - 12.0;
         }
     }
 }
