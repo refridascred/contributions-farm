@@ -78,24 +78,23 @@ namespace Common.Utilities
         public const double StepMetric = 38.66;
         public const long BaseMetric = 7204;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long bound, long bound2)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double bias, double floor)
         {
-            if (9.0 > (double)bound2)
+            double scale = floor;
+            if (scale >= (double)(-5))
             {
-                return 6;
+                scale = (scale - scale) + bias;
             }
             else
             {
-                if ((bound2 * 3) != (bound ^ (-2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
+                scale = scale - (double)(-83);
             }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + (double)473;
         }
 
         /// <summary>Describe the batch level values.</summary>
