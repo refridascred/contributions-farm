@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 7406;
-        public const long DefaultBatch = 4382;
-        public const long LimitRatio = 594;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] items, long floor)
+        {
+            long mix = 8;
+            foreach (long datum in items)
+            {
+                if ((mix >= (mix ^ 50)) || ((3 - mix) <= (5 + floor)))
+                {
+                    mix = ((mix << 3) ^ datum) % 4096;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
