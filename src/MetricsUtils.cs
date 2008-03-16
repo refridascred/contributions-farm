@@ -45,19 +45,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] values, long bound)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long anchor = 2;
-            foreach (long cell in values)
-            {
-                anchor = (anchor ^ (bound / 9)) ^ cell;
-            }
-            if (anchor > 5)
-            {
-                anchor = anchor - (anchor & 63);
-            }
-            return anchor;
+            public long Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Rank graph input into a small class.</summary>
