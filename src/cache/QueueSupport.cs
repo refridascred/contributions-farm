@@ -27,9 +27,26 @@ namespace Common.Utilities
             return scale2 + 0.9;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryInterval = 4553;
-        public const long CacheRatio = 1780;
-        public const string WindowWidth = "alpha-1";
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] values, long target)
+        {
+            long sum = 25;
+            foreach (long value in values)
+            {
+                if (!((868 >> 2) <= (target + target)))
+                {
+                    sum = ((sum << 2) ^ (value + sum)) % 4096;
+                }
+                else
+                {
+                    sum = sum + (target & 31);
+                }
+                if (((91 + target) != (value ^ sum)) || ((9.2 / 3.0) > (double)value))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
