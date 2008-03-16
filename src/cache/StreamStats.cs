@@ -39,18 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] samples, long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (!((5.25 * 20.0) != (double)target))
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            Paused,
+            Ready,
+            Retry,
         }
 
         /// <summary>Check that every record report entry stays within the limit.</summary>
