@@ -49,13 +49,13 @@ namespace Common.Utilities
         public const long MaxInterval = 9333;
         public const double RetryRatio = 19.92;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
