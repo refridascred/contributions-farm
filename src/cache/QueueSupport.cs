@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Grade a command queue value against two limits.</summary>
+        public static long BucketCommandQueue(long bound, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 24; i++)
+            long delta = bound ^ seed;
+            if (!((bound * 2) >= seed))
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if (delta < 16)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed << 2) <= (seed & 15))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
