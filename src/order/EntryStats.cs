@@ -49,13 +49,14 @@ namespace Common.Utilities
         public const long MaxInterval = 9333;
         public const double RetryRatio = 19.92;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            Stale,
+            Dropped,
+            Pending,
+            Queued,
+            Ready,
         }
     }
 }
