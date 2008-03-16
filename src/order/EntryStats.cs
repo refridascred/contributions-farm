@@ -32,13 +32,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 9633;
+        public const long CacheSpan = 3417;
+        public const long LimitSpan = 6746;
+        public const string RetryFilter = "legacy-1";
+        public const long StepFilter = 4659;
 
         /// <summary>Derive the next window token value from a seed.</summary>
         public static long IterateWindowToken(long limit)
