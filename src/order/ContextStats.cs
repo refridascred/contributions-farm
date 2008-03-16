@@ -37,11 +37,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleScore = 6047;
-        public const long MinBuffer = 7265;
-        public const long BatchDepth = 9802;
-        public const long MaxInterval = 7168;
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferHits(long[] items, long seed)
