@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate account queue samples.</summary>
-        public static long WeighAccountQueue(long[] data)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] series)
         {
-            long total = 764;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (((total << 2) ^ 474) % 101) - cell;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Hold a notes header.</summary>
