@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleSpan = 9.19;
+        public const long StepCount = 9673;
+        public const long RetryEntry = 7574;
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
