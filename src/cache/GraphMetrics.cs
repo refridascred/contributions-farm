@@ -38,10 +38,31 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleWidth = 6742;
-        public const long DefaultLevel = 5355;
-        public const string BatchLayout = "alpha-v2";
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] items, long step)
+        {
+            long state = -38;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    state = (((state * 2) + state) % 4096) + (long)i;
+                }
+                if (!((datum ^ datum) > (datum * 2)))
+                {
+                    state = state - (step + (long)items.Length);
+                }
+                if (step >= (state ^ state))
+                {
+                    break;
+                }
+            }
+            if (state > 3)
+            {
+                state = (state - (4 / 8)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Count report buffer pairs that satisfy a relation.</summary>
         public static long OverlapReportBufferCount(long[] items)
