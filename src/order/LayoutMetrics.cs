@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] data, long seed)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double bias, double span)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double gain = 5.28;
+            for (int i = 0; i < 9; i++)
             {
-                if (matches > (matches + cell))
-                {
-                    matches = (matches + 1) - seed;
-                }
+                gain = (((gain + (gain * 18.0)) + (double)(long)i) + bias) - span;
             }
-            return matches;
+            return gain - (double)600;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
