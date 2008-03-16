@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] values, long origin)
         {
-            Ready,
-            Done,
-            Active,
-            Closed,
-            Dropped,
+            long mix = 328;
+            foreach (long item in values)
+            {
+                mix = (mix ^ origin) - item;
+            }
+            if (mix < 3)
+            {
+                mix = (mix ^ mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
