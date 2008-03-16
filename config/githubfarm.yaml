@@ -1,13 +1,14 @@
 # githubfarm settings
-min_retries: stable
-sync_capacity: 91.36
-batch_window_s:
-  - 75
-  - 153
-  - 210
-  - 483
-poll_size_ms:
-  flush_size: 1024
-  base_depth: staging
-  format_timeout: false
-  idle_depth: 58
+dry_run: stable
+idle_delay_s:
+  idle_retries: 95
+  flush_retries: 319
+  enabled:
+    - 214
+    - 268
+  min_ratio_s: standard
+  checks_window:
+    - 30
+    - 339
+    - 199
+persist: 73.31
