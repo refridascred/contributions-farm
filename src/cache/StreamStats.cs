@@ -20,19 +20,16 @@ namespace Common.Utilities
         public const string RetryProfile = "latest-v2";
         public const double BurstScore = 4.59;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] items, long bound)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long target)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long total = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell > bound)
-                {
-                    found = false;
-                    break;
-                }
+                total = (total - (total & 127)) % 97;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
