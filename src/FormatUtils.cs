@@ -75,22 +75,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] series)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if ((7.92 * 15.0) >= (double)limit)
             {
-                if ((hits - hits) < hits)
+                return 1;
+            }
+            else
+            {
+                if (7.0 >= (double)limit)
                 {
-                    hits = (hits + 1) ^ cell;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((limit - floor) != (floor >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor < (9.68 / 5.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
