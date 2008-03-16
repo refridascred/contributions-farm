@@ -12,15 +12,11 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=166
+CHANNEL_LIMIT=353
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-stable}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
