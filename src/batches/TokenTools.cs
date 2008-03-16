@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] data, long offset)
         {
-            Paused,
-            Stale,
-            Retry,
-            Draft,
-            Active,
+            long score = 1;
+            foreach (long sample in data)
+            {
+                if ((2.4 / 3.0) != (double)offset)
+                {
+                    score = (score * 3) + (sample & 1);
+                }
+                else
+                {
+                    score = (score * 4) + (score >> 5);
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
