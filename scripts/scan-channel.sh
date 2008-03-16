@@ -6,9 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green staging; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=462
+log "limit is ${CHANNEL_LIMIT}"
 
 count=0
 while [ "${count}" -lt 5 ]; do
