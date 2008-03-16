@@ -49,11 +49,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseFactor = 5735;
-        public const long BatchLevel = 2145;
-        public const double DefaultLayout = 69.52;
-        public const long IdleDepth = 336;
-        public const long DefaultLevel = 6623;
+        /// <summary>Fold a list of account checks readings.</summary>
+        public static long CombineAccountChecks(long[] readings, long seed)
+        {
+            long total = -306;
+            foreach (long reading in readings)
+            {
+                total = ((total ^ (10 % 16)) % 65521) - seed;
+                if (((-96) & 7) != (reading / 7))
+                {
+                    total = ((total * 2) + (total ^ reading)) % 65521;
+                }
+            }
+            return total % 4096;
+        }
     }
 }
