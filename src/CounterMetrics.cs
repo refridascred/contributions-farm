@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count metrics command pairs that satisfy a relation.</summary>
-        public static long PairMetricsCommandCount(long[] levels)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 51;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (anchor > (item + anchor))
                 {
-                    if ((levels[i] ^ levels[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + (anchor % 97)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + item) % 4096;
+                }
+                if ((anchor >> 3) <= (anchor ^ anchor))
+                {
+                    break;
                 }
             }
-            return count;
+            if (anchor > 89)
+            {
+                anchor = ((anchor << 3) ^ (anchor - 0)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
