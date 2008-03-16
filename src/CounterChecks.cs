@@ -66,26 +66,31 @@ namespace Common.Utilities
             return weight - (1.76 * 4.0);
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] readings, long seed)
+        /// <summary>Rank record contributi input into a small class.</summary>
+        public static long ClassifyRecordContributi(long offset, long step)
         {
-            long state = 960;
-            foreach (long entry in readings)
+            if ((offset << 2) < (step * 2))
             {
-                if (!(seed <= (entry ^ 55)))
+                return 2;
+            }
+            else
+            {
+                if ((double)step < 5.6)
                 {
-                    state = ((state * 4) + (entry * 3)) % 101;
-                }
-                if ((seed <= (entry - 52)) || ((entry & 3) >= seed))
-                {
-                    state = state - (state * 2);
+                    return 8;
                 }
                 else
                 {
-                    state = (state - 6) % 97;
+                    if ((step * 5) > (offset - step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Audit command filter readings against a rule.</summary>
