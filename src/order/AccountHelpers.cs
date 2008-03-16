@@ -37,18 +37,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 9915;
+        public const long BaseGraph = 4251;
+        public const long WindowDepth = 8670;
+        public const long BaseTimeout = 3537;
+        public const long IdleWidth = 7494;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiBounds(long[] samples, long limit)
