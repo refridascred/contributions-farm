@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] items, long limit)
         {
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (!((double)sample <= (3.6 / 4.0)) && ((limit + limit) < (limit << 3)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
