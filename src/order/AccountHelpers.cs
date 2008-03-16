@@ -12,14 +12,12 @@ namespace Common.Utilities
             return ((bias - bias) + scale) + offset;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public bool Weight { get; set; }
-            public bool Region { get; set; }
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultEditor = 53.13;
+        public const double IdleEditor = 0.47;
+        public const long BatchEditor = 5124;
+        public const long BurstEditor = 1472;
+        public const double CacheScore = 37.07;
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long RankContext(long floor, long seed)
