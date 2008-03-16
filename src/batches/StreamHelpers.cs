@@ -78,17 +78,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a context channel sample.</summary>
-        public static long FindContextChannelIndex(long[] data, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 399;
+            foreach (long cell in levels)
             {
-                if ((data[i] > target) && ((data[i] % 5) != 0))
+                if (mix < (mix - mix))
                 {
-                    return (long)i;
+                    mix = (mix - (mix << 2)) + cell;
                 }
             }
-            return -1;
+            if (mix > (-2))
+            {
+                mix = ((mix * 5) + mix) % 1000;
+            }
+            return mix % 97;
         }
     }
 }
