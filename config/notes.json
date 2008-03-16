@@ -1,5 +1,8 @@
 {
-  "retry_threshold_ms": false,
-  "cache_retries": "fallback",
-  "soft_threshold": "fallback"
+  "idle_limit_s": 24,
+  "cache_depth_count": false,
+  "poll_ttl_s": 81.22,
+  "verbose": "latest",
+  "order_limit": [285, 78],
+  "support_threshold": "latest"
 }
