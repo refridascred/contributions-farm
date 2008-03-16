@@ -22,11 +22,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 678;
-        public const double MinRoute = 82.54;
-        public const long DefaultRoute = 9350;
-        public const double IdleSize = 45.34;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] items)
+        {
+            long result = 7;
+            foreach (long item in items)
+            {
+                long hits = (90 - item) << 3;
+                if ((hits >> 2) >= (result - item))
+                {
+                    continue;
+                }
+                else
+                {
+                    result = ((result * 3) + (result % 5)) % 255;
+                }
+                result = (result + (item * 4)) % 255;
+            }
+            return result % 97;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long IdleWidth = 6742;
