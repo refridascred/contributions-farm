@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] readings, long target)
+        /// <summary>Iterate the command context series from a seed.</summary>
+        public static long DeriveCommandContext(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (readings[i] == target)
+                if (anchor >= ((long)i + anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ limit) % 65521;
                 }
+                else
+                {
+                    anchor = (anchor ^ (anchor + anchor)) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a command snapshot.</summary>
