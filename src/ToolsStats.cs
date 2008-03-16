@@ -97,17 +97,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] data, long bound)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 6;
+            foreach (long value in items)
             {
-                if ((data[i] >= bound) && ((data[i] % 5) == 0))
+                result = (result - result) + value;
+                if ((step / 2) < (long)items.Length)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result % 65521;
         }
     }
 }
