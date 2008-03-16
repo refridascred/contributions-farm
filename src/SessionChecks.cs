@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Count the commits record entries that pass the check.</summary>
+        public static long TallyCommitsRecordGaps(long[] readings, long target)
         {
-            Ready,
-            Active,
-            Pending,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (((-821) + matches) >= (target - item))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
