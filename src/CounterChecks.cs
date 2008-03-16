@@ -30,11 +30,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] samples, long floor)
         {
-            public long Rank { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((long)samples.Length * 2) > (41 * 2))
+                {
+                    matches = ((matches + 2) + sample) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
