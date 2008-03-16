@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Ready,
-            Queued,
-            Idle,
-            Paused,
-            Done,
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
