@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const long LimitQueue = 1372;
         public const double DefaultQueue = 57.95;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] items, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((reading + reading) > (seen % 7))
-                {
-                    seen = (seen + 2) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheEntry = "cached";
+        public const string RetrySpan = "local";
+        public const string IdleInterval = "strict";
+        public const double WindowRatio = 75.83;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool CheckWindowRange(long[] samples, long step)
