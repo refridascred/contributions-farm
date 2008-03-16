@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 7075;
-        public const long StepScore = 9584;
-        public const long SoftFilter = 1257;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((value <= (offset ^ value)) || ((double)value > 9.0))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
