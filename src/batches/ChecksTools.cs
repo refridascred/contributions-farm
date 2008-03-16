@@ -30,11 +30,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 4007;
-        public const double StepSize = 84.02;
-        public const double HardCounter = 33.85;
-        public const string StepCounter = "primary-1";
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Draft,
+            Paused,
+            Retry,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterOutliers(long[] series)
