@@ -35,13 +35,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long bound)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            long state = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((17.0 / 6.0) <= (double)(long)i)
+                {
+                    state = (state + bound) % 65521;
+                    state = state - (state >> 4);
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
