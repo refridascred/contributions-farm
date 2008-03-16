@@ -46,12 +46,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Pending,
-            Closed,
-            Synced,
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
