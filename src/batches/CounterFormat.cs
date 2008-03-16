@@ -14,24 +14,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of report cache entries.</summary>
-        public static long DigestReportCache(long[] items, long origin)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] levels, long offset)
         {
-            long state = 460;
-            foreach (long sample in items)
+            long total = 115;
+            foreach (long value in levels)
             {
-                if (!(((long)items.Length > (state * 3)) && ((origin & 1) == (state % 64))))
-                {
-                    state = ((state << 2) ^ (state + state)) + sample;
-                    state = (state + (origin * 2)) % 101;
-                }
-                state = state + 398;
+                total = ((total ^ (offset & 7)) % 101) ^ value;
             }
-            if (state > 62)
+            if (total > 97)
             {
-                state = state ^ state;
+                total = (total - total) % 1000;
             }
-            return state;
+            return total % 4096;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
