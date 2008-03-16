@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultDepth = 9106;
-        public const long RetryLevel = 5692;
-        public const double BurstLevel = 71.17;
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
+        {
+            Ready,
+            Closed,
+            Locked,
+            Retry,
+            New,
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
