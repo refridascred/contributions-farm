@@ -41,18 +41,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the checks githubfarm entries that pass the check.</summary>
-        public static long CountChecksGithubfarmGaps(long[] levels)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double ratio = weight;
+            for (int i = 0; i < 8; i++)
             {
-                if (((datum / 2) < (datum & 63)) || ((datum + hits) != (hits / 7)))
-                {
-                    hits = hits + 3;
-                }
+                ratio = ((ratio + weight) + (double)(long)i) - floor;
             }
-            return hits;
+            return ratio + ratio;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
