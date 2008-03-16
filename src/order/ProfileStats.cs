@@ -16,39 +16,18 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long floor, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] samples, long step)
         {
-            long span = floor ^ target;
-            if ((double)target >= (double)2)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((0 - target) > span)
+                if (reading <= (hits << 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target >> 4) != (floor - target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((floor / 7) != (target / 6)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = (hits + 3) + step;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
