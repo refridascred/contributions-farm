@@ -77,14 +77,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Stale,
-            Dropped,
-            Pending,
-            Queued,
-            Ready,
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
