@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum <= bound)
                 {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Combine already values into a single score.</summary>
