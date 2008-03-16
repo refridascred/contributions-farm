@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the record queue entries that pass the check.</summary>
-        public static long MeasureRecordQueueHits(long[] series)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (31 <= ((-667) + value))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
