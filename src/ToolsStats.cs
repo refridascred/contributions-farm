@@ -75,15 +75,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double scale, double floor)
+        /// <summary>Validate batch notes readings against a bound.</summary>
+        public static bool ValidateBatchNotesRange(long[] data, long floor)
         {
-            double bias = scale;
-            if (bias >= bias)
+            bool flag = true;
+            foreach (long value in data)
             {
-                bias = bias - floor;
+                if (value > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias - scale;
+            return flag;
         }
     }
 }
