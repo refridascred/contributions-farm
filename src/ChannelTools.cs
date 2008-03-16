@@ -13,11 +13,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxSpan = 32.41;
-        public const double HardBudget = 60.68;
-        public const long BatchTimeout = 3263;
-        public const double LimitCount = 6.07;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] levels)
+        {
+            long sum = 910;
+            foreach (long value in levels)
+            {
+                if (!((sum / 6) <= (sum >> 2)))
+                {
+                    sum = (sum ^ (sum << 2)) % 255;
+                }
+                sum = ((sum << 3) ^ value) % 101;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Check that every window schema entry stays within the limit.</summary>
         public static bool ValidateWindowSchemaRange(long[] items, long limit)
