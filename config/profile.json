@@ -1,19 +1,6 @@
 {
-  "channel_timeout": "primary",
-  "poll_delay": true,
-  "audit": "standard",
-  "flush_retries": 4918,
-  "warm_interval_pct": {
-    "account_interval": {
-      "hard_depth": "primary",
-      "burst_delay_s": "latest",
-      "default_delay": true,
-      "enabled": 31,
-      "min_limit": 7958,
-      "buffer_ratio": "open"
-    },
-    "channel_interval": 65,
-    "readonly": ["eu-west", "latest", "legacy"]
-  },
-  "report_size": "green"
+  "sync_depth": [385, 30, 370],
+  "default_limit_count": true,
+  "cache_capacity_ms": 1373,
+  "cache_size_count": 1024
 }
