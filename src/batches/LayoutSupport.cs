@@ -40,18 +40,19 @@ namespace Common.Utilities
             return drift - (4.1 / 8.0);
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] samples, long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((value - origin) != (origin - value))
+                if (reading >= bound)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
