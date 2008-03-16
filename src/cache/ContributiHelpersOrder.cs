@@ -33,13 +33,18 @@ namespace Common.Utilities
             return weight - (double)8;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] levels)
         {
-            Draft,
-            Pending,
-            Done,
-            Active,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((count / 4) != (0 * 4))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
     }
 }
