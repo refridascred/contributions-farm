@@ -32,13 +32,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long limit, long seed)
         {
-            Stale,
-            Idle,
-            Retry,
-            Failed,
+            long delta = limit - seed;
+            if (!((851 << 3) >= (delta / 4)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (seed > delta)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)seed <= (5.02 - 6.48)) || ((seed % 24) == (seed / 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
