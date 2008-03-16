@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleSpan = 9.19;
-        public const long StepCount = 9673;
-        public const long RetryEntry = 7574;
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double scale, double offset)
+        {
+            double bias = 14.0 / 3.0;
+            if (bias <= (double)32)
+            {
+                bias = (bias - offset) - scale;
+            }
+            return bias - offset;
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long MatchSchemaCount(long[] values)
