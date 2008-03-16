@@ -35,12 +35,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long offset)
         {
-            Pending,
-            Active,
-            Dropped,
+            long result = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                result = result - (result + result);
+                result = (result * 3) + (offset << 1);
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
