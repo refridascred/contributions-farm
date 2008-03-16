@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] series, long origin)
         {
-            long score = 3;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long value in series)
             {
-                score = ((score << 2) ^ (score >> 5)) % 255;
-                if (((score & 127) > (score * 4)) || ((5.0 - 13.0) > (double)cell))
+                if (value < origin)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return score % 65521;
+            return flag;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
