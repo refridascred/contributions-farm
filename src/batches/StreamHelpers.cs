@@ -28,14 +28,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Locate a farm commits reading by value.</summary>
+        public static long FindFarmCommitsIndex(long[] samples, long bound)
         {
-            Ready,
-            Closed,
-            Queued,
-            Locked,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
