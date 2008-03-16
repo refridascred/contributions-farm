@@ -13,10 +13,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 4400;
-        public const long SoftNotes = 4026;
-        public const long CacheFactor = 6032;
+        /// <summary>Roll a cache tools counter forward.</summary>
+        public static long StepCacheTools(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long DeriveStats(long seed)
