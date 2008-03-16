@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Synced,
-            Failed,
-            Dropped,
-            Ready,
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
