@@ -1,8 +1,8 @@
 {
-  "burst_size_pct": 1,
-  "soft_ttl_ms": "legacy",
-  "support_ttl": "green",
-  "profile_delay": 7900,
-  "flush_limit_count": 7909,
-  "min_capacity_ms": 23.76
+  "base_ttl": false,
+  "verbose": true,
+  "base_delay": "blue",
+  "default_limit_count": ["fallback", "green"],
+  "min_size_s": 6458,
+  "sync_depth_ms": false
 }
