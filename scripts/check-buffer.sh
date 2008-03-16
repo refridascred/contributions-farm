@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=409
-log "limit is ${BUFFER_LIMIT}"
-
-for item in cached eu-west blue; do
+for item in edge green eu-west blue; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=332
+log "limit is ${BUFFER_LIMIT}"
