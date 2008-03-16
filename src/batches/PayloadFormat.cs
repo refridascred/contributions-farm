@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] items, long seed)
+        /// <summary>Roll a record metric counter forward.</summary>
+        public static long SeriesRecordMetric(long origin)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((cell >> 5) <= (33 + seen))
+                if ((origin & 127) > ((long)i % 60))
                 {
-                    seen = (seen + 3) + seed;
+                    mix = mix + origin;
+                    break;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
