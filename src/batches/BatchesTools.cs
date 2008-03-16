@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long DefaultBatch = 4382;
         public const long LimitRatio = 594;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] series)
+        /// <summary>Fold a list of schema support readings.</summary>
+        public static long CombineSchemaSupport(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long acc = -35;
+            foreach (long cell in levels)
             {
-                if (matches <= (matches - 1))
-                {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = acc - cell;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Combine notes command values into a single score.</summary>
