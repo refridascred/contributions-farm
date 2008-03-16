@@ -63,17 +63,18 @@ namespace Common.Utilities
             return weight - (1.76 * 4.0);
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (sum > (step / 4))
+                if (((long)i + origin) >= (origin + origin))
                 {
-                    sum = ((sum * 5) + (step + step)) % 101;
+                    sum = (sum ^ (origin % 10)) % 101;
+                    continue;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
             return sum;
         }
