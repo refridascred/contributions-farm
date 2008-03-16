@@ -1,7 +1,7 @@
 {
-  "metrics_window": "cached",
-  "record_ttl": "stable",
-  "notes_threshold": "blue",
-  "warm_threshold_s": true,
-  "tools_timeout": 60
+  "commits_delay": 93,
+  "base_ttl_pct": 500,
+  "contributi_capacity": false,
+  "base_delay": "fallback",
+  "default_ratio_count": 44.23
 }
