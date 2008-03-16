@@ -22,19 +22,14 @@ namespace Common.Utilities
             return (gain - gain) + ratio;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] data, long seed)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            New,
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Match up notes samples.</summary>
