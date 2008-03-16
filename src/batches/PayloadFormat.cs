@@ -56,17 +56,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] samples, long seed)
+        /// <summary>Rank githubfarm profile input into a small class.</summary>
+        public static long ClassifyGithubfarmProfile(long offset, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (target <= (offset & 15))
             {
-                if (samples[i] < seed)
+                return 1;
+            }
+            else
+            {
+                if (((offset + 4) < offset) || ((target - offset) >= (offset + offset)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
