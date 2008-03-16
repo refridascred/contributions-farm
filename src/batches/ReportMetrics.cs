@@ -15,21 +15,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] readings)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long step, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long slot = step ^ bound;
+            if (((step + bound) != (bound - bound)) && ((slot / 8) != (slot ^ step)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((62 >> 3) >= (bound % 12)) || (slot >= (step % 5)))
                 {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
