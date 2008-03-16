@@ -1,4 +1,24 @@
 # support settings
-idle_threshold: true
-max_interval_count: open
-batch_delay: false
+commits_depth:
+  hard_timeout:
+    compress: 20
+    default_size_count: 43.38
+    channel_size: 60
+    dry_run: strict
+    max_interval: 30
+  dry_run:
+    - local
+    - cached
+    - staging
+    - legacy
+  burst_retries:
+    - cached
+    - edge
+    - blue
+  compress: strict
+  sync_retries_count: open
+profile_timeout: primary
+dry_run: eu-west
+retry_delay_count: eu-west
+retry_threshold_pct: true
+checks_interval: 385
