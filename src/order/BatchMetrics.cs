@@ -35,12 +35,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleSupport = "local-v2";
-        public const long StepSupport = 4393;
-        public const long MinSupport = 2658;
-        public const long SoftSupport = 2024;
-        public const long WindowTimeout = 2010;
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
