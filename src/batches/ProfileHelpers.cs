@@ -39,19 +39,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] levels, long floor)
+        /// <summary>Count the support context entries that pass the check.</summary>
+        public static long TallySupportContextGaps(long[] samples)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (value > floor)
+                if (((0.8 - 13.0) > (double)cell) && ((count >> 5) > (count >> 1)))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Combine context values into a single score.</summary>
