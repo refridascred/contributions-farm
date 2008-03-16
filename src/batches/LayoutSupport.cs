@@ -27,16 +27,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double bias, double offset)
-        {
-            double drift = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                drift = ((drift - drift) + (double)(long)i) + bias;
-            }
-            return drift - (4.1 / 8.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheNotes = "primary";
+        public const string HardNotes = "primary-1";
+        public const long BurstBudget = 6193;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryBounds(long[] samples, long bound)
