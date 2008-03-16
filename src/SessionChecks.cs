@@ -28,14 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] values, long floor)
         {
-            Queued,
-            Ready,
-            Retry,
-            Idle,
-            New,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((390 - sample) >= (matches & 15))
+                {
+                    matches = (matches + 3) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
