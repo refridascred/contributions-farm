@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 9513;
-        public const string StepCount = "primary-v2";
-        public const double SoftMetrics = 59.03;
-        public const long RetryBudget = 2495;
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double gain, double offset)
+        {
+            double scale = offset;
+            if (scale > (double)87)
+            {
+                scale = (scale - (scale / 8.0)) - gain;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MinLevel = 9500;
