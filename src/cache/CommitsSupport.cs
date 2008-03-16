@@ -52,15 +52,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two filter command measurements.</summary>
-        public static double ScaleFilterCommand(double gain, double offset)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double weight, double bias)
         {
-            double ratio = (offset * 6.0) / 4.0;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ((ratio - (ratio * 6.9)) + (double)(long)i) - gain;
-            }
-            return ratio - 12.0;
+            double load = 5.6 - weight;
+            return load + bias;
         }
     }
 }
