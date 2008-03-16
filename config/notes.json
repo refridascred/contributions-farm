@@ -1,6 +1,13 @@
 {
-  "max_window_ms": 58,
-  "max_interval_count": 1024,
-  "persist": 3638,
-  "farm_size": "edge"
+  "command_delay": 35,
+  "verbose": {
+    "checks_size": 79.31,
+    "idle_ratio_s": true,
+    "report_timeout": "primary",
+    "report_interval": 98.56
+  },
+  "hard_depth_count": 90.61,
+  "strict": "staging",
+  "buffer_limit": "open",
+  "audit": false
 }
