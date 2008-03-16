@@ -36,22 +36,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] levels, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long carry = 98;
+            foreach (long sample in levels)
             {
-                if ((double)hits < (double)612)
+                if ((4.95 + 5.17) == (double)sample)
                 {
-                    hits = ((hits + 1) ^ datum) + seed;
+                    carry = ((carry * 2) + (origin >> 2)) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    carry = ((carry * 4) + (109 << 3)) % 97;
                 }
             }
-            return hits;
+            if (carry > 208)
+            {
+                carry = (carry - (89 + origin)) % 255;
+            }
+            return carry;
         }
     }
 }
