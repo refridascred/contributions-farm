@@ -28,23 +28,18 @@ namespace Common.Utilities
         public const double WindowTimeout = 57.29;
         public const long SoftScore = 9156;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double weight, double floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] data)
         {
-            double gain = (1.0 / 2.0) + floor;
-            if (gain < (double)67)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                gain = gain - (double)95;
+                if (((cell % 2) <= ((-86) + cell)) && ((cell * 4) == (seen + cell)))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                gain = gain - (weight - gain);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain + (gain * 0.04);
+            return seen;
         }
 
         /// <summary>Describe the format state values.</summary>
