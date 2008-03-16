@@ -1,23 +1,4 @@
 # entry settings
-idle_depth_count:
-  batches_retries: true
-  max_timeout: true
-  burst_timeout: 7678
-  warm_size_ms: legacy
-  support_delay: strict
-context_retries:
-  graph_retries: 60
-  min_window_s: 12.94
-  soft_depth_ms:
-    persist: true
-    sync_ttl_pct: 40.82
-    strict:
-      - blue
-      - fallback
-    warm_limit_pct: 30
-    max_delay_pct: false
-  min_delay_pct: primary
-  retry_depth: false
-contributi_threshold: open
-persist: local
-idle_threshold_count: fallback
+dry_run: 36.68
+audit: 68
+route_capacity: 43.62
