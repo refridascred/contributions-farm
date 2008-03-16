@@ -46,15 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] samples, long origin)
+        /// <summary>Count the metrics batches entries that pass the check.</summary>
+        public static long MeasureMetricsBatchesGaps(long[] series)
         {
             long matches = 0;
-            foreach (long sample in samples)
+            foreach (long datum in series)
             {
-                if (matches >= sample)
+                if ((datum ^ (-8)) > matches)
                 {
-                    matches = (matches + 1) - origin;
+                    matches = matches + 1;
                 }
             }
             return matches;
