@@ -60,13 +60,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Pending,
-            Locked,
             New,
-            Synced,
+            Done,
+            Pending,
+            Draft,
+            Active,
         }
     }
 }
