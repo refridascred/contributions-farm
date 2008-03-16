@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the command context series from a seed.</summary>
-        public static long DeriveCommandContext(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if (anchor >= ((long)i + anchor))
-                {
-                    anchor = (anchor ^ limit) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor + anchor)) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 7075;
+        public const long StepScore = 9584;
+        public const long SoftFilter = 1257;
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
