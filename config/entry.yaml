@@ -1,10 +1,24 @@
 # entry settings
-soft_window_s: fallback
-flush_depth: 9451
-idle_capacity: 50
-audit: 76
-readonly:
-  - 416
-  - 483
-  - 329
-  - 374
+max_threshold_count: staging
+retry_retries_s: strict
+warm_threshold_s:
+  - local
+  - green
+poll_ratio_count:
+  soft_interval_ms: false
+  route_interval:
+    layout_ttl: 45
+    layout_ratio: 95
+    flush_retries: edge
+    flush_timeout_s: 250
+    tools_retries: 60
+  hard_timeout_count:
+    githubfarm_limit: stable
+    default_retries_s:
+      - legacy
+      - primary
+      - local
+    min_ratio: 250
+    retry_ratio: false
+    cache_interval_count: 868
+persist: 32
