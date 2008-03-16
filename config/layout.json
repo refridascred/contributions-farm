@@ -1,5 +1,7 @@
 {
-  "editor_limit": 27,
-  "route_limit": 65.11,
-  "warm_delay": [347, 252, 253]
+  "compress": [406, 122],
+  "readonly": "standard",
+  "layout_interval": 60,
+  "poll_depth": "cached",
+  "warm_interval_s": 88
 }
