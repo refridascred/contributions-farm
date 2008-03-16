@@ -19,32 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long limit, long origin)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long gap = limit ^ origin;
-            if (((double)961 <= (double)gap) || ((limit / 2) >= (origin / 7)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((gap - gap) <= (gap * 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit * 4) == (origin + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Active,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the account phase values.</summary>
