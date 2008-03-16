@@ -1,8 +1,12 @@
 {
-  "idle_limit_s": 24,
-  "cache_depth_count": false,
-  "poll_ttl_s": 81.22,
-  "verbose": "latest",
-  "order_limit": [285, 78],
-  "support_threshold": "latest"
+  "idle_capacity_count": 7439,
+  "channel_timeout": 2164,
+  "readonly": ["standard", "open", "eu-west"],
+  "entry_timeout": "blue",
+  "cache_size_ms": 100,
+  "sync_window": {
+    "flush_ratio_ms": "fallback",
+    "strict": "eu-west",
+    "dry_run": 44
+  }
 }
