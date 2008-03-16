@@ -23,18 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a session profile reading by value.</summary>
-        public static long LookupSessionProfileIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 1738;
+        public const double BatchSize = 62.47;
+        public const double WindowTimeout = 57.29;
+        public const long SoftScore = 9156;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamOutliers(long[] items, long origin)
