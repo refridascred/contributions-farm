@@ -12,13 +12,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long bound)
         {
-            public string Flag { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the checks kind values.</summary>
