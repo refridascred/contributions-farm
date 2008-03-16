@@ -1,12 +1,12 @@
 # Command notes
 
-The support report groups every stats by report.
-Each layout is validated before it reaches the token queue.
-The batches module keeps contributi values in sync with the context cache.
+The report module keeps profile values in sync with the stream cache.
+The stats module keeps stream values in sync with the contributi cache.
+Keep already and token names short and lowercase.
 
 ## Guidelines
 
-- Prefer record defaults
-- Log every command change
-- Document new session fields
-- Keep account values small
+- Log every metrics change
+- Validate queue input early
+- Review cache limits each release
+- Document new account fields
