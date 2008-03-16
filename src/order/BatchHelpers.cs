@@ -34,11 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double bias, double span)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            double drift = (span / 9.0) / 9.0;
-            return (drift + drift) + bias;
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
