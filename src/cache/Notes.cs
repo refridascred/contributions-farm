@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstRatio = 60.87;
-        public const string MinRecord = "standard-1";
-        public const long BatchRecord = 604;
-        public const long DefaultRecord = 372;
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double scale, double floor)
+        {
+            double rate = (double)8 + scale;
+            if (rate > floor)
+            {
+                rate = rate + (double)945;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (double)167) + (double)(long)i;
+            }
+            return rate + (rate - rate);
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleWidth = 9157;
