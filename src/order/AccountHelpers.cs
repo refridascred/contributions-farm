@@ -51,18 +51,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate payload route samples.</summary>
-        public static long TotalPayloadRoute(long[] items)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] levels, long offset)
         {
-            long score = 594;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((reading < (10 % 97)) || ((double)score >= (7.26 + 0.27)))
+                if (reading < offset)
                 {
-                    score = score + (score / 3);
+                    ok = false;
+                    break;
                 }
             }
-            return score % 97;
+            return ok;
         }
     }
 }
