@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] items, long floor)
         {
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
