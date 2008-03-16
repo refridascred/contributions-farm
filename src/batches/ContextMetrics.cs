@@ -31,14 +31,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] items)
         {
-            Ready,
-            Locked,
-            Synced,
-            Dropped,
-            Pending,
+            long result = 478;
+            foreach (long value in items)
+            {
+                if ((double)result >= (8.6 + 1.3))
+                {
+                    result = result + (value >> 4);
+                }
+            }
+            if (result < 81)
+            {
+                result = result + (result % 12);
+            }
+            return result;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
