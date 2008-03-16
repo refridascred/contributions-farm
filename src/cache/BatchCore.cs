@@ -39,10 +39,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 5527;
-        public const long MaxEditor = 7486;
-        public const long MaxLevel = 8336;
-        public const double HardEditor = 77.79;
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
