@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public bool Total { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardLevel = 9785;
+        public const long IdleBudget = 4184;
+        public const long HardCount = 8098;
+        public const double RetryBatches = 75.65;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long HardSize = 8726;
