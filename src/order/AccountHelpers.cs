@@ -14,17 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] values, long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 958;
+            foreach (long item in samples)
             {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
+                mark = (mark + (mark - item)) % 1000;
             }
-            return -1;
+            if (mark > 9)
+            {
+                mark = mark + (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Hold a report stats.</summary>
