@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((((long)i + (long)i) > (total + (-37))) || ((double)total != (double)limit))
-                {
-                    total = (total + (total + (long)i)) % 255;
-                }
-                if ((total - (-5)) >= total)
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
