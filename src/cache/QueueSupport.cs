@@ -16,15 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double scale, double floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] data, long offset)
         {
-            double scale2 = floor / 4.0;
-            if (scale2 > 9.3)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale2 = (scale2 + 8.88) + scale;
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return scale2 + 0.9;
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
