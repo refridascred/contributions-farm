@@ -48,21 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] values)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two counter measurements.</summary>
