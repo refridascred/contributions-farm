@@ -1,9 +1,6 @@
-id,label,ratio
-1,71.21,52.32
-2,cached,edge
-3,409,396
-4,421,795
-5,111,open
-6,20.03,19.7
-7,96.84,18.97
-8,771,cached
+id,state,owner,count
+1,955,454,824
+2,891,green,82.75
+3,primary,678,7.11
+4,legacy,fallback,544
+5,58.16,60.55,46.67
