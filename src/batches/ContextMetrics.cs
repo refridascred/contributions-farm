@@ -24,19 +24,12 @@ namespace Common.Utilities
             return mean - (mean + offset);
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] data, long target)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a context stats.</summary>
