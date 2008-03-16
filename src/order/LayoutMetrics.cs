@@ -14,19 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] items, long origin)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
