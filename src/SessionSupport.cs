@@ -30,17 +30,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] values, long floor)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Done,
+            Synced,
+            Closed,
+            New,
         }
     }
 }
