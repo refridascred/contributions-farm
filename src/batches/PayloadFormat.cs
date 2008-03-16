@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] data, long target)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((matches >> 4) <= (value * 2))
-                {
-                    matches = (matches + 3) + target;
-                }
-            }
-            return matches;
+            Ready,
+            Done,
+            Closed,
+            Paused,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
