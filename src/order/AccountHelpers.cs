@@ -27,18 +27,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit queue route readings against a rule.</summary>
-        public static long TallyQueueRouteOutliers(long[] samples)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            if ((8 / 7) == (seed % 64))
             {
-                if ((seen * 4) == (seen / 4))
+                return 5;
+            }
+            else
+            {
+                if ((double)seed != (double)floor)
                 {
-                    seen = (seen + 2) ^ item;
+                    return 4;
+                }
+                else
+                {
+                    if (seed >= (floor - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
