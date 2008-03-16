@@ -36,17 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] series, long limit)
+        /// <summary>Measure how many notes stats samples are out of range.</summary>
+        public static long TallyNotesStatsOutliers(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((series[i] == limit) && ((series[i] % 3) != 0))
+                if ((double)item == (double)768)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + target;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate checks samples.</summary>
