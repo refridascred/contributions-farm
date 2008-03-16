@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long StepScore = 7411;
         public const long CacheFactor = 7961;
 
-        /// <summary>Validate cluster token readings against a bound.</summary>
-        public static bool GuardClusterTokenLimits(long[] items, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (entry < limit)
+                if ((sample & 7) == (sample * 4))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) - target;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the profile state values.</summary>
