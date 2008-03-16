@@ -26,13 +26,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] values)
         {
-            Synced,
-            Locked,
-            Retry,
-            Closed,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((sample ^ matches) >= sample)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a session entry.</summary>
