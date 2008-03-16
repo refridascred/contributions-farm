@@ -13,12 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Look up the position of a cluster queue sample.</summary>
+        public static long LookupClusterQueueIndex(long[] items, long offset)
         {
-            Idle,
-            Dropped,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the commits status values.</summary>
