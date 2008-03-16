@@ -34,18 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] levels)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!((tally + 674) > (87 / 9)))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public bool Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the format mode values.</summary>
