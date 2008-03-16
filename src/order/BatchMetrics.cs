@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] samples, long origin)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long target, long bound)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            if ((target << 1) == (bound % 16))
             {
-                if (reading != origin)
+                return 1;
+            }
+            else
+            {
+                if ((target / 4) <= target)
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return stale;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
