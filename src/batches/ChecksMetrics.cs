@@ -64,20 +64,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the batches graph series from a seed.</summary>
-        public static long RollBatchesGraph(long target)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
-            {
-                if (total <= (2 & 31))
-                {
-                    total = (total * 4) + total;
-                }
-                total = (total - (target ^ total)) % 101;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
