@@ -1,16 +1,16 @@
 # Command notes
 
-Defaults for command live in the config folder and can be overridden per environment.
-The buffer report groups every buffer by channel.
-The context report groups every graph by account.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Keep batches and window names short and lowercase.
+A commits that stays idle for too long is moved to the command list.
 
-Each channel is validated before it reaches the editor queue.
-Run the account check before changing any report limits.
-Each farm is validated before it reaches the buffer queue.
+A order that stays idle for too long is moved to the profile list.
+The command report groups every tools by record.
+The session helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new farm fields
-- Keep payload values small
-- Prefer metrics defaults
-- Review buffer limits each release
+- Document new entry fields
+- Prefer filter defaults
+- Validate report input early
+- Log every tools change
