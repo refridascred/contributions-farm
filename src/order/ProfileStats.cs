@@ -33,17 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a window batch sample.</summary>
-        public static long LocateWindowBatchIndex(long[] values, long step)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a support counter forward.</summary>
