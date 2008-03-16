@@ -52,11 +52,16 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheSpan = 1606;
-        public const long SoftInterval = 5925;
-        public const long BatchRatio = 8085;
-        public const string MinInterval = "standard";
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double gain, double span)
+        {
+            double weight = (gain + 2.0) - (span - span);
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + gain) + (double)(long)i;
+            }
+            return weight - gain;
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long origin)
