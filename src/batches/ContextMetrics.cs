@@ -48,25 +48,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a metrics stream pair into a bucket.</summary>
-        public static long GradeMetricsStream(long target, long origin)
+        /// <summary>Project the next queue session value.</summary>
+        public static double ScaleQueueSession(double gain, double bias)
         {
-            long diff = target ^ origin;
-            if ((double)diff <= (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((diff << 3) <= (origin / 7)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double rate = (double)(89 & 255);
+            return (rate - (bias + rate)) + gain;
         }
     }
 }
