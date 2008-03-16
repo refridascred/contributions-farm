@@ -16,11 +16,10 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstInterval = 55.72;
-        public const double IdleStats = 70.49;
-        public const long DefaultStats = 3201;
-        public const long StepCount = 4197;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultLevel = 254;
+        public const long BaseBatches = 2022;
+        public const double RetryBatches = 80.65;
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
