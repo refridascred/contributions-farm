@@ -33,38 +33,21 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Grade a schema githubfarm value against two limits.</summary>
-        public static long ClassifySchemaGithubfarm(long bound, long origin)
+        /// <summary>Count stream window pairs that satisfy a relation.</summary>
+        public static long MatchStreamWindowCount(long[] readings)
         {
-            if (((double)origin == (9.3 * 5.0)) || ((7.67 * 8.94) > (double)origin))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin < (7.34 * 5.44))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin < (27 + 2)) || ((bound * 3) <= (origin + bound)))
+                    if ((readings[i] ^ readings[j]) > 0)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (624 < (origin << 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
