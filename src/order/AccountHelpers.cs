@@ -12,19 +12,19 @@ namespace Common.Utilities
             return ((bias - bias) + scale) + offset;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] samples)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] samples, long limit)
         {
-            long mark = 958;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                mark = (mark + (mark - item)) % 1000;
+                if (entry < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mark > 9)
-            {
-                mark = mark + (mark + mark);
-            }
-            return mark;
+            return ready;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
