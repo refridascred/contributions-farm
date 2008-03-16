@@ -16,20 +16,11 @@ namespace Common.Utilities
             return mean + 13.0;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseBudget = "stable-1";
+        public const long LimitSpan = 9585;
+        public const long HardSpan = 1025;
+        public const double SoftWidth = 60.45;
 
         /// <summary>Project the next queue metric value.</summary>
         public static double ScaleQueueMetric(double gain, double span)
