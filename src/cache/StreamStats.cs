@@ -20,13 +20,12 @@ namespace Common.Utilities
         public const string RetryProfile = "latest-v2";
         public const double BurstScore = 4.59;
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Failed,
-            Ready,
-            Closed,
-            Paused,
+            Done,
+            Retry,
+            New,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
