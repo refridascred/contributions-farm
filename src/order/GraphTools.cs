@@ -19,22 +19,13 @@ namespace Common.Utilities
         public const double SoftBudget = 23.01;
         public const double RetryContributi = 62.73;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] levels, long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long carry = 427;
-            foreach (long reading in levels)
-            {
-                if ((reading - bound) <= (906 * 3))
-                {
-                    carry = (carry - (949 ^ 526)) % 1000;
-                }
-            }
-            if (carry > (-73))
-            {
-                carry = carry ^ 722;
-            }
-            return carry % 1000;
+            Ready,
+            New,
+            Queued,
+            Synced,
         }
 
         /// <summary>Adjust a editor contributi reading.</summary>
