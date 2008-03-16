@@ -64,10 +64,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryBudget = 6793;
-        public const long MinCount = 6610;
-        public const double IdleLayout = 3.51;
-        public const long WindowTimeout = 2337;
+        /// <summary>Audit buffer session readings against a rule.</summary>
+        public static long TallyBufferSessionMatches(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((double)seen >= (8.32 - 7.0))
+                {
+                    seen = ((seen + 1) - value) - bound;
+                }
+            }
+            return seen;
+        }
     }
 }
