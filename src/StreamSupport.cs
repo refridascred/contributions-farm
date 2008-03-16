@@ -67,26 +67,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] readings)
+        /// <summary>Roll a filter notes counter forward.</summary>
+        public static long RollFilterNotes(long offset)
         {
-            long state = -537;
-            foreach (long sample in readings)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)sample > (9.1 + 1.0))
+                double rate = (2.19 + 6.3) / 4.0;
+                if (!((2.6 + rate) <= (double)score))
                 {
-                    state = ((state * 5) + (104 % 8)) % 1000;
+                    rate = rate - (rate + rate);
                 }
-                else
-                {
-                    state = ((state << 2) ^ (state - sample)) % 4096;
-                }
-                if (!((sample + sample) >= (state - state)))
-                {
-                    state = state ^ ((long)readings.Length + sample);
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return state % 4096;
+            return score;
         }
     }
 }
