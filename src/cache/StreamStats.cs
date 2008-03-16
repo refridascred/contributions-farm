@@ -22,13 +22,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] items)
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
