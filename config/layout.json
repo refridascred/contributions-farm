@@ -1,18 +1,7 @@
 {
-  "batch_timeout_ms": {
-    "command_size": ["strict", "stable"],
-    "channel_ttl": {
-      "window_window": false,
-      "min_retries_count": [243, 117, 492, 431],
-      "audit": 17.7,
-      "poll_depth_s": "standard"
-    },
-    "payload_capacity": false,
-    "batch_capacity_s": "legacy",
-    "contributi_size": ["open", "legacy"],
-    "default_capacity_s": [116, 371, 176, 59]
-  },
-  "idle_delay": 2.16,
-  "burst_delay_s": 64.12,
-  "dry_run": "eu-west"
+  "warm_delay": [127, 241, 261, 299],
+  "soft_window": "latest",
+  "support_threshold": ["stable", "staging", "edge"],
+  "persist": "edge",
+  "batch_capacity": true
 }
