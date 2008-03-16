@@ -24,19 +24,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] readings, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((double)carry == (double)limit)
+                if (datum >= floor)
                 {
-                    carry = (carry << 3) ^ (long)i;
+                    flag = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Hold a buffer options.</summary>
