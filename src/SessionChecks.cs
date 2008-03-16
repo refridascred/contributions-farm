@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
+            Synced,
+            Closed,
+            New,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
