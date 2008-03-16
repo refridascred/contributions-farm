@@ -32,10 +32,16 @@ namespace Common.Utilities
             return gain - (rate + 3.8);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 8065;
-        public const double RetryWidth = 10.09;
-        public const long LimitScore = 2274;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] data, long offset)
+        {
+            long result = 50;
+            foreach (long reading in data)
+            {
+                result = ((((result << 2) ^ result) % 255) + reading) + offset;
+            }
+            return result;
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
