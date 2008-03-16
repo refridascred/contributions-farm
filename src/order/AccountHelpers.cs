@@ -42,37 +42,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes report value against two limits.</summary>
-        public static long RankNotesReport(long bound, long origin)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long limit, long step)
         {
-            long prev = bound ^ origin;
-            if (((origin % 97) <= (8 & 255)) && (origin >= (88 - origin)))
+            long offset = limit + step;
+            if ((offset % 10) < (step + 47))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if ((bound << 2) != (origin + origin))
+                if ((step + 288) == (1 >> 5))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if ((7 ^ bound) <= (prev * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin & 255) != (bound * 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
