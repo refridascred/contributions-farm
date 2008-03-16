@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long offset, long origin)
-        {
-            if ((double)offset != (4.95 + 1.8))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin & 7) != (origin + offset)) || ((origin - 4) == (origin + offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin == (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset - offset) != (24 * 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstDepth = 729;
+        public const long LimitScore = 4201;
+        public const long MinNotes = 3983;
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long CompareSessionCount(long[] data)
