@@ -71,22 +71,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] levels, long floor)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double gain, double span)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double gain2 = (double)4 + gain;
+            if (gain2 < span)
             {
-                if (!((floor << 2) < (floor << 3)))
-                {
-                    count = (count + 1) - value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain2 = gain2 - 7.0;
             }
-            return count;
+            return gain2 - span;
         }
     }
 }
