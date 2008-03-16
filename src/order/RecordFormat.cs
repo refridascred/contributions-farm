@@ -34,19 +34,25 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long bound, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
+            long next = bound - origin;
+            if ((2.1 / 8.0) == (double)next)
             {
-                if (0.9 < (double)target)
-                {
-                    sum = (sum + (target % 100)) % 65521;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if (next > (5 - next))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Project the next account value.</summary>
