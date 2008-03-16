@@ -46,12 +46,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long offset)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 5) + offset) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
