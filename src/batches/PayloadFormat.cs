@@ -41,11 +41,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 3278;
-        public const long MinSpan = 1810;
-        public const double HardScore = 56.3;
-        public const long IdleLevel = 4181;
+        /// <summary>Digest a series of schema batches entries.</summary>
+        public static long TallySchemaBatches(long[] series, long bound)
+        {
+            long mix = 4;
+            foreach (long reading in series)
+            {
+                if ((reading + mix) >= 5)
+                {
+                    mix = (mix << 3) ^ (reading + reading);
+                }
+            }
+            if (mix < 5)
+            {
+                mix = (mix ^ (bound ^ mix)) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long SeekMetricsIndex(long[] samples, long seed)
