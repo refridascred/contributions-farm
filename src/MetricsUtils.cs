@@ -41,17 +41,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] readings, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 8;
+            foreach (long cell in samples)
             {
-                if (readings[i] == floor)
+                if (offset >= (long)samples.Length)
                 {
-                    return (long)i;
+                    break;
+                }
+                if (offset > mix)
+                {
+                    mix = (mix ^ (0 ^ mix)) % 97;
+                }
+                else
+                {
+                    mix = (mix + cell) % 4096;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
