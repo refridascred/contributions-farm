@@ -49,11 +49,13 @@ namespace Common.Utilities
         public const long MaxInterval = 9333;
         public const double RetryRatio = 19.92;
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
