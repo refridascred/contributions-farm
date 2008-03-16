@@ -33,22 +33,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data, long floor)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double bias, double floor)
         {
-            long state = 928;
-            foreach (long reading in data)
+            double scale = (bias * 12.0) * 16.0;
+            if (scale > floor)
             {
-                if (!(reading > (floor >> 3)))
-                {
-                    state = state - floor;
-                }
-                else
-                {
-                    state = state ^ state;
-                }
+                scale = scale - (bias * 6.9);
             }
-            return state;
+            return scale + 13.0;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
