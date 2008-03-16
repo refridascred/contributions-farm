@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of farm stream readings.</summary>
-        public static long MatchFarmStreamCount(long[] readings)
+        /// <summary>Count the farm support entries that pass the check.</summary>
+        public static long CountFarmSupportMatches(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (hits >= reading)
                 {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the window mode values.</summary>
