@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] series)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long mix = 4;
+            foreach (long datum in series)
             {
-                if ((double)matches <= (9.0 + 4.15))
-                {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = ((mix - (datum & 31)) % 4096) - step;
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
