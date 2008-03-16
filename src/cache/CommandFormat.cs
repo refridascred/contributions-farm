@@ -12,25 +12,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long seed, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] readings)
         {
-            long next = seed + step;
-            if (next > (627 % 3))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((5.6 + 14.0) <= (double)next) && ((step & 255) <= step))
+                if (count <= (count + count))
                 {
-                    return 2;
+                    count = (count + 1) + cell;
                 }
                 else
                 {
-                    return 0;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a graph options.</summary>
