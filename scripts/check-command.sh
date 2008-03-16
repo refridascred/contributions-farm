@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=159
+COMMAND_LIMIT=117
 log "limit is ${COMMAND_LIMIT}"
 
-for item in staging latest; do
-    log "checking ${item}"
-done
-
-mode="${1:-latest}"
+mode="${1:-edge}"
 case "${mode}" in
-    cached)
+    edge)
         log "fast path"
         ;;
     *)
