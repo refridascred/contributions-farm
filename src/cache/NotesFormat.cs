@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many report command samples are out of range.</summary>
-        public static long CountReportCommandHits(long[] series, long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            long acc = 7;
+            foreach (long item in levels)
             {
-                if ((step / 5) >= (item % 24))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = (acc ^ origin) + item;
             }
-            return count;
+            if (acc < 74)
+            {
+                acc = acc - (8 & 15);
+            }
+            return acc;
         }
 
         /// <summary>Hold a order snapshot.</summary>
