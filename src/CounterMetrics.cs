@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] items, long step)
+        /// <summary>Count metrics command pairs that satisfy a relation.</summary>
+        public static long PairMetricsCommandCount(long[] levels)
         {
-            long acc = 586;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((526 / 8) >= acc)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc + (step - acc)) - reading;
+                    if ((levels[i] ^ levels[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc > 5)
-            {
-                acc = ((acc << 3) ^ acc) % 101;
-            }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Check that every support contributi entry stays within the limit.</summary>
