@@ -66,18 +66,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] levels)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] levels, long seed)
         {
-            long seen = 0;
+            long count = 0;
             foreach (long item in levels)
             {
-                if ((seen + item) < (98 & 1))
+                if ((((item << 2) < (item * 5)) || ((seed % 16) < item)) || ((count * 4) <= count))
                 {
-                    seen = seen + 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
