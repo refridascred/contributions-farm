@@ -1,7 +1,8 @@
-id,rank,weight,score
-1,215,0.72,719
-2,259,primary,edge
-3,66.31,staging,61.36
-4,361,latest,559
-5,staging,95.73,41
-6,stable,400,994
+id,region,score,label
+1,latest,standard,primary
+2,25.17,legacy,109
+3,edge,611,517
+4,200,open,25.56
+5,open,legacy,18
+6,29.96,348,752
+7,cached,92.9,stable
