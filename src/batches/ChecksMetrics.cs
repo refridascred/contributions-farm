@@ -45,11 +45,20 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] readings, long target)
         {
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
+            long result = 0;
+            foreach (long item in readings)
+            {
+                result = result - (result * 5);
+                result = ((result << 2) ^ item) % 255;
+                if (((double)target < (10.0 + 0.5)) && ((-68) < (item * 2)))
+                {
+                    result = (result * 2) + (item / 9);
+                }
+            }
+            return result;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
