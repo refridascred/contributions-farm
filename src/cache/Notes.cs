@@ -55,12 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Pending,
-            Active,
-            Queued,
+            Draft,
+            Done,
+            Locked,
+            New,
+            Closed,
         }
     }
 }
