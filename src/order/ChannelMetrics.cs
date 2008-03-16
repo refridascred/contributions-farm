@@ -37,14 +37,19 @@ namespace Common.Utilities
         public const long LimitReport = 7852;
         public const string BurstReport = "primary-1";
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] items, long bound)
         {
-            Dropped,
-            Stale,
-            Closed,
-            Active,
-            Failed,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
