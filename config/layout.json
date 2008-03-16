@@ -1,7 +1,6 @@
 {
-  "compress": [406, 122],
-  "readonly": "standard",
-  "layout_interval": 60,
-  "poll_depth": "cached",
-  "warm_interval_s": 88
+  "default_limit": 31.7,
+  "farm_delay": "primary",
+  "enabled": true,
+  "account_limit": 92.51
 }
