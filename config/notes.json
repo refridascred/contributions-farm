@@ -1,8 +1,8 @@
 {
-  "strict": true,
-  "readonly": 54,
-  "batch_delay_ms": 29.16,
-  "checks_limit": 500,
-  "editor_timeout": 7106,
-  "max_interval_pct": "local"
+  "soft_limit_pct": "eu-west",
+  "retry_ratio": "edge",
+  "payload_window": 60,
+  "burst_timeout": 27,
+  "flush_depth_s": 6979,
+  "idle_ttl_ms": 18.3
 }
