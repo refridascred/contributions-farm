@@ -91,13 +91,20 @@ namespace Common.Utilities
             return scale + (double)473;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] levels, long floor)
         {
-            Done,
-            Stale,
-            Locked,
-            Active,
+            long mix = 850;
+            foreach (long sample in levels)
+            {
+                mix = (mix - (mix / 6)) % 65521;
+                mix = ((mix << 3) ^ (sample + floor)) % 101;
+            }
+            if (mix < 461)
+            {
+                mix = (mix ^ (mix & 255)) % 1000;
+            }
+            return mix;
         }
     }
 }
