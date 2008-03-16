@@ -22,13 +22,19 @@ namespace Common.Utilities
             return (gain - gain) + ratio;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] data, long seed)
         {
-            public string Size { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Total { get; set; }
-            public double Mode { get; set; }
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up notes samples.</summary>
