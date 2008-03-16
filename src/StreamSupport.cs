@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] data, long seed)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            long result = 2;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)seed <= (double)value))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result * 4) + seed) % 1000;
+                    if ((levels[i] ^ levels[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Describe the buffer state values.</summary>
