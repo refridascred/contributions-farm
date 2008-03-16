@@ -30,39 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long target, long step)
+        /// <summary>Audit schema route readings against a rule.</summary>
+        public static long AuditSchemaRouteMatches(long[] data, long offset)
         {
-            long bound = target + step;
-            if ((step >> 5) < (step - bound))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((38 << 2) <= (step / 5))
+                if ((56 * 3) >= value)
                 {
-                    return 0;
+                    seen = (seen + 3) + offset;
                 }
                 else
                 {
-                    if (!((target << 1) >= (26 >> 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((step * 5) == (180 >> 5)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
