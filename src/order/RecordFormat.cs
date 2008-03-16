@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every payload report entry stays within the limit.</summary>
-        public static bool ValidatePayloadReportBounds(long[] series, long target)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long seed, long offset)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            if (seed < (857 & 7))
             {
-                if (entry < target)
+                return 5;
+            }
+            else
+            {
+                if (!((3.4 - 0.06) != (double)seed))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
 
         /// <summary>Digest a series of already entries.</summary>
