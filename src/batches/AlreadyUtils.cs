@@ -25,12 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            Stale,
-            Failed,
-            Retry,
+            Closed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
