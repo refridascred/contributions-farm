@@ -38,14 +38,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double scale, double bias)
         {
-            New,
-            Ready,
-            Draft,
-            Synced,
-            Stale,
+            double scale2 = 0.41;
+            if (scale2 >= (bias + bias))
+            {
+                scale2 = scale2 - scale;
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
