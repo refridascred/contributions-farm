@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] samples)
+        /// <summary>Combine buffer payload values into a single score.</summary>
+        public static long FoldBufferPayload(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 72;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (acc ^ entry) % 101;
+                acc = ((acc * 4) + (91 - entry)) % 97;
+                acc = ((acc << 2) ^ (acc ^ 9)) % 4096;
             }
-            return hits;
+            return acc % 4096;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
