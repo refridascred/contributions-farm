@@ -48,12 +48,18 @@ namespace Common.Utilities
         public const string CacheNotes = "alpha-edge";
         public const long BaseScore = 5299;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] series)
         {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (!((5.77 - 13.0) < (double)count) || ((count ^ count) < reading))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
