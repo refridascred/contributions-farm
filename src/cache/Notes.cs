@@ -20,39 +20,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long seed, long origin)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            long prev = seed - origin;
-            if ((seed & 127) < (2 ^ 44))
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
+                mark = (mark ^ (27 << 1)) % 4096;
+                mark = (mark - limit) % 101;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (!((prev ^ origin) < (seed % 64)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (9 >= (origin >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((seed << 2) < (seed >> 2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Look up the position of a farm token sample.</summary>
