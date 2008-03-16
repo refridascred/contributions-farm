@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double scale, double bias)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] data, long origin)
         {
-            double drift = 7.79;
-            return (drift - bias) + scale;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate record metrics readings against a bound.</summary>
