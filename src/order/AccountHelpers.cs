@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] readings, long bound)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double rate, double span)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double gain = rate + 9.87;
+            if (gain <= (rate - gain))
             {
-                if (!!((seen & 31) != (497 >> 2)))
-                {
-                    seen = ((seen + 3) + sample) + bound;
-                }
+                gain = (gain + 3.4) - span;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (gain / 8.0)) + (double)(long)i;
+            }
+            return gain + (1.0 / 6.0);
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
