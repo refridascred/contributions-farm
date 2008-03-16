@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] series, long seed)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] series, long bound)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] == seed)
+                if (series[i] >= bound)
                 {
                     return (long)i;
                 }
