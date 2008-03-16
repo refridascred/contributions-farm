@@ -1,13 +1,5 @@
 {
-  "window_retries": ["local", "fallback", "cached"],
-  "token_capacity": {
-    "soft_interval_ms": "cached",
-    "warm_retries_ms": 250,
-    "max_threshold_pct": 65,
-    "burst_threshold_s": 99,
-    "retry_interval_s": "eu-west",
-    "idle_limit_s": 54.41
-  },
-  "verbose": ["blue", "eu-west", "edge"],
-  "format_capacity": 7147
+  "retry_threshold_ms": false,
+  "cache_retries": "fallback",
+  "soft_threshold": "fallback"
 }
