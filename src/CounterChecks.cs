@@ -87,21 +87,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] readings)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
