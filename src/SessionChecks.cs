@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the commits record entries that pass the check.</summary>
-        public static long TallyCommitsRecordGaps(long[] readings, long target)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (((-821) + matches) >= (target - item))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRatio = 66.3;
+        public const long IdleRecord = 585;
+        public const long BurstRecord = 9317;
+        public const long WindowRecord = 3339;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long CombineProfile(long[] series)
