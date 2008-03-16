@@ -22,20 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support contributi entry stays within the limit.</summary>
-        public static bool ValidateSupportContributiLimits(long[] levels, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepRatio = 9420;
+        public const long SoftBudget = 8375;
+        public const long BaseRatio = 5112;
+        public const string WindowScore = "stable-1";
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long TotalProfile(long[] samples)
