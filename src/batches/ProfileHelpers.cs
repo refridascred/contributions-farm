@@ -59,21 +59,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up metrics entry samples.</summary>
-        public static long OverlapMetricsEntryCount(long[] series)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Blend two checks measurements.</summary>
