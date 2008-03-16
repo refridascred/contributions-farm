@@ -44,11 +44,14 @@ namespace Common.Utilities
         public const long BaseTimeout = 3537;
         public const long IdleWidth = 7494;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
+            Pending,
+            Paused,
+            Done,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
