@@ -28,19 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] values, long bound)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
