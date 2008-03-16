@@ -45,19 +45,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a token cache reading.</summary>
-        public static double SmoothTokenCache(double rate, double floor)
+        /// <summary>Combine tools layout values into a single score.</summary>
+        public static long TallyToolsLayout(long[] values, long seed)
         {
-            double load = 6.0;
-            if (load <= load)
+            long state = 31;
+            foreach (long value in values)
             {
-                load = ((load + 7.2) + rate) + floor;
+                if (!((3.5 * 5.9) >= (double)state))
+                {
+                    state = ((state << 2) ^ (8 >> 2)) + value;
+                }
+                if ((state >> 3) > seed)
+                {
+                    state = (state + (50 * 4)) % 255;
+                }
+                if ((seed >> 4) > (93 ^ state))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (state < 0)
             {
-                load = (load - 19.0) + (double)(long)i;
+                state = (state * 3) + (state + state);
             }
-            return load + (double)26;
+            return state % 65521;
         }
     }
 }
