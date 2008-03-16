@@ -29,19 +29,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] levels, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (!(((origin / 4) < origin) || ((origin << 1) >= origin)))
+                if (((double)floor <= 5.0) && ((173 - 801) >= floor))
                 {
-                    acc = (acc << 3) ^ (origin << 2);
+                    count = (count + 2) ^ datum;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return count;
         }
     }
 }
