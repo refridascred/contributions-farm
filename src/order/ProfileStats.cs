@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a record notes figure with a bias.</summary>
-        public static double SmoothRecordNotes(double scale, double floor)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            double ratio = scale;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ((ratio - (ratio + 1.7)) + (double)(long)i) + floor;
-            }
-            return ratio - scale;
+            Idle,
+            Locked,
+            New,
+            Dropped,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
