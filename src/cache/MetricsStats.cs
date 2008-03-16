@@ -39,12 +39,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 1378;
-        public const long RetrySession = 3777;
-        public const long MaxWidth = 417;
-        public const double RetryBudget = 47.23;
-        public const double HardSpan = 34.82;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] series)
+        {
+            long mark = 94;
+            foreach (long value in series)
+            {
+                mark = (((mark << 2) ^ (mark * 5)) % 255) - value;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long DigestCluster(long[] series)
