@@ -40,18 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitSpan = 3824;
+        public const double MinProfile = 21.91;
+        public const long LimitProfile = 3385;
+        public const long HardRatio = 4065;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
