@@ -1,8 +1,8 @@
 # githubfarm settings
-cluster_limit:
-  max_limit_s: false
-  cache_ratio_pct: 1024
-  persist: 5999
-  readonly: edge
-warm_retries_count: 30
-flush_ratio_ms: 36.15
+default_ttl_count:
+  - blue
+  - cached
+  - fallback
+  - open
+max_capacity: 100
+warm_size: open
