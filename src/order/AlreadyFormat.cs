@@ -41,12 +41,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxGraph = "alpha-edge";
+        public const long DefaultGraph = 6546;
+        public const long RetrySize = 9781;
+        public const double WindowFactor = 57.07;
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
