@@ -24,11 +24,18 @@ namespace Common.Utilities
             return bias2 - (gain / 4.0);
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double rate, double bias)
+        /// <summary>Count the checks githubfarm entries that pass the check.</summary>
+        public static long CountChecksGithubfarmGaps(long[] levels)
         {
-            double gain = (double)(0 ^ 0);
-            return ((gain + (gain / 9.0)) + rate) + bias;
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (((datum / 2) < (datum & 63)) || ((datum + hits) != (hits / 7)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
