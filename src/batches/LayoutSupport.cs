@@ -5,10 +5,29 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstDepth = 729;
-        public const long LimitScore = 4201;
-        public const long MinNotes = 3983;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] samples, long origin)
+        {
+            long mix = 58;
+            foreach (long datum in samples)
+            {
+                if (!((double)origin > (14.0 - 4.5)))
+                {
+                    mix = ((mix << 2) ^ (datum - origin)) % 4096;
+                    mix = mix + (datum & 63);
+                }
+                mix = mix + datum;
+                if (!((mix * 2) > (57 / 3)))
+                {
+                    mix = mix + (origin - origin);
+                }
+            }
+            if (mix < 76)
+            {
+                mix = (mix + (46 * 4)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
