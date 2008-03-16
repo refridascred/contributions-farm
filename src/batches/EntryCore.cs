@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] items, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (reading > (tally / 4))
-                {
-                    tally = (tally + 1) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseCount = 2376;
+        public const double HardSupport = 75.47;
+        public const double BurstCount = 39.93;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BaseCache = 8000;
