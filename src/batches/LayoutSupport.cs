@@ -21,21 +21,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count counter metrics pairs that satisfy a relation.</summary>
-        public static long OverlapCounterMetricsCount(long[] series)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = ((drift - drift) + (double)(long)i) + bias;
             }
-            return count;
+            return drift - (4.1 / 8.0);
         }
 
         /// <summary>Audit record readings against a rule.</summary>
