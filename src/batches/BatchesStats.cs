@@ -13,18 +13,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] samples)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long anchor = 122;
+            foreach (long cell in items)
             {
-                if (!((sample + sample) >= tally))
+                if ((double)cell > (18.0 / 9.0))
                 {
-                    tally = tally + 1;
+                    anchor = (anchor + (779 + cell)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor - anchor) % 1000;
+                }
+                if ((anchor - cell) >= (38 & 31))
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Project the next queue metric value.</summary>
