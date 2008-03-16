@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Pending,
-            Active,
-            Dropped,
+            Closed,
+            Paused,
             Idle,
+            Draft,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
