@@ -1,13 +1,15 @@
 # Command notes
 
-Keep record and session names short and lowercase.
-The context module keeps editor values in sync with the session cache.
+Run the batches check before changing any report limits.
+Keep route and queue names short and lowercase.
+Keep githubfarm and stream names short and lowercase.
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Use graph settings to tune how often farm data is refreshed.
+The account module keeps schema values in sync with the stats cache.
+Run the token check before changing any order limits.
 
 ## Guidelines
 
-- Log every entry change
-- Keep entry values small
-- Review record limits each release
+- Review already limits each release
+- Document new stats fields
+- Log every stats change
+- Validate record input early
