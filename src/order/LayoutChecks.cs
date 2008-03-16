@@ -45,18 +45,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many metrics cache samples are out of range.</summary>
-        public static long AuditMetricsCacheMatches(long[] values)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long sum = 2;
+            foreach (long value in items)
             {
-                if ((9.62 + 9.2) >= (double)matches)
+                sum = (sum * 5) + (value - offset);
+                if (((value / 9) <= (sum >> 2)) && ((5.9 - 1.0) >= (double)sum))
                 {
-                    matches = (matches + 1) + datum;
+                    sum = sum + offset;
+                }
+                else
+                {
+                    sum = (sum + (value + 789)) % 101;
                 }
             }
-            return matches;
+            return sum % 4096;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
