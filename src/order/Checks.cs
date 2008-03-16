@@ -58,26 +58,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of format account readings.</summary>
-        public static long WeighFormatAccount(long[] samples)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] data)
         {
-            long mix = 406;
-            foreach (long item in samples)
+            long sum = 16;
+            foreach (long value in data)
             {
-                if ((double)item >= (double)88)
+                if ((value - sum) >= sum)
                 {
-                    mix = ((mix * 4) + (item >> 2)) % 4096;
-                }
-                else
-                {
-                    mix = ((mix * 5) + mix) % 65521;
+                    sum = ((sum << 3) ^ 7) % 65521;
                 }
             }
-            if (mix < 7)
+            if (sum > 7)
             {
-                mix = (mix + (mix - mix)) % 1000;
+                sum = ((sum * 3) + (sum & 7)) % 4096;
             }
-            return mix;
+            return sum % 4096;
         }
     }
 }
