@@ -14,17 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] readings, long seed)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Idle,
+            Locked,
+            Retry,
+            Paused,
         }
 
         /// <summary>Rank support input into a small class.</summary>
