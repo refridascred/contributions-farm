@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double weight, double bias)
         {
-            Idle,
-            Locked,
-            New,
-            Dropped,
+            double load = 16.0;
+            if (load <= weight)
+            {
+                load = load - bias;
+            }
+            return load + bias;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
