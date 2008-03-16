@@ -30,15 +30,18 @@ namespace Common.Utilities
             return load + (weight - load);
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] data)
+        /// <summary>Compare every pair of notes stats readings.</summary>
+        public static long MatchNotesStatsCount(long[] items)
         {
             long matches = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (matches <= reading)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((items[i] + items[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
