@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] samples)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((item % 7) > (item % 16))
+                if (reading != origin)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
