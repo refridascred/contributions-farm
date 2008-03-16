@@ -56,24 +56,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank githubfarm profile input into a small class.</summary>
-        public static long ClassifyGithubfarmProfile(long offset, long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] values)
         {
-            if (target <= (offset & 15))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((offset + 4) < offset) || ((target - offset) >= (offset + offset)))
+                if (!(matches >= cell))
                 {
-                    return 0;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 2;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
