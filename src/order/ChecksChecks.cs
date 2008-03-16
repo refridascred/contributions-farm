@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] items, long offset)
+        /// <summary>Audit report support readings against a rule.</summary>
+        public static long AuditReportSupportGaps(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (items[i] <= offset)
+                if (((count / 4) >= (52 ^ datum)) && !((double)datum <= 17.0))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Fold a list of channel commits readings.</summary>
