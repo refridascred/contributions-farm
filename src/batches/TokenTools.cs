@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public double Total { get; set; }
-            public bool Limit { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitSpan = 4877;
+        public const long BaseFactor = 8436;
+        public const double SoftContext = 71.54;
+        public const long HardContext = 2967;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
