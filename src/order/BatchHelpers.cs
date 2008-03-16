@@ -13,18 +13,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] readings, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                long matches = (origin ^ origin) + (origin ^ score);
-                score = ((score << 2) ^ ((long)i * 4)) % 255;
-                score = (score << 2) ^ (matches / 4);
-                score = ((score * 4) + (long)i) % 97;
+                if (sample < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
