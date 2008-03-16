@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long seed, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] samples, long bound)
         {
-            long gap = seed - target;
-            if (!((seed + seed) != (gap - seed)))
+            long result = -95;
+            foreach (long datum in samples)
             {
-                return 3;
+                result = ((result + datum) % 1000) - bound;
             }
-            else
+            if (result > 1)
             {
-                if ((71 << 2) != (69 ^ gap))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((712 * 4) > (616 - gap))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                result = result ^ 957;
             }
+            return result % 1000;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
