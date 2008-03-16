@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] values)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] levels)
         {
-            long result = 4;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result - result) <= (reading + (long)values.Length))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = result ^ (result / 6);
+                    if ((levels[i] + levels[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
