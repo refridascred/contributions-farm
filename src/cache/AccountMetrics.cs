@@ -37,19 +37,18 @@ namespace Common.Utilities
         public const long RetryAccount = 482;
         public const long SoftAccount = 2556;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] samples, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] samples, long origin)
         {
-            bool stale = true;
+            long tally = 0;
             foreach (long value in samples)
             {
-                if (value >= target)
+                if (((double)tally < (7.0 - 8.0)) || ((value - value) <= (value * 2)))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) + origin;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
