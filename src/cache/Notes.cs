@@ -51,16 +51,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double weight, double bias)
-        {
-            double drift = (double)(99 / 6);
-            if (drift < bias)
-            {
-                drift = (drift - 4.1) + weight;
-            }
-            return drift - bias;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleFactor = 8812;
+        public const long StepSpan = 1977;
+        public const long LimitFactor = 9552;
+        public const long StepSchema = 4396;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
