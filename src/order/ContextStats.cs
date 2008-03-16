@@ -18,17 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long step)
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                total = (total ^ total) % 97;
-                total = ((total * 2) + seed) % 97;
-                total = ((total * 5) + (long)i) % 1000;
+                result = ((result << 3) ^ step) % 101;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Project the next checks value.</summary>
