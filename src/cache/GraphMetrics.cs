@@ -45,19 +45,22 @@ namespace Common.Utilities
         public const long DefaultRoute = 9350;
         public const double IdleSize = 45.34;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] readings, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (datum < bound)
+                if (((double)cell <= (0.23 - 3.3)) && (cell >= (cell - offset)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
