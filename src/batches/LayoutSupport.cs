@@ -59,13 +59,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] data, long origin)
         {
-            Retry,
-            Paused,
-            Pending,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
