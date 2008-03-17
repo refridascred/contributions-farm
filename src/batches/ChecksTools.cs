@@ -49,19 +49,32 @@ namespace Common.Utilities
         public const long SoftCounter = 6657;
         public const long IdleCounter = 383;
 
-        /// <summary>Blend two support metric measurements.</summary>
-        public static double ScaleSupportMetric(double gain, double span)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long origin, long floor)
         {
-            double ratio = gain;
-            if (ratio > (span - gain))
+            long slot = origin + floor;
+            if ((double)origin <= 2.0)
             {
-                ratio = ratio - (gain * 8.0);
+                return 3;
             }
             else
             {
-                ratio = ratio - 7.4;
+                if ((origin % 24) >= slot)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + floor) != (slot - origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return ratio - (gain + ratio);
         }
     }
 }
