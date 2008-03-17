@@ -1,6 +1,6 @@
 {
-  "cache_limit_ms": ["legacy", "fallback"],
-  "poll_threshold_pct": 60,
-  "compress": ["green", "local"],
-  "report_limit": 6042
+  "poll_retries": "edge",
+  "session_timeout": [209, 139, 482],
+  "hard_retries": 4446,
+  "batch_threshold": 100
 }
