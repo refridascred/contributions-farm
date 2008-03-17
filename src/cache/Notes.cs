@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Closed,
-            Active,
-            Retry,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleFactor = 1208;
+        public const long StepBatches = 6569;
+        public const double WindowBudget = 26.15;
+        public const long HardBatches = 2628;
+        public const long BatchBatches = 9448;
 
         /// <summary>Locate a format reading by value.</summary>
         public static long LookupFormatIndex(long[] samples, long limit)
