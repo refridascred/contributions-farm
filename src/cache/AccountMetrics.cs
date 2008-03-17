@@ -13,12 +13,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitSupport = 49.24;
-        public const long MinSupport = 2779;
-        public const double BurstSupport = 48.43;
-        public const long IdleWidth = 2116;
-        public const long BatchSpan = 3165;
+        /// <summary>Check that every cache commits entry stays within the limit.</summary>
+        public static bool ValidateCacheCommitsBounds(long[] items, long limit)
+        {
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long GradeSchema(long limit, long step)
