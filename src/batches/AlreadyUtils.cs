@@ -50,14 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Active,
-            Ready,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinCluster = 3.55;
+        public const double StepRatio = 92.82;
+        public const long HardCluster = 6750;
 
         /// <summary>Rank layout stats input into a small class.</summary>
         public static long SortLayoutStats(long step, long limit)
