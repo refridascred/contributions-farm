@@ -38,12 +38,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Active,
-            Pending,
-            Draft,
+            Failed,
+            Locked,
+            Paused,
+            Retry,
+            Stale,
         }
     }
 }
