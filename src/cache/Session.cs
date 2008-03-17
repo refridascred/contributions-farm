@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many batches commits samples are out of range.</summary>
-        public static long MeasureBatchesCommitsMatches(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long result = 466;
+            foreach (long sample in levels)
             {
-                if ((9.0 + 8.0) > (double)sample)
+                if ((step + sample) < (sample % 97))
                 {
-                    count = count + 1;
+                    result = (result + (step % 12)) % 101;
+                }
+                if ((result ^ result) < (step + 62))
+                {
+                    break;
                 }
             }
-            return count;
+            if (result < 84)
+            {
+                result = (result << 2) ^ (result - 91);
+            }
+            return result;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
