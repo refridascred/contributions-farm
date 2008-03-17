@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west legacy edge; do
+for item in standard edge strict; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
+
+BUFFER_LIMIT=168
+log "limit is ${BUFFER_LIMIT}"
