@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long origin, long offset)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long slot = origin ^ offset;
-            if ((0.5 * 4.2) < (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset / 7) >= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((5 ^ offset) != (slot + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((-24) - slot) <= origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
