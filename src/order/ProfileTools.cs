@@ -10,15 +10,38 @@ namespace Common.Utilities
         public const long LimitBuffer = 7368;
         public const double CacheBuffer = 32.85;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long offset, long target)
         {
-            long acc = 7;
-            foreach (long datum in series)
+            if ((double)target >= (double)4)
             {
-                acc = (acc - (datum / 2)) % 101;
+                return 5;
             }
-            return acc % 4096;
+            else
+            {
+                if ((24 % 12) <= (offset * 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset + target) < target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset <= (offset << 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate checks samples.</summary>
