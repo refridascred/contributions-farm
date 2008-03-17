@@ -71,38 +71,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long step, long offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double bias, double offset)
         {
-            if ((offset & 63) != (289 ^ offset))
+            double bias2 = (double)((-8) << 3);
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                bias2 = ((bias2 + (bias2 * 19.0)) - (double)(long)i) - offset;
             }
-            else
-            {
-                if (!((offset << 1) >= step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step & 3) > (step + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset & 255) <= (offset + step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return bias2 - (bias * 7.3);
         }
     }
 }
