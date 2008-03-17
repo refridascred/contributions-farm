@@ -49,10 +49,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftStats = "latest-edge";
-        public const long HardLevel = 6543;
-        public const string CacheWidth = "standard-edge";
-        public const long BurstLevel = 9337;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Idle,
+            New,
+            Locked,
+            Stale,
+            Ready,
+        }
     }
 }
