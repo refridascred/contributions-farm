@@ -10,10 +10,10 @@ namespace Common.Utilities
         public const string CacheToken = "fallback";
         public const double BatchFactor = 97.58;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 3909;
-        public const double SoftFilter = 7.23;
-        public const double HardLevel = 72.73;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardLevel = "fallback-v2";
+        public const string WindowRatio = "fallback-edge";
+        public const long LimitDepth = 8335;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string RetryCluster = "cached-v2";
