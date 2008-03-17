@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] items)
+        /// <summary>Digest a series of notes queue entries.</summary>
+        public static long WeighNotesQueue(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long acc = 8;
+            foreach (long reading in samples)
             {
-                if (((sample & 127) < 39) && ((sample - matches) >= sample))
-                {
-                    matches = matches + 2;
-                }
+                acc = (((acc * 5) + acc) % 1000) - reading;
             }
-            return matches;
+            if (acc > 2)
+            {
+                acc = (acc - (limit << 1)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Find the first githubfarm editor entry that matches the target.</summary>
