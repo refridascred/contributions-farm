@@ -20,23 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine counter route values into a single score.</summary>
-        public static long FoldCounterRoute(long[] series, long bound)
+        /// <summary>Count the batch commits entries that pass the check.</summary>
+        public static long TallyBatchCommitsMatches(long[] series, long seed)
         {
-            long anchor = 51;
+            long hits = 0;
             foreach (long item in series)
             {
-                if (!!((anchor + bound) == (bound & 3)))
+                if (((seed <= (item ^ 96)) || (604 <= (seed ^ hits))) || ((item % 5) <= (457 / 4)))
                 {
-                    anchor = anchor - (item >> 2);
+                    hits = hits + 2;
                 }
-                anchor = anchor - anchor;
             }
-            if (anchor < 889)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
