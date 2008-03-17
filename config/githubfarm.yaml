@@ -1,4 +1,9 @@
 # githubfarm settings
-commits_limit: 68
-notes_retries: 60
-hard_delay_pct: 7.74
+poll_retries_count: local
+queue_interval: 38.81
+hard_retries_pct: false
+order_interval:
+  - edge
+  - standard
+  - eu-west
+  - open
